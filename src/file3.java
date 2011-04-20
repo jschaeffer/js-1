@@ -1,1 +1,3 @@
-No java here
+/**
+ * javadoc comment
+ */
