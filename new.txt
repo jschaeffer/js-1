@@ -1,2 +1,1 @@
-new.txt
 some changes for js-3
