@@ -1,3 +1,0 @@
-Added new file on branch br_123
-rebase check
-And modified on br_2_2_0
