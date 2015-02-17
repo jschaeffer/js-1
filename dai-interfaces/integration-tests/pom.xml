@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.canoeventures.dai</groupId>
+    <artifactId>dai-integration-tests</artifactId>
+    <version>4.0.0_800</version>
+
+    <parent>
+        <groupId>com.canoeventures.common-lib</groupId>
+        <artifactId>cucumber-app-mock-parent</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.canoeventures.dai</groupId>
+            <artifactId>ads</artifactId>
+            <version>4.0.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.canoeventures.dai</groupId>
+            <artifactId>cis</artifactId>
+            <version>4.0.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.canoeventures.dai</groupId>
+            <artifactId>impression_collector_server</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <cucumber.war.artifactId>ads</cucumber.war.artifactId>
+        <cucumber.war.context>ads</cucumber.war.context>
+        <cucumber.war.port>9610</cucumber.war.port>
+        <cucumber.log.config.file>ads-log4j-dev.xml</cucumber.log.config.file>
+        <impression.collector.context>impression_collector_server</impression.collector.context>
+        <impression.collector.port>9195</impression.collector.port>
+        <impression.collector.rmi.port>13654</impression.collector.rmi.port>
+        <cucumber.apphome.name>ads</cucumber.apphome.name>
+        <cucumber.config.file>ads-env-application.properties</cucumber.config.file>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>cis</id>
+            <properties>
+                <cucumber.war.artifactId>cis</cucumber.war.artifactId>
+                <cucumber.war.context>cis</cucumber.war.context>
+                <cucumber.log.config.file>cis-log4j.xml</cucumber.log.config.file>
+                <cucumber.apphome.name>cis</cucumber.apphome.name>
+                <cucumber.config.file>cis-env-application.properties</cucumber.config.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <version>1.4.5</version>
+
+                        <executions>
+                            <execution>
+                                <id>start-ic-container</id>
+                                <phase>pre-integration-test</phase>
+                                <configuration>
+                                    <container>
+                                        <containerId>jetty8x</containerId>
+                                    </container>
+                                    <deployables>
+                                        <deployable>
+                                            <groupId>com.canoeventures.dai</groupId>
+                                            <artifactId>impression_collector_server</artifactId>
+                                            <type>war</type>
+                                            <properties>
+                                                <context>${impression.collector.context}</context>
+                                            </properties>
+                                        </deployable>
+                                    </deployables>
+                                    <configuration>
+                                        <home>${project.build.directory}/container/impCollector</home>
+                                        <properties>
+                                            <cargo.servlet.port>${impression.collector.port}</cargo.servlet.port>
+                                            <cargo.rmi.port>8234</cargo.rmi.port>
+                                            <cargo.tomcat.ajp.port>8012</cargo.tomcat.ajp.port>
+                                        </properties>
+                                    </configuration>
+                                </configuration>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop-ic-container</id>
+                                <phase>post-integration-test</phase>
+                                <configuration>
+                                    <container>
+                                        <containerId>jetty8x</containerId>
+                                    </container>
+                                    <configuration>
+                                        <properties>
+                                            <cargo.rmi.port>8234</cargo.rmi.port>
+                                            <cargo.tomcat.ajp.port>8012</cargo.tomcat.ajp.port>
+                                        </properties>
+                                    </configuration>
+                                </configuration>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+
+                <configuration>
+                    <container>
+                        <containerId>jetty8x</containerId>
+                        <type>embedded</type>
+                        <systemProperties>
+                            <org.apache.cxf.Logger>org.apache.cxf.common.logging.Log4jLogger</org.apache.cxf.Logger>
+                            <log4j.location>${cucumber.config.dir}/${cucumber.log.config.file}</log4j.location>
+                        </systemProperties>
+                    </container>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

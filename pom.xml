@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.canoeventures.dai</groupId>
+    <artifactId>decision-engine-parent</artifactId>
+    <packaging>pom</packaging>
+    <name>core-parent</name>
+    <version>4.0.0_800</version>
+    <!--
+    <parent>
+        <groupId>com.canoeventures.dai.ads</groupId>
+        <artifactId>ads-super-pom</artifactId>
+        <version>4.0.0-SNAPSHOT</version>
+    </>
+    -->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.canoe.common-pom</groupId>
+                <artifactId>commons</artifactId>
+                <type>pom</type>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.canoe.common-pom</groupId>
+                <artifactId>spring-integration</artifactId>
+                <type>pom</type>
+                <version>2.2.6.RELEASE</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.canoe.common-pom</groupId>
+                <artifactId>hibernate368Final</artifactId>
+                <type>pom</type>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.canoe.common-pom</groupId>
+                <artifactId>jdbc</artifactId>
+                <type>pom</type>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.canoe.common-pom</groupId>
+                <artifactId>logs</artifactId>
+                <type>pom</type>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.canoe.common-pom</groupId>
+                <artifactId>tests</artifactId>
+                <type>pom</type>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.canoe.common-pom</groupId>
+                <artifactId>cxf</artifactId>
+                <type>pom</type>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.canoe.common-pom</groupId>
+                <artifactId>misc</artifactId>
+                <type>pom</type>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.canoeventures.crypt</groupId>
+                <artifactId>crypt-decrypter</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>com.canoeventures.dai.ads</groupId>
+                <artifactId>core-model</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.canoeventures.dai.ads</groupId>
+                <artifactId>core-services</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.canoeventures.dai.ads</groupId>
+                <artifactId>core-util</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <modules>
+        <module>decision-engine</module>
+        <module>dai-interfaces</module>
+    </modules>
+
+
+
+</project>
