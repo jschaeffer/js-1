@@ -1,16 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.canoeventures.common-lib</groupId>
     <artifactId>cucumber-app-mock-parent</artifactId>
-    <version>1.0.0_120</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Cucumber App+Mock Parent</name>
 
     <parent>
         <groupId>com.canoeventures.common-lib</groupId>
         <artifactId>cucumber-app-parent</artifactId>
-        <version>1.0.0_120</version>
+        <version>1.0.1-SNAPSHOT</version>
         <relativePath>../cucumber-app-parent/pom.xml</relativePath>
     </parent>
 
@@ -46,14 +47,14 @@
                                 <phase>pre-integration-test</phase>
                                 <configuration>
                                     <target>
-                                        <delete dir="${cucumber.apphome.dir}/conf" />
-                                        <mkdir dir="${cucumber.apphome.dir}/conf" />
+                                        <delete dir="${cucumber.apphome.dir}/conf"/>
+                                        <mkdir dir="${cucumber.apphome.dir}/conf"/>
                                         <copy todir="${cucumber.apphome.dir}/conf" verbose="true" failonerror="false">
-                                           <fileset dir="${cucumber.config.dir}" includes="${cucumber.config.file},${cucumber.log.config.file}" />
+                                           <fileset dir="${cucumber.config.dir}" includes="${cucumber.config.file},${cucumber.log.config.file}"/>
                                         </copy>
                                         <copy todir="${cucumber.apphome.dir}/conf" verbose="true" failonerror="false">
-                                            <fileset dir="${cucumber.config.dir}" includes="*.functional.*" />
-                                            <mapper type="regexp" from="^(.*)\.functional\.(.*)$$" to="\1.\2" />
+                                            <fileset dir="${cucumber.config.dir}" includes="*.functional.*"/>
+                                            <mapper type="regexp" from="^(.*)\.functional\.(.*)$$" to="\1.\2"/>
                                         </copy>
                                     </target>
                                 </configuration>
@@ -133,14 +134,14 @@
                                 <phase>pre-integration-test</phase>
                                 <configuration>
                                     <target>
-                                        <delete dir="${cucumber.apphome.dir}/conf" />
-                                        <mkdir dir="${cucumber.apphome.dir}/conf" />
+                                        <delete dir="${cucumber.apphome.dir}/conf"/>
+                                        <mkdir dir="${cucumber.apphome.dir}/conf"/>
                                         <copy todir="${cucumber.apphome.dir}/conf" verbose="true" failonerror="false">
-                                            <fileset dir="${cucumber.config.dir}" includes="${cucumber.config.file},${cucumber.log.config.file}" />
+                                            <fileset dir="${cucumber.config.dir}" includes="${cucumber.config.file},${cucumber.log.config.file}"/>
                                         </copy>
                                         <copy todir="${cucumber.apphome.dir}/conf" verbose="true" failonerror="false">
-                                            <fileset dir="${cucumber.config.dir}" includes="*.functional.*" />
-                                            <mapper type="regexp" from="^(.*)\.functional\.(.*)$$" to="\1.\2" />
+                                            <fileset dir="${cucumber.config.dir}" includes="*.functional.*"/>
+                                            <mapper type="regexp" from="^(.*)\.functional\.(.*)$$" to="\1.\2"/>
                                         </copy>
                                     </target>
                                 </configuration>
