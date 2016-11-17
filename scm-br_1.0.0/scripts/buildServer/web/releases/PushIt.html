@@ -1,0 +1,75 @@
+<b><u>Component Release Info for Sprint PushIt:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_5.1.0_9</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+Metadata: Fix to bug VODDAI-7890: ALM Media Asset Cache pulling in Inactive Entertainment Content from CAAS. Change made to CAAS Core and ALM.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>model/src/main/liquibase/core-4.0.0/052-csd-startDateEndDate-functions.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.1.0_8</b></u><br>
+<pre>
+* <font color=blue>409f551</font>-<font color=green>(2015-08-07)</font><font color=black><b>Added functions written by stephen that are currently used in ads</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (HEAD, tag: v_5.1.0_9, tag: v_5.1.0_12, tag: v_5.1.0_11, tag: v_5.1.0_10, origin/br_5.1.0, origin/HEAD, br_5.1.0)</font>
+* <font color=blue>e8bf257</font>-<font color=green>(2015-06-05)</font><font color=black><b>Updated README: Formatting</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>e2c016a</font>-<font color=green>(2015-06-05)</font><font color=black><b>Added info to README about flashback archives.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint PushIt:</b></u><p>
+<u>Release of Component</u><b>&nbspMicroDev</b><br><u>Version</u><b>&nbspr_4.0.0_255</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Val:
+
+Sprint Summary:
+VODDAI-7595 - MRC Version of Campaign Ad Summary - Programmer Rollup (Previous 7 Days) (AVR)
+VODDAI-7408 - MRC Version of Campaign Ad Summary - Programmer Rollup (AVR)
+VODDAI-7720 - TASK - Production run support
+VODDAI-7785 - TASK - Hourly trend report for Turner
+VODDAI-7860 - SPIKE - DCE Sqoop script & Glue Code (Reporting)
+VODDAI-7859 - SPIKE - DCE Bootstrap (Reporting)</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_254</b></u><br>
+<pre>
+* <font color=blue>b355fe9</font>-<font color=green>(2015-08-10)</font><font color=black><b>VODDAI-7595. MRC programmer roll up reports.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_255)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint PushIt:</b></u><p>
+<u>Release of Component</u><b>&nbspad-load-manager</b><br><u>Version</u><b>&nbspr_4.1.0_6</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+Metadata: Fix to bug VODDAI-7890: ALM Media Asset Cache pulling in Inactive Entertainment Content from CAAS. Change made to CAAS Core and ALM.
+
+New Properties: 
+delivery.variance=30</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.1.0_6/diff.txt>ad-load-manager_v_4.1.0_6/alm-server/src/main/resources/configs/dai-alm.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.1.0_6/diff.txt>ad-load-manager_v_4.1.0_6/alm-server/src/main/resources/configs/dai-alm.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.1.0_6/diff.txt>ad-load-manager_v_4.1.0_6/alm-server/src/main/resources/configs/dai-alm.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.1.0_6/diff.txt>ad-load-manager_v_4.1.0_6/alm-server/src/main/resources/configs/dai-alm.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.1.0_6/diff.txt>ad-load-manager_v_4.1.0_6/alm-server/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>alm-server/src/main/resources/liquibase/cisys/genUser.scrum4.sql</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.1.0_2</b></u><br>
+<pre>
+*   <font color=blue>83f5f7a</font>-<font color=green>(2015-08-10)</font><font color=black><b>Merge remote-tracking branch 'origin/br_4.1.0' into br_4.1.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.1.0_6, origin/br_4.1.0)</font>
+|\  
+| * <font color=blue>1e394c5</font>-<font color=green>(2015-08-07)</font><font color=black><b>alm caches tests checked in</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.1.0_5)</font>
+* | <font color=blue>3e47768</font>-<font color=green>(2015-08-10)</font><font color=black><b>Added new properties</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>c514506</font>-<font color=green>(2015-08-07)</font><font color=black><b>Updated query</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>af15ddd</font>-<font color=green>(2015-08-07)</font><font color=black><b>alm cache test second draft</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>3fa1df4</font>-<font color=green>(2015-08-07)</font><font color=black><b>Merge branch 'br_4.1.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.1.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>27c6968</font>-<font color=green>(2015-08-07)</font><font color=black><b>Changes to filter by start/end date</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>1bf7355</font>-<font color=green>(2015-08-07)</font><font color=black><b>ALM Cache test first draft</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>3d53a3d</font>-<font color=green>(2015-08-06)</font><font color=black><b>fixing the test more</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_4.1.0_4)</font>
+* <font color=blue>3269c92</font>-<font color=green>(2015-08-06)</font><font color=black><b>fixing test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+*   <font color=blue>eeee7e0</font>-<font color=green>(2015-08-06)</font><font color=black><b>Merge branch 'br_4.0.0' into br_4.1.0</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>b250d86</font>-<font color=green>(2015-07-30)</font><font color=black><b>Adding test for Publishing equivalent or empty end breakpoints</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (HEAD, tag: v_4.0.0_99, tag: v_4.0.0_98, tag: v_4.0.0_102, tag: v_4.0.0_101, tag: v_4.0.0_100, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>e9eebee</font>-<font color=green>(2015-08-04)</font><font color=black><b>added Scrum 4 genUser file</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_4.1.0_3)</font></pre>
+<hr>
+<p>

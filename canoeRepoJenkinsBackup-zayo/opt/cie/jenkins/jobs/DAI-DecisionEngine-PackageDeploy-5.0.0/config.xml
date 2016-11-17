@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.13.3">
+      <projectUrl>https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>true</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>true</notifyUnstable>
+      <notifyFailure>true</notifyFailure>
+      <notifyBackToNormal>true</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.5.3">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>git@github.com:CanoeVentures/Dynamic-Ad-Insertion-engine.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_5.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>13 2 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+cd $WORKSPACE
+##
+# Disabling Maven Release processing until pom.xml file issues solved
+##
+export VERSION=&quot;5.0.0&quot;
+export PROJECT=&quot;Dynamic-Ad-Insertion-engine&quot;
+
+#echo &quot;Updating poms with Build Version - ${VERSION}_${BUILD_NUMBER}&quot;
+#groovy /opt/build/scripts/update.groovy ${VERSION}_${BUILD_NUMBER}
+
+#echo &quot;Running Maven Versions plugin to update dependency and parent information&quot;
+#echo &quot;mvn versions:use-latest-versions -Dincludes=com.canoe*:*:*:*SNAPSHOT -DgenerateBackupPoms=false&quot;
+#echo &quot;mvn versions:update-parent -DgenerateBackupPoms=false&quot;
+
+#mvn versions:use-latest-versions -Dincludes=com.canoe*:*:*:*SNAPSHOT -DgenerateBackupPoms=false
+#mvn versions:update-parent -DgenerateBackupPoms=false</command>
+    </hudson.tasks.Shell>
+    <org.jfrog.hudson.maven3.Maven3Builder plugin="artifactory@2.5.1">
+      <mavenName>Maven3.2</mavenName>
+      <rootPom>pom.xml</rootPom>
+      <goals>clean install -U -DskipTests</goals>
+      <mavenOpts></mavenOpts>
+    </org.jfrog.hudson.maven3.Maven3Builder>
+    <hudson.plugins.groovy.Groovy plugin="groovy@1.27">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>def VERSION = &quot;5.0.0&quot;
+def PROJECT = &quot;Dynamic-Ad-Insertion-engine&quot;
+def PROJFILE = &quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+String changelogtemp = &quot;&quot;&quot;
+
+projectRoot=&quot;/opt/cie/jenkins/jobs/DAI-DecisionEngine-PackageDeploy-$VERSION/workspace&quot;
+commonTargetRoot=&quot;dai-interfaces&quot;
+webappDir=&quot;webapps&quot;
+
+build {
+     build_args=&quot;mvn -U clean install -DskipTests&quot;
+}
+
+
+build_package {
+    pre_pkg_cmds {
+            pre_pkg_1=&quot;cp \$projectRoot/\$commonTargetRoot/ads/target/ads*.war \$projectRoot/\$commonTargetRoot/ads/target/ads.war&quot;
+            pre_pkg_2=&quot;cp \$projectRoot/\$commonTargetRoot/cis/target/cis*.war \$projectRoot/\$commonTargetRoot/cis/target/cis.war&quot;
+            pre_pkg_3=&quot;cd \$projectRoot/\$commonTargetRoot/ads/target; chmod +x package.bash; ./package.bash&quot;
+            pre_pkg_4=&quot;mkdir \$projectRoot/\$commonTargetRoot/ads/target/ads_config; cp \$projectRoot/\$commonTargetRoot/ads/src/main/resources/config/*.* \$projectRoot/\$commonTargetRoot/ads/target/ads_config&quot;
+            pre_pkg_5=&quot;mkdir \$projectRoot/\$commonTargetRoot/cis/target/cis_config; cp \$projectRoot/\$commonTargetRoot/cis/src/main/resources/config/*.* \$projectRoot/\$commonTargetRoot/cis/target/cis_config&quot;
+    }
+
+    artifacts {
+        name {
+            bin=&quot;ads.war&quot;
+            ads_config=&quot;ads_config&quot;
+            cis=&quot;cis.war&quot;
+            cis_config=&quot;cis_config&quot;
+            metaI=&quot;ingester.tar.gz&quot;
+            deploy=&quot;deploy.txt&quot;
+        }
+        location {
+            bin=&quot;\$projectRoot/\$commonTargetRoot/ads/target&quot;
+            ads_config=&quot;\$projectRoot/\$commonTargetRoot/ads/target&quot;
+            cis=&quot;\$projectRoot/\$commonTargetRoot/cis/target&quot;
+            cis_config=&quot;\$projectRoot/\$commonTargetRoot/cis/target&quot;
+            metaI=&quot;\$projectRoot/metadata-ingestion/target/dist&quot;
+            deploy=&quot;\$projectRoot&quot;
+        }
+    }
+}
+
+&quot;&quot;&quot;
+File scriptName = new File(&quot;$PROJFILE&quot;)
+        scriptName.write(&quot;${changelogtemp}&quot;)
+        println scriptName</command>
+      </scriptSource>
+      <groovyName>(Default)</groovyName>
+      <parameters></parameters>
+      <scriptParameters></scriptParameters>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <classPath></classPath>
+    </hudson.plugins.groovy.Groovy>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+export VERSION=&quot;5.0.0&quot;
+export PROJECT=&quot;Dynamic-Ad-Insertion-engine&quot;
+export PROJFILE=&quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+cat $PROJFILE
+/opt/build/scripts/CreateJenkinsPackage.sh $PROJECT $PROJECT br_$VERSION ${BUILD_NUMBER}
+
+##
+# Diabling maven release work against poms until issues resolved
+##
+#echo &quot;Capturing Dependency info in pom.xmls and running dependency:tree&quot;
+cd ${WORKSPACE}
+#find . -type f -name &quot;pom.xml&quot; -exec tar -rvf #/opt/build/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_poms.tar &apos;{}&apos; \;
+
+mvn dependency:tree -DoutputFile=dependsTree.txt
+
+find . -type f -name &quot;dependsTree.txt&quot; -exec cat &gt;&gt; /opt/build/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_dependencies.txt &apos;{}&apos; \;
+
+#echo &quot;Creating build branch to store revised pom.xml files&quot;
+#/opt/build/scripts/createBuildLod.sh ${PROJECT} br_${VERSION} br_${VERSION}_${BUILD_NUMBER}
+
+#cd /opt/checkouts/${PROJECT} || exit 1
+#git checkout br_${VERSION}_${BUILD_NUMBER} || exit 1
+#tar -xvf /opt/build/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_poms.tar || exit 1
+#echo &quot;Build branch created.  Adding pom files to branch&quot;
+#git add . || exit 1
+#git commit -m&quot;Checking in .pom file modifications for build ${VERSION}_${BUILD_NUMBER} dependency versions&quot; || exit 1
+#git push origin || exit 1
+
+
+echo &quot;Dependency tree output is here: http://cvbuild.cv.infra/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_dependencies.txt&quot;
+#echo &quot;Poms are captured in .tar format here: #http://cvbuild.cv.infra/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_poms.tar&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.29">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>SelEnv=devint</properties>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>ScrumResurrectState</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <block>
+            <buildStepFailureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </buildStepFailureThreshold>
+            <unstableThreshold>
+              <name>UNSTABLE</name>
+              <ordinal>1</ordinal>
+              <color>YELLOW</color>
+              <completeBuild>true</completeBuild>
+            </unstableThreshold>
+            <failureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </failureThreshold>
+          </block>
+          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
+        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export VERSION=&quot;5.0.0_${BUILD_NUMBER}&quot;
+export Component=&quot;Dynamic-Ad-Insertion-engine&quot;; echo &quot;Component - $Component&quot;
+export DB_Rebuild=&quot;Yes&quot;; echo &quot;DB_Rebuild - $DB_Rebuild&quot;
+export Version=${VERSION}; echo &quot;Version - $Version&quot;
+export Clear_Logs=&quot;Yes&quot;; echo &quot;Clear_Logs - $Clear_Logs&quot;
+export DeployTarg=&quot;devint&quot;; echo &quot;DeployTarg - $DeployTarg&quot;
+export DeployUser=&quot;Jenkins&quot;; echo &quot;DeployUser = $DeployUser&quot;
+export BUILD_TAG
+
+ssh cvbuild.cv.dr &quot;bash -c \&quot;source ~/.bash_profile &amp;&amp; cd /opt/build/scripts &amp;&amp; ./Single_Component_Deploy.sh $Component $DB_Rebuild $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser $JOB_NAME $BUILD_NUMBER $Version\&quot; &quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;5.0.0_${BUILD_NUMBER}&quot; &gt; /var/www/html/devint/Dynamic-Ad-Insertion-engine.txt
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@2.2.1">
+      <labels/>
+    </hudson.plugins.jira.JiraIssueUpdater>
+    <hudson.plugins.git.GitPublisher plugin="git@2.5.3">
+      <configVersion>2</configVersion>
+      <pushMerge>false</pushMerge>
+      <pushOnlyIfSuccess>false</pushOnlyIfSuccess>
+      <forcePush>false</forcePush>
+      <tagsToPush>
+        <hudson.plugins.git.GitPublisher_-TagToPush>
+          <targetRepoName>origin</targetRepoName>
+          <tagName>v_5.0.0_${BUILD_NUMBER}</tagName>
+          <tagMessage></tagMessage>
+          <createTag>true</createTag>
+          <updateTag>false</updateTag>
+        </hudson.plugins.git.GitPublisher_-TagToPush>
+      </tagsToPush>
+    </hudson.plugins.git.GitPublisher>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.40.5">
+      <recipientList>bob.griese@canoeventures.com,jeff.schaeffer@canoeventures.com, Sid.Gregory@canoeventures.com, craig.donovan@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.StillFailingTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo></replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.StillFailingTrigger>
+        <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo></replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo></replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+        <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo></replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>${BUILD_URL}
+
+${BUILD_LOG,maxLines=30}
+</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript></presendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo></replyTo>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+    <jenkins.plugins.slack.SlackNotifier plugin="slack@1.8.1">
+      <teamDomain>canoeventures</teamDomain>
+      <authToken>ulqvAk36Srn0kGF9JMh4UJn5</authToken>
+      <buildServerUrl>http://cvbuild.cv.infra:7001/</buildServerUrl>
+      <room>#scm</room>
+    </jenkins.plugins.slack.SlackNotifier>
+  </publishers>
+  <buildWrappers/>
+</project>

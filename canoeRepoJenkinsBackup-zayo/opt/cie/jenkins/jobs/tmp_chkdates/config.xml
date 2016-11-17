@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo &quot;Full name: $BUILD_USER&quot;
+echo &quot;User id: $BUILD_USER_ID&quot;
+
+
+if  [[ $BUILD_USER_ID = &quot;jschaeffer&quot; || $BUILD_USER_ID = &quot;clecrone&quot; || $BUILD_USER_ID = &quot;lhassell&quot; ]]; then
+    echo &quot;&lt;h2&gt;Authorized Deployer - Proceeding with deployment&lt;/h2&gt;&quot;
+else
+    echo &quot;Unauthorized User!&quot;
+    echo &quot;Exiting!&quot;
+    exit 1
+fi
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.3"/>
+  </buildWrappers>
+</project>

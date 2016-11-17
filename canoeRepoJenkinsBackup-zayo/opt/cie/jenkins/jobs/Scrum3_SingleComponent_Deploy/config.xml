@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h1&gt;Title:  &lt;b&gt;Scrum 3 Single Component, Deployment job&lt;/b&gt;&lt;/h1&gt; &#xd;
+&#xd;
+&lt;h2&gt;&lt;u&gt;Description:&lt;/u&gt; &lt;b&gt;This job will deploy one component to Scrum 3.  User specifies :&#xd;
+  &lt;ul&gt;&#xd;
+     &lt;li&gt;The component to deploy&#xd;
+     &lt;li&gt;The version of the component&#xd;
+     &lt;li&gt;Whether to rebuild a database component (if applicable)&#xd;
+     &lt;li&gt;Whether to clean up any old log files upon deployment.&#xd;
+  &lt;/ul&gt;&#xd;
+       &lt;/h2&gt; &lt;br&gt;&lt;/b&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>Deployuser</name>
+          <description>&lt;h3&gt;Enter the User id and summary of purpose for deployment&lt;/h3&gt;</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description>&lt;h3&gt;Select Component to Deploy&lt;/h3&gt;</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>Dynamic-Ad-Insertion-engine</string>
+              <string>ads-core</string>
+              <string>caas-core</string>
+              <string>dai-cip-feedback</string>
+              <string>dai-cip</string>
+              <string>scte-feeder</string>
+              <string>dai-etl-feeder</string>
+              <string>acp</string>
+              <string>dai-lincoln</string>
+              <string>dai-smsi</string>
+              <string>smsi-msp-relay</string>
+              <string>int-test-support</string>
+              <string>dmp-config</string>
+              <string>MicroDev</string>
+              <string>ops-dce-metadata-agent</string>
+              <string>smsi-publisher</string>
+              <string>Pgmr-Cpgn-Int</string>
+              <string>dai-metadata-ingestion</string>
+              <string>metadata-publisher</string>
+              <string>dai-national-cis</string>
+              <string>impression_collector</string>
+              <string>smsi_reporting</string>
+              <string>request-mgr</string>
+              <string>ad-load-manager</string>
+              <string>POIS</string>
+              <string>dai-dce</string>
+              <string>Sheringham</string>
+              <string>ADI-MDI</string>
+              <string>CERN</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Version</name>
+          <description>&lt;h3&gt;Enter Build Version to Deploy.  Build Version of component to be deployed (must be entered as &lt;b&gt;version number + build number&lt;/b&gt; ie; &lt;u&gt;4.0.0_35&lt;/u&gt;)&lt;p&gt; Open &lt;a href=http://cvbuild.cv.infra/releaseTars/&gt;SCM Staging Area&lt;/a&gt; to discover valid versions to use.
+
+If no version is selected the version selection will happen as follows:
+&lt;ul&gt;&lt;li&gt;For DevInt Environment - Existing version will be redeployed
+&lt;li&gt;For Scrum Environments - DevInt version will be used for version to deploy
+&lt;/ul&gt;&lt;/h3&gt;</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>DB_Rebuild</name>
+          <description>If there is a DB associated with this component, do you want to rebuild from scratch or perform just a liquibase update against the existing schema?</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>No</string>
+              <string>Yes</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Clear_Logs</name>
+          <description>This option will clear all the log files for the selected component.</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>No</string>
+              <string>Yes</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>cvbuild.cv.dr</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.29">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>SelEnv=scrum3</properties>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>ScrumResurrectState</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <block>
+            <buildStepFailureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </buildStepFailureThreshold>
+            <unstableThreshold>
+              <name>UNSTABLE</name>
+              <ordinal>1</ordinal>
+              <color>YELLOW</color>
+              <completeBuild>true</completeBuild>
+            </unstableThreshold>
+            <failureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </failureThreshold>
+          </block>
+          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
+        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+
+
+export BUILD_TAG
+export Deployuser
+export DeployUser=`echo $Deployuser | awk &apos;{print $1}&apos;`
+export Component
+export Clear_Logs
+export Version
+export VERSION=${Version}
+export DeployTarg=&quot;scrum3&quot;
+
+# Set getVer to 0 to default to devint version
+#
+export getVer=&quot;0&quot;
+
+cd /opt/build/scripts
+#./Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser
+./Single_Component_Deploy.sh ${Component} ${DB_Rebuild} ${Clear_Logs} ${DeployTarg} ${BUILD_TAG} ${DeployUser} $JOB_NAME $BUILD_NUMBER ${Version} 
+
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

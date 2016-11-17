@@ -1,0 +1,987 @@
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.5.0_1</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+TYPE_CODE column removed from Campaign table.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0/049-jmh-drop-typeCode.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.4.0_3</b></u><br>
+<pre>
+* <font color=blue>f96ba33</font>-<font color=green>(2015-03-04)</font><font color=black><b>fixed some unit tests</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_5.0.0_2, tag: v_5.0.0_1, tag: v_4.5.0_6, tag: v_4.5.0_3, tag: v_4.5.0_1, origin/br_4.5.0, br_4.5.0)</font>
+* <font color=blue>1f80442</font>-<font color=green>(2015-03-04)</font><font color=black><b>removing rest of campaignTypeCode</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>367a7ed</font>-<font color=green>(2015-03-04)</font><font color=black><b>update Campaign.java</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>ac98ce4</font>-<font color=green>(2015-03-04)</font><font color=black><b>dropping Campaign TypeCode</b></font><font color=grey>- (jmhassell)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_5.7.0_10</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+• New CM User Agreement 
+• Error Handling for 404s and 500s
+• Changed Goal Type values to permit either Insertions or Unlimited in form
+• Fixed bug 7082 (Campaign Flight Window Searches)</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.6.0_15</b></u><br>
+<pre>
+* <font color=blue>6a00f9c</font>-<font color=green>(2015-03-12)</font><font color=black><b>Updated crowd connection url</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.7.0_10)</font>
+* <font color=blue>97b48a6</font>-<font color=green>(2015-03-12)</font><font color=black><b>Updated Campaign Tests for data changes</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+*   <font color=blue>542ea5e</font>-<font color=green>(2015-03-11)</font><font color=black><b>Merge branch 'br_5.7.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.7.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|\  
+| *   <font color=blue>37b9392</font>-<font color=green>(2015-03-11)</font><font color=black><b>Merge branch 'br_5.7.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.7.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\  
+| | * <font color=blue>66c5313</font>-<font color=green>(2015-03-11)</font><font color=black><b>updated network permission test cases for goal type issues</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * | <font color=blue>7934262</font>-<font color=green>(2015-03-11)</font><font color=black><b>Refactored glue code.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+* | <font color=blue>243f31f</font>-<font color=green>(2015-03-11)</font><font color=black><b>Updated GoalType in dataset and related Smoke Tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|/  
+* <font color=blue>2b23974</font>-<font color=green>(2015-03-11)</font><font color=black><b>User Agreement name change</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.7.0_9, tag: v_5.7.0_12, tag: v_5.7.0_11)</font>
+* <font color=blue>23d6a0d</font>-<font color=green>(2015-03-11)</font><font color=black><b>User Agreement name change</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>9d79cdd</font>-<font color=green>(2015-03-11)</font><font color=black><b>Changes to handle User Agreement redirects</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>6f0e15a</font>-<font color=green>(2015-03-11)</font><font color=black><b>Fixed test; added comments</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>2a3cced</font>-<font color=green>(2015-03-10)</font><font color=black><b>New feature for Error Handling</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>7351568</font>-<font color=green>(2015-03-10)</font><font color=black><b>New feature for User Agreement</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>8e4e43a</font>-<font color=green>(2015-03-10)</font><font color=black><b>Added stubbed out methods and routes for testing exceptions and 404 errors</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.7.0_8, tag: v_5.7.0_7, tag: v_5.7.0_6)</font>
+* <font color=blue>f44d93c</font>-<font color=green>(2015-03-06)</font><font color=black><b>Better error handling in both server and client</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>057fcb6</font>-<font color=green>(2015-03-05)</font><font color=black><b>User agreement acceptance</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>bc547d3</font>-<font color=green>(2015-03-09)</font><font color=black><b>Added Sql query for Flashback Archive testing</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>ec5bee4</font>-<font color=green>(2015-03-09)</font><font color=black><b>finish with advanced campaign flight search</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>273eb3a</font>-<font color=green>(2015-03-09)</font><font color=black><b>Move features to Manual Folder</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>cb4a5f3</font>-<font color=green>(2015-03-06)</font><font color=black><b>Updated Audit Feature for MD Targeting</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>85b9961</font>-<font color=green>(2015-03-06)</font><font color=black><b>new tests for flight window advanced search</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>f71282f</font>-<font color=green>(2015-03-06)</font><font color=black><b>Added href assertions for email; updated manual test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>3c8441c</font>-<font color=green>(2015-03-06)</font><font color=black><b>Campaign Flight Window Advanced Search Change...  Campaign Goal Type to Unlimited & Impressions</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>464e004</font>-<font color=green>(2015-03-06)</font><font color=black><b>Added 'Roberta's' Dataset; updated IDs</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>6c2f025</font>-<font color=green>(2015-03-05)</font><font color=black><b>Updated test for column changes</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>b8404ab</font>-<font color=green>(2015-03-05)</font><font color=black><b>Implemented Edge Case Todo item</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>6c9d24c</font>-<font color=green>(2015-03-04)</font><font color=black><b>New glue code checks Href attribute; enhanced related feature</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>0dd328c</font>-<font color=green>(2015-03-04)</font><font color=black><b>many feature updates for removal of campaign type</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>a3f4c0c</font>-<font color=green>(2015-03-04)</font><font color=black><b>big changes for voddai6044 - removing campaign Type</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>5c9af2e</font>-<font color=green>(2015-03-04)</font><font color=black><b>couple test updates, nothing major</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>be9f7a0</font>-<font color=green>(2015-03-03)</font><font color=black><b>Updated application.properties version</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>c55de34</font>-<font color=green>(2015-03-03)</font><font color=black><b>Added step to close modal dialog</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-cip</b><br><u>Version</u><b>&nbspr_5.0.0_8</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+No functional changes – goes with new CAAS-CORE</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_6</b></u><br>
+<pre>
+*   <font color=blue>b5bfa24</font>-<font color=green>(2015-03-18)</font><font color=black><b>Added test for newish reloadable files, and removed typeCode</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_8, tag: r_5.0.0_8)</font>
+|\  
+| * <font color=blue>ee4391e</font>-<font color=green>(2015-03-18)</font><font color=black><b>Updated Cucumber dependency</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>b0dca53</font>-<font color=green>(2015-03-18)</font><font color=black><b>Added test for newish reloadable files, and removed typeCode</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>92fbf0b</font>-<font color=green>(2015-03-18)</font><font color=black><b>Updated to use CAAS 4.5.0</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspacp</b><br><u>Version</u><b>&nbspr_4.0.0_51</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+No functional changes – goes with new CAAS-CORE</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_47</b></u><br>
+<pre>
+*   <font color=blue>94d7ded</font>-<font color=green>(2015-01-28)</font><font color=black><b>Commented some tests, removed some old stuff</b></font><font color=grey>- (Matt Major)</font><font color=red> (HEAD, tag: v_5.0.0_5, tag: v_5.0.0_4, tag: v_5.0.0_3, tag: v_5.0.0_2, tag: v_5.0.0_1, tag: v_4.0.0_51, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+|\  
+| * <font color=blue>8b03f11</font>-<font color=green>(2015-01-28)</font><font color=black><b>Update setenv.scrum3.sh</b></font><font color=grey>- (MajorMatt)</font><font color=red></font>
+| * <font color=blue>77f8ee3</font>-<font color=green>(2015-01-28)</font><font color=black><b>Update setenv.scrum3.sh</b></font><font color=grey>- (MajorMatt)</font><font color=red></font>
+* | <font color=blue>d19c6ee</font>-<font color=green>(2015-01-28)</font><font color=black><b>Commented some tests, removed some old stuff</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>738adb8</font>-<font color=green>(2015-01-20)</font><font color=black><b>Updated to use CAAS 4.3.0</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_5.0.0_5</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+No functional changes – goes with new CAAS-CORE</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_4</b></u><br>
+<pre>
+</pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspMicroDev</b><br><u>Version</u><b>&nbspr_4.0.0_211</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>None provided</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_204</b></u><br>
+<pre>
+* <font color=blue>f10b655</font>-<font color=green>(2015-03-16)</font><font color=black><b>VODDAI-7034. provider name now comes from feed table.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_211, br_4.0.0)</font>
+* <font color=blue>e9c1330</font>-<font color=green>(2015-03-16)</font><font color=black><b>VODDAI-7034. fixed iir issues.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_210)</font>
+* <font color=blue>e58a54d</font>-<font color=green>(2015-03-03)</font><font color=black><b>VODDAI-6880. some prototype metrics.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_209)</font>
+* <font color=blue>50cf90f</font>-<font color=green>(2015-03-02)</font><font color=black><b>VODDAI-7034. reversed calculations.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_208)</font>
+* <font color=blue>3fd46c7</font>-<font color=green>(2015-03-02)</font><font color=black><b>VODDAI-7034. aligned labels and calculations to IIR and EBAS.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_207)</font>
+* <font color=blue>d8d1117</font>-<font color=green>(2015-03-02)</font><font color=black><b>VODDAI-7034. separate metrics from shared.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_206)</font>
+* <font color=blue>f340d2e</font>-<font color=green>(2015-02-24)</font><font color=black><b>VODDAI-6880. added metrics and attributes for ops report.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_205)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_126</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>None provided</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0-changelog.xml
+core/model/src/main/resources/liquibase/core-4.0.0/027-bgriese-metadata.xml
+core/model/src/main/resources/liquibase/core-4.0.0/028-cdonovan-migrate-managed-ip.sql</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_123</b></u><br>
+<pre>
+* <font color=blue>3cfd8f3</font>-<font color=green>(2015-03-10)</font><font color=black><b>Checking in .pom file modifications for build 4.0.0_125 dependency versions</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (tag: v_4.0.0_126, origin/br_4.0.0_125, br_4.0.0_125)</font>
+*   <font color=blue>c0b557e</font>-<font color=green>(2015-03-05)</font><font color=black><b>Merge remote-tracking branch 'origin/br_4.0.0' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (HEAD, tag: v_4.0.0_124, origin/br_4.0.0_126, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+|\  
+| * <font color=blue>fd80aa4</font>-<font color=green>(2015-02-19)</font><font color=black><b>Retrofit script to allow for production already having values.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>a4d6252</font>-<font color=green>(2015-02-18)</font><font color=black><b>VODDAI-7059</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>398220c</font>-<font color=green>(2015-03-05)</font><font color=black><b>VODDAI-7103 changes to support differing methods of determining mip</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>40a5e7f</font>-<font color=green>(2015-02-02)</font><font color=black><b>Added unit tests and order by criteria</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>da1106c</font>-<font color=green>(2015-01-29)</font><font color=black><b>Changes to support managedIp CISRequestQuery</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_511</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+ADS Core - 4.0.0_126
+SMSi Pub DB - 4.0.0_289
+Metadata - Cox platform identifier persisted to variant of SMSiPublisher, managed_ip column in ADS_Core updated to "Q" or "I" or "U"</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_505</b></u><br>
+<pre>
+*   <font color=blue>83e1fc5</font>-<font color=green>(2015-03-06)</font><font color=black><b>Merge remote-tracking branch 'origin/br_4.0.0' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (HEAD, tag: v_4.0.0_513, tag: v_4.0.0_512, tag: v_4.0.0_511, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+|\  
+| * <font color=blue>97b8d69</font>-<font color=green>(2015-03-06)</font><font color=black><b>data file change</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | <font color=blue>66c3de4</font>-<font color=green>(2015-03-06)</font><font color=black><b>Refactor to move vboid checks up to the validation step so we can use it for dce submits</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>8178ebc</font>-<font color=green>(2015-03-05)</font><font color=black><b>Removed additional managed Ip filter</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>17f2734</font>-<font color=green>(2015-03-05)</font><font color=black><b>Removed managed_ip limitation</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4200052</font>-<font color=green>(2015-03-05)</font><font color=black><b>edited vod endpoint data load files to include a managedIP value</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>48a3583</font>-<font color=green>(2015-03-05)</font><font color=black><b>updated cox pub tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>21e6bd3</font>-<font color=green>(2015-03-05)</font><font color=black><b>VODDAI-7103 changes to support differing methods of determining mip</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>1d04304</font>-<font color=green>(2015-03-05)</font><font color=black><b>tests for Cox Platform Identifier checked in</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>15cbd15</font>-<font color=green>(2015-03-04)</font><font color=black><b>added new test cases for Cox Platform Identification</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>dee6d6a</font>-<font color=green>(2015-03-04)</font><font color=black><b>Updated VOD_ENDPOINT sql data load files to reflect new managedIP options</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>4678a6e</font>-<font color=green>(2015-03-03)</font><font color=black><b>test changes during regression</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>5cdecde</font>-<font color=green>(2015-03-03)</font><font color=black><b>updated BCL</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-metadata-ingestion</b><br><u>Version</u><b>&nbspr_5.0.0_3</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>None provided</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_36</b></u><br>
+<pre>
+* <font color=blue>2a431c5</font>-<font color=green>(2015-03-04)</font><font color=black><b>update run.bash for java 8</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (HEAD, tag: v_5.0.0_3, origin/br_5.0.0, br_5.0.0)</font>
+* <font color=blue>6172aca</font>-<font color=green>(2015-02-27)</font><font color=black><b>Converted to Java 8</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+*   <font color=blue>149e4e5</font>-<font color=green>(2015-02-05)</font><font color=black><b>Ran linearBroadcastDate tests with new function. Updated results page accordingly</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_2, tag: v_5.0.0_1, tag: v_4.0.0_58)</font>
+|\  
+| * <font color=blue>581f1b5</font>-<font color=green>(2015-02-05)</font><font color=black><b>VODDAI-6976 Change linear date search order</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>8addab0</font>-<font color=green>(2015-02-05)</font><font color=black><b>Ran linearBroadcastDate tests with new function. Updated results page accordingly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>5b6be0f</font>-<font color=green>(2015-01-23)</font><font color=black><b>Updated file names</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5d0d479</font>-<font color=green>(2015-01-23)</font><font color=black><b>Added templates for summary, licenseWindow, and MISSING linearBroadcast values</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>391dba2</font>-<font color=green>(2015-01-22)</font><font color=black><b>Added files and xcel data checks for LinearBroadcastDate</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>0d9aa4d</font>-<font color=green>(2015-01-09)</font><font color=black><b>VODDAI-6815 Change metadata field Linear Broadcast Date to date time field type.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_57, tag: v_4.0.0_56, tag: v_4.0.0_55, tag: v_4.0.0_54, tag: r_4.0.0_56)</font>
+* <font color=blue>23a2536</font>-<font color=green>(2015-01-08)</font><font color=black><b>VODDAI-6816 Add metadata field Linear Broadcast Date</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_53, tag: r_4.0.0_53)</font>
+* <font color=blue>8fc9dd2</font>-<font color=green>(2014-10-30)</font><font color=black><b>VODDAI-6507 Update field 19 Asset Name</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_52, tag: v_4.0.0_51, tag: v_4.0.0_50, tag: r_4.0.0_50)</font>
+* <font color=blue>a916333</font>-<font color=green>(2014-08-25)</font><font color=black><b>Fix for no update to Advertiser Name</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_49, tag: r_4.0.0_49)</font>
+* <font color=blue>4b916f2</font>-<font color=green>(2014-08-22)</font><font color=black><b>Finished all regression, ISSUE regarding Advertiser_Name overwrite</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_48)</font>
+* <font color=blue>3099fba</font>-<font color=green>(2014-08-19)</font><font color=black><b>Fix for no ADId</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_47, tag: v_4.0.0_46)</font>
+* <font color=blue>519f0fd</font>-<font color=green>(2014-08-14)</font><font color=black><b>Fixed Original_Air_Date</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_45)</font>
+* <font color=blue>d8f8a6b</font>-<font color=green>(2014-08-14)</font><font color=black><b>Removed creation of field 17 as unknown Removed prevention of updates to field 17</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_44)</font>
+* <font color=blue>6568e5f</font>-<font color=green>(2014-08-08)</font><font color=black><b>VODDAI-6149 persist Ad_Id</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_43)</font>
+* <font color=blue>2aa57da</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6148 Brand</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ac12a12</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6147 Persist Advertiser Name</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ada5b46</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6146 Persist Ad Description</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>78ed57a</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6145 Persist asset_id and provider_id field 13,14</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>b01f4a9</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6144 Ad Asset ID and provider ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>33867ee</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6021 Persist only first Advisory</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>e4d1fee</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6022 Persist only the first rating</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>92ba4e5</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6123 Persist Season Number</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4df6674</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6121 Persist first value for original airdate</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>fab16b3</font>-<font color=green>(2014-08-11)</font><font color=black><b>Added xml data for Sprint P MD stories</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_42)</font>
+* <font color=blue>7151acf</font>-<font color=green>(2014-05-21)</font><font color=black><b>Added seriesName and seriesID into the zombieStripper entertainment file and the entRegression xcel file</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_41)</font>
+* <font color=blue>7156f9a</font>-<font color=green>(2014-03-27)</font><font color=black><b>VODDAI-5458 Modify match Field 78 79. Leave field 21 alone</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_40, tag: r_4.0.0_40)</font>
+* <font color=blue>8bf7397</font>-<font color=green>(2014-03-27)</font><font color=black><b>Modified negative test tab for new Provider value restrictions</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b14ca9a</font>-<font color=green>(2014-03-19)</font><font color=black><b>VODDAI-5458 Modify field 79 and 21 in addition to the already modified 78</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_39)</font>
+* <font color=blue>724b82f</font>-<font color=green>(2014-03-18)</font><font color=black><b>Added check in the negativeCase tab for the persistence of the converted FEED provider value to the entertainment MDvalue table.</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_38)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspPOIS</b><br><u>Version</u><b>&nbspr_5.0.0_9</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+No dependencies
+Metadata: Update request validation from SOAP1.2 to SOAP1.1; remove "version" validation; Updated to common-lib 5.0.0 dependencies.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_110</b></u><br>
+<pre>
+* <font color=blue>5d167b1</font>-<font color=green>(2015-02-26)</font><font color=black><b>Some pom cleanup</b></font><font color=grey>- (kennethleider)</font><font color=red> (HEAD, tag: v_5.0.0_9, tag: v_5.0.0_8, tag: v_5.0.0_7, tag: v_5.0.0_6, tag: v_5.0.0_5, tag: v_5.0.0_3, tag: v_5.0.0_2, tag: v_5.0.0_10, tag: v_5.0.0_1, tag: v_4.0.0_149, tag: v_4.0.0_148, origin/br_5.0.0, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>968268b</font>-<font color=green>(2015-02-23)</font><font color=black><b>Removed the data, query, and signalGroup ingest feature. Fixed some minor things</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>876a277</font>-<font color=green>(2015-02-23)</font><font color=black><b>Lots of improvements to the tracking feature. Some small additional cases for adMapGroup timeFromBroadcast, and fix on the offer xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3a9cf90</font>-<font color=green>(2015-02-23)</font><font color=black><b>Lots of improvements to the tracking feature. Some small additional cases for adMapGroup timeFromBroadcast, and fix on the offer xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b323f39</font>-<font color=green>(2015-02-20)</font><font color=black><b>New Ad Map Group Selection tests and templates based on integration discussions</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>154f1f7</font>-<font color=green>(2015-02-20)</font><font color=black><b>Added PoGroupAltId and executedOwnership indicators to tracking.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>5cd797d</font>-<font color=green>(2015-02-20)</font><font color=black><b>Some tracking message fixes.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>4fc70bd</font>-<font color=green>(2015-02-19)</font><font color=black><b>Improved glue code for checking tracking files.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>eb4bb13</font>-<font color=green>(2015-02-19)</font><font color=black><b>New glue code for checking tracking files.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>b217f9d</font>-<font color=green>(2015-02-19)</font><font color=black><b>Modified lots of tracking for merge and reconcile tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d038c5c</font>-<font color=green>(2015-02-17)</font><font color=black><b>README outline</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>a9c726b</font>-<font color=green>(2015-02-13)</font><font color=black><b>VODDAI-5715: Another stab at query tracking</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>3ca0280</font>-<font color=green>(2015-02-13)</font><font color=black><b>cucumber config changes to support new automatic delays during reconfigure</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>367630c</font>-<font color=green>(2015-02-12)</font><font color=black><b>VODDAI-5715: Moved logic to ensure that I always added to query tracking file</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>1355b50</font>-<font color=green>(2015-02-11)</font><font color=black><b>Added lots to tracking. Added many optional fields to validation features</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>be7c64b</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added trailing zeroes for NPTPoint values, added table style for configuration reset, some more work in the tracking feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>ca7345a</font>-<font color=green>(2015-02-10)</font><font color=black><b>Updated to include the Java 1.8 version</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+| * <font color=blue>6c35d6d</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-6291: Published Opportunity Tracking</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>3f65ef2</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-6290: Opportunity tracking</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>cdb37a2</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-7008: Can now reference an external akka configuration</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>93fd459</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added trailing zeroes for NPTPoint values, added table style for configuration reset, some more work in the tracking feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>9c763f6</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-6287: Got a sample cucumber test</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>ee96ead</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added tracking feature, very simple for Ken use and my first try</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>4dc14f5</font>-<font color=green>(2015-02-06)</font><font color=black><b>Changed on hold request response - some cleanup on AssetIds</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>4ebe562</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-7006: Created a maintence task, and added DB compacting</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>1845e74</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added tracking feature, very simple for Ken use and my first try</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>7422cb1</font>-<font color=green>(2015-02-09)</font><font color=black><b>Improved checks for the export and import failures</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>e19de2a</font>-<font color=green>(2015-02-06)</font><font color=black><b>Fixed some export stuff with errors and such. Outstanding import failure</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>0ba6fb3</font>-<font color=green>(2015-02-06)</font><font color=black><b>Fixed movie asset signalGroup uriId and related tests. Fixed hold feature for new config name</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>2cae520</font>-<font color=green>(2015-02-06)</font><font color=black><b>VODDAI-7007: Fixed messed up setenv.sh</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>ee8f382</font>-<font color=green>(2015-02-06)</font><font color=black><b>VODDAI-7007: Renamed operator.conf to pois.conf</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>9ec248f</font>-<font color=green>(2015-02-06)</font><font color=black><b>VODDAI-7000: Made sure all configuration properties are prefixed with pois</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>2c9f34b</font>-<font color=green>(2015-02-06)</font><font color=black><b>TODO cleanup</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>b936d5a</font>-<font color=green>(2015-02-06)</font><font color=black><b>Enabled spring logging</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>ae659ed</font>-<font color=green>(2015-02-06)</font><font color=black><b>VODDAI-6991: Example log4j configuration to create request-response log.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>898334a</font>-<font color=green>(2015-02-05)</font><font color=black><b>VODDAI-7003 Create AdMaps for Gatling Test</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>6613e67</font>-<font color=green>(2015-02-05)</font><font color=black><b>VODDAI-7001 Refactor Asset Ids for Gatling</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+*   <font color=blue>633a647</font>-<font color=green>(2015-02-05)</font><font color=black><b>Modified hold feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>09d0e9c</font>-<font color=green>(2015-02-05)</font><font color=black><b>VODDAI-6980 Put check back in for null linear Broadcast</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>74d903e</font>-<font color=green>(2015-02-05)</font><font color=black><b>Modified hold feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>028ef87</font>-<font color=green>(2015-02-04)</font><font color=black><b>VODDAI-6979: No LinearBroadcastDate?  No Problem</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>2342273</font>-<font color=green>(2015-02-04)</font><font color=black><b>Moved dependency versions into nirvana</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_146, tag: v_4.0.0_145, tag: v_4.0.0_144, tag: v_4.0.0_143, tag: v_4.0.0_142, tag: v_4.0.0_141, tag: v_4.0.0_140, tag: v_4.0.0_139, tag: v_4.0.0_138, tag: v_4.0.0_137, tag: v_4.0.0_136, tag: v_4.0.0_135, tag: v_4.0.0_134, tag: v_4.0.0_133, tag: v_4.0.0_132, tag: v_4.0.0_131, tag: v_4.0.0_130, tag: v_4.0.0_128, tag: v_4.0.0_127, tag: v_4.0.0_126, tag: v_4.0.0_125, tag: v_4.0.0_123, tag: v_4.0.0_122, tag: v_4.0.0_121, tag: v_4.0.0_120)</font>
+* <font color=blue>008e95c</font>-<font color=green>(2015-02-04)</font><font color=black><b>Deleted original xml samples.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>891b31c</font>-<font color=green>(2015-02-03)</font><font color=black><b>Fixed bizarre '-' dash problem</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>5de1c49</font>-<font color=green>(2015-02-03)</font><font color=black><b>Lots of changes in the onHold feature. Also added default.configFile to cucumber.properties file</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>173004b</font>-<font color=green>(2015-02-03)</font><font color=black><b>VODDAI-6911 : Stabilized import/export for large data sets.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>207c805</font>-<font color=green>(2015-02-03)</font><font color=black><b>Lots of changes in the onHold feature. Also added default.configFile to cucumber.properties file</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>9b9eecd</font>-<font color=green>(2015-02-02)</font><font color=black><b>Build out a bunch of POIS hold feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>606f689</font>-<font color=green>(2015-02-02)</font><font color=black><b>VODDAI-6911 : Greatly improved ingest performance by properly using commit logic</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>131cf58</font>-<font color=green>(2015-02-02)</font><font color=black><b>Updated controllers to return "text/plain"</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>932e5d7</font>-<font color=green>(2015-02-02)</font><font color=black><b>Build out a bunch of POIS hold feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>3665e1c</font>-<font color=green>(2015-02-02)</font><font color=black><b>Starting on ON HOLD function, issue witht he response checking.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>ca78d5f</font>-<font color=green>(2015-02-02)</font><font color=black><b>Moved linearBroadcastDate to optional field</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>3da2e87</font>-<font color=green>(2015-02-02)</font><font color=black><b>Added outlines of On Hold tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| * <font color=blue>c3fff2b</font>-<font color=green>(2015-02-02)</font><font color=black><b>VODDAI-6911  fix for ContentPOGroupLinkage</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>dd5349e</font>-<font color=green>(2015-02-02)</font><font color=black><b>Moved linearBroadcastDate to optional field</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>c094356</font>-<font color=green>(2015-01-30)</font><font color=black><b>VODDAI-6911 Movie, Title, Offer, ContentGroup, ContentPOGroupLinkage, SignalGroup</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>41bc797</font>-<font color=green>(2015-01-29)</font><font color=black><b>VODDAI-6911 Send unique messages with unique movies</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>777d02a</font>-<font color=green>(2015-01-29)</font><font color=black><b>Example showing hold functionality</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>c2fa81f</font>-<font color=green>(2015-01-29)</font><font color=black><b>Renaming data-store to pois-core</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>c433691</font>-<font color=green>(2015-01-29)</font><font color=black><b>gatling builder returns an Expression[String]</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>05e251c</font>-<font color=green>(2015-01-28)</font><font color=black><b>VODDAI-6871: I think this mmf is done.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>6ea98bf</font>-<font color=green>(2015-01-28)</font><font color=black><b>update configuration glue code so that multiple steps with in the same scenario can modify the config file</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>6770ca3</font>-<font color=green>(2015-01-27)</font><font color=black><b>New test: owner override with execute set to true</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>8e94d93</font>-<font color=green>(2015-01-27)</font><font color=black><b>Switched errors from POST to PUT to match stories. Anybody will realize what is being communicated</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>b90929f</font>-<font color=green>(2015-01-27)</font><font color=black><b>Removed error checks for successful ingestion. Switched all PUT errors to POST. Also added brief test description to every test.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>e270bcb</font>-<font color=green>(2015-01-26)</font><font color=black><b>VODDAI-6911 First step send Movies</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>0be0006</font>-<font color=green>(2015-01-26)</font><font color=black><b>Hopefully fixed owner override configs</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>2feff19</font>-<font color=green>(2015-01-26)</font><font color=black><b>Updated Execute Ownership feature - new config not working</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| * <font color=blue>07f643b</font>-<font color=green>(2015-01-22)</font><font color=black><b>Finished Ad Map Selection tests - new data file; update PUT to POST, updated URL for publishing</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* | <font color=blue>3fa396b</font>-<font color=green>(2015-01-27)</font><font color=black><b>Removed error checks for successful ingestion. Switched all PUT errors to POST. Also added brief test description to every test.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>0999c16</font>-<font color=green>(2015-01-22)</font><font color=black><b>Added many asset ingestion for each assetType in basicIngestion feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>b17bcd1</font>-<font color=green>(2015-01-22)</font><font color=black><b>VODDAI-5717 Changed error message removed possibility of Linear Broadcast Date being null</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>5627439</font>-<font color=green>(2015-01-20)</font><font color=black><b>Reverse sort order on filteredAdMapGroup</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>1de6c8f</font>-<font color=green>(2015-01-22)</font><font color=black><b>Added many asset ingestion for each assetType in basicIngestion feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>0a1509c</font>-<font color=green>(2015-01-16)</font><font color=black><b>Added many tests for bulk processing functionality, fixed signalGroup template, added ALLasset template</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>8bab2c7</font>-<font color=green>(2015-01-16)</font><font color=black><b>Added templates and modified basic_ingestion feature for 5735 story and 6776 MMF</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>9ec8e56</font>-<font color=green>(2015-01-16)</font><font color=black><b>Removed unneeded println</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>5a64b5e</font>-<font color=green>(2015-01-16)</font><font color=black><b>Some more glue code</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>f176cb7</font>-<font color=green>(2015-01-16)</font><font color=black><b>Added templates and modified basic_ingestion feature for 5735 story and 6776 MMF</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>eeba4d5</font>-<font color=green>(2015-01-15)</font><font color=black><b>added new "provider" config gherkin to Merge features; updated endpoint in Execute feature</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>34af2f5</font>-<font color=green>(2015-01-15)</font><font color=black><b>Switched PUT to POST and added feature, basic ingestion, for the new bulk asset behavior</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>2b0abdc</font>-<font color=green>(2015-01-15)</font><font color=black><b>VODDAI-6776 - Bulk ingest is enabled.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>c2aab0a</font>-<font color=green>(2015-01-15)</font><font color=black><b>Added comments and cleaned up the validation/ingestion tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspad-load-manager</b><br><u>Version</u><b>&nbspr_4.0.0_80</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+CAAS Core - 4.5.0_1
+Metadata - Property Files changed to add SFTP configs; ALM UI changes for friendlier interfacing</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.0.0_80/diff.txt>ad-load-manager_v_4.0.0_80/alm-server/src/main/resources/configs/alm-log4j-dev.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.0.0_80/diff.txt>ad-load-manager_v_4.0.0_80/alm-server/src/main/resources/configs/alm-log4j-dev.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.0.0_80/diff.txt>ad-load-manager_v_4.0.0_80/alm-server/src/main/resources/configs/alm-log4j-dev.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.0.0_80/diff.txt>ad-load-manager_v_4.0.0_80/alm-server/src/main/resources/configs/alm-log4j-dev.scrum4.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.0.0_80/diff.txt>ad-load-manager_v_4.0.0_80/alm-server/src/main/resources/configs/dai-alm.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.0.0_80/diff.txt>ad-load-manager_v_4.0.0_80/alm-server/src/main/resources/configs/dai-alm.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.0.0_80/diff.txt>ad-load-manager_v_4.0.0_80/alm-server/src/main/resources/configs/dai-alm.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/ad-load-manager_v_4.0.0_80/diff.txt>ad-load-manager_v_4.0.0_80/alm-server/src/main/resources/configs/dai-alm.scrum4.properties.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>alm-server/src/main/resources/liquibase/alm-4.0.0-changelog.xml
+alm-server/src/main/resources/liquibase/structure/001-bgriese-create-structure.sql
+alm-server/src/main/resources/liquibase/structure/002-cdonovan-create-sprocs.xml
+alm-server/src/main/resources/liquibase/structure/002-mpm-create-signalgroup-part1.sql
+alm-server/src/main/resources/liquibase/structure/003-mpm-create-signalgroup-part2.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_75</b></u><br>
+<pre>
+* <font color=blue>3ff0bc2</font>-<font color=green>(2015-03-04)</font><font color=black><b>Removed lead black start and end which is not persisted</b></font><font color=grey>- (dehmlowm)</font><font color=red> (HEAD, tag: v_4.0.0_87, tag: v_4.0.0_86, tag: v_4.0.0_85, tag: v_4.0.0_84, tag: v_4.0.0_83, tag: v_4.0.0_82, tag: v_4.0.0_81, tag: v_4.0.0_80, tag: v_4.0.0_79, tag: v_4.0.0_78, origin/br_4.0.0, br_4.0.0)</font>
+* <font color=blue>22f8637</font>-<font color=green>(2015-03-04)</font><font color=black><b>Added Sub data On click</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>ee4bdb6</font>-<font color=green>(2015-03-03)</font><font color=black><b>bumping up wait statements and removing @michael tags</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+*   <font color=blue>f8375af</font>-<font color=green>(2015-03-03)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\  
+| * <font color=blue>fb57676</font>-<font color=green>(2015-03-03)</font><font color=black><b>bumped up driver info to support current version of firefox</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>4dd432f</font>-<font color=green>(2015-03-03)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>3972dcd</font>-<font color=green>(2015-03-03)</font><font color=black><b>Cleaned out baseUrl in common_env</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>e54d8da</font>-<font color=green>(2015-03-03)</font><font color=black><b>conflicts fixed</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>0024762</font>-<font color=green>(2015-03-03)</font><font color=black><b>Test fixes</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>de58085</font>-<font color=green>(2015-03-02)</font><font color=black><b>adding new glue code step to UI test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>19976e6</font>-<font color=green>(2015-03-02)</font><font color=black><b>Initial ability to test UI locally.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>097fa38</font>-<font color=green>(2015-03-02)</font><font color=black><b>unused FTP file deletion.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>a8e7971</font>-<font color=green>(2015-03-02)</font><font color=black><b>removing Entertainment Duration checks from UI test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>5853310</font>-<font color=green>(2015-03-03)</font><font color=black><b>Unit test</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>22b95ea</font>-<font color=green>(2015-03-03)</font><font color=black><b>Added JSON Builder and unit tests</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|/  
+* <font color=blue>2476e5e</font>-<font color=green>(2015-03-02)</font><font color=black><b>Removed extra movie Asset Id column</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>e2c67bb</font>-<font color=green>(2015-03-02)</font><font color=black><b>Removed EntDuration Min/Max from json Message</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>c02f4b7</font>-<font color=green>(2015-03-02)</font><font color=black><b>Adding UI test dependencies.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>3b1a703</font>-<font color=green>(2015-02-27)</font><font color=black><b>adding id's to index.html and adding glue code to UI test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>b26eec9</font>-<font color=green>(2015-02-27)</font><font color=black><b>Added empty checks</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>b44e5f5</font>-<font color=green>(2015-02-26)</font><font color=black><b>Gui Tweaks</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>994219a</font>-<font color=green>(2015-02-26)</font><font color=black><b>Fixed Provider Name replaced dyntable w datatables</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>7153851</font>-<font color=green>(2015-02-25)</font><font color=black><b>Adde tabs</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>111d012</font>-<font color=green>(2015-02-25)</font><font color=black><b>Well formatted groups and unmapped groups</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>6616718</font>-<font color=green>(2015-02-24)</font><font color=black><b>removing tag, adding comments to new test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+*   <font color=blue>8f852e6</font>-<font color=green>(2015-02-24)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\  
+| * <font color=blue>71ccad1</font>-<font color=green>(2015-02-23)</font><font color=black><b>Adding Query UI test case</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>9deb03b</font>-<font color=green>(2015-02-23)</font><font color=black><b>Removed unused filter</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>e0e43ea</font>-<font color=green>(2015-02-23)</font><font color=black><b>added test for the publish by provider functionality</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| *   <font color=blue>42619e1</font>-<font color=green>(2015-02-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>dfea2f9</font>-<font color=green>(2015-02-20)</font><font color=black><b>Fixed string</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>8658554</font>-<font color=green>(2015-02-20)</font><font color=black><b>removed HTTP errors from fail tests, scrum1 not compliant</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| *   <font color=blue>809e631</font>-<font color=green>(2015-02-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>66f99ca</font>-<font color=green>(2015-02-20)</font><font color=black><b>Fixed log4j for request-response for scrum</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>42fd2ba</font>-<font color=green>(2015-02-20)</font><font color=black><b>test changes to support POIS code alignments take 2</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>0a25361</font>-<font color=green>(2015-02-20)</font><font color=black><b>Changed app to publish pre-roll, mid-roll, post-roll when type is ad based on pogroupindex</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>5121dff</font>-<font color=green>(2015-02-24)</font><font color=black><b>Added Query for unman assets</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|/  
+* <font color=blue>8b0d9cc</font>-<font color=green>(2015-02-20)</font><font color=black><b>refactor duration format</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>3d68901</font>-<font color=green>(2015-02-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>2634c86</font>-<font color=green>(2015-02-20)</font><font color=black><b>Changed promo to promotional</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>42a1ba0</font>-<font color=green>(2015-02-20)</font><font color=black><b>Added Flight window ordering according to er id</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>e3edcc3</font>-<font color=green>(2015-02-20)</font><font color=black><b>Index changes w/ CSS</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>9c275fa</font>-<font color=green>(2015-02-20)</font><font color=black><b>Fixed toString methods</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>e2dc8cc</font>-<font color=green>(2015-02-20)</font><font color=black><b>test changes to support POIS integration alignments</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>c9f58b1</font>-<font color=green>(2015-02-20)</font><font color=black><b>test changes to support more validation, feature data issue fixes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>40391d2</font>-<font color=green>(2015-02-20)</font><font color=black><b>Published assets with out signal groups with null id</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>0b91e81</font>-<font color=green>(2015-02-20)</font><font color=black><b>validation test changes for flight windows</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>0ea5a2a</font>-<font color=green>(2015-02-20)</font><font color=black><b>Exception  flight window mismatch, persisted one set of ops</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>e12f156</font>-<font color=green>(2015-02-19)</font><font color=black><b>VODDAI-7012 - Added ability to have by provider publishing</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>ea39019</font>-<font color=green>(2015-02-19)</font><font color=black><b>Multipe flight windows</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>3c8f86c</font>-<font color=green>(2015-02-19)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>f0d1db7</font>-<font color=green>(2015-02-19)</font><font color=black><b>adding tests for more BreakPt CSV breaks than Ad Map CSV breaks</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>39af492</font>-<font color=green>(2015-02-19)</font><font color=black><b>Fixing IO handling.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>14815f6</font>-<font color=green>(2015-02-19)</font><font color=black><b>Added servlet to kick off ssftp processing</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>5093704</font>-<font color=green>(2015-02-19)</font><font color=black><b>test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>9934386</font>-<font color=green>(2015-02-19)</font><font color=black><b>yo</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>c76f1e5</font>-<font color=green>(2015-02-19)</font><font color=black><b>changed log message check from "Lonely AdMap" to "Lonely Media Asset"</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>612d2b0</font>-<font color=green>(2015-02-19)</font><font color=black><b>Commented ftp_actions</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>5ff340a</font>-<font color=green>(2015-02-19)</font><font color=black><b>moving the sftp job interval to only trigger once a day at 11 pm.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>393d49b</font>-<font color=green>(2015-02-19)</font><font color=black><b>Moved glue code to where it will be picked up</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>75a9481</font>-<font color=green>(2015-02-19)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\  
+| *   <font color=blue>626150f</font>-<font color=green>(2015-02-19)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |\  
+| * | <font color=blue>7dc97fb</font>-<font color=green>(2015-02-19)</font><font color=black><b>SFTP automation first step</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | |   <font color=blue>69d09dd</font>-<font color=green>(2015-02-19)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\ \ \  
+| | |/  
+| |/|   
+| * | <font color=blue>1a933d6</font>-<font color=green>(2015-02-19)</font><font color=black><b>adding checks to Extra Ad Map Breaks test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>9bc0694</font>-<font color=green>(2015-02-19)</font><font color=black><b>Added unit tests to rr logger</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>7ec2414</font>-<font color=green>(2015-02-19)</font><font color=black><b>changed OK to Success</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * | <font color=blue>2cc42c3</font>-<font color=green>(2015-02-19)</font><font color=black><b>Fixed log message</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| *   <font color=blue>ae9a3a9</font>-<font color=green>(2015-02-19)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | *   <font color=blue>bf5944e</font>-<font color=green>(2015-02-19)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | |\  
+| | | *   <font color=blue>5fa5221</font>-<font color=green>(2015-02-19)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | | |\  
+| | | * | <font color=blue>ad38cfe</font>-<font color=green>(2015-02-19)</font><font color=black><b>more changes to alm tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | * | | <font color=blue>dc8a8a7</font>-<font color=green>(2015-02-19)</font><font color=black><b>Added assertions to Minimum Dataset Test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | | |/  
+| | |/|   
+| | * |   <font color=blue>4867bdb</font>-<font color=green>(2015-02-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_4.0.0' into br_4.0.0</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | |\ \  
+| | | |/  
+| | | *   <font color=blue>4a9ac91</font>-<font color=green>(2015-02-18)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | | |\  
+| | | | * <font color=blue>7171cfa</font>-<font color=green>(2015-02-18)</font><font color=black><b>VODDAI-7078</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | | * | <font color=blue>d354bee</font>-<font color=green>(2015-02-18)</font><font color=black><b>more tests/fixes to tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | | |/  
+| | | *   <font color=blue>65a09ed</font>-<font color=green>(2015-02-18)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | | |\  
+| | | * | <font color=blue>7acedcb</font>-<font color=green>(2015-02-18)</font><font color=black><b>changes to mulitple feature</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | * | | <font color=blue>e0055f3</font>-<font color=green>(2015-02-18)</font><font color=black><b>Adding checks for Multiple AM's to AMG test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | | |/  
+| | |/|   
+| | * | <font color=blue>747a5d1</font>-<font color=green>(2015-02-18)</font><font color=black><b>removing RAW checks from baseline test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | | <font color=blue>4b36a3e</font>-<font color=green>(2015-02-19)</font><font color=black><b>Wired in RequestResponse Logger</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | | <font color=blue>37f88d1</font>-<font color=green>(2015-02-19)</font><font color=black><b>Multiple fight window persistence + AltID</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |/ /  
+|/| |   
+* | | <font color=blue>5c7ee1e</font>-<font color=green>(2015-02-17)</font><font color=black><b>Multiple AM's attached to AMG tests added</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | | <font color=blue>bcbfa07</font>-<font color=green>(2015-02-17)</font><font color=black><b>Added MD=5 test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>05baf90</font>-<font color=green>(2015-02-17)</font><font color=black><b>Used null Id for region/oppotunity size delta</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>c9ac099</font>-<font color=green>(2015-02-17)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>7af7384</font>-<font color=green>(2015-02-17)</font><font color=black><b>adding raw glue code</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>377bda7</font>-<font color=green>(2015-02-17)</font><font color=black><b>Fixed broadcast window only persistence</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>12c012a</font>-<font color=green>(2015-02-17)</font><font color=black><b>added persistence of multiple Execution rules</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | | <font color=blue>14a4475</font>-<font color=green>(2015-02-17)</font><font color=black><b>test with multi ent and attached to diff ad map groups</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/ /  
+* |   <font color=blue>d4fd073</font>-<font color=green>(2015-02-17)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>22132f4</font>-<font color=green>(2015-02-17)</font><font color=black><b>NO linkages negative test case added</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>bef5b97</font>-<font color=green>(2015-02-17)</font><font color=black><b>Added 'Starts With' Assertion to Min Data Test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |/  
+| *   <font color=blue>c496ba7</font>-<font color=green>(2015-02-17)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>42df65c</font>-<font color=green>(2015-02-17)</font><font color=black><b>Moved breakpoint tests out of AM group</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | * <font color=blue>a2b35e3</font>-<font color=green>(2015-02-17)</font><font color=black><b>Moved break point tests into common folder</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | * <font color=blue>ea6a94d</font>-<font color=green>(2015-02-17)</font><font color=black><b>moving publish tests to alm-publisher folder</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * <font color=blue>9cc4c1e</font>-<font color=green>(2015-02-17)</font><font color=black><b>Added fail mock server template</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | * <font color=blue>cffff35</font>-<font color=green>(2015-02-17)</font><font color=black><b>fixing placementOpportunityID's</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>311dea8</font>-<font color=green>(2015-02-17)</font><font color=black><b>Wired in scheduled job</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>02b10b0</font>-<font color=green>(2015-02-17)</font><font color=black><b>more multiple tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>14d98be</font>-<font color=green>(2015-02-17)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>c1be5f6</font>-<font color=green>(2015-02-17)</font><font color=black><b>Removed action=association step for 2nd test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * | <font color=blue>5fa2db3</font>-<font color=green>(2015-02-17)</font><font color=black><b>changing OK's to Success for Perry's tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>1aa5fe3</font>-<font color=green>(2015-02-17)</font><font color=black><b>publishing success instaed of ok</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * | <font color=blue>c5ca1c2</font>-<font color=green>(2015-02-17)</font><font color=black><b>Changed Date (time) format</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * | <font color=blue>30d0c47</font>-<font color=green>(2015-02-17)</font><font color=black><b>Updated placementOpportunityID with order</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>c72e2ea</font>-<font color=green>(2015-02-17)</font><font color=black><b>Updated unit tests</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>5a86b76</font>-<font color=green>(2015-02-17)</font><font color=black><b>Now supports failure directory.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>88a3fd4</font>-<font color=green>(2015-02-17)</font><font color=black><b>Fixed Linear Broadcast Date unit tests</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>338c438</font>-<font color=green>(2015-02-17)</font><font color=black><b>Removed Parital fix of offset</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>91f8b4a</font>-<font color=green>(2015-02-17)</font><font color=black><b>Removed db values in formString()</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>280f18a</font>-<font color=green>(2015-02-17)</font><font color=black><b>Fixes</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |/  
+| * <font color=blue>5652132</font>-<font color=green>(2015-02-17)</font><font color=black><b>Changes to response file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>f50fd95</font>-<font color=green>(2015-02-16)</font><font color=black><b>Updated log level to warn</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>4f7548e</font>-<font color=green>(2015-02-17)</font><font color=black><b>added test for publishing multiple flights</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>1ee772d</font>-<font color=green>(2015-02-17)</font><font color=black><b>Additional tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>81db4f8</font>-<font color=green>(2015-02-16)</font><font color=black><b>Removed unnecessary cucumber steps</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>bc58227</font>-<font color=green>(2015-02-16)</font><font color=black><b>removing whitespace.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>f4c5baa</font>-<font color=green>(2015-02-16)</font><font color=black><b>Properties/Spring wiring for FTP service.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>9da3c46</font>-<font color=green>(2015-02-16)</font><font color=black><b>Initial SFTP</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>c542f40</font>-<font color=green>(2015-02-16)</font><font color=black><b>Updated Fail scenario</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>34ee959</font>-<font color=green>(2015-02-16)</font><font color=black><b>Added LBD test (and dataset asset)</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>cf2eec8</font>-<font color=green>(2015-02-16)</font><font color=black><b>Caught all exceptions during day parsing</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>4afd1b7</font>-<font color=green>(2015-02-13)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\  
+| * <font color=blue>16b539c</font>-<font color=green>(2015-02-13)</font><font color=black><b>Michael change; Min Publish Assertions & Comments</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>703e768</font>-<font color=green>(2015-02-13)</font><font color=black><b>spotNPT value change</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>6578dff</font>-<font color=green>(2015-02-13)</font><font color=black><b>Fixed linear broadcast date</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|/  
+* <font color=blue>942df09</font>-<font color=green>(2015-02-13)</font><font color=black><b>Fixed POGs</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>dd2b494</font>-<font color=green>(2015-02-13)</font><font color=black><b>Removed comment</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>af10259</font>-<font color=green>(2015-02-13)</font><font color=black><b>Fixed TesetSetGenerator test data</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>91a863f</font>-<font color=green>(2015-02-13)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>831b7d3</font>-<font color=green>(2015-02-13)</font><font color=black><b>Added group to asset</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>68d218a</font>-<font color=green>(2015-02-13)</font><font color=black><b>Fixed broken builder tests</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+*   <font color=blue>357cd42</font>-<font color=green>(2015-02-13)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>d5ff161</font>-<font color=green>(2015-02-13)</font><font color=black><b>ALM Publish: Min Required Test/Dataset</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>4c13a2c</font>-<font color=green>(2015-02-13)</font><font color=black><b>Fixed test</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+*   <font color=blue>6f85dec</font>-<font color=green>(2015-02-13)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>7949e3c</font>-<font color=green>(2015-02-13)</font><font color=black><b>Added missing id asset to query list</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>48c2105</font>-<font color=green>(2015-02-13)</font><font color=black><b>Added  continues to missing cases</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>94f1f04</font>-<font color=green>(2015-02-12)</font><font color=black><b>Fixed property files and removed logs</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>534f075</font>-<font color=green>(2015-02-12)</font><font color=black><b>More debugging for issue that only exists on Scrum</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>990f3d5</font>-<font color=green>(2015-02-12)</font><font color=black><b>Testing response</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>4021475</font>-<font color=green>(2015-02-12)</font><font color=black><b>Michael updates</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>2d06a5c</font>-<font color=green>(2015-02-12)</font><font color=black><b>temp check in</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| *   <font color=blue>28c0707</font>-<font color=green>(2015-02-12)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| * | <font color=blue>f6c98d7</font>-<font color=green>(2015-02-12)</font><font color=black><b>Fixed log message</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>ed6e9da</font>-<font color=green>(2015-02-13)</font><font color=black><b>Some work on query UI</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>cba2810</font>-<font color=green>(2015-02-12)</font><font color=black><b>fixing buffer problem</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>9403c78</font>-<font color=green>(2015-02-12)</font><font color=black><b>Michael updates; Min Asset ALM Publish Test Case</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>bdbc6ca</font>-<font color=green>(2015-02-12)</font><font color=black><b>Baseline Publish Test Gherkin complete</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+|/  
+* <font color=blue>127fb75</font>-<font color=green>(2015-02-12)</font><font color=black><b>Printing out parameters to debug on scrum</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4693cb3</font>-<font color=green>(2015-02-12)</font><font color=black><b>Testing extending the size of the diskItemFactory threshold</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>7838e07</font>-<font color=green>(2015-02-12)</font><font color=black><b>More debugging</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>83b3a63</font>-<font color=green>(2015-02-12)</font><font color=black><b>debug logs</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>badc639</font>-<font color=green>(2015-02-12)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>594c54e</font>-<font color=green>(2015-02-12)</font><font color=black><b>Removed day parts</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>a6342cc</font>-<font color=green>(2015-02-12)</font><font color=black><b>Added logging for debugging.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>05ed124</font>-<font color=green>(2015-02-12)</font><font color=black><b>Aligned port number w/ scrum</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>b08163e</font>-<font color=green>(2015-02-12)</font><font color=black><b>Updated mock server path</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>7e8e8e5</font>-<font color=green>(2015-02-12)</font><font color=black><b>Changed how we get movie id</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>e8c52ab</font>-<font color=green>(2015-02-12)</font><font color=black><b>updated daypart validation</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>1493029</font>-<font color=green>(2015-02-12)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>98fd726</font>-<font color=green>(2015-02-12)</font><font color=black><b>Min Asset Test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>3bdb387</font>-<font color=green>(2015-02-11)</font><font color=black><b>Adding Publish Baseline tests and csv files</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>ab0ebac</font>-<font color=green>(2015-02-12)</font><font color=black><b>updated alm persistance tests to check for no daypart records always</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>6bda7ec</font>-<font color=green>(2015-02-11)</font><font color=black><b>updated validation tests to not support daypart targeting</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>30ed0cf</font>-<font color=green>(2015-02-11)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>152b97b</font>-<font color=green>(2015-02-11)</font><font color=black><b>Unit test adjustments</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>c01ada6</font>-<font color=green>(2015-02-11)</font><font color=black><b>publisher refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>7d00d98</font>-<font color=green>(2015-02-11)</font><font color=black><b>Unit test adjustments</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>bbf6093</font>-<font color=green>(2015-02-11)</font><font color=black><b>Publisher Refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>aea7106</font>-<font color=green>(2015-02-11)</font><font color=black><b>Unit test adjustments</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>73de203</font>-<font color=green>(2015-02-11)</font><font color=black><b>Unit test adjustments.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>c9becce</font>-<font color=green>(2015-02-11)</font><font color=black><b>publisher refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>89a9c41</font>-<font color=green>(2015-02-11)</font><font color=black><b>Publisher Refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>390060b</font>-<font color=green>(2015-02-11)</font><font color=black><b>publish refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| *   <font color=blue>bf4c8a1</font>-<font color=green>(2015-02-11)</font><font color=black><b>Fixed merge conflict.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\  
+| | * <font color=blue>33cbb24</font>-<font color=green>(2015-02-11)</font><font color=black><b>publisher refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| | * <font color=blue>1fe379e</font>-<font color=green>(2015-02-11)</font><font color=black><b>Publisher Refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| | * <font color=blue>a426703</font>-<font color=green>(2015-02-11)</font><font color=black><b>Publish Refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>679276e</font>-<font color=green>(2015-02-11)</font><font color=black><b>Unit test adjustments</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+| *   <font color=blue>f869bdd</font>-<font color=green>(2015-02-11)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\  
+| | * <font color=blue>eac238b</font>-<font color=green>(2015-02-11)</font><font color=black><b>Publish refactor</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| | * <font color=blue>d63d4cb</font>-<font color=green>(2015-02-11)</font><font color=black><b>Setting admap guid.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>ad15b28</font>-<font color=green>(2015-02-11)</font><font color=black><b>Fixed admap IDs</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>638eaa2</font>-<font color=green>(2015-02-11)</font><font color=black><b>Unit tests adjustments</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+| *   <font color=blue>1125fdb</font>-<font color=green>(2015-02-11)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\  
+| * \   <font color=blue>72e0222</font>-<font color=green>(2015-02-11)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>d72b6d5</font>-<font color=green>(2015-02-11)</font><font color=black><b>Query Unit test</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | | | <font color=blue>4ff34ae</font>-<font color=green>(2015-02-11)</font><font color=black><b>removed day part data from ad map csv test files</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |_|/  
+|/| |   
+* | | <font color=blue>de1d51a</font>-<font color=green>(2015-02-11)</font><font color=black><b>updated db property</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>4d1e8d7</font>-<font color=green>(2015-02-11)</font><font color=black><b>Using explicit paths</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>43f8add</font>-<font color=green>(2015-02-10)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>19acee3</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added Opportunity Order to DB checks</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * |   <font color=blue>1b92f9a</font>-<font color=green>(2015-02-10)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>e2d7fd3</font>-<font color=green>(2015-02-10)</font><font color=black><b>Fixing incorrect stored proc.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | | <font color=blue>1f08538</font>-<font color=green>(2015-02-10)</font><font color=black><b>Prevent publishing of duplicate ad map groups and ad maps</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/ /  
+| * | <font color=blue>21db56b</font>-<font color=green>(2015-02-10)</font><font color=black><b>Removed diamond operators</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * |   <font color=blue>d79ed2f</font>-<font color=green>(2015-02-10)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>21702dc</font>-<font color=green>(2015-02-10)</font><font color=black><b>Adding opportunity_order to database & DAO.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | | <font color=blue>15aa69d</font>-<font color=green>(2015-02-10)</font><font color=black><b>Updates to publisher to only publish asset types when they exist on the media asset.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/ /  
+* | | <font color=blue>ea29506</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added unit tests to AssociationService</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* |   <font color=blue>9e117e0</font>-<font color=green>(2015-02-10)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * \   <font color=blue>9eb38be</font>-<font color=green>(2015-02-09)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>5ecc0b6</font>-<font color=green>(2015-02-09)</font><font color=black><b>adding validation log checking for unmatched Signal Groups</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * | <font color=blue>da73dc0</font>-<font color=green>(2015-02-09)</font><font color=black><b>log changes for break point non-match test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | | <font color=blue>a19c2e6</font>-<font color=green>(2015-02-09)</font><font color=black><b>Unit test for addGroupOfPlacementOpportunityGroupsType()</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/ /  
+| * |   <font color=blue>593eab2</font>-<font color=green>(2015-02-09)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>e522e45</font>-<font color=green>(2015-02-09)</font><font color=black><b>adding unmatched break points feature</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | | <font color=blue>cae85ff</font>-<font color=green>(2015-02-09)</font><font color=black><b>publish ad map groups and linkage.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * | | <font color=blue>d09cfb8</font>-<font color=green>(2015-02-09)</font><font color=black><b>Fixed broken unit tests</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * | | <font color=blue>fe83d35</font>-<font color=green>(2015-02-09)</font><font color=black><b>Implemented addContentPOGroupsLinkageType in builder</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| | |/  
+| |/|   
+* | | <font color=blue>7eff5b4</font>-<font color=green>(2015-02-10)</font><font color=black><b>removed short circuit that was preventing association rules from applying if no signal group</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>2f4b7f3</font>-<font color=green>(2015-02-09)</font><font color=black><b>Added signal group logging</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>a043885</font>-<font color=green>(2015-02-06)</font><font color=black><b>Query Services initial checking</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>25faa61</font>-<font color=green>(2015-02-06)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>5e0bf95</font>-<font color=green>(2015-02-06)</font><font color=black><b>Additional unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>a5a392f</font>-<font color=green>(2015-02-06)</font><font color=black><b>Stubbed out add linkage method in ADI builder</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>15e3624</font>-<font color=green>(2015-02-05)</font><font color=black><b>Fixed setter in ADI builder</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>524290c</font>-<font color=green>(2015-02-05)</font><font color=black><b>Moved PublisherLogger to logger package</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>411d797</font>-<font color=green>(2015-02-05)</font><font color=black><b>Fixed URL paths</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>2b0a5b1</font>-<font color=green>(2015-02-04)</font><font color=black><b>Updated builder for changes in common-static</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>44ced57</font>-<font color=green>(2015-02-04)</font><font color=black><b>Adding info to read me.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>c301833</font>-<font color=green>(2015-02-03)</font><font color=black><b>final AR test clean up</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>2fd60e4</font>-<font color=green>(2015-02-03)</font><font color=black><b>fixing log checks</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>d9e0b24</font>-<font color=green>(2015-02-03)</font><font color=black><b>Fixed provider rule</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>e598826</font>-<font color=green>(2015-02-03)</font><font color=black><b>fixing log checks</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>d9773aa</font>-<font color=green>(2015-02-03)</font><font color=black><b>Fixed duration format</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>9249d69</font>-<font color=green>(2015-02-03)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\  
+| * <font color=blue>4c3d8c5</font>-<font color=green>(2015-02-03)</font><font color=black><b>fixing logging checks in feature</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>5a18d84</font>-<font color=green>(2015-02-03)</font><font color=black><b>Changed log message search string</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|/  
+* <font color=blue>492144d</font>-<font color=green>(2015-02-03)</font><font color=black><b>Utilized normalized rules</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>3bb5e81</font>-<font color=green>(2015-02-03)</font><font color=black><b>Log 4 j and assetId</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>67032e3</font>-<font color=green>(2015-02-03)</font><font color=black><b>Resolved conflict.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>272278a</font>-<font color=green>(2015-02-03)</font><font color=black><b>changing qualifier to alm-qualifier</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>cc8308c</font>-<font color=green>(2015-02-03)</font><font color=black><b>fixed logging</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>f62b143</font>-<font color=green>(2015-02-03)</font><font color=black><b>alm-publisher updated for default log file</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>03f6568</font>-<font color=green>(2015-02-03)</font><font color=black><b>Added type hints to query.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>35904c1</font>-<font color=green>(2015-02-03)</font><font color=black><b>Added cache refresh</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>3692b49</font>-<font color=green>(2015-02-03)</font><font color=black><b>Added notes about missing asset implementation</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>47707df</font>-<font color=green>(2015-02-03)</font><font color=black><b>Checks for PlacementOpportunityGroup Assets</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>bb690cb</font>-<font color=green>(2015-02-03)</font><font color=black><b>Log-4j updates</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>c7dc65a</font>-<font color=green>(2015-02-03)</font><font color=black><b>Fleshed method to retrieve all signal groups.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>e41eed8</font>-<font color=green>(2015-02-03)</font><font color=black><b>Removing worthless code.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>622ffc0</font>-<font color=green>(2015-02-03)</font><font color=black><b>adding url to all tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>5aa0559</font>-<font color=green>(2015-02-03)</font><font color=black><b>adding url to active window feature</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>e9337e5</font>-<font color=green>(2015-02-03)</font><font color=black><b>Updated index to include associate and publish</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>71060b8</font>-<font color=green>(2015-02-03)</font><font color=black><b>Updated test set generator and other unit test with hard-coded MediaAssetWithALMData object</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>8c4e602</font>-<font color=green>(2015-02-03)</font><font color=black><b>Unit test for adding signal groups in builder</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>f1f9e4f</font>-<font color=green>(2015-02-03)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| *   <font color=blue>1f3dd41</font>-<font color=green>(2015-02-03)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\  
+| * \   <font color=blue>662c39d</font>-<font color=green>(2015-02-03)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>d91031f</font>-<font color=green>(2015-02-02)</font><font color=black><b>added associate through call</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | | | <font color=blue>5e28499</font>-<font color=green>(2015-02-03)</font><font color=black><b>Fixed test set generator</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |_|/  
+|/| |   
+* | | <font color=blue>ad6c4ff</font>-<font color=green>(2015-02-03)</font><font color=black><b>Replaced hard-coded implementation of signal group builder with real data</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>9d07e18</font>-<font color=green>(2015-02-02)</font><font color=black><b>Retrieval for admap/admap groups.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>1afa776</font>-<font color=green>(2015-02-02)</font><font color=black><b>adding provider breakpt csv file</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>45e0919</font>-<font color=green>(2015-02-02)</font><font color=black><b>Updated Test Set Generator with new properties.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>430b8b5</font>-<font color=green>(2015-02-02)</font><font color=black><b>Unit test adjustments</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>30862f3</font>-<font color=green>(2015-02-02)</font><font color=black><b>Implemented builder and tests for adding ad maps</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>05da5e6</font>-<font color=green>(2015-02-02)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>c5e532c</font>-<font color=green>(2015-02-02)</font><font color=black><b>Adding extra test and log checks</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>666a94f</font>-<font color=green>(2015-02-02)</font><font color=black><b>Adding Log checks for AR qualification</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| |/  
+* | <font color=blue>600781d</font>-<font color=green>(2015-02-02)</font><font color=black><b>Wired up some references from MediaAssetWithALMData to the ADI builder</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>7fc2f98</font>-<font color=green>(2015-02-02)</font><font color=black><b>Association service example</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>cc7f482</font>-<font color=green>(2015-02-02)</font><font color=black><b>Updates</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+*   <font color=blue>ccdcbd4</font>-<font color=green>(2015-02-02)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\  
+| * <font color=blue>13cc1cf</font>-<font color=green>(2015-02-02)</font><font color=black><b>Added TODO</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>74e4ea6</font>-<font color=green>(2015-02-02)</font><font color=black><b>Unit test adjustments</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>5480890</font>-<font color=green>(2015-02-02)</font><font color=black><b>Unit test fixes</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* |   <font color=blue>d79c2f4</font>-<font color=green>(2015-02-02)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>ea2fda2</font>-<font color=green>(2015-01-30)</font><font color=black><b>adding qualifier log checks to half of AR logic tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>0aa61da</font>-<font color=green>(2015-01-30)</font><font color=black><b>Updated tests to handle HTTP codes</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>ec965a4</font>-<font color=green>(2015-01-30)</font><font color=black><b>fixing provider tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>6095075</font>-<font color=green>(2015-01-30)</font><font color=black><b>setting mock return code</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| *   <font color=blue>d9c1da9</font>-<font color=green>(2015-01-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\  
+| | * <font color=blue>ed8ecad</font>-<font color=green>(2015-01-30)</font><font color=black><b>fixing my dumbo CAAS golden data mistake</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * <font color=blue>08d858a</font>-<font color=green>(2015-01-30)</font><font color=black><b>removing illegal column from ad map csvs</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>9319eaf</font>-<font color=green>(2015-01-30)</font><font color=black><b>Removed line break?</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>c001794</font>-<font color=green>(2015-02-02)</font><font color=black><b>Unit tests and AdMapGroup accessors</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>8031f26</font>-<font color=green>(2015-01-30)</font><font color=black><b>Rule Unit tests</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>dfc5a39</font>-<font color=green>(2015-01-30)</font><font color=black><b>Changed path for running browser URL PublishServlet</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|/  
+*   <font color=blue>b1980b3</font>-<font color=green>(2015-01-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| *   <font color=blue>df09f78</font>-<font color=green>(2015-01-30)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\  
+| * | <font color=blue>37bdada</font>-<font color=green>(2015-01-30)</font><font color=black><b>Using new new MediaAssetInterface</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * |   <font color=blue>66fcdee</font>-<font color=green>(2015-01-30)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\ \  
+| * \ \   <font color=blue>274b6f7</font>-<font color=green>(2015-01-30)</font><font color=black><b>qualification rules</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\ \ \  
+| * | | | <font color=blue>e013a51</font>-<font color=green>(2015-01-28)</font><font color=black><b>Qualifier rules</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | | | <font color=blue>4b604aa</font>-<font color=green>(2015-01-28)</font><font color=black><b>Association rules and caches</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | | | | <font color=blue>b73aae4</font>-<font color=green>(2015-01-30)</font><font color=black><b>addSignalGroupType to ADI Container builder.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |_|_|/  
+|/| | |   
+* | | |   <font color=blue>45aa116</font>-<font color=green>(2015-01-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \ \ \  
+| | |_|/  
+| |/| |   
+| * | | <font color=blue>f735b18</font>-<font color=green>(2015-01-29)</font><font color=black><b>adding previous association feature file</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | | | <font color=blue>77b555f</font>-<font color=green>(2015-01-30)</font><font color=black><b>Added additional hardcoded opportunities in ad map in builder.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/ / /  
+* | | <font color=blue>07970f0</font>-<font color=green>(2015-01-29)</font><font color=black><b>Updates</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>faeaca4</font>-<font color=green>(2015-01-29)</font><font color=black><b>adding missing metadata qualification test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | | <font color=blue>6dc9cb2</font>-<font color=green>(2015-01-29)</font><font color=black><b>Changes to support dependency changes.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>8aeb470</font>-<font color=green>(2015-01-29)</font><font color=black><b>Fixing setters that have been refactored.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | | <font color=blue>a6e6bb1</font>-<font color=green>(2015-01-29)</font><font color=black><b>Unfixed Bob's changes in unit test'</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | |   <font color=blue>6fb3e73</font>-<font color=green>(2015-01-29)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|\ \ \  
+| * | | <font color=blue>43564c3</font>-<font color=green>(2015-01-29)</font><font color=black><b>Fixed request-reponse logging</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * | | <font color=blue>552f3f9</font>-<font color=green>(2015-01-29)</font><font color=black><b>Add placement opportunity group (ad map) to builder (work in progress).</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | |   <font color=blue>6fed064</font>-<font color=green>(2015-01-29)</font><font color=black><b>Merge branch 'bob/feature/mdp_refactor' into br_4.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | | <font color=blue>956927c</font>-<font color=green>(2015-01-28)</font><font color=black><b>Removing junk constructor code.</b></font><font color=grey>- (Bobby Griese)</font><font color=red> (origin/bob/feature/mdp_refactor)</font>
+| * | | <font color=blue>a4de13b</font>-<font color=green>(2015-01-27)</font><font color=black><b>MDP_REFACTOR</b></font><font color=grey>- (Bobby Griese)</font><font color=red></font>
+* | | |   <font color=blue>a7d1a04</font>-<font color=green>(2015-01-28)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|\ \ \ \  
+| * | | | <font color=blue>5f421e2</font>-<font color=green>(2015-01-28)</font><font color=black><b>removing /alm-server from our url to load AM and CSVs</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | | | | <font color=blue>4113238</font>-<font color=green>(2015-01-28)</font><font color=black><b>Updated path for Publishing</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|/ / / /  
+* | | | <font color=blue>2eb8a23</font>-<font color=green>(2015-01-28)</font><font color=black><b>Fixed URI ID</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |_|/  
+|/| |   
+* | | <font color=blue>83839d2</font>-<font color=green>(2015-01-28)</font><font color=black><b>Added POIS Fail template</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>31e05dd</font>-<font color=green>(2015-01-28)</font><font color=black><b>Moved Impl class to impl package.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>12de505</font>-<font color=green>(2015-01-28)</font><font color=black><b>Initial "Test Publish" functionality</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>edfbe1b</font>-<font color=green>(2015-01-28)</font><font color=black><b>Replaced occurrences of deprecated methods.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>e4d61a1</font>-<font color=green>(2015-01-27)</font><font color=black><b>Minor glue code fix</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | | <font color=blue>ad35c44</font>-<font color=green>(2015-01-27)</font><font color=black><b>Added a Publish Fail test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>db4f156</font>-<font color=green>(2015-01-27)</font><font color=black><b>adding breakpt csvs and active window test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | |   <font color=blue>b10c4b9</font>-<font color=green>(2015-01-27)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \ \  
+| * | | <font color=blue>535e32d</font>-<font color=green>(2015-01-27)</font><font color=black><b>more cucumber config changes</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | |   <font color=blue>4c640b9</font>-<font color=green>(2015-01-27)</font><font color=black><b>Merge remote-tracking branch 'origin/br_4.0.0' into br_4.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |\ \ \  
+| | * | | <font color=blue>fabd90b</font>-<font color=green>(2015-01-27)</font><font color=black><b>Publish feature updates</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | |/ /  
+| * | | <font color=blue>7555174</font>-<font color=green>(2015-01-27)</font><font color=black><b>Cleaned up local cucumber configuration</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |/ /  
+| * | <font color=blue>0bf005e</font>-<font color=green>(2015-01-27)</font><font color=black><b>Externalizing dev log4j directory path.</b></font><font color=grey>- (Bobby Griese)</font><font color=red></font>
+* | | <font color=blue>be1051e</font>-<font color=green>(2015-01-27)</font><font color=black><b>Publisher unit tests</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/ /  
+* | <font color=blue>6180302</font>-<font color=green>(2015-01-27)</font><font color=black><b>Publisher logger tests</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>0cd2733</font>-<font color=green>(2015-01-27)</font><font color=black><b>PublisherLoggerTest.logSomeErrors()</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>063ed6d</font>-<font color=green>(2015-01-27)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>1345fb2</font>-<font color=green>(2015-01-26)</font><font color=black><b>Adding more Association Rule metadata xmls and feature files</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>8ae413d</font>-<font color=green>(2015-01-26)</font><font color=black><b>Publish feature updates</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>84eee69</font>-<font color=green>(2015-01-27)</font><font color=black><b>Incremental commit of publisher, publisherlogger code and tests</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/ /  
+* | <font color=blue>7f18e20</font>-<font color=green>(2015-01-26)</font><font color=black><b>Publish updates</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>2c1a68d</font>-<font color=green>(2015-01-26)</font><font color=black><b>Updated cucumber properties</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>35af07c</font>-<font color=green>(2015-01-26)</font><font color=black><b>Externalized the configuration for publisher batch size value</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>a3f99fb</font>-<font color=green>(2015-01-26)</font><font color=black><b>Stubbed out environment configs with publish URL</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>2e8aa07</font>-<font color=green>(2015-01-26)</font><font color=black><b>Externalized publish endpiont</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>4388ebf</font>-<font color=green>(2015-01-23)</font><font color=black><b>adding association tests for series id, series name, title brief and title</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>d6bcee9</font>-<font color=green>(2015-01-23)</font><font color=black><b>Basic post and test</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>17eeac7</font>-<font color=green>(2015-01-23)</font><font color=black><b>Publish feature development</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>f599a9e</font>-<font color=green>(2015-01-23)</font><font color=black><b>Created a method to build a deterministic-ish UUID from a string</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>e936917</font>-<font color=green>(2015-01-23)</font><font color=black><b>Fixed ID refs</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>e4fbe18</font>-<font color=green>(2015-01-23)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>35b9b4c</font>-<font color=green>(2015-01-23)</font><font color=black><b>Adding Genre AR test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | | <font color=blue>1b6b62f</font>-<font color=green>(2015-01-23)</font><font color=black><b>Slight refactoring of ADIContainerBuilder and tests.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/ /  
+* | <font color=blue>f1b30f3</font>-<font color=green>(2015-01-23)</font><font color=black><b>ADIContainerBuilder.addContentGroup() and test</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>d626b07</font>-<font color=green>(2015-01-23)</font><font color=black><b>Initial ALM Publisher Feature</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>cefca42</font>-<font color=green>(2015-01-22)</font><font color=black><b>Adding ShowType Feature</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>bd71048</font>-<font color=green>(2015-01-22)</font><font color=black><b>adding show type cdv and xml</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>a8c7526</font>-<font color=green>(2015-01-22)</font><font color=black><b>fixed title and movie asset Ids</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* |   <font color=blue>bba708f</font>-<font color=green>(2015-01-22)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>3348b75</font>-<font color=green>(2015-01-22)</font><font color=black><b>ADIContainerBuilder.addTitleType and test</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * |   <font color=blue>1f0eaea</font>-<font color=green>(2015-01-22)</font><font color=black><b>Fixed merge conflicts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>6005aac</font>-<font color=green>(2015-01-22)</font><font color=black><b>Removed unneeded dataset</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | * | <font color=blue>7dd46e0</font>-<font color=green>(2015-01-22)</font><font color=black><b>Changing PublisherImpl to abide by new interface.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | | <font color=blue>2aaf6e8</font>-<font color=green>(2015-01-22)</font><font color=black><b>Basic setup of ADIContainerBuilder and tests</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | | <font color=blue>5b19066</font>-<font color=green>(2015-01-22)</font><font color=black><b>initial provider association logic checked in for testing</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/ /  
+|/| |   
+* | | <font color=blue>f878387</font>-<font color=green>(2015-01-22)</font><font color=black><b>metadata example added</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>0a7a805</font>-<font color=green>(2015-01-22)</font><font color=black><b>validation test case update again.  added new delete to caas_test_empty.sql</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | | <font color=blue>4d9ee34</font>-<font color=green>(2015-01-22)</font><font color=black><b>load that data</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+|/ /  
+* | <font color=blue>b30b413</font>-<font color=green>(2015-01-22)</font><font color=black><b>Initial Publisher checkin</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>56a0e94</font>-<font color=green>(2015-01-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>01faae2</font>-<font color=green>(2015-01-22)</font><font color=black><b>Interface update</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>474de0c</font>-<font color=green>(2015-01-22)</font><font color=black><b>validation test update</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+* <font color=blue>15773ea</font>-<font color=green>(2015-01-22)</font><font color=black><b>VODDAI-6857</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>e7bde79</font>-<font color=green>(2015-01-21)</font><font color=black><b>moved ad map features into folder and subfolders</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+*   <font color=blue>de019d0</font>-<font color=green>(2015-01-21)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|\  
+| * <font color=blue>bef1a94</font>-<font color=green>(2015-01-21)</font><font color=black><b>Fixed ProgrammerDao test</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| *   <font color=blue>c40d319</font>-<font color=green>(2015-01-21)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\  
+| * | <font color=blue>85fec01</font>-<font color=green>(2015-01-21)</font><font color=black><b>Added interfaces for association and publish</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | | <font color=blue>0f51f50</font>-<font color=green>(2015-01-21)</font><font color=black><b>Removed unneeded datasets</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>b8b37f7</font>-<font color=green>(2015-01-20)</font><font color=black><b>final checkins, all ad map tests passing</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>b8195ac</font>-<font color=green>(2015-01-20)</font><font color=black><b>Fixed merge index issue</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>c168fca</font>-<font color=green>(2015-01-20)</font><font color=black><b>deleted OPERATOR table from ALM test-empty.xml</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | <font color=blue>02d32b6</font>-<font color=green>(2015-01-20)</font><font color=black><b>Keeping admap_to_group associations</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>62491d7</font>-<font color=green>(2015-01-20)</font><font color=black><b>Added Update tests/dataset for Scenario 5</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>daf6d39</font>-<font color=green>(2015-01-20)</font><font color=black><b>ALM Ad Map tests passing (minus whatever Tyler is doing)</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* |   <font color=blue>66d06b9</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>1182ebd</font>-<font color=green>(2015-01-20)</font><font color=black><b>admap_to_group persisting.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | | <font color=blue>a0bc773</font>-<font color=green>(2015-01-20)</font><font color=black><b>Changes to accomdate Operator table in CAAS.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/ /  
+* |   <font color=blue>ce56720</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| * \   <font color=blue>99568a5</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\ \  
+| | |/  
+| * | <font color=blue>8620d13</font>-<font color=green>(2015-01-20)</font><font color=black><b>production ad map tests complete</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>a3ca3d8</font>-<font color=green>(2015-01-20)</font><font color=black><b>Removed foreign key constraint.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>2b52c2f</font>-<font color=green>(2015-01-20)</font><font color=black><b>temporally removed end to end testing</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* |   <font color=blue>95f86ba</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+|\ \  
+| * \   <font color=blue>89aff2a</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>cc29de0</font>-<font color=green>(2015-01-20)</font><font color=black><b>Basic Tests Completed For BreakPt</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * | |   <font color=blue>57e781a</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/Can</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\ \ \  
+| | | |/  
+| | |/|   
+| * | | <font color=blue>b378d0c</font>-<font color=green>(2015-01-20)</font><font color=black><b>Roll Sequence validation and group truncation</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | | | <font color=blue>5123627</font>-<font color=green>(2015-01-20)</font><font color=black><b>adding hashed guid column to AdMap Group table</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| |_|/  
+|/| |   
+* | | <font color=blue>1d5a550</font>-<font color=green>(2015-01-20)</font><font color=black><b>changes for persist update and truncation tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>5a72158</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>0824278</font>-<font color=green>(2015-01-20)</font><font color=black><b>Added ALM DB checks to mid-roll test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * |   <font color=blue>84b03c0</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>acae9ec</font>-<font color=green>(2015-01-20)</font><font color=black><b>Adding GUID to adman group.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | | <font color=blue>de80b30</font>-<font color=green>(2015-01-20)</font><font color=black><b>Updated call to match new signature.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/ /  
+| * | <font color=blue>9e43251</font>-<font color=green>(2015-01-20)</font><font color=black><b>Fixed merge conflicts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * | <font color=blue>67aa7b4</font>-<font color=green>(2015-01-20)</font><font color=black><b>Fixed merge conflict.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * | <font color=blue>eed847a</font>-<font color=green>(2015-01-20)</font><font color=black><b># This is a combination of 23 commits. # The first commit's message is: Fixed merge conflict.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+* | <font color=blue>0089428</font>-<font color=green>(2015-01-20)</font><font color=black><b>checkin for Michael, check CW validation</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+*   <font color=blue>f0e7110</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>d45f701</font>-<font color=green>(2015-01-20)</font><font color=black><b>removing programmer name checks from truncation</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>fe3717f</font>-<font color=green>(2015-01-20)</font><font color=black><b>Added description truncation</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>084f6ae</font>-<font color=green>(2015-01-20)</font><font color=black><b>Added publish method</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>26bb8ce</font>-<font color=green>(2015-01-20)</font><font color=black><b>removed extra column in CBS csv</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+*   <font color=blue>375ef29</font>-<font color=green>(2015-01-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>254cc49</font>-<font color=green>(2015-01-20)</font><font color=black><b>changes to persistence update tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>a8591bb</font>-<font color=green>(2015-01-20)</font><font color=black><b>Removed extra character</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>50fc7db</font>-<font color=green>(2015-01-16)</font><font color=black><b>Truncated programmer name</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>95e2627</font>-<font color=green>(2015-01-16)</font><font color=black><b>fixing truncation tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>6354513</font>-<font color=green>(2015-01-20)</font><font color=black><b>work with production ad maps for testing 50% complete</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+*   <font color=blue>13c5c40</font>-<font color=green>(2015-01-16)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>bf16058</font>-<font color=green>(2015-01-16)</font><font color=black><b>updated persistence HP test and CSV</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>8632199</font>-<font color=green>(2015-01-16)</font><font color=black><b>validation and linkage passing</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>29f71da</font>-<font color=green>(2015-01-16)</font><font color=black><b>Refactoring Association_rule</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+*   <font color=blue>a34b96a</font>-<font color=green>(2015-01-16)</font><font color=black><b>Merge branch 'feature_persist' into br_4.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|\  
+| * <font color=blue>68b5230</font>-<font color=green>(2015-01-16)</font><font color=black><b>admap group persist.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (origin/feature_persist)</font>
+| * <font color=blue>4f7a601</font>-<font color=green>(2015-01-15)</font><font color=black><b>Persisting admaps.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>cb0c9b2</font>-<font color=green>(2015-01-15)</font><font color=black><b>Merge branch 'br_4.0.0' into feature_persist</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>52153a9</font>-<font color=green>(2015-01-15)</font><font color=black><b>Unit test standup.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>9722f3f</font>-<font color=green>(2015-01-15)</font><font color=black><b>Merge branch 'br_4.0.0' into feature_persist</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>ca444b2</font>-<font color=green>(2015-01-14)</font><font color=black><b>Sproc changes.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>ac931e3</font>-<font color=green>(2015-01-12)</font><font color=black><b>Moved the sproc creation to xml file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>1be76b7</font>-<font color=green>(2015-01-12)</font><font color=black><b>Putting sprocs in own file.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>9b353fa</font>-<font color=green>(2015-01-08)</font><font color=black><b>Stored procedure calls for adman & admapgroup inserts.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>c22ed8d</font>-<font color=green>(2015-01-07)</font><font color=black><b>DAO</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>5a22ddf</font>-<font color=green>(2015-01-07)</font><font color=black><b>Basic stored proc related code</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+*   <font color=blue>4c57df7</font>-<font color=green>(2015-01-16)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/ad-load-manager into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\  
+| * <font color=blue>15e23db</font>-<font color=green>(2015-01-16)</font><font color=black><b>fixed spacing issues in validaiton error test file</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | <font color=blue>fd67635</font>-<font color=green>(2015-01-16)</font><font color=black><b>Used feed dao for provider name</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|/  
+* <font color=blue>6e09aba</font>-<font color=green>(2015-01-16)</font><font color=black><b>Added caws based daos</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>1b46f0b</font>-<font color=green>(2015-01-15)</font><font color=black><b>added ALM Golden Data to Ad Map validation/persistence tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font></pre>
+<hr>
+<p>

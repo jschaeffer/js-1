@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h1&gt;Title:  &lt;b&gt;Will Be:  Production Single Component, Deployment job&lt;/b&gt;&lt;/h1&gt; &#xd;
+&#xd;
+&lt;h2&gt;&lt;u&gt;Description:&lt;/u&gt; &lt;b&gt;This job will deploy one component to the Production Environment.  User specifies :&#xd;
+  &lt;ul&gt;&#xd;
+     &lt;li&gt;The component to deploy&#xd;
+     &lt;li&gt;The version of the component&#xd;
+  &lt;/ul&gt;&#xd;
+       &lt;/h2&gt; &lt;br&gt;&lt;/b&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description>&lt;h3&gt;Enter the User id and summary of purpose for deployment&lt;/h3&gt;</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description>Select Component to Deploy</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>dai-cip-feedback</string>
+              <string>caas-admin</string>
+              <string>dai_amm</string>
+              <string>dai-smsi</string>
+              <string>dai-smsi-relay</string>
+              <string>smsi-admin</string>
+              <string>Dynamic-Ad-Insertion-engine</string>
+              <string>smsi-publisher</string>
+              <string>Pgmr-Cpgn-Int</string>
+              <string>ops-dt</string>
+              <string>ops-dce-metadata-agent</string>
+              <string>oss_bar</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Version</name>
+          <description>Enter Version to Deploy.  Must be entered as &lt;b&gt;version number + build number&lt;/b&gt; ie; &lt;u&gt;4.0.0_35&lt;/u&gt;)</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh -e
+
+export BUILD_TAG
+export DeployUser
+export Component
+export Version
+export DeployTarg=&quot;prodtest&quot;
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to ${DeployTarg} by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+# Set getVer to 0 to default to devint version
+#
+export getVer=&quot;0&quot;
+
+cd /opt/build/scripts/production
+./Prod_Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser
+#echo &quot;Will be running: ./Prod_Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser&quot;
+
+echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+
+
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

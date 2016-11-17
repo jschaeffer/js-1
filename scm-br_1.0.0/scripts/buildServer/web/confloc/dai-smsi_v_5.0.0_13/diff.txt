@@ -1,0 +1,732 @@
+diff --git a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh
+index 4afc518..e8f7cb9 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh
++++ b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh
+@@ -3,13 +3,13 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/jdk1.6.0_29"
++JAVA_HOME="/usr/java/latest"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Xms500m -Xmx900m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xms500m -Xmx900m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/smsi
+ export DAI_SMSI_CONFIG=$APPHOME_DIR/conf
+ export DAI_SMSI_LOG4J=$APPHOME_DIR/conf/smsi-log4j-dev.xml
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$DAI_SMSI_CONFIG -Dlog4j.location=$DAI_SMSI_LOG4J -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$DAI_SMSI_CONFIG -Dlog4j.configurationFile=$DAI_SMSI_LOG4J -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dinsight-max-frames=6000"
+diff --git a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh
+index 9989e23..3f31acf 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh
++++ b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh
+@@ -3,13 +3,13 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/jdk1.6.0_29"
++JAVA_HOME="/usr/java/latest"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Xms500m -Xmx900m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xms500m -Xmx900m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/smsi
+ export DAI_SMSI_CONFIG=$APPHOME_DIR/conf
+ export DAI_SMSI_LOG4J=$APPHOME_DIR/conf/smsi-log4j-dev.xml
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$DAI_SMSI_CONFIG -Dlog4j.location=$DAI_SMSI_LOG4J -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/dev.key -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$DAI_SMSI_CONFIG -Dlog4j.configurationFile=$DAI_SMSI_LOG4J -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/dev.key -Dinsight-max-frames=6000"
+diff --git a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh
+index 4afc518..e8f7cb9 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh
++++ b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh
+@@ -3,13 +3,13 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/jdk1.6.0_29"
++JAVA_HOME="/usr/java/latest"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Xms500m -Xmx900m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xms500m -Xmx900m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/smsi
+ export DAI_SMSI_CONFIG=$APPHOME_DIR/conf
+ export DAI_SMSI_LOG4J=$APPHOME_DIR/conf/smsi-log4j-dev.xml
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$DAI_SMSI_CONFIG -Dlog4j.location=$DAI_SMSI_LOG4J -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$DAI_SMSI_CONFIG -Dlog4j.configurationFile=$DAI_SMSI_LOG4J -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dinsight-max-frames=6000"
+diff --git a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh
+index 4afc518..e8f7cb9 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh
++++ b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh
+@@ -3,13 +3,13 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/jdk1.6.0_29"
++JAVA_HOME="/usr/java/latest"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Xms500m -Xmx900m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xms500m -Xmx900m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/smsi
+ export DAI_SMSI_CONFIG=$APPHOME_DIR/conf
+ export DAI_SMSI_LOG4J=$APPHOME_DIR/conf/smsi-log4j-dev.xml
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$DAI_SMSI_CONFIG -Dlog4j.location=$DAI_SMSI_LOG4J -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$DAI_SMSI_CONFIG -Dlog4j.configurationFile=$DAI_SMSI_LOG4J -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dinsight-max-frames=6000"
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+index e14f4a4..b6c8b2b 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+@@ -52,12 +52,7 @@ google.db.username=SC1_RELAY1
+ google.db.password=SC1_RELAY1
+ google.owner=Google
+ 
+-broadway.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+-broadway.db.username=SC1_RELAY2
+-broadway.db.password=SC1_RELAY2
+-broadway.owner=Broadway Systems
+-
+-rentrak.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+-rentrak.db.username=SC1_RELAY3
+-rentrak.db.password=SC1_RELAY3
+-rentrak.owner=freewheel.tv
++#HBase Properties
++hbase.url=10.66.12.22
++hbase.port=2181
++hbase.status.columns=rentrakStatus,googleStatus,broadwayStatus,freewheelStatus
+\ No newline at end of file
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+index 481a763..5b6e220 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+@@ -52,12 +52,7 @@ google.db.username=SC2_RELAY1
+ google.db.password=SC2_RELAY1
+ google.owner=Google
+ 
+-broadway.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+-broadway.db.username=SC2_RELAY2
+-broadway.db.password=SC2_RELAY2
+-broadway.owner=Broadway Systems
+-
+-rentrak.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+-rentrak.db.username=SC2_RELAY3
+-rentrak.db.password=SC2_RELAY3
+-rentrak.owner=freewheel.tv
++#HBase Properties
++hbase.url=10.66.12.16
++hbase.port=2181
++hbase.status.columns=rentrakStatus,googleStatus,broadwayStatus,freewheelStatus
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+index c3dc8be..3ea5902 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+@@ -52,12 +52,7 @@ google.db.username=SC3_RELAY1
+ google.db.password=SC3_RELAY1
+ google.owner=Google
+ 
+-broadway.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+-broadway.db.username=SC3_RELAY2
+-broadway.db.password=SC3_RELAY2
+-broadway.owner=Broadway Systems
+-
+-rentrak.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+-rentrak.db.username=SC3_RELAY3
+-rentrak.db.password=SC3_RELAY3
+-rentrak.owner=freewheel.tv
++#HBase Properties
++hbase.url=10.66.12.17
++hbase.port=2181
++hbase.status.columns=rentrakStatus,googleStatus,broadwayStatus,freewheelStatus
+\ No newline at end of file
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+index fd4fd4e..40fe182 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+@@ -52,12 +52,7 @@ google.db.username=SC4_RELAY1
+ google.db.password=SC4_RELAY1
+ google.owner=Google
+ 
+-broadway.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+-broadway.db.username=SC4_RELAY2
+-broadway.db.password=SC4_RELAY2
+-broadway.owner=Broadway Systems
+-
+-rentrak.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+-rentrak.db.username=SC4_RELAY3
+-rentrak.db.password=SC4_RELAY3
+-rentrak.owner=freewheel.tv
+\ No newline at end of file
++#HBase Properties
++hbase.url=10.66.12.20
++hbase.port=2181
++hbase.status.columns=rentrakStatus,googleStatus,broadwayStatus,freewheelStatus
+\ No newline at end of file
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
+index 6329350..9f3a553 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
+@@ -1,85 +1,49 @@
+-<?xml version="1.0" encoding="UTF-8" ?>
+-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+-
+-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+-
+-    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+-        <param name="Target" value="System.out"/>
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <appender name="logfile" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="/opt/tcserver/instances/smsi/logs/sms-error.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+-        </layout>
+-    </appender>
+-
+-    <appender name="LATE_LOG" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="/opt/tcserver/instances/smsi/logs/late.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+-        </layout>
+-    </appender>
+-
+-    <appender name="VALIDATION_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/validation.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <appender name="REQUEST_RESPONSE" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/request-response.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <category name="dai.interfaces.smsi.monitor.LateLogger" additivity="false">
+-        <priority value="WARN" />
+-        <appender-ref ref="LATE_LOG"/>
+-    </category>
+-
+-    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+-        <priority value="WARN" />
+-        <appender-ref ref="VALIDATION_LOG"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <root>
+-        <level value="INFO" />
+-        <appender-ref ref="console" />
+-        <appender-ref ref="logfile" />
+-    </root>
+-
+-    <appender name="PERFORMANCE_MONITORING_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/performance.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <category name="dai.core.util.monitoring.MonitoringChain" additivity="false">
+-        <priority value="INFO" />
+-        <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+-    </category>
+-
+-</log4j:configuration>
+-
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi/logs/sms-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <File name="lateLog" fileName="/opt/tcserver/instances/smsi/logs/late.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="validationLog" fileName="/opt/tcserver/instances/smsi/logs/validation.log"
++                     filePattern="/opt/tcserver/instances/smsi/logs/validation-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi/logs/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="com.canoeventures.common_smsi.util.XmlCalendarUtils" level="warn" additivity="false">
++            <appender-ref ref="errorLog" level="warn"/>
++        </Logger>
++        <Logger name="dai.interfaces.smsi.monitor.LateLogger" level="warn" additivity="false">
++            <appender-ref ref="lateLog" level="warn"/>
++        </Logger>
++        <Logger name="com.canoeventures.common.util.ValidationLogger" level="warn" additivity="false">
++            <appender-ref ref="validationLog" level="warn"/>
++        </Logger>
++        <Logger name="org.apache.cxf.interceptor.LoggingInInterceptor" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++        <Logger name="org.apache.cxf.interceptor.LoggingOutInterceptor" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+\ No newline at end of file
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
+index 6329350..9f3a553 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
+@@ -1,85 +1,49 @@
+-<?xml version="1.0" encoding="UTF-8" ?>
+-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+-
+-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+-
+-    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+-        <param name="Target" value="System.out"/>
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <appender name="logfile" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="/opt/tcserver/instances/smsi/logs/sms-error.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+-        </layout>
+-    </appender>
+-
+-    <appender name="LATE_LOG" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="/opt/tcserver/instances/smsi/logs/late.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+-        </layout>
+-    </appender>
+-
+-    <appender name="VALIDATION_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/validation.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <appender name="REQUEST_RESPONSE" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/request-response.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <category name="dai.interfaces.smsi.monitor.LateLogger" additivity="false">
+-        <priority value="WARN" />
+-        <appender-ref ref="LATE_LOG"/>
+-    </category>
+-
+-    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+-        <priority value="WARN" />
+-        <appender-ref ref="VALIDATION_LOG"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <root>
+-        <level value="INFO" />
+-        <appender-ref ref="console" />
+-        <appender-ref ref="logfile" />
+-    </root>
+-
+-    <appender name="PERFORMANCE_MONITORING_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/performance.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <category name="dai.core.util.monitoring.MonitoringChain" additivity="false">
+-        <priority value="INFO" />
+-        <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+-    </category>
+-
+-</log4j:configuration>
+-
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi/logs/sms-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <File name="lateLog" fileName="/opt/tcserver/instances/smsi/logs/late.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="validationLog" fileName="/opt/tcserver/instances/smsi/logs/validation.log"
++                     filePattern="/opt/tcserver/instances/smsi/logs/validation-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi/logs/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="com.canoeventures.common_smsi.util.XmlCalendarUtils" level="warn" additivity="false">
++            <appender-ref ref="errorLog" level="warn"/>
++        </Logger>
++        <Logger name="dai.interfaces.smsi.monitor.LateLogger" level="warn" additivity="false">
++            <appender-ref ref="lateLog" level="warn"/>
++        </Logger>
++        <Logger name="com.canoeventures.common.util.ValidationLogger" level="warn" additivity="false">
++            <appender-ref ref="validationLog" level="warn"/>
++        </Logger>
++        <Logger name="org.apache.cxf.interceptor.LoggingInInterceptor" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++        <Logger name="org.apache.cxf.interceptor.LoggingOutInterceptor" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+\ No newline at end of file
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
+index 6329350..9f3a553 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
+@@ -1,85 +1,49 @@
+-<?xml version="1.0" encoding="UTF-8" ?>
+-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+-
+-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+-
+-    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+-        <param name="Target" value="System.out"/>
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <appender name="logfile" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="/opt/tcserver/instances/smsi/logs/sms-error.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+-        </layout>
+-    </appender>
+-
+-    <appender name="LATE_LOG" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="/opt/tcserver/instances/smsi/logs/late.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+-        </layout>
+-    </appender>
+-
+-    <appender name="VALIDATION_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/validation.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <appender name="REQUEST_RESPONSE" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/request-response.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <category name="dai.interfaces.smsi.monitor.LateLogger" additivity="false">
+-        <priority value="WARN" />
+-        <appender-ref ref="LATE_LOG"/>
+-    </category>
+-
+-    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+-        <priority value="WARN" />
+-        <appender-ref ref="VALIDATION_LOG"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <root>
+-        <level value="INFO" />
+-        <appender-ref ref="console" />
+-        <appender-ref ref="logfile" />
+-    </root>
+-
+-    <appender name="PERFORMANCE_MONITORING_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/performance.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <category name="dai.core.util.monitoring.MonitoringChain" additivity="false">
+-        <priority value="INFO" />
+-        <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+-    </category>
+-
+-</log4j:configuration>
+-
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi/logs/sms-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <File name="lateLog" fileName="/opt/tcserver/instances/smsi/logs/late.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="validationLog" fileName="/opt/tcserver/instances/smsi/logs/validation.log"
++                     filePattern="/opt/tcserver/instances/smsi/logs/validation-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi/logs/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="com.canoeventures.common_smsi.util.XmlCalendarUtils" level="warn" additivity="false">
++            <appender-ref ref="errorLog" level="warn"/>
++        </Logger>
++        <Logger name="dai.interfaces.smsi.monitor.LateLogger" level="warn" additivity="false">
++            <appender-ref ref="lateLog" level="warn"/>
++        </Logger>
++        <Logger name="com.canoeventures.common.util.ValidationLogger" level="warn" additivity="false">
++            <appender-ref ref="validationLog" level="warn"/>
++        </Logger>
++        <Logger name="org.apache.cxf.interceptor.LoggingInInterceptor" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++        <Logger name="org.apache.cxf.interceptor.LoggingOutInterceptor" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+\ No newline at end of file
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
+index 6329350..9f3a553 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
+@@ -1,85 +1,49 @@
+-<?xml version="1.0" encoding="UTF-8" ?>
+-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+-
+-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+-
+-    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+-        <param name="Target" value="System.out"/>
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <appender name="logfile" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="/opt/tcserver/instances/smsi/logs/sms-error.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+-        </layout>
+-    </appender>
+-
+-    <appender name="LATE_LOG" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="/opt/tcserver/instances/smsi/logs/late.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+-        </layout>
+-    </appender>
+-
+-    <appender name="VALIDATION_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/validation.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <appender name="REQUEST_RESPONSE" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/request-response.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <category name="dai.interfaces.smsi.monitor.LateLogger" additivity="false">
+-        <priority value="WARN" />
+-        <appender-ref ref="LATE_LOG"/>
+-    </category>
+-
+-    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+-        <priority value="WARN" />
+-        <appender-ref ref="VALIDATION_LOG"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <root>
+-        <level value="INFO" />
+-        <appender-ref ref="console" />
+-        <appender-ref ref="logfile" />
+-    </root>
+-
+-    <appender name="PERFORMANCE_MONITORING_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+-        <param name="file"   value="/opt/tcserver/instances/smsi/logs/performance.log" />
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%m%n"/>
+-        </layout>
+-    </appender>
+-
+-    <category name="dai.core.util.monitoring.MonitoringChain" additivity="false">
+-        <priority value="INFO" />
+-        <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+-    </category>
+-
+-</log4j:configuration>
+-
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi/logs/sms-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <File name="lateLog" fileName="/opt/tcserver/instances/smsi/logs/late.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="validationLog" fileName="/opt/tcserver/instances/smsi/logs/validation.log"
++                     filePattern="/opt/tcserver/instances/smsi/logs/validation-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi/logs/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="com.canoeventures.common_smsi.util.XmlCalendarUtils" level="warn" additivity="false">
++            <appender-ref ref="errorLog" level="warn"/>
++        </Logger>
++        <Logger name="dai.interfaces.smsi.monitor.LateLogger" level="warn" additivity="false">
++            <appender-ref ref="lateLog" level="warn"/>
++        </Logger>
++        <Logger name="com.canoeventures.common.util.ValidationLogger" level="warn" additivity="false">
++            <appender-ref ref="validationLog" level="warn"/>
++        </Logger>
++        <Logger name="org.apache.cxf.interceptor.LoggingInInterceptor" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++        <Logger name="org.apache.cxf.interceptor.LoggingOutInterceptor" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+\ No newline at end of file

@@ -1,0 +1,501 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+index 79f10e7..a4ac7c2 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+@@ -10,4 +10,29 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+index 1065459..b4bd1f9 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+@@ -10,4 +10,29 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+index c26183a..d40c3dd 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+@@ -10,4 +10,29 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+index 50733d3..e3f72f1 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+@@ -13,3 +13,28 @@ hibernate.c3p0.maxIdleTime=120
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+ crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties
+new file mode 100644
+index 0000000..54b4d6b
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties
+@@ -0,0 +1,38 @@
++dataSource.driverClassName=oracle.jdbc.OracleDriver
++dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++dataSource.username=RH65_CAAS
++dataSource.password=RH65_CAAS
++hibernate.c3p0.initialPoolSize=3
++hibernate.c3p0.maxPoolSize=15
++hibernate.c3p0.idleConnectionTestPeriod=10
++hibernate.c3p0.maxIdleTime=120
++
++# Crowd
++crowd.rest.url=http://10.13.18.56:8095/crowd/rest
++crowd.rest.basicAuthUser=cm
++crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+diff --git a/config/Dynamic-Ad-Insertion-cm-log4j.scrum8.groovy b/config/Dynamic-Ad-Insertion-cm-log4j.scrum8.groovy
+new file mode 100644
+index 0000000..0aa20b6
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-log4j.scrum8.groovy
+@@ -0,0 +1,50 @@
++import org.apache.log4j.Level
++
++// log4j configuration
++// For reference, see: http://www.grails.org/doc/latest/guide/3.%20Configuration.html
++log4j = {
++
++    appenders {
++        //disable stacktrace file
++        'null' name: 'stacktrace'
++
++//        console name:'stdout', layout:pattern(conversionPattern: '%d{MM-dd-yyyy HH:mm:ss} %-5p %c %x >>%m%n')
++        console name: 'stdout', layout: pattern(conversionPattern: '%d{MM-dd-yyyy HH:mm:ss} %-5p %c %x >>%m%n'), threshold: Level.INFO
++
++        rollingFile name: 'rollingFileError', layout: pattern(conversionPattern: '%d{MM-dd-yyyy HH:mm:ss} %-5p %c %x >>%m%n'), threshold: Level.ERROR, maxFileSize: "10MB", maxBackupIndex: 15, file: '/opt/tcserver/instances/cm/logs/error.log'
++
++        // file name:'stacktraceLog', file:'stacktrace.log', layout:pattern(conversionPattern: '%d{MM-dd-yyyy HH:mm:ss} %p %c{2} >>%m%n')
++    }
++
++    root {
++        debug 'stdout'
++        warn 'stdout'
++        info 'stdout'
++        error stdout: "StackTrace", 'rollingFileError'
++    }
++
++    // Set level for all application artifacts
++    info 'org.codehaus.groovy.grails.commons', // core / classloading
++            'grails.app', 'com.canoeventures', 'org.hibernate.SQL', 'org.hibernate.type'
++
++    error 'org.codehaus.groovy.grails.web.servlet',  //  controllers
++            'org.codehaus.groovy.grails.web.pages', //  GSP
++            'org.codehaus.groovy.grails.web.sitemesh', //  layouts
++            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
++            'org.codehaus.groovy.grails.web.mapping', // URL mapping
++            'org.codehaus.groovy.grails.commons', // core / classloading
++            'org.codehaus.groovy.grails.plugins', // plugins
++            'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
++            'org.springframework',
++            'org.hibernate',
++            'net.sf.ehcache.hibernate',
++            'jdbc'
++
++    warn 'org.mortbay.log'
++
++    //debug 'jdbc.sqlonly' // uncomment to turn on Log4JDBC SQL logging
++    additivity.StackTrace = false
++
++}
++
++
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index 04e1f79..a9be7b9 100755
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -7,6 +7,4 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+-export CROWD_PROPERTIES=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd.properties
+-export CROWD_EHCACHE=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd-ehcache.xml
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index 04e1f79..a9be7b9 100755
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -7,6 +7,4 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+-export CROWD_PROPERTIES=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd.properties
+-export CROWD_EHCACHE=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd-ehcache.xml
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index 04e1f79..a9be7b9 100755
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -7,6 +7,4 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+-export CROWD_PROPERTIES=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd.properties
+-export CROWD_EHCACHE=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd-ehcache.xml
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index 04e1f79..a9be7b9 100755
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -7,6 +7,4 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+-export CROWD_PROPERTIES=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd.properties
+-export CROWD_EHCACHE=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd-ehcache.xml
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum8.sh b/config/setenv.scrum8.sh
+new file mode 100644
+index 0000000..3e206af
+--- /dev/null
++++ b/config/setenv.scrum8.sh
+@@ -0,0 +1,10 @@
++JAVA_HOME="/usr/java/latest"
++AGENT_PATHS=""
++JAVA_AGENTS=""
++JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
++CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JVM_OPTS="-Xss228K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++export APPHOME_DIR=/opt/tcserver/instances/cm
++export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
++export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+index 2bc2a92..a4ac7c2 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+@@ -27,4 +27,12 @@ cm.app.inactivityWarningTimer=1500
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
+-cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+index c237c12..b4bd1f9 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+@@ -27,4 +27,12 @@ cm.app.inactivityWarningTimer=1500
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
+-cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+index a204c1d..d40c3dd 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+@@ -27,4 +27,12 @@ cm.app.inactivityWarningTimer=1500
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
+-cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+index dbd0d4e..e3f72f1 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+@@ -29,4 +29,12 @@ cm.app.inactivityWarningTimer=1500
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
+-cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties
+new file mode 100644
+index 0000000..54b4d6b
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties
+@@ -0,0 +1,38 @@
++dataSource.driverClassName=oracle.jdbc.OracleDriver
++dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++dataSource.username=RH65_CAAS
++dataSource.password=RH65_CAAS
++hibernate.c3p0.initialPoolSize=3
++hibernate.c3p0.maxPoolSize=15
++hibernate.c3p0.idleConnectionTestPeriod=10
++hibernate.c3p0.maxIdleTime=120
++
++# Crowd
++crowd.rest.url=http://10.13.18.56:8095/crowd/rest
++crowd.rest.basicAuthUser=cm
++crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
++
++# User guide link
++# If no link is provided it will not show on page
++cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
++
++# Contact us email
++# If no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
+diff --git a/config/Dynamic-Ad-Insertion-cm-log4j.scrum8.groovy b/config/Dynamic-Ad-Insertion-cm-log4j.scrum8.groovy
+new file mode 100644
+index 0000000..0aa20b6
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-log4j.scrum8.groovy
+@@ -0,0 +1,50 @@
++import org.apache.log4j.Level
++
++// log4j configuration
++// For reference, see: http://www.grails.org/doc/latest/guide/3.%20Configuration.html
++log4j = {
++
++    appenders {
++        //disable stacktrace file
++        'null' name: 'stacktrace'
++
++//        console name:'stdout', layout:pattern(conversionPattern: '%d{MM-dd-yyyy HH:mm:ss} %-5p %c %x >>%m%n')
++        console name: 'stdout', layout: pattern(conversionPattern: '%d{MM-dd-yyyy HH:mm:ss} %-5p %c %x >>%m%n'), threshold: Level.INFO
++
++        rollingFile name: 'rollingFileError', layout: pattern(conversionPattern: '%d{MM-dd-yyyy HH:mm:ss} %-5p %c %x >>%m%n'), threshold: Level.ERROR, maxFileSize: "10MB", maxBackupIndex: 15, file: '/opt/tcserver/instances/cm/logs/error.log'
++
++        // file name:'stacktraceLog', file:'stacktrace.log', layout:pattern(conversionPattern: '%d{MM-dd-yyyy HH:mm:ss} %p %c{2} >>%m%n')
++    }
++
++    root {
++        debug 'stdout'
++        warn 'stdout'
++        info 'stdout'
++        error stdout: "StackTrace", 'rollingFileError'
++    }
++
++    // Set level for all application artifacts
++    info 'org.codehaus.groovy.grails.commons', // core / classloading
++            'grails.app', 'com.canoeventures', 'org.hibernate.SQL', 'org.hibernate.type'
++
++    error 'org.codehaus.groovy.grails.web.servlet',  //  controllers
++            'org.codehaus.groovy.grails.web.pages', //  GSP
++            'org.codehaus.groovy.grails.web.sitemesh', //  layouts
++            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
++            'org.codehaus.groovy.grails.web.mapping', // URL mapping
++            'org.codehaus.groovy.grails.commons', // core / classloading
++            'org.codehaus.groovy.grails.plugins', // plugins
++            'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
++            'org.springframework',
++            'org.hibernate',
++            'net.sf.ehcache.hibernate',
++            'jdbc'
++
++    warn 'org.mortbay.log'
++
++    //debug 'jdbc.sqlonly' // uncomment to turn on Log4JDBC SQL logging
++    additivity.StackTrace = false
++
++}
++
++
+diff --git a/config/setenv.scrum8.sh b/config/setenv.scrum8.sh
+new file mode 100644
+index 0000000..3e206af
+--- /dev/null
++++ b/config/setenv.scrum8.sh
+@@ -0,0 +1,10 @@
++JAVA_HOME="/usr/java/latest"
++AGENT_PATHS=""
++JAVA_AGENTS=""
++JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
++CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JVM_OPTS="-Xss228K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++export APPHOME_DIR=/opt/tcserver/instances/cm
++export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
++export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"

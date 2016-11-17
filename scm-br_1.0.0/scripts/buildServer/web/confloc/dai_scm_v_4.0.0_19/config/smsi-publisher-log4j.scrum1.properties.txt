@@ -1,0 +1,28 @@
+diff --git a/config/smsi-publisher-log4j.scrum1.properties b/config/smsi-publisher-log4j.scrum1.properties
+index 9c9cfd4..21c93f1 100644
+--- a/config/smsi-publisher-log4j.scrum1.properties
++++ b/config/smsi-publisher-log4j.scrum1.properties
+@@ -1,10 +1,10 @@
+-log4j.rootLogger=INFO, R
+-log4j.logger.performance=WARN, R
++log4j.rootLogger=INFO, S
++log4j.logger.performance=WARN, S
+ 
+-log4j.appender.R=org.apache.log4j.FileAppender
+-log4j.appender.R.File=/opt/tcserver/instances/smsipub/logs/out.log
+-log4j.appender.R.layout=org.apache.log4j.PatternLayout
+-log4j.appender.R.layout.ConversionPattern=%d [%t] %-5p %c %x - %m%n
++log4j.appender.S=org.apache.log4j.FileAppender
++log4j.appender.S.File=/opt/tcserver/instances/smsipub/logs/out.log
++log4j.appender.S.layout=org.apache.log4j.PatternLayout
++log4j.appender.S.layout.ConversionPattern=%d [%t] %-5p %c %x - %m%n
+ 
+ # Logging for the consumption of SCTE messages
+ #log4j.logger.org.springframework.ws=TRACE
+@@ -30,4 +30,4 @@ log4j.logger.com.canoeventures.dai.ads.smsi.jobmanager.PublishTaskFactory=ERROR
+ log4j.logger.performance.com.canoeventures.dai.ads.smsi.jobmanager.PublishTaskFactory=ERROR
+ log4j.logger.com.canoeventures.dai.ads.smsi.jobmanager.util.TaskExecutionManager=ERROR
+ log4j.logger.performance.com.canoeventures.dai.ads.smsi.jobmanager.util.TaskExecutionManager=ERROR
+-log4j.logger.org.springframework.ws.client.MessageTracing.sent=TRACE
+\ No newline at end of file
++log4j.logger.org.springframework.ws.client.MessageTracing.sent=TRACE

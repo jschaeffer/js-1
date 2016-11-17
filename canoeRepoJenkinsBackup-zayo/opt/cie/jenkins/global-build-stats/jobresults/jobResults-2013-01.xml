@@ -1,0 +1,98 @@
+<list>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails204</n>
+    <nb>176</nb>
+    <d>
+      <time>1357696211000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>957</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails204</n>
+    <nb>175</nb>
+    <d>
+      <time>1357609811000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>963</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails204</n>
+    <nb>174</nb>
+    <d>
+      <time>1357523425000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1082</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails204</n>
+    <nb>173</nb>
+    <d>
+      <time>1357437025000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1188</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails204</n>
+    <nb>172</nb>
+    <d>
+      <time>1357350625000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1480</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails204</n>
+    <nb>171</nb>
+    <d>
+      <time>1357264225000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1073</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails204</n>
+    <nb>170</nb>
+    <d>
+      <time>1357177825000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1071</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails204</n>
+    <nb>169</nb>
+    <d>
+      <time>1357091425000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1349</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+</list>

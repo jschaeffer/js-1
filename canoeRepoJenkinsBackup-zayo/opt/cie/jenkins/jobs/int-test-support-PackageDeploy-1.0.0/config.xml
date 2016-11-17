@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.13.3">
+      <projectUrl>https://github.com/CanoeVentures/int-test-support/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>true</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>true</notifyUnstable>
+      <notifyFailure>true</notifyFailure>
+      <notifyBackToNormal>true</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/int-test-support.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_1.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/int-test-support/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>30 2 * * * </spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export APP_VERSION=`cat ${WORKSPACE}/application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+sed -e &quot;s|$APP_VERSION|1.0.0_${BUILD_NUMBER}|&quot; -i &apos;&apos; ${WORKSPACE}/application.properties
+echo &quot;Replacing app.version in application.properties from $APP_VERSION to 1.0.0_${BUILD_NUMBER}&quot;</command>
+    </hudson.tasks.Shell>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.7">
+      <targets>clean war -no-tests</targets>
+      <name>Grails 2.4.3</name>
+      <grailsWorkDir>/opt/cvbuild/.int-test-support_1.0.0_work_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.int-test-support_1.0.0_project_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9190</serverPort>
+      <properties>grails.env=dev
+geb.env=firefox
+grails.project.plugins.dir=/opt/cvbuild/.grails/2.4.3/projects/int-test-support-compile</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+      <plainOutput>true</plainOutput>
+      <stackTrace>false</stackTrace>
+      <verbose>false</verbose>
+      <refreshDependencies>true</refreshDependencies>
+    </com.g2one.hudson.grails.GrailsBuilder>
+    <hudson.plugins.groovy.Groovy plugin="groovy@1.27">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>def VERSION = &quot;1.0.0&quot;
+def PROJECT = &quot;int-test-support&quot;
+def PROJFILE = &quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+String changelogtemp = &quot;&quot;&quot;
+
+projectRoot=&quot;/opt/cie/jenkins/jobs/int-test-support-PackageDeploy-$VERSION/workspace&quot;
+commonTargetRoot=&quot;target&quot;
+webappDir=&quot;webapps&quot;
+
+build {
+
+  build_args=&quot;grails clean -non-interactive,grails war -non-interactive&quot;
+}
+
+build_package {
+    artifacts {
+        name {
+            bin=&quot;int-test-support.war&quot;
+            config=&quot;config&quot;
+            README=&quot;README.md&quot;
+        }
+        location {
+            bin=&quot;\$projectRoot/\$commonTargetRoot/&quot;
+            config=&quot;\$projectRoot&quot;
+            README=&quot;\$projectRoot&quot;
+        }
+    }
+}
+
+&quot;&quot;&quot;
+File scriptName = new File(&quot;$PROJFILE&quot;)
+        scriptName.write(&quot;${changelogtemp}&quot;)
+        println scriptName
+</command>
+      </scriptSource>
+      <groovyName>(Default)</groovyName>
+      <parameters></parameters>
+      <scriptParameters></scriptParameters>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <classPath></classPath>
+    </hudson.plugins.groovy.Groovy>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+export VERSION=&quot;1.0.0&quot;
+export PROJECT=&quot;int-test-support&quot;
+
+export ProjFile=&quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+
+cat $ProjFile
+
+/opt/build/scripts/CreateJenkinsPackage.sh $PROJECT $PROJECT br_$VERSION ${BUILD_NUMBER}
+
+
+</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.29">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>SelEnv=devint</properties>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>ScrumResurrectState</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <block>
+            <buildStepFailureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </buildStepFailureThreshold>
+            <unstableThreshold>
+              <name>UNSTABLE</name>
+              <ordinal>1</ordinal>
+              <color>YELLOW</color>
+              <completeBuild>true</completeBuild>
+            </unstableThreshold>
+            <failureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </failureThreshold>
+          </block>
+          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
+        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export VERSION=&quot;1.0.0_${BUILD_NUMBER}&quot;
+export Component=&quot;int-test-support&quot;; echo &quot;Component - $Component&quot;
+export DB_Rebuild=&quot;Yes&quot;; echo &quot;DB_Rebuild - $DB_Rebuild&quot;
+export Version=${VERSION}; echo &quot;Version - $Version&quot;
+export Clear_Logs=&quot;Yes&quot;; echo &quot;Clear_Logs - $Clear_Logs&quot;
+export DeployTarg=&quot;devint&quot;; echo &quot;DeployTarg - $DeployTarg&quot;
+export DeployUser=&quot;Jenkins&quot;; echo &quot;DeployUser = $DeployUser&quot;
+export BUILD_TAG
+
+ssh cvbuild.cv.dr &quot;bash -c \&quot;source ~/.bash_profile &amp;&amp; cd /opt/build/scripts &amp;&amp; ./Single_Component_Deploy.sh $Component $DB_Rebuild $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser $JOB_NAME $BUILD_NUMBER $Version\&quot; &quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+VERSION=&quot;1.0.0_${BUILD_NUMBER}&quot;
+
+echo &quot;${VERSION}&quot; &gt; /var/www/html/devint/int-test-support.txt
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@2.0.2"/>
+    <hudson.plugins.git.GitPublisher plugin="git@2.4.0">
+      <configVersion>2</configVersion>
+      <pushMerge>false</pushMerge>
+      <pushOnlyIfSuccess>false</pushOnlyIfSuccess>
+      <forcePush>false</forcePush>
+      <tagsToPush>
+        <hudson.plugins.git.GitPublisher_-TagToPush>
+          <targetRepoName>origin</targetRepoName>
+          <tagName>v_1.0.0_${BUILD_NUMBER}</tagName>
+          <tagMessage></tagMessage>
+          <createTag>true</createTag>
+          <updateTag>false</updateTag>
+        </hudson.plugins.git.GitPublisher_-TagToPush>
+      </tagsToPush>
+    </hudson.plugins.git.GitPublisher>
+    <jenkins.plugins.slack.SlackNotifier plugin="slack@1.8.1">
+      <teamDomain>canoeventures</teamDomain>
+      <authToken>ulqvAk36Srn0kGF9JMh4UJn5</authToken>
+      <buildServerUrl>http://cvbuild.cv.infra:7001/</buildServerUrl>
+      <room>#scm</room>
+    </jenkins.plugins.slack.SlackNotifier>
+  </publishers>
+  <buildWrappers/>
+</project>

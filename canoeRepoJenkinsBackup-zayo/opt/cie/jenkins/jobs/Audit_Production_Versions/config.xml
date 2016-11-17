@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h1&gt;Title:  &lt;b&gt;Production Audit job&lt;/b&gt;&lt;/h1&gt; &#xd;
+&#xd;
+&lt;h2&gt;&lt;u&gt;Description:&lt;/u&gt; &lt;b&gt;This job will audit one component in the Production Environment.  User specifies :&#xd;
+  &lt;ul&gt;&#xd;
+     &lt;li&gt;The component to audit&#xd;
+     &lt;li&gt;The version of the component&#xd;
+  &lt;/ul&gt;&#xd;
+       &lt;/h2&gt; &lt;br&gt;&lt;/b&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description>Select Component to Audit</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>Dynamic-Ad-Insertion-engine:ADS_Ingesters</string>
+              <string>Dynamic-Ad-Insertion-engine:ADS_GroupAlpha</string>
+              <string>Dynamic-Ad-Insertion-engine:ADS_GroupBeta</string>
+              <string>dai-cip</string>
+              <string>caas-core</string>
+              <string>acp</string>
+              <string>dai-smsi</string>
+              <string>smsi-msp-relay</string>
+              <string>Pgmr-Cpgn-Int</string>
+              <string>dai-cip-feedback</string>
+              <string>request-mgr:ReqMan_GroupAlpha</string>
+              <string>request-mgr:ReqMan_GroupBeta</string>
+              <string>smsi-publisher</string>
+              <string>metadata-publisher</string>
+              <string>dai-national-cis</string>
+              <string>ad-load-manager</string>
+              <string>POIS</string>
+              <string>dai-dce</string>
+              <string>ADI-MDI</string>
+              <string>ops-dce-metadata-agent</string>
+              <string>Sheringham</string>
+              <string>impression_collector</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Version</name>
+          <description>Enter Version expected.  Must be entered as &lt;b&gt;version number + build number&lt;/b&gt; ie; &lt;u&gt;4.0.0_35&lt;/u&gt;)</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers/>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+if  [[ $BUILD_USER_ID = &quot;jschaeffer&quot; || $BUILD_USER_ID = &quot;clecrone&quot; || $BUILD_USER_ID = &quot;lhassell&quot; ]]; then
+    echo &quot;Authorized User - Proceeding with Audit&quot;
+else
+    echo &quot;Unauthorized User!&quot;
+    echo &quot;Exiting!&quot;
+    exit 1
+fi
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+export BUILD_TAG
+export BUILD_USER_ID
+export Component
+export Version
+export DeployTarg=&quot;production&quot;
+echo &quot;&lt;b&gt;Audit ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Audit of ${DeployTarg} by ${BUILD_USER} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+export CompSet=&quot;$(echo $Component | cut -f2 -d:)&quot;
+export Component=&quot;$(echo $Component | cut -f1 -d:)&quot;
+
+cd /opt/build/scripts/production
+./Audit_Production_Versions.sh $Component $Version $DeployTarg $BUILD_TAG $BUILD_USER_ID
+
+if grep -q &quot;ERROR:&quot; /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log ; then
+   echo &quot;Audit Failed.&quot;
+   echo &quot;&lt;font bgcolor=black color=red&gt;&lt;b&gt;&amp;nbsp Audit Failed !!&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;b&gt;&amp;nbsp URL For Audit output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.tmp
+   cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.html
+   rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.tmp
+   rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   exit 1
+  else
+   echo &quot;&lt;b&gt;URL For Audit output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.tmp
+   cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.html
+   rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}_audit.tmp
+   rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+fi
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.4"/>
+  </buildWrappers>
+</project>

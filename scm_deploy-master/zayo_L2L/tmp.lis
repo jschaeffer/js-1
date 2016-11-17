@@ -1,0 +1,16 @@
+dropUser.ADS_CORE_BRD.sql
+dropUser.CAAS_CORE_BRD.sql
+dropUser.DAI_REPORTING_SAFI_BRD.sql
+dropUser.PCI_BRD.sql
+dropUser.SMSI_PUB_BRD.sql
+dropUser.SMSI_RELAY_BRD1.sql
+dropUser.SMSI_RELAY_BRD2.sql
+dropUser.SMSI_RELAY_BRD.sql
+genUser.ADS_CORE_BRD.sql
+genUser.CAAS_CORE_BRD.sql
+genUser.DAI_REPORTING_SAFI_BRD.sql
+genUser.PCI_BRD.sql
+genUser.SMSI_PUB_BRD.sql
+genUser.SMSI_RELAY_BRD1.sql
+genUser.SMSI_RELAY_BRD2.sql
+genUser.SMSI_RELAY_BRD.sql

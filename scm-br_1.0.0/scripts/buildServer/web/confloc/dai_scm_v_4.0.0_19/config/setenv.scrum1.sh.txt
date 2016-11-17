@@ -1,0 +1,19 @@
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index 42d54d1..a3aa369 100755
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -1,10 +1,10 @@
+ JAVA_HOME="/usr/java/latest"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JAVA_LIBRARY_PATH=""
++CLASSPATH="$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true"
+ export APPHOME_DIR=/opt/tcserver/instances/smsipub
+ export SMSICONFIG=$APPHOME_DIR/conf/smsi-publisher.properties
+ export LOG4J_CONFIG=$APPHOME_DIR/conf/smsi-publisher-log4j.properties
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.file=$SMSICONFIG -Dlog4j.configuration=$LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.file=$SMSICONFIG -Dlog4j.configuration=$LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"

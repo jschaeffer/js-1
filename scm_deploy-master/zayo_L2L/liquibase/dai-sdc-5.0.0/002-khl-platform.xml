@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="kleider" id="20150429-Platform">
+        <sql splitStatements="true">
+            CREATE SEQUENCE SEQ_ROUTE_ID MINVALUE 10000 cache 10000;
+
+            --------------------------------------------------------
+            --  DDL for Table ADM_ENDPOINT
+            --------------------------------------------------------
+
+            CREATE TABLE "ROUTE"
+            (
+                ROUTE_ID         NUMBER NOT NULL,
+                REGISTRATION_ID  NUMBER NOT NULL,
+                ADS_ID           NUMBER NOT NULL,
+                PLATFORM         VARCHAR2(256 CHAR),
+                CONSTRAINT PK_ROUTE PRIMARY KEY (ROUTE_ID) VALIDATE,
+                CONSTRAINT ROUTE_UNIQUE UNIQUE (REGISTRATION_ID,PLATFORM) VALIDATE,
+                CONSTRAINT FK_ROUTE_ADS FOREIGN KEY ("ADS_ID") REFERENCES "ADS_ENDPOINT" ("ID")
+            ) SEGMENT CREATION DEFERRED
+            PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255
+            NOCOMPRESS LOGGING;
+
+            ALTER TABLE "ADM_ENDPOINT" ADD "PLATFORM_KEY" VARCHAR2(256 CHAR);
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>

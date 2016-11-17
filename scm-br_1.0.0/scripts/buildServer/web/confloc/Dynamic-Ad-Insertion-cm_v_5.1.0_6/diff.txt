@@ -1,0 +1,157 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+index 79f10e7..2bc2a92 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+@@ -10,4 +10,21 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+index 1065459..c237c12 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+@@ -10,4 +10,21 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+index c26183a..a204c1d 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+@@ -10,4 +10,21 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+index 50733d3..dbd0d4e 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+@@ -13,3 +13,20 @@ hibernate.c3p0.maxIdleTime=120
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+ crowd.rest.basicAuthPassword=crowd
++
++# Mail
++# Mail
++grails.mail.host=smtp.office365.com
++grails.mail.port=587
++grails.mail.username=scott.davis@canoeventures.com
++grails.mail.password=Canoepass99
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index 04e1f79..a9be7b9 100755
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -7,6 +7,4 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+-export CROWD_PROPERTIES=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd.properties
+-export CROWD_EHCACHE=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd-ehcache.xml
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index 04e1f79..a9be7b9 100755
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -7,6 +7,4 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+-export CROWD_PROPERTIES=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd.properties
+-export CROWD_EHCACHE=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd-ehcache.xml
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index 04e1f79..a9be7b9 100755
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -7,6 +7,4 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+-export CROWD_PROPERTIES=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd.properties
+-export CROWD_EHCACHE=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd-ehcache.xml
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index 04e1f79..a9be7b9 100755
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -7,6 +7,4 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+-export CROWD_PROPERTIES=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd.properties
+-export CROWD_EHCACHE=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-crowd-ehcache.xml
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"

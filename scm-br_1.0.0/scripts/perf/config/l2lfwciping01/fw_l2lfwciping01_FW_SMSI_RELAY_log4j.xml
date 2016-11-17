@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="logfile" class="org.apache.log4j.FileAppender">
+        <param name="File" value="/opt/tcserver/instances/FW_SMSI_RELAY/logs/relay-error.log"/>
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="LATE_LOG" class="org.apache.log4j.FileAppender">
+        <param name="File" value="/opt/tcserver/instances/FW_SMSI_RELAY/logs/late.log"/>
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="VALIDATION_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file"   value="/opt/tcserver/instances/FW_SMSI_RELAY/logs/validation.log" />
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="REQUEST_RESPONSE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file"   value="/opt/tcserver/instances/FW_SMSI_RELAY/logs/request-response.log" />
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <category name="dai.interfaces.smsi.monitor.LateLogger" additivity="false">
+        <priority value="WARN" />
+        <appender-ref ref="LATE_LOG"/>
+    </category>
+
+    <category name="dai.core.util.ValidationLogger" additivity="false">
+        <priority value="WARN" />
+        <appender-ref ref="VALIDATION_LOG"/>
+    </category>
+
+    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+        <priority value="TRACE" />
+        <appender-ref ref="REQUEST_RESPONSE"/>
+    </category>
+
+    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+        <priority value="TRACE" />
+        <appender-ref ref="REQUEST_RESPONSE"/>
+    </category>
+
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="console" />
+        <appender-ref ref="logfile" />
+    </root>
+
+    <appender name="PERFORMANCE_MONITORING_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file"   value="/opt/tcserver/instances/FW_SMSI_RELAY/logs/performance.log" />
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <category name="dai.core.util.monitoring.MonitoringChain" additivity="false">
+        <priority value="INFO" />
+        <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+    </category>
+
+</log4j:configuration>
+

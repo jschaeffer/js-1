@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=`ssh tcserver@dvappdai01 &quot;cd /opt/tcserver/log_splitter; jar xf lincoln-1.2.0.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./deployjar.sh -a dai-lincoln -t dai-lincoln -e 10.13.18.115 -r ${VERSION} -v 
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=`ssh tcserver@dvappdai01 &quot;cd /opt/tcserver/log_splitter; jar xf lincoln-1.2.0.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+
+echo &quot;dai-lincoln-${VERSION}&quot; &gt; /var/www/html/scrum1/log.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <com.progress.hudson.ScheduleFailedBuildsPublisher plugin="schedule-failed-builds@1.1">
+      <interval>20</interval>
+      <maxRetries>3</maxRetries>
+    </com.progress.hudson.ScheduleFailedBuildsPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,309 @@
+<b><u>Component Release Info for Sprint KillingMeSoftly:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_5.10.0_3</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+- Bug Fix, Jira 7563. Inactivated Campaigns Changed Owner.
+- Bug Fix, Jira 6669. Ad Searches Error-Out When > 1,000 ads.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.9.0_3</b></u><br>
+<pre>
+* <font color=blue>a529e9d</font>-<font color=green>(2015-06-08)</font><font color=black><b>Added 15 second waitfor on Autocomplete step</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_5.10.0_3)</font>
+* <font color=blue>b2bac15</font>-<font color=green>(2015-06-05)</font><font color=black><b>bug 6669 test added, new xml with 1500 ad assets added</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_5.10.0_2)</font>
+* <font color=blue>9bf8f05</font>-<font color=green>(2015-06-05)</font><font color=black><b>Added Campaign owner; scenario for testing 7563</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>667af59</font>-<font color=green>(2015-06-05)</font><font color=black><b>Limit ad asset search on line item resultset to 1000 characters and search only after second character has been typed.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>5f638ce</font>-<font color=green>(2015-06-05)</font><font color=black><b>Updated campaign bindings to prevent changes in campaign order owner.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>42238e6</font>-<font color=green>(2015-05-28)</font><font color=black><b>Removed invalid step and a brittle step</b></font><font color=grey>- (jwwood87)</font><font color=red> (HEAD, tag: v_5.9.0_6, tag: v_5.10.0_1, origin/br_5.9.0, br_5.9.0)</font>
+* <font color=blue>4c466fc</font>-<font color=green>(2015-05-27)</font><font color=black><b>Updated Auditing feature to latest implementation</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.9.0_5)</font>
+* <font color=blue>53ecffb</font>-<font color=green>(2015-04-13)</font><font color=black><b>Tweaked two scenarios and added @Edit annotations</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.9.0_4)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint KillingMeSoftly:</b></u><p>
+<u>Release of Component</u><b>&nbspdmp-config</b><br><u>Version</u><b>&nbspr_5.0.0_46</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+- Bug Fix, Jira 7592. Configuration Copy Misses Provider
+- Feature, Jira 7356. Prevents User from forgetting to save a configuration</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_38</b></u><br>
+<pre>
+*   <font color=blue>6847ad5</font>-<font color=green>(2015-06-08)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/dmp-config into br_5.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_46)</font>
+|\  
+| * <font color=blue>6553d37</font>-<font color=green>(2015-06-08)</font><font color=black><b>Added file for capturing manual tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>296d78b</font>-<font color=green>(2015-06-08)</font><font color=black><b>Finished provider controller tests</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>047b721</font>-<font color=green>(2015-06-08)</font><font color=black><b>Added some defaults on boolean properties, Implemented first test.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>da7967f</font>-<font color=green>(2015-06-08)</font><font color=black><b>Added coverage plugin, stubbed some unit tests.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>1daedf8</font>-<font color=green>(2015-06-04)</font><font color=black><b>Added (title) tooltip assertions</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_45)</font>
+* <font color=blue>3010529</font>-<font color=green>(2015-06-03)</font><font color=black><b>Added assertion: MSO Provider is selectable once</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_44)</font>
+* <font color=blue>385b0f0</font>-<font color=green>(2015-06-03)</font><font color=black><b>added a couple missing steps to navigation feature</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>e795548</font>-<font color=green>(2015-06-03)</font><font color=black><b>Refactored assertions to check one text line at a time</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>50dc01a</font>-<font color=green>(2015-06-02)</font><font color=black><b>Re-factored test steps to work correctly for PC</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_43)</font>
+* <font color=blue>632a06e</font>-<font color=green>(2015-06-02)</font><font color=black><b>Assertion for Reset button & click outside window</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>3aa2f0f</font>-<font color=green>(2015-06-01)</font><font color=black><b>Added assertion for uneditable field;</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_42)</font>
+* <font color=blue>758f59f</font>-<font color=green>(2015-06-01)</font><font color=black><b>Added assertions to verify non-editable behavior</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>036a1e9</font>-<font color=green>(2015-06-01)</font><font color=black><b>Added assertion to Create; clarified words w/in steps</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>7ac30c2</font>-<font color=green>(2015-06-01)</font><font color=black><b>Added assertions for main page configuration buttons</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>2254fd5</font>-<font color=green>(2015-06-01)</font><font color=black><b>Added assertions for Status symbols</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>f967414</font>-<font color=green>(2015-05-29)</font><font color=black><b>Added dataset for multiple providers</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_41)</font>
+* <font color=blue>0326d03</font>-<font color=green>(2015-05-29)</font><font color=black><b>Navigation feature update.  Added new glue step to wait for element with selector to disappear.</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>1cbc6ee</font>-<font color=green>(2015-05-28)</font><font color=black><b>Removed Old Todo; mis-spelled word</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_40)</font>
+* <font color=blue>202dbdd</font>-<font color=green>(2015-05-28)</font><font color=black><b>Updated test scenario to address a Todo</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>fb7a1c5</font>-<font color=green>(2015-05-28)</font><font color=black><b>clicking off of Provider modal screen test</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>9014af2</font>-<font color=green>(2015-05-28)</font><font color=black><b>validation test case updated with Status test</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>5a28adc</font>-<font color=green>(2015-05-28)</font><font color=black><b>deleted basic DMP feature, update duplicate feature</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>392995b</font>-<font color=green>(2015-05-27)</font><font color=black><b>Changed approach for testing duplicate config</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_39)</font>
+* <font color=blue>46ed5ab</font>-<font color=green>(2015-05-27)</font><font color=black><b>Explicitly close connections after creating db connnection.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>edea8eb</font>-<font color=green>(2015-05-26)</font><font color=black><b>Fixed copy of providers on config copy.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint KillingMeSoftly:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi</b><br><u>Version</u><b>&nbspr_4.0.0_161</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+CAAS Core - 5.1.0_8
+ETL/Report DB - 4.0.0.1_8
+Relay DB - 5.0.0_29
+Metadata - Fix to no longer default source to = "comcast" when no DerivativeID is sent; no new properties; Properties file standardized and README updated accordingly</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_4.0.0_161/diff.txt>dai-smsi_v_4.0.0_161/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_4.0.0_161/diff.txt>dai-smsi_v_4.0.0_161/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_4.0.0_161/diff.txt>dai-smsi_v_4.0.0_161/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_4.0.0_161/diff.txt>dai-smsi_v_4.0.0_161/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_155</b></u><br>
+<pre>
+* <font color=blue>5363ba3</font>-<font color=green>(2015-06-09)</font><font color=black><b>updating README again</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_4.0.0_161)</font>
+* <font color=blue>ab3b767</font>-<font color=green>(2015-06-09)</font><font color=black><b>updating README and properties files with new standardized properties</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>c957b1b</font>-<font color=green>(2015-06-05)</font><font color=black><b>changed log messages for VODDAI-7583</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_160)</font>
+* <font color=blue>4486c50</font>-<font color=green>(2015-06-04)</font><font color=black><b>Changes to support missing derivative Id</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>80c6648</font>-<font color=green>(2015-06-04)</font><font color=black><b>adding scenario for multiple sessions non-configured Derivative ID</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_159)</font>
+* <font color=blue>241af3a</font>-<font color=green>(2015-06-03)</font><font color=black><b>Changed default to "unspeficied"</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_158)</font>
+* <font color=blue>e8f7e7d</font>-<font color=green>(2015-05-29)</font><font color=black><b>adding test scenario outline for VODDAI-7583</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_157)</font>
+* <font color=blue>4f6cf5d</font>-<font color=green>(2015-05-08)</font><font color=black><b>updating watermark and adding test for VODDAI-7443</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_156)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint KillingMeSoftly:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_526</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+ADS Core - 4.0.0_132
+SMSi Pub DB - 5.0.0_22
+Metadata - New CIS (2008) batch config, new CIA (2011) exandedOutput=false/publish by provider, new config templates for ADS/CIS
+New Property to CIS:
+#Number of assets to include in contentQuery
+cis.sender.batch.size=1000</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_520</b></u><br>
+<pre>
+* <font color=blue>d89e726</font>-<font color=green>(2015-06-09)</font><font color=black><b>updated BCL and added property to cis environemnts</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.0.0_526)</font>
+*   <font color=blue>082e921</font>-<font color=green>(2015-06-09)</font><font color=black><b>Merge branch 'bgriese/CISCursor' into br_4.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|\  
+| *   <font color=blue>59bcf2f</font>-<font color=green>(2015-06-09)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (origin/bgriese/CISCursor)</font>
+| |\  
+| | * <font color=blue>5e637ea</font>-<font color=green>(2015-06-09)</font><font color=black><b>removing tag</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>cd5f938</font>-<font color=green>(2015-06-09)</font><font color=black><b>sanity check</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>50a5bd0</font>-<font color=green>(2015-06-09)</font><font color=black><b>last test data check in</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>c341dd3</font>-<font color=green>(2015-06-09)</font><font color=black><b>Fixing up unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>279bcb4</font>-<font color=green>(2015-06-09)</font><font color=black><b>Removing "No valid assets" return error.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| *   <font color=blue>e765646</font>-<font color=green>(2015-06-09)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>4c8a2f4</font>-<font color=green>(2015-06-09)</font><font color=black><b>all CIS Notification test cases passing</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>421f9d1</font>-<font color=green>(2015-06-09)</font><font color=black><b>Changing CIS Notification tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>f236088</font>-<font color=green>(2015-06-09)</font><font color=black><b>Chuck an error if more than one content element.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>cb769c9</font>-<font color=green>(2015-06-09)</font><font color=black><b>Only validating a single asset per message.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>9ddcec2</font>-<font color=green>(2015-06-09)</font><font color=black><b>Updating notification code flow.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>d45594d</font>-<font color=green>(2015-06-09)</font><font color=black><b>No longer request expanded output for CIS registration.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>2ff152a</font>-<font color=green>(2015-06-09)</font><font color=black><b>Fixing wrong spelling of class name.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>89531f7</font>-<font color=green>(2015-06-08)</font><font color=black><b>adding VOD ENDPOINT table clear line to background</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>780d1d5</font>-<font color=green>(2015-06-09)</font><font color=black><b>updated project property files, final cisquery tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>622be47</font>-<font color=green>(2015-06-08)</font><font color=black><b>Iterate through ad assets in cache for provider.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| *   <font color=blue>62dad20</font>-<font color=green>(2015-06-08)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>f1b88fc</font>-<font color=green>(2015-06-08)</font><font color=black><b>small test change to be able to publish locally as opposed to SC1</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>442bad1</font>-<font color=green>(2015-06-08)</font><font color=black><b>added ent asset that matches as asset provider to test data</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * | <font color=blue>cf6c4e7</font>-<font color=green>(2015-06-08)</font><font color=black><b>fixed persistance cases for CISQuery</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| *   <font color=blue>1178e6f</font>-<font color=green>(2015-06-08)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | *   <font color=blue>a7cbdf5</font>-<font color=green>(2015-06-08)</font><font color=black><b>Merge branch 'br_4.0.0' into bgriese/CISCursor</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | |\  
+| |_|/  
+|/| |   
+* | | <font color=blue>9922495</font>-<font color=green>(2015-05-28)</font><font color=black><b>Test changes for CISNotification and CISNotifRegReq</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_525)</font>
+| * | <font color=blue>5282af9</font>-<font color=green>(2015-06-08)</font><font color=black><b>endpoint clear line added to tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>aaeb7e0</font>-<font color=green>(2015-06-05)</font><font color=black><b>endpoint data changes to cis notification validation and persistence</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>ba1d693</font>-<font color=green>(2015-06-05)</font><font color=black><b>final data changes for cis endpoints in tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>22ae695</font>-<font color=green>(2015-06-05)</font><font color=black><b>more changes for test data</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>89ebf93</font>-<font color=green>(2015-06-05)</font><font color=black><b>one more change to adm_to_cis2.sql</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| *   <font color=blue>287081b</font>-<font color=green>(2015-06-05)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>2fb3e29</font>-<font color=green>(2015-06-05)</font><font color=black><b>2011 content query split by provider, no expanded output.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>c5d9a6a</font>-<font color=green>(2015-06-03)</font><font color=black><b>Setting expanded output to false for sync query.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>a35269e</font>-<font color=green>(2015-06-03)</font><font color=black><b>Initial refactor of 2011 cis code.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>3e0a8e3</font>-<font color=green>(2015-06-03)</font><font color=black><b>Removing my name from tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | *   <font color=blue>7c0e462</font>-<font color=green>(2015-06-03)</font><font color=black><b>Merge remote-tracking branch 'origin/bgriese/CISCursor' into bgriese/CISCursor</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | |\  
+| | * | <font color=blue>f55a5e3</font>-<font color=green>(2015-06-03)</font><font color=black><b>Cleaning up unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * | <font color=blue>a48d6b0</font>-<font color=green>(2015-06-02)</font><font color=black><b>removing outdated spock tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * | <font color=blue>e3ab71d</font>-<font color=green>(2015-06-02)</font><font color=black><b>Removing lying javadoc.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * | <font color=blue>3a3ff46</font>-<font color=green>(2015-06-02)</font><font color=black><b>Setting default batch size to 1000 per requirements</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | | <font color=blue>96fb3b2</font>-<font color=green>(2015-06-05)</font><font color=black><b>added new sql to fix local vs scrum mock server endpoint issues</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | |/  
+| |/|   
+| * | <font color=blue>25fc4e0</font>-<font color=green>(2015-06-02)</font><font color=black><b>regression tests updated for new CIS 2008 functionality</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * | <font color=blue>b02662a</font>-<font color=green>(2015-06-02)</font><font color=black><b>CIS 2008 batch tests passing</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>0dc2187</font>-<font color=green>(2015-06-02)</font><font color=black><b>Scheduled check no longer fires on app startup.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>29ce8fe</font>-<font color=green>(2015-06-01)</font><font color=black><b>Added endpoint to manually run scheduled check.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>bb959f7</font>-<font color=green>(2015-06-01)</font><font color=black><b>Fixing how batches are made.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>5cd7a99</font>-<font color=green>(2015-06-01)</font><font color=black><b>Moved scheduled job from 3 seconds to 15 minutes</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>65c845e</font>-<font color=green>(2015-06-01)</font><font color=black><b>Generic error handling</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>df923fd</font>-<font color=green>(2015-06-01)</font><font color=black><b>Adding cis.sender.batch.size to properties</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>d46c9a0</font>-<font color=green>(2015-06-01)</font><font color=black><b>CIS test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>45b3d5b</font>-<font color=green>(2015-05-28)</font><font color=black><b>Removing test used to test the tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| *   <font color=blue>0addece</font>-<font color=green>(2015-05-28)</font><font color=black><b>Merge branch 'br_4.0.0' into bgriese/CISCursor</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |\  
+| |/  
+|/|   
+* | <font color=blue>c3a0ffd</font>-<font color=green>(2015-05-28)</font><font color=black><b>Test changes for CIA functionality - CISQueryResponse only</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| *   <font color=blue>bd2a4b8</font>-<font color=green>(2015-05-28)</font><font color=black><b>Merge branch 'br_4.0.0' into bgriese/CISCursor</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |\  
+| |/  
+|/|   
+* | <font color=blue>b793722</font>-<font color=green>(2015-05-21)</font><font color=black><b>tests for CIS (2008) batch changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.0.0_524)</font>
+| * <font color=blue>7639c1e</font>-<font color=green>(2015-05-28)</font><font color=black><b>Batching work for 2008 CIS requests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>15010fa</font>-<font color=green>(2015-05-15)</font><font color=black><b>Removing "expandedValidationChain" and updating constructor calls.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|/  
+* <font color=blue>99d45ef</font>-<font color=green>(2015-05-15)</font><font color=black><b>Updating c3p0 dependency.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_4.0.0_523)</font>
+* <font color=blue>efb05ca</font>-<font color=green>(2015-04-15)</font><font color=black><b>small regression test changes</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_522)</font>
+* <font color=blue>7ff530d</font>-<font color=green>(2015-04-14)</font><font color=black><b>CI detail purge test added</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_521)</font>
+* <font color=blue>ee975f1</font>-<font color=green>(2015-04-14)</font><font color=black><b>updated pom to point to common-static</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint KillingMeSoftly:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_5.0.0_22</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Metadata – If smsipub.source is not configured, publish "unspecified".</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_21</b></u><br>
+<pre>
+* <font color=blue>39af53c</font>-<font color=green>(2015-06-03)</font><font color=black><b>VODDAI-7107: Default value for smsipub.source is "unspecified"</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_22)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint KillingMeSoftly:</b></u><p>
+<u>Release of Component</u><b>&nbsprequest-mgr</b><br><u>Version</u><b>&nbspr_5.0.0_66</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Goes with Session Collector 5.0.0_10
+Metadata – Phase 1 complete; SMS functionality incomplete, can disable.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/dai-sdc-5.0.0/003-khl-metadata.xml
+data-store/src/main/liquibase/dai-sdc-5.0.0/004-khl-variant.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_42</b></u><br>
+<pre>
+* <font color=blue>cd55a73</font>-<font color=green>(2015-06-09)</font><font color=black><b>Fixed breakPlacementSequence and isFirst</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_66)</font>
+*   <font color=blue>58cdeef</font>-<font color=green>(2015-06-08)</font><font color=black><b>added 2 midroll response and fixed merge</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_65)</font>
+|\  
+| * <font color=blue>018190b</font>-<font color=green>(2015-06-08)</font><font color=black><b>VODDAI-7401 Fix for Content Group uriId Added Scala Logging</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>30d4c5a</font>-<font color=green>(2015-06-08)</font><font color=black><b>VODDAI-7401 Fix for Content Group uriId Added Scala Logging</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>2baa2ac</font>-<font color=green>(2015-06-08)</font><font color=black><b>VODDAI-7145: Now setting peid</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>48b0a8e</font>-<font color=green>(2015-06-08)</font><font color=black><b>Renamed collect package</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>b748ecd</font>-<font color=green>(2015-06-08)</font><font color=black><b>If an ADM platform key is null, then we will not kvetch if we can't find a platform TargetCode</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>aac0c2b</font>-<font color=green>(2015-06-05)</font><font color=black><b>Unit tests for all the collect stuff.  Word</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_64)</font>
+| * <font color=blue>e243276</font>-<font color=green>(2015-06-05)</font><font color=black><b>VODDAI-7401 Validate ContentGroup Urid</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_63)</font>
+* | <font color=blue>8a81d1c</font>-<font color=green>(2015-06-08)</font><font color=black><b>Schema error tests updated, some features fixed for data truth</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* |   <font color=blue>4232e52</font>-<font color=green>(2015-06-05)</font><font color=black><b>Commit after merging</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>607af85</font>-<font color=green>(2015-06-04)</font><font color=black><b>Pass along the session in the conversation to enable MDC</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_62)</font>
+| * <font color=blue>409422f</font>-<font color=green>(2015-06-04)</font><font color=black><b>Some fixes to the tests.  Matt we should talk about these.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>456609d</font>-<font color=green>(2015-06-04)</font><font color=black><b>Updated some leg messages</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>3bbcd54</font>-<font color=green>(2015-06-04)</font><font color=black><b>Switched unit tests to use scalatest Matchers</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>be40969</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7446 ContentNotificationAcknowledgement</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>8265d19</font>-<font color=green>(2015-06-04)</font><font color=black><b>ContentNotification validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>c587267</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-4667 Validate TitleRef</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* |   <font color=blue>cec55b0</font>-<font color=green>(2015-06-04)</font><font color=black><b>7149 test altered, 7148 separated</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>368eab3</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7413 Validate Content Elements</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>059c581</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7412 Validate BasicQueryResultList</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>4b7a909</font>-<font color=green>(2015-06-04)</font><font color=black><b>7149 test altered, 7148 separated</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>5cb9b25</font>-<font color=green>(2015-06-04)</font><font color=black><b>Ken improve oppIDs and trackingIDs</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>374d624</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7415 Validate Title Assets</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>783aa61</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7362 Parse ContentNotification message</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f6f14d7</font>-<font color=green>(2015-06-04)</font><font color=black><b>All the code Opportunity and Placement collection code should now conform to stories.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_61)</font>
+| * <font color=blue>58cbd70</font>-<font color=green>(2015-06-04)</font><font color=black><b>Fixed local integration tests</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>dee2659</font>-<font color=green>(2015-06-03)</font><font color=black><b>Make the trackingIDs fit in the database</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_60)</font>
+| * <font color=blue>3d4c15b</font>-<font color=green>(2015-06-03)</font><font color=black><b>First pass at the placement stuff, clean up off the opportunity collection.  Need to unit test, but giving this to Matt</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>757a146</font>-<font color=green>(2015-06-03)</font><font color=black><b>Update some of the markers</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>fa6a8f9</font>-<font color=green>(2015-06-03)</font><font color=black><b>Update setenv.functional.sh</b></font><font color=grey>- (MajorMatt)</font><font color=red></font>
+* | <font color=blue>5085226</font>-<font color=green>(2015-06-04)</font><font color=black><b>Many feature updates and improvements</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>1cdd13b</font>-<font color=green>(2015-06-02)</font><font color=black><b>Ready to start adding the decision data, but got everything with opps back in working order.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_59)</font>
+* <font color=blue>0ee3b94</font>-<font color=green>(2015-06-02)</font><font color=black><b>Opportunity and placement features updated, some tests added</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4e341f1</font>-<font color=green>(2015-05-29)</font><font color=black><b>Opportunity and placement info features added</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_58)</font>
+* <font color=blue>8d18c30</font>-<font color=green>(2015-05-27)</font><font color=black><b>VODDAI-7403 Process ContentNotification</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_57, tag: v_5.0.0_56, tag: v_5.0.0_55, tag: v_5.0.0_54)</font>
+* <font color=blue>b429298</font>-<font color=green>(2015-05-27)</font><font color=black><b>Some gatling stuff.  Not complete</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>43f570c</font>-<font color=green>(2015-05-26)</font><font color=black><b>Separated @key guid variations for hhID without errors</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_53)</font>
+|\  
+| * <font color=blue>3eafe63</font>-<font color=green>(2015-05-26)</font><font color=black><b>Renaming to rema</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>b79a558</font>-<font color=green>(2015-05-26)</font><font color=black><b>Separated @key guid variations for hhID without errors</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>9a2dfa2</font>-<font color=green>(2015-05-26)</font><font color=black><b>Added @testy tag for Ken focus soon</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>7b667c7</font>-<font color=green>(2015-05-22)</font><font color=black><b>Fixing up various test failures.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_52)</font>
+* <font color=blue>bcece60</font>-<font color=green>(2015-05-22)</font><font color=black><b>New ContentNotif templates and validation feature</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>2d489ae</font>-<font color=green>(2015-05-22)</font><font color=black><b>added test for feature 7111</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>46f9bfd</font>-<font color=green>(2015-05-21)</font><font color=black><b>Added case insensitive GUID case, renamed the 7111 test</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_51)</font>
+* <font color=blue>b9d8ebc</font>-<font color=green>(2015-05-21)</font><font color=black><b>New features for JIRA 7112 VBOID fxn</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>893b2b5</font>-<font color=green>(2015-05-20)</font><font color=black><b>Added dB template for the 7111 fxn</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_50)</font>
+* <font color=blue>7d70f6c</font>-<font color=green>(2015-05-20)</font><font color=black><b>Modified smsiPub persist feature, added variant into DB templates as necessary</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d143043</font>-<font color=green>(2015-05-19)</font><font color=black><b>VODDAI-7111, VODDAI-6522: Populating provider from title table</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_49)</font>
+*   <font color=blue>aa2e046</font>-<font color=green>(2015-05-18)</font><font color=black><b>Added many tests into the smsiPubPersist feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_48)</font>
+|\  
+| * <font color=blue>1a4ac9a</font>-<font color=green>(2015-05-18)</font><font color=black><b>VODDAI-7116: Populating provider from title table</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>3dd2c8f</font>-<font color=green>(2015-05-18)</font><font color=black><b>Added many tests into the smsiPubPersist feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>fec90cf</font>-<font color=green>(2015-05-15)</font><font color=black><b>VODDAI-7544: Created Title table and data access classes.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_47)</font>
+*   <font color=blue>d2a8615</font>-<font color=green>(2015-05-15)</font><font color=black><b>Modified smsi publishing feature, also removed ADS_IDs from the adsRegistration feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_46)</font>
+|\  
+| * <font color=blue>90df87a</font>-<font color=green>(2015-05-15)</font><font color=black><b>VODDAI-7544: Created Title table</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>a9f8527</font>-<font color=green>(2015-05-15)</font><font color=black><b>Modified smsi publishing feature, also removed ADS_IDs from the adsRegistration feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>84185d9</font>-<font color=green>(2015-05-14)</font><font color=black><b>Added more realistic IP test</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_45)</font>
+* <font color=blue>7df02ba</font>-<font color=green>(2015-05-13)</font><font color=black><b>Seperate Canoe and FW response templates and features</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5c49fde</font>-<font color=green>(2015-05-12)</font><font color=black><b>Added unmatched session for response, error check for PSN business logic</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_44)</font>
+* <font color=blue>e0d09ca</font>-<font color=green>(2015-05-12)</font><font color=black><b>Add PSN and request schema error templates</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>227e3f8</font>-<font color=green>(2015-05-12)</font><font color=black><b>Added schema error routing test for PSN and request</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ec35686</font>-<font color=green>(2015-05-11)</font><font color=black><b>Final-ish touches for phase1</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_43)</font>
+* <font color=blue>e30bc0d</font>-<font color=green>(2015-05-11)</font><font color=black><b>Final-ish touches for phase1</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

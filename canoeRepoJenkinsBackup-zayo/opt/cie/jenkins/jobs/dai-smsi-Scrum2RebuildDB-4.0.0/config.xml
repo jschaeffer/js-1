@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/smsi/webapps/safi-smsi-server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+
+print Beginning Rebuild from scratch for app/db to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+
+cd /opt/checkouts/dai-smsi/safi-smsi-server/src/main/resources/liquibase/cisys
+
+/opt/build/scripts/tcServerAdmin.sh dvappdai03 smsi stop
+/opt/build/scripts/tcServerAdmin.sh dvappdai03 smsi-admin stop
+
+echo &quot;@genUser.scrum2.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.120)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=scrum002)))&apos;
+
+STATUS=${?}
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./deployRebuildDb.sh -a safi-smsi-server -t dai-smsi -i smsi -r ${VERSION} -e 10.13.18.116 -j &quot;jdbc:oracle:thin:@10.13.18.120:1522:scrum002&quot; -p SC2_SMSI -u SC2_SMSI -v
+
+/opt/build/scripts/tcServerAdmin.sh dvappdai03 smsi-admin start
+
+print dai-smsi-${VERSION} &gt; /var/www/html/scrum2/smsi.txt
+print dai-smsi-${VERSION} &gt; /var/www/html/scrum2/smsi_db.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher>
+      <recipientList>bob.griese@canoeventures.com,jeff.schaeffer@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList>$PROJECT_DEFAULT_RECIPIENTS</recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <sendToDevelopers>true</sendToDevelopers>
+            <sendToRequester>false</sendToRequester>
+            <includeCulprits>false</includeCulprits>
+            <sendToRecipientList>true</sendToRecipientList>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

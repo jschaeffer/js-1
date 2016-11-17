@@ -1,0 +1,760 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#comcast
+export purpose=&quot;production&quot;
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;/var/www/html/prod/dtupd.txt
+
+fnChktcservState() {
+ k_Stat=`ssh $targ &quot;cd instances/$instance/bin; ./tcruntime-ctl.sh status&quot;`
+  if [[ $k_Stat = *PID* ]]
+   then echo &quot;&lt;td bgcolor=lightgreen&gt; &lt;font color=black&gt; Up&quot;| tee &gt; ${target}/${purpose}/${Component}_envstate.txt
+  else echo &quot;&lt;td bgcolor=red&gt; &lt;font color=yellow&gt; $targ&quot; | tee &gt; ${target}/${purpose}/${Component}_envstate.txt
+  fi
+}
+fnChkInsDate() {
+ inst=`ssh $targ &quot;cd instances/$instance/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/${purpose}/$app.instdate.txt
+}
+fnVerCheck() {
+echo &quot;Checking Version status for Component=$Component on targ=$targ in instance=$instance&quot;
+fnDirEx
+if [[ $Direcex == &quot;Present&quot; ]]; then
+Version=`ssh $targ &quot;grep Implementation-Version /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+ echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/${purpose}/$app.txt
+ fi
+else 
+ echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+fi
+}
+fnDBVerCheck() {
+echo &quot;Checking Version status for DB Component=$k&quot;
+cd /opt/build/scripts/lab2lab
+Version=`./check_dbversions_prod_base.sh -a ${k} -e prod`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+  echo &quot;Not installed&quot;  &gt; $target/${purpose}/$k.txt
+ else
+  Versionout=`echo ${Version} | awk &apos;{print $1}&apos;`
+  echo &quot;$Versionout&quot; &gt; $target/${purpose}/$k.txt
+ fi
+}
+fnVerJar() {
+echo &quot;Checking Version status for Component=$Component on targ=$targ&quot;
+Version=`ssh $targ &quot;cd /tmp; jar xf /opt/tcserver/$direct/$jarLoc/$jarName META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+  echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+  else
+  echo &quot;$Version&quot; &gt; $target/${purpose}/$app.txt
+ fi
+}
+fnChkInsDateJar() {
+ inst=`ssh $targ &quot;cd $direct/$jarLoc; ls -al $jarName | awk &apos;NR==1 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/${purpose}/$app.instdate.txt
+}
+fnDirEx() {
+Direcex=`ssh ${targ} &quot;test -d instances/${instance}/webapps/${webapps} &amp;&amp; echo &quot;Present&quot; || echo &quot;Not present&quot;&quot;`
+echo &quot;${Direcex}&quot;
+}
+
+
+echo &quot;####################################################################################################&quot;
+echo &quot;##  Checking the Installation versions, tcserver states and installation date for Production   Envs ##&quot;
+echo &quot;####################################################################################################&quot;
+
+export target=&quot;/var/www/html/prod&quot;
+
+#export DBComponents=&quot;caas-core ads-core dai-etl-feeder smsi-publisher&quot;
+#for k in ${DBComponents}; do
+# fnDBVerCheck
+#done
+
+export Components=&quot;dai-cip dai-cip-feedback caas-admin dai-smsi smsi-admin&quot;
+
+
+for j in ${Components}; do
+
+ case $j in
+  Dynamic-Ad-Insertion-cm)  #MTHRN 
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=
+   export instance=x
+   export webapps=x
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+  ;;
+  dai-cip-feedback)
+   export Comps=&quot;dai-cip-feedback0 dai-cip-feedback1 dai-cip-feedback2&quot;
+    for i in $Comps; do
+     case $i in
+      dai-cip-feedback0)
+       export Component=&quot;${j}0&quot;
+       export app=$j
+       export targ=prcipfn01
+       export instance=COM_CIP_FN1
+       export webapps=cip-feedback
+       fnVerCheck
+       fnChkInsDate
+       #fnChktcservState
+      ;;
+      dai-cip-feedback1)
+       export Component=&quot;${j}0&quot;
+       export app=$j
+       export targ=prcipfn02
+       export instance=COM_CIP_FN2
+       export webapps=cip-feedback
+       fnVerCheck
+       fnChkInsDate
+       #fnChktcservState
+      ;;
+      dai-cip-feedback2) #MTRHRN
+       export Component=&quot;${j}0&quot;
+       export app=$j
+       export targ=prcipfncom05
+       export instance=CMC_CIPFN_001
+       export webapps=cip-feedback
+       fnVerCheck
+       fnChkInsDate
+       #fnChktcservState
+      ;;
+    esac
+   #fnChktcservState
+   done
+  ;;
+  dai-cip)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=prcipcom01
+   export direct=dai-cip
+   export jarLoc=cip-batch
+   export jarName=dai-cip-batch.jar
+   fnVerJar
+   fnChkInsDateJar
+  ;;
+  Dynamic-Ad-Insertion-engine)
+   export Comps=&quot;Dynamic-Ad-Insertion-engine0 Dynamic-Ad-Insertion-engine1 Dynamic-Ad-Insertion-engine2 Dynamic-Ad-Insertion-engine3&quot;
+    for i in $Comps; do
+     case $i in
+      Dynamic-Ad-Insertion-engine0)   #MTRHRN 
+       export Component=$i
+       export app=$j
+       export targ=
+       export instance=
+       export webapps=x
+       fnVerCheck
+       fnChkInsDate
+       ;;
+      Dynamic-Ad-Insertion-engine1)   #MTRHRN
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=
+       export instance=
+       export webapps=x
+       ;;
+      Dynamic-Ad-Insertion-engine2)   #MTRHRN
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=
+       export instance=
+       export webapps=x
+       ;;
+      Dynamic-Ad-Insertion-engine3)   #MTRHRN
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=
+       export instance=
+       export webapps=x
+       ;;
+      esac
+   #fnChktcservState
+  done
+  ;;
+  dai-billing)
+   export targ=prbil01
+   export instance=BILLING_01
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+  ;;
+  dai-national-cis)   #MTRHRN
+    export targ=
+    export instance=
+    export Component=$i 
+    export app=$j
+    export webapps=
+    fnVerCheck
+    fnChkInsDate
+    #fnChktcservState
+  ;;
+  smsi-publisher)  #MTRHRN
+   export targ=
+   export instance=
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+  caas-admin)
+   export targ=prcmdai02
+   export instance=caas_admin
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=caas_admin
+   fnVerCheck
+   fnChkInsDate
+  ##fnChktcservState
+ ;;
+  Pgmr-Cpgn-Int)
+   export targ=
+   export instance=
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+  dai-smsi)   
+      export targ=prsmsdai01
+      export instance=smsi
+      export Component=&quot;${j}0&quot; 
+      export app=$j
+      export webapps=smsi
+      fnVerCheck
+      fnChkInsDate
+   #fnChktcservState
+ ;;
+  dai-smsi-relay)
+   export targ=
+   export instance=
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+  smsi-admin)
+   export targ=prsmsdai01
+   export instance=smsi-admin
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=smsi-admin
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+ esac
+done
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#comcast
+export purpose=&quot;production&quot;
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;/var/www/html/prod/dtupd.txt
+
+fnChktcservState() {
+ k_Stat=`ssh $targ &quot;cd instances/$instance/bin; ./tcruntime-ctl.sh status&quot;`
+  if [[ $k_Stat = *PID* ]]
+   then echo &quot;&lt;td bgcolor=lightgreen&gt; &lt;font color=black&gt; Up&quot;| tee &gt; ${target}/${purpose}/${Component}_envstate.txt
+  else echo &quot;&lt;td bgcolor=red&gt; &lt;font color=yellow&gt; $targ&quot; | tee &gt; ${target}/${purpose}/${Component}_envstate.txt
+  fi
+}
+fnChkInsDate() {
+ inst=`ssh $targ &quot;cd instances/$instance/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/${purpose}/$app.instdate.txt
+}
+fnVerCheck() {
+echo &quot;Checking Version status for Component=$Component on targ=$targ in instance=$instance&quot;
+fnDirEx
+if [[ $Direcex == &quot;Present&quot; ]]; then
+Version=`ssh $targ &quot;grep Implementation-Version /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+ echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/${purpose}/$app.txt
+ fi
+else 
+ echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+fi
+}
+fnDBVerCheck() {
+echo &quot;Checking Version status for DB Component=$k&quot;
+cd /opt/build/scripts/lab2lab
+Version=`./check_dbversions_prod_base.sh -a ${k} -e prod`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+  echo &quot;Not installed&quot;  &gt; $target/${purpose}/$k.txt
+ else
+  Versionout=`echo ${Version} | awk &apos;{print $1}&apos;`
+  echo &quot;$Versionout&quot; &gt; $target/${purpose}/$k.txt
+ fi
+}
+fnVerJar() {
+echo &quot;Checking Version status for Component=$Component on targ=$targ&quot;
+Version=`ssh $targ &quot;cd /tmp; jar xf /opt/tcserver/$direct/$jarLoc/$jarName META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+  echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+  else
+  echo &quot;$Version&quot; &gt; $target/${purpose}/$app.txt
+ fi
+}
+fnChkInsDateJar() {
+ inst=`ssh $targ &quot;cd $direct/$jarLoc; ls -al $jarName | awk &apos;NR==1 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/${purpose}/$app.instdate.txt
+}
+fnDirEx() {
+Direcex=`ssh ${targ} &quot;test -d instances/${instance}/webapps/${webapps} &amp;&amp; echo &quot;Present&quot; || echo &quot;Not present&quot;&quot;`
+echo &quot;${Direcex}&quot;
+}
+
+echo &quot;####################################################################################################&quot;
+echo &quot;##  Checking the Installation versions, tcserver states and installation date for Production   Envs ##&quot;
+echo &quot;####################################################################################################&quot;
+
+export target=&quot;/var/www/html/prod&quot;
+
+#export DBComponents=&quot;caas-core ads-core dai-etl-feeder smsi-publisher&quot;
+#for k in ${DBComponents}; do
+# fnDBVerCheck
+#done
+
+export Components=&quot;Dynamic-Ad-Insertion-cm dai-cip dai-cip-feedback dai-smsi Dynamic-Ad-Insertion-engine dai-national-cis smsi-publisher&quot;
+
+
+for j in ${Components}; do
+
+ case $j in
+  Dynamic-Ad-Insertion-cm)   
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=&quot;prcmdai01&quot;
+   export instance=&quot;CampMan_002&quot;
+   export webapps=&quot;cm&quot;
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+  ;;
+  dai-cip-feedback)
+   export Comps=&quot;dai-cip-feedback0 dai-cip-feedback1 dai-cip-feedback2&quot;
+    for i in $Comps; do
+     case $i in
+      dai-cip-feedback0)
+       export Component=&quot;${j}0&quot;
+       export app=$j
+       export targ=prcipdai01
+       export instance=cip-feedback
+       export webapps=
+       fnVerCheck
+       fnChkInsDate
+       #fnChktcservState
+      ;;
+      dai-cip-feedback1)
+       export Component=&quot;${j}0&quot;
+       export app=$j
+       export targ=prcipfn03
+       export instance=TWC_CIP_FN1
+       export webapps=cip-feedback
+       fnVerCheck
+       fnChkInsDate
+       #fnChktcservState
+      ;;
+      dai-cip-feedback2)
+       export Component=&quot;${j}0&quot;
+       export app=$j
+       export targ=prcipfn03
+       export instance=TWC_CIP_FN2
+       export webapps=cip-feedback
+       fnVerCheck
+       fnChkInsDate
+       #fnChktcservState
+      ;;
+    esac
+   #fnChktcservState
+   done
+  ;;
+  dai-cip)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=prcipcom01
+   export direct=dai-cip
+   export jarLoc=cip-batch
+   export jarName=dai-cip-batch.jar
+   fnVerJar
+   fnChkInsDateJar
+  ;;
+  Dynamic-Ad-Insertion-engine)
+   export Comps=&quot;Dynamic-Ad-Insertion-engine0 Dynamic-Ad-Insertion-engine1 Dynamic-Ad-Insertion-engine2 Dynamic-Ad-Insertion-engine3 Dynamic-Ad-Insertion-engine4 Dynamic-Ad-Insertion-engine5&quot;
+    for i in $Comps; do
+     case $i in
+      Dynamic-Ad-Insertion-engine0)   
+       export Component=$i
+       export app=$j
+       export targ=pradsdai01
+       export instance=TWC_CIP_ADS01
+       export webapps=ads-1.2.0
+       fnVerCheck
+       fnChkInsDate
+       ;;
+      Dynamic-Ad-Insertion-engine1)   
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=pradsdai02
+       export instance=TWC_CIP_ADS02
+       export webapps=ads-1.2.0
+       ;;
+      Dynamic-Ad-Insertion-engine2)   
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=prpsndai01
+       export instance=TWC_CIP_PSN01
+       export webapps=ads-1.2.0
+       ;;
+      Dynamic-Ad-Insertion-engine3)   
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=prpsncom02
+       export instance=TWC_CIP_PSN02
+       export webapps=ads-1.2.0
+       ;;
+      Dynamic-Ad-Insertion-engine4)   
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=prciping01
+       export instance=TWC_CIP_INGEST1
+       export webapps=ads-1.2.0
+       ;;
+      Dynamic-Ad-Insertion-engine5)   
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=prciping02
+       export instance=TWC_CIP_INGEST2
+       export webapps=ads-1.2.0
+       ;;
+      esac
+   ##fnChktcservState
+  done
+  ;;
+  dai-billing)
+   export targ=
+   export instance=
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+  ;;
+  dai-national-cis)
+    export targ=prcisdai01
+    export instance=TimeWarner_CIS_001
+    export Component=$i 
+    export app=$j
+    export webapps=cis-1.2.0
+    fnVerCheck
+    fnChkInsDate
+    #fnChktcservState
+  ;;
+  smsi-publisher)
+   export Comps=&quot;smsi-publisher0 smsi-publisher1&quot;
+    for i in $Comps; do
+     case $i in
+       smsi-publisher0)
+        export targ=&quot;prsmspub01&quot;
+        export instance=&quot;smsi-pub&quot;
+        export Component=&quot;$i&quot; 
+        export app=$j
+        export webapps=smsi-pub
+        fnVerCheck
+        fnChkInsDate
+        #fnChktcservState
+     ;;
+       smsi-publisher1)
+        export targ=&quot;prsmspub02&quot;
+        export instance=&quot;smsi-pub&quot;
+        export Component=&quot;$i&quot; 
+        export app=$j
+        export webapps=smsi-pub
+        fnVerCheck
+        fnChkInsDate
+        #fnChktcservState
+     ;;
+     esac
+   done  
+ ;;
+  caas-admin)
+   export targ=
+   export instance=
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+  Pgmr-Cpgn-Int)
+   export targ=
+   export instance=
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+  dai-smsi)
+     export Comps=&quot;dai-smsi0 dai-smsi1&quot;
+    for i in $Comps; do
+     case $i in
+      dai-smsi0)   
+      export targ=prsmsdai03
+      export instance=TWC_SMSI1
+      export Component=&quot;$i&quot; 
+      export app=$j
+      export webapps=smsi
+      fnVerCheck
+      fnChkInsDate
+      ;;
+      dai-smsi1)   
+      export targ=prsmsdai03
+      export instance=TWC_SMSI1
+      export Component=&quot;$i&quot; 
+      export app=$j
+      export webapps=smsi
+      fnVerCheck
+      fnChkInsDate
+      ;;
+     esac   
+   #fnChktcservState
+   done
+ ;;
+  dai-smsi-relay)
+   export targ=
+   export instance=
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+  smsi-admin)
+   export targ=
+   export instance=
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+ esac
+done
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#comcast
+export purpose=&quot;matterhorn&quot;
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;/var/www/html/prod/dtupd.txt
+
+fnChktcservState() {
+ k_Stat=`ssh $targ &quot;cd instances/$instance/bin; ./tcruntime-ctl.sh status&quot;`
+  if [[ $k_Stat = *PID* ]]
+   then echo &quot;&lt;td bgcolor=lightgreen&gt; &lt;font color=black&gt; Up&quot;| tee &gt; ${target}/${purpose}/${Component}_envstate.txt
+  else echo &quot;&lt;td bgcolor=red&gt; &lt;font color=yellow&gt; $targ&quot; | tee &gt; ${target}/${purpose}/${Component}_envstate.txt
+  fi
+}
+fnChkInsDate() {
+ inst=`ssh $targ &quot;cd instances/$instance/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/${purpose}/$app.instdate.txt
+}
+fnVerCheck() {
+echo &quot;Checking Version status for Component=$Component on targ=$targ in instance=$instance&quot;
+fnDirEx
+if [[ $Direcex == &quot;Present&quot; ]]; then
+Version=`ssh $targ &quot;grep Implementation-Version /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+ echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/${purpose}/$app.txt
+ fi
+else 
+ echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+fi
+}
+fnDBVerCheck() {
+echo &quot;Checking Version status for DB Component=$k&quot;
+cd /opt/build/scripts/lab2lab
+Version=`./check_dbversions_prod_base.sh -a ${k} -e prod`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+  echo &quot;Not installed&quot;  &gt; $target/${purpose}/$k.txt
+ else
+  Versionout=`echo ${Version} | awk &apos;{print $1}&apos;`
+  echo &quot;$Versionout&quot; &gt; $target/${purpose}/$k.txt
+ fi
+}
+fnVerJar() {
+echo &quot;Checking Version status for Component=$Component on targ=$targ&quot;
+Version=`ssh $targ &quot;cd /tmp; jar xf /opt/tcserver/$direct/$jarLoc/$jarName META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+  echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+  else
+  echo &quot;$Version&quot; &gt; $target/${purpose}/$app.txt
+ fi
+}
+fnChkInsDateJar() {
+ inst=`ssh $targ &quot;cd $direct/$jarLoc; ls -al $jarName | awk &apos;NR==1 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/${purpose}/$app.instdate.txt
+}
+fnDirEx() {
+Direcex=`ssh ${targ} &quot;test -d instances/${instance}/webapps/${webapps} &amp;&amp; echo &quot;Present&quot; || echo &quot;Not present&quot;&quot;`
+echo &quot;${Direcex}&quot;
+}
+
+
+echo &quot;####################################################################################################&quot;
+echo &quot;##  Checking the Installation versions, tcserver states and installation date for Matterhorn   Envs ##&quot;
+echo &quot;####################################################################################################&quot;
+
+export target=&quot;/var/www/html/prod&quot;
+
+#export DBComponents=&quot;caas-core ads-core dai-etl-feeder smsi-publisher&quot;
+#for k in ${DBComponents}; do
+# fnDBVerCheck
+#done
+
+export Components=&quot;Dynamic-Ad-Insertion-cm dai-cip-feedback dai-smsi Dynamic-Ad-Insertion-engine dai-national-cis smsi-publisher&quot;
+
+
+for j in ${Components}; do
+
+ case $j in
+  Dynamic-Ad-Insertion-cm)  #MTHRN 
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=&quot;prcmcom01&quot;
+   export instance=&quot;CampMan_001&quot;
+   export webapps=&quot;cm&quot;
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+  ;;
+  dai-cip-feedback)  #MTRHRN
+    export Component=&quot;${j}0&quot;
+    export app=$j
+    export targ=prcipfncom05
+    export instance=CMC_CIPFN_001
+    export webapps=cip-feedback
+    fnVerCheck
+    fnChkInsDate
+    #fnChktcservState
+   ;;
+  Dynamic-Ad-Insertion-engine)
+   export Comps=&quot;Dynamic-Ad-Insertion-engine0 Dynamic-Ad-Insertion-engine1 Dynamic-Ad-Insertion-engine2 Dynamic-Ad-Insertion-engine3&quot;
+    for i in $Comps; do
+     case $i in
+      Dynamic-Ad-Insertion-engine0)   #MTRHRN 
+       export Component=$i
+       export app=$j
+       export targ=pradscom01
+       export instance=CMC_ADS_001
+       export webapps=ads
+       fnVerCheck
+       fnChkInsDate
+       ;;
+      Dynamic-Ad-Insertion-engine1)   #MTRHRN
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=pradscom02
+       export instance=CMC_ADS_002
+       export webapps=ads
+       ;;
+      Dynamic-Ad-Insertion-engine2)   #MTRHRN
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=prpsncom01
+       export instance=CMC_PSN_001
+       export webapps=ads
+       ;;
+      Dynamic-Ad-Insertion-engine3)   #MTRHRN
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=prpsncom02
+       export instance=CMC_PSN_002
+       export webapps=ads
+       ;;
+      esac
+   #fnChktcservState
+  done
+  ;;
+  dai-national-cis)   #MTRHRN
+    export targ=prciscom01
+    export instance=CMC_CIS_001
+    export Component=$i 
+    export app=$j
+    export webapps=cis
+    fnVerCheck
+    fnChkInsDate
+    #fnChktcservState
+  ;;
+  smsi-publisher)  #MTRHRN
+   export targ=&quot;prsmspubcom01&quot;
+   export instance=&quot;CMC_SMSPUB_001&quot;
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=smsi-pub
+   fnVerCheck
+   fnChkInsDate
+   #fnChktcservState
+ ;;
+  dai-smsi)  #MTRHRN
+      export targ=prsmsicom01
+      export instance=CMC_SMSI_001
+      export Component=&quot;${j}0&quot; 
+      export app=$j
+      export webapps=smsi
+      fnVerCheck
+      fnChkInsDate
+   #fnChktcservState
+
+ esac
+done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

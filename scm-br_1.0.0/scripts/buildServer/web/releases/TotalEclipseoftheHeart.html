@@ -1,0 +1,303 @@
+<b><u>Component Release Info for Sprint TotalEclipseoftheHeart:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-dce</b><br><u>Version</u><b>&nbspr_5.0.0_39</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+Metadata - Fixes to bugs VODDAI-8006 and VODDAI-8136. New response logic added to handle empty PRU and PVU messages from ADS. Updated README with new properties (used for Reporting Alerts). No logging changes. Already in Performance.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_46</b></u><br>
+<pre>
+</pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint TotalEclipseoftheHeart:</b></u><p>
+<u>Release of Component</u><b>&nbspdmp-config</b><br><u>Version</u><b>&nbspr_5.0.0_63</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Joel:
+
+- “Data to Include” now allows zero selections
+- Campaign Order Owners are now included when duplicating a Config
+- DMP Tool only allows one endpoint per config
+- Partner Name is now a dropdown select – populated from partners collection in the DB
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_62</b></u><br>
+<pre>
+* <font color=blue>d65ffe4</font>-<font color=green>(2015-10-07)</font><font color=black><b>all tests tweaked, ready to merge and test in scrum</b></font><font color=grey>- (jmhassell)</font><font color=red> (HEAD, tag: v_5.0.0_63, origin/br_5.0.0, origin/HEAD, br_5.0.0)</font>
+* <font color=blue>b0ed1e7</font>-<font color=green>(2015-10-06)</font><font color=black><b>sort feature completed.  Datasets edited to contain existing Partner Names.</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+*   <font color=blue>49855bc</font>-<font color=green>(2015-10-06)</font><font color=black><b>Merge branch 'MMF-7909' of github.com:CanoeVentures/dmp-config into MMF-7909</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|\  
+| *   <font color=blue>4ee1897</font>-<font color=green>(2015-10-06)</font><font color=black><b>resolved conflicts in Create.feature</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+| |\  
+| * | <font color=blue>cdab9b6</font>-<font color=green>(2015-10-06)</font><font color=black><b>Merge remote-tracking branch 'origin/MMF-7909' into MMF-7909</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* | | <font color=blue>b3180f4</font>-<font color=green>(2015-10-06)</font><font color=black><b>EnabledDisabledConfigs, Navigation, Validation features completed</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>8d16bd4</font>-<font color=green>(2015-10-06)</font><font color=black><b>FourPartners Data modified.  Create, Delete, Duplicate, Edit features completed</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+* <font color=blue>688dca7</font>-<font color=green>(2015-10-05)</font><font color=black><b>created Partners dataset.  Added step to include that data into all tests</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>76a1626</font>-<font color=green>(2015-10-05)</font><font color=black><b>7911: One endpoint per partner configuration</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>6fd5a9f</font>-<font color=green>(2015-10-05)</font><font color=black><b>8069: enforcing match between relay.partner and partner name</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>e8291a1</font>-<font color=green>(2015-10-05)</font><font color=black><b>8069: continuing work</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>38fc3e4</font>-<font color=green>(2015-10-02)</font><font color=black><b>8052: removed extraneous error message</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>7aff615</font>-<font color=green>(2015-10-02)</font><font color=black><b>Create, Duplicate, Edit, and Validation Features completed</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>776a76e</font>-<font color=green>(2015-10-02)</font><font color=black><b>edited all data to have only ONE endpoint in each configuration</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>dd31d03</font>-<font color=green>(2015-10-02)</font><font color=black><b>8111: Endpoints are not to be duplicated</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>b8d9987</font>-<font color=green>(2015-10-01)</font><font color=black><b>8069: relay.partner and Partner name- STILL WORK IN PROGRESS</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>b551f2d</font>-<font color=green>(2015-10-01)</font><font color=black><b>8111: CampaignOrderOwners included with Configuration copy</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>5aeef53</font>-<font color=green>(2015-10-01)</font><font color=black><b>8052:allow zero selections from 'Data to Include'</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>a8e8cfc</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "Provider.js: Data To Include allows zero selections"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>ca144e3</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "Revert "Provider.js: Data To Include allows zero selections""</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>baf4b87</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "8052: allow zero selections in Data To Include"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>02d3fc1</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "8111: copy config includes coos"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>9594853</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "8069: enforcing match between relay.partner and Partner name"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>4637776</font>-<font color=green>(2015-09-30)</font><font color=black><b>8069: enforcing match between relay.partner and Partner name</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>42a1047</font>-<font color=green>(2015-09-30)</font><font color=black><b>8111: copy config includes coos</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>716a188</font>-<font color=green>(2015-09-30)</font><font color=black><b>8052: allow zero selections in Data To Include</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>385b527</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "Provider.js: Data To Include allows zero selections"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>046c785</font>-<font color=green>(2015-09-30)</font><font color=black><b>Provider.js: Data To Include allows zero selections</b></font><font color=grey>- (stevemarkel)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint TotalEclipseoftheHeart:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-msp-relay</b><br><u>Version</u><b>&nbspr_5.0.0_70</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+CAAS Core – 5.1.0_9
+DMP 5.0.0_58
+Metadata – Fix to Bug VODDAI-8156: RefreshCache job not working on cron schedule. No new properties.
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_66</b></u><br>
+<pre>
+* <font color=blue>0d2b799</font>-<font color=green>(2015-10-09)</font><font color=black><b>Guess what.... that's right... logging</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (HEAD, tag: v_5.0.0_70, origin/br_5.0.0, br_5.0.0)</font>
+* <font color=blue>649abb8</font>-<font color=green>(2015-10-09)</font><font color=black><b>adding check to hhid decrypt test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>61e1dc6</font>-<font color=green>(2015-10-09)</font><font color=black><b>removing tyler tag</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_69)</font>
+* <font color=blue>1105fd6</font>-<font color=green>(2015-10-09)</font><font color=black><b>updated log path for rollover</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>a0ddaa8</font>-<font color=green>(2015-10-09)</font><font color=black><b>Wired in cacheRefreshTrigger</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>d753328</font>-<font color=green>(2015-10-06)</font><font color=black><b>more logging cleanup</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_68)</font>
+* <font color=blue>e5f607e</font>-<font color=green>(2015-10-01)</font><font color=black><b>converted logging to use slf4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_67)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint TotalEclipseoftheHeart:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_539</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+(linked to DCE 5.0.0_39)
+ADS Core: 4.0.0_132
+SMSi Pub: 5.0.0_47
+Metadata - Fix to Bug VODDAI-8006:Response logic added for ADS-DCE message exchange. ADS will not crash out when it receives a false acknowledgement from DCE. No new properties. Linked with DCE build 5.0.0_39. Already in Performance.
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_539/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_539/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_534</b></u><br>
+<pre>
+* <font color=blue>d50457b</font>-<font color=green>(2015-09-25)</font><font color=black><b>more dce test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.0.0_539, tag: v_4.0.0_538)</font>
+* <font color=blue>e9749a9</font>-<font color=green>(2015-09-24)</font><font color=black><b>Adjusting xml files to reflect new messaging for DCE.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_4.0.0_537)</font>
+* <font color=blue>cd81c94</font>-<font color=green>(2015-09-23)</font><font color=black><b>more changes to dce test for error checking</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.0.0_536)</font>
+*   <font color=blue>5a6a54e</font>-<font color=green>(2015-09-23)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>669f31d</font>-<font color=green>(2015-09-11)</font><font color=black><b>Reverting insight removal until a less critical timeframe</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (tag: v_4.0.0_535)</font>
+* | <font color=blue>912c30c</font>-<font color=green>(2015-09-23)</font><font color=black><b>tests for new DCE responses</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>c1876ef</font>-<font color=green>(2015-09-11)</font><font color=black><b>more test changes for rating metadata fix</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint TotalEclipseoftheHeart:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_541</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Decision Engine: 4.0.0_541 (REMA needs this build)
+ADS Core: 4.0.0_132
+SMSi Pub: 5.0.0_47
+Metadata – Added AdAssetPEID to the PlacementResponse so that REMA can persist SMSI without the CAAS/ADS Core lookup (VODDAI-7448). No new properties. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_539</b></u><br>
+<pre>
+* <font color=blue>900ba2b</font>-<font color=green>(2015-10-01)</font><font color=black><b>Correcting unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_4.0.0_541)</font>
+*   <font color=blue>8544df1</font>-<font color=green>(2015-10-01)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>428ef28</font>-<font color=green>(2015-10-01)</font><font color=black><b>VODDAI-7448 adding campaignLineRef attribute to Content element.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>b478ad2</font>-<font color=green>(2015-10-01)</font><font color=black><b>fixed paths in new tests for campaignLineRef</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>fef4554</font>-<font color=green>(2015-09-30)</font><font color=black><b>tests for VODDAI-7448</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.0.0_540)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint TotalEclipseoftheHeart:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_5.0.0_47</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Matt:
+
+Improved functionality around failed beacons. Goes along with reqMan 171.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_33</b></u><br>
+<pre>
+* <font color=blue>723667c</font>-<font color=green>(2015-10-12)</font><font color=black><b>VODDAI-7749: Failing when not following beacon redirects.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_48, tag: v_5.0.0_47)</font>
+* <font color=blue>303af90</font>-<font color=green>(2015-10-08)</font><font color=black><b>Fixed 8143 test</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_46)</font>
+*   <font color=blue>91a717d</font>-<font color=green>(2015-10-08)</font><font color=black><b>8143 test adjustment, with merge fix after John 8135 commit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>817bab1</font>-<font color=green>(2015-10-08)</font><font color=black><b>RetrySuccessBeaconActor unit tests.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>341aa9e</font>-<font color=green>(2015-10-07)</font><font color=black><b>Spelling & grammar in comments</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_45)</font>
+| * <font color=blue>5831101</font>-<font color=green>(2015-10-07)</font><font color=black><b>Added test for expired beacons</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>123417f</font>-<font color=green>(2015-10-07)</font><font color=black><b>resolved conflict</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>b753c89</font>-<font color=green>(2015-10-08)</font><font color=black><b>8143 test adjustment</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>89519ee</font>-<font color=green>(2015-10-07)</font><font color=black><b>Pushing test for ken, 8143</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>1ff79d1</font>-<font color=green>(2015-10-07)</font><font color=black><b>Unit tests for FailedBeaconActor</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>f6cfe19</font>-<font color=green>(2015-10-07)</font><font color=black><b>Fixed insert of failed beacons so a timestamp is used instead of a date.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>bda12c6</font>-<font color=green>(2015-10-07)</font><font color=black><b>Pushing test for ken, 8143</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>b922898</font>-<font color=green>(2015-10-06)</font><font color=black><b>Placeholder test for 7970</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_44)</font>
+* <font color=blue>d80420a</font>-<font color=green>(2015-10-06)</font><font color=black><b>Tested and closed 8135</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f461b4f</font>-<font color=green>(2015-10-05)</font><font color=black><b>Limit beacon retry query to those that have not expired.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_43)</font>
+* <font color=blue>ba884bd</font>-<font color=green>(2015-10-01)</font><font color=black><b>BeaconRetryActor unit tests.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_42)</font>
+*   <font color=blue>334ccd1</font>-<font color=green>(2015-10-01)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/smsi-publisher into br_5.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>7e79a4e</font>-<font color=green>(2015-10-01)</font><font color=black><b>Finally! The 7959 story lives and breathes and works, but only in scrum3</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>d74e274</font>-<font color=green>(2015-10-01)</font><font color=black><b>Fixed "Send Impression - Failure" unit test</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>6cebd9a</font>-<font color=green>(2015-09-30)</font><font color=black><b>More in depth tests 7959</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_41)</font>
+*   <font color=blue>957abee</font>-<font color=green>(2015-09-29)</font><font color=black><b>Testing the retry failed beacon logic</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_40)</font>
+|\  
+| * <font color=blue>2af3ef4</font>-<font color=green>(2015-09-29)</font><font color=black><b>mmajor - switched all jobs off, sans refresh and readySession</b></font><font color=grey>- (MajorMatt)</font><font color=red></font>
+| *   <font color=blue>fbe8839</font>-<font color=green>(2015-09-29)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/smsi-publisher into br_5.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_39)</font>
+| |\  
+| | * <font color=blue>6929654</font>-<font color=green>(2015-09-29)</font><font color=black><b>8048 - Beacons require Viewflag</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| * | <font color=blue>5661346</font>-<font color=green>(2015-09-29)</font><font color=black><b>Remove and log expired beacons.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>209d5fe</font>-<font color=green>(2015-09-29)</font><font color=black><b>Testing the retry failed beacon logic</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>c59f127</font>-<font color=green>(2015-09-29)</font><font color=black><b>Added feature for failed and retrying beacons</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>e276f16</font>-<font color=green>(2015-09-29)</font><font color=black><b>Added comments to other config files.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>127e94e</font>-<font color=green>(2015-09-29)</font><font color=black><b>Added comments to config file.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>dc4f2a9</font>-<font color=green>(2015-09-29)</font><font color=black><b>Added feature for failed and retrying beacons</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>bb16709</font>-<font color=green>(2015-09-28)</font><font color=black><b>Changed beacon delete procedure to remove by ID rather than URL string, so identical URLs in same lot will not get deleted.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_38)</font>
+*   <font color=blue>4793e39</font>-<font color=green>(2015-09-28)</font><font color=black><b>Added test in the REMAbeacons feature for 7959 retry logic</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>0df8fc4</font>-<font color=green>(2015-09-28)</font><font color=black><b>Retry beacons</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>8909f0a</font>-<font color=green>(2015-09-28)</font><font color=black><b>Added test in the REMAbeacons feature for 7959 retry logic</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>97b3824</font>-<font color=green>(2015-09-25)</font><font color=black><b>Removed extra } from beacon fail log message</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_37, tag: v_5.0.0_36)</font>
+* <font color=blue>9d4c088</font>-<font color=green>(2015-09-25)</font><font color=black><b>Added URL to log message on beacon result</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>11429a7</font>-<font color=green>(2015-09-25)</font><font color=black><b>Implement logging on beacon result.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>5767f3b</font>-<font color=green>(2015-09-22)</font><font color=black><b>Ensure presentation is an impression (viewFlag=true) before firing beacon</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_35)</font>
+* <font color=blue>eac2e98</font>-<font color=green>(2015-09-01)</font><font color=black><b>Updated src test; Added Beacon test, data file</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (tag: v_5.0.0_34)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint TotalEclipseoftheHeart:</b></u><p>
+<u>Release of Component</u><b>&nbsprequest-mgr</b><br><u>Version</u><b>&nbspr_5.0.0_171</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Matt:
+
+Improved functionality for the hBase centric reqMan, also includes RHC fix for header issue. </b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_152</b></u><br>
+<pre>
+*   <font color=blue>826fd26</font>-<font color=green>(2015-10-12)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0.1' into br_5.0.0</b></font><font color=grey>- (Kenneth Leider)</font><font color=red> (tag: v_5.0.0_171)</font>
+|\  
+| * <font color=blue>40eaa63</font>-<font color=green>(2015-10-07)</font><font color=black><b>VODDAI-8138 : Fixed bad log level on session collector messages.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0.1_5, origin/br_5.0.0.1)</font>
+| * <font color=blue>de55e41</font>-<font color=green>(2015-10-07)</font><font color=black><b>fixed routerservlet.java</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (tag: v_5.0.0.1_4)</font>
+| * <font color=blue>ff4af00</font>-<font color=green>(2015-10-06)</font><font color=black><b>VODDAI-8138 : Using a resonable content-type on http response</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0.1_3)</font>
+* <font color=blue>2281c24</font>-<font color=green>(2015-10-12)</font><font color=black><b>Fix unit tests</b></font><font color=grey>- (Kenneth Leider)</font><font color=red></font>
+* <font color=blue>51ff592</font>-<font color=green>(2015-10-12)</font><font color=black><b>Fixes so the app can launch again</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>5a3dbfb</font>-<font color=green>(2015-10-12)</font><font color=black><b>Actor model unit testing.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>cbc8745</font>-<font color=green>(2015-10-09)</font><font color=black><b>Almost finishing touches on 7567 fault tolerant features. Test for part3 to be kenned</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_170)</font>
+|\  
+| * <font color=blue>b7016ec</font>-<font color=green>(2015-10-09)</font><font color=black><b>removed '.functional' from the -Dakka.config.file</b></font><font color=grey>- (MajorMatt)</font><font color=red> (tag: v_5.0.0_169)</font>
+| * <font color=blue>e602b5f</font>-<font color=green>(2015-10-09)</font><font color=black><b>updated hbase.zookeeper property file from quickstart to cv-dvhmanager01.cv.scrum</b></font><font color=grey>- (MajorMatt)</font><font color=red> (tag: v_5.0.0_168)</font>
+* | <font color=blue>8316744</font>-<font color=green>(2015-10-09)</font><font color=black><b>Almost finishing touches on 7567 fault tolerant features. Test for part3 to be kenned</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>ca3794e</font>-<font color=green>(2015-10-09)</font><font color=black><b>Removed annotation and added CR to import line</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_167)</font>
+*   <font color=blue>45f22cd</font>-<font color=green>(2015-10-08)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_166)</font>
+|\  
+| * <font color=blue>3044d27</font>-<font color=green>(2015-10-08)</font><font color=black><b>Finished unit testing everything up to the transmission actor for the route side of things.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| *   <font color=blue>11dad0b</font>-<font color=green>(2015-10-07)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |\  
+| * | <font color=blue>07360c6</font>-<font color=green>(2015-10-06)</font><font color=black><b>Cleaning up and unit testing the routing actor system</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | | <font color=blue>cca2b00</font>-<font color=green>(2015-10-08)</font><font color=black><b>Removed @Component Annotation (Ken)</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>e790eab</font>-<font color=green>(2015-10-07)</font><font color=black><b>Added test for 7474 and 7567</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_165)</font>
+|/  
+* <font color=blue>3dd52ef</font>-<font color=green>(2015-10-05)</font><font color=black><b>Start of handling VMAP with merge</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_164)</font>
+* <font color=blue>2221218</font>-<font color=green>(2015-10-05)</font><font color=black><b>Start of handling VMAP</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+*   <font color=blue>03f5188</font>-<font color=green>(2015-10-02)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Kenneth Leider)</font><font color=red> (tag: v_5.0.0_163)</font>
+|\  
+| * <font color=blue>9b018b0</font>-<font color=green>(2015-10-01)</font><font color=black><b>Added tests for 7567 part 1</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_162)</font>
+* | <font color=blue>8a226b3</font>-<font color=green>(2015-10-01)</font><font color=black><b>Some changes to messaging to handle returning values more cleanly.</b></font><font color=grey>- (Kenneth Leider)</font><font color=red></font>
+* | <font color=blue>f3fb1ca</font>-<font color=green>(2015-09-29)</font><font color=black><b>Upgrading computer.  Saving Work (cherry picked from commit a69a75b)</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|/  
+* <font color=blue>544b9b3</font>-<font color=green>(2015-09-28)</font><font color=black><b>Added setenv path for Akka configuration</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_161)</font>
+* <font color=blue>4418ffa</font>-<font color=green>(2015-09-28)</font><font color=black><b>Resolved hbase conflict with metadata schema validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_160)</font>
+*   <font color=blue>658ef80</font>-<font color=green>(2015-09-25)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi_data_collector into br_5.0.0</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (tag: v_5.0.0_159)</font>
+|\  
+| *   <font color=blue>5184cdc</font>-<font color=green>(2015-09-25)</font><font color=black><b>Added comments and removed unnecessary tags. Some code lines moved to background</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| |\  
+| * | <font color=blue>99f920d</font>-<font color=green>(2015-09-25)</font><font color=black><b>Added comments and removed unnecessary tags. Some code lines moved to background</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | | <font color=blue>ddd7e98</font>-<font color=green>(2015-09-25)</font><font color=black><b>new endAll tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>7236767</font>-<font color=green>(2015-09-25)</font><font color=black><b>update akka config in pom.xml</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* |   <font color=blue>db69b6b</font>-<font color=green>(2015-09-25)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi_data_collector into br_5.0.0</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>d8ac9bb</font>-<font color=green>(2015-09-24)</font><font color=black><b>Gatling Data</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_158)</font>
+| * |   <font color=blue>f63b81e</font>-<font color=green>(2015-09-24)</font><font color=black><b>Merge branch 'br_5.0.0' into khl_actor_routing</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>f9ae3a8</font>-<font color=green>(2015-09-21)</font><font color=black><b>Added HBase cleanUp steps</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_157)</font>
+| | |/  
+| * | <font color=blue>22f1a51</font>-<font color=green>(2015-09-24)</font><font color=black><b>Keep plugging away at a creating an architecture to support future requirements.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * |   <font color=blue>6c796f0</font>-<font color=green>(2015-09-21)</font><font color=black><b>Merge branch 'khl_actor_routing' of https://github.com/CanoeVentures/request-mgr into khl_actor_routing</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>0abc6c4</font>-<font color=green>(2015-09-11)</font><font color=black><b>First cut of using a more extensive actor system to do routing.  Includes support for more dynamic templating of the forwarded request.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |  /  
+| * | <font color=blue>a48c8c9</font>-<font color=green>(2015-09-11)</font><font color=black><b>First cut of using a more extensive actor system to do routing.  Includes support for more dynamic templating of the forwarded request.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |/  
+| * <font color=blue>f9ee903</font>-<font color=green>(2015-09-21)</font><font color=black><b>Working on multiResponse feature, added comments into the SCTEcomcastPSNpersist feature. Started on SCTEreqRespPersist feature.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>d7236a0</font>-<font color=green>(2015-09-21)</font><font color=black><b>Added a comment, modified a tag</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| *   <font color=blue>1e104e0</font>-<font color=green>(2015-09-21)</font><font color=black><b>Fixed little issues and commented tests inside SCTE only folder. Also commented the SCTEtoVASTrequest feature. ALSO added /vast-site to URL in DB</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| |\  
+| * | <font color=blue>29a7626</font>-<font color=green>(2015-09-21)</font><font color=black><b>Fixed little issues and commented tests inside SCTE only folder. Also commented the SCTEtoVASTrequest feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | | <font color=blue>3a49b41</font>-<font color=green>(2015-09-25)</font><font color=black><b>update VAST_TWC_psn</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>edd609a</font>-<font color=green>(2015-09-18)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/request-mgr into br_5.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_156)</font>
+|\ \  
+| |/  
+| * <font color=blue>70ce254</font>-<font color=green>(2015-09-18)</font><font color=black><b>Adjusted referenced tracking numbers</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>0663e6a</font>-<font color=green>(2015-09-18)</font><font color=black><b>Some cleanup of old session collector classes and info</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>cc19320</font>-<font color=green>(2015-09-17)</font><font color=black><b>New feature for differing responsed from mockServer... but I cannot get it to work yet. KEEEENNNNN!!!!!!!</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_155)</font>
+*   <font color=blue>6b10737</font>-<font color=green>(2015-09-17)</font><font color=black><b>Fixed the VAST_TWC_psn feature. Added the defaultSite and defaultTemplate into cuke properties.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>27864ac</font>-<font color=green>(2015-09-16)</font><font color=black><b>VODDAI-8058 Simplified exclude endAll from validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_154)</font>
+| * <font color=blue>b3edca1</font>-<font color=green>(2015-09-16)</font><font color=black><b>VODDAI-8058 Exclude endAll from validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>5ee790f</font>-<font color=green>(2015-09-16)</font><font color=black><b>VODDAI-7968 Add test for missing Spot for TWC message</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| *   <font color=blue>c8e43a0</font>-<font color=green>(2015-09-15)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi_data_collector into br_5.0.0</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (tag: v_5.0.0_153)</font>
+| |\  
+| | * <font color=blue>c591edf</font>-<font color=green>(2015-09-15)</font><font color=black><b>Corrected setenv; modified expected VastURL log format</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * | <font color=blue>2698e50</font>-<font color=green>(2015-09-15)</font><font color=black><b>Started syncing PSN persist features (Com, TWC)</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| |/  
+| * <font color=blue>cb02896</font>-<font color=green>(2015-09-15)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi_data_collector into br_5.0.0</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| * <font color=blue>00d99a2</font>-<font color=green>(2015-09-15)</font><font color=black><b>Cleaned up Comcast PSN Validation (VAST)</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>b6eebed</font>-<font color=green>(2015-09-17)</font><font color=black><b>Fixed the VAST_TWC_psn feature. Added the defaultSite and defaultTemplate into cuke properties.</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

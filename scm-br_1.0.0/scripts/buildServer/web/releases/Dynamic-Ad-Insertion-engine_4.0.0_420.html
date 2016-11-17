@@ -1,0 +1,111 @@
+<b><u>Component Release Info for Sprint Picasso:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_420</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+ADS Core – 4.0.0_108
+SMSi Pub DB – 4.0.0_267
+Metadata – CISNotification for TWC ManagedIP, deviceId Persistance to SMSi Publisher, fix for VODDAI-6007, fix for VODDAI-6109 
+New Properties – Added to both ads-application.properties AND cis-application.properties: cis.batchsave.size=1000
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_420/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_420/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_420/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_420/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_420/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_420/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_420/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_420/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_420/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_420/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_420/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_420/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_420/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_420/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_409</b></u><br>
+<pre>
+* <font color=blue>aff2c8a</font>-<font color=green>(2014-08-19)</font><font color=black><b>Added code to pull in CIS endponits</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_420)</font>
+* <font color=blue>1a67052</font>-<font color=green>(2014-08-19)</font><font color=black><b>Fixed messages</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>c09fcbc</font>-<font color=green>(2014-08-19)</font><font color=black><b>fixed data issues in AAA test</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>c599c83</font>-<font color=green>(2014-08-19)</font><font color=black><b>final changes for cis notification tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>8ca7fca</font>-<font color=green>(2014-08-19)</font><font color=black><b>Bug fixes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>d29e724</font>-<font color=green>(2014-08-19)</font><font color=black><b>changes to CIS tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>da9e84e</font>-<font color=green>(2014-08-19)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>fc1c9bf</font>-<font color=green>(2014-08-18)</font><font color=black><b>Unit tests for Notification Validation</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>4f2525d</font>-<font color=green>(2014-08-18)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>78e101b</font>-<font color=green>(2014-08-18)</font><font color=black><b>Removed statusCode.detail on success</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_419)</font>
+| * <font color=blue>90163f3</font>-<font color=green>(2014-08-18)</font><font color=black><b>Added validation around ProviderId</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>681ead6</font>-<font color=green>(2014-08-18)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>be66a6c</font>-<font color=green>(2014-08-18)</font><font color=black><b>Added new cache for CIS endpoints</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>680b2e1</font>-<font color=green>(2014-08-18)</font><font color=black><b>added provider_id validation and fixed templates to have nbc.com</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>3950c5f</font>-<font color=green>(2014-08-18)</font><font color=black><b>modified multiple persistance tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>eb3286d</font>-<font color=green>(2014-08-18)</font><font color=black><b>Added multiple cases for CIS persistence.</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+* <font color=blue>a91ca1d</font>-<font color=green>(2014-08-18)</font><font color=black><b>Added notes for needed tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>0dbd517</font>-<font color=green>(2014-08-18)</font><font color=black><b>Message changes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>c90014b</font>-<font color=green>(2014-08-18)</font><font color=black><b>Changes to support manual validation</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>228adcc</font>-<font color=green>(2014-08-18)</font><font color=black><b>adding cis-notification persistence feature file</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>b4390f3</font>-<font color=green>(2014-08-18)</font><font color=black><b>multi template added and edit to validation</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>ee8c23b</font>-<font color=green>(2014-08-18)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>91de8e0</font>-<font color=green>(2014-08-18)</font><font color=black><b>Turning off schema validation and adding manual…..</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>8b88a49</font>-<font color=green>(2014-08-18)</font><font color=black><b>custom validation errors added</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>e220a1a</font>-<font color=green>(2014-08-18)</font><font color=black><b>test changes ... again</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>4e68949</font>-<font color=green>(2014-08-18)</font><font color=black><b>test changes</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+|\  
+| * <font color=blue>2eee491</font>-<font color=green>(2014-08-18)</font><font color=black><b>cis notif test changes</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>55a3499</font>-<font color=green>(2014-08-18)</font><font color=black><b>renamed cis notification tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>cbbe745</font>-<font color=green>(2014-08-15)</font><font color=black><b>Added new method to handle strangeness in cis schema</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_418)</font>
+| * <font color=blue>eda82cb</font>-<font color=green>(2014-08-15)</font><font color=black><b>Added schema validation</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>8bd48a4</font>-<font color=green>(2014-08-15)</font><font color=black><b>resolved conflicts in cis persistance</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| *   <font color=blue>613865d</font>-<font color=green>(2014-08-15)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\  
+| | * <font color=blue>2303025</font>-<font color=green>(2014-08-15)</font><font color=black><b>Added xml_type groovy</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>0efd038</font>-<font color=green>(2014-08-15)</font><font color=black><b>cis notif test changes</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* | | <font color=blue>f91bc91</font>-<font color=green>(2014-08-18)</font><font color=black><b>updated endpoint</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>9f323d7</font>-<font color=green>(2014-08-15)</font><font color=black><b>Changed the end point from tbd to actual endpoint</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+|/  
+* <font color=blue>8be464e</font>-<font color=green>(2014-08-15)</font><font color=black><b>Unit tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>a77ac78</font>-<font color=green>(2014-08-15)</font><font color=black><b>Fixed unit tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>c90c48e</font>-<font color=green>(2014-08-15)</font><font color=black><b>Unit Tests for CisNotificationValidator</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>6162942</font>-<font color=green>(2014-08-14)</font><font color=black><b>Fixed comparator</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_417)</font>
+* <font color=blue>11de3a4</font>-<font color=green>(2014-08-14)</font><font color=black><b>VODDAI-5840</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>2e069eb</font>-<font color=green>(2014-08-14)</font><font color=black><b>test changes for VODDAI-6007</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>d4e9fde</font>-<font color=green>(2014-08-14)</font><font color=black><b>Removing "Ad Asset not found in Metadata" error.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>a23af7d</font>-<font color=green>(2014-08-14)</font><font color=black><b>VODDAI-5839</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>203ffe1</font>-<font color=green>(2014-08-11)</font><font color=black><b>Revert "Revert "Merge branch 'CISFeature' into br_4.0.0""</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>5a2e118</font>-<font color=green>(2014-08-12)</font><font color=black><b>Deleted the unused sql files.</b></font><font color=grey>- (prithvi)</font><font color=red> (v_4.0.0_416)</font>
+*   <font color=blue>20128d5</font>-<font color=green>(2014-08-12)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_415)</font>
+|\  
+| * <font color=blue>0dbfe24</font>-<font color=green>(2014-08-12)</font><font color=black><b>Deleted the unwanted xml files</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+* | <font color=blue>e9517e6</font>-<font color=green>(2014-08-12)</font><font color=black><b>small changes to smsi pub tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>6689939</font>-<font color=green>(2014-08-11)</font><font color=black><b>Added test names for the scenario.</b></font><font color=grey>- (prithvi)</font><font color=red> (v_4.0.0_414)</font>
+* <font color=blue>f13ffc2</font>-<font color=green>(2014-08-11)</font><font color=black><b>VODDAI-6007</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>6ea06d0</font>-<font color=green>(2014-08-11)</font><font color=black><b>VODDAI-6007</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>127c4ce</font>-<font color=green>(2014-08-08)</font><font color=black><b>Fixed the errors in some features of publisher</b></font><font color=grey>- (prithvi)</font><font color=red> (v_4.0.0_413)</font>
+* <font color=blue>86080ae</font>-<font color=green>(2014-08-08)</font><font color=black><b>refactored ad asset availability DE logic test to include BH, Cox, CMCT FBN, and TWC ManagedIP</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>654a3a6</font>-<font color=green>(2014-08-07)</font><font color=black><b>Removed the extra line which was not required.</b></font><font color=grey>- (prithvi)</font><font color=red> (v_4.0.0_412)</font>
+* <font color=blue>ea7b90f</font>-<font color=green>(2014-08-07)</font><font color=black><b>fixed multiprovider priority feature</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>fc531b7</font>-<font color=green>(2014-08-07)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>0d1306a</font>-<font color=green>(2014-08-07)</font><font color=black><b>Pointed ADS at main line smsi-pub branch</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>6f96042</font>-<font color=green>(2014-08-07)</font><font color=black><b>added multiple providers test to initial qualifiers</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>528cf27</font>-<font color=green>(2014-08-06)</font><font color=black><b>VODDAI-5982</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_411)</font>
+*   <font color=blue>1dd78f9</font>-<font color=green>(2014-08-06)</font><font color=black><b>Merge branch 'DeviceID' into br_4.0.0</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+|\  
+| * <font color=blue>d146fb1</font>-<font color=green>(2014-07-17)</font><font color=black><b>Merge branch 'br_4.0.0' into DeviceID</b></font><font color=grey>- (prithvi)</font><font color=red> (origin/DeviceID)</font>
+| * <font color=blue>4893482</font>-<font color=green>(2014-07-17)</font><font color=black><b>Added device Id test to smsi Id test</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+* <font color=blue>146c873</font>-<font color=green>(2014-08-06)</font><font color=black><b>uncommented loading db.</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+* <font color=blue>ad554eb</font>-<font color=green>(2014-08-06)</font><font color=black><b>added new line for loading different sql</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+* <font color=blue>a94c22c</font>-<font color=green>(2014-08-06)</font><font color=black><b>added oxygen and usa to sql file</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+* <font color=blue>18322aa</font>-<font color=green>(2014-08-06)</font><font color=black><b>Updated jsp to include conversionRatio</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>01954b4</font>-<font color=green>(2014-08-05)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_410)</font>
+* <font color=blue>b06621e</font>-<font color=green>(2014-08-05)</font><font color=black><b>changed session status checks to all equal 0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font></pre>
+<hr>
+<p>

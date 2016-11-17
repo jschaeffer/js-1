@@ -1,0 +1,25 @@
+#!/bin/sh
+#set the vars
+
+#Obfuscation.
+fnObfuscate() {
+
+echo "cd /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}"
+export DB_USER=lyam
+
+cd /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}
+
+sed -i "s/--username=${DB_USER}/--username=XXXXX/g" log
+#sed -i "s/--password=${DB_PASS}/--password=XXXXX/g" log
+}
+
+#jobname="/opt/cie/jenkins/jobs/dai_scm-PackageDeploy-4.0.0/builds/103/log"
+JOB_NAME="dai_scm-PackageDeploy-4.0.0"
+BUILD_NUMBER="105"
+while :;do
+	chkcomp=`grep "Finished: SUCCESS"  /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log` 
+	if [ -z "$chkcomp" ]; then
+	else echo $chkcomp 
+           fnObfuscate
+	fi
+done

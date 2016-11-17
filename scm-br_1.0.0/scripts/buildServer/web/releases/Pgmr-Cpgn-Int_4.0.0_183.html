@@ -1,0 +1,44 @@
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_183</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+CAAS CORE 4.0.0_135:  (MCLPS, Freq. Cap., Pl. Limit merged; FW "cls" sent once; ACP trigger updated; Series Name/ID added to metadata tables)
+PCI 4.0.0_183:  Ingests Series Name/ID; fix for when no Freq. Cap. is defined.  
+CIP-Sender 4.0.0_201:  Only send "cls" from FW once
+ACP 4.0.0_30:  Trigger CIP when start date is moved</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_170</b></u><br>
+<pre>
+* <font color=blue>603aefb</font>-<font color=green>(2014-05-27)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Removed operator validation for Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (HEAD, v_4.0.0_183, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>43ed861</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated namespace for SeriesName and ID to urn:cablelabs:md:xsd:title:3.0</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_182)</font>
+* <font color=blue>7373528</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated operator validaitons based on current MD target validations</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>483ff3c</font>-<font color=green>(2014-05-23)</font><font color=black><b>Added Db check for the operatore lt gt le ge for MD targeting</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d8c1dcf</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added MD CQG.Term@operator validations</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_181)</font>
+* <font color=blue>4da100c</font>-<font color=green>(2014-05-19)</font><font color=black><b>Reformatted template to have all MD targets in one CQG. Removed unnecessary validation tests. Added peristence tests in persistMetaInfo feature with a new multi series target test</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_180)</font>
+*   <font color=blue>a810f5b</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed namespace, corrected validation stories, added persistence test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>22e52d5</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID Fix for error message</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_179)</font>
+| * <font color=blue>5186dba</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID Fix for operators</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>4cc618f</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed namespace, corrected validation stories, added persistence test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>98716d1</font>-<font color=green>(2014-05-19)</font><font color=black><b>Removed mcls feature. Now exists only in feature branch</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_178)</font>
+*   <font color=blue>ca9d8dd</font>-<font color=green>(2014-05-19)</font><font color=black><b>Deleted frequencyCap feature. Exists only in feature branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>7ae2179</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>78b79c9</font>-<font color=green>(2014-05-19)</font><font color=black><b>Corrected namespace value for Series targets</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>5332914</font>-<font color=green>(2014-05-16)</font><font color=black><b>Fix for Frequency Capping not present</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_177)</font>
+* <font color=blue>fc0e812</font>-<font color=green>(2014-05-16)</font><font color=black><b>Added template for new series function</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>378ef3e</font>-<font color=green>(2014-05-15)</font><font color=black><b>Added seriesID name features in commonQualifier</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_176)</font>
+* <font color=blue>5e16ba4</font>-<font color=green>(2014-05-15)</font><font color=black><b>Added placeholder for new Series stories</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b166f1e</font>-<font color=green>(2014-05-02)</font><font color=black><b>Added some missing cases, some organizing</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_175)</font>
+* <font color=blue>496c391</font>-<font color=green>(2014-04-29)</font><font color=black><b>Added more robust checks for multiple target groups in the Db</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_174)</font>
+* <font color=blue>3d1db05</font>-<font color=green>(2014-04-29)</font><font color=black><b>Added test for multiple flight windows for a multiAsset CIP</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>e16bbce</font>-<font color=green>(2014-04-29)</font><font color=black><b>Removed underConstruction tag</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>0125350</font>-<font color=green>(2014-04-29)</font><font color=black><b>Removed underConstruction tag</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>2a554ff</font>-<font color=green>(2014-04-28)</font><font color=black><b>Added test for different programmers, different campaigns, same CIP in multiParent feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_173)</font>
+* <font color=blue>730697a</font>-<font color=green>(2014-04-28)</font><font color=black><b>Added template and feature for PCI MCLPS ingestion validation and persistence</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f261578</font>-<font color=green>(2014-04-23)</font><font color=black><b>Updated tests to run more smoothly. Added tag @immediate to tests requiring CIPimmediate to be running</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_172)</font>
+* <font color=blue>48d44cb</font>-<font color=green>(2014-04-22)</font><font color=black><b>Removed tags, made small modifications in attempt to make regression succeed all-at-once</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_171)</font>
+* <font color=blue>28e1157</font>-<font color=green>(2014-04-08)</font><font color=black><b>Added test for different sequential programmer</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>aa00266</font>-<font color=green>(2014-04-08)</font><font color=black><b>Added test for different sequential programmer</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.12">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.13.3">
+      <projectUrl>https://github.com/CanoeVentures/crypt/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>true</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>true</notifyUnstable>
+      <notifyFailure>true</notifyFailure>
+      <notifyBackToNormal>true</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.5.3">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/crypt.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_5.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/crypt/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>9 2 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <rootModule>
+    <groupId>com.canoeventures.crypt</groupId>
+    <artifactId>crypt-parent</artifactId>
+  </rootModule>
+  <goals>clean install -U -DskipTests</goals>
+  <mavenName>Maven3.2</mavenName>
+  <mavenOpts>-Dm3plugin.lib=/opt/cie/jenkins/plugins/artifactory/WEB-INF/lib</mavenOpts>
+  <aggregatorStyleBuild>true</aggregatorStyleBuild>
+  <incrementalBuild>false</incrementalBuild>
+  <ignoreUpstremChanges>true</ignoreUpstremChanges>
+  <archivingDisabled>false</archivingDisabled>
+  <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
+  <resolveDependencies>false</resolveDependencies>
+  <processPlugins>false</processPlugins>
+  <mavenValidationLevel>-1</mavenValidationLevel>
+  <runHeadless>false</runHeadless>
+  <settingConfigId></settingConfigId>
+  <globalSettingConfigId></globalSettingConfigId>
+  <disableTriggerDownstreamProjects>false</disableTriggerDownstreamProjects>
+  <blockTriggerWhenBuilding>true</blockTriggerWhenBuilding>
+  <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+  <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+  <reporters/>
+  <publishers>
+    <org.jfrog.hudson.ArtifactoryRedeployPublisher plugin="artifactory@2.5.1">
+      <evenIfUnstable>false</evenIfUnstable>
+      <details>
+        <artifactoryName>https://canoe-ventures.artifactoryonline.com/canoe_ventures</artifactoryName>
+        <artifactoryUrl>https://canoe_ventures.jfrog.io/canoe_ventures</artifactoryUrl>
+        <deployReleaseRepository>
+          <keyFromText>libs-releases-local</keyFromText>
+          <keyFromSelect>libs-releases-local</keyFromSelect>
+          <dynamicMode>false</dynamicMode>
+        </deployReleaseRepository>
+        <deploySnapshotRepository>
+          <keyFromText>libs-snapshots-local</keyFromText>
+          <keyFromSelect>libs-snapshots-local</keyFromSelect>
+          <dynamicMode>false</dynamicMode>
+        </deploySnapshotRepository>
+        <stagingPlugin>
+          <pluginName>None</pluginName>
+        </stagingPlugin>
+        <userPluginKey>None</userPluginKey>
+      </details>
+      <deployArtifacts>true</deployArtifacts>
+      <artifactDeploymentPatterns>
+        <includePatterns></includePatterns>
+        <excludePatterns></excludePatterns>
+      </artifactDeploymentPatterns>
+      <deployerCredentialsConfig>
+        <credentials>
+          <username></username>
+          <password></password>
+        </credentials>
+        <credentialsId></credentialsId>
+        <overridingCredentials>false</overridingCredentials>
+      </deployerCredentialsConfig>
+      <includeEnvVars>false</includeEnvVars>
+      <envVarsPatterns>
+        <includePatterns></includePatterns>
+        <excludePatterns>*password*,*secret*</excludePatterns>
+      </envVarsPatterns>
+      <runChecks>false</runChecks>
+      <violationRecipients></violationRecipients>
+      <includePublishArtifacts>false</includePublishArtifacts>
+      <passIdentifiedDownstream>false</passIdentifiedDownstream>
+      <scopes></scopes>
+      <licenseAutoDiscovery>true</licenseAutoDiscovery>
+      <disableLicenseAutoDiscovery>false</disableLicenseAutoDiscovery>
+      <discardOldBuilds>false</discardOldBuilds>
+      <discardBuildArtifacts>true</discardBuildArtifacts>
+      <matrixParams></matrixParams>
+      <enableIssueTrackerIntegration>false</enableIssueTrackerIntegration>
+      <allowPromotionOfNonStagedBuilds>false</allowPromotionOfNonStagedBuilds>
+      <allowBintrayPushOfNonStageBuilds>false</allowBintrayPushOfNonStageBuilds>
+      <filterExcludedArtifactsFromBuild>false</filterExcludedArtifactsFromBuild>
+      <recordAllDependencies>false</recordAllDependencies>
+      <defaultPromotionTargetRepository></defaultPromotionTargetRepository>
+      <deployBuildInfo>true</deployBuildInfo>
+      <aggregationBuildStatus>Released</aggregationBuildStatus>
+      <aggregateBuildIssues>false</aggregateBuildIssues>
+      <blackDuckRunChecks>false</blackDuckRunChecks>
+      <blackDuckAppName></blackDuckAppName>
+      <blackDuckAppVersion></blackDuckAppVersion>
+      <blackDuckReportRecipients></blackDuckReportRecipients>
+      <blackDuckScopes></blackDuckScopes>
+      <blackDuckIncludePublishedArtifacts>false</blackDuckIncludePublishedArtifacts>
+      <autoCreateMissingComponentRequests>false</autoCreateMissingComponentRequests>
+      <autoDiscardStaleComponentRequests>false</autoDiscardStaleComponentRequests>
+    </org.jfrog.hudson.ArtifactoryRedeployPublisher>
+    <hudson.plugins.git.GitPublisher plugin="git@2.5.3">
+      <configVersion>2</configVersion>
+      <pushMerge>false</pushMerge>
+      <pushOnlyIfSuccess>false</pushOnlyIfSuccess>
+      <forcePush>false</forcePush>
+      <tagsToPush>
+        <hudson.plugins.git.GitPublisher_-TagToPush>
+          <targetRepoName>origin</targetRepoName>
+          <tagName>v_5.0.0_${BUILD_NUMBER}</tagName>
+          <tagMessage></tagMessage>
+          <createTag>true</createTag>
+          <updateTag>false</updateTag>
+        </hudson.plugins.git.GitPublisher_-TagToPush>
+      </tagsToPush>
+    </hudson.plugins.git.GitPublisher>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.40.5">
+      <recipientList>craig.donovan@canoeventures.com, jeff.schaeffer@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>$DEFAULT_REPLYTO</replyTo>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+  <prebuilders/>
+  <postbuilders>
+    <hudson.plugins.groovy.Groovy plugin="groovy@1.27">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>def VERSION = &quot;5.0.0&quot;
+def PROJECT = &quot;crypt&quot;
+def PROJFILE = &quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+String changelogtemp = &quot;&quot;&quot;
+
+projectRoot=&quot;/opt/cie/jenkins/jobs/crypt-PackageDeploy-$VERSION/workspace&quot;
+commonTargetRoot=&quot;target&quot;
+webappDir=&quot;webapps&quot;
+
+build {
+    build_args=&quot;mvn clean install -DskipTests&quot;
+}
+
+build_package {
+    pre_pkg_cmds {
+            pre_pkg_1=&quot;mv \$projectRoot/upDecrypter/target/crypt-upDecrypter*.jar \$projectRoot/upDecrypter/target/crypt-upDecrypter.jar; mv \$projectRoot/smi/target/crypt-smi*.jar \$projectRoot/smi/target/crypt-smi.jar; mv \$projectRoot/upEncrypter/target/crypt-upEncrypter*.jar \$projectRoot/upEncrypter/target/crypt-upEncrypter.jar; mv \$projectRoot/keygen/target/crypt-keygen*.jar \$projectRoot/keygen/target/crypt-keygen.jar; mv \$projectRoot/decrypter/target/crypt-decrypter*.jar \$projectRoot/decrypter/target/crypt-decrypter.jar; mv \$projectRoot/encrypter/target/crypt-encrypter-*.jar \$projectRoot/encrypter/target/crypt-encrypter.jar; mv \$projectRoot/common/target/crypt-common*.jar \$projectRoot/common/target/crypt-common.jar&quot;
+            pre_pkg_2=&quot;cd \$projectRoot/keygen/target; chmod +x package.bash; ./package.bash&quot;
+    }
+    artifacts {
+        name {
+           common=&quot;crypt-common.jar&quot;
+           decrypter=&quot;crypt-decrypter.jar&quot;
+           encrypter=&quot;crypt-encrypter.jar&quot;
+           bin=&quot;crypt-keygen.jar&quot;
+           smi=&quot;crypt-smi.jar&quot;
+           upDecrypter=&quot;crypt-upDecrypter.jar&quot;
+           upEncrypter=&quot;crypt-upEncrypter.jar&quot;
+           README=&quot;README.txt&quot;
+           config=&quot;config&quot;
+        }
+        location {
+           common=&quot;\$projectRoot/common/target&quot;
+           decrypter=&quot;\$projectRoot/decrypter/target&quot;
+           encrypter=&quot;\$projectRoot/encrypter/target&quot;
+           bin=&quot;\$projectRoot/keygen/target&quot;
+           smi=&quot;\$projectRoot/smi/target&quot;
+           upDecrypter=&quot;\$projectRoot/upDecrypter/target&quot;
+           upEncrypter=&quot;\$projectRoot/upEncrypter/target&quot;
+           README=&quot;\$projectRoot&quot;
+           config=&quot;\$projectRoot&quot;
+        }
+    }
+}
+
+&quot;&quot;&quot;
+File scriptName = new File(&quot;$PROJFILE&quot;)
+        scriptName.write(&quot;${changelogtemp}&quot;)
+        println scriptName
+</command>
+      </scriptSource>
+      <groovyName>(Default)</groovyName>
+      <parameters></parameters>
+      <scriptParameters></scriptParameters>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <classPath></classPath>
+    </hudson.plugins.groovy.Groovy>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export VERSION=&quot;5.0.0&quot;
+export PROJECT=&quot;crypt&quot;
+export PROJFILE=&quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+
+cat $PROJFILE
+
+/opt/build/scripts/CreateJenkinsPackage.sh $PROJECT $PROJECT br_$VERSION ${BUILD_NUMBER}
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to devint by Jenkins &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Component: &lt;/b&gt;acp &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+export VERSION=&quot;5.0.0_${BUILD_NUMBER}&quot;
+export Component=&quot;crypt&quot;; echo &quot;Component - $Component&quot;
+export DB_Rebuild=&quot;Yes&quot;; echo &quot;DB_Rebuild - $DB_Rebuild&quot;
+export Version=${VERSION}; echo &quot;Version - $Version&quot;
+export Clear_Logs=&quot;Yes&quot;; echo &quot;Clear_Logs - $Clear_Logs&quot;
+export DeployTarg=&quot;devint&quot;; echo &quot;DeployTarg - $DeployTarg&quot;
+export DeployUser=&quot;Jenkins&quot;; echo &quot;DeployUser = $DeployUser&quot;
+export BUILD_TAG
+
+echo &quot;Deploying version ${VERSION}&quot;
+echo &quot;&quot;
+echo &quot;&quot;
+
+cd /opt/build/scripts
+#./Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser
+
+echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;yes &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/devint.html /opt/build/scm/scripts/buildServer/log/devint.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/devint.tmp &gt; /opt/build/scm/scripts/buildServer/log/devint.html
+rm /opt/build/scm/scripts/buildServer/log/devint.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=&quot;5.0.0_${BUILD_NUMBER}&quot;
+
+echo &quot;${VERSION}&quot; &gt; /var/www/html/devint/crypt.txt</command>
+    </hudson.tasks.Shell>
+  </postbuilders>
+  <runPostStepsIfResult>
+    <name>FAILURE</name>
+    <ordinal>2</ordinal>
+    <color>RED</color>
+    <completeBuild>true</completeBuild>
+  </runPostStepsIfResult>
+</maven2-moduleset>

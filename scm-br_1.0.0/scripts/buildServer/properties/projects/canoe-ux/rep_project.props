@@ -1,0 +1,133 @@
+    dev {
+        deployUser="tcserver"
+	webappProject="report"
+         artifacts {
+          name {
+            war="dai_reporting.war"
+          }
+          location {
+            war="$commonTargetRoot/"
+          }
+          deploy_type {
+            war="archive"
+          }
+          webapp_project {
+            war="dai_reporting"
+          }
+         }
+
+        environment {
+            name="dvappdai01"
+            ip="10.13.18.113"
+        }
+
+        tcserver {
+           base="/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE"
+           instance_home="/opt/tcserver/instances"
+           instance_name="report"
+           admin_script="tcruntime-ctl.sh"
+           status_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name status"
+           start_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name start"
+           stop_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop"
+        }
+    }
+    scrum1 {
+        deployUser="tcserver"
+        webappProject="report"
+
+         artifacts {
+          name {
+            war="dai_reporting.war"
+          }
+          location {
+            war="$commonTargetRoot/"
+          }
+          deploy_type {
+            war="archive"
+          }
+          webapp_project {
+            war="dai_reporting"
+          }
+         }
+        environment {
+            name="dvappdai02"
+            ip="10.13.18.115"
+        }
+
+        tcserver {
+            base="/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE"
+            instance_home="/opt/tcserver/instances"
+            instance_name="report"
+            admin_script="tcruntime-ctl.sh"
+            status_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name status"
+            start_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name start"
+            stop_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop"
+        }
+    }
+    scrum2 {
+        deployUser="tcserver"
+        webappProject="report"
+
+         artifacts {
+          name {
+            war="dai_reporting.war"
+          }
+          location {
+            war="$commonTargetRoot/"
+          }
+          deploy_type {
+            war="archive"
+          }
+          webapp_project {
+            war="dai_reporting"
+          }
+         }
+        environment {
+            name="dvappdai03"
+            ip="10.13.18.116"
+        }
+
+        tcserver {
+            base="/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE"
+            instance_home="/opt/tcserver/instances"
+            instance_name="report"
+            admin_script="tcruntime-ctl.sh"
+            status_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name status"
+            start_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name start"
+            stop_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop"
+        }
+    }
+    scrum3 {
+        deployUser="tcserver"
+        webappProject="report"
+
+         artifacts {
+          name {
+            war="dai_reporting.war"
+          }
+          location {
+            war="$commonTargetRoot/"
+          }
+          deploy_type {
+            war="archive"
+          }
+          webapp_project {
+            war="dai_reporting"
+          }
+         }
+        environment {
+            name="dvappdai04"
+            ip="10.13.18.117"
+        }
+
+        tcserver {
+            base="/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE"
+            instance_home="/opt/tcserver/instances"
+            instance_name="report"
+            admin_script="tcruntime-ctl.sh"
+            status_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name status"
+            start_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name start"
+            stop_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop"
+        }
+    }
+}

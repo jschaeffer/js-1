@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.g2one.hudson.grails.GrailsInstallation_-DescriptorImpl plugin="grails@1.7">
+  <installations>
+    <com.g2one.hudson.grails.GrailsInstallation>
+      <name>Grails 2.0.1</name>
+      <home>/opt/tools/grails-2.0.1</home>
+      <properties/>
+    </com.g2one.hudson.grails.GrailsInstallation>
+    <com.g2one.hudson.grails.GrailsInstallation>
+      <name>Grails 2.0.3</name>
+      <home>/opt/tools/grails-2.0.3</home>
+      <properties/>
+    </com.g2one.hudson.grails.GrailsInstallation>
+    <com.g2one.hudson.grails.GrailsInstallation>
+      <name>Grails 2.0.4</name>
+      <home>/opt/tools/grails-2.0.4</home>
+      <properties/>
+    </com.g2one.hudson.grails.GrailsInstallation>
+    <com.g2one.hudson.grails.GrailsInstallation>
+      <name>Grails 2.3.7</name>
+      <home>/opt/tools/grails-2.3.7</home>
+      <properties/>
+    </com.g2one.hudson.grails.GrailsInstallation>
+    <com.g2one.hudson.grails.GrailsInstallation>
+      <name>Grails 2.3.8</name>
+      <home>/opt/tools/grails-2.3.8</home>
+      <properties/>
+    </com.g2one.hudson.grails.GrailsInstallation>
+    <com.g2one.hudson.grails.GrailsInstallation>
+      <name>Grails 2.4.0</name>
+      <home>/opt/tools/grails-2.4.0</home>
+      <properties/>
+    </com.g2one.hudson.grails.GrailsInstallation>
+    <com.g2one.hudson.grails.GrailsInstallation>
+      <name>Grails 2.4.3</name>
+      <home>/opt/tools/grails-2.4.3</home>
+      <properties/>
+    </com.g2one.hudson.grails.GrailsInstallation>
+  </installations>
+</com.g2one.hudson.grails.GrailsInstallation_-DescriptorImpl>

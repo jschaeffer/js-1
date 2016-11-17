@@ -1,0 +1,111 @@
+<b><u>Component Release Info for Sprint KillingMeSoftly:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_526</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+ADS Core - 4.0.0_132
+SMSi Pub DB - 5.0.0_22
+Metadata - New CIS (2008) batch config, new CIA (2011) exandedOutput=false/publish by provider, new config templates for ADS/CIS
+New Property to CIS:
+#Number of assets to include in contentQuery
+cis.sender.batch.size=1000</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_526/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_526/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_520</b></u><br>
+<pre>
+* <font color=blue>d89e726</font>-<font color=green>(2015-06-09)</font><font color=black><b>updated BCL and added property to cis environemnts</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.0.0_526)</font>
+*   <font color=blue>082e921</font>-<font color=green>(2015-06-09)</font><font color=black><b>Merge branch 'bgriese/CISCursor' into br_4.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|\  
+| *   <font color=blue>59bcf2f</font>-<font color=green>(2015-06-09)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (origin/bgriese/CISCursor)</font>
+| |\  
+| | * <font color=blue>5e637ea</font>-<font color=green>(2015-06-09)</font><font color=black><b>removing tag</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>cd5f938</font>-<font color=green>(2015-06-09)</font><font color=black><b>sanity check</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>50a5bd0</font>-<font color=green>(2015-06-09)</font><font color=black><b>last test data check in</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>c341dd3</font>-<font color=green>(2015-06-09)</font><font color=black><b>Fixing up unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>279bcb4</font>-<font color=green>(2015-06-09)</font><font color=black><b>Removing "No valid assets" return error.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| *   <font color=blue>e765646</font>-<font color=green>(2015-06-09)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>4c8a2f4</font>-<font color=green>(2015-06-09)</font><font color=black><b>all CIS Notification test cases passing</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>421f9d1</font>-<font color=green>(2015-06-09)</font><font color=black><b>Changing CIS Notification tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>f236088</font>-<font color=green>(2015-06-09)</font><font color=black><b>Chuck an error if more than one content element.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>cb769c9</font>-<font color=green>(2015-06-09)</font><font color=black><b>Only validating a single asset per message.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>9ddcec2</font>-<font color=green>(2015-06-09)</font><font color=black><b>Updating notification code flow.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>d45594d</font>-<font color=green>(2015-06-09)</font><font color=black><b>No longer request expanded output for CIS registration.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>2ff152a</font>-<font color=green>(2015-06-09)</font><font color=black><b>Fixing wrong spelling of class name.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>89531f7</font>-<font color=green>(2015-06-08)</font><font color=black><b>adding VOD ENDPOINT table clear line to background</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>780d1d5</font>-<font color=green>(2015-06-09)</font><font color=black><b>updated project property files, final cisquery tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>622be47</font>-<font color=green>(2015-06-08)</font><font color=black><b>Iterate through ad assets in cache for provider.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| *   <font color=blue>62dad20</font>-<font color=green>(2015-06-08)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>f1b88fc</font>-<font color=green>(2015-06-08)</font><font color=black><b>small test change to be able to publish locally as opposed to SC1</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>442bad1</font>-<font color=green>(2015-06-08)</font><font color=black><b>added ent asset that matches as asset provider to test data</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * | <font color=blue>cf6c4e7</font>-<font color=green>(2015-06-08)</font><font color=black><b>fixed persistance cases for CISQuery</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| *   <font color=blue>1178e6f</font>-<font color=green>(2015-06-08)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | *   <font color=blue>a7cbdf5</font>-<font color=green>(2015-06-08)</font><font color=black><b>Merge branch 'br_4.0.0' into bgriese/CISCursor</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | |\  
+| |_|/  
+|/| |   
+* | | <font color=blue>9922495</font>-<font color=green>(2015-05-28)</font><font color=black><b>Test changes for CISNotification and CISNotifRegReq</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_525)</font>
+| * | <font color=blue>5282af9</font>-<font color=green>(2015-06-08)</font><font color=black><b>endpoint clear line added to tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>aaeb7e0</font>-<font color=green>(2015-06-05)</font><font color=black><b>endpoint data changes to cis notification validation and persistence</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>ba1d693</font>-<font color=green>(2015-06-05)</font><font color=black><b>final data changes for cis endpoints in tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>22ae695</font>-<font color=green>(2015-06-05)</font><font color=black><b>more changes for test data</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>89ebf93</font>-<font color=green>(2015-06-05)</font><font color=black><b>one more change to adm_to_cis2.sql</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| *   <font color=blue>287081b</font>-<font color=green>(2015-06-05)</font><font color=black><b>Merge branch 'bgriese/CISCursor' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into bgriese/CISCursor</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>2fb3e29</font>-<font color=green>(2015-06-05)</font><font color=black><b>2011 content query split by provider, no expanded output.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>c5d9a6a</font>-<font color=green>(2015-06-03)</font><font color=black><b>Setting expanded output to false for sync query.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>a35269e</font>-<font color=green>(2015-06-03)</font><font color=black><b>Initial refactor of 2011 cis code.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>3e0a8e3</font>-<font color=green>(2015-06-03)</font><font color=black><b>Removing my name from tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | *   <font color=blue>7c0e462</font>-<font color=green>(2015-06-03)</font><font color=black><b>Merge remote-tracking branch 'origin/bgriese/CISCursor' into bgriese/CISCursor</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | |\  
+| | * | <font color=blue>f55a5e3</font>-<font color=green>(2015-06-03)</font><font color=black><b>Cleaning up unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * | <font color=blue>a48d6b0</font>-<font color=green>(2015-06-02)</font><font color=black><b>removing outdated spock tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * | <font color=blue>e3ab71d</font>-<font color=green>(2015-06-02)</font><font color=black><b>Removing lying javadoc.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * | <font color=blue>3a3ff46</font>-<font color=green>(2015-06-02)</font><font color=black><b>Setting default batch size to 1000 per requirements</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | | <font color=blue>96fb3b2</font>-<font color=green>(2015-06-05)</font><font color=black><b>added new sql to fix local vs scrum mock server endpoint issues</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | |/  
+| |/|   
+| * | <font color=blue>25fc4e0</font>-<font color=green>(2015-06-02)</font><font color=black><b>regression tests updated for new CIS 2008 functionality</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * | <font color=blue>b02662a</font>-<font color=green>(2015-06-02)</font><font color=black><b>CIS 2008 batch tests passing</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>0dc2187</font>-<font color=green>(2015-06-02)</font><font color=black><b>Scheduled check no longer fires on app startup.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>29ce8fe</font>-<font color=green>(2015-06-01)</font><font color=black><b>Added endpoint to manually run scheduled check.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>bb959f7</font>-<font color=green>(2015-06-01)</font><font color=black><b>Fixing how batches are made.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>5cd7a99</font>-<font color=green>(2015-06-01)</font><font color=black><b>Moved scheduled job from 3 seconds to 15 minutes</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>65c845e</font>-<font color=green>(2015-06-01)</font><font color=black><b>Generic error handling</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>df923fd</font>-<font color=green>(2015-06-01)</font><font color=black><b>Adding cis.sender.batch.size to properties</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>d46c9a0</font>-<font color=green>(2015-06-01)</font><font color=black><b>CIS test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>45b3d5b</font>-<font color=green>(2015-05-28)</font><font color=black><b>Removing test used to test the tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| *   <font color=blue>0addece</font>-<font color=green>(2015-05-28)</font><font color=black><b>Merge branch 'br_4.0.0' into bgriese/CISCursor</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |\  
+| |/  
+|/|   
+* | <font color=blue>c3a0ffd</font>-<font color=green>(2015-05-28)</font><font color=black><b>Test changes for CIA functionality - CISQueryResponse only</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| *   <font color=blue>bd2a4b8</font>-<font color=green>(2015-05-28)</font><font color=black><b>Merge branch 'br_4.0.0' into bgriese/CISCursor</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |\  
+| |/  
+|/|   
+* | <font color=blue>b793722</font>-<font color=green>(2015-05-21)</font><font color=black><b>tests for CIS (2008) batch changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.0.0_524)</font>
+| * <font color=blue>7639c1e</font>-<font color=green>(2015-05-28)</font><font color=black><b>Batching work for 2008 CIS requests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>15010fa</font>-<font color=green>(2015-05-15)</font><font color=black><b>Removing "expandedValidationChain" and updating constructor calls.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|/  
+* <font color=blue>99d45ef</font>-<font color=green>(2015-05-15)</font><font color=black><b>Updating c3p0 dependency.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_4.0.0_523)</font>
+* <font color=blue>efb05ca</font>-<font color=green>(2015-04-15)</font><font color=black><b>small regression test changes</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_522)</font>
+* <font color=blue>7ff530d</font>-<font color=green>(2015-04-14)</font><font color=black><b>CI detail purge test added</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_521)</font>
+* <font color=blue>ee975f1</font>-<font color=green>(2015-04-14)</font><font color=black><b>updated pom to point to common-static</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>

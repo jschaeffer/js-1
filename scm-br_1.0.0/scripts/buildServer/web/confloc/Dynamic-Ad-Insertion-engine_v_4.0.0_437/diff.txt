@@ -1,0 +1,61 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index 8cbd90d..03e93a9 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -114,4 +114,10 @@ ads.purge.endpointStatus.enabled=true
+ ads.purge.endpointStatus.schedule=0 0 0 * * ?
+ 
+ #Batch size of vodendpoint status updates
+-cis.batchsave.size=1000
+\ No newline at end of file
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.115:9571
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index 6bc19e5..c44e812 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -115,3 +115,9 @@ ads.purge.endpointStatus.schedule=0 0 0 * * ?
+ 
+ #Batch size of vodendpoint status updates
+ cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.115:9571
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index 45f5be2..7d50b2a 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -115,3 +115,9 @@ ads.purge.endpointStatus.schedule=0 0 0 * * ?
+ 
+ #Batch size of vodendpoint status updates
+ cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.117:9571
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index 9bc251c..70e4616 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -116,3 +116,9 @@ ads.purge.endpointStatus.schedule=0 0 0 * * ?
+ 
+ #Batch size of vodendpoint status updates
+ cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.122:9571

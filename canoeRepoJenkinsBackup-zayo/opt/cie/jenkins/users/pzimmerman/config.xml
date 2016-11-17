@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+  <fullName>Phil Zimmerman</fullName>
+  <description></description>
+  <properties>
+    <hudson.tasks.Mailer_-UserProperty>
+      <emailAddress>phil.zimmerman@canoe-ventures.com</emailAddress>
+    </hudson.tasks.Mailer_-UserProperty>
+    <hudson.model.MyViewsProperty>
+      <primaryViewName>All</primaryViewName>
+      <views>
+        <hudson.model.AllView>
+          <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+          <name>All</name>
+          <filterExecutors>false</filterExecutors>
+          <filterQueue>false</filterQueue>
+          <properties class="hudson.model.View$PropertyList"/>
+        </hudson.model.AllView>
+      </views>
+    </hudson.model.MyViewsProperty>
+    <hudson.security.HudsonPrivateSecurityRealm_-Details>
+      <passwordHash>lFQiXz:169f40151de3b7b0dc9ac2634c80b0b724e67dad5599f688b2e0bb9946d7a24e</passwordHash>
+    </hudson.security.HudsonPrivateSecurityRealm_-Details>
+    <org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+      <authorizedKeys>ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAwwpOc4xsnO2SToZjhO986vOeJbbJr0zvnJ/qvLJEgc/obThmUs8X1TvU8hRredxiNNWmmHt5JokSrHXtDVgPJ6n2oOz6p5LdStim5MWnNQDHIAp5Fcs3AwYtK+Hoi0JEN0LPTzLeHSH295lTHMeZTQd8hDcZxPbpQP5K33tmRjwE3Top+MBH5W7bBlRjDbR5UOVRXS+vfOwn89iAq4dsWQ7fnUb2q/0D7rZe29XO8eWdMZ02lv065AcefpM2yxmmvP0StwDsbZy5u3bNcdFVaTtaOkYSh60lTWAmtII+rXDKvw7xHp7tffD5G7XK5iYGvEAumCEi2xTbkCMgkpQQuQ== cvbuild@dvbldcint01
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcskQG9KFwXQqDq7bBGIuNUkNnPpn5IkCyOZeDJhc7Ps5ZBn9DzAvulxmPeSH7DG8khVOyPGFEyiOnjvDu3/qxREWvc6XBWcq08sqES0xYvQKNEVlDYyY0tD6YMPbPyhOWESGT98Yrz1SBYe4g0RSrEmMezescdBivpqdZ244Ua4nAodmOvxcgAkNZ7F26wPTaetS0cp3mMIzMoUoEcdmU1wduZXl0WXAtoyhdYJS62aM9vi4akeIfLIcVqEaHIF5BwoTUrJ6Ph1y1Fbn6GFCFPmvWy1gFU+QoGkRseGFbVL0lM7qGIovtQ4DDfMDpKUq+D51XSnviwEHWU58ky2QZ pzimmerman@pzimmerman.laptop</authorizedKeys>
+    </org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+  </properties>
+</user>

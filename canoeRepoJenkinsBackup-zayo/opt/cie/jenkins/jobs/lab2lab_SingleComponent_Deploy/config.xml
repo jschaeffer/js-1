@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h1&gt;Title:  &lt;b&gt;Lab to Lab Single Component, Deployment job&lt;/b&gt;&lt;/h1&gt; &#xd;
+&#xd;
+&lt;h2&gt;&lt;u&gt;Description:&lt;/u&gt; &lt;b&gt;This job will deploy one component to one of multiple Lab to Lab Environments.  User specifies :&#xd;
+  &lt;ul&gt;&#xd;
+     &lt;li&gt;The Deploy User&#xd;
+     &lt;li&gt;The Deploy User Password (must be authorized)&#xd;
+     &lt;li&gt;The purpose of the deployment (Lab to Lab Environments)&#xd;
+     &lt;li&gt;The component to deploy&#xd;
+     &lt;li&gt;The version of the component&#xd;
+     &lt;li&gt;Whether to rebuild a database component (if applicable)&#xd;
+     &lt;li&gt;Whether to clean up any old log files upon deployment.&#xd;
+     &lt;li&gt;The Deploy User Password&#xd;
+  &lt;/ul&gt;&#xd;
+       &lt;/h2&gt; &lt;br&gt;&lt;/b&gt;&#xd;
+       &lt;h5&gt;Copyright Canoe Ventures 2014&lt;/h5&gt;&lt;font size=4 color=white&gt;L2L_pass_1!&lt;/font&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description>&lt;h3&gt;Enter the User id and summary of purpose for deployment&lt;/h3&gt; </description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUserPassword</name>
+          <description>Enter authorized password</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>purpose</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>base</string>
+              <string>fw</string>
+              <string>kodiak</string>
+              <string>broadway</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description>&lt;h3&gt;Select Component to Deploy&lt;/h3&gt;
+
+
+</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>caas-core</string>
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>dai-cip</string>
+              <string>dai-cip-feedback</string>
+              <string>dai-etl-feeder</string>
+              <string>smsi_reporting</string>
+              <string>dai-smsi</string>
+              <string>dai-smsi-relay</string>
+              <string>ads-core</string>
+              <string>Dynamic-Ad-Insertion-engine</string>
+              <string>smsi-publisher</string>
+              <string>dai-national-cis</string>
+              <string>dai-metadata-ingestion</string>
+              <string>Pgmr-Cpgn-Int</string>
+              <string>caas-admin</string>
+              <string>acp</string>
+              <string>metadata-publisher</string>
+              <string>impression_collector</string>
+              <string>POIS</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Version</name>
+          <description>&lt;h3&gt;Enter Build Version to Deploy.  Build Version of component to be deployed (must be entered as &lt;b&gt;version number + build number&lt;/b&gt; ie; &lt;u&gt;4.0.0_35&lt;/u&gt;)&lt;p&gt; Open &lt;a href=http://cvbuild.cv.infra/releaseTars/&gt;SCM Staging Area&lt;/a&gt; to discover valid versions to use.
+</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>DB_Rebuild</name>
+          <description>If there is a DB associated with this component, do you want to rebuild from scratch or perform just a liquibase update against the existing schema?</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>No</string>
+              <string>Yes</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+# Remove the comment from the following line to bypass the password entry 
+# Note this should only be done by the SCM representative for SCM installation work
+export DeployUserPassword=&quot;L2L_pass_1!&quot;
+ 
+if [ ${DeployUserPassword} = &quot;L2L_pass_1!&quot; ] ; then
+    echo &quot;&lt;h2&gt;Proceeding with deployment&lt;/h2&gt;&quot;
+else
+    echo &quot;Invalid password supplied!&quot;
+    echo &quot;Exiting!&quot;
+    exit 1
+fi
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh -e
+
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to Lab-to-Lab ${purpose} by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+export BUILD_TAG
+export DeployUser
+export Component
+export Clear_Logs=&quot;No&quot;
+export Version
+export DeployTarg=&quot;lab2lab&quot;
+
+if [ ${purpose} = &quot;all&quot; ] ; then
+    export purpose=&quot;base fw kodiak&quot;
+else
+    export purpose
+fi
+
+cd /opt/build/scripts
+./Lab2Lab_Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser $purpose 
+
+if grep -q &quot;Liquibase Update Failed&quot; /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log ; then
+   echo &quot;DB Update Failed.&quot;
+   echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;${DB_Rebuild} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;font bgcolor=black color=red&gt;&lt;b&gt;DB Update Failed !!&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+   rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   exit 1
+  elif grep -q &quot;No space left on device&quot; /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log ; then
+   echo &quot;Update Failed!!  Out of Disk Space for one or more of your component deliveries - Check Update Manager for system info&quot;
+   echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;${DB_Rebuild} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;font bgcolor=black color=red&gt;&lt;b&gt;Update Failed !!  Out of Disk Space for one or more of your component deliveries - Check Update Manager&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+   rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   exit 1
+  else
+   echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;${DB_Rebuild} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+   rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+fi
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

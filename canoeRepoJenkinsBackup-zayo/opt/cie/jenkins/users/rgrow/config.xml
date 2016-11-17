@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+  <fullName>rgrow</fullName>
+  <properties>
+    <jenkins.security.ApiTokenProperty>
+      <apiToken>Uph/6yE8vbeglURIk3uQTSnk8i2WxDi8p9rlIQq3WARuGmNJyZm1qVoo35bWuB8Z</apiToken>
+    </jenkins.security.ApiTokenProperty>
+    <hudson.model.MyViewsProperty>
+      <views>
+        <hudson.model.AllView>
+          <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+          <name>All</name>
+          <filterExecutors>false</filterExecutors>
+          <filterQueue>false</filterQueue>
+          <properties class="hudson.model.View$PropertyList"/>
+        </hudson.model.AllView>
+      </views>
+    </hudson.model.MyViewsProperty>
+    <hudson.tasks.Mailer_-UserProperty>
+      <emailAddress>rgrow@rgrow-PC.(none)</emailAddress>
+    </hudson.tasks.Mailer_-UserProperty>
+  </properties>
+</user>

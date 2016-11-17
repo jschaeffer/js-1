@@ -1,0 +1,214 @@
+diff --git a/config/log4j.scrum1.xml b/config/log4j.scrum1.xml
+index d384ad0..0f16af3 100644
+--- a/config/log4j.scrum1.xml
++++ b/config/log4j.scrum1.xml
+@@ -1,29 +1,28 @@
+-<?xml version="1.0" encoding="UTF-8" ?>
+-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="INFO" monitorInterval="30">
+ 
+-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
++    <Appenders>
++        <Console name="console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d %-5level [%t] %c: %m%n%rEx"/>
++        </Console>
+ 
+-    <appender name="systemLog" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="${log.dir}/acp.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %-30.30c{3} - %m%n"/>
+-        </layout>
+-    </appender>
++        <File name="acp" fileName="${sys:log.dir}/acp.log">
++            <PatternLayout pattern="%highlight{%d %-5level &lt;%marker&gt; [%t] %c{3.3}: %m%n%rEx}{TRACE=blue}"/>
++        </File>
+ 
+-    <!--
+-        Logger for general informative messages from the application.
+-    -->
+-    <logger name="com.canoeventures.dai.acp">
+-        <level value="debug"/>
+-    </logger>
++        <File name="raw" fileName="${sys:log.dir}/raw.log">
++            <PatternLayout pattern="%d %-5level [%t] %c: %m%n%rEx"/>
++        </File>
++    </Appenders>
+ 
+-    <logger name="com.canoeventures">
+-        <level value="info"/>
+-    </logger>
++    <Loggers>
++        <Root level="ERROR">
++            <AppenderRef ref="raw"/>
++            <AppenderRef ref="acp"/>
++            <AppenderRef ref="console"/>
++        </Root>
+ 
+-    <root>
+-        <level value="error"/>
+-        <appender-ref ref="systemLog"/>
+-    </root>
+-</log4j:configuration>
++        <logger name="com.canoeventures" level="INFO"/>
++        <logger name="com.canoeventures.dai.acp" level="DEBUG"/>
++    </Loggers>
++</Configuration>
+diff --git a/config/log4j.scrum2.xml b/config/log4j.scrum2.xml
+index 293ef44..0f16af3 100644
+--- a/config/log4j.scrum2.xml
++++ b/config/log4j.scrum2.xml
+@@ -1,29 +1,28 @@
+-log4j.xml<?xml version="1.0" encoding="UTF-8" ?>
+-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="INFO" monitorInterval="30">
+ 
+-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
++    <Appenders>
++        <Console name="console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d %-5level [%t] %c: %m%n%rEx"/>
++        </Console>
+ 
+-    <appender name="systemLog" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="${log.dir}/acp.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %-30.30c{3} - %m%n"/>
+-        </layout>
+-    </appender>
++        <File name="acp" fileName="${sys:log.dir}/acp.log">
++            <PatternLayout pattern="%highlight{%d %-5level &lt;%marker&gt; [%t] %c{3.3}: %m%n%rEx}{TRACE=blue}"/>
++        </File>
+ 
+-    <!--
+-        Logger for general informative messages from the application.
+-    -->
+-    <logger name="com.canoeventures.dai.acp">
+-        <level value="debug"/>
+-    </logger>
++        <File name="raw" fileName="${sys:log.dir}/raw.log">
++            <PatternLayout pattern="%d %-5level [%t] %c: %m%n%rEx"/>
++        </File>
++    </Appenders>
+ 
+-    <logger name="com.canoeventures">
+-        <level value="info"/>
+-    </logger>
++    <Loggers>
++        <Root level="ERROR">
++            <AppenderRef ref="raw"/>
++            <AppenderRef ref="acp"/>
++            <AppenderRef ref="console"/>
++        </Root>
+ 
+-    <root>
+-        <level value="error"/>
+-        <appender-ref ref="systemLog"/>
+-    </root>
+-</log4j:configuration>
++        <logger name="com.canoeventures" level="INFO"/>
++        <logger name="com.canoeventures.dai.acp" level="DEBUG"/>
++    </Loggers>
++</Configuration>
+diff --git a/config/log4j.scrum3.xml b/config/log4j.scrum3.xml
+index d384ad0..0f16af3 100644
+--- a/config/log4j.scrum3.xml
++++ b/config/log4j.scrum3.xml
+@@ -1,29 +1,28 @@
+-<?xml version="1.0" encoding="UTF-8" ?>
+-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="INFO" monitorInterval="30">
+ 
+-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
++    <Appenders>
++        <Console name="console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d %-5level [%t] %c: %m%n%rEx"/>
++        </Console>
+ 
+-    <appender name="systemLog" class="org.apache.log4j.FileAppender">
+-        <param name="File" value="${log.dir}/acp.log"/>
+-        <param name="append" value="true" />
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %-30.30c{3} - %m%n"/>
+-        </layout>
+-    </appender>
++        <File name="acp" fileName="${sys:log.dir}/acp.log">
++            <PatternLayout pattern="%highlight{%d %-5level &lt;%marker&gt; [%t] %c{3.3}: %m%n%rEx}{TRACE=blue}"/>
++        </File>
+ 
+-    <!--
+-        Logger for general informative messages from the application.
+-    -->
+-    <logger name="com.canoeventures.dai.acp">
+-        <level value="debug"/>
+-    </logger>
++        <File name="raw" fileName="${sys:log.dir}/raw.log">
++            <PatternLayout pattern="%d %-5level [%t] %c: %m%n%rEx"/>
++        </File>
++    </Appenders>
+ 
+-    <logger name="com.canoeventures">
+-        <level value="info"/>
+-    </logger>
++    <Loggers>
++        <Root level="ERROR">
++            <AppenderRef ref="raw"/>
++            <AppenderRef ref="acp"/>
++            <AppenderRef ref="console"/>
++        </Root>
+ 
+-    <root>
+-        <level value="error"/>
+-        <appender-ref ref="systemLog"/>
+-    </root>
+-</log4j:configuration>
++        <logger name="com.canoeventures" level="INFO"/>
++        <logger name="com.canoeventures.dai.acp" level="DEBUG"/>
++    </Loggers>
++</Configuration>
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index 0b428ad..34b911e 100644
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -1,6 +1,6 @@
+-JAVA_HOME="/usr/bin"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ APP_JAR=$APPHOME_DIR/bin/acp.jar
+-JAVA_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m               \
++JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m               \
+            -Dspring.profiles.active=functional                                                    \
+-           -Dlog4j.configuration=file://$APPHOME_DIR/config/log4j.xml -Dlog.dir=$APPHOME_DIR/logs \
++           -Dlog4j.configurationFile=file://$APPHOME_DIR/config/log4j.xml -Dlog.dir=$APPHOME_DIR/logs \
+            -Dconfig.file=$APPHOME_DIR/config/acp-env-application.properties"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index 60f31ad..c218305 100644
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -1,7 +1,7 @@
+-JAVA_HOME="/usr/bin"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ APP_JAR=$APPHOME_DIR/bin/acp.jar
+-JAVA_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m               \
++JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m               \
+            -Dspring.profiles.active=functional                                                    \
+-           -Dlog4j.configuration=file://$APPHOME_DIR/config/log4j.xml -Dlog.dir=$APPHOME_DIR/logs \
++           -Dlog4j.configurationFile=file://$APPHOME_DIR/config/log4j.xml -Dlog.dir=$APPHOME_DIR/logs \
+            -Dconfig.file=$APPHOME_DIR/config/acp-env-application.properties"
+ 
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index 0b428ad..34b911e 100644
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -1,6 +1,6 @@
+-JAVA_HOME="/usr/bin"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ APP_JAR=$APPHOME_DIR/bin/acp.jar
+-JAVA_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m               \
++JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m               \
+            -Dspring.profiles.active=functional                                                    \
+-           -Dlog4j.configuration=file://$APPHOME_DIR/config/log4j.xml -Dlog.dir=$APPHOME_DIR/logs \
++           -Dlog4j.configurationFile=file://$APPHOME_DIR/config/log4j.xml -Dlog.dir=$APPHOME_DIR/logs \
+            -Dconfig.file=$APPHOME_DIR/config/acp-env-application.properties"

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+EXIST_VERS=`ssh tcserver@dvappdai03 &quot;grep Implementation-Version /opt/tcserver/instances/smsi/webapps/safi-smsi-server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+VERSION=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/smsi/webapps/safi-smsi-server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+
+cd /opt/checkouts/oss_deployment/scripts
+
+print Beginning App update from existing version ${EXIST_VERS} to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+print
+
+./tmpdeployapp.sh -a safi-smsi-server -t dai-smsi -e scrum2 -i smsi -r ${VERSION} </command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+EXIST_VERS=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/smsi/webapps/safi-smsi-server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+print dai-smsi-${EXIST_VERS} &gt; /var/www/html/scrum2/smsi.txt
+print dai-smsi-${EXIST_VERS} &gt; /var/www/html/scrum2/smsi_db.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher>
+      <recipientList>bob.griese@canoeventures.com,jeff.schaeffer@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList>$PROJECT_DEFAULT_RECIPIENTS</recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <sendToDevelopers>true</sendToDevelopers>
+            <sendToRequester>false</sendToRequester>
+            <includeCulprits>false</includeCulprits>
+            <sendToRecipientList>true</sendToRecipientList>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

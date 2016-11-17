@@ -1,0 +1,536 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>5</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Suite</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Base</string>
+              <string>FW</string>
+              <string>Google</string>
+              <string>Cox</string>
+              <string>Broadway</string>
+              <string>Rentrak</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 5-20/4 * * 1-5</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+export Suite
+sysstate=`cat /var/www/html/lab2lab/$Suite/sysstate.txt`
+if [[ $sysstate = *down* ]]
+  then
+  echo &quot;$Suite is currently down and cannot be checked until it is brought back up.&quot;
+  exit
+fi
+
+fnAssignInfo() {
+# Function to assign the variables used in deployment to the info parsed from the system array
+  export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+  export APPSERVER_IP=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+  export INSTANCE=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+  export WEBAPPS=&quot;$(echo ${inar[$k]} | cut -f4 -d:)&quot;
+  export APP=&quot;$(echo ${inar[$k]} | cut -f5 -d:)&quot;
+  export DB_USER=&quot;$(echo ${inar[$k]} | cut -f6 -d:)&quot;
+  export DB_PASS=&quot;$(echo ${inar[$k]} | cut -f7 -d:)&quot;
+  export LiqBaOPTS=&quot;$(echo ${inar[$k]} | cut -f8 -d:)&quot;
+  #echo &quot;Suite-&gt; $Suite APPSERVER_IP-&gt; $APPSERVER_IP INSTANCE-&gt; $INSTANCE WEBAPPS-&gt; $WEBAPPS APP-&gt; $APP DB_USER-&gt; $DB_USER DB_PASS-&gt; $DB_PASS LiqBaOPTS-&gt; $LiqBaOPTS&quot;
+}
+export rpt_dir=&quot;/var/www/html/lab2lab&quot;
+
+
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;${rpt_dir}/dtupd.txt
+
+fnChktcservState() {
+  echo &quot;$APPSERVER_IP/$INSTANCE&quot; &gt; ${rpt_dir}/$Suite/${Comp}_app.txt
+  echo &quot;${rpt_dir}/$Suite/${Comp}_app.txt&quot;
+ echo &quot;Checking Component=$Comp on APPSERVER_IP=$APPSERVER_IP in INSTANCE=$INSTANCE&quot;
+ k_Stat=`ssh tcserver@$APPSERVER_IP &quot;cd instances/$INSTANCE/bin; ./tcruntime-ctl.sh status&quot;`
+  if [[ $k_Stat = *PID* ]]
+   then echo &quot;&lt;img src=../images/green.png&gt;&quot; &gt; ${rpt_dir}/$Suite/${Comp}_envstate.txt
+        echo &quot;${rpt_dir}/$Suite/${Comp}_envstate.txt&quot;
+        echo &quot;$INSTANCE is Up&quot;
+  else echo &quot;&lt;img src=../images/red.png&gt;&quot; &gt; ${rpt_dir}/$Suite/${Comp}_envstate.txt
+       echo &quot;$INSTANCE is Down&quot;
+       echo &quot;${rpt_dir}/$Suite/${Comp}_envstate.txt&quot;
+  fi
+}
+
+fnChkInsDate() {
+ inst=`ssh tcserver@$APPSERVER_IP &quot;cd instances/$INSTANCE/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $rpt_dir/$Suite/$app.instdate.txt
+ echo &quot;$rpt_dir/$Suite/$app.instdate.txt&quot;
+}
+
+fnVerCheck() {
+Version=`ssh tcserver@$APPSERVER_IP &quot;grep Implementation-Version /opt/tcserver/instances/$INSTANCE/webapps/$WEBAPPS/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot;  &gt; $rpt_dir/$Suite/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $rpt_dir/$Suite/$app.txt
+ echo &quot;$rpt_dir/$Suite/$app.txt&quot;
+ fi
+
+ if `ssh tcserver@$APPSERVER_IP &quot;grep -q 1.6.0_2  /opt/tcserver/instances/$INSTANCE/webapps/$WEBAPPS/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/bigyellow16.png&gt;&quot; &gt; $rpt_dir/$Suite/$app.JDK.txt
+ elif `ssh tcserver@$APPSERVER_IP &quot;grep -q 1.8.0_2  /opt/tcserver/instances/$INSTANCE/webapps/$WEBAPPS/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/biggreen18.png&gt;&quot; &gt; $rpt_dir/$Suite/$app.JDK.txt
+ else
+  echo &quot;&lt;img src=../images/disabled.png&gt;&quot; &gt; $rpt_dir/$Suite/$app.JDK.txt
+ fi
+
+}
+
+fnVerJar() {
+  echo &quot;$APPSERVER_IP/$direct&quot; &gt; ${rpt_dir}/${Suite}/${app}_app.txt
+Version=`ssh tcserver@$APPSERVER_IP &quot;cd /opt/tcserver/$direct; jar xf $jarname META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+ echo &quot;Not Present&quot;  &gt; $rpt_dir/$Suite/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $rpt_dir/$Suite/$app.txt
+ inst=`ssh tcserver@$APPSERVER_IP &quot;cd /opt/tcserver/$direct; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $rpt_dir/$Suite/$app.instdate.txt
+ fi
+
+ if `ssh tcserver@$APPSERVER_IP &quot;grep -q 1.6.0 /opt/tcserver/$direct/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/bigyellow16.png&gt;&quot; &gt; $rpt_dir/$Suite/$app.JDK.txt
+ elif `ssh tcserver@$APPSERVER_IP &quot;grep -q 1.8.0  /opt/tcserver/$direct/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/biggreen18.png&gt;&quot; &gt; $rpt_dir/$Suite/$app.JDK.txt
+ else
+  echo &quot;&lt;img src=../images/disabled.png&gt;&quot; &gt; $rpt_dir/$Suite/$app.JDK.txt
+ fi
+ ssh tcserver@$APPSERVER_IP &quot;cd /opt/tcserver/$direct; rm -fR META_INF&quot;
+}
+
+fnDBVerCheck() {
+## Not working .  Using the script check_dbversions_l2l.sh under zayo_L2L but left in hoping could use in the future
+export JDBC_URL=&quot;jdbc:oracle:thin:@dbrac03.cv.dr:1521:pro001&quot;
+export DB_IP=&quot;dbrac03.cv.dr&quot;
+export DB_SID=&quot;pro001&quot;
+cd /opt/build/scripts/zayo_L2L
+export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DB_IP})(PORT=1521)))(CONNECT_DATA=(SID=${DB_SID})))&quot;
+echo $SQLCONN
+sqlplus -S cm_system/L2L0ra@$SQLCONN &lt;&lt;!
+set heading off;
+set feedback off;
+define DB_USER=&apos;$DB_USER&apos;
+set verify off
+@/opt/build/scripts/check_dbversions.sql
+exit
+!
+}
+
+fnDBVerRpt() {
+echo &quot;Suite - $Suite  -  Component - $app   -  Version - $Version&quot;
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+  if grep -q &quot;expired&quot; /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log ; then
+   echo &quot;DB Version check failed due to expired password on component $app&quot;
+   echo &quot;Pwd Expired&quot; &gt;$rpt_dir/$Suite/$app.txt
+   echo &quot;PWD Expired -&gt; $rpt_dir/$Suite/$app.txt&quot;
+  fi
+  elif  [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+   echo &quot;Not Present&quot; | tee $rpt_dir/$Suite/$app.txt
+   echo &quot;Not Present | tee $rpt_dir/$Suite/$app.txt&quot;
+  else
+    echo &quot;${Version}&quot; | tee $rpt_dir/$Suite/$app.txt
+    echo &quot;${Version} | tee $rpt_dir/$Suite/$app.txt&quot;
+fi
+}
+
+fnLogCheck() {
+  d1=`ssh tcserver@${APPSERVER_IP} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${APPSERVER_IP} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$rpt_dir/diskspace.txt
+  l1=`ssh tcserver@${APPSERVER_IP} &quot;du instances/$INSTANCE/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${APPSERVER_IP} &quot;du -h instances/$INSTANCE/logs | awk &apos;{print $1}&apos;&quot;`;export lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;img src=../images/red.png&gt;&quot; | tee $rpt_dir/$Suite/$Comp.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;img src=../images/yellow.png&gt;&quot; | tee $rpt_dir/$Suite/$Comp.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;img src=../images/green.png&gt;&quot;| tee $rpt_dir/$Suite/$Comp.logs
+  fi
+
+}
+
+fnDef_Sys() {
+#  Adding DB info
+  export SIDTarg=&quot;pro001&quot;
+  export DBIP=&quot;dbrac03.cv.dr&quot;
+  export JDBC_URL=&quot;jdbc:oracle:thin:@dbrac03.cv.dr:1521:pro001&quot;
+###########################
+# Array of system info
+###########################
+# Field description:
+# #1 Suite
+# #2 APPSERVER_IP
+# #3 INSTANCE
+# #4 WEBAPPS
+# #5 APP
+# #6 DB_USER
+# #7 DB_PASS
+# #8 LiqBaOPTS
+
+
+case $app in
+Dynamic-Ad-Insertion-engine)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr1:CMC_DE01:ads:ads:0
+inar[1]=Base:cv-l2lcmc-clstr2:CMC_DE02:ads:ads:1
+inar[2]=Base:cv-l2ltwc-clstr1:TWC_DE01:ads-1.2.0:ads:2
+inar[3]=Base:cv-l2ltwc-clstr2:TWC_DE02:ads-1.2.0:ads:3
+inar[4]=Base:cv-l2ltwc-clstr4:TWC_CIS:cis:cis:4
+ elif [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr2:FW_DE01:ads:ads:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr2:GGL_DE01:ads:ads:0
+ elif [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr1:COX_DE01:ads-cox:ads:0
+inar[1]=Cox:cv-l2lcox-clstr2:COX_DE02:ads-cox:ads:1
+inar[2]=Cox:cv-l2lcox-clstr4:COX_CIS:cis:cis:2
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr2:BRD_DE01:ads:ads:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr2:RTK_DE01:ads:ads:0
+fi
+;;
+Dynamic-Ad-Insertion-cm)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr2:CMC_CM:Dynamic-Ad-Insertion-cm:Dynamic-Ad-Insertion-cm:0
+inar[1]=Base:cv-l2ltwc-clstr2:TWC_CM:Dynamic-Ad-Insertion-cm:Dynamic-Ad-Insertion-cm:1
+ elif [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr2:FW_CM:Dynamic-Ad-Insertion-cm:Dynamic-Ad-Insertion-cm:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr2:GGL_CM:Dynamic-Ad-Insertion-cm:Dynamic-Ad-Insertion-cm:0
+ elif [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr2:COX_CM:Dynamic-Ad-Insertion-cm:Dynamic-Ad-Insertion-cm:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr2:BRD_CM:Dynamic-Ad-Insertion-cm:Dynamic-Ad-Insertion-cm:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr2:RTK_CM:Dynamic-Ad-Insertion-cm:Dynamic-Ad-Insertion-cm:0
+fi
+;;
+request-mgr)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2ltwc-clstr5:TWC_REQMAN:ROOT:request-manager:0
+fi
+;;
+ad-load-manager)
+if [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr5:COX_ALM:ad-load-manager:alm-server:0
+fi
+;;
+ADI-MDI)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr4:CMC_ADI-MDI:ADI-MDI-Ingest:ADI-MDI-Ingest:0
+fi
+;;  
+dai-cip-feedback)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr2:CMC_FN:cip-feedback:cip-server:0
+inar[1]=Base:cv-l2ltwc-clstr2:TWC_FN:cip-feedback:cip-server:1
+ elif [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr3:FW_FN:cip-feedback:cip-server:0
+ elif [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr2:COX_FN:cip-feedback:cip-server:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr3:GGL_FN:cip-feedback:cip-server:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr3:BRD_FN:cip-feedback:cip-server:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr3:RTK_FN:cip-feedback:cip-server:0
+fi
+;;
+Pgmr-Cpgn-Int)
+if [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr1:FW_PCI:fw_cip-ingest::0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr1:GGL_PCI:Pgmr-Cpgn-Int::0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr1:BRD_PCI:brd_cip-ingest::0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr1:RTK_PCI:rtk_cip-ingest::0
+fi
+;;
+metadata-publisher)
+if [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr4:FW_META_PUB:metadata-publisher:publisher:0
+fi
+;;
+smsi-publisher)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr1:CMC_SMSI_PUB:smsi-pub:smsi-publisher:0
+inar[1]=Base:cv-l2ltwc-clstr1:TWC_SMSI_PUB:smsi-pub:smsi-publisher:1
+ elif [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr2:FW_SMSI_PUB:smsi-pub:smsi-publisher:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr2:GGL_SMSI_PUB:smsi-pub:smsi-publisher:0
+ elif [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:::::SMSI_PUB_COX:SMSI_PUB_COX:smsi-pub:smsi-publisher:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr2:BRD_SMSI_PUB:smsi-pub:smsi-publisher:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr2:RTK_SMSI_PUB:smsi-pub:smsi-publisher:0
+fi
+;;
+rema-publisher)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2ltwc-clstr1:TWC_REMA_PUB:REQMAN_PUB:smsi-publisher:REMA_PUB:REMA_PUB
+fi
+;;
+dai-smsi)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr3:CMC_SMSI:smsi:safi-smsi-server:0
+inar[1]=Base:cv-l2ltwc-clstr3:TWC_SMSI:smsi:safi-smsi-server:1
+ elif [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr1:FW_SMSI:smsi:safi-smsi-server:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr1:GGL_SMSI:smsi:safi-smsi-server:0
+ elif [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr3:COX_SMSI:smsi:safi-smsi-server:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr1:BRD_SMSI:smsi:safi-smsi-server:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr1:RTK_SMSI:smsi:safi-smsi-server:0
+fi
+;;
+SDC-session-collector)
+;;
+ smsi-msp-relay)
+ if [[ $Suite = &quot;FW&quot; ]]; then
+  inar[0]=FW:cv-l2lfw-clstr3:FW_MSP_RELAY:smsi-relay-msp:smsi-relay-msp:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+  inar[0]=Google:cv-l2lggl-clstr3:GGL_MSP_RELAY:smsi-relay-msp:smsi-relay-msp:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+  inar[0]=Broadway:cv-l2lbrd-clstr3:BRD_MSP_RELAY:smsi-relay-msp:smsi-relay-msp:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+  inar[0]=Rentrak:cv-l2lrtk-clstr3:RTK_MSP_RELAY:smsi-relay-msp:smsi-relay-msp:0
+fi
+ ;;
+dai-smsi-relay)
+if [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr3:FW_SMSI_RELAY:smsi-relay:smsi-relay-client:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr3:GGL_SMSI_RELAY:smsi-relay:smsi-relay-client:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr3:BRD_SMSI_RELAY:smsi-relay:smsi-relay-client:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr3:RTK_SMSI_RELAY:smsi-relay:smsi-relay-client:0
+fi
+;;
+dai-national-cis)
+if [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr4:FW_NCIS:dai-national-cis:nCisClient:0
+fi
+;;
+POIS)
+if [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr5:COX_POIS:pois:pois:0
+fi
+;;
+impression_collector)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr3:CMC_IMPCOL:impression_collector_server:impression_collector_server:0
+inar[1]=Base:cv-l2ltwc-clstr3:TWC_IMPCOL:impression_collector_server:impression_collector_server:1
+ elif [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr3:FW_IMPCOL:impression_collector_server:impression_collector_server:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr3:GGL_IMPCOL:impression_collector_server:impression_collector_server:0
+ elif [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr3:COX_IMPCOL:impression_collector_server:impression_collector_server:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr3:BRD_IMPCOL:impression_collector_server:impression_collector_server:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr3:RTK_IMPCOL:impression_collector_server:impression_collector_server:0
+fi
+;;
+dai-cip)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr1:dai_cip/bin:dai-cip.jar:0
+inar[1]=Base:cv-l2ltwc-clstr1:dai_cip/bin:dai-cip.jar:1
+ elif [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr1:dai_cip/bin:dai-cip.jar:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr1:dai_cip/bin:dai-cip.jar:0
+ elif [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr1:dai_cip/bin:dai-cip.jar:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr1:dai_cip/bin:dai-cip.jar:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr1:dai_cip/bin:dai-cip.jar:0
+fi
+;;
+acp)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr4:acp/bin:acp.jar:0
+fi
+;;
+Sheringham)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2lcmc-clstr3:Sheringham/bin;sheringham-server.jar:0
+fi
+;;
+dai-metadata-ingestion)
+if [[ $Suite = &quot;Base&quot; ]]; then
+inar[0]=Base:cv-l2ltwc-clstr4:dai-metadata-ingestion:ingester.jar:0
+inar[1]=Base:cv-l2lcmc-clstr4:dai-metadata-ingestion:ingester.jar:1
+ elif [[ $Suite = &quot;FW&quot; ]]; then
+inar[0]=FW:cv-l2lfw-clstr4:dai-metadata-ingestion:ingester.jar:0
+ elif [[ $Suite = &quot;Google&quot; ]]; then
+inar[0]=Google:cv-l2lggl-clstr4:dai-metadata-ingestion:ingester.jar:0
+ elif [[ $Suite = &quot;Cox&quot; ]]; then
+inar[0]=Cox:cv-l2lcox-clstr4:dai-metadata-ingestion:ingester.jar:0
+ elif [[ $Suite = &quot;Broadway&quot; ]]; then
+inar[0]=Broadway:cv-l2lbrd-clstr4:dai-metadata-ingestion:ingester.jar:0
+ elif [[ $Suite = &quot;Rentrak&quot; ]]; then
+inar[0]=Rentrak:cv-l2lrtk-clstr4:dai-metadata-ingestion:ingester.jar:0
+fi
+;;
+esac
+}
+
+
+
+#export Components=&quot;dai-cip acp dai-metadata-ingestion&quot;
+export Components=&quot;Dynamic-Ad-Insertion-cm metadata-publisher ad-load-manager dai-national-cis dai-cip acp POIS impression_collector dai-cip-feedback Pgmr-Cpgn-Int smsi-publisher dai-smsi dai-smsi-relay smsi-msp-relay request-mgr Dynamic-Ad-Insertion-engine dai-metadata-ingestion rema-publisher&quot;
+#export Components=&quot;Dynamic-Ad-Insertion-cm&quot;
+
+echo &quot;###########################################################################&quot;
+echo &quot;Checking the tcserver state and installation date for Lab-To-Lab $Suite Envs&quot;
+echo &quot;###########################################################################&quot;
+
+for j in ${Components}; do
+ unset k
+ unset &apos;inar[@]&apos;
+ export app=$j
+ export Component=$j
+      echo &quot;Suite -&gt;$Suite Component-&gt;$Component Comp-&gt;$Comp app-&gt;$app&quot;
+fnDef_Sys $app
+ export k=0
+ for i in ${inar[@]}; do
+   if [[ $app = dai-cip || $app = acp || $app = dai-metadata-ingestion ]]; then
+    export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+    export APPSERVER_IP=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+    export direct=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+    export jarname=&quot;$(echo ${inar[$k]} | cut -f4 -d:)&quot;
+    export moreins=&quot;$(echo ${inar[$k]} | cut -f5 -d:)&quot;
+    export Comp=$app$moreins
+    echo &quot;Checking Jar component on System-&gt; $APPSERVER_IP   Instance-&gt;$direct   app-&gt; $app&quot;
+    if [[ $moreins = 0 ]]; then
+    fnVerJar
+    fi
+    k=$((k+1))
+  else
+    export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+    export APPSERVER_IP=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+    export INSTANCE=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+    export WEBAPPS=&quot;$(echo ${inar[$k]} | cut -f4 -d:)&quot;
+    export moreins=&quot;$(echo ${inar[$k]} | cut -f6 -d:)&quot;
+    export Comp=${app}${moreins}
+    echo &quot;Checking Webapp $app component $Comp on System-&gt; $APPSERVER_IP   Instance-&gt;$INSTANCE&quot;
+    if [[ $moreins = 0 ]]; then
+    fnChkInsDate
+    fnVerCheck
+    fi
+    fnChktcservState
+    fnLogCheck
+    k=$((k+1))
+  fi
+ done
+done
+
+## DB Check
+  DBar[0]=Base:caas-core:CAAS40:CAAS40
+  DBar[1]=Base:ads-core:ADS_CORE_TWC:ADS_CORE_TWC
+  DBar[2]=FW:caas-core:CAAS_CORE_FW:FREEWHEEL
+  DBar[3]=FW:ads-core:ADS_CORE_FW:FREEWHEEL
+  DBar[4]=Google:caas-core:CAAS_LOCAL:KODIAK
+  DBar[5]=Google:ads-core:ADS_CORE_TWC_L:KODIAK
+  DBar[6]=Cox:caas-core:CAAS_CORE_COX:CAAS_CORE_COX
+  DBar[7]=Cox:ads-core:ADS_CORE_COX:ADS_CORE_COX
+  DBar[8]=Broadway:caas-core:CAAS_CORE_BRD:BROADWAY
+  DBar[9]=Rentrak:caas-core:CAAS_CORE_RTK:CAAS_CORE_RTK
+  DBar[10]=Broadway:ads-core:ADS_CORE_BRD:BROADWAY
+  DBar[11]=Rentrak:ads-core:ADS_CORE_RTK:ADS_CORE_RTK
+  DBar[12]=Base:dai-etl-feecer:DAI_REPORTING_SAFI:DAI_REPORTING_SAFI
+  DBar[13]=FW:dai-etl-feeder:DAI_REPORTING_SAFI_FW:FREEWHEEL
+  DBar[14]=Google:dai-etl-feeder:DAI_REPORTING_SAFI_TWL:KODIAK
+  DBar[15]=Broadway:dai-etl-feeder:DAI_REPORTING_SAFI_BRD:DAI_REPORTING_SAFI_BRD
+  DBar[16]=Rentrak:dai-etl-feeder:DAI_REPORTING_SAFI_RTK:DAI_REPORTING_SAFI_RTK
+
+
+  export k=0
+  for i in ${DBar[@]}; do
+    export Suite=&quot;$(echo ${DBar[$k]} | cut -f1 -d:)&quot;
+    export app=&quot;$(echo ${DBar[$k]} | cut -f2 -d:)&quot;
+    export DB_USER=&quot;$(echo ${DBar[$k]} | cut -f3 -d:)&quot;
+    export DB_PASS=&quot;$(echo ${DBar[$k]} | cut -f4 -d:)&quot;
+    echo &quot;Checking DBComponents $app on Suite $Suite DBUser $DB_USER DBPass $DB_PASS&quot;
+    export Version=`. /opt/build/scripts/zayo_L2L/check_dbversions_l2l.sh | tr -d &quot;\n&quot;`
+    k=$((k+1))
+    fnDBVerRpt
+  done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

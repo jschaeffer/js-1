@@ -1,0 +1,63 @@
+<b><u>Component Release Info for Sprint LetItBe:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_5.11.0_5</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+- Goes with CAAS 5.1.0_8
+- Feature 7641. Warning for Insertion vs Impression Placement Constraint
+- Feature 7623. Change to Ad Asset Frequency Capping
+- Feature 7608. Link to Description of Methodology
+- Feature 7280. Removed the “contains” MD operator
+- Feature 6601. Changed Placement Constraint UI for freq settings
+- Feature 6279. Break Limit value warning
+- Bug 7390. Hover over Campaign Line for Ads</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.10.0_3</b></u><br>
+<pre>
+* <font color=blue>ac3e5f2</font>-<font color=green>(2015-06-17)</font><font color=black><b>New Scenario: Warning for Placement Constraints</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_5.11.0_5, tag: r_5.11.0_5)</font>
+*   <font color=blue>a571817</font>-<font color=green>(2015-06-16)</font><font color=black><b>Merge branch 'br_5.11.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.11.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.11.0_4)</font>
+|\  
+| * <font color=blue>c573413</font>-<font color=green>(2015-06-16)</font><font color=black><b>new test for warning on placement constraints... needs to be updated when code is done</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>79f155d</font>-<font color=green>(2015-06-16)</font><font color=black><b>Frequency cap warnings</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>e71e7b8</font>-<font color=green>(2015-06-16)</font><font color=black><b>small change to Network_CRUD feature</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>b953858</font>-<font color=green>(2015-06-15)</font><font color=black><b>Updated Edit MD feature with removal of contains</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.11.0_3)</font>
+* <font color=blue>51cdbea</font>-<font color=green>(2015-06-15)</font><font color=black><b>Added steps for Jira 7280 (removed MD contains)</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>a0e43ef</font>-<font color=green>(2015-06-15)</font><font color=black><b>bug 7390 test & updating IDs in Campaign Item grid view test case</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>e14f0b1</font>-<font color=green>(2015-06-12)</font><font color=black><b>Adjusted qtip IDs for lima ads on grid view</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.11.0_2)</font>
+* <font color=blue>a539dc3</font>-<font color=green>(2015-06-12)</font><font color=black><b>bug 7390 test in place, needs some code help i think</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>1e0c5ed</font>-<font color=green>(2015-06-11)</font><font color=black><b>Added steps for Description Of Methodology Link</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.11.0_1)</font>
+* <font color=blue>2d50fe6</font>-<font color=green>(2015-06-11)</font><font color=black><b>update to features for changes to Placement Constraints</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+*   <font color=blue>9735c80</font>-<font color=green>(2015-06-11)</font><font color=black><b>Merge branch 'br_5.11.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.11.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>9ce9e8e</font>-<font color=green>(2015-06-11)</font><font color=black><b>Update to MinPlacementSepEnum file, typo fixed.  Updated MCLPS scenario</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>7df43af</font>-<font color=green>(2015-06-11)</font><font color=black><b>Added warnings on break limit</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>946881a</font>-<font color=green>(2015-06-11)</font><font color=black><b>Adjusted field labels for lima break and session limits</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>f57a5e1</font>-<font color=green>(2015-06-11)</font><font color=black><b>Cleanup of placement constraints values and labels.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>3876fed</font>-<font color=green>(2015-06-10)</font><font color=black><b>Created enum for placement min values and labels.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>4627f15</font>-<font color=green>(2015-06-10)</font><font color=black><b>Merge branch 'br_5.11.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.11.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>2b9a939</font>-<font color=green>(2015-06-10)</font><font color=black><b>Added quick dataset scenarios; Tweaked manual tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>ef99cac</font>-<font color=green>(2015-06-10)</font><font color=black><b>Added break min label enum and implemented</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+*   <font color=blue>cc6b10a</font>-<font color=green>(2015-06-10)</font><font color=black><b>Merge branch 'br_5.11.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.11.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>efa14bf</font>-<font color=green>(2015-06-10)</font><font color=black><b>More changes to Placement Constraints tab, almost done.</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>067ee73</font>-<font color=green>(2015-06-10)</font><font color=black><b>Placement Constraints tab UI update.  Still under construction</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>6ebaac3</font>-<font color=green>(2015-06-10)</font><font color=black><b>Removed contains operator from metadata operators list.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>aacd81e</font>-<font color=green>(2015-06-10)</font><font color=black><b>Reformatted README and added new changelog instructions</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>a6a83c9</font>-<font color=green>(2015-06-10)</font><font color=black><b>Added config properties for DOM link, added DOM link to footer.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>b321464</font>-<font color=green>(2015-06-10)</font><font color=black><b>Updated app.version</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>755f072</font>-<font color=green>(2015-06-10)</font><font color=black><b>Fixed issue with line item grid asset overlays being off by 1 for each disabled asset.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>6251fe5</font>-<font color=green>(2015-06-09)</font><font color=black><b>small change to test cases for needing 2 or more characters in Autocomplete gherkin step</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_5.10.0_5, tag: v_5.10.0_4, origin/br_5.10.0)</font></pre>
+<hr>
+<p>

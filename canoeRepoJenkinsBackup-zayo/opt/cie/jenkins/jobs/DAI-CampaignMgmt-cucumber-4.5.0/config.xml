@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>2</daysToKeep>
+    <numToKeep>4</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/Dynamic-Ad-Insertion-cm.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_4.5.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+/opt/build/scripts/cleanIvyCache.sh com.canoeventures.dai.caas core-model
+
+/opt/build/scripts/cleanIvyCache.sh com.canoeventures.dai.caas core-services</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;DAI_CM_HOME = ${DAI_CM_HOME}&quot;
+ls -alR $DAI_CM_HOME
+echo &quot;Replacing contents from DAI_CM_HOME with ./config config files&quot;
+rm -fr /opt/cvbuild/config/dai_cm/*.properties
+
+cd ${WORKSPACE}/config
+for base in *devint.properties*; do new=`echo $base | sed &apos;s/devint.//g&apos;`; echo &quot;Renaming $base to $new and copying to ${DAI_CM_HOME}&quot;; cp $base $DAI_CM_HOME/$new; ls -al $DAI_CM_HOME/$new; done
+
+ls -alR $DAI_CM_HOME
+
+echo &quot;Showing config file content&quot;
+cd ${DAI_CM_HOME}
+cat *.properties</command>
+    </hudson.tasks.Shell>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.7">
+      <targets>&quot;test-app :cucumber @5minTest -echoOut -echoErr&quot;</targets>
+      <name>Grails 2.0.4</name>
+      <grailsWorkDir>/opt/cvbuild/.DAI-Campaign-mgmt_work4.5_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.DAI-Campaign-mgmt_project4.5_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9191</serverPort>
+      <properties>geb.env=phantomjs
+grails.project.plugins.dir=/opt/cvbuild/.grails/2.0.4/projects/DAI-CampaignMgmt-compile4.5</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+      <plainOutput>true</plainOutput>
+      <stackTrace>false</stackTrace>
+      <verbose>false</verbose>
+      <refreshDependencies>false</refreshDependencies>
+    </com.g2one.hudson.grails.GrailsBuilder>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.37"/>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.38.1">
+      <recipientList>jeff.schaeffer@canoeventures.net,michael.munhall@canoeventures.net, scott.davis@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo></replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript></presendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo></replyTo>
+      <saveOutput>false</saveOutput>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.11">
+      <timeoutMinutes>20</timeoutMinutes>
+      <failBuild>false</failBuild>
+      <writingDescription>false</writingDescription>
+      <timeoutPercentage>0</timeoutPercentage>
+      <timeoutType>absolute</timeoutType>
+      <timeoutMinutesElasticDefault>3</timeoutMinutesElasticDefault>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+    <hudson.plugins.xvnc.Xvnc plugin="xvnc@1.11">
+      <takeScreenshot>false</takeScreenshot>
+    </hudson.plugins.xvnc.Xvnc>
+  </buildWrappers>
+</project>

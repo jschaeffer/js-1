@@ -1,0 +1,46 @@
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.0.0_135</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+CAAS CORE 4.0.0_135:  (MCLPS, Freq. Cap., Pl. Limit merged; FW "cls" sent once; ACP trigger updated; Series Name/ID added to metadata tables)
+PCI 4.0.0_183:  Ingests Series Name/ID; fix for when no Freq. Cap. is defined.  
+CIP-Sender 4.0.0_201:  Only send "cls" from FW once
+ACP 4.0.0_30:  Trigger CIP when start date is moved</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_125</b></u><br>
+<pre>
+* <font color=blue>207616c</font>-<font color=green>(2014-05-23)</font><font color=black><b>VODDAI-5572: Update triggers for acp to mark a media asset as ready to be published if the license start window changed.</b></font><font color=grey>- (kennethleider)</font><font color=red> (HEAD, v_4.0.0_135, r_4.0.0_135, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>4653da9</font>-<font color=green>(2014-05-22)</font><font color=black><b>Fix for null cls</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_134, v_4.0.0_133)</font>
+* <font color=blue>3f0d0bd</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5694 non-canoe CIPs publish cls only once.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_132, v_4.0.0_131, v_4.0.0_130, v_4.0.0_129)</font>
+* <font color=blue>8f1bfd1</font>-<font color=green>(2014-05-19)</font><font color=black><b>Added default values on campaign item breakNum and placementNum fields.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>b7cabe1</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed ID of changeset to reflect merge conflict resolution.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>bccc1e0</font>-<font color=green>(2014-05-19)</font><font color=black><b>Fixed merge conflicts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>e095b24</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-4028 Changes to Frequency Cap durations</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f0ee119</font>-<font color=green>(2014-05-16)</font><font color=black><b>VODDAI-5675 Series Name, Series ID Added to MetadataFieldEnum</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_128)</font>
+| * <font color=blue>f8c06bd</font>-<font color=green>(2014-05-16)</font><font color=black><b>VODDAI-5675 Series Name, Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>2ff75d1</font>-<font color=green>(2014-05-19)</font><font color=black><b>Added defaults to break_min and placement_min, changed not not nullable.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>acd42de</font>-<font color=green>(2014-05-14)</font><font color=black><b>Fix merge for CampaignItemFrequencyCap</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_127)</font>
+* <font color=blue>6359872</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c7539b0</font>-<font color=green>(2014-05-13)</font><font color=black><b>VODDAI-5517 set immediate when break_min or placement_min</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>aa930e4</font>-<font color=green>(2014-05-01)</font><font color=black><b>VODDAI-5648 Add support for separation mins</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c75bac5</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Fixes for adding CI Frequency Capping</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>58a0581</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3fb27c1</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>8f4e3e3</font>-<font color=green>(2014-05-05)</font><font color=black><b>Add seq for item frequency cap</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>545d480</font>-<font color=green>(2014-04-30)</font><font color=black><b>Frequency Capping at the campaign item media asset level</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+*   <font color=blue>9554b61</font>-<font color=green>(2014-04-30)</font><font color=black><b>Merge branch 'itemFreqCap' of github.com:CanoeVentures/caas-core into itemFreqCap</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| * <font color=blue>e521aa5</font>-<font color=green>(2014-04-10)</font><font color=black><b>Added cleanup of Frequencay cap table</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (origin/itemFreqCap)</font>
+| * <font color=blue>a5c2ed8</font>-<font color=green>(2014-04-10)</font><font color=black><b>VODDAI-3778 Changed three day display</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>0ffe0d9</font>-<font color=green>(2014-04-09)</font><font color=black><b>VODDAI-3778 Added not null to foreign key</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>a848fc2</font>-<font color=green>(2014-04-08)</font><font color=black><b>VODDAI-3778 Changed FrequencyCapEnum to have values from story</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>fd33926</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Fixes for adding CI Frequency Capping</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>e5ecf0d</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>65424f0</font>-<font color=green>(2014-04-10)</font><font color=black><b>Added cleanup of Frequencay cap table</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>bdbd2d7</font>-<font color=green>(2014-04-10)</font><font color=black><b>VODDAI-3778 Changed three day display</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>1597bd8</font>-<font color=green>(2014-04-09)</font><font color=black><b>VODDAI-3778 Added not null to foreign key</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4cad057</font>-<font color=green>(2014-04-08)</font><font color=black><b>VODDAI-3778 Changed FrequencyCapEnum to have values from story</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>e4ce025</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Fixes for adding CI Frequency Capping</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>211e00d</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>

@@ -1,0 +1,105 @@
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+index cd59d3b..b0919d1 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+@@ -37,12 +37,19 @@ caas.db.max.idle=10
+ caas.db.pool.size=10
+ caas.db.pool.initialSize=5
+ 
+-relay.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-relay.db.username=SC1_RELAY
+-relay.db.password=SC1_RELAY
+ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+ 
++freewheel.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++freewheel.db.username=SC1_RELAY
++freewheel.db.password=SC1_RELAY
++freewheel.owner=freewheel.tv
++
++google.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++google.db.username=SC1_RELAY1
++google.db.password=SC1_RELAY1
++google.owner=Google
++
+ relay.cache.reload.schedule = 0 0 0/1 * * ?
+ 
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+index c2ddd9d..71178f6 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+@@ -37,11 +37,18 @@ caas.db.max.idle=10
+ caas.db.pool.size=10
+ caas.db.pool.initialSize=5
+ 
+-relay.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-relay.db.username=SC2_RELAY
+-relay.db.password=SC2_RELAY
+ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+ 
++freewheel.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++freewheel.db.username=SC2_RELAY
++freewheel.db.password=SC2_RELAY
++freewheel.owner=freewheel.tv
++
++google.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++google.db.username=SC2_RELAY1
++google.db.password=SC2_RELAY1
++google.owner=Google
++
+ relay.cache.reload.schedule = 0 0 0/1 * * ?
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+index 32cd1ec..6be8c2d 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+@@ -37,11 +37,18 @@ caas.db.max.idle=10
+ caas.db.pool.size=10
+ caas.db.pool.initialSize=5
+ 
+-relay.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-relay.db.username=SC3_RELAY
+-relay.db.password=SC3_RELAY
+ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+ 
++freewheel.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++freewheel.db.username=SC3_RELAY
++freewheel.db.password=SC3_RELAY
++freewheel.owner=freewheel.tv
++
++google.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++google.db.username=SC3_RELAY1
++google.db.password=SC3_RELAY1
++google.owner=Google
++
+ relay.cache.reload.schedule = 0 0 0/1 * * ?
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+index fae7a29..aeae827 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+@@ -37,11 +37,18 @@ caas.db.max.idle=10
+ caas.db.pool.size=10
+ caas.db.pool.initialSize=5
+ 
+-relay.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-relay.db.username=SC4_RELAY
+-relay.db.password=SC4_RELAY
+ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+ 
++freewheel.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++freewheel.db.username=SC4_RELAY
++freewheel.db.password=SC4_RELAY
++freewheel.owner=freewheel.tv
++
++google.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++google.db.username=SC4_RELAY1
++google.db.password=SC4_RELAY1
++google.owner=Google
++
+ relay.cache.reload.schedule = 0 0 0/1 * * ?

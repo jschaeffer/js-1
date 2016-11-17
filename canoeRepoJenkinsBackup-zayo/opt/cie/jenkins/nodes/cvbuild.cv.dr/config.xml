@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<slave>
+  <name>cvbuild.cv.dr</name>
+  <description>Slave node for distributed builds.  Specifically for deployment activities within the Canoe infrastructure.</description>
+  <remoteFS>/opt/cie</remoteFS>
+  <numExecutors>3</numExecutors>
+  <mode>EXCLUSIVE</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+  <launcher class="hudson.slaves.CommandLauncher">
+    <agentCommand>ssh -v cvbuild.cv.dr &quot;cd /opt/cie/bin; ./initslv.sh&quot;</agentCommand>
+  </launcher>
+  <label>Deploy</label>
+  <nodeProperties>
+    <hudson.plugins.xvnc.NodePropertyImpl plugin="xvnc@1.21"/>
+  </nodeProperties>
+  <userId>jschaeffer</userId>
+</slave>

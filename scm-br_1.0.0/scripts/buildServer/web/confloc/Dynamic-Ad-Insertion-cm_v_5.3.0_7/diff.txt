@@ -1,0 +1,305 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+index a4ac7c2..94b6a6f 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+@@ -1,7 +1,10 @@
++# Datasource
+ dataSource.driverClassName=oracle.jdbc.OracleDriver
+ dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ dataSource.username=SC1_CAAS
+ dataSource.password=SC1_CAAS
++
++# Hibernate
+ hibernate.c3p0.initialPoolSize=3
+ hibernate.c3p0.maxPoolSize=15
+ hibernate.c3p0.idleConnectionTestPeriod=10
+@@ -13,7 +16,6 @@ crowd.rest.basicAuthUser=cm
+ crowd.rest.basicAuthPassword=crowd
+ 
+ # Mail
+-# Mail
+ grails.mail.host=smtp.office365.com
+ grails.mail.port=587
+ grails.mail.username=scott.davis@canoeventures.com
+@@ -22,17 +24,31 @@ grails.mail.password=Canoepass99
+ # Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
+ # 1500 seconds = 25 minutes
+ # 13800 seconds = 3 hours 50 minutes
++# Required
+ cm.app.inactivityWarningTimer=1500
+ 
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
++# Required
+ cm.app.inactivityAutoLogoutTimer=240
+ 
+-# User guide link
+-# If no link is provided it will not show on page
++# Link to user guide.
++# Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
+-# Contact us email
+-# If no link is provided it will not show on page
+-cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
++# "Contact Us" email address.
++# OptionalIf no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
++
++# Location of privacy policy server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.privacyPolicy.location=/opt/tcserver/instances/cm/conf/privacy_policy.html
++
++# Location of terms of use server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.termsOfUse.location=/opt/tcserver/instances/cm/conf/terms_of_use.html
++
++# The ID of the category to use for promo line items. Must be an ID of a category in the Product_Category table.
++# Required. Requires restart if changed.
++cm.app.promoCategory.id=11560
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+index b4bd1f9..2054f0c 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+@@ -1,7 +1,10 @@
++# Datasource
+ dataSource.driverClassName=oracle.jdbc.OracleDriver
+ dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ dataSource.username=SC2_CAAS
+ dataSource.password=SC2_CAAS
++
++# Hibernateh
+ hibernate.c3p0.initialPoolSize=3
+ hibernate.c3p0.maxPoolSize=15
+ hibernate.c3p0.idleConnectionTestPeriod=10
+@@ -13,7 +16,6 @@ crowd.rest.basicAuthUser=cm
+ crowd.rest.basicAuthPassword=crowd
+ 
+ # Mail
+-# Mail
+ grails.mail.host=smtp.office365.com
+ grails.mail.port=587
+ grails.mail.username=scott.davis@canoeventures.com
+@@ -22,17 +24,31 @@ grails.mail.password=Canoepass99
+ # Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
+ # 1500 seconds = 25 minutes
+ # 13800 seconds = 3 hours 50 minutes
++# Required
+ cm.app.inactivityWarningTimer=1500
+ 
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
++# Required
+ cm.app.inactivityAutoLogoutTimer=240
+ 
+-# User guide link
+-# If no link is provided it will not show on page
++# Link to user guide.
++# Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
+-# Contact us email
+-# If no link is provided it will not show on page
+-cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
++# "Contact Us" email address.
++# OptionalIf no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
++
++# Location of privacy policy server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.privacyPolicy.location=/opt/tcserver/instances/cm/conf/privacy_policy.html
++
++# Location of terms of use server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.termsOfUse.location=/opt/tcserver/instances/cm/conf/terms_of_use.html
++
++# The ID of the category to use for promo line items. Must be an ID of a category in the Product_Category table.
++# Required. Requires restart if changed.
++cm.app.promoCategory.id=11560
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+index d40c3dd..e200684 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+@@ -1,7 +1,10 @@
++# Datasource
+ dataSource.driverClassName=oracle.jdbc.OracleDriver
+ dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ dataSource.username=SC3_CAAS
+ dataSource.password=SC3_CAAS
++
++# Hibernate
+ hibernate.c3p0.initialPoolSize=3
+ hibernate.c3p0.maxPoolSize=15
+ hibernate.c3p0.idleConnectionTestPeriod=10
+@@ -13,7 +16,6 @@ crowd.rest.basicAuthUser=cm
+ crowd.rest.basicAuthPassword=crowd
+ 
+ # Mail
+-# Mail
+ grails.mail.host=smtp.office365.com
+ grails.mail.port=587
+ grails.mail.username=scott.davis@canoeventures.com
+@@ -22,17 +24,31 @@ grails.mail.password=Canoepass99
+ # Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
+ # 1500 seconds = 25 minutes
+ # 13800 seconds = 3 hours 50 minutes
++# Required
+ cm.app.inactivityWarningTimer=1500
+ 
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
++# Required
+ cm.app.inactivityAutoLogoutTimer=240
+ 
+-# User guide link
+-# If no link is provided it will not show on page
++# Link to user guide.
++# Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
+-# Contact us email
+-# If no link is provided it will not show on page
+-cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
++# "Contact Us" email address.
++# OptionalIf no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
++
++# Location of privacy policy server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.privacyPolicy.location=/opt/tcserver/instances/cm/conf/privacy_policy.html
++
++# Location of terms of use server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.termsOfUse.location=/opt/tcserver/instances/cm/conf/terms_of_use.html
++
++# The ID of the category to use for promo line items. Must be an ID of a category in the Product_Category table.
++# Required. Requires restart if changed.
++cm.app.promoCategory.id=11560
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+index e3f72f1..c0fa5d6 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+@@ -1,9 +1,12 @@
++# Datasource
+ dataSource.driverClassName=oracle.jdbc.OracleDriver
+ dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ dataSource.username=SC4_CAAS
+ dataSource.password=SC4_CAAS
+ #dataSource.username=caas_core_4_120
+ #dataSource.password=caas_core
++
++# Hibernate
+ hibernate.c3p0.initialPoolSize=3
+ hibernate.c3p0.maxPoolSize=15
+ hibernate.c3p0.idleConnectionTestPeriod=10
+@@ -15,7 +18,6 @@ crowd.rest.basicAuthUser=cm
+ crowd.rest.basicAuthPassword=crowd
+ 
+ # Mail
+-# Mail
+ grails.mail.host=smtp.office365.com
+ grails.mail.port=587
+ grails.mail.username=scott.davis@canoeventures.com
+@@ -24,17 +26,31 @@ grails.mail.password=Canoepass99
+ # Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
+ # 1500 seconds = 25 minutes
+ # 13800 seconds = 3 hours 50 minutes
++# Required
+ cm.app.inactivityWarningTimer=1500
+ 
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
++# Required
+ cm.app.inactivityAutoLogoutTimer=240
+ 
+-# User guide link
+-# If no link is provided it will not show on page
++# Link to user guide.
++# Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
+-# Contact us email
+-# If no link is provided it will not show on page
+-cm.app.contactUsEmail=helpdesk@canoeventures.com
+\ No newline at end of file
++# "Contact Us" email address.
++# OptionalIf no link is provided it will not show on page
++cm.app.contactUsEmail=helpdesk@canoeventures.com
++
++# Location of privacy policy server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.privacyPolicy.location=/opt/tcserver/instances/cm/conf/privacy_policy.html
++
++# Location of terms of use server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.termsOfUse.location=/opt/tcserver/instances/cm/conf/terms_of_use.html
++
++# The ID of the category to use for promo line items. Must be an ID of a category in the Product_Category table.
++# Required. Requires restart if changed.
++cm.app.promoCategory.id=11560
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties
+index 54b4d6b..cc96f26 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties
+@@ -1,7 +1,10 @@
++# Datasource
+ dataSource.driverClassName=oracle.jdbc.OracleDriver
+ dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ dataSource.username=RH65_CAAS
+ dataSource.password=RH65_CAAS
++
++# Hibernate
+ hibernate.c3p0.initialPoolSize=3
+ hibernate.c3p0.maxPoolSize=15
+ hibernate.c3p0.idleConnectionTestPeriod=10
+@@ -13,7 +16,6 @@ crowd.rest.basicAuthUser=cm
+ crowd.rest.basicAuthPassword=crowd
+ 
+ # Mail
+-# Mail
+ grails.mail.host=smtp.office365.com
+ grails.mail.port=587
+ grails.mail.username=scott.davis@canoeventures.com
+@@ -22,17 +24,31 @@ grails.mail.password=Canoepass99
+ # Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
+ # 1500 seconds = 25 minutes
+ # 13800 seconds = 3 hours 50 minutes
++# Required
+ cm.app.inactivityWarningTimer=1500
+ 
+ # Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
+ # seconds to make it easier to test.
+ # 240 seconds = 4 minutes
++# Required
+ cm.app.inactivityAutoLogoutTimer=240
+ 
+-# User guide link
+-# If no link is provided it will not show on page
++# Link to user guide.
++# Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
+-# Contact us email
+-# If no link is provided it will not show on page
++# "Contact Us" email address.
++# OptionalIf no link is provided it will not show on page
+ cm.app.contactUsEmail=helpdesk@canoeventures.com
++
++# Location of privacy policy server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.privacyPolicy.location=/opt/tcserver/instances/cm/conf/privacy_policy.html
++
++# Location of terms of use server-side include. The file should be an HTML fragment of the entire privacy policy.
++# Required. Requires restart if changed.
++cm.app.staticContent.termsOfUse.location=/opt/tcserver/instances/cm/conf/terms_of_use.html
++
++# The ID of the category to use for promo line items. Must be an ID of a category in the Product_Category table.
++# Required. Requires restart if changed.
++cm.app.promoCategory.id=11560

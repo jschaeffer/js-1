@@ -1,0 +1,333 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9.1">
+      <projectUrl>https://github.com/CanoeVentures/ops-dt-domain/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/ops-dt-domain.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_1.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/ops-dt-domain/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H 21 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export APP_VERSION=`cat ${WORKSPACE}/application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+sed -e &quot;s|$APP_VERSION|1.0.0_${BUILD_NUMBER}|&quot; -i &apos;&apos; ${WORKSPACE}/application.properties
+echo &quot;Replacing app.version in application.properties from $APP_VERSION to 1.0.0_${BUILD_NUMBER}&quot;</command>
+    </hudson.tasks.Shell>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.7">
+      <targets>clean package-plugin doc</targets>
+      <name>Grails 2.0.4</name>
+      <grailsWorkDir>/opt/cvbuild/.ops-dt-domain_work_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.ops-dt-domain_project_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9092</serverPort>
+      <properties>grails.project.plugins.dir=/opt/cvbuild/.grails/2.0.4/projects/ops-dt-domain-compile</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+      <plainOutput>true</plainOutput>
+      <stackTrace>false</stackTrace>
+      <verbose>false</verbose>
+      <refreshDependencies>false</refreshDependencies>
+    </com.g2one.hudson.grails.GrailsBuilder>
+    <hudson.plugins.groovy.Groovy plugin="groovy@1.23">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>def VERSION = &quot;1.0.0&quot;
+def PROJECT = &quot;ops-dt-domain&quot;
+def PROJFILE = &quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+String changelogtemp = &quot;&quot;&quot;
+
+projectRoot=&quot;/opt/cie/jenkins/jobs/ops-dt-domain-PackageDeploy-1.0.0/workspace&quot;
+commonTargetRoot=&quot;target&quot;
+webappDir=&quot;webapps&quot;
+
+build {
+
+  build_args=&quot;grails clean -non-interactive,grails compile -non-interactive&quot;
+}
+
+jira {
+    update_jira=&quot;false&quot;
+}
+
+database {
+
+    driver=&quot;&quot;
+
+    liquibase {
+        update_liquibase=&quot;false&quot;
+        update_chglog=&quot;false&quot;
+        base_dir=&quot;&quot;
+        change_log_dir=&quot;$projectRoot/grails-app/migrations&quot;
+        vchange_log_dir=&quot;$projectRoot/grails-app/migrations/version_changelogs&quot;
+        change_log_loc=&quot;grails-app/migrations&quot;
+        change_log_master=&quot;master-changelog.xml&quot;
+        command=&quot;&quot;
+    }
+
+    env {
+        dev {
+            host=&quot;&quot;
+            url=&quot;&quot;
+            username=&quot;&quot;
+            password=&quot;&quot;
+        }
+        qa {
+            host=&quot;&quot;
+            url=&quot;&quot;
+            username=&quot;&quot;
+            password=&quot;&quot;
+        }
+        staging {
+            host=&quot;&quot;
+            url=&quot;&quot;
+            username=&quot;&quot;
+            password=&quot;&quot;
+        }
+        prod {
+            host=&quot;&quot;
+            url=&quot;&quot;
+            username=&quot;&quot;
+            password=&quot;&quot;
+        }
+    }
+}
+
+build_package {
+    pre_pkg_cmds {
+           pre_pkg_1=&quot;cd $projectRoot/$commonTargetRoot; mkdir liquibase; cp -r ../grails-app/migrations/* liquibas
+    }
+    artifacts {
+        name {
+            bin=&quot;classes&quot;
+            db=&quot;liquibase&quot;
+            sql=&quot;InitialDmaLoad.sql&quot;
+            README=&quot;README.md&quot;
+        }
+        location {
+            bin=&quot;$projectRoot/$commonTargetRoot&quot;
+            db=&quot;$projectRoot/$commonTargetRoot&quot;
+            sql=&quot;$projectRoot/grails-app/migrations/customSqls&quot;
+            README=&quot;$projectRoot&quot;
+        }
+    }
+}
+
+deploy {
+    artifacts {
+        name {
+        }
+        location {
+        }
+    }
+    pre_deploy_cmds {
+    }
+
+    post_deploy_cmds {
+    }
+
+    local {
+        deployUser=&quot;&quot;
+
+        environment {
+        }
+
+        tcserver {
+            base=&quot;/opt/tools/tcserver&quot;
+            instance_home=&quot;$tcserver.base&quot;
+            instance_name=&quot;barf&quot;
+            admin_script=&quot;tcruntime-ctl.sh&quot;
+            status_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name status&quot;
+            start_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name start&quot;
+            stop_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop&quot;
+        }
+    }
+
+    dev {
+        deployUser=&quot;tcserver&quot;
+        webappProject=&quot;oss_bar&quot;
+        artifacts {
+          name {
+            war=&quot;oss_bar.war&quot;
+          }
+          location {
+            war=&quot;target&quot;
+          }
+          deploy_type {
+            war=&quot;archive&quot;
+          }
+          webapp_project {
+            war=&quot;oss_bar&quot;
+          }
+        }
+
+        environment {
+            name=&quot;dvappdai01&quot;
+            ip=&quot;10.13.18.113&quot;
+        }
+
+        tcserver {
+            base=&quot;/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE&quot;
+            instance_home=&quot;/opt/tcserver/instances&quot;
+            instance_name=&quot;oss_bar&quot;
+            admin_script=&quot;tcruntime-ctl.sh&quot;
+            status_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name status&quot;
+            start_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name start&quot;
+            stop_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop&quot;
+        }
+    }
+    scrum3 {
+        deployUser=&quot;tcserver&quot;
+        webappProject=&quot;oss_bar&quot;
+        artifacts {
+          name {
+            war=&quot;oss_bar.war&quot;
+          }
+          location {
+            war=&quot;target&quot;
+          }
+          deploy_type {
+            war=&quot;archive&quot;
+          }
+          webapp_project {
+            war=&quot;oss_bar&quot;
+          }
+        }
+
+        environment {
+            name=&quot;dvappdai04&quot;
+            ip=&quot;10.13.18.117&quot;
+        }
+
+        tcserver {
+            base=&quot;/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE&quot;
+            instance_home=&quot;/opt/tcserver/instances&quot;
+            instance_name=&quot;oss_bar&quot;
+            admin_script=&quot;tcruntime-ctl.sh&quot;
+            status_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name status&quot;
+            start_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name start&quot;
+            stop_cmd=&quot;$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop&quot;
+        }
+    }
+}
+
+
+&quot;&quot;&quot;
+File scriptName = new File(&quot;$PROJFILE&quot;)
+        scriptName.write(&quot;${changelogtemp}&quot;)
+        println scriptName
+</command>
+      </scriptSource>
+      <groovyName>(Default)</groovyName>
+      <parameters></parameters>
+      <scriptParameters></scriptParameters>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <classPath></classPath>
+    </hudson.plugins.groovy.Groovy>
+    <hudson.tasks.Shell>
+      <command>
+#!/bin/bash
+
+export VERSION=&quot;1.0.0&quot;
+export PROJECT=&quot;ops-dt-domain&quot;
+
+export ProjFile=&quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+
+cat $ProjFile
+
+/opt/build/scripts/CreateJenkinsPackage.sh $PROJECT $PROJECT br_$VERSION ${BUILD_NUMBER}</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export VERSION=&quot;1.0.0_${BUILD_NUMBER}&quot;
+export Component=&quot;ops-dt-domain&quot;; echo &quot;Component - $Component&quot;
+export DB_Rebuild=&quot;Yes&quot;; echo &quot;DB_Rebuild - $DB_Rebuild&quot;
+export Version=${VERSION}; echo &quot;Version - $Version&quot;
+export Clear_Logs=&quot;Yes&quot;; echo &quot;Clear_Logs - $Clear_Logs&quot;
+export DeployTarg=&quot;devint&quot;; echo &quot;DeployTarg - $DeployTarg&quot;
+export DeployUser=&quot;Jenkins&quot;; echo &quot;DeployUser = $DeployUser&quot;
+export BUILD_TAG
+
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to $DeployTarg by $DeployUser &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Component: &lt;/b&gt;$Component &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+cd /opt/build/scripts
+./Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser
+
+echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;yes &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/devint.html /opt/build/scm/scripts/buildServer/log/devint.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/devint.tmp &gt; /opt/build/scm/scripts/buildServer/log/devint.html
+rm /opt/build/scm/scripts/buildServer/log/devint.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+VERSION=&quot;1.0.0_${BUILD_NUMBER}&quot;
+
+echo &quot;ops-dt-db-${VERSION}&quot; &gt; /var/www/html/devint/ops-dt-domain.txt
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.37"/>
+    <hudson.plugins.git.GitPublisher plugin="git@2.2.7">
+      <configVersion>2</configVersion>
+      <pushMerge>false</pushMerge>
+      <pushOnlyIfSuccess>false</pushOnlyIfSuccess>
+      <forcePush>false</forcePush>
+      <tagsToPush>
+        <hudson.plugins.git.GitPublisher_-TagToPush>
+          <targetRepoName>origin</targetRepoName>
+          <tagName>v_1.0.0_${BUILD_NUMBER}</tagName>
+          <tagMessage></tagMessage>
+          <createTag>true</createTag>
+          <updateTag>false</updateTag>
+        </hudson.plugins.git.GitPublisher_-TagToPush>
+      </tagsToPush>
+    </hudson.plugins.git.GitPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,193 @@
+diff --git a/config/smsi-publisher.scrum1.properties b/config/smsi-publisher.scrum1.properties
+index 8b1d3d5..eee08d0 100644
+--- a/config/smsi-publisher.scrum1.properties
++++ b/config/smsi-publisher.scrum1.properties
+@@ -29,13 +29,19 @@ smsipub.cleanup.time.limit=5
+ # time, and once it expires, any publisher can work the job.  The reservation duration should always be longer than
+ # it should take the publisher to complete the job.
+ 
++# (Not Reloadable) Number of simultaneous publishing jobs
++smsipub.job.executor.pool.size=3
++
++# How often to look in the database for available jobs (milliseconds)
++smsipub.job.lookup.rate=1000
++
++# How often to check that the job and lot tables are correctly populated (milliseconds)
++smsipub.job.repair.rate=1000
++
+ #
+ # Publishing
+ #
+ 
+-# (Not Reloadable) Number of simultaneous publishing jobs
+-smsipub.publish.job.executor.pool.size=3
+-
+ # (Not Reloadable) Number of threads that generate and transmit SMSI
+ smsipub.publish.executor.pool.size=10
+ 
+@@ -67,9 +73,6 @@ smsipub.destination=http://10.13.18.115:9535/int-test-support/serviceMeasurement
+ # Housekeeping
+ #
+ 
+-# (Not reloadable) Number of simultaneous housekeeping jobs
+-smsipub.housekeeping.job.executor.pool.size=1
+-
+ # (Reloadable) Add new lots and update ids in the job table
+ smsipub.refresh.job.reservation.duration=60
+ smsipub.refresh.job.enable=true
+@@ -82,6 +85,10 @@ smsipub.orphan-presentation.job.enable=true
+ smsipub.late-presentation.job.reservation.duration=300
+ smsipub.late-presentation.job.enable=true
+ 
++# (Reloadable) Mark Sessions as ready to publish if presentation have been added to the DB
++smsipub.ready-sessions.job.reservation.duration=60
++smsipub.ready-sessions.job.enable=true
++
+ # (Reloadable) Associate presentations to sessions in the rare case the the PSN was recieved before the request response
+ smsipub.early-presentation.job.reservation.duration=300
+ smsipub.early-presentation.job.enable=true
+diff --git a/config/smsi-publisher.scrum2.properties b/config/smsi-publisher.scrum2.properties
+index e039440..0fbb63f 100644
+--- a/config/smsi-publisher.scrum2.properties
++++ b/config/smsi-publisher.scrum2.properties
+@@ -29,13 +29,20 @@ smsipub.cleanup.time.limit=5
+ # time, and once it expires, any publisher can work the job.  The reservation duration should always be longer than
+ # it should take the publisher to complete the job.
+ 
++# (Not Reloadable) Number of simultaneous publishing jobs
++smsipub.job.executor.pool.size=3
++
++# How often to look in the database for available jobs (milliseconds)
++smsipub.job.lookup.rate=1000
++
++# How often to check that the job and lot tables are correctly populated (milliseconds)
++smsipub.job.repair.rate=1000
++
++
+ #
+ # Publishing
+ #
+ 
+-# (Not Reloadable) Number of simultaneous publishing jobs
+-smsipub.publish.job.executor.pool.size=3
+-
+ # (Not Reloadable) Number of threads that generate and transmit SMSI
+ smsipub.publish.executor.pool.size=10
+ 
+@@ -67,9 +74,6 @@ smsipub.destination=http://10.13.18.116:9535/int-test-support/serviceMeasurement
+ # Housekeeping
+ #
+ 
+-# (Not reloadable) Number of simultaneous housekeeping jobs
+-smsipub.housekeeping.job.executor.pool.size=1
+-
+ # (Reloadable) Add new lots and update ids in the job table
+ smsipub.refresh.job.reservation.duration=60
+ smsipub.refresh.job.enable=true
+@@ -82,6 +86,10 @@ smsipub.orphan-presentation.job.enable=true
+ smsipub.late-presentation.job.reservation.duration=300
+ smsipub.late-presentation.job.enable=true
+ 
++# (Reloadable) Mark Sessions as ready to publish if presentation have been added to the DB
++smsipub.ready-sessions.job.reservation.duration=60
++smsipub.ready-sessions.job.enable=true
++
+ # (Reloadable) Associate presentations to sessions in the rare case the the PSN was recieved before the request response
+ smsipub.early-presentation.job.reservation.duration=300
+ smsipub.early-presentation.job.enable=true
+diff --git a/config/smsi-publisher.scrum3.properties b/config/smsi-publisher.scrum3.properties
+index 55d6241..cb5eb33 100644
+--- a/config/smsi-publisher.scrum3.properties
++++ b/config/smsi-publisher.scrum3.properties
+@@ -29,13 +29,19 @@ smsipub.cleanup.time.limit=5
+ # time, and once it expires, any publisher can work the job.  The reservation duration should always be longer than
+ # it should take the publisher to complete the job.
+ 
++# (Not Reloadable) Number of simultaneous publishing jobs
++smsipub.job.executor.pool.size=3
++
++# How often to look in the database for available jobs (milliseconds)
++smsipub.job.lookup.rate=1000
++
++# How often to check that the job and lot tables are correctly populated (milliseconds)
++smsipub.job.repair.rate=1000
++
+ #
+ # Publishing
+ #
+ 
+-# (Not Reloadable) Number of simultaneous publishing jobs
+-smsipub.publish.job.executor.pool.size=3
+-
+ # (Not Reloadable) Number of threads that generate and transmit SMSI
+ smsipub.publish.executor.pool.size=10
+ 
+@@ -67,9 +73,6 @@ smsipub.destination=http://10.13.18.117:9535/int-test-support/serviceMeasurement
+ # Housekeeping
+ #
+ 
+-# (Not reloadable) Number of simultaneous housekeeping jobs
+-smsipub.housekeeping.job.executor.pool.size=1
+-
+ # (Reloadable) Add new lots and update ids in the job table
+ smsipub.refresh.job.reservation.duration=60
+ smsipub.refresh.job.enable=true
+@@ -82,6 +85,10 @@ smsipub.orphan-presentation.job.enable=true
+ smsipub.late-presentation.job.reservation.duration=300
+ smsipub.late-presentation.job.enable=true
+ 
++# (Reloadable) Mark Sessions as ready to publish if presentation have been added to the DB
++smsipub.ready-sessions.job.reservation.duration=60
++smsipub.ready-sessions.job.enable=true
++
+ # (Reloadable) Associate presentations to sessions in the rare case the the PSN was recieved before the request response
+ smsipub.early-presentation.job.reservation.duration=300
+ smsipub.early-presentation.job.enable=true
+diff --git a/config/smsi-publisher.scrum4.properties b/config/smsi-publisher.scrum4.properties
+index 534f4b6..f8a8b4a 100644
+--- a/config/smsi-publisher.scrum4.properties
++++ b/config/smsi-publisher.scrum4.properties
+@@ -29,13 +29,19 @@ smsipub.cleanup.time.limit=5
+ # time, and once it expires, any publisher can work the job.  The reservation duration should always be longer than
+ # it should take the publisher to complete the job.
+ 
++# (Not Reloadable) Number of simultaneous publishing jobs
++smsipub.job.executor.pool.size=3
++
++# How often to look in the database for available jobs (milliseconds)
++smsipub.job.lookup.rate=1000
++
++# How often to check that the job and lot tables are correctly populated (milliseconds)
++smsipub.job.repair.rate=1000
++
+ #
+ # Publishing
+ #
+ 
+-# (Not Reloadable) Number of simultaneous publishing jobs
+-smsipub.publish.job.executor.pool.size=3
+-
+ # (Not Reloadable) Number of threads that generate and transmit SMSI
+ smsipub.publish.executor.pool.size=10
+ 
+@@ -67,9 +73,6 @@ smsipub.destination=http://10.13.18.122:9535/int-test-support/serviceMeasurement
+ # Housekeeping
+ #
+ 
+-# (Not reloadable) Number of simultaneous housekeeping jobs
+-smsipub.housekeeping.job.executor.pool.size=1
+-
+ # (Reloadable) Add new lots and update ids in the job table
+ smsipub.refresh.job.reservation.duration=60
+ smsipub.refresh.job.enable=true
+@@ -82,6 +85,10 @@ smsipub.orphan-presentation.job.enable=true
+ smsipub.late-presentation.job.reservation.duration=300
+ smsipub.late-presentation.job.enable=true
+ 
++# (Reloadable) Mark Sessions as ready to publish if presentation have been added to the DB
++smsipub.ready-sessions.job.reservation.duration=60
++smsipub.ready-sessions.job.enable=true
++
+ # (Reloadable) Associate presentations to sessions in the rare case the the PSN was recieved before the request response
+ smsipub.early-presentation.job.reservation.duration=300
+ smsipub.early-presentation.job.enable=true

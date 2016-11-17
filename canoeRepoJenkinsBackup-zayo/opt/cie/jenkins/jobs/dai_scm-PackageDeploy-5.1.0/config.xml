@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9.1">
+      <projectUrl>https://github.com/CanoeVentures/dai_scm/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>git@github.com:CanoeVentures/dai_scm.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_5.1.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0u5</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <org.jfrog.hudson.maven3.Maven3Builder plugin="artifactory@2.2.4">
+      <mavenName>Maven3.2</mavenName>
+      <rootPom>pom.xml</rootPom>
+      <goals>clean package</goals>
+      <mavenOpts></mavenOpts>
+    </org.jfrog.hudson.maven3.Maven3Builder>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+export ProjFile=&quot;/opt/build/scm/scripts/buildServer/properties/projects/dai_scm/project.properties&quot;
+echo &quot;ProjFile -&gt; $ProjFile&quot;
+export ProjLoc=`cat $ProjFile | awk -F&quot;=&quot; &apos;/projectRoot/ {print $2;exit;}&apos;`
+echo &quot;Replacing -&gt; $ProjLoc with $WORKSPACE&quot;
+sed -e &quot;s|${ProjLoc}|\&quot;${WORKSPACE}\&quot;|&quot; -i &apos;&apos; $ProjFile
+
+cat $ProjFile
+
+/opt/build/scripts/CreateJenkinsRelease.sh dai_scm dai_scm br_5.1.0 ${BUILD_NUMBER}
+
+#/opt/build/scripts/createTar.sh dai_scm br_5.1.0 
+
+#export CANOEUX_VERSION=`cat ${WORKSPACE}/application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+#echo &quot;Deploying CANOE-UX version ${CANOEUX_VERSION} to artifactory&quot;
+#cp grails-canoe-ux-${CANOEUX_VERSION}.zip canoe-ux-${CANOEUX_VERSION}.zip
+
+#/opt/build/scripts/createRelease.sh dai_scm dai_scm br_5.1.0 ${BUILD_NUMBER}
+
+#/opt/build/scripts/createSnapshot.sh dai_scm dai_scm br_5.1.0 ${BUILD_NUMBER}
+
+#echo ${WORKSPACE}
+
+#sed -e &quot;s|1.0.3-SNAPSHOT|\&quot;${VERSION}\&quot;|&quot; -i &apos;&apos; $i</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

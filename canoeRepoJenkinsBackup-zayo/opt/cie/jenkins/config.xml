@@ -1,0 +1,616 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors>
+    <string>hudson.node_monitors.MonitorMarkedNodeOffline</string>
+    <string>OldData</string>
+    <string>jenkins.security.RekeySecretAdminMonitor</string>
+    <string>jenkins.security.s2m.MasterKillSwitchWarning</string>
+  </disabledAdministrativeMonitors>
+  <version>1.642.4</version>
+  <numExecutors>6</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.ProjectMatrixAuthorizationStrategy">
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:cvbuild</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jenkinsAdmin</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jenkinsadmin</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:cvbuild</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jenkinsAdmin</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jenkinsadmin</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:cvbuild</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:jenkinsAdmin</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:jenkinsadmin</permission>
+    <permission>hudson.model.Computer.Configure:TestUser</permission>
+    <permission>hudson.model.Computer.Configure:clecrone</permission>
+    <permission>hudson.model.Computer.Configure:cvbuild</permission>
+    <permission>hudson.model.Computer.Configure:jenkinsAdmin</permission>
+    <permission>hudson.model.Computer.Configure:jenkinsadmin</permission>
+    <permission>hudson.model.Computer.Configure:jschaeffer</permission>
+    <permission>hudson.model.Computer.Configure:lhassell</permission>
+    <permission>hudson.model.Computer.Configure:pzimmerman</permission>
+    <permission>hudson.model.Computer.Delete:TestUser</permission>
+    <permission>hudson.model.Computer.Delete:clecrone</permission>
+    <permission>hudson.model.Computer.Delete:cvbuild</permission>
+    <permission>hudson.model.Computer.Delete:jenkinsAdmin</permission>
+    <permission>hudson.model.Computer.Delete:jenkinsadmin</permission>
+    <permission>hudson.model.Computer.Delete:jschaeffer</permission>
+    <permission>hudson.model.Computer.Delete:lhassell</permission>
+    <permission>hudson.model.Computer.Delete:pzimmerman</permission>
+    <permission>hudson.model.Hudson.Administer:TestUser</permission>
+    <permission>hudson.model.Hudson.Administer:cvbuild</permission>
+    <permission>hudson.model.Hudson.Administer:jenkins</permission>
+    <permission>hudson.model.Hudson.Administer:jenkinsAdmin</permission>
+    <permission>hudson.model.Hudson.Administer:jenkinsadmin</permission>
+    <permission>hudson.model.Hudson.Administer:jschaeffer</permission>
+    <permission>hudson.model.Hudson.Administer:lhassell</permission>
+    <permission>hudson.model.Hudson.Read:TestUser</permission>
+    <permission>hudson.model.Hudson.Read:anonymous</permission>
+    <permission>hudson.model.Hudson.Read:clecrone</permission>
+    <permission>hudson.model.Hudson.Read:cvbuild</permission>
+    <permission>hudson.model.Hudson.Read:github</permission>
+    <permission>hudson.model.Hudson.Read:jenkins</permission>
+    <permission>hudson.model.Hudson.Read:jenkinsAdmin</permission>
+    <permission>hudson.model.Hudson.Read:jenkinsadmin</permission>
+    <permission>hudson.model.Hudson.Read:jschaeffer</permission>
+    <permission>hudson.model.Hudson.Read:lhassell</permission>
+    <permission>hudson.model.Hudson.Read:pzimmerman</permission>
+    <permission>hudson.model.Hudson.Read:rickrothenberg</permission>
+    <permission>hudson.model.Hudson.RunScripts:cvbuild</permission>
+    <permission>hudson.model.Hudson.RunScripts:jenkinsAdmin</permission>
+    <permission>hudson.model.Hudson.RunScripts:jenkinsadmin</permission>
+    <permission>hudson.model.Item.Build:TestUser</permission>
+    <permission>hudson.model.Item.Build:anonymous</permission>
+    <permission>hudson.model.Item.Build:clecrone</permission>
+    <permission>hudson.model.Item.Build:cvbuild</permission>
+    <permission>hudson.model.Item.Build:jenkinsAdmin</permission>
+    <permission>hudson.model.Item.Build:jenkinsadmin</permission>
+    <permission>hudson.model.Item.Build:jschaeffer</permission>
+    <permission>hudson.model.Item.Build:lhassell</permission>
+    <permission>hudson.model.Item.Build:pzimmerman</permission>
+    <permission>hudson.model.Item.Build:rickrothenberg</permission>
+    <permission>hudson.model.Item.Cancel:TestUser</permission>
+    <permission>hudson.model.Item.Cancel:jschaeffer</permission>
+    <permission>hudson.model.Item.Cancel:lhassell</permission>
+    <permission>hudson.model.Item.Configure:TestUser</permission>
+    <permission>hudson.model.Item.Configure:clecrone</permission>
+    <permission>hudson.model.Item.Configure:cvbuild</permission>
+    <permission>hudson.model.Item.Configure:jenkinsAdmin</permission>
+    <permission>hudson.model.Item.Configure:jenkinsadmin</permission>
+    <permission>hudson.model.Item.Configure:jschaeffer</permission>
+    <permission>hudson.model.Item.Configure:lhassell</permission>
+    <permission>hudson.model.Item.Configure:pzimmerman</permission>
+    <permission>hudson.model.Item.Create:TestUser</permission>
+    <permission>hudson.model.Item.Create:clecrone</permission>
+    <permission>hudson.model.Item.Create:cvbuild</permission>
+    <permission>hudson.model.Item.Create:jenkinsAdmin</permission>
+    <permission>hudson.model.Item.Create:jenkinsadmin</permission>
+    <permission>hudson.model.Item.Create:jschaeffer</permission>
+    <permission>hudson.model.Item.Create:lhassell</permission>
+    <permission>hudson.model.Item.Create:pzimmerman</permission>
+    <permission>hudson.model.Item.Delete:TestUser</permission>
+    <permission>hudson.model.Item.Delete:clecrone</permission>
+    <permission>hudson.model.Item.Delete:cvbuild</permission>
+    <permission>hudson.model.Item.Delete:jenkinsAdmin</permission>
+    <permission>hudson.model.Item.Delete:jenkinsadmin</permission>
+    <permission>hudson.model.Item.Delete:jschaeffer</permission>
+    <permission>hudson.model.Item.Delete:lhassell</permission>
+    <permission>hudson.model.Item.Delete:pzimmerman</permission>
+    <permission>hudson.model.Item.Discover:TestUser</permission>
+    <permission>hudson.model.Item.Discover:cvbuild</permission>
+    <permission>hudson.model.Item.Discover:jenkinsAdmin</permission>
+    <permission>hudson.model.Item.Discover:jenkinsadmin</permission>
+    <permission>hudson.model.Item.Discover:jschaeffer</permission>
+    <permission>hudson.model.Item.Discover:lhassell</permission>
+    <permission>hudson.model.Item.ExtendedRead:cvbuild</permission>
+    <permission>hudson.model.Item.ExtendedRead:jenkinsAdmin</permission>
+    <permission>hudson.model.Item.ExtendedRead:jenkinsadmin</permission>
+    <permission>hudson.model.Item.ExtendedRead:jschaeffer</permission>
+    <permission>hudson.model.Item.ExtendedRead:lhassell</permission>
+    <permission>hudson.model.Item.Read:TestUser</permission>
+    <permission>hudson.model.Item.Read:anonymous</permission>
+    <permission>hudson.model.Item.Read:clecrone</permission>
+    <permission>hudson.model.Item.Read:cvbuild</permission>
+    <permission>hudson.model.Item.Read:jenkinsAdmin</permission>
+    <permission>hudson.model.Item.Read:jenkinsadmin</permission>
+    <permission>hudson.model.Item.Read:jschaeffer</permission>
+    <permission>hudson.model.Item.Read:lhassell</permission>
+    <permission>hudson.model.Item.Read:pzimmerman</permission>
+    <permission>hudson.model.Item.Read:rickrothenberg</permission>
+    <permission>hudson.model.Item.Workspace:TestUser</permission>
+    <permission>hudson.model.Item.Workspace:anonymous</permission>
+    <permission>hudson.model.Item.Workspace:clecrone</permission>
+    <permission>hudson.model.Item.Workspace:cvbuild</permission>
+    <permission>hudson.model.Item.Workspace:jenkinsAdmin</permission>
+    <permission>hudson.model.Item.Workspace:jenkinsadmin</permission>
+    <permission>hudson.model.Item.Workspace:jschaeffer</permission>
+    <permission>hudson.model.Item.Workspace:lhassell</permission>
+    <permission>hudson.model.Item.Workspace:pzimmerman</permission>
+    <permission>hudson.model.Item.Workspace:rickrothenberg</permission>
+    <permission>hudson.model.Run.Delete:TestUser</permission>
+    <permission>hudson.model.Run.Delete:clecrone</permission>
+    <permission>hudson.model.Run.Delete:cvbuild</permission>
+    <permission>hudson.model.Run.Delete:jenkinsAdmin</permission>
+    <permission>hudson.model.Run.Delete:jenkinsadmin</permission>
+    <permission>hudson.model.Run.Delete:jschaeffer</permission>
+    <permission>hudson.model.Run.Delete:lhassell</permission>
+    <permission>hudson.model.Run.Update:TestUser</permission>
+    <permission>hudson.model.Run.Update:clecrone</permission>
+    <permission>hudson.model.Run.Update:cvbuild</permission>
+    <permission>hudson.model.Run.Update:jenkinsAdmin</permission>
+    <permission>hudson.model.Run.Update:jenkinsadmin</permission>
+    <permission>hudson.model.Run.Update:jschaeffer</permission>
+    <permission>hudson.model.Run.Update:lhassell</permission>
+    <permission>hudson.model.View.Configure:TestUser</permission>
+    <permission>hudson.model.View.Configure:clecrone</permission>
+    <permission>hudson.model.View.Configure:cvbuild</permission>
+    <permission>hudson.model.View.Configure:jenkinsAdmin</permission>
+    <permission>hudson.model.View.Configure:jenkinsadmin</permission>
+    <permission>hudson.model.View.Configure:jschaeffer</permission>
+    <permission>hudson.model.View.Configure:lhassell</permission>
+    <permission>hudson.model.View.Configure:pzimmerman</permission>
+    <permission>hudson.model.View.Create:TestUser</permission>
+    <permission>hudson.model.View.Create:clecrone</permission>
+    <permission>hudson.model.View.Create:cvbuild</permission>
+    <permission>hudson.model.View.Create:jenkinsAdmin</permission>
+    <permission>hudson.model.View.Create:jenkinsadmin</permission>
+    <permission>hudson.model.View.Create:jschaeffer</permission>
+    <permission>hudson.model.View.Create:lhassell</permission>
+    <permission>hudson.model.View.Create:pzimmerman</permission>
+    <permission>hudson.model.View.Delete:TestUser</permission>
+    <permission>hudson.model.View.Delete:clecrone</permission>
+    <permission>hudson.model.View.Delete:cvbuild</permission>
+    <permission>hudson.model.View.Delete:jenkinsAdmin</permission>
+    <permission>hudson.model.View.Delete:jenkinsadmin</permission>
+    <permission>hudson.model.View.Delete:jschaeffer</permission>
+    <permission>hudson.model.View.Delete:lhassell</permission>
+    <permission>hudson.model.View.Delete:pzimmerman</permission>
+    <permission>hudson.model.View.Read:TestUser</permission>
+    <permission>hudson.model.View.Read:jenkinsAdmin</permission>
+    <permission>hudson.model.View.Read:jenkinsadmin</permission>
+    <permission>hudson.model.View.Read:jschaeffer</permission>
+    <permission>hudson.model.View.Read:lhassell</permission>
+    <permission>hudson.scm.SCM.Tag:TestUser</permission>
+    <permission>hudson.scm.SCM.Tag:clecrone</permission>
+    <permission>hudson.scm.SCM.Tag:cvbuild</permission>
+    <permission>hudson.scm.SCM.Tag:jenkinsAdmin</permission>
+    <permission>hudson.scm.SCM.Tag:jenkinsadmin</permission>
+    <permission>hudson.scm.SCM.Tag:jschaeffer</permission>
+    <permission>hudson.scm.SCM.Tag:lhassell</permission>
+    <permission>hudson.scm.SCM.Tag:pzimmerman</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Promote:cvbuild</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Promote:jenkinsAdmin</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Promote:jenkinsadmin</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Promote:jschaeffer</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Promote:pzimmerman</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Release:TestUser</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Release:cvbuild</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Release:jenkinsAdmin</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Release:jenkinsadmin</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Release:jschaeffer</permission>
+    <permission>org.jfrog.hudson.ArtifactoryPlugin.Release:pzimmerman</permission>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>false</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter" plugin="antisamy-markup-formatter@1.3">
+    <disableSyntaxHighlighting>false</disableSyntaxHighlighting>
+  </markupFormatter>
+  <jdks>
+    <jdk>
+      <name>JDK1.8.0_u20</name>
+      <home>/opt/tools/jdk1.8.0_20</home>
+      <properties/>
+    </jdk>
+    <jdk>
+      <name>JDK1.8.0_u25</name>
+      <home>/opt/tools/jdk1.8.0_25</home>
+      <properties/>
+    </jdk>
+    <jdk>
+      <name>JDK1.6.0</name>
+      <home>/opt/tools/jdk1.6.0</home>
+      <properties/>
+    </jdk>
+  </jdks>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds/>
+  <quietPeriod>3</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>SCM</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>CloudTest</string>
+        <string>Comp_L2L</string>
+        <string>dai_scm-PackageDeploy-4.0.0</string>
+        <string>DevInt_Multicomponent_Deploy</string>
+        <string>FailTest</string>
+        <string>GenRelease</string>
+        <string>InstanceCreate</string>
+        <string>KensDevSuite</string>
+        <string>lab-2-lab_StopSystem</string>
+        <string>lab-to-labEnv-Refresh</string>
+        <string>new_ScrumEnv-Refresh</string>
+        <string>Old-SelectSCMEnv-Refresh</string>
+        <string>performance-EnvRefresh</string>
+        <string>ProdGenRelease</string>
+        <string>Promote-to-Scrum2</string>
+        <string>SCM_SingleDeploy_Scrum2</string>
+        <string>ScrumEnv-Refresh</string>
+        <string>ScrumPreserveState</string>
+        <string>ScrumResurrectState</string>
+        <string>ScrumSysGen_Deploy</string>
+        <string>SecurityCheckJob</string>
+        <string>Test_MSComponent_Deploy</string>
+        <string>TEST_Oracle12_SingleComponent_Deploy</string>
+        <string>test_proj-compile-4.0.0</string>
+        <string>test_proj-PackageDeploy-4.0.0</string>
+        <string>test_rename</string>
+        <string>TEST_SingleComponent_Deploy</string>
+        <string>TestPreserveScrum</string>
+        <string>tmp_obfuscate</string>
+        <string>Version_Path</string>
+        <string>Version_Path_test</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>.*(test_proj).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Scrum 1 Env</name>
+      <description>Deployment jobs for Scrum Environment #1</description>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>old_scrum1_RestartTcserver</string>
+        <string>Scrum1_RestartTcserver</string>
+        <string>Scrum1_SingleComponent_Deploy</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+      </columns>
+      <includeRegex>.*(Scrum1).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Scrum 2 Env</name>
+      <description>Deployment jobs for Scrum Environment #2</description>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+        <string>old_scrum2_RestartTcserver</string>
+        <string>Scrum2_Multicomponent_Deploy</string>
+        <string>Scrum2_RestartTcserver</string>
+        <string>Scrum2_SingleComponent_Deploy</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Scrum 3 Env</name>
+      <description>Deployment jobs for Scrum Environment #3</description>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+        <string>old_scrum3_RestartTcserver</string>
+        <string>Scrum3_RestartTcserver</string>
+        <string>Scrum3_SingleComponent_Deploy</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+      </columns>
+      <includeRegex>.*(Scrum3).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>DevInt Env</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Auto_RestartTcserver</string>
+        <string>DevInt_Multicomponent_Deploy</string>
+        <string>DevInt_RestartTcserver</string>
+        <string>DevInt_SingleComponent_Deploy</string>
+        <string>DevintPreserveState</string>
+        <string>DevintResurrectState</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Jenkins Package - Deploy Jobs</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>ad-load-manager-PackageDeploy-4.1.0</string>
+        <string>ad-load-manager-PackageDeploy-5.0.0</string>
+        <string>ADI-MDI-PackageDeploy-5.0.0</string>
+        <string>CERN-PackageDeploy-5.0.0</string>
+        <string>DAI-CampaignMgmt-PackageDeploy-5.14.0</string>
+        <string>DAI-CampaignMgmt-PackageDeploy-5.15.0</string>
+        <string>dai-cip-feedback-PackageDeploy-5.0.0</string>
+        <string>DAI-DecisionEngine-PackageDeploy-5.0.0</string>
+        <string>dai-smsi-PackageDeploy-5.0.0</string>
+        <string>dai-smsi-relay-PackageDeploy-5.0.0</string>
+        <string>kafka_etl_consumer-PackageDeploy-5.0.0</string>
+        <string>kafka_relay_consumer-PackageDeploy-5.0.0</string>
+        <string>Kirby-PackageDeploy-5.0.0</string>
+        <string>request-mgr-PackageDeploy-5.2.0</string>
+        <string>smsi-msp-relay-PackageDeploy-5.0.0</string>
+        <string>smsi-publisher-PackageDeploy-5.1.0</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>.*(PackageDeploy).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Performance</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Performance_RestartTcserver</string>
+        <string>zayo_perf-EnvRefresh</string>
+        <string>Zayo_perf_SingleComponent_Deploy</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Scrum 4 Env</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Scrum4_Multicomponent_Deploy</string>
+        <string>Scrum4_RestartTcserver</string>
+        <string>Scrum4_SingleComponent_Deploy</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>.*(scrum4).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>lab-2-lab</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>lab-2-lab_RestartTcserver</string>
+        <string>lab-to-labEnv-Refresh</string>
+        <string>lab2lab_SingleComponent_Deploy</string>
+        <string>Zayo_L2L_SingleComponent_Deploy</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>coxScrum</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>cox_SingleComponent_Deploy</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
+    <se.diabol.jenkins.pipeline.DeliveryPipelineView plugin="delivery-pipeline-plugin@0.9.5">
+      <owner class="hudson" reference="../../.."/>
+      <name>View Dependencies - Primary Apps</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <componentSpecs>
+        <se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
+          <name>Common-Lib</name>
+          <firstJob>common-lib-compile-1.0.0</firstJob>
+        </se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
+      </componentSpecs>
+      <noOfPipelines>1</noOfPipelines>
+      <showAggregatedPipeline>false</showAggregatedPipeline>
+      <noOfColumns>1</noOfColumns>
+      <sorting>se.diabol.jenkins.pipeline.sort.NameComparator</sorting>
+      <showAvatars>true</showAvatars>
+      <updateInterval>2</updateInterval>
+      <showChanges>true</showChanges>
+      <allowManualTriggers>false</allowManualTriggers>
+      <showTotalBuildTime>false</showTotalBuildTime>
+      <allowRebuild>false</allowRebuild>
+      <allowPipelineStart>false</allowPipelineStart>
+      <showDescription>false</showDescription>
+      <showPromotions>false</showPromotions>
+      <regexpFirstJobs/>
+    </se.diabol.jenkins.pipeline.DeliveryPipelineView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Jenkins Compile Jobs</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>ad-load-manager-compile-4.1.0</string>
+        <string>ad-load-manager-compile-5.0.0</string>
+        <string>ADI-MDI-compile-5.0.0</string>
+        <string>CERN-compile-5.0.0</string>
+        <string>DAI-CampaignMgmt-unit-5.15.0</string>
+        <string>dai-cip-feedback-compile-5.0.0</string>
+        <string>dai-smsi-compile-5.0.0</string>
+        <string>dai-smsi-relay-compile-5.0.0</string>
+        <string>kafka_etl_consumer-compile-5.0.0</string>
+        <string>kafka_relay_consumer-compile-5.1.0</string>
+        <string>Kirby-compile-5.0.0</string>
+        <string>request-mgr-compile-5.2.0</string>
+        <string>smsi-publisher-compile-5.1.0</string>
+        <string>smsi_reporting-compile-4.0.0</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>.*(compile).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Database Jobs</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[11]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>.*(ads-core).*|.*(caas-core).*|.*(dai-etl-feeder).*|.*(smsi_reporting).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+  </views>
+  <primaryView>All</primaryView>
+  <slaveAgentPort>-1</slaveAgentPort>
+  <label></label>
+  <nodeProperties>
+    <hudson.plugins.xvnc.DisplayAllocator_-Property plugin="xvnc@1.21"/>
+  </nodeProperties>
+  <globalNodeProperties/>
+  <noUsageStatistics>true</noUsageStatistics>
+</hudson>

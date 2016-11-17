@@ -1,0 +1,100 @@
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum1.properties b/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
+index 09c104e..6910c2a 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
+@@ -37,4 +37,17 @@ alm.operator=COX
+ 
+ alm.qualifier.log.enabled=true
+ 
+-sftp.job.interval=0 0 23 * * ?
+\ No newline at end of file
++##Commented out to prevent interference at the test SFTP site (which is shared)
++## SFTP configuration
++#alm.sftp.userName=canoe_pois_test
++#alm.sftp.pwd=MiavDanshEs
++#alm.sftp.hostname=10.13.37.22
++#alm.sftp.incomingD=/incoming
++#alm.sftp.completeD=/completed
++#alm.sftp.failureD=/failure
++#alm.sftp.filePattern=*.csv
++
++sftp.job.interval=0 0 23 * * ?
++
++publish.job.hour=0
++publish.job.minute=23
+\ No newline at end of file
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum2.properties b/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
+index 75db50c..6a2fb0a 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
+@@ -37,4 +37,17 @@ alm.operator=COX
+ 
+ alm.qualifier.log.enabled=true
+ 
+-sftp.job.interval=0 0 23 * * ?
+\ No newline at end of file
++##Commented out to prevent interference at the test SFTP site (which is shared)
++## SFTP configuration
++#alm.sftp.userName=canoe_pois_test
++#alm.sftp.pwd=MiavDanshEs
++#alm.sftp.hostname=10.13.37.22
++#alm.sftp.incomingD=/incoming
++#alm.sftp.completeD=/completed
++#alm.sftp.failureD=/failure
++#alm.sftp.filePattern=*.csv
++
++sftp.job.interval=0 0 23 * * ?
++
++publish.job.hour=0
++publish.job.minute=23
+\ No newline at end of file
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum3.properties b/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
+index 8cfc0e2..5fff89c 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
+@@ -37,4 +37,17 @@ alm.operator=COX
+ 
+ alm.qualifier.log.enabled=true
+ 
+-sftp.job.interval=0 0 23 * * ?
+\ No newline at end of file
++##Commented out to prevent interference at the test SFTP site (which is shared)
++## SFTP configuration
++#alm.sftp.userName=canoe_pois_test
++#alm.sftp.pwd=MiavDanshEs
++#alm.sftp.hostname=10.13.37.22
++#alm.sftp.incomingD=/incoming
++#alm.sftp.completeD=/completed
++#alm.sftp.failureD=/failure
++#alm.sftp.filePattern=*.csv
++
++sftp.job.interval=0 0 23 * * ?
++
++publish.job.hour=0
++publish.job.minute=23
+\ No newline at end of file
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum4.properties b/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
+index 39f4389..50f8ccf 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
+@@ -37,4 +37,17 @@ alm.operator=COX
+ 
+ alm.qualifier.log.enabled=true
+ 
+-sftp.job.interval=0 0 23 * * ?
+\ No newline at end of file
++##Commented out to prevent interference at the test SFTP site (which is shared)
++## SFTP configuration
++#alm.sftp.userName=canoe_pois_test
++#alm.sftp.pwd=MiavDanshEs
++#alm.sftp.hostname=10.13.37.22
++#alm.sftp.incomingD=/incoming
++#alm.sftp.completeD=/completed
++#alm.sftp.failureD=/failure
++#alm.sftp.filePattern=*.csv
++
++sftp.job.interval=0 0 23 * * ?
++
++publish.job.hour=0
++publish.job.minute=23
+\ No newline at end of file

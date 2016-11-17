@@ -1,0 +1,600 @@
+<b><u>Component Release Info for Sprint RunningWithTheDevil:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-msp-relay</b><br><u>Version</u><b>&nbspr_5.0.0_59</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+CAAS Core - 5.1.0_9
+Metadata - Added watermarking functionality. New watermarking property: hbase.identity=blah ; corresponds to application name; fixes to bugs VODDAI-8056, 8051, 8050 to align data with Rentrak. 
+Note: Already been deployed to Rentrak performance</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/log4j.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/log4j.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/log4j.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/log4j.scrum4.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/relay-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/relay-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/relay-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/relay-env-application.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/setenv.scrum1.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/setenv.scrum2.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/setenv.scrum3.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-msp-relay_v_5.0.0_59/diff.txt>smsi-msp-relay_v_5.0.0_59/config/setenv.scrum4.sh.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_1</b></u><br>
+<pre>
+*   <font color=blue>041b98a</font>-<font color=green>(2015-09-15)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_59, tag: r_5.0.0_59)</font>
+|\  
+| * <font color=blue>243bc45</font>-<font color=green>(2015-09-15)</font><font color=black><b>test updates with latest regression</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_58)</font>
+| * <font color=blue>71d7295</font>-<font color=green>(2015-09-15)</font><font color=black><b>Setting unspecified when unable to decrypt.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>38356a1</font>-<font color=green>(2015-09-15)</font><font color=black><b>Updating return text when entities do not exist.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>a73e95f</font>-<font color=green>(2015-09-15)</font><font color=black><b>updated all data files with timestamps</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>badef99</font>-<font color=green>(2015-09-15)</font><font color=black><b>added watermark table steps to all tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | <font color=blue>ce2dbdd</font>-<font color=green>(2015-09-15)</font><font color=black><b>added identity property</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>a612666</font>-<font color=green>(2015-09-15)</font><font color=black><b>Updated case</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>3e5a7dc</font>-<font color=green>(2015-09-15)</font><font color=black><b>Also checking for empty goal in addition to null</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>47c8fef</font>-<font color=green>(2015-09-14)</font><font color=black><b>Fixed watermark issue</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_57)</font>
+*   <font color=blue>24955b9</font>-<font color=green>(2015-09-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| *   <font color=blue>d51665a</font>-<font color=green>(2015-09-14)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| * | <font color=blue>6956c2c</font>-<font color=green>(2015-09-14)</font><font color=black><b>more test changes for case differences</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>48b8250</font>-<font color=green>(2015-09-14)</font><font color=black><b>Changed watermark</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>0873635</font>-<font color=green>(2015-09-14)</font><font color=black><b>resolving conflict</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>18ac958</font>-<font color=green>(2015-09-14)</font><font color=black><b>checking in longer wait statement</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* |   <font color=blue>e7e57bd</font>-<font color=green>(2015-09-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>f3d12e6</font>-<font color=green>(2015-09-14)</font><font color=black><b>adding multiple session multiple owner test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| |/  
+| *   <font color=blue>9f871d3</font>-<font color=green>(2015-09-14)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| * | <font color=blue>7d8d237</font>-<font color=green>(2015-09-14)</font><font color=black><b>missing data string changes in testing</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>0a6edee</font>-<font color=green>(2015-09-14)</font><font color=black><b>Adding default case to goal</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>c8cd6c7</font>-<font color=green>(2015-09-14)</font><font color=black><b>Created new message to specify when hhid is not enabled</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>c8adc32</font>-<font color=green>(2015-09-14)</font><font color=black><b>Adding decision info element for not fw, w/ default level</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>96249a1</font>-<font color=green>(2015-09-14)</font><font color=black><b>Updated default values per integration testing</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>d50810f</font>-<font color=green>(2015-09-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>c602839</font>-<font color=green>(2015-09-11)</font><font color=black><b>updating watermarking feature</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_56)</font>
+* | | <font color=blue>e1c2066</font>-<font color=green>(2015-09-14)</font><font color=black><b>Watermark rework</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* | <font color=blue>9e2717b</font>-<font color=green>(2015-09-11)</font><font color=black><b>Updates to store watermark as byte from string</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>aabe3e7</font>-<font color=green>(2015-09-11)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>4618411</font>-<font color=green>(2015-09-11)</font><font color=black><b>adding RelayWatermark hbase table lines</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | | <font color=blue>f50a876</font>-<font color=green>(2015-09-11)</font><font color=black><b>Updates for watermarking</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* |   <font color=blue>df734a1</font>-<font color=green>(2015-09-11)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>4ed660c</font>-<font color=green>(2015-09-11)</font><font color=black><b>updating watermark test, removing bad property from properties.file</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>69c29ee</font>-<font color=green>(2015-09-10)</font><font color=black><b>test changes for ID to Id</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_55)</font>
+* | | <font color=blue>11c1f5f</font>-<font color=green>(2015-09-11)</font><font color=black><b>Added watermarking</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* | <font color=blue>056edc2</font>-<font color=green>(2015-09-10)</font><font color=black><b>Updated rule names to be Id</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_54)</font>
+* | <font color=blue>882e39c</font>-<font color=green>(2015-09-10)</font><font color=black><b>Revert "Revert "Revert "Merge branch 'cloudera-prod' into br_5.0.0"""</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>6a8ac3a</font>-<font color=green>(2015-09-09)</font><font color=black><b>Revert "Revert "Merge branch 'cloudera-prod' into br_5.0.0""</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_53)</font>
+* | <font color=blue>b369c6e</font>-<font color=green>(2015-09-09)</font><font color=black><b>Update to the way we look up items in the entertainmentAsset cache</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_52)</font>
+* | <font color=blue>3284148</font>-<font color=green>(2015-09-09)</font><font color=black><b>Revert "Merge branch 'cloudera-prod' into br_5.0.0"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>a7ef61e</font>-<font color=green>(2015-09-09)</font><font color=black><b>Merge branch 'cloudera-prod' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>6ec842a</font>-<font color=green>(2015-09-09)</font><font color=black><b>Added exclusions</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (origin/cloudera-prod)</font>
+| * | <font color=blue>650a23a</font>-<font color=green>(2015-08-31)</font><font color=black><b>Updated connection string for read</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>622444b</font>-<font color=green>(2015-08-31)</font><font color=black><b>Closing connection after every use</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>8491fad</font>-<font color=green>(2015-08-31)</font><font color=black><b>removed redundant code for isFirst/isLast</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>7b22451</font>-<font color=green>(2015-09-08)</font><font color=black><b>templatizing scrum properties</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_51)</font>
+| |/  
+|/|   
+* | <font color=blue>52d2a1a</font>-<font color=green>(2015-09-03)</font><font color=black><b>new data options tests passing on scrum1</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_50)</font>
+* | <font color=blue>2d2a476</font>-<font color=green>(2015-09-03)</font><font color=black><b>test changes during scrum regression</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* |   <font color=blue>9a0b9a7</font>-<font color=green>(2015-09-02)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_49)</font>
+|\ \  
+| * | <font color=blue>8aa02ad</font>-<font color=green>(2015-09-02)</font><font color=black><b>Additional rules engine tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | | <font color=blue>eed5ab7</font>-<font color=green>(2015-09-02)</font><font color=black><b>Revert "added logging for debugging"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* | <font color=blue>128ca3c</font>-<font color=green>(2015-09-02)</font><font color=black><b>added logging for debugging</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_48)</font>
+* |   <font color=blue>87b4bea</font>-<font color=green>(2015-09-02)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>b40fd17</font>-<font color=green>(2015-09-02)</font><font color=black><b>updating port numbers</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | | <font color=blue>f5b1e6b</font>-<font color=green>(2015-09-02)</font><font color=black><b>updated to new ip</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* | <font color=blue>5189b37</font>-<font color=green>(2015-09-02)</font><font color=black><b>updated error log path</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_47)</font>
+* | <font color=blue>8f5e776</font>-<font color=green>(2015-09-01)</font><font color=black><b>properly referencing $APPHOME_DIR</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_46)</font>
+* | <font color=blue>5b88ee6</font>-<font color=green>(2015-09-01)</font><font color=black><b>additional unit tests</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>41a9995</font>-<font color=green>(2015-09-01)</font><font color=black><b>Removing unused flags in setenv.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>be87278</font>-<font color=green>(2015-09-01)</font><font color=black><b>update caas connection</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_45)</font>
+* | <font color=blue>e9da032</font>-<font color=green>(2015-08-31)</font><font color=black><b>added Hbase url and port and DMP url in scrum1 properties</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_44)</font>
+* | <font color=blue>537b8dd</font>-<font color=green>(2015-08-31)</font><font color=black><b>changes to relay regression post local testing</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_43)</font>
+* | <font color=blue>c48f713</font>-<font color=green>(2015-08-31)</font><font color=black><b>Aligning property files.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>a0f7b82</font>-<font color=green>(2015-08-31)</font><font color=black><b>Testing changes.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|/  
+* <font color=blue>1a35b34</font>-<font color=green>(2015-08-28)</font><font color=black><b>updated node remover test</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_42)</font>
+* <font color=blue>3f5bb92</font>-<font color=green>(2015-08-27)</font><font color=black><b>data option tests passing</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_41)</font>
+* <font color=blue>06101b3</font>-<font color=green>(2015-08-26)</font><font color=black><b>adding one off cases feature</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_40)</font>
+* <font color=blue>367af84</font>-<font color=green>(2015-08-26)</font><font color=black><b>Data product option</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>57da9ff</font>-<font color=green>(2015-08-26)</font><font color=black><b>data options test fixes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>5eae113</font>-<font color=green>(2015-08-26)</font><font color=black><b>added opps back to data options tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>6ab6cdd</font>-<font color=green>(2015-08-26)</font><font color=black><b>test data fixes for data options</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>d65c40e</font>-<font color=green>(2015-08-26)</font><font color=black><b>wired in noderemover to coo refresh</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>3bd75a0</font>-<font color=green>(2015-08-26)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>9f8befd</font>-<font color=green>(2015-08-24)</font><font color=black><b>correcting log message check</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_39)</font>
+| * <font color=blue>22551ac</font>-<font color=green>(2015-08-24)</font><font color=black><b>added DNE check to test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>e165535</font>-<font color=green>(2015-08-26)</font><font color=black><b>Wired in node removal for data product</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>1ef8468</font>-<font color=green>(2015-08-24)</font><font color=black><b>Checking for disabled endpoint</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>cd47f0c</font>-<font color=green>(2015-08-24)</font><font color=black><b>Added isci to entertainment asset cache</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>963421e</font>-<font color=green>(2015-08-24)</font><font color=black><b>fixing relay publish cron feature</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>dd4a91e</font>-<font color=green>(2015-08-24)</font><font color=black><b>null checks for goal, advId, adId, and adName</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>6e0a7fd</font>-<font color=green>(2015-08-21)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_38)</font>
+|\  
+| * <font color=blue>703e765</font>-<font color=green>(2015-08-21)</font><font color=black><b>removing To-Do's from baseline test, adding new scenario to isNotEnabled test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>da91a47</font>-<font color=green>(2015-08-21)</font><font color=black><b>Wired in basic placement info</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+*   <font color=blue>b640dda</font>-<font color=green>(2015-08-21)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>bcd395f</font>-<font color=green>(2015-08-21)</font><font color=black><b>adding isNotEnabled test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>33322ef</font>-<font color=green>(2015-08-21)</font><font color=black><b>Filtering basic opportunity info</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>ee1c9bc</font>-<font color=green>(2015-08-21)</font><font color=black><b>Wired in configuration for TitleAssetId</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>dd3bcba</font>-<font color=green>(2015-08-21)</font><font color=black><b>adding isEnabled test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>1d6d6f5</font>-<font color=green>(2015-08-21)</font><font color=black><b>Throwing a log error if we cannot decrypt HHID</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>d05caf0</font>-<font color=green>(2015-08-21)</font><font color=black><b>Removing To-Do's from baseline test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>8d23b33</font>-<font color=green>(2015-08-21)</font><font color=black><b>properly pulling ad_id</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+*   <font color=blue>c8b0956</font>-<font color=green>(2015-08-21)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>e8299fd</font>-<font color=green>(2015-08-21)</font><font color=black><b>adding metadata field 76 to CAAS Entertainment data</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| *   <font color=blue>6e4cb2c</font>-<font color=green>(2015-08-21)</font><font color=black><b>Merge from upstream.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |\  
+| | * <font color=blue>db5fd40</font>-<font color=green>(2015-08-21)</font><font color=black><b>uncommenting HHID check</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>a8b87de</font>-<font color=green>(2015-08-20)</font><font color=black><b>checking in null CAAS values test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_37)</font>
+| | * <font color=blue>849b37c</font>-<font color=green>(2015-08-20)</font><font color=black><b>fixes to basic info tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | *   <font color=blue>3ef7506</font>-<font color=green>(2015-08-20)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | |\  
+| | | * <font color=blue>0ea7b46</font>-<font color=green>(2015-08-20)</font><font color=black><b>adding onto DMP configs test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * | <font color=blue>a976f89</font>-<font color=green>(2015-08-20)</font><font color=black><b>sm partner passing, first draft of basic info tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | |/  
+| * | <font color=blue>84bb157</font>-<font color=green>(2015-08-21)</font><font color=black><b>iSCI and adID additions.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | | <font color=blue>806e448</font>-<font color=green>(2015-08-21)</font><font color=black><b>Defaulting playtime to 0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>65513a3</font>-<font color=green>(2015-08-20)</font><font color=black><b>Properly escaping pipe</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>1bb2979</font>-<font color=green>(2015-08-20)</font><font color=black><b>rentrack test, fixes to data options</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* |   <font color=blue>4f28b4b</font>-<font color=green>(2015-08-20)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>bdc27bb</font>-<font color=green>(2015-08-20)</font><font color=black><b>Wired in filter on MovieProvider</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>5fd77a1</font>-<font color=green>(2015-08-20)</font><font color=black><b>Removing opPlacementOpportunityRef</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>6ef6be4</font>-<font color=green>(2015-08-20)</font><font color=black><b>Changed column field separators to use ^^ instead of |</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * |   <font color=blue>420adf4</font>-<font color=green>(2015-08-20)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>81772fa</font>-<font color=green>(2015-08-20)</font><font color=black><b>Adding comma to fix query</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | | <font color=blue>b876cac</font>-<font color=green>(2015-08-20)</font><font color=black><b>updated relay table txt files to have ^^</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/ /  
+|/| |   
+* | |   <font color=blue>72db5e0</font>-<font color=green>(2015-08-19)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_36)</font>
+|\ \ \  
+| |/ /  
+| * |   <font color=blue>a249b6b</font>-<font color=green>(2015-08-19)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>2a09780</font>-<font color=green>(2015-08-19)</font><font color=black><b>Changes to filter out vodSysRef</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | | <font color=blue>aea9aa1</font>-<font color=green>(2015-08-19)</font><font color=black><b>updated baseline file to have new data nodes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/ /  
+|/| |   
+* | |   <font color=blue>7abc5b5</font>-<font color=green>(2015-08-19)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \ \  
+| | |/  
+| |/|   
+| * | <font color=blue>1399839</font>-<font color=green>(2015-08-19)</font><font color=black><b>adding ISCI metadata field to cache.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |/  
+| *   <font color=blue>5cb539f</font>-<font color=green>(2015-08-19)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>254028e</font>-<font color=green>(2015-08-19)</font><font color=black><b>Updating comcast vodsystemrefs to 15301|BNI_ADM</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>ecf950a</font>-<font color=green>(2015-08-19)</font><font color=black><b>PlayTimeRunTime</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>21a5080</font>-<font color=green>(2015-08-19)</font><font color=black><b>replaced all PlacementOpportunityRef@uriId checks with [DNE]</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>261f339</font>-<font color=green>(2015-08-19)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| |/  
+| *   <font color=blue>1607355</font>-<font color=green>(2015-08-19)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>f2f490c</font>-<font color=green>(2015-08-19)</font><font color=black><b>AD_ID and ISCI added to cache.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>f8e15cf</font>-<font color=green>(2015-08-19)</font><font color=black><b>Wired in settings around playtime/runtime</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| * <font color=blue>2d43dbe</font>-<font color=green>(2015-08-18)</font><font color=black><b>re-correcting HHID values in data option tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_35)</font>
+| * <font color=blue>bc74af6</font>-<font color=green>(2015-08-18)</font><font color=black><b>correcting HHID to the proper value</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>188d185</font>-<font color=green>(2015-08-18)</font><font color=black><b>updating key.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>0df80e1</font>-<font color=green>(2015-08-19)</font><font color=black><b>updated golden data to have new source values for AD-ID, Title AssetID, and AD-ISCI</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>8f8f5b7</font>-<font color=green>(2015-08-18)</font><font color=black><b>test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>7e5415c</font>-<font color=green>(2015-08-18)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>aef3c77</font>-<font color=green>(2015-08-18)</font><font color=black><b>fixes yo</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>f0a9d39</font>-<font color=green>(2015-08-18)</font><font color=black><b>Adding decryption to HHID</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>cf1f3fd</font>-<font color=green>(2015-08-18)</font><font color=black><b>step #1 and step #2</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| *   <font color=blue>a11d50e</font>-<font color=green>(2015-08-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>e0085c7</font>-<font color=green>(2015-08-18)</font><font color=black><b>fixing Campaign Decision Info tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>b939d77</font>-<font color=green>(2015-08-18)</font><font color=black><b>correctly pointing placement id at right parser</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| *   <font color=blue>5943fa9</font>-<font color=green>(2015-08-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| * | <font color=blue>acd92d9</font>-<font color=green>(2015-08-18)</font><font color=black><b>Handling nulls in the string parsing for freewheel</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>27b7362</font>-<font color=green>(2015-08-18)</font><font color=black><b>updates to tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>1e9f853</font>-<font color=green>(2015-08-18)</font><font color=black><b>fixing test problems</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>b5186e0</font>-<font color=green>(2015-08-18)</font><font color=black><b>Forcing 2 digits on HH:mm:ss</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>ce24b7e</font>-<font color=green>(2015-08-18)</font><font color=black><b>Stubbing unit tests for RulesEngine.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>2b89147</font>-<font color=green>(2015-08-18)</font><font color=black><b>adding Third Party SMS mock service line in it</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>6e52fe1</font>-<font color=green>(2015-08-18)</font><font color=black><b>Formatting duration.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>d52b161</font>-<font color=green>(2015-08-18)</font><font color=black><b>fixing CampaignInfo tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>ad83482</font>-<font color=green>(2015-08-18)</font><font color=black><b>Changing flight date format.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>40f2710</font>-<font color=green>(2015-08-18)</font><font color=black><b>Displaying unspecified if hhid is not enabled</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>cc90d69</font>-<font color=green>(2015-08-18)</font><font color=black><b>Filtering out based on platform</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>c25c088</font>-<font color=green>(2015-08-18)</font><font color=black><b>Removed Feed object</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>bf98515</font>-<font color=green>(2015-08-18)</font><font color=black><b>updates to tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>cd46f0a</font>-<font color=green>(2015-08-18)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| *   <font color=blue>1c32185</font>-<font color=green>(2015-08-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>4a512af</font>-<font color=green>(2015-08-18)</font><font color=black><b>Removing test feature.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>30bd5aa</font>-<font color=green>(2015-08-18)</font><font color=black><b>Fixed hhid if not enabled</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| * <font color=blue>67c9fc7</font>-<font color=green>(2015-08-18)</font><font color=black><b>Removing potential for NPE.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>c98b099</font>-<font color=green>(2015-08-18)</font><font color=black><b>editing dmp configs test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>f3b4da6</font>-<font color=green>(2015-08-18)</font><font color=black><b>Fixed CampaignId, LineId, and PlacementId</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>24de4be</font>-<font color=green>(2015-08-18)</font><font color=black><b>Fixed deviceId issues.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| *   <font color=blue>902316e</font>-<font color=green>(2015-08-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| * | <font color=blue>0c2923e</font>-<font color=green>(2015-08-18)</font><font color=black><b>Fixed the hid</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>5da9f37</font>-<font color=green>(2015-08-18)</font><font color=black><b>updates to tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>fc51c92</font>-<font color=green>(2015-08-18)</font><font color=black><b>editing baseline tests and providers to match</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>cf90daf</font>-<font color=green>(2015-08-18)</font><font color=black><b>Fixed case issues</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4c5ca55</font>-<font color=green>(2015-08-18)</font><font color=black><b>Updated cache to store by full uric</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4aad0e1</font>-<font color=green>(2015-08-18)</font><font color=black><b>Wired config into sendService</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>934d601</font>-<font color=green>(2015-08-18)</font><font color=black><b>Cleaned up CacheDao and made changes to properly hand down the dump</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>360b536</font>-<font color=green>(2015-08-17)</font><font color=black><b>Updated data</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_34)</font>
+*   <font color=blue>a745d2c</font>-<font color=green>(2015-08-17)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>1806cc3</font>-<font color=green>(2015-08-17)</font><font color=black><b>correcting first scenario of DMP configs test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>3b382e3</font>-<font color=green>(2015-08-17)</font><font color=black><b>Updated case in url</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>199bd29</font>-<font color=green>(2015-08-17)</font><font color=black><b>dmp config test table updates</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+*   <font color=blue>b51ceb8</font>-<font color=green>(2015-08-17)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>12f8711</font>-<font color=green>(2015-08-17)</font><font color=black><b>fixing baseline tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>a48f177</font>-<font color=green>(2015-08-17)</font><font color=black><b>fixing URLs</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>a7e68a8</font>-<font color=green>(2015-08-17)</font><font color=black><b>fixing baseline publish URLs</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>62cca8a</font>-<font color=green>(2015-08-17)</font><font color=black><b>Resetting partner from change var</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>8304e95</font>-<font color=green>(2015-08-17)</font><font color=black><b>fixed platform test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>09f04b0</font>-<font color=green>(2015-08-17)</font><font color=black><b>changing TODO and URL's for changing coo owner</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>011e3e7</font>-<font color=green>(2015-08-17)</font><font color=black><b>Added login to node mapper</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>2984fb9</font>-<font color=green>(2015-08-17)</font><font color=black><b>Cleaned out unused caches</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>315da52</font>-<font color=green>(2015-08-17)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>9b32301</font>-<font color=green>(2015-08-17)</font><font color=black><b>fixing glue code step</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>c3bae3d</font>-<font color=green>(2015-08-17)</font><font color=black><b>Injecting proper service to servlet.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>1173db8</font>-<font color=green>(2015-08-17)</font><font color=black><b>Wired cause caches into rulesengine</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+*   <font color=blue>19294b2</font>-<font color=green>(2015-08-17)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>42ea5e8</font>-<font color=green>(2015-08-17)</font><font color=black><b>fixing small test problems</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>00f7130</font>-<font color=green>(2015-08-17)</font><font color=black><b>Wired in provider/operator filter on pull</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+*   <font color=blue>803dbe1</font>-<font color=green>(2015-08-17)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| *   <font color=blue>55f1357</font>-<font color=green>(2015-08-17)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| * | <font color=blue>99ebb55</font>-<font color=green>(2015-08-17)</font><font color=black><b>platform flag tests complete</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>dae8201</font>-<font color=green>(2015-08-17)</font><font color=black><b>Pulling in url from config</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>01dd6b3</font>-<font color=green>(2015-08-17)</font><font color=black><b>wiring in coo from actual placement, not the one in config</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>f1cae41</font>-<font color=green>(2015-08-17)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>3f790d8</font>-<font color=green>(2015-08-17)</font><font color=black><b>Ability to set a few variable via URL.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |/  
+| *   <font color=blue>d59ea78</font>-<font color=green>(2015-08-17)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>715d3ce</font>-<font color=green>(2015-08-14)</font><font color=black><b>adding browser lines to new feature</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_33)</font>
+| | *   <font color=blue>da48718</font>-<font color=green>(2015-08-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | |\  
+| | * | <font color=blue>c300e0b</font>-<font color=green>(2015-08-14)</font><font color=black><b>adding tests for VODDAI-7756 and VODDAI-7217</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | | <font color=blue>ebdf867</font>-<font color=green>(2015-08-17)</font><font color=black><b>data options tests completed</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| | |/  
+| |/|   
+| * | <font color=blue>bd99b66</font>-<font color=green>(2015-08-14)</font><font color=black><b>updated URLs with bob's new code</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * |   <font color=blue>a4d9a84</font>-<font color=green>(2015-08-14)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>b329ef9</font>-<font color=green>(2015-08-14)</font><font color=black><b>json files for data options</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | | <font color=blue>e80653c</font>-<font color=green>(2015-08-17)</font><font color=black><b>removed old data product code now handled elsewhere</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/ /  
+|/| |   
+* | | <font color=blue>2bb451b</font>-<font color=green>(2015-08-14)</font><font color=black><b>wiring in the partner via property</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | |   <font color=blue>cffad60</font>-<font color=green>(2015-08-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \ \  
+| |/ /  
+| * |   <font color=blue>e61e451</font>-<font color=green>(2015-08-14)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>d648b6b</font>-<font color=green>(2015-08-14)</font><font color=black><b>added new config URL's ... edits to data options</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | |   <font color=blue>71356c9</font>-<font color=green>(2015-08-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \ \ \  
+| | |/ /  
+| |/| |   
+| * | | <font color=blue>a2fe4f8</font>-<font color=green>(2015-08-14)</font><font color=black><b>Campaign item/media asset cache (build off same query) and associated deliveryVariance property</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | |/  
+| |/|   
+| * | <font color=blue>add6048</font>-<font color=green>(2015-08-13)</font><font color=black><b>adding JSON files for DMP configuration options</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_32)</font>
+| * | <font color=blue>9116b36</font>-<font color=green>(2015-08-13)</font><font color=black><b>Extracting to interface to accommodate tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |/  
+| * <font color=blue>ad82459</font>-<font color=green>(2015-08-13)</font><font color=black><b>fixed campaign line id for broadway</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>48514db</font>-<font color=green>(2015-08-13)</font><font color=black><b>older tests updated with DMP configs and new checks</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>65bc667</font>-<font color=green>(2015-08-13)</font><font color=black><b>adding operator and HHID to all txt files, also adding DMP configs test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| *   <font color=blue>6f91bce</font>-<font color=green>(2015-08-13)</font><font color=black><b>resolved conflicts in properties file</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>f4734fe</font>-<font color=green>(2015-08-13)</font><font color=black><b>Cache refresh job and properties.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>b8d88c2</font>-<font color=green>(2015-08-13)</font><font color=black><b>test changes for new supplemental data checks</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| *   <font color=blue>1cd6f2e</font>-<font color=green>(2015-08-12)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_31)</font>
+| |\  
+| * | <font color=blue>3237f04</font>-<font color=green>(2015-08-12)</font><font color=black><b>Added more data to golden data for CAAS</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>68568e4</font>-<font color=green>(2015-08-14)</font><font color=black><b>Initial wiring in of rulesEngine</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>1323737</font>-<font color=green>(2015-08-12)</font><font color=black><b>Added code to parse ID's for freewheel</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>db2178c</font>-<font color=green>(2015-08-12)</font><font color=black><b>Added name parser</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>8833213</font>-<font color=green>(2015-08-12)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| |/  
+| *   <font color=blue>a508213</font>-<font color=green>(2015-08-12)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>96d0f24</font>-<font color=green>(2015-08-12)</font><font color=black><b>more descriptive log message.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>b7a6d14</font>-<font color=green>(2015-08-12)</font><font color=black><b>Cleaning up loggers.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>faf9e05</font>-<font color=green>(2015-08-12)</font><font color=black><b>Wiring in DMP to cache</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>88a369d</font>-<font color=green>(2015-08-12)</font><font color=black><b>Adding test feature for JSON endpoints.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>8477e87</font>-<font color=green>(2015-08-12)</font><font color=black><b>Allowing connection via URL</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>752d776</font>-<font color=green>(2015-08-12)</font><font color=black><b>Reworking Jackson generated code. Having difficulties with ENUMS.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>a2df068</font>-<font color=green>(2015-08-11)</font><font color=black><b>adding deviceID to all of the .txt files</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_30)</font>
+| * | <font color=blue>9b55784</font>-<font color=green>(2015-08-12)</font><font color=black><b>json files</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>cb331c9</font>-<font color=green>(2015-08-12)</font><font color=black><b>Fixed references in CacheService and cache.jsp</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>c37994a</font>-<font color=green>(2015-08-10)</font><font color=black><b>Adding Jackson domain classes for DMP ingest.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_5.0.0_29)</font>
+* | <font color=blue>fe4b8b8</font>-<font color=green>(2015-08-04)</font><font color=black><b>changing sessions per message test checks</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_28)</font>
+|/  
+* <font color=blue>d75f296</font>-<font color=green>(2015-08-04)</font><font color=black><b>fixed test data</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>3ec64c6</font>-<font color=green>(2015-08-04)</font><font color=black><b>Changes to support data options</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>e504adc</font>-<font color=green>(2015-08-04)</font><font color=black><b>fixed data for last Data Options test</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>7cd56fd</font>-<font color=green>(2015-08-04)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>8761a66</font>-<font color=green>(2015-08-04)</font><font color=black><b>fixing acknowledgement test to pass</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>89ffc2e</font>-<font color=green>(2015-08-04)</font><font color=black><b>changing COO back to Broadway</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>b1fce14</font>-<font color=green>(2015-08-04)</font><font color=black><b>Updated syntax on table check</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>2a52bf1</font>-<font color=green>(2015-08-04)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>da7e969</font>-<font color=green>(2015-08-04)</font><font color=black><b>fixing data options test data</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* |   <font color=blue>eb77b75</font>-<font color=green>(2015-08-04)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>0e3f07c</font>-<font color=green>(2015-08-04)</font><font color=black><b>fixing acknowledgement check</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>480a767</font>-<font color=green>(2015-08-04)</font><font color=black><b>Fix to the opportunity mapper</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>a28cb85</font>-<font color=green>(2015-08-04)</font><font color=black><b>fixed PO Google tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>c301dda</font>-<font color=green>(2015-08-03)</font><font color=black><b>Refactored the message builder to make it more testable</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>317b2de</font>-<font color=green>(2015-08-03)</font><font color=black><b>Removed duplicate session add</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_27)</font>
+*   <font color=blue>18bde58</font>-<font color=green>(2015-08-03)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>a9547e1</font>-<font color=green>(2015-08-03)</font><font color=black><b>nitpicking Julie's naming conventions</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>511db59</font>-<font color=green>(2015-08-03)</font><font color=black><b>adding pod_optimized COO scenario</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>19d16e6</font>-<font color=green>(2015-08-03)</font><font color=black><b>Templatized Relay Properties</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | <font color=blue>9fbc94d</font>-<font color=green>(2015-08-03)</font><font color=black><b>Changes to support data options</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>fc1f13c</font>-<font color=green>(2015-08-03)</font><font color=black><b>fixed default status column to broadway</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>263f708</font>-<font color=green>(2015-08-03)</font><font color=black><b>changes to ask validation</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>0841fc2</font>-<font color=green>(2015-08-03)</font><font color=black><b>finished data options tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>0eb5b2e</font>-<font color=green>(2015-08-03)</font><font color=black><b>moved titleAssetID to hang off of session instead of opportunity</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>444f8d0</font>-<font color=green>(2015-08-03)</font><font color=black><b>moved titleAssetID to hang off of session instead of opportunity</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>cfaffd9</font>-<font color=green>(2015-08-03)</font><font color=black><b>fixing log checks for my tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>b9cb33d</font>-<font color=green>(2015-08-03)</font><font color=black><b>updated paths</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>91b8732</font>-<font color=green>(2015-08-03)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| *   <font color=blue>e8a8e92</font>-<font color=green>(2015-08-03)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>417bbb2</font>-<font color=green>(2015-08-03)</font><font color=black><b>Adding log checks and timestamps to all of my features</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>1a22971</font>-<font color=green>(2015-08-03)</font><font color=black><b>test data additions</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+| * <font color=blue>bd6415c</font>-<font color=green>(2015-08-03)</font><font color=black><b>changed scan files to have new status rows for google/broadway</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>250e656</font>-<font color=green>(2015-08-03)</font><font color=black><b>updated test data files</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| *   <font color=blue>d6cd39d</font>-<font color=green>(2015-08-03)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |\  
+| | * <font color=blue>f665c8d</font>-<font color=green>(2015-07-31)</font><font color=black><b>editing all of my feature files for new row keys</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_26)</font>
+| * | <font color=blue>6314782</font>-<font color=green>(2015-08-03)</font><font color=black><b>logging uncommented</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>8043936</font>-<font color=green>(2015-08-03)</font><font color=black><b>Repointed cucumber log files</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>051b64b</font>-<font color=green>(2015-07-31)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>7858e20</font>-<font color=green>(2015-07-31)</font><font color=black><b>test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| * <font color=blue>04c1911</font>-<font color=green>(2015-07-31)</font><font color=black><b>more data options test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | <font color=blue>bc788f5</font>-<font color=green>(2015-07-31)</font><font color=black><b>Added logging for acknowledgement</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>f91fc13</font>-<font color=green>(2015-07-31)</font><font color=black><b>Cucumber log fixes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>efbc10f</font>-<font color=green>(2015-07-31)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>7f4952c</font>-<font color=green>(2015-07-31)</font><font color=black><b>resetting seed to equal 9</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>fc2b054</font>-<font color=green>(2015-07-31)</font><font color=black><b>adding cron and horizontal scaling features</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>8d56fa5</font>-<font color=green>(2015-07-31)</font><font color=black><b>data options tests</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+*   <font color=blue>0013e73</font>-<font color=green>(2015-07-30)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_25)</font>
+|\  
+| * <font color=blue>a769c5e</font>-<font color=green>(2015-07-30)</font><font color=black><b>adding default log line to baseline coo feature</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>94804c6</font>-<font color=green>(2015-07-30)</font><font color=black><b>First round of Data Options tests - data files not created yet</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>8aefe3a</font>-<font color=green>(2015-07-30)</font><font color=black><b>test changes to data files and baseline features</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>83319f7</font>-<font color=green>(2015-07-29)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_24)</font>
+|\  
+| *   <font color=blue>f35110b</font>-<font color=green>(2015-07-28)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_5.0.0_23)</font>
+| |\  
+| * | <font color=blue>41050dc</font>-<font color=green>(2015-07-28)</font><font color=black><b>Ack validation test</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* | | <font color=blue>8b15cee</font>-<font color=green>(2015-07-29)</font><font color=black><b>Added specific catch for timeouts and extended the defaults</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>4ef6558</font>-<font color=green>(2015-07-27)</font><font color=black><b>Updating the status column on a successful ack</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_22)</font>
+* |   <font color=blue>afd05d4</font>-<font color=green>(2015-07-27)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>9248307</font>-<font color=green>(2015-07-24)</font><font color=black><b>fixing conflict</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_21)</font>
+| * | <font color=blue>6bcb5bf</font>-<font color=green>(2015-07-24)</font><font color=black><b>updating relay tests with COO information</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | | <font color=blue>4aed475</font>-<font color=green>(2015-07-27)</font><font color=black><b>Including seed on the start row/end row</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* |   <font color=blue>813b320</font>-<font color=green>(2015-07-24)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>f5b4b12</font>-<font color=green>(2015-07-24)</font><font color=black><b>updating baseline relay tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>e8d7d88</font>-<font color=green>(2015-07-24)</font><font color=black><b>updating relayScan txt files with new COO format</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | | <font color=blue>e5dbe77</font>-<font color=green>(2015-07-24)</font><font color=black><b>Added utf-8 encoding</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* |   <font color=blue>38b211b</font>-<font color=green>(2015-07-24)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>cd593cb</font>-<font color=green>(2015-07-24)</font><font color=black><b>updating multiple sessions txt files with new COO info</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>d4ddccf</font>-<font color=green>(2015-07-23)</font><font color=black><b>adding new glue code to sessions per message test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_20)</font>
+* | | <font color=blue>b99b4a8</font>-<font color=green>(2015-07-24)</font><font color=black><b>Updated wiring</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* | <font color=blue>3ea47b9</font>-<font color=green>(2015-07-23)</font><font color=black><b>Only retrieving data based on coo, also only sending opps based on coo</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_19, tag: v_5.0.0_18, tag: v_5.0.0_17)</font>
+|/  
+* <font color=blue>b0e4d78</font>-<font color=green>(2015-07-23)</font><font color=black><b>Added java parent back in</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_16, tag: v_5.0.0_15)</font>
+* <font color=blue>f0b4e91</font>-<font color=green>(2015-07-23)</font><font color=black><b>SMTimeRange changes for multiple sessions</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+*   <font color=blue>fd60988</font>-<font color=green>(2015-07-23)</font><font color=black><b>resolved conflicts</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>523bc05</font>-<font color=green>(2015-07-22)</font><font color=black><b>example feature to save date variables.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_5.0.0_14)</font>
+| * <font color=blue>d844e2a</font>-<font color=green>(2015-07-22)</font><font color=black><b>Initial config file checkin</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>45a6cbd</font>-<font color=green>(2015-07-22)</font><font color=black><b>Wired in cron job</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>e056eb6</font>-<font color=green>(2015-07-22)</font><font color=black><b>Wired in requestResponselog</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| *   <font color=blue>96451cd</font>-<font color=green>(2015-07-21)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_13)</font>
+| |\  
+| | * <font color=blue>e08cfd7</font>-<font color=green>(2015-07-21)</font><font color=black><b>editing coo map relay test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>0260b66</font>-<font color=green>(2015-07-21)</font><font color=black><b>editing more txt files for scan update</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>e3a0daa</font>-<font color=green>(2015-07-20)</font><font color=black><b>editing baseline publish checks for updated txt file</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_12)</font>
+| | * <font color=blue>fb8e5d0</font>-<font color=green>(2015-07-20)</font><font color=black><b>changing relay1.txt and relayScan1.txt to new $^ format</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>363f0fa</font>-<font color=green>(2015-07-21)</font><font color=black><b>wired in connection timeout</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| * <font color=blue>c3284fc</font>-<font color=green>(2015-07-20)</font><font color=black><b>changed : to $^</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>dae8721</font>-<font color=green>(2015-07-20)</font><font color=black><b>commenting out time checks, editing baseline publish</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>602d6ee</font>-<font color=green>(2015-07-20)</font><font color=black><b>baseline publish test updated</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>7007158</font>-<font color=green>(2015-07-23)</font><font color=black><b>test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>45cdb7c</font>-<font color=green>(2015-07-20)</font><font color=black><b>removed spaces in relay txt files</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>f39779f</font>-<font color=green>(2015-07-20)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>b7d8331</font>-<font color=green>(2015-07-20)</font><font color=black><b>editing checks for multiple sessions test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>dee91b1</font>-<font color=green>(2015-07-20)</font><font color=black><b>fixed relay scan txt files</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>c7ecc1e</font>-<font color=green>(2015-07-20)</font><font color=black><b>removed tag</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+*   <font color=blue>674540b</font>-<font color=green>(2015-07-20)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>38bc058</font>-<font color=green>(2015-07-20)</font><font color=black><b>updated static reference</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>a4b142b</font>-<font color=green>(2015-07-20)</font><font color=black><b>updated templates for testing</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* |   <font color=blue>252a0aa</font>-<font color=green>(2015-07-20)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>452a1e8</font>-<font color=green>(2015-07-20)</font><font color=black><b>cleaned up imports</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>8f38211</font>-<font color=green>(2015-07-20)</font><font color=black><b>renamed property file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>51df525</font>-<font color=green>(2015-07-20)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>7fd1371</font>-<font color=green>(2015-07-17)</font><font color=black><b>changing properties file to point to correct mock service</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_11)</font>
+| * <font color=blue>9e36faf</font>-<font color=green>(2015-07-17)</font><font color=black><b>Refreshing the coo cache</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>3802889</font>-<font color=green>(2015-07-17)</font><font color=black><b>editing multiple sessions test, correcting local port</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>62b0b8c</font>-<font color=green>(2015-07-17)</font><font color=black><b>changed key in the test file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>170bf77</font>-<font color=green>(2015-07-17)</font><font color=black><b>Example code to load hbase via file</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>1ec5192</font>-<font color=green>(2015-07-17)</font><font color=black><b>updated content type header</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| *   <font color=blue>29a1355</font>-<font color=green>(2015-07-17)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| * | <font color=blue>ef9d0d0</font>-<font color=green>(2015-07-17)</font><font color=black><b>Filter changes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>6b00ab7</font>-<font color=green>(2015-07-20)</font><font color=black><b>renamed template files</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>fbdab07</font>-<font color=green>(2015-07-17)</font><font color=black><b>adding hbase data dir.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|/  
+* <font color=blue>7d24fed</font>-<font color=green>(2015-07-17)</font><font color=black><b>Added initial RelayScan data file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>755f23b</font>-<font color=green>(2015-07-17)</font><font color=black><b>First relay txt file to load.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+*   <font color=blue>bf9f7ca</font>-<font color=green>(2015-07-16)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| * <font color=blue>c4a4f8f</font>-<font color=green>(2015-07-16)</font><font color=black><b>Wired in the SMTTimeRange</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_10)</font>
+| *   <font color=blue>c592685</font>-<font color=green>(2015-07-16)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>4267c68</font>-<font color=green>(2015-07-16)</font><font color=black><b>adding sessions per message test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>6b88913</font>-<font color=green>(2015-07-16)</font><font color=black><b>multiple sessions per message</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>615ddd0</font>-<font color=green>(2015-07-16)</font><font color=black><b>Externalized statusColumn, base read, and coo</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>8188ed0</font>-<font color=green>(2015-07-16)</font><font color=black><b>test data changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>090d085</font>-<font color=green>(2015-07-16)</font><font color=black><b>fixed CAAS COO data in FEED table</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* |   <font color=blue>6d4acbd</font>-<font color=green>(2015-07-16)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>9ba605d</font>-<font color=green>(2015-07-15)</font><font color=black><b>checking "fix" into pom and updating scrum URLs</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_9)</font>
+| |/  
+* | <font color=blue>9225e66</font>-<font color=green>(2015-07-16)</font><font color=black><b>Added Campaign Order Owner test</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>dda411d</font>-<font color=green>(2015-07-15)</font><font color=black><b>Refactored structure</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>46137ea</font>-<font color=green>(2015-07-15)</font><font color=black><b>Wired in the send</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>63e35b8</font>-<font color=green>(2015-07-15)</font><font color=black><b>publish code</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>11a2fa7</font>-<font color=green>(2015-07-14)</font><font color=black><b>Wired in bundling configurable number of sessions per message</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_8)</font>
+*   <font color=blue>525d00d</font>-<font color=green>(2015-07-14)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| *   <font color=blue>ce3e572</font>-<font color=green>(2015-07-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>d9eb180</font>-<font color=green>(2015-07-14)</font><font color=black><b>Wiring in force publish URL.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>69ba59b</font>-<font color=green>(2015-07-14)</font><font color=black><b>Wired in integration tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| *   <font color=blue>852adf2</font>-<font color=green>(2015-07-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>dffaaa5</font>-<font color=green>(2015-07-14)</font><font color=black><b>Adding refresh cache.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>15f7f9a</font>-<font color=green>(2015-07-14)</font><font color=black><b>Wired in the builders and service</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| * <font color=blue>f47dafc</font>-<font color=green>(2015-07-14)</font><font color=black><b>Exposing caches.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>8df24b5</font>-<font color=green>(2015-07-14)</font><font color=black><b>renamed templates folder</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+*   <font color=blue>00329ec</font>-<font color=green>(2015-07-14)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/smsi-msp-relay into br_5.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|\  
+| *   <font color=blue>5efbd78</font>-<font color=green>(2015-07-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>12457f5</font>-<font color=green>(2015-07-14)</font><font color=black><b>Extracting data loader.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>f92ef60</font>-<font color=green>(2015-07-14)</font><font color=black><b>Refactored and added unit tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| *   <font color=blue>ede854b</font>-<font color=green>(2015-07-14)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>2097341</font>-<font color=green>(2015-07-13)</font><font color=black><b>Beefing up cache service.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_5.0.0_7)</font>
+| | * <font color=blue>d3993f0</font>-<font color=green>(2015-07-13)</font><font color=black><b>Removing config.dir property lookup for test code.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>37fcefd</font>-<font color=green>(2015-07-13)</font><font color=black><b>moving resources.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>d6b5206</font>-<font color=green>(2015-07-13)</font><font color=black><b>Unit testing cache.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>0e5ed9a</font>-<font color=green>(2015-07-14)</font><font color=black><b>Pulled the message building out of the hbase result processing</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| * <font color=blue>70f34f0</font>-<font color=green>(2015-07-10)</font><font color=black><b>Repointed to new child pom</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_6, tag: v_5.0.0_5)</font>
+| * <font color=blue>2c03a60</font>-<font color=green>(2015-07-10)</font><font color=black><b>Moved packages</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>15ac451</font>-<font color=green>(2015-07-10)</font><font color=black><b>Updated pom and packages</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>8c856f7</font>-<font color=green>(2015-07-14)</font><font color=black><b>first baseline happy path test for msp relay coo logic</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+|/  
+* <font color=blue>1026323</font>-<font color=green>(2015-07-10)</font><font color=black><b>inital test golden data</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>386f1f0</font>-<font color=green>(2015-07-09)</font><font color=black><b>Basic cache service.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>49030f9</font>-<font color=green>(2015-07-09)</font><font color=black><b>Basic logger.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>8690bdd</font>-<font color=green>(2015-07-09)</font><font color=black><b>Basic cache DAO</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>41caecb</font>-<font color=green>(2015-07-09)</font><font color=black><b>Cleaning up app context.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>8e32888</font>-<font color=green>(2015-07-02)</font><font color=black><b>Added basic live read test</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_4)</font>
+* <font color=blue>ab73bf0</font>-<font color=green>(2015-07-01)</font><font color=black><b>Initial message building code</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_3)</font>
+* <font color=blue>77a69be</font>-<font color=green>(2015-07-01)</font><font color=black><b>removed dependency</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>6aa9e7a</font>-<font color=green>(2015-07-01)</font><font color=black><b>Remove test code</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>79ea0e7</font>-<font color=green>(2015-07-01)</font><font color=black><b>Initial read code</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>c5d7321</font>-<font color=green>(2015-06-30)</font><font color=black><b>Updates to web.xml</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_2)</font></pre>
+<hr>
+<p>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="dad" id="20150624-ratings">
+        <addColumn tableName="TITLE">
+            <column name="RATING5" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING6" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING7" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING8" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING9" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING10" type="java.sql.Types.VARCHAR(50)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

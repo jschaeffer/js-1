@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h3&gt;What does this job do?&lt;br&gt;&#xd;
+  &lt;ul&gt;&lt;h4&gt;&lt;li&gt;This job goes out to the selected Scrum system end points and gathers a list of the current webapp(tcserver)/jar status for all applications across the selected system.&#xd;
+&lt;li&gt;This information is then saved off to a tmp location and all running applications are then stopped. &#xd;
+  &lt;li&gt;Once all processes are stopped, a Refresh job is kicked off to display the latest actions/states and then the VM system itself is shutdown.&#xd;
+&lt;li&gt;The information gathered by this job is automatically pulled and used when performing a restart using the ScrumRessurectState job.&lt;/h4&gt;&lt;/ul&gt;&lt;/h3&gt;&#xd;
+</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SelEnv</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>devint</string>
+              <string>scrum1</string>
+              <string>scrum2</string>
+              <string>scrum3</string>
+              <string>scrum4</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+export action
+
+export Suite=$SelEnv
+export DeployTarg=$SelEnv
+echo $SelEnv
+echo $Suite
+echo $DeployTarg
+
+export Component=&quot;&quot;
+
+sysstate=`cat /var/www/html/$DeployTarg/sysstate.txt`
+if [[ $sysstate = *down* ]]
+  then
+  echo &quot;$DeployTarg is currently down and running the Preserver State job may give inaccurate results&quot;
+#  exit
+fi 
+source /opt/build/scripts/ZayoSCMSysVars.sh
+
+export Component=&quot;ad-load-manager request-mgr ads impression_collector SDC-session-collector cip metadata-publisher cis mock_svr smsi cm Pgmr-Cpgn-Int smsi-msp-relay smsipub dai-national-cis placement_response_mapper dai-smsi-relay POIS dce-mdata psn dai-dce dmp-config&quot; 
+
+rm /var/www/html/$Suite/ToRestart.txt
+
+touch /var/www/html/$Suite/ToRestart.txt
+
+for Comp in ${Component}; do
+
+export Comp
+export INSTANCE=$Comp
+export APPSERVER_IP=$targname
+touch /var/www/html/$Suite/RestartRaw.txt
+
+    echo &quot;************************************************************************&quot;
+    echo &quot; $Comp&quot;
+    echo &quot;************************************************************************&quot;
+    echo &quot;Instance -&gt; $INSTANCE   APPSERVER_IP -&gt; $APPSERVER_IP   Suite -&gt; $Suite&quot;
+    echo &quot; &quot;
+    echo &quot;status $INSTANCE on $APPSERVER_IP&quot;
+    echo &quot; &quot;
+
+          if [[ $Comp = MicroDev* ]]; then
+             echo &quot;INTO MD&quot;
+            if [[ $Suite = &quot;scrum2&quot; ]]; then
+              echo &quot;INTO SC2&quot;
+             fnSetMicro
+             AppState=`ssh mstradmin@${APPSERVER_IP} &quot;/opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer gs&quot;`
+             echo &quot;ssh mstradmin@${APPSERVER_IP} /opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer gs&quot;
+	       if [[ `echo $AppState | grep &apos;can_be_paused&apos; ` ]]; then
+		  echo $Comp &gt;&gt; /var/www/html/$Suite/ToRestart.txt
+		  echo &quot;$Comp on $Suite IS Running and WILL be stopped.&quot;
+	       else
+		  echo &quot;$Comp on $Suite is NOT Running and will NOT be restarted.&quot;
+	       fi
+	    elif [[ $Suite != &quot;scrum2&quot; ]]; then
+	      echo &quot;No MD deployed on $Suite.&quot;
+            fi
+
+	  elif [[ $Comp != MicroDev* ]]; then
+          AppState=`/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status`
+          echo &quot;/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status&quot;
+		if [[ `echo $AppState | grep &apos;PID&apos; ` ]] ; then
+		  echo $Comp &gt;&gt; /var/www/html/$Suite/ToRestart.txt
+		  echo &quot;$Comp on $Suite IS Running and WILL be restarted.&quot;
+		elif [[ `echo $AppState | grep &apos;NOT&apos; ` ]] ; then
+		  echo &quot;$Comp on $Suite is NOT Running and will NOT be restarted.&quot;
+	        fi
+	  fi
+    echo &quot;AppState = $AppState&quot;
+    unset AppState
+    echo &quot; &quot;
+done
+
+echo &quot;This is where the STOP will take place. This should read out only the files intended for restart.&quot;
+
+for i in `cat /var/www/html/$Suite/ToRestart.txt` ; do
+ echo $i
+  echo &quot;$i is Stopping&quot;
+    if [[ `echo $i | grep &apos;MicroDev*&apos; ` ]]; then
+     if [[ $Suite = &quot;scrum2&quot; ]]; then
+	echo &quot;Running -&gt; ssh mstradmin@${APPSERVER_IP} /opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer stop&quot;
+	ssh mstradmin@${APPSERVER_IP} &quot;/opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer stop&quot;
+        echo &quot;Wait is set to 60s to give MicroDev required time for proper shut down before continuing&quot;
+	wait 60 
+     elif [[ $Suite != &quot;scrum2&quot; ]]; then
+          echo &quot;No MicroDev installed on $Suite&quot;
+     fi
+    elif [[ $i != &quot;MicroDev&quot; ]]; then
+    echo &quot;Running -&gt; /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${i} stop&quot;
+    echo &quot; &quot;
+         /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${i} stop
+         
+             echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt; &gt; /var/www/html/$DeployTarg/${i}.envstate.txt&quot;
+    echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt;&quot; &gt; /var/www/html/$DeployTarg/${i}.envstate.txt
+    fi
+done
+
+export jarup=`ssh tcserver@${APPSERVER_IP} &quot;ps -ef | grep dai-cip&quot;`
+isempty=`echo $jarup | grep dai-cip.jar`
+if [ -z &quot;$isempty&quot; ]; then
+     echo &quot;No dai-cip process&quot;
+else
+   echo &quot;dai-cip processes active - Stopping&quot;
+   ssh tcserver@${APPSERVER_IP} &quot;cd dai-cip; ./launcher.sh stop&quot;
+   echo &quot;dai-cip&quot; &gt;&gt; /var/www/html/$Suite/ToRestart.txt
+fi
+
+export jarup=`ssh tcserver@${APPSERVER_IP} &quot;ps -ef | grep acp&quot;`
+isempty=`echo $jarup | grep acp.jar`
+if [ -z &quot;$isempty&quot; ]; then
+    echo &quot;No acp process&quot;
+else
+  echo &quot;acp processes active - Stopping&quot;
+  ssh tcserver@${APPSERVER_IP} &quot;cd acp; ./launcher.sh stop&quot;
+  echo &quot;acp&quot; &gt;&gt; /var/www/html/$Suite/ToRestart.txt
+fi
+
+#  Reporting section
+
+echo &quot;&lt;b&gt;--- Suite Preservation and stop ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;${Suite} preserved and shutdown by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+export BUILD_TAG
+export DeployUser
+export Suite=$SelEnv
+export DeployTarg=$SelEnv
+
+echo &quot;&lt;b&gt;URL For shutdown output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;u&gt;Components active at shutdown :&lt;/u&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+for i in `cat /var/www/html/$DeployTarg/ToRestart.txt`; do
+ echo &quot;$i&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+done
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+# Adding Slack notificaton 
+export webhook_url=&quot;https://hooks.slack.com/services/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&quot;
+export channel=&quot;#deployments&quot;
+export username=&quot;SCMUpdMgr&quot;
+export text=&quot;System Preserve and Shutdown: ${DeployTarg} by ${DeployUser}\n-URL for console output: &lt;http://cvbuild.cv.infra:7001/job/${JOB_NAME}/${BUILD_NUMBER}/console|here&gt;&quot;
+escapedText=$(echo $text | sed &apos;s/&quot;/\&quot;/g&apos; | sed &quot;s/&apos;/\&apos;/g&quot; )
+json=&quot;{\&quot;channel\&quot;: \&quot;$channel\&quot;, \&quot;username\&quot;:\&quot;$username\&quot;, \&quot;icon_emoji\&quot;:\&quot;mega\&quot;, \&quot;attachments\&quot;:[{\&quot;color\&quot;:\&quot;good\&quot; , \&quot;text\&quot;: \&quot;$escapedText\&quot;}]}&quot;
+curl -s -d &quot;payload=$json&quot; &quot;$webhook_url&quot;
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+# Section to Stop the VM itself 
+cd /opt/build/scripts
+./shutdown-vapp.sh $SelEnv
+cd /opt/build/scripts
+echo &quot;&lt;b&gt;&lt;font color=red&gt;down&lt;/font&gt;&lt;/b&gt;&quot; &gt;/var/www/html/$SelEnv/sysstate.txt
+edate=`date | awk &apos;{print \$2,\$3,\$4}&apos;`
+echo &quot;Environment $SelEnv shutdown by $DeployUser $BUILD_NUMBER - $edate&quot; &gt;&gt;/var/www/html/sysactivity/$SelEnv.txt
+ </command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

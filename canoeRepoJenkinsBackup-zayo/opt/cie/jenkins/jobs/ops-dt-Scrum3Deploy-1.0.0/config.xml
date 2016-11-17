@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/ops-dt/webapps/ops-dt/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./tmpdeployapp.sh -a ops-dt -t ops-dt -e scrum3 -r ${VERSION} -i ops-dt -v</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+VERSION=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/ops-dt/webapps/ops-dt/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+echo &quot;ops-dt-${VERSION}&quot; &gt; /var/www/html/scrum3/opsdt.txt
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

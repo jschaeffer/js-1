@@ -1,0 +1,47 @@
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum1.properties b/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
+index 21d3906..a17ee8e 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
+@@ -38,5 +38,7 @@ publish.job.minute=23
+ #alm.sftp.completeD=/completed
+ #alm.sftp.failureD=/failure
+ #alm.sftp.filePattern=*.csv
+-#alm.sftp.port=22
+-#sftp.job.interval=0 0 23 * * ?
++alm.sftp.port=22
++sftp.job.interval=0 0 23 * * ?
++
++delivery.variance=30
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum2.properties b/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
+index 8f5c0ce..e485996 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
+@@ -40,3 +40,5 @@ publish.job.minute=23
+ #alm.sftp.filePattern=*.csv
+ #alm.sftp.port=22
+ #sftp.job.interval=0 0 23 * * ?
++
++delivery.variance=30
+\ No newline at end of file
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum3.properties b/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
+index 3e6a07b..b8991a1 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
+@@ -40,3 +40,5 @@ publish.job.minute=23
+ #alm.sftp.filePattern=*.csv
+ #alm.sftp.port=22
+ #sftp.job.interval=0 0 23 * * ?
++
++delivery.variance=30
+\ No newline at end of file
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum4.properties b/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
+index ec2f7c8..8ccb715 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
+@@ -40,3 +40,5 @@ publish.job.minute=23
+ #alm.sftp.filePattern=*.csv
+ #alm.sftp.port=22
+ #sftp.job.interval=0 0 23 * * ?
++
++delivery.variance=30
+\ No newline at end of file

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command># Check each instances log directory usage
+## Jeff&apos;s changes - Made this a remote callable script 
+# End results:
+# var d = Disk Space (same as original)
+# var dh = Disk Space remaining in Human readable form
+# var l = Log space (same as original)
+# var lh = Log Space in Human readable form
+# Appended the target environment to the /var/www/html directory prefix
+
+enviroments=&quot;dvappdai01 dvappdai02 dvappdai03 dvappdai04&quot;
+
+for j in ${enviroments}; do
+  case $j in
+   dvappdai01)
+     target=devint
+     ;;
+   dvappdai02)
+     target=scrum1
+     ;;
+   dvappdai03)
+     target=scrum2
+     ;;
+   dvappdai04)
+     target=scrum3
+     ;;
+  esac
+
+export target=&quot;/var/www/html/${target}&quot;
+
+ instances=&quot;ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub&quot; 
+ for i in ${instances}; do
+  d1=`ssh tcserver@${j} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${j} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$target/diskspace.txt
+  l1=`ssh tcserver@${j} &quot;du instances/$i/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${j} &quot;du -h instances/$i/logs | awk &apos;{print $1}&apos;&quot;`;lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;td bgcolor=red&gt; &lt;font color=yellow&gt; $lh of $dh&quot; | tee &gt; $target/$i.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;td bgcolor=lightyellow&gt; &lt;font color=blue&gt; $lh of $dh&quot; | tee &gt; $target/$i.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;td bgcolor=lightgreen&gt; &lt;font color=black&gt; $lh of $dh&quot;| tee &gt; $target/$i.logs
+  fi
+ done
+done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

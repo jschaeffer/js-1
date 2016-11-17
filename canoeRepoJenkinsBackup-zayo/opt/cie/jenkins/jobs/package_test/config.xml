@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+export VERSION=&quot;1.0.0_${BUILD_NUMBER}&quot;
+#  Working on the section below
+cd /opt/checkouts/test_proj3
+export EXISTING_VERSION=`cat application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+echo &quot;VERSION=$VERSION  :  EXISTING_VERSION=$EXISTING_VERSION&quot;
+rm package.bash
+echo &quot;#! /bin/bash&quot; &gt;&gt; package.bash
+echo &quot;distDir=dist&quot; &gt;&gt; package.bash
+echo &quot;rm -rf \${distDir}&quot; &gt;&gt; package.bash
+echo &quot;mkdir \${distDir}&quot; &gt;&gt; package.bash
+
+echo &quot;cp ops-dce-metadata-agent.war \${distDir}/ops-dce-metadata-agent.war&quot; &gt;&gt; package.bash
+
+echo &quot;cd \${distDir}&quot; &gt;&gt; package.bash
+echo &quot;jar xf ops-dce-metadata-agent.war META-INF/MANIFEST.MF&quot; &gt;&gt; package.bash
+echo &quot;jar xf ops-dce-metadata-agent.war WEB-INF/classes/application.properties&quot; &gt;&gt; package.bash
+echo &quot;sed -e \&quot;s|\&quot;${EXISTING_VERSION}\&quot;|\&quot;${VERSION}\&quot;|\&quot; -i &apos;&apos; META-INF/MANIFEST.MF&quot; &gt;&gt; package.bash
+echo &quot;sed -e \&quot;s|\&quot;${EXISTING_VERSION}\&quot;|\&quot;${VERSION}\&quot;|\&quot; -i &apos;&apos; WEB-INF/classes/application.properties&quot; &gt;&gt; package.bash
+echo &quot;jar uf ops-dce-metadata-agent.war META-INF/MANIFEST.MF&quot; &gt;&gt; package.bash
+echo &quot;jar uf ops-dce-metadata-agent.war WEB-INF/classes/application.properties&quot; &gt;&gt; package.bash
+echo &quot;jar umf META-INF/MANIFEST.MF ops-dce-metadata-agent.war&quot; &gt;&gt; package.bash
+echo &quot;jar umf WEB-INF/classes/application.properties ops-dce-metadata-agent.war&quot; &gt;&gt; package.bash
+echo &quot;cat META-INF/MANIFEST.MF&quot; &gt;&gt; package.bash
+echo &quot;cat WEB-INF/classes/application.properties&quot; &gt;&gt; package.bash
+echo &quot;rm -rf META-INF&quot; &gt;&gt; package.bash
+echo &quot;rm -rf WEB-INF&quot; &gt;&gt; package.bash
+echo &quot;cp ops-dce-metadata-agent.war ..&quot; &gt;&gt; package.bash
+chmod +x package.bash</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

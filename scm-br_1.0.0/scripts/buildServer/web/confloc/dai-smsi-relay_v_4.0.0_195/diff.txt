@@ -1,0 +1,104 @@
+diff --git a/config/log4j.scrum1.xml b/config/log4j.scrum1.xml
+index 6533064..e93ceb4 100644
+--- a/config/log4j.scrum1.xml
++++ b/config/log4j.scrum1.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/config/log4j.scrum2.xml b/config/log4j.scrum2.xml
+index 6533064..e93ceb4 100644
+--- a/config/log4j.scrum2.xml
++++ b/config/log4j.scrum2.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/config/log4j.scrum3.xml b/config/log4j.scrum3.xml
+index 6533064..e93ceb4 100644
+--- a/config/log4j.scrum3.xml
++++ b/config/log4j.scrum3.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/config/log4j.scrum4.xml b/config/log4j.scrum4.xml
+index 6533064..e93ceb4 100644
+--- a/config/log4j.scrum4.xml
++++ b/config/log4j.scrum4.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/config/log4j.scrum1.xml b/config/log4j.scrum1.xml
+index 6533064..e93ceb4 100644
+--- a/config/log4j.scrum1.xml
++++ b/config/log4j.scrum1.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/config/log4j.scrum2.xml b/config/log4j.scrum2.xml
+index 6533064..e93ceb4 100644
+--- a/config/log4j.scrum2.xml
++++ b/config/log4j.scrum2.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/config/log4j.scrum3.xml b/config/log4j.scrum3.xml
+index 6533064..e93ceb4 100644
+--- a/config/log4j.scrum3.xml
++++ b/config/log4j.scrum3.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/config/log4j.scrum4.xml b/config/log4j.scrum4.xml
+index 6533064..e93ceb4 100644
+--- a/config/log4j.scrum4.xml
++++ b/config/log4j.scrum4.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>

@@ -1,0 +1,61 @@
+<b><u>Component Release Info for Sprint Orlando:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.0.0_156</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Joel:
+
+Campaign Manager 4.0.0_347
+- Multiple Providers!
+- Performance Improvements for Campaign Search & Media Asset Status
+- Metadata Operator changes to support Ignore Case (no GUI change)
+- Goal Strategy default to Even
+- Total Goal added to Campaign View Page
+
+Kassi:
+
+New tables (multiple providers), data migration ("ignore case" operators)</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0/024-dad-item_feed.xml
+core/model/src/main/resources/liquibase/core-4.0.0/024-mpm-feed-active-column.xml
+core/model/src/main/resources/liquibase/core-4.0.0/025-csd-feed-republish-detail.xml
+core/model/src/main/resources/liquibase/core-4.0.0/029-dad-order_owner_Feed.xml
+core/model/src/main/resources/liquibase/core-4.0.0/030-mpm-asset_availability.xml
+core/model/src/main/resources/liquibase/core-4.0.0/031-mpm-metadata-operator-ignore-case.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_146</b></u><br>
+<pre>
+* <font color=blue>a762d19</font>-<font color=green>(2014-08-04)</font><font color=black><b>Removed conflicts from OpCodeEnum</b></font><font color=grey>- (kennethleider)</font><font color=red> (HEAD, v_4.0.0_157, v_4.0.0_156, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>0255436</font>-<font color=green>(2014-08-03)</font><font color=black><b>Added case-insensitive metadata operators (OpCodeEnum)</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/operator-ignore-case)</font>
+* <font color=blue>2359854</font>-<font color=green>(2014-07-29)</font><font color=black><b>Refactoring for ad asset availability directly from asset.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_155)</font>
+* <font color=blue>94798f5</font>-<font color=green>(2014-07-24)</font><font color=black><b>Campaign search performance improvements - remove initializations for campaign search and provide new method to return line items by campaign.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_154, v_4.0.0_153)</font>
+* <font color=blue>5d6d4b4</font>-<font color=green>(2014-07-25)</font><font color=black><b>Properly filter operators that support feed by checking for cip_enabled.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_152)</font>
+* <font color=blue>f282424</font>-<font color=green>(2014-07-23)</font><font color=black><b>Renamed liquibase script.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_151)</font>
+*   <font color=blue>741c86a</font>-<font color=green>(2014-07-23)</font><font color=black><b>Merge branch 'multiprovider' into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>9231b4b</font>-<font color=green>(2014-07-10)</font><font color=black><b>VODDAI-5994 Create table Campaign_Order_Owner_Feed and CAAS classes</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (origin/multiprovider)</font>
+| * <font color=blue>a1a0886</font>-<font color=green>(2014-06-30)</font><font color=black><b>Added operatorFeed.findAllCipEnabledOperatorFeeds.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>560aa57</font>-<font color=green>(2014-06-30)</font><font color=black><b>Removed enabled column from Feed table.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>e019ba9</font>-<font color=green>(2014-06-25)</font><font color=black><b>VODDAI-5944: Made campaignItemFeeds a Set</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>487fbc0</font>-<font color=green>(2014-06-20)</font><font color=black><b>Added ID column to Campaign_Item_Feed table, changed constraints on table, updated tests.'</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>1b3f36d</font>-<font color=green>(2014-06-18)</font><font color=black><b>Added feed.enabled column to the Feed domain class.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>74cdb49</font>-<font color=green>(2014-06-17)</font><font color=black><b>Merge branch 'br_4.0.0' into multiprovider</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>e24a5df</font>-<font color=green>(2014-06-17)</font><font color=black><b>Merge branch 'br_4.0.0' into multiprovider</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>a0f765c</font>-<font color=green>(2014-06-17)</font><font color=black><b>Changed character length  of campaign_item.label in the model class.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>f71b3d8</font>-<font color=green>(2014-06-17)</font><font color=black><b>Merge branch 'br_4.0.0' into multiprovider</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| *   <font color=blue>35a47c4</font>-<font color=green>(2014-06-17)</font><font color=black><b>Merge branch 'multiprovider' of github.com:CanoeVentures/caas-core into multiprovider</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |\  
+| | * <font color=blue>aa7bc8a</font>-<font color=green>(2014-06-16)</font><font color=black><b>add setId on feed</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>0fb667a</font>-<font color=green>(2014-06-16)</font><font color=black><b>Added a conveince method to create a CampaignItemFeed</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | <font color=blue>7f807ac</font>-<font color=green>(2014-06-17)</font><font color=black><b>Changes to support searching by network with multiple providers.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+| * <font color=blue>e56a5be</font>-<font color=green>(2014-06-13)</font><font color=black><b>Updated JpaCampaignDao search queries for multiprovider, updated tests.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>41bd1fa</font>-<font color=green>(2014-06-13)</font><font color=black><b>Merge branch 'br_4.0.0' into multiprovider</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>caa20f6</font>-<font color=green>(2014-06-12)</font><font color=black><b>Fixes and commented out tests for new CampaignItemFeed</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>c9a62c9</font>-<font color=green>(2014-06-12)</font><font color=black><b>New Campaign_Item_feed table</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>7852ded</font>-<font color=green>(2014-07-20)</font><font color=black><b>Changes and tests to support querying a campaign item's total insertions and views.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/feedback-by-campaign-item)</font>
+* <font color=blue>db7e525</font>-<font color=green>(2014-07-09)</font><font color=black><b>Revert "Revert "New column changes to support relay""</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_150, v_4.0.0_149)</font>
+* <font color=blue>c03c8e8</font>-<font color=green>(2014-07-09)</font><font color=black><b>Revert "Revert "Fixed data for unit tests""</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>a4631fc</font>-<font color=green>(2014-07-08)</font><font color=black><b>Rolled back changes that explicitly set limit columns to null in migration script.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_148)</font>
+* <font color=blue>798bec5</font>-<font color=green>(2014-07-02)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/caas-core into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_147)</font>
+* <font color=blue>69a17da</font>-<font color=green>(2014-07-02)</font><font color=black><b>Set column values to null explicitly in migration script.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font></pre>
+<hr>
+<p>

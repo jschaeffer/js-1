@@ -1,0 +1,104 @@
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_4.0.0_322</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_322/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_322/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_322/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_322/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_322/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_322/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_322/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_322/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_312</b></u><br>
+<pre>
+* <font color=blue>71e602e</font>-<font color=green>(2014-07-02)</font><font color=black><b>search gridview feature updated</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_322)</font>
+*   <font color=blue>9ef4ad4</font>-<font color=green>(2014-07-02)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>75d1fa2</font>-<font color=green>(2014-07-02)</font><font color=black><b>updated validation feature for ads tab validation</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>2167cc0</font>-<font color=green>(2014-07-02)</font><font color=black><b>removed @joel tag</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>21f886c</font>-<font color=green>(2014-07-02)</font><font color=black><b>update campaign Item media asset features for placement limitation</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| *   <font color=blue>8f4796b</font>-<font color=green>(2014-07-02)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\  
+| * | <font color=blue>58c841c</font>-<font color=green>(2014-07-02)</font><font color=black><b>Minimum Ad Copy Seperation features have been modified. Same time invalid lines have been commented out.</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+* | | <font color=blue>0c06fb3</font>-<font color=green>(2014-07-02)</font><font color=black><b>Line item grid improvements.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>d4a56eb</font>-<font color=green>(2014-07-02)</font><font color=black><b>Finished validation on break and session limits.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>b498236</font>-<font color=green>(2014-07-02)</font><font color=black><b>Made Back to Back the default sepearation for ad assets.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>f52711f</font>-<font color=green>(2014-07-02)</font><font color=black><b>Validate placement and session limit on line item.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>5c9b2e6</font>-<font color=green>(2014-07-02)</font><font color=black><b>Resolved conflicts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>897d0ea</font>-<font color=green>(2014-07-02)</font><font color=black><b>modified all xmls to have BTB for Separation</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>cd016a8</font>-<font color=green>(2014-07-01)</font><font color=black><b>update on local properties</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>fb4f170</font>-<font color=green>(2014-07-02)</font><font color=black><b>Placement limit reimplementation (requires a few more tweaks before it's ready for production.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+*   <font color=blue>582fe34</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red> (v_4.0.0_321)</font>
+|\  
+| * <font color=blue>1308469</font>-<font color=green>(2014-07-01)</font><font color=black><b>modifying SC4 placement limitation to TRUE</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_320)</font>
+| * <font color=blue>77f5daf</font>-<font color=green>(2014-06-30)</font><font color=black><b>removed clicking the add ad asset button from all features</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_319)</font>
+* | <font color=blue>f9241dd</font>-<font color=green>(2014-07-01)</font><font color=black><b>Made changes to metadata features to accomodate for "group" changes</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+|/  
+*   <font color=blue>50bdcd7</font>-<font color=green>(2014-06-30)</font><font color=black><b>Campaign Item Media Asset selection functionality changed Merge branch 'select-ad' into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|\  
+| * <font color=blue>744b1b3</font>-<font color=green>(2014-06-30)</font><font color=black><b>Removed commented out code.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/select-ad)</font>
+| * <font color=blue>d2b156c</font>-<font color=green>(2014-06-30)</font><font color=black><b>Removed add button from lima selector, updated all code to support add lima when selecting from search results.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>54da26b</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_318)</font>
+|\ \  
+| * | <font color=blue>fa17d3a</font>-<font color=green>(2014-06-30)</font><font color=black><b>Fixed store/restore issue with Line Items and cancelling.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+* | <font color=blue>2e0bc29</font>-<font color=green>(2014-06-30)</font><font color=black><b>small prod data update</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+*   <font color=blue>d1f1d99</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| *   <font color=blue>4189ec4</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\  
+| * \   <font color=blue>5f20495</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>5c71afc</font>-<font color=green>(2014-06-30)</font><font color=black><b>Made changes to features regarding Placement Preferences and the Status column for Line Items</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| * | |   <font color=blue>c794542</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\ \ \  
+| * \ \ \   <font color=blue>cb47d9e</font>-<font color=green>(2014-06-27)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\ \ \ \  
+| * \ \ \ \   <font color=blue>fb1f0cd</font>-<font color=green>(2014-06-26)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\ \ \ \ \  
+| * | | | | | <font color=blue>510a46c</font>-<font color=green>(2014-06-26)</font><font color=black><b>Made changes to features regarding asset name move</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+* | | | | | | <font color=blue>3da25d6</font>-<font color=green>(2014-06-30)</font><font color=black><b>Re-render list item views when model changes.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |_|_|_|_|/  
+|/| | | | |   
+* | | | | | <font color=blue>2e82fbc</font>-<font color=green>(2014-06-30)</font><font color=black><b>Added some comments.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |_|_|_|/  
+|/| | | |   
+* | | | | <font color=blue>d477cba</font>-<font color=green>(2014-06-30)</font><font color=black><b>Preserve metadata target values after adding a target.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | | | <font color=blue>9534a58</font>-<font color=green>(2014-06-30)</font><font color=black><b>Modified scenario for 256-char Ad Asset; updated manual tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |_|_|/  
+|/| | |   
+* | | | <font color=blue>b5221e2</font>-<font color=green>(2014-06-19)</font><font color=black><b>Fixed bug where forms would not submit after correcting client-side validation errors.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_317)</font>
+* | | |   <font color=blue>200e5d5</font>-<font color=green>(2014-06-27)</font><font color=black><b>Merge branch 'rollback-on-cancel' into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \ \ \  
+| |_|_|/  
+|/| | |   
+| * | | <font color=blue>15df19c</font>-<font color=green>(2014-06-22)</font><font color=black><b>Undo changes on cancel of line item edit.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/rollback-on-cancel)</font>
+|  / /  
+* | | <font color=blue>1808e80</font>-<font color=green>(2014-06-27)</font><font color=black><b>ad asset show page formatted a little cleaner with less white space</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>9f7315e</font>-<font color=green>(2014-06-26)</font><font color=black><b>Hardcoded a width attribute to the placement pref warning divs.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_316)</font>
+|/  
+*   <font color=blue>a181eba</font>-<font color=green>(2014-06-25)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_315)</font>
+|\  
+| * <font color=blue>283f712</font>-<font color=green>(2014-06-25)</font><font color=black><b>Added background for scenario</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>b1f82e8</font>-<font color=green>(2014-06-25)</font><font color=black><b>Added comments about Jira5948 validation failure</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>e08239a</font>-<font color=green>(2014-06-25)</font><font color=black><b>Updated ID</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>1ddd5fa</font>-<font color=green>(2014-06-24)</font><font color=black><b>Tweaking specific tests for correct IDs</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_314)</font>
+* | <font color=blue>7cb769f</font>-<font color=green>(2014-06-25)</font><font color=black><b>moved placement pref to settings tab, needs a little more work</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>4aee0c2</font>-<font color=green>(2014-06-25)</font><font color=black><b>moved Status in Line Item Grid view, and changed Ad Asset Name max length to 256 and moved AssetName to top of view page</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+* <font color=blue>50135cf</font>-<font color=green>(2014-06-23)</font><font color=black><b>Updated manual test description for hover/wrap; V1</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_313)</font></pre>
+<hr>
+<p>

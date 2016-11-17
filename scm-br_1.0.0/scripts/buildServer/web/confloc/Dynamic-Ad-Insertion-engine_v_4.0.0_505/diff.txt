@@ -1,0 +1,144 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index 728c0c4..ba12dac 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -121,4 +121,7 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.115:13654
+-frequency.cap.max.persists=2500
+\ No newline at end of file
++frequency.cap.max.persists=2500
++
++#Configuration to determine where we are sourcing vodsystemref
++vboid.vodsystemref=true
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index 9321895..6ecd786 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -121,4 +121,7 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.115:13654
+-frequency.cap.max.persists=2500
+\ No newline at end of file
++frequency.cap.max.persists=2500
++
++#Configuration to determine where we are sourcing vodsystemref
++vboid.vodsystemref=true
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index ac49f9f..a67e2a5 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -121,4 +121,5 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.117:13654
+-frequency.cap.max.persists=2500
+\ No newline at end of file
++frequency.cap.max.persists=2500
++
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index cc8e03a..76cb79a 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -122,4 +122,7 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.122:13654
+-frequency.cap.max.persists=2500
+\ No newline at end of file
++frequency.cap.max.persists=2500
++
++#Configuration to determine where we are sourcing vodsystemref
++vboid.vodsystemref=true
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index 728c0c4..ba12dac 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -121,4 +121,7 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.115:13654
+-frequency.cap.max.persists=2500
+\ No newline at end of file
++frequency.cap.max.persists=2500
++
++#Configuration to determine where we are sourcing vodsystemref
++vboid.vodsystemref=true
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index 9321895..6ecd786 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -121,4 +121,7 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.115:13654
+-frequency.cap.max.persists=2500
+\ No newline at end of file
++frequency.cap.max.persists=2500
++
++#Configuration to determine where we are sourcing vodsystemref
++vboid.vodsystemref=true
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index ac49f9f..a67e2a5 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -121,4 +121,5 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.117:13654
+-frequency.cap.max.persists=2500
+\ No newline at end of file
++frequency.cap.max.persists=2500
++
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index cc8e03a..76cb79a 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -122,4 +122,7 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.122:13654
+-frequency.cap.max.persists=2500
+\ No newline at end of file
++frequency.cap.max.persists=2500
++
++#Configuration to determine where we are sourcing vodsystemref
++vboid.vodsystemref=true
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+index 8ed4128..439708d 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+@@ -34,3 +34,5 @@ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
++
++cis.managedIp.job=0 0 0 1/1 * ?
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+index a5a881d..d5f1712 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+@@ -24,3 +24,4 @@ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
+ 
++cis.managedIp.job=0 0 0 0/1 * ?
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+index 08bd907..e2d1fcb 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+@@ -24,3 +24,4 @@ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
+ 
++cis.managedIp.job=0 0 0 0/1 * ?
+\ No newline at end of file

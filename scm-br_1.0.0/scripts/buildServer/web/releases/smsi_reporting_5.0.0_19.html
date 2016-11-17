@@ -1,0 +1,58 @@
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi_reporting</b><br><u>Version</u><b>&nbspr_5.0.0_19</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Val:
+
+reporting both QAM and managed_ip
+
+dai-etl-feeder - 4.0.0.1_4 
+SMSi_Reporting - 5.0.0_19
+caas_core - 5.0.0_11
+
+We also regressed against:
+MicroStrategy - 4.0.0_215 
+dai-etl-feeder - 4.0.0.1_4 
+SMSi_Reporting - 5.0.0_19
+caas_core - 4.5.0_1</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/smsi-reporting-5.0.0-changelog.xml
+src/main/resources/liquibase/smsi-reporting-5.0.0/012-yliu-add-network-fact-tables.xml
+src/main/resources/liquibase/smsi-reporting-5.0.0/013-yliu-ebas-rollup-redo.xml
+src/main/resources/liquibase/smsi-reporting-5.0.0/014-yliu-feed-campaign-view.xml
+src/main/resources/liquibase/smsi-reporting-5.0.0/015-yliu-IIR-rollup-add-network.xml
+src/main/resources/liquibase/smsi-reporting-5.0.0/016-yliu-managed-ip.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_14</b></u><br>
+<pre>
+*   <font color=blue>6f0c6c7</font>-<font color=green>(2015-04-07)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/smsi_reporting into br_5.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_5.0.0_19)</font>
+|\  
+| * <font color=blue>4303f4e</font>-<font color=green>(2015-04-06)</font><font color=black><b>Added current adhoc reporting code and tests. Campaign and Campaign Item work for the requested attributes. Add Asset and Ent Asset of issues that need to be resovled for specific attributes.</b></font><font color=grey>- (dgerrells)</font><font color=red></font>
+* | <font color=blue>976fc2b</font>-<font color=green>(2015-04-07)</font><font color=black><b>VODDAI-7294. remove reference to hh rollups.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>9dd4ab4</font>-<font color=green>(2015-04-06)</font><font color=black><b>VODDAI-7294. no need to run hh agg anymore.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+*   <font color=blue>ef0e848</font>-<font color=green>(2015-04-06)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/smsi_reporting into br_5.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_5.0.0_17, tag: v_5.0.0_16, tag: v_5.0.0_15)</font>
+|\  
+| * <font color=blue>c5b9261</font>-<font color=green>(2015-04-06)</font><font color=black><b>Adding new data files for managed IP support. Only for the static data</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+| * <font color=blue>62f0456</font>-<font color=green>(2015-04-01)</font><font color=black><b>End of sprint F updates & Sprint Results</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+| * <font color=blue>f6e0520</font>-<font color=green>(2015-04-01)</font><font color=black><b>Adding sprint results to the smsi_reporting project</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+| * <font color=blue>b56cbc5</font>-<font color=green>(2015-04-01)</font><font color=black><b>End of sprint F updates to test cases</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+| * <font color=blue>52d1d05</font>-<font color=green>(2015-03-27)</font><font color=black><b>removed open/close browser commands. new config works</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+| * <font color=blue>bf27a30</font>-<font color=green>(2015-03-25)</font><font color=black><b>finish core report builder automation. Added support for phantomjs headless browser and safari  browser. Fixed config setup to work properly have yet to change features and remove old code due to needing to test on new version of osx.</b></font><font color=grey>- (dgerrells)</font><font color=red></font>
+| * <font color=blue>181e41a</font>-<font color=green>(2015-03-24)</font><font color=black><b>Adding new With Households tests</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+| *   <font color=blue>8a174a9</font>-<font color=green>(2015-03-23)</font><font color=black><b>Adding HH features and refactored core data</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+| |\  
+| * | <font color=blue>c2754e3</font>-<font color=green>(2015-03-23)</font><font color=black><b>Update to Core-XML and new HH Reports</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+* | | <font color=blue>270a61b</font>-<font color=green>(2015-04-06)</font><font color=black><b>VODDAI-7294. hh for QAM and IP yesterday added.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>4b94b68</font>-<font color=green>(2015-03-23)</font><font color=black><b>VODDAI-7101. added outer join on HH counts.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* |   <font color=blue>19da1eb</font>-<font color=green>(2015-03-23)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/smsi_reporting into br_5.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>92b0ce3</font>-<font color=green>(2015-03-20)</font><font color=black><b>Updated a few browser ids with Val</b></font><font color=grey>- (dgerrells)</font><font color=red></font>
+| * <font color=blue>16a8aed</font>-<font color=green>(2015-03-20)</font><font color=black><b>Merged Vals work from dai-etl-feeder and added the browser automation changes.</b></font><font color=grey>- (dgerrells)</font><font color=red></font>
+* | <font color=blue>2edec04</font>-<font color=green>(2015-03-23)</font><font color=black><b>VODDAI-7101. add hh to reporting.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>1471efc</font>-<font color=green>(2015-03-17)</font><font color=black><b>VODDAI-7184. updated documentation.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font></pre>
+<hr>
+<p>

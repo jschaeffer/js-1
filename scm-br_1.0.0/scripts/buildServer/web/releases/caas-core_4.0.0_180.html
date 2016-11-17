@@ -1,0 +1,73 @@
+<b><u>Component Release Info for Sprint 8Oct:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.0.0_180</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_4.0.0_180/diff.txt>caas-core_v_4.0.0_180/core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_4.0.0_180/diff.txt>caas-core_v_4.0.0_180/core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_4.0.0_180/diff.txt>caas-core_v_4.0.0_180/core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_4.0.0_180/diff.txt>caas-core_v_4.0.0_180/core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/cisys/genUser.Marley.sql
+core/model/src/main/resources/liquibase/cisys/genUser.MicroDev.sql
+core/model/src/main/resources/liquibase/cisys/genUser.devint.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+core/model/src/main/resources/liquibase/core-4.0.0/032-mpm-campaign-sort-trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/033-dad-metadata.xml
+core/model/src/main/resources/liquibase/core-4.0.0/034-dad-media_trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/035-khl-bye_bye_cip_update_interval.xml
+core/model/src/main/resources/liquibase/core-4.0.0/036-mpm-campaignitem-insertions-views-count.xml
+core/model/src/main/resources/liquibase/core-4.0.0/037-mpm-undo-insertions-views-count.xml
+core/model/src/main/resources/liquibase/core-4.0.0/038-mpm-create-data-dictionary-table.xml
+core/model/src/main/resources/liquibase/core-4.0.0/039-mpm-create-flashback-archives.xml
+core/model/src/main/resources/liquibase/core-4.0.0/040-mpm-migrate-categories.xml
+core/model/src/main/resources/liquibase/core-4.0.0/041-mpm-ci-feed-enabled.xml
+core/model/src/main/resources/liquibase/ojdbc6.jar</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_158</b></u><br>
+<pre>
+* <font color=blue>642b779</font>-<font color=green>(2014-09-24)</font><font color=black><b>Removed feedback goal properties from campaign and campaign item, created dao getters.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_180)</font>
+* <font color=blue>aa5f0a9</font>-<font color=green>(2014-09-24)</font><font color=black><b>Made CampaignItem.FeedbackGoal and Campaign.CampaignFeedbackGoal explicitly lazy loading.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>f675fc5</font>-<font color=green>(2014-09-24)</font><font color=black><b>Fixed case-sensitivity issue in advanced campaign search.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>c1458fa</font>-<font color=green>(2014-09-18)</font><font color=black><b>Search campaigns by description.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_179)</font>
+* <font color=blue>a0dfe3c</font>-<font color=green>(2014-09-18)</font><font color=black><b>Revert "Revert "Added enabled property to campaign item feeds""</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_178)</font>
+* <font color=blue>d7dac86</font>-<font color=green>(2014-09-17)</font><font color=black><b>Revert "Added enabled property to campaign item feeds"</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_177)</font>
+* <font color=blue>0f32280</font>-<font color=green>(2014-09-15)</font><font color=black><b>Added enabled property to campaign item feeds</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/ci-feed-disabled)</font>
+* <font color=blue>f5114b5</font>-<font color=green>(2014-09-12)</font><font color=black><b>Liquibase scrpt to migrate product categories to most specific level.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_176)</font>
+* <font color=blue>a225c9f</font>-<font color=green>(2014-09-05)</font><font color=black><b>Added code and tests to find product category by name.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_175, v_4.0.0_174)</font>
+* <font color=blue>dcf3427</font>-<font color=green>(2014-09-05)</font><font color=black><b>added comments about materialized viiews about dai-etl-feeder.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>8e938df</font>-<font color=green>(2014-09-04)</font><font color=black><b>fixed README</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_173)</font>
+* <font color=blue>e8fa7b2</font>-<font color=green>(2014-09-04)</font><font color=black><b>Updated README, Added data_dictionary records.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>4a3e5fe</font>-<font color=green>(2014-09-04)</font><font color=black><b>Added statements to genuser scripts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>76e77b2</font>-<font color=green>(2014-09-03)</font><font color=black><b>Added updatedBy properties to domain classes, fixed pom.xml so Liquibase can re-run</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>7a1847e</font>-<font color=green>(2014-09-03)</font><font color=black><b>Added flashback archives for campaign and media asset related tables.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>d32c417</font>-<font color=green>(2014-08-27)</font><font color=black><b>Added method and tests to accept a filter for findCampaignItemsByCampaign()</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_172, v_4.0.0_171)</font>
+* <font color=blue>c80313d</font>-<font color=green>(2014-08-26)</font><font color=black><b>Added primary key on data dictionary table, fixed missing Liquibase script issue.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_170)</font>
+* <font color=blue>7b5f4bd</font>-<font color=green>(2014-08-26)</font><font color=black><b>Added data dictionary table.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>fcd7ef0</font>-<font color=green>(2014-08-26)</font><font color=black><b>Added enum to CampaignItemBillingEnum class.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>8407578</font>-<font color=green>(2014-08-25)</font><font color=black><b>CampaignOrderOwnerFeed is now Serializable.</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_169)</font>
+* <font color=blue>7f29bb2</font>-<font color=green>(2014-08-22)</font><font color=black><b>New method and test to return cip enabled operator feeds by programmer</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_168)</font>
+* <font color=blue>b6252d7</font>-<font color=green>(2014-08-20)</font><font color=black><b>Support for filtering campaing searches by programmer</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_167)</font>
+* <font color=blue>08dc370</font>-<font color=green>(2014-08-18)</font><font color=black><b>Created campaign feedback goal view, added feedback goal as property on campaignitem and campaign.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_166)</font>
+*   <font color=blue>4d11dc7</font>-<font color=green>(2014-08-18)</font><font color=black><b>Merge branch 'campaign-item-stats' into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_165)</font>
+|\  
+| * <font color=blue>391aa22</font>-<font color=green>(2014-08-15)</font><font color=black><b>Removed triggers, updated campaign domain class with new properties.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/campaign-item-stats)</font>
+| * <font color=blue>37a797d</font>-<font color=green>(2014-08-14)</font><font color=black><b>Created triggers to populate conveninence columns.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>9352cc9</font>-<font color=green>(2014-08-14)</font><font color=black><b>First attempt.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>9be755a</font>-<font color=green>(2014-08-14)</font><font color=black><b>Removed OPERATOR.CIP_UPDATE_INTERVAL</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_164, v_4.0.0_163)</font>
+* | <font color=blue>09875a0</font>-<font color=green>(2014-08-14)</font><font color=black><b>Change  Original_Air_Date</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_162)</font>
+* | <font color=blue>37fa25a</font>-<font color=green>(2014-08-14)</font><font color=black><b>FIXED MEDU2_TRIGGER to be update</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_161)</font>
+* | <font color=blue>f8ce236</font>-<font color=green>(2014-08-14)</font><font color=black><b>Fixed value for field spec for Brand</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>807e51a</font>-<font color=green>(2014-08-13)</font><font color=black><b>Fixed merge mistakes</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_160)</font>
+* | <font color=blue>fcb3612</font>-<font color=green>(2014-08-08)</font><font color=black><b>VODDAI-6098 trigger immediate cip for enable update to media_asset and campaign_item_media_asset</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>15b8339</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6148 Brand</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>ce3e65f</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6147 Advertiser Name</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>259a043</font>-<font color=green>(2014-08-07)</font><font color=black><b>VODDAI-6146 persist Ad Description</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|/  
+* <font color=blue>b9932a7</font>-<font color=green>(2014-08-11)</font><font color=black><b>Added migration to Liquibase script.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_159)</font>
+* <font color=blue>7836d69</font>-<font color=green>(2014-08-08)</font><font color=black><b>This tweak got missed?</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/feature/campaign-sort)</font>
+* <font color=blue>f68bcba</font>-<font color=green>(2014-08-08)</font><font color=black><b>Added columns and trigger to support ordering of campaigns by status.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font></pre>
+<hr>
+<p>

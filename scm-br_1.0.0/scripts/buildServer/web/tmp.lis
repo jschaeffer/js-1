@@ -1,0 +1,77 @@
+On branch br_1.0.0
+Your branch is up-to-date with 'origin/br_1.0.0'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+
+	modified:   .htpasswd
+	modified:   asarray_projectList.php
+	modified:   back_disp_all.php
+	modified:   back_main.php
+	typechange: config.php
+	modified:   coxlab.logs
+	modified:   coxlab/Dynamic-Ad-Insertion-cm.instdate.txt
+	modified:   coxlab/Dynamic-Ad-Insertion-cm.txt
+	modified:   coxlab/Dynamic-Ad-Insertion-engine.instdate.txt
+	modified:   coxlab/Dynamic-Ad-Insertion-engine.txt
+	modified:   coxlab/caas-core.txt
+	modified:   coxlab/dai-cip.instdate.txt
+	modified:   coxlab/dai-cip.txt
+	modified:   coxlab/smsi-publisher.txt
+	modified:   createLod.php
+	modified:   diskspace.txt
+	typechange: disp_all.php
+	modified:   dtupd.txt
+	modified:   footer.php
+	modified:   good_form.php
+	modified:   index.php
+	modified:   int-test-support.txt
+	modified:   main.php
+	modified:   newbuildServer.css
+	modified:   old_asarray_projectList.php
+	modified:   performance/Dynamic-Ad-Insertion-cm.instdate.txt
+	modified:   performance/Dynamic-Ad-Insertion-cm.txt
+	modified:   performance/Dynamic-Ad-Insertion-engine.instdate.txt
+	modified:   performance/Dynamic-Ad-Insertion-engine.txt
+	modified:   performance/MicroDev.txt
+	modified:   performance/Pgmr-Cpgn-Int.instdate.txt
+	modified:   performance/Pgmr-Cpgn-Int.txt
+	modified:   performance/acp.txt
+	modified:   performance/caas-admin.instdate.txt
+	modified:   performance/caas-admin0_envstate.txt
+	modified:   performance/caas-core.txt
+	modified:   performance/dai-cip-feedback0_envstate.txt
+	modified:   performance/dai-cip.txt
+	modified:   performance/dai-national-cis.instdate.txt
+	modified:   performance/dai-national-cis.txt
+	modified:   performance/dai-smsi-relay1.logs
+	modified:   performance/dai-smsi.instdate.txt
+	modified:   performance/dai-smsi.txt
+	modified:   performance/diskspace.txt
+	modified:   performance/dtupd.txt
+	modified:   performance/impression_collector.txt
+	modified:   performance/metadata-publisher.instdate.txt
+	modified:   performance/smsi-publisher.instdate.txt
+	modified:   performance/smsi-publisher.txt
+	modified:   postscrum.php
+	modified:   projectList.txt
+	modified:   releases.php
+	modified:   rh65/caas-core.txt
+	modified:   rh65/dai-national-cis.txt
+	modified:   rh65/impression_collector.txt
+	modified:   rh65/int-test-support.txt
+	modified:   scmAdmin/index.php
+	modified:   tmp.lis
+	modified:   viewRel.php
+	modified:   work/@!
+	modified:   work/disp_all.php
+	modified:   work/full_template.html
+	modified:   work/inwork_main.php
+	modified:   work/main.php
+	modified:   work/main_back.php
+	modified:   work/newmain.php
+	modified:   work/tmp1.php
+	modified:   work/working_multiparameters_main.php
+	modified:   workshop/backbone-workshop (modified content)

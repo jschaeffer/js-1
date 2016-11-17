@@ -1,0 +1,11 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+index aaff916..50733d3 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+@@ -12,4 +12,4 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd

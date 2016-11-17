@@ -1,0 +1,37 @@
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-cip</b><br><u>Version</u><b>&nbspr_5.0.0_21</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+CAAS Core 5.0.0_11
+Metadata:  Fixed revision collision issue (7385)</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_8</b></u><br>
+<pre>
+* <font color=blue>7fdc870</font>-<font color=green>(2015-04-14)</font><font color=black><b>Undo that last change</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_21)</font>
+* <font color=blue>8229622</font>-<font color=green>(2015-04-14)</font><font color=black><b>Fixed dbunit test-empty.xml</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>442219b</font>-<font color=green>(2015-04-14)</font><font color=black><b>Added   slf4j-log4j12 to dependencies.  So that dependent libraries can log again.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>36cb7fe</font>-<font color=green>(2015-04-13)</font><font color=black><b>Fixed compile error</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_20)</font>
+* <font color=blue>22ac8f9</font>-<font color=green>(2015-04-13)</font><font color=black><b>Using caas-core 5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>58fec81</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7385 removed the or test for not canoe CIPs</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_19)</font>
+* <font color=blue>bf25550</font>-<font color=green>(2015-04-10)</font><font color=black><b>Switched campaign from insertions to views and adjusted the campItem scores appropriately</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9d8f640</font>-<font color=green>(2015-04-08)</font><font color=black><b>Fix for the disabled feed cip status reset issue</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_18, tag: v_5.0.0_17)</font>
+* <font color=blue>57d699b</font>-<font color=green>(2015-04-08)</font><font color=black><b>Fix for the disabled feed cip status reset issue</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>0f0bed3</font>-<font color=green>(2015-04-08)</font><font color=black><b>Update setenv and README to change the garbage collector.</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ee65783</font>-<font color=green>(2015-04-06)</font><font color=black><b>Reset cucumber to use 1.0.1</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_16)</font>
+*   <font color=blue>4488b7c</font>-<font color=green>(2015-04-06)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/dai-cip into br_5.0.0</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| * <font color=blue>8dc714e</font>-<font color=green>(2015-04-01)</font><font color=black><b>Switched the goalType values from insertions to views</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_15)</font>
+| * <font color=blue>6284cc6</font>-<font color=green>(2015-03-19)</font><font color=black><b>Adjusted orders of some values where explicit orders were defined</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.1_1, tag: v_5.0.0_14, tag: v_5.0.0_13)</font>
+* <font color=blue>585460d</font>-<font color=green>(2015-04-01)</font><font color=black><b>Switched the goalType values from insertions to views</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4e2749f</font>-<font color=green>(2015-03-19)</font><font color=black><b>Adjusted orders of some values where explicit orders were defined</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>792b0cf</font>-<font color=green>(2015-03-18)</font><font color=black><b>Added test for newish reloadable files, and removed typeCode</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>8a480fe</font>-<font color=green>(2015-03-18)</font><font color=black><b>Updated Cucumber dependency</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>0e3928b</font>-<font color=green>(2015-04-06)</font><font color=black><b>Fixes for CIP immediate flag getting reset by batch.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0.1_3)</font>
+* <font color=blue>fcee9f6</font>-<font color=green>(2015-04-01)</font><font color=black><b>Add dependency on Spring 4.0.5 in test</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0.1_2)</font>
+* <font color=blue>d85b583</font>-<font color=green>(2015-04-01)</font><font color=black><b>Added catch for SpringFramework optimistic lock exception</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4613521</font>-<font color=green>(2015-04-01)</font><font color=black><b>Update for safeSave delay plus more tries.  Changed cipProcessor to save only dirty items.</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>

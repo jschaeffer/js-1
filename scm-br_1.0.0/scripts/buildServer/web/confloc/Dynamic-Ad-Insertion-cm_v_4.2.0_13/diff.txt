@@ -1,0 +1,85 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+index 79f10e7..f219b44 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+@@ -10,4 +10,14 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+index 1065459..42864de 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+@@ -10,4 +10,14 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+index c26183a..3441a0f 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+@@ -10,4 +10,14 @@ hibernate.c3p0.maxIdleTime=120
+ # Crowd
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+-crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file
++crowd.rest.basicAuthPassword=crowd
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+index 50733d3..e953d81 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+@@ -13,3 +13,13 @@ hibernate.c3p0.maxIdleTime=120
+ crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+ crowd.rest.basicAuthUser=cm
+ crowd.rest.basicAuthPassword=crowd
++
++# Number of seconds of inactivity before displaying inactivity warning dialog. We use seconds to make it easier to test.
++# 1500 seconds = 25 minutes
++# 13800 seconds = 3 hours 50 minutes
++cm.app.inactivityWarningTimer=1500
++
++# Number of seconds after inactivity dialog is displayed before automatically logging out if no action is taken. We use
++# seconds to make it easier to test.
++# 240 seconds = 4 minutes
++cm.app.inactivityAutoLogoutTimer=240
+\ No newline at end of file

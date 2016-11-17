@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/oss_bar.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_1.2.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <hudson.triggers.TimerTrigger>
+      <spec>00 21 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;OSS_BAR_HOME = ${OSS_BAR_HOME}&quot;
+echo &quot;OSS_BAR_CONFIG = ${OSS_BAR_CONFIG}&quot;
+echo &quot;OSS_BAR_LOG4J_CONFIG = ${OSS_BAR_LOG4J_CONFIG}&quot;
+echo &quot;OSS_BAR_CROWD_PROPERTIES = ${OSS_BAR_CROWD_PROPERTIES}&quot;
+
+ls $OSS_BAR_HOME
+echo &quot;Replacing contents from OSS_BAR_HOME with ./jenkins config files&quot;
+rm -fr /opt/cvbuild/config/oss_bar/*
+cp -r ${WORKSPACE}/jenkins/* $OSS_BAR_HOME
+ls -alR $OSS_BAR_HOME
+
+echo &quot;Showing config file content&quot;
+echo &quot;OSS_BAR_CONFIG&quot;
+cat ${OSS_BAR_CONFIG}
+echo &quot;&quot;
+echo &quot;OSS_BAR_CROWD_PROPERTIES&quot;
+cat ${OSS_BAR_CROWD_PROPERTIES}</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+/opt/build/scripts/createRelease.sh oss_bar oss_bar br_1.2.0 ${BUILD_NUMBER}</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+EXIST_VERS=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+VERSION=&quot;1.2.0_${BUILD_NUMBER}&quot;
+
+#`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+
+cd /opt/checkouts/oss_deployment/scripts
+
+print Beginning Roll-forward update for app/db from existing version ${EXIST_VERS} to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+print
+./deploy.sh -a oss_bar -e 10.13.18.113 -i oss_bar -r ${VERSION} -j &quot;jdbc:oracle:thin:@10.13.18.111:1522:dev003&quot; -p DI_OSS_BAR -u DI_OSS_BAR -v
+
+print Beginning Roll-back for app/db to prior version ${EXIST_VERS} from latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+print
+./deploy.sh -a oss_bar -e 10.13.18.113 -i oss_bar -r ${EXIST_VERSION} -j &quot;jdbc:oracle:thin:@10.13.18.111:1522:dev003&quot; -p DI_OSS_BAR -u DI_OSS_BAR -v
+
+print Rebuilding Beginning Roll-forward update for app/db from existing version ${EXIST_VERS} to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+print
+./deployRebuildDb.sh -a oss_bar -i oss_bar -r ${VERSION} -e 10.13.18.113 -j &quot;jdbc:oracle:thin:@10.13.18.111:1522:DEV003&quot; -p DI_OSS_BAR -u DI_OSS_BAR -v</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+VERSION=&quot;1.2.0_${BUILD_NUMBER}&quot;
+
+echo &quot;oss_bar-PackageDeploy-1.2.0_${VERSION}&quot; &gt; /var/www/html/devint/bar.txt
+echo &quot;oss_bar-PackageDeploy-1.2.0_${VERSION}&quot; &gt; /var/www/html/devint/bardb.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher>
+      <recipientList>jeff.schaeffer@canoeventures.com,steve.wall@canoeventures.com,sid.gregory@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList>$PROJECT_DEFAULT_RECIPIENTS</recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <sendToDevelopers>true</sendToDevelopers>
+            <sendToRequester>false</sendToRequester>
+            <includeCulprits>false</includeCulprits>
+            <sendToRecipientList>true</sendToRecipientList>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,150 @@
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum8.sh b/config/setenv.scrum8.sh
+index 3e206af..4d29a91 100644
+--- a/config/setenv.scrum8.sh
++++ b/config/setenv.scrum8.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss228K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum8.sh b/config/setenv.scrum8.sh
+index 3e206af..4d29a91 100644
+--- a/config/setenv.scrum8.sh
++++ b/config/setenv.scrum8.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss228K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index a9be7b9..2739645 100755
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum8.sh b/config/setenv.scrum8.sh
+index 3e206af..4d29a91 100644
+--- a/config/setenv.scrum8.sh
++++ b/config/setenv.scrum8.sh
+@@ -7,4 +7,5 @@ JVM_OPTS="-Xss228K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=25
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
++export DAI_CONTEXTHELP_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-contexthelp.groovy
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -DDAI_LOG4J_CONFIG=$DAI_LOG4J_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"

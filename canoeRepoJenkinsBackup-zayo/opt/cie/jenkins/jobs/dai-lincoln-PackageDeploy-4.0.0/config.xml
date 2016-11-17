@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.13.3">
+      <projectUrl>https://github.com/CanoeVentures/dai-lincoln/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>true</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>true</notifyUnstable>
+      <notifyFailure>true</notifyFailure>
+      <notifyBackToNormal>true</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>15 2 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <org.jfrog.hudson.maven3.Maven3Builder plugin="artifactory@2.5.1">
+      <mavenName>Maven3.2</mavenName>
+      <rootPom>pom.xml</rootPom>
+      <goals>clean install -U -DskipTests</goals>
+      <mavenOpts></mavenOpts>
+    </org.jfrog.hudson.maven3.Maven3Builder>
+    <hudson.plugins.groovy.Groovy plugin="groovy@1.27">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>def VERSION = &quot;4.0.0&quot;
+def PROJECT = &quot;dai-lincoln&quot;
+def PROJFILE = &quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+String changelogtemp = &quot;&quot;&quot;
+
+projectRoot=&quot;/opt/cie/jenkins/jobs/dai-lincoln-PackageDeploy-$VERSION/workspace&quot;
+webappDir=&quot;webapps&quot;
+
+build {
+    build_args=&quot;mvn clean install&quot;
+}
+
+build_package {
+    pre_pkg_cmds {
+           pre_pkg_1=&quot;cp \$projectRoot/target/lincoln-*.jar \$projectRoot/target/lincoln.jar&quot;
+           pre_pkg_2=&quot;cd \$projectRoot/target; chmod +x package.bash; ./package.bash&quot;
+
+    }
+
+    artifacts {
+       name {
+           bin=&quot;lincoln.jar&quot;
+           log=&quot;lincoln-log4j.xml&quot;
+           prop=&quot;lincoln.properties&quot;
+           split=&quot;splitLogs.bash&quot;
+       }
+       location {
+           bin=&quot;\$projectRoot/target&quot;
+           log=&quot;\$projectRoot/src/main/resources&quot;
+           prop=&quot;\$projectRoot/src/main/resources&quot;
+           split=&quot;\$projectRoot&quot;
+        }
+    }
+}
+
+&quot;&quot;&quot;
+File scriptName = new File(&quot;$PROJFILE&quot;)
+        scriptName.write(&quot;${changelogtemp}&quot;)
+        println scriptName
+</command>
+      </scriptSource>
+      <groovyName>(Default)</groovyName>
+      <parameters></parameters>
+      <scriptParameters></scriptParameters>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <classPath></classPath>
+    </hudson.plugins.groovy.Groovy>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash 
+VERSION=&quot;4.0.0&quot;
+PROJECT=&quot;dai-lincoln&quot;
+PROJFILE=&quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+cat $PROJFILE
+/opt/build/scripts/CreateJenkinsPackage.sh $PROJECT $PROJECT br_$VERSION ${BUILD_NUMBER}</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.40.5">
+      <recipientList>jeff.schaeffer@canoeventures.com, Sid.Gregory@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo></replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+        <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript></presendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo></replyTo>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

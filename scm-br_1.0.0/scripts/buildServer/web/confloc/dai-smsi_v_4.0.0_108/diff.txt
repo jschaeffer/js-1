@@ -1,0 +1,9 @@
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+index 116270e..cd59d3b 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+@@ -46,4 +46,3 @@ relay.db.pool.initialSize=5
+ 
+ relay.cache.reload.schedule = 0 0 0/1 * * ?
+ 
+-relay.cache.reload.schedule = 0 0 0/1 * * ?

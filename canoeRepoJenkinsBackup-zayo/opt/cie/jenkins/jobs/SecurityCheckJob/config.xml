@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Testing Security (Doesn&apos;t do anything)</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.model.Item.Workspace:clecrone</permission>
+      <permission>hudson.model.Item.Workspace:jschaeffer</permission>
+      <permission>hudson.model.Run.Delete:clecrone</permission>
+      <permission>hudson.model.Run.Delete:jschaeffer</permission>
+      <permission>hudson.model.Item.Configure:clecrone</permission>
+      <permission>hudson.model.Item.Configure:jschaeffer</permission>
+      <permission>hudson.model.Item.Delete:clecrone</permission>
+      <permission>hudson.model.Item.Delete:jschaeffer</permission>
+      <permission>hudson.model.Item.Discover:clecrone</permission>
+      <permission>hudson.model.Item.Discover:jschaeffer</permission>
+      <permission>hudson.model.Run.Update:clecrone</permission>
+      <permission>hudson.model.Run.Update:jschaeffer</permission>
+      <permission>hudson.model.Item.Read:clecrone</permission>
+      <permission>hudson.model.Item.Read:jschaeffer</permission>
+      <permission>hudson.model.Item.Cancel:clecrone</permission>
+      <permission>hudson.model.Item.Cancel:jschaeffer</permission>
+      <permission>hudson.model.Item.Build:clecrone</permission>
+      <permission>hudson.model.Item.Build:jschaeffer</permission>
+    </hudson.security.AuthorizationMatrixProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+#if [ ${name} != &quot;test&quot; ] ; then
+#    print &quot;WRONG ANSWER!!!&quot;
+#    exit 1
+#fi
+#    print &quot;good... good job&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+if [ ${UserName} != &quot;test&quot; ] ; then
+    print &quot;WRONG ANSWER!!!&quot;
+    exit 1
+fi
+    print &quot;good... good job&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,53 @@
+<b><u>Component Release Info for Sprint Darth Vader:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-etl-feeder</b><br><u>Version</u><b>&nbspr_4.0.0_256</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/dai-ods-4.0.5-changelog.xml
+src/main/resources/liquibase/dai-ods-4.0.5/018-yliu-ebas-rollup.xml
+src/main/resources/liquibase/dai-ods-4.0.5/019-yliu-add-attributes.xml
+src/main/resources/liquibase/dai-ods-4.0.5/020-yliu-manual-iir.xml
+src/main/resources/liquibase/dai-ods-4.0.5/021-yliu-disable-parallel-dml.xml
+src/main/resources/liquibase/dai-ods-4.0.5/022-yliu-change-ent-desc.xml
+src/main/resources/liquibase/dai-ods-4.0.5/023-yliu-add-view-flag.xml
+src/main/resources/liquibase/dai-ods-4.0.5/024-yliu-add-product-category.xml
+src/main/resources/liquibase/dai-ods-4.0.5/025-yliu-fact-tables-refactor-redo.xml
+src/main/resources/liquibase/dai-ods-4.0.5/026-yliu-IIR-rollup-redo.xml
+src/main/resources/liquibase/dai-ods-4.0.5/027-yliu-ebas-rollup-redo.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_251</b></u><br>
+<pre>
+* <font color=blue>804197b</font>-<font color=green>(2014-11-06)</font><font color=black><b>VODDAI-6430. updated ent_asset_desc to asset_idstring even if there is no asset id found in caas data.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_256)</font>
+* <font color=blue>c11080a</font>-<font color=green>(2014-11-03)</font><font color=black><b>VODDAI-6430. added update metadata stored procedure.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_255)</font>
+*   <font color=blue>8dc8c90</font>-<font color=green>(2014-10-31)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>dbeb6a6</font>-<font color=green>(2014-10-31)</font><font color=black><b>adding changes for Sprint U: VODDAI-6502, VODDAI-6459, VODDAI-6492, VODDAI-6204, VODDAI-6237</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+* | <font color=blue>2d124f7</font>-<font color=green>(2014-10-31)</font><font color=black><b>VODDAI-6430. fixed aggregation to use ent asset id.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>22b23e7</font>-<font color=green>(2014-10-30)</font><font color=black><b>VODDAI-6430. refactored rollup based on ent_asset_id.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+*   <font color=blue>2a10226</font>-<font color=green>(2014-10-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>237e2ce</font>-<font color=green>(2014-10-22)</font><font color=black><b>Adding Sprint T test results</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+| *   <font color=blue>57779bb</font>-<font color=green>(2014-10-22)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+| |\  
+| * | <font color=blue>b03e434</font>-<font color=green>(2014-10-22)</font><font color=black><b>adding testing for Sprint T</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+* | | <font color=blue>331eeff</font>-<font color=green>(2014-10-24)</font><font color=black><b>VODDAI-6459. added video def, etc in the manual output.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>e0e77e7</font>-<font color=green>(2014-10-21)</font><font color=black><b>VODDAI-6431. fixed ebas roll up to have the correct numbers.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_254)</font>
+* | <font color=blue>9f15ffc</font>-<font color=green>(2014-10-15)</font><font color=black><b>VODDAI-5666. added new things back from production release.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* | <font color=blue>822c087</font>-<font color=green>(2014-10-15)</font><font color=black><b>added deployment comments.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (origin/br_4.0.0.1)</font>
+* | <font color=blue>70a39f8</font>-<font color=green>(2014-10-14)</font><font color=black><b>fixed the ON_TIME logic, again.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0.1_4, tag: r_4.0.0.1_4, br_4.0.0.1)</font>
+* | <font color=blue>6d0c4ea</font>-<font color=green>(2014-10-14)</font><font color=black><b>on time for placement added.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0.1_3)</font>
+* | <font color=blue>7aaec5d</font>-<font color=green>(2014-10-14)</font><font color=black><b>restored ent_asset_desc to include provider.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0.1_2)</font>
+* | <font color=blue>abe90d4</font>-<font color=green>(2014-10-10)</font><font color=black><b>manual IIR.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0.1_1)</font>
+* | <font color=blue>e3001e3</font>-<font color=green>(2014-10-07)</font><font color=black><b>VODDAI-5667. refactor reference tables.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* | <font color=blue>4fdbab7</font>-<font color=green>(2014-10-06)</font><font color=black><b>VODDAI-6429. added attributes for ent assets.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* | <font color=blue>62e6c98</font>-<font color=green>(2014-10-06)</font><font color=black><b>VODDAI-6429. added attributes for ent assets.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* | <font color=blue>82f21a0</font>-<font color=green>(2014-10-06)</font><font color=black><b>Revert "VODDAI-6429. add attributes for ent asset."</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* | <font color=blue>27c87de</font>-<font color=green>(2014-10-06)</font><font color=black><b>VODDAI-6429. add attributes for ent asset.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>6ec142a</font>-<font color=green>(2014-10-01)</font><font color=black><b>Adding test modifications for Inventory Insight Reporting. VODDAI-5667, VODDAI-6428</b></font><font color=grey>- (Noel Garza)</font><font color=red> (tag: v_4.0.0_253, tag: v_4.0.0_252)</font>
+* <font color=blue>ed988d1</font>-<font color=green>(2014-09-29)</font><font color=black><b>added release notes for build 248.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font></pre>
+<hr>
+<p>

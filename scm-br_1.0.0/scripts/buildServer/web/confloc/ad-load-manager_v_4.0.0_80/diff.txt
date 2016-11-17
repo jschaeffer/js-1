@@ -1,0 +1,316 @@
+diff --git a/alm-server/src/main/resources/configs/alm-log4j-dev.scrum1.xml b/alm-server/src/main/resources/configs/alm-log4j-dev.scrum1.xml
+index a176466..aea5df8 100644
+--- a/alm-server/src/main/resources/configs/alm-log4j-dev.scrum1.xml
++++ b/alm-server/src/main/resources/configs/alm-log4j-dev.scrum1.xml
+@@ -34,18 +34,26 @@
+         </layout>
+     </appender>
+ 
++    <appender name="QUALIFIER" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/ad-load-manager/logs/alm-qualifier.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="com.canoeventures.alm.logger.QualifierLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="QUALIFIER"/>
++    </category>
++
+     <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+ 
+-    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+-        <priority value="TRACE" />
++    <category name="com.canoeventures.alm.logger.RequestResponseLogger" additivity="false">
++        <priority value="INFO" />
+         <appender-ref ref="REQUEST_RESPONSE"/>
+     </category>
+ 
+diff --git a/alm-server/src/main/resources/configs/alm-log4j-dev.scrum2.xml b/alm-server/src/main/resources/configs/alm-log4j-dev.scrum2.xml
+index a176466..aea5df8 100644
+--- a/alm-server/src/main/resources/configs/alm-log4j-dev.scrum2.xml
++++ b/alm-server/src/main/resources/configs/alm-log4j-dev.scrum2.xml
+@@ -34,18 +34,26 @@
+         </layout>
+     </appender>
+ 
++    <appender name="QUALIFIER" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/ad-load-manager/logs/alm-qualifier.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="com.canoeventures.alm.logger.QualifierLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="QUALIFIER"/>
++    </category>
++
+     <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+ 
+-    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+-        <priority value="TRACE" />
++    <category name="com.canoeventures.alm.logger.RequestResponseLogger" additivity="false">
++        <priority value="INFO" />
+         <appender-ref ref="REQUEST_RESPONSE"/>
+     </category>
+ 
+diff --git a/alm-server/src/main/resources/configs/alm-log4j-dev.scrum3.xml b/alm-server/src/main/resources/configs/alm-log4j-dev.scrum3.xml
+index a176466..aea5df8 100644
+--- a/alm-server/src/main/resources/configs/alm-log4j-dev.scrum3.xml
++++ b/alm-server/src/main/resources/configs/alm-log4j-dev.scrum3.xml
+@@ -34,18 +34,26 @@
+         </layout>
+     </appender>
+ 
++    <appender name="QUALIFIER" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/ad-load-manager/logs/alm-qualifier.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="com.canoeventures.alm.logger.QualifierLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="QUALIFIER"/>
++    </category>
++
+     <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+ 
+-    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+-        <priority value="TRACE" />
++    <category name="com.canoeventures.alm.logger.RequestResponseLogger" additivity="false">
++        <priority value="INFO" />
+         <appender-ref ref="REQUEST_RESPONSE"/>
+     </category>
+ 
+diff --git a/alm-server/src/main/resources/configs/alm-log4j-dev.scrum4.xml b/alm-server/src/main/resources/configs/alm-log4j-dev.scrum4.xml
+index a176466..aea5df8 100644
+--- a/alm-server/src/main/resources/configs/alm-log4j-dev.scrum4.xml
++++ b/alm-server/src/main/resources/configs/alm-log4j-dev.scrum4.xml
+@@ -34,18 +34,26 @@
+         </layout>
+     </appender>
+ 
++    <appender name="QUALIFIER" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/ad-load-manager/logs/alm-qualifier.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="com.canoeventures.alm.logger.QualifierLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="QUALIFIER"/>
++    </category>
++
+     <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+ 
+-    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+-        <priority value="TRACE" />
+-        <appender-ref ref="REQUEST_RESPONSE"/>
+-    </category>
+-
+-    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+-        <priority value="TRACE" />
++    <category name="com.canoeventures.alm.logger.RequestResponseLogger" additivity="false">
++        <priority value="INFO" />
+         <appender-ref ref="REQUEST_RESPONSE"/>
+     </category>
+ 
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum1.properties b/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
+index 14ad1c8..09c104e 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
+@@ -2,9 +2,16 @@ schema.validation.enabled=true
+ 
+ validation.logging.enabled=true
+ 
+-db.master.url=jdbc:oracle:thin:@oraclehost:1521:devvm
+-db.username=alm
+-db.password=alm
++db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.username=SC1_ALM
++db.password=SC1_ALM
++
++caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++caas.db.username=SC1_CAAS
++caas.db.password=SC1_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
+ 
+ config.dir=../conf
+ 
+@@ -19,3 +26,15 @@ application.server.protocol=http
+ application.server.host=localhost
+ mock.http.port=9190
+ mock.http.context=int-test-support
++
++# The POIS URL where messages will be published to
++application.endpoints.publish=http://10.13.18.115:9535/int-test-support/POIS-Mock
++
++# The number of movie assets and associated assets to publish to POIS in a single message.
++application.publisher.batchSize=1000
++
++alm.operator=COX
++
++alm.qualifier.log.enabled=true
++
++sftp.job.interval=0 0 23 * * ?
+\ No newline at end of file
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum2.properties b/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
+index 14ad1c8..75db50c 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
+@@ -2,9 +2,16 @@ schema.validation.enabled=true
+ 
+ validation.logging.enabled=true
+ 
+-db.master.url=jdbc:oracle:thin:@oraclehost:1521:devvm
+-db.username=alm
+-db.password=alm
++db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.username=SC2_ALM
++db.password=SC2_ALM
++
++caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++caas.db.username=SC2_CAAS
++caas.db.password=SC2_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
+ 
+ config.dir=../conf
+ 
+@@ -19,3 +26,15 @@ application.server.protocol=http
+ application.server.host=localhost
+ mock.http.port=9190
+ mock.http.context=int-test-support
++
++# The POIS URL where messages will be published to
++application.endpoints.publish=http://10.13.18.116:9535/int-test-support/POIS-Mock
++
++# The number of movie assets and associated assets to publish to POIS in a single message.
++application.publisher.batchSize=1000
++
++alm.operator=COX
++
++alm.qualifier.log.enabled=true
++
++sftp.job.interval=0 0 23 * * ?
+\ No newline at end of file
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum3.properties b/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
+index 14ad1c8..8cfc0e2 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
+@@ -2,9 +2,16 @@ schema.validation.enabled=true
+ 
+ validation.logging.enabled=true
+ 
+-db.master.url=jdbc:oracle:thin:@oraclehost:1521:devvm
+-db.username=alm
+-db.password=alm
++db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.username=SC3_ALM
++db.password=SC3_ALM
++
++caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++caas.db.username=SC3_CAAS
++caas.db.password=SC3_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
+ 
+ config.dir=../conf
+ 
+@@ -19,3 +26,15 @@ application.server.protocol=http
+ application.server.host=localhost
+ mock.http.port=9190
+ mock.http.context=int-test-support
++
++# The POIS URL where messages will be published to
++application.endpoints.publish=http://10.13.18.117:9535/int-test-support/POIS-Mock
++
++# The number of movie assets and associated assets to publish to POIS in a single message.
++application.publisher.batchSize=1000
++
++alm.operator=COX
++
++alm.qualifier.log.enabled=true
++
++sftp.job.interval=0 0 23 * * ?
+\ No newline at end of file
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum4.properties b/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
+index 14ad1c8..39f4389 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
+@@ -2,9 +2,16 @@ schema.validation.enabled=true
+ 
+ validation.logging.enabled=true
+ 
+-db.master.url=jdbc:oracle:thin:@oraclehost:1521:devvm
+-db.username=alm
+-db.password=alm
++db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.username=SC4_ALM
++db.password=SC4_ALM
++
++caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++caas.db.username=SC4_CAAS
++caas.db.password=SC4_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
+ 
+ config.dir=../conf
+ 
+@@ -19,3 +26,15 @@ application.server.protocol=http
+ application.server.host=localhost
+ mock.http.port=9190
+ mock.http.context=int-test-support
++
++# The POIS URL where messages will be published to
++application.endpoints.publish=http://10.13.18.122:9535/int-test-support/POIS-Mock
++
++# The number of movie assets and associated assets to publish to POIS in a single message.
++application.publisher.batchSize=1000
++
++alm.operator=COX
++
++alm.qualifier.log.enabled=true
++
++sftp.job.interval=0 0 23 * * ?
+\ No newline at end of file

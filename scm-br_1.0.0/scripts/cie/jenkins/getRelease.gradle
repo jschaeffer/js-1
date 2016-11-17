@@ -1,0 +1,29 @@
+def project = PROJECT
+def lod = LOD
+
+outputDir = dir('output')
+def outputFile = "release.out"
+def scriptFile = "/opt/build/scripts/getLatestRelease.sh"
+
+task getRelease (dependsOn: 'writeReleaseToFile') << {
+    println "in getRelease"
+    List lines = new File("$outputDir.dir/$outputFile").readLines()
+    println lines[lines.size-1]
+}
+
+task writeReleaseToFile (dependsOn: 'verifyResources') << {
+
+    new FileOutputStream(new File("$outputDir.dir/$outputFile")).withStream { os ->
+        def result = exec {
+            executable = 'bash'
+            args = ["$scriptFile", "$project", "$lod"]
+            standardOutput = os
+        }
+    }
+}
+
+task verifyResources(dependsOn: outputDir) << {
+    if( outputDir.dir.isDirectory() ) {
+        println "output dir exists"     
+    } 
+}

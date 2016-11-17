@@ -1,0 +1,80 @@
+diff --git a/config/smsi-publisher-log4j.scrum2.properties b/config/smsi-publisher-log4j.scrum2.properties
+new file mode 100644
+index 0000000..9c9cfd4
+--- /dev/null
++++ b/config/smsi-publisher-log4j.scrum2.properties
+@@ -0,0 +1,33 @@
++log4j.rootLogger=INFO, R
++log4j.logger.performance=WARN, R
++
++log4j.appender.R=org.apache.log4j.FileAppender
++log4j.appender.R.File=/opt/tcserver/instances/smsipub/logs/out.log
++log4j.appender.R.layout=org.apache.log4j.PatternLayout
++log4j.appender.R.layout.ConversionPattern=%d [%t] %-5p %c %x - %m%n
++
++# Logging for the consumption of SCTE messages
++#log4j.logger.org.springframework.ws=TRACE
++#log4j.logger.com.canoeventures.dai.ads.smsi.scteingester=TRACE
++#log4j.logger.performance.com.canoeventures.dai.ads.smsi.scteingester=TRACE
++
++# Logging for database interaction
++#log4j.logger.org.springframework.jdbc.core=TRACE
++#log4j.logger.com.canoeventures.dai.ads.smsi.interfaces.dao=DEBUG
++#log4j.logger.performance.com.canoeventures.dai.ads.smsi.interfaces.dao=TRACE
++
++# Logging for scheduling of SMSi session to be published
++#log4j.logger.com.canoeventures.dai.ads.smsi.jobmanager=TRACE
++#log4j.logger.performance.com.canoeventures.dai.ads.smsi.jobmanager=TRACE
++
++# Logging for the generation and publishing of smsi messages
++log4j.logger.com.canoeventures.dai.ads.smsi.publisher=TRACE
++#log4j.logger.performance.com.canoeventures.dai.ads.smsi.publisher=TRACE
++
++#
++# Uninteresting trace classes.  Nobody should really care about their outupt
++log4j.logger.com.canoeventures.dai.ads.smsi.jobmanager.PublishTaskFactory=ERROR
++log4j.logger.performance.com.canoeventures.dai.ads.smsi.jobmanager.PublishTaskFactory=ERROR
++log4j.logger.com.canoeventures.dai.ads.smsi.jobmanager.util.TaskExecutionManager=ERROR
++log4j.logger.performance.com.canoeventures.dai.ads.smsi.jobmanager.util.TaskExecutionManager=ERROR
++log4j.logger.org.springframework.ws.client.MessageTracing.sent=TRACE
+\ No newline at end of file
+diff --git a/config/smsi-publisher-log4j.scrum2.properties b/config/smsi-publisher-log4j.scrum2.properties
+new file mode 100644
+index 0000000..9c9cfd4
+--- /dev/null
++++ b/config/smsi-publisher-log4j.scrum2.properties
+@@ -0,0 +1,33 @@
++log4j.rootLogger=INFO, R
++log4j.logger.performance=WARN, R
++
++log4j.appender.R=org.apache.log4j.FileAppender
++log4j.appender.R.File=/opt/tcserver/instances/smsipub/logs/out.log
++log4j.appender.R.layout=org.apache.log4j.PatternLayout
++log4j.appender.R.layout.ConversionPattern=%d [%t] %-5p %c %x - %m%n
++
++# Logging for the consumption of SCTE messages
++#log4j.logger.org.springframework.ws=TRACE
++#log4j.logger.com.canoeventures.dai.ads.smsi.scteingester=TRACE
++#log4j.logger.performance.com.canoeventures.dai.ads.smsi.scteingester=TRACE
++
++# Logging for database interaction
++#log4j.logger.org.springframework.jdbc.core=TRACE
++#log4j.logger.com.canoeventures.dai.ads.smsi.interfaces.dao=DEBUG
++#log4j.logger.performance.com.canoeventures.dai.ads.smsi.interfaces.dao=TRACE
++
++# Logging for scheduling of SMSi session to be published
++#log4j.logger.com.canoeventures.dai.ads.smsi.jobmanager=TRACE
++#log4j.logger.performance.com.canoeventures.dai.ads.smsi.jobmanager=TRACE
++
++# Logging for the generation and publishing of smsi messages
++log4j.logger.com.canoeventures.dai.ads.smsi.publisher=TRACE
++#log4j.logger.performance.com.canoeventures.dai.ads.smsi.publisher=TRACE
++
++#
++# Uninteresting trace classes.  Nobody should really care about their outupt
++log4j.logger.com.canoeventures.dai.ads.smsi.jobmanager.PublishTaskFactory=ERROR
++log4j.logger.performance.com.canoeventures.dai.ads.smsi.jobmanager.PublishTaskFactory=ERROR
++log4j.logger.com.canoeventures.dai.ads.smsi.jobmanager.util.TaskExecutionManager=ERROR
++log4j.logger.performance.com.canoeventures.dai.ads.smsi.jobmanager.util.TaskExecutionManager=ERROR
++log4j.logger.org.springframework.ws.client.MessageTracing.sent=TRACE
+\ No newline at end of file

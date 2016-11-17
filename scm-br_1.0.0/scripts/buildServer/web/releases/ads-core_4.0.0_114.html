@@ -1,0 +1,20 @@
+<b><u>Component Release Info for Sprint RickAstley:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_114</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+ADS Core - 4.0.0_114
+SMSi Pub DB - 4.0.0_275
+Metadata - Campaign Goal Lift Percentage applied to EVEN Goal Calculation, Product Category CIP Ingest now accepts all 4 group types, filters duplicates to most lowest level group type, New column in PROVIDER_VIDEO_DEF table of ADS Core named LIFT, non-nullable with a data default of 3.00%</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0-changelog.xml
+core/model/src/main/resources/liquibase/core-4.0.0/025-bgriese-add-goal-lift.sql
+core/model/src/main/resources/liquibase/core-4.0.0/026-cdonovan-migrate-categories.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_112</b></u><br>
+<pre>
+* <font color=blue>7d7a56f</font>-<font color=green>(2014-09-16)</font><font color=black><b>Added migration script</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_114)</font>
+* <font color=blue>991bfbc</font>-<font color=green>(2014-09-15)</font><font color=black><b>Moving lift to ProviderVideoDef object</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_4.0.0_113)</font>
+* <font color=blue>5234ce5</font>-<font color=green>(2014-09-12)</font><font color=black><b>Even goal lift calc support.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font></pre>
+<hr>
+<p>

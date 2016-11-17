@@ -1,0 +1,57 @@
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+index b0919d1..3421c21 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+@@ -51,5 +51,10 @@ google.db.username=SC1_RELAY1
+ google.db.password=SC1_RELAY1
+ google.owner=Google
+ 
++broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++broadway.db.username=SC1_RELAY2
++broadway.db.password=SC1_RELAY2
++broadway.owner=Broadway Systems
++
+ relay.cache.reload.schedule = 0 0 0/1 * * ?
+ 
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+index 71178f6..dfdcfa3 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+@@ -51,4 +51,9 @@ google.db.username=SC2_RELAY1
+ google.db.password=SC2_RELAY1
+ google.owner=Google
+ 
++broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++broadway.db.username=SC2_RELAY2
++broadway.db.password=SC2_RELAY2
++broadway.owner=Broadway Systems
++
+ relay.cache.reload.schedule = 0 0 0/1 * * ?
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+index 6be8c2d..60d77e0 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+@@ -51,4 +51,9 @@ google.db.username=SC3_RELAY1
+ google.db.password=SC3_RELAY1
+ google.owner=Google
+ 
++broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++broadway.db.username=SC3_RELAY2
++broadway.db.password=SC3_RELAY2
++broadway.owner=Broadway Systems
++
+ relay.cache.reload.schedule = 0 0 0/1 * * ?
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+index aeae827..7128c2b 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+@@ -51,4 +51,9 @@ google.db.username=SC4_RELAY1
+ google.db.password=SC4_RELAY1
+ google.owner=Google
+ 
++broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++broadway.db.username=SC4_RELAY2
++broadway.db.password=SC4_RELAY2
++broadway.owner=Broadway Systems
++
+ relay.cache.reload.schedule = 0 0 0/1 * * ?

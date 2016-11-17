@@ -1,0 +1,78 @@
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-cip</b><br><u>Version</u><b>&nbspr_4.0.0_209</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_201</b></u><br>
+<pre>
+* <font color=blue>2715743</font>-<font color=green>(2014-07-02)</font><font color=black><b>Fix xml xsd com version</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_209)</font>
+* <font color=blue>14c4751</font>-<font color=green>(2014-07-01)</font><font color=black><b>Fixed more tests for PlacementLimit Drop</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_208)</font>
+* <font color=blue>b6de783</font>-<font color=green>(2014-07-01)</font><font color=black><b>Fixed tests for PlacementLimit Drop</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>fc45356</font>-<font color=green>(2014-07-01)</font><font color=black><b>Fixes for PlacementLimit Drop</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_207)</font>
+*   <font color=blue>09f5986</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-cip into br_4.0.0</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| * <font color=blue>c19f411</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed placementLimit xml from main</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_206, v_4.0.0_205)</font>
+| * <font color=blue>68ae25a</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed the mclps feature from main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>40a88d3</font>-<font color=green>(2014-05-29)</font><font color=black><b>Modified metadataQualifier feature for 5800, 5804, 5808</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_204)</font>
+| * <font color=blue>a8c9da1</font>-<font color=green>(2014-05-28)</font><font color=black><b>Reset for each scenario in timeZone feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_203)</font>
+| * <font color=blue>69256e3</font>-<font color=green>(2014-05-27)</font><font color=black><b>Modified tests for seriesName/ID in metadataQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_202)</font>
+| * <font color=blue>3aa68a7</font>-<font color=green>(2014-05-27)</font><font color=black><b>Modified tests for seriesName/ID in metadataQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5e625bd</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed placementLimit xml from main</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>17fe60c</font>-<font color=green>(2014-05-29)</font><font color=black><b>Modified metadataQualifier feature for 5800, 5804, 5808</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ebd91c0</font>-<font color=green>(2014-05-28)</font><font color=black><b>Reset for each scenario in timeZone feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>38f500f</font>-<font color=green>(2014-05-27)</font><font color=black><b>Modified tests for seriesName/ID in metadataQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>8c8ab09</font>-<font color=green>(2014-05-27)</font><font color=black><b>Fix xpath on Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>6ed406e</font>-<font color=green>(2014-05-27)</font><font color=black><b>remove test endpoint from cip test data</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ab0f0f4</font>-<font color=green>(2014-05-27)</font><font color=black><b>VODDAI-5685 VODDAI-5684 Changed Namespace for Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>54bc619</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated the MD seriesName and ID tests in mdQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>471c716</font>-<font color=green>(2014-05-22)</font><font color=black><b>add @validation tag</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>846d76b</font>-<font color=green>(2014-05-22)</font><font color=black><b>Changed scala tools repository</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>8e0abfa</font>-<font color=green>(2014-05-21)</font><font color=black><b>Added EXCLUDE FW campaign from ranking test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>c50eb4b</font>-<font color=green>(2014-05-20)</font><font color=black><b>Added two tests in MDqualifier feature for seriesName and ID</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>00024de</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5664 non-canoe CIPs only send cls once</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>082e7b9</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5684, VODDAI-5685 Series Name, Series ID Changed namespace</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>d2c7779</font>-<font color=green>(2014-05-16)</font><font color=black><b>VODDAI-5684, VODDAI-5685 Series Name, Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3b32cb8</font>-<font color=green>(2014-05-16)</font><font color=black><b>Modified priorityData2 for active flight windows, added tag for mclps branch feature.. to delete soon</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f23c405</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed mclps template from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red> (origin/PlacementLimit)</font>
+* <font color=blue>910a969</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed MCLPS feature from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>d12aef5</font>-<font color=green>(2014-05-15)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/dai-cip into PlacementLimit</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| *   <font color=blue>9daa43b</font>-<font color=green>(2014-04-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/dai-cip into PlacementLimit</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| |\  
+| | * <font color=blue>f9c1ffd</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>fbae16e</font>-<font color=green>(2014-03-10)</font><font color=black><b>Updated my tests and templates with CORRECT data!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>0ca0151</font>-<font color=green>(2014-03-10)</font><font color=black><b>Modified placementLimit feature for new functionality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>6a7c76e</font>-<font color=green>(2014-03-10)</font><font color=black><b>ALL placementLimit stories in the side branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>fa9547b</font>-<font color=green>(2014-03-10)</font><font color=black><b>Removed old separationConstraint fxn, removed placementLimit fxn that resides on main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>0d6eb95</font>-<font color=green>(2014-03-10)</font><font color=black><b>Added necessary separationConstraint xml, modified test slightly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>30da49f</font>-<font color=green>(2014-03-07)</font><font color=black><b>Copied file from master to here</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>f495d1e</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>9be006f</font>-<font color=green>(2014-03-10)</font><font color=black><b>Updated my tests and templates with CORRECT data!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>1325397</font>-<font color=green>(2014-03-10)</font><font color=black><b>Modified placementLimit feature for new functionality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>b86b3eb</font>-<font color=green>(2014-03-10)</font><font color=black><b>ALL placementLimit stories in the side branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>d084209</font>-<font color=green>(2014-03-10)</font><font color=black><b>Removed old separationConstraint fxn, removed placementLimit fxn that resides on main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>bd2adaa</font>-<font color=green>(2014-03-10)</font><font color=black><b>Added necessary separationConstraint xml, modified test slightly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>d1a6a94</font>-<font color=green>(2014-03-07)</font><font color=black><b>Copied file from master to here</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9408bce</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4780920</font>-<font color=green>(2014-03-10)</font><font color=black><b>Updated my tests and templates with CORRECT data!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3ef59bc</font>-<font color=green>(2014-03-10)</font><font color=black><b>Modified placementLimit feature for new functionality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5442295</font>-<font color=green>(2014-03-10)</font><font color=black><b>ALL placementLimit stories in the side branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d4afd39</font>-<font color=green>(2014-03-10)</font><font color=black><b>Removed old separationConstraint fxn, removed placementLimit fxn that resides on main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>1a38059</font>-<font color=green>(2014-03-10)</font><font color=black><b>Added necessary separationConstraint xml, modified test slightly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9e1e60d</font>-<font color=green>(2014-03-07)</font><font color=black><b>Copied file from master to here</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>42a76c2</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3abd48e</font>-<font color=green>(2014-03-10)</font><font color=black><b>Updated my tests and templates with CORRECT data!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>96f39a2</font>-<font color=green>(2014-03-10)</font><font color=black><b>Modified placementLimit feature for new functionality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5cc98b8</font>-<font color=green>(2014-03-10)</font><font color=black><b>ALL placementLimit stories in the side branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>82b929c</font>-<font color=green>(2014-03-10)</font><font color=black><b>Removed old separationConstraint fxn, removed placementLimit fxn that resides on main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>c8c9960</font>-<font color=green>(2014-03-10)</font><font color=black><b>Added necessary separationConstraint xml, modified test slightly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>73fa7a3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Copied file from master to here</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

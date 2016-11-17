@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+print Rebuilding DB to version ${VERSION}
+print
+print
+cd /opt/checkouts/oss_bar/grails-app/migrations/cisys
+
+echo &quot;@genUser.MicroDev.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.55)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=dev004)))&apos;
+
+STATUS=${?}
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi
+
+cd /opt/checkouts/oss_deployment/scripts
+
+print Beginning Rebuild from scratch on DB
+print ------------------------------------
+print
+
+./MicroDevDB.sh -a oss_bar -t oss_bar -i oss_bar -r ${VERSION} -e MicroDev -j &quot;jdbc:oracle:thin:@10.13.18.55:1522:dev004&quot; -p DI4_OSS_BAR -u DI4_OSS_BAR -v
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,199 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+
+body {
+    font-size: 0.875em;
+    line-height: 0.75;
+}
+
+table {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+.dash {
+   border: 1px dashed #cccccc;
+   border-collapse: collapse
+}
+
+img {
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+h1 {
+    margin: 0.1em 0;
+    color: #000000;
+    text-shadow: 1px 1px #ffffff;
+}
+
+tr a {
+    font-size: .65em;
+}
+
+td, th {
+    padding: 1px;
+}
+
+td:last-child {
+    padding-left: 6px;
+}
+
+form input {
+    font-size: .8em;
+}
+
+<style type="text/css">
+.styled-button-4 {
+	-webkit-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	background-color:#EEE;
+	border-radius:0;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border:.5px solid #999;
+	color:#666;
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	font-size:8px;
+	font-weight:700;
+	padding:1px 3px;
+	height:8px
+}
+.styled-button-3 {
+	background: #FFF;
+	color: gray;
+	font: bold 11px "Helvetica";
+	padding: 4px 6px;
+	text-decoration: none;
+
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
+	
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.styled-button-3:after {
+	background: gray;
+	color: #FFF;
+	content: ">";
+	display: inline-block;
+	font: bold 11px "Georgia";
+	height: 25px;
+	line-height: 25px;
+	margin-left: 10px;
+	text-align: center;
+	width: 25px;
+	
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+.styled-button-3:hover {
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.styled-button-2 {
+        background: #F0FFFF;
+        color: slate;
+        font: bold 11px "Helvetica";
+        padding: 3px 5px;
+        text-decoration: none;
+
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 10px;
+
+        -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
+        -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
+
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+}
+.styled-button-2:after {
+        background: gray;
+        color: #FFF;
+        content: ">";
+        display: inline-block;
+        font: bold 11px "Georgia";
+        height: 25px;
+        line-height: 25px;
+        margin-left: 10px;
+        text-align: center;
+        width: 25px;
+
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+}
+
+.styled-button-2:hover {
+        -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+        -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+}
+
+</style>
+

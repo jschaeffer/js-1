@@ -1,0 +1,208 @@
+diff --git a/config/smsi-publisher.scrum3.properties b/config/smsi-publisher.scrum3.properties
+new file mode 100644
+index 0000000..55d6241
+--- /dev/null
++++ b/config/smsi-publisher.scrum3.properties
+@@ -0,0 +1,98 @@
++# (Reloadable) How often this file will be check for changes (milliseconds)
++application.properties.reload.millis=1
++
++#
++# (Not Reloadable) Database
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC3_SMSIPUB
++smsipub.db.password=SC3_SMSIPUB
++smsipub.db.pool.initialSize=5
++smsipub.db.pool.size=10
++smsipub.db.test.idle=60
++smsipub.db.max.idle=3
++smsipub.db.checkout.timeout=2000
++
++
++# (Reloadable) The maximum number of results returned by database queries.  Prevents running out of memory.
++smsipub.max.query.size=1000
++
++# (Reloadable) The number of full days of data to keep in the database.
++# ex. a value of 0 indicates that data from today will be removed at midnight tonight
++# ex. a value of 1 indicates that data from yesterday will be removed at midnight tonight
++smsipub.cleanup.time.limit=5
++
++##
++## JOBS
++##
++# "reservation.duration" (seconds) controls how often a jobs will run.  Before it can be run, a job must be reserved to ensure
++# that multiple instance of the publisher do not perform the same job.  The reservation last for the specified amount of
++# time, and once it expires, any publisher can work the job.  The reservation duration should always be longer than
++# it should take the publisher to complete the job.
++
++#
++# Publishing
++#
++
++# (Not Reloadable) Number of simultaneous publishing jobs
++smsipub.publish.job.executor.pool.size=3
++
++# (Not Reloadable) Number of threads that generate and transmit SMSI
++smsipub.publish.executor.pool.size=10
++
++# (Reloadable) Produce SMSI for sessions that have presentations
++smsipub.standard.job.reservation.duration=15
++smsipub.standard.job.enable=true
++
++# (Reloadable) Produce SMSI for unpublished sessions that are older than 'smsipub.cleanup.time.limit'
++smsipub.stale.job.reservation.duration=300
++smsipub.stale.job.enable=true
++
++# (Reloadable) Produce SMSI for managed ip sessions that have presentations
++smsipub.managed-ip.job.reservation.duration=15
++smsipub.managed-ip.job.enable=true
++smsipub.managed-ip.job.minimum.age=30
++
++
++# (Reloadable) Maximum number of sessions per SMSI message
++smsipub.sessions.per.message=100
++
++# (Reloadable) Value of "ServiceMeasurementMessage/DerivativeId" in published messages.
++smsipub.source=canoe:TWCADS1
++
++# (Reloadable) The url that SMSI is transmitted to
++smsipub.destination=http://10.13.18.117:9535/int-test-support/serviceMeasurement
++
++
++#
++# Housekeeping
++#
++
++# (Not reloadable) Number of simultaneous housekeeping jobs
++smsipub.housekeeping.job.executor.pool.size=1
++
++# (Reloadable) Add new lots and update ids in the job table
++smsipub.refresh.job.reservation.duration=60
++smsipub.refresh.job.enable=true
++
++# (Reloadable) Log presentations that cannot be associated to a session
++smsipub.orphan-presentation.job.reservation.duration=300
++smsipub.orphan-presentation.job.enable=true
++
++# (Reloadable) Log unpublished presentations that relate to a previously published session
++smsipub.late-presentation.job.reservation.duration=300
++smsipub.late-presentation.job.enable=true
++
++# (Reloadable) Associate presentations to sessions in the rare case the the PSN was recieved before the request response
++smsipub.early-presentation.job.reservation.duration=300
++smsipub.early-presentation.job.enable=true
++
++# (Reloadable) Drop old published data from the database
++smsipub.purge.job.reservation.duration=3600
++smsipub.purge.job.enable=true
++
++
++#
++# (Not Reloadable) Logging
++#
++smsipub.performance.logger=com.canoeventures.dai.ads.smsi.PerformanceLogger
++smsipub.trace.logger=com.canoeventures.dai.ads.smsi.TraceLogger
+diff --git a/config/smsi-publisher.scrum3.properties b/config/smsi-publisher.scrum3.properties
+new file mode 100644
+index 0000000..55d6241
+--- /dev/null
++++ b/config/smsi-publisher.scrum3.properties
+@@ -0,0 +1,98 @@
++# (Reloadable) How often this file will be check for changes (milliseconds)
++application.properties.reload.millis=1
++
++#
++# (Not Reloadable) Database
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC3_SMSIPUB
++smsipub.db.password=SC3_SMSIPUB
++smsipub.db.pool.initialSize=5
++smsipub.db.pool.size=10
++smsipub.db.test.idle=60
++smsipub.db.max.idle=3
++smsipub.db.checkout.timeout=2000
++
++
++# (Reloadable) The maximum number of results returned by database queries.  Prevents running out of memory.
++smsipub.max.query.size=1000
++
++# (Reloadable) The number of full days of data to keep in the database.
++# ex. a value of 0 indicates that data from today will be removed at midnight tonight
++# ex. a value of 1 indicates that data from yesterday will be removed at midnight tonight
++smsipub.cleanup.time.limit=5
++
++##
++## JOBS
++##
++# "reservation.duration" (seconds) controls how often a jobs will run.  Before it can be run, a job must be reserved to ensure
++# that multiple instance of the publisher do not perform the same job.  The reservation last for the specified amount of
++# time, and once it expires, any publisher can work the job.  The reservation duration should always be longer than
++# it should take the publisher to complete the job.
++
++#
++# Publishing
++#
++
++# (Not Reloadable) Number of simultaneous publishing jobs
++smsipub.publish.job.executor.pool.size=3
++
++# (Not Reloadable) Number of threads that generate and transmit SMSI
++smsipub.publish.executor.pool.size=10
++
++# (Reloadable) Produce SMSI for sessions that have presentations
++smsipub.standard.job.reservation.duration=15
++smsipub.standard.job.enable=true
++
++# (Reloadable) Produce SMSI for unpublished sessions that are older than 'smsipub.cleanup.time.limit'
++smsipub.stale.job.reservation.duration=300
++smsipub.stale.job.enable=true
++
++# (Reloadable) Produce SMSI for managed ip sessions that have presentations
++smsipub.managed-ip.job.reservation.duration=15
++smsipub.managed-ip.job.enable=true
++smsipub.managed-ip.job.minimum.age=30
++
++
++# (Reloadable) Maximum number of sessions per SMSI message
++smsipub.sessions.per.message=100
++
++# (Reloadable) Value of "ServiceMeasurementMessage/DerivativeId" in published messages.
++smsipub.source=canoe:TWCADS1
++
++# (Reloadable) The url that SMSI is transmitted to
++smsipub.destination=http://10.13.18.117:9535/int-test-support/serviceMeasurement
++
++
++#
++# Housekeeping
++#
++
++# (Not reloadable) Number of simultaneous housekeeping jobs
++smsipub.housekeeping.job.executor.pool.size=1
++
++# (Reloadable) Add new lots and update ids in the job table
++smsipub.refresh.job.reservation.duration=60
++smsipub.refresh.job.enable=true
++
++# (Reloadable) Log presentations that cannot be associated to a session
++smsipub.orphan-presentation.job.reservation.duration=300
++smsipub.orphan-presentation.job.enable=true
++
++# (Reloadable) Log unpublished presentations that relate to a previously published session
++smsipub.late-presentation.job.reservation.duration=300
++smsipub.late-presentation.job.enable=true
++
++# (Reloadable) Associate presentations to sessions in the rare case the the PSN was recieved before the request response
++smsipub.early-presentation.job.reservation.duration=300
++smsipub.early-presentation.job.enable=true
++
++# (Reloadable) Drop old published data from the database
++smsipub.purge.job.reservation.duration=3600
++smsipub.purge.job.enable=true
++
++
++#
++# (Not Reloadable) Logging
++#
++smsipub.performance.logger=com.canoeventures.dai.ads.smsi.PerformanceLogger
++smsipub.trace.logger=com.canoeventures.dai.ads.smsi.TraceLogger

@@ -1,0 +1,38 @@
+<b><u>Component Release Info:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_282.</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>Bug fix VODDAI 5064 - CIP Ingest persisting 100 instead of 34 for TitleLong, FbN publishes configurable MsoOrder@name, ADS rejects PSNs with unmatched TrackingIDs, CIP Ingest allow multiple exclusions in the same target group for the same fieldID and operator.  : Julie</b><p>
+<u>Commit summaries since last version :</u> <b>4.0.0_276</b></u><br>
+<pre>
+* <font color=blue>b1e4e53</font>-<font color=green>(2014-01-31)</font><font color=black><b>ADS tests to support multiple exclusions in the same target group</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_282)</font>
+*   <font color=blue>0b56c6d</font>-<font color=green>(2014-01-31)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>df7968b</font>-<font color=green>(2014-01-31)</font><font color=black><b>adding default even goal refresh.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>298b9d1</font>-<font color=green>(2014-01-31)</font><font color=black><b>CIP Ingest Test Edits to support Multiple Exclusions of the Same FieldID in the same Target Group</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+*   <font color=blue>2af5719</font>-<font color=green>(2014-01-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_281)</font>
+|\  
+| * <font color=blue>27c9dfc</font>-<font color=green>(2014-01-30)</font><font color=black><b>Fixed feature file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>c913310</font>-<font color=green>(2014-01-30)</font><font color=black><b>removed tag</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* |   <font color=blue>0c72c06</font>-<font color=green>(2014-01-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>fb41ed8</font>-<font color=green>(2014-01-30)</font><font color=black><b>Fixed issue w/ trackingId on Non spot events</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>0b3fc7b</font>-<font color=green>(2014-01-30)</font><font color=black><b>Updated PSN Events to all have 2 TrackingIDs</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>de8efa2</font>-<font color=green>(2014-01-30)</font><font color=black><b>Updated events psns to all have 2 trackingIDs</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>3fa3221</font>-<font color=green>(2014-01-29)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>61ab9cd</font>-<font color=green>(2014-01-29)</font><font color=black><b>Changes to pull operator name from config, and logging changes for psn errors.</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_280)</font>
+* | <font color=blue>df6f947</font>-<font color=green>(2014-01-29)</font><font color=black><b>added feature file for FbN MsoOrder@name configuration change</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>e3608e9</font>-<font color=green>(2014-01-29)</font><font color=black><b>Changed severity of validation errors for eventListValidation</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>655a4d1</font>-<font color=green>(2014-01-29)</font><font color=black><b>Added unit test for Title Long conversion</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>a32ec0b</font>-<font color=green>(2014-01-29)</font><font color=black><b>Changed PSN validation features to throw a StatusCode@class=1 instead of 2 for unrecognized TrackingIDs,AssetIDs,ProviderIDs.</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>55f6e54</font>-<font color=green>(2014-01-29)</font><font color=black><b>Rerouted TITLE_LONG to TITLE</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>bf8f150</font>-<font color=green>(2014-01-29)</font><font color=black><b>Changed EIL and CIP Ingest features to support the MetadataFieldID=100 to 34 change</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>90dcd7d</font>-<font color=green>(2014-01-23)</font><font color=black><b>Removed CQN to ADS feature</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_279)</font>
+* <font color=blue>e787b75</font>-<font color=green>(2014-01-22)</font><font color=black><b>Rename cis feature</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_278)</font>
+* <font color=blue>f333b5e</font>-<font color=green>(2014-01-22)</font><font color=black><b>new feature file for content query req metadata</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>16bb6bc</font>-<font color=green>(2014-01-21)</font><font color=black><b>Removing unused property.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_277)</font></pre>
+<hr>
+<p>

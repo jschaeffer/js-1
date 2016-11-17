@@ -1,0 +1,50 @@
+<b><u>Component Release Info for Sprint TotalEclipseoftheHeart:</b></u><p>
+<u>Release of Component</u><b>&nbspdmp-config</b><br><u>Version</u><b>&nbspr_5.0.0_63</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Joel:
+
+- “Data to Include” now allows zero selections
+- Campaign Order Owners are now included when duplicating a Config
+- DMP Tool only allows one endpoint per config
+- Partner Name is now a dropdown select – populated from partners collection in the DB
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_62</b></u><br>
+<pre>
+* <font color=blue>d65ffe4</font>-<font color=green>(2015-10-07)</font><font color=black><b>all tests tweaked, ready to merge and test in scrum</b></font><font color=grey>- (jmhassell)</font><font color=red> (HEAD, tag: v_5.0.0_63, origin/br_5.0.0, origin/HEAD, br_5.0.0)</font>
+* <font color=blue>b0ed1e7</font>-<font color=green>(2015-10-06)</font><font color=black><b>sort feature completed.  Datasets edited to contain existing Partner Names.</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+*   <font color=blue>49855bc</font>-<font color=green>(2015-10-06)</font><font color=black><b>Merge branch 'MMF-7909' of github.com:CanoeVentures/dmp-config into MMF-7909</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|\  
+| *   <font color=blue>4ee1897</font>-<font color=green>(2015-10-06)</font><font color=black><b>resolved conflicts in Create.feature</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+| |\  
+| * | <font color=blue>cdab9b6</font>-<font color=green>(2015-10-06)</font><font color=black><b>Merge remote-tracking branch 'origin/MMF-7909' into MMF-7909</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* | | <font color=blue>b3180f4</font>-<font color=green>(2015-10-06)</font><font color=black><b>EnabledDisabledConfigs, Navigation, Validation features completed</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>8d16bd4</font>-<font color=green>(2015-10-06)</font><font color=black><b>FourPartners Data modified.  Create, Delete, Duplicate, Edit features completed</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+* <font color=blue>688dca7</font>-<font color=green>(2015-10-05)</font><font color=black><b>created Partners dataset.  Added step to include that data into all tests</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>76a1626</font>-<font color=green>(2015-10-05)</font><font color=black><b>7911: One endpoint per partner configuration</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>6fd5a9f</font>-<font color=green>(2015-10-05)</font><font color=black><b>8069: enforcing match between relay.partner and partner name</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>e8291a1</font>-<font color=green>(2015-10-05)</font><font color=black><b>8069: continuing work</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>38fc3e4</font>-<font color=green>(2015-10-02)</font><font color=black><b>8052: removed extraneous error message</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>7aff615</font>-<font color=green>(2015-10-02)</font><font color=black><b>Create, Duplicate, Edit, and Validation Features completed</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>776a76e</font>-<font color=green>(2015-10-02)</font><font color=black><b>edited all data to have only ONE endpoint in each configuration</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>dd31d03</font>-<font color=green>(2015-10-02)</font><font color=black><b>8111: Endpoints are not to be duplicated</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>b8d9987</font>-<font color=green>(2015-10-01)</font><font color=black><b>8069: relay.partner and Partner name- STILL WORK IN PROGRESS</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>b551f2d</font>-<font color=green>(2015-10-01)</font><font color=black><b>8111: CampaignOrderOwners included with Configuration copy</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>5aeef53</font>-<font color=green>(2015-10-01)</font><font color=black><b>8052:allow zero selections from 'Data to Include'</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>a8e8cfc</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "Provider.js: Data To Include allows zero selections"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>ca144e3</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "Revert "Provider.js: Data To Include allows zero selections""</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>baf4b87</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "8052: allow zero selections in Data To Include"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>02d3fc1</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "8111: copy config includes coos"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>9594853</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "8069: enforcing match between relay.partner and Partner name"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>4637776</font>-<font color=green>(2015-09-30)</font><font color=black><b>8069: enforcing match between relay.partner and Partner name</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>42a1047</font>-<font color=green>(2015-09-30)</font><font color=black><b>8111: copy config includes coos</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>716a188</font>-<font color=green>(2015-09-30)</font><font color=black><b>8052: allow zero selections in Data To Include</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>385b527</font>-<font color=green>(2015-09-30)</font><font color=black><b>Revert "Provider.js: Data To Include allows zero selections"</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>046c785</font>-<font color=green>(2015-09-30)</font><font color=black><b>Provider.js: Data To Include allows zero selections</b></font><font color=grey>- (stevemarkel)</font><font color=red></font></pre>
+<hr>
+<p>

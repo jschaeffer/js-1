@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.7">
+      <projectUrl>https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.4.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name></name>
+        <refspec></refspec>
+        <url>git@github.com:CanoeVentures/Dynamic-Ad-Insertion-cm.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_3.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <includedRegions></includedRegions>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <hudson.triggers.SCMTrigger>
+      <spec>15 22 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;DAI_CM_HOME = ${DAI_CM_HOME}&quot;
+ls -alR $DAI_CM_HOME
+echo &quot;Replacing contents from DAI_CM_HOME with ./config config files&quot;
+rm -fr /opt/cvbuild/config/dai_cm/*.properties
+
+cd ${WORKSPACE}/config
+for base in *devint.properties*; do new=`echo $base | sed &apos;s/devint.//g&apos;`; echo &quot;Renaming $base to $new and copying to ${DAI_CM_HOME}&quot;; cp $base $DAI_CM_HOME/$new; ls -al $DAI_CM_HOME/$new; done
+
+ls -alR $DAI_CM_HOME
+
+echo &quot;Showing config file content&quot;
+cd ${DAI_CM_HOME}
+cat *.properties</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+/opt/build/scripts/createRelease.sh Dynamic-Ad-Insertion-cm Dynamic-Ad-Insertion-cm br_3.0.0 ${BUILD_NUMBER}</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=&quot;3.0.0_${BUILD_NUMBER}&quot;
+
+print Deploying version ${VERSION}
+print
+print
+
+cd /opt/build/scripts
+
+./deployapp.sh -a Dynamic-Ad-Insertion-cm -t Dynamic-Ad-Insertion-cm -e devint -r ${VERSION} -i cm -v </command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;Dynamic-Ad-Insertion-cm-3.0.0_${BUILD_NUMBER}&quot; &gt; /var/www/html/devint/cm.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.37"/>
+  </publishers>
+  <buildWrappers/>
+</project>

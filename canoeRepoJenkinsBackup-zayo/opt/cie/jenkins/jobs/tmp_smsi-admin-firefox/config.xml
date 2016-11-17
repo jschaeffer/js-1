@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>cd /opt/checkouts/smsi-admin
+
+grails test-app :cucumber -Dgeb.env=firefox -DSMSI_ADMIN_CONFIG=$SMSI_ADMIN_CONFIG -DSMSI_ADMIN_LOG4J_CONFIG=$SMSI_ADMIN_LOG4J_CONFIG -DCROWD_PROPERTIES=$CROWD_PROPERTIES -DCROWD_EHCACHE=$CROWD_EHCACHE -Dserver.port=9190</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.xvnc.Xvnc>
+      <takeScreenshot>false</takeScreenshot>
+    </hudson.plugins.xvnc.Xvnc>
+  </buildWrappers>
+</project>

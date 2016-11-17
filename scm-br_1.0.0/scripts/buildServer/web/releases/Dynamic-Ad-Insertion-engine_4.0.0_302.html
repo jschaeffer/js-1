@@ -1,0 +1,40 @@
+<b><u>Component Release Info for Sprint Einstein:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_302</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana>Julie: Decision Engine: 4.0.0_302
+ADS Core: 4.0.0_74
+SMSi Publisher: 4.0.0_214
+Metadata: Bug fix VODDAI-5152 Insertion Rollup, Bug fix VODDAI-5324 SystemEvent in PSN, Remove BOS/BOE config, ADS config for empty PlacementDecisions, SMSiPub persist "Asset" instead of "Title", SMSiPub persist batch fix, PSN detail purge job bug fixed</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_288</b></u><br>
+<pre>
+* <font color=blue>aa6f09c</font>-<font color=green>(2014-03-14)</font><font color=black><b>test changes and added missing smsipub properties to the scrum env's</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (HEAD, v_4.0.0_302, v_4.0.0_301, v_4.0.0_300, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>a7ced22</font>-<font color=green>(2014-03-13)</font><font color=black><b>Updated env properties to TWC, Added comment to feature file</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_299, v_4.0.0_298)</font>
+* <font color=blue>ca72b03</font>-<font color=green>(2014-03-13)</font><font color=black><b>Updated property files for scrums, marley, and devint. Removed BOE/BOS config property, Added empty PlacementDecision property</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>a607121</font>-<font color=green>(2014-03-12)</font><font color=black><b>added insertion detail to the psn only test of twc baseline</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_297)</font>
+* <font color=blue>8573608</font>-<font color=green>(2014-03-12)</font><font color=black><b>removed ads.preq.hasBreakOpportunitiesExpected property from config files after validating that config code has been torn out</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>bfb82d3</font>-<font color=green>(2014-03-12)</font><font color=black><b>Refactored ads_messages features, added tests for new PlacementDecision config</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>71c7d47</font>-<font color=green>(2014-03-12)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>f4c1089</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removing configuration for break opportunity.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_296)</font>
+* | <font color=blue>6c26bca</font>-<font color=green>(2014-03-12)</font><font color=black><b>Response Config tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* |   <font color=blue>2fe8cc7</font>-<font color=green>(2014-03-11)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>2243358</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed the placementStatusEvent validation.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>40edab1</font>-<font color=green>(2014-03-11)</font><font color=black><b>Revert "VODDAI-5324 Moved validation to play data level"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>af13284</font>-<font color=green>(2014-03-11)</font><font color=black><b>data build out for new response config setting</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* | <font color=blue>3d6d8f3</font>-<font color=green>(2014-03-11)</font><font color=black><b>Changes to rollup tests and Comcast SSE System Event validation</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>fe4722a</font>-<font color=green>(2014-03-11)</font><font color=black><b>Not sending opportunities back if no placement. (configurable)</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>05b23cc</font>-<font color=green>(2014-03-10)</font><font color=black><b>VODDAI-5324 Moved validation to play data level</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_295)</font>
+* <font color=blue>482047f</font>-<font color=green>(2014-03-07)</font><font color=black><b>SMSiPublisher database refactor for tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_294)</font>
+* <font color=blue>a0815c6</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tests for Comcast PSN SystemEvents bug fix</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>977d631</font>-<font color=green>(2014-03-06)</font><font color=black><b>Test Case Refactor for new PlacementResponse Insertion Rollup</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_293)</font>
+* <font color=blue>42866b1</font>-<font color=green>(2014-03-05)</font><font color=black><b>Refactor of features for removing BOS/BOE validation off config</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_292)</font>
+*   <font color=blue>f1ece3a</font>-<font color=green>(2014-03-03)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_291)</font>
+|\  
+| * <font color=blue>01b9d13</font>-<font color=green>(2014-02-28)</font><font color=black><b>Changed comparison order to prevent null pointer issues</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_290)</font>
+* | <font color=blue>9d3638f</font>-<font color=green>(2014-03-03)</font><font color=black><b>ADS feature updates resulting from a full regression</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>3e541c3</font>-<font color=green>(2014-02-27)</font><font color=black><b>psn and presp rollup feature edits</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_289)</font></pre>
+<hr>
+<p>

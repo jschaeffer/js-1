@@ -1,0 +1,48 @@
+import org.gradle.api.internal.artifacts.publish.DefaultPublishArtifact 
+
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenRepo urls: "http://repository.jboss.org/maven2/"
+    }
+}
+
+apply plugin: "maven"
+
+version = '%grails.app.version%'
+group = 'org.grails.plugins'
+
+// grails app name
+appName = '%grails.app.name%'
+
+repositories {
+    mavenCentral()
+    mavenRepo urls: "http://repository.jboss.org/maven2/"
+    mavenRepo urls: "http://download.java.net/maven/2/"
+}
+
+configurations {
+    appConfig
+}
+
+task build$appName {
+    configurations.appConfig.addArtifact( new DefaultPublishArtifact( "$appName", "zip", "zip", null, new Date(), file(appName + ".zip") ) )
+}
+
+task writePom (dependsOn: 'copyFile') << {
+    println "in writePom"
+    pom {
+        project {
+                    packaging 'zip'
+                }
+    }.writeTo("pom.xml")
+}
+
+task copyFile {
+    ant.copy( file: "grails-${appName}-${version}.zip", tofile: "${appName}.zip", overwrite: 'true' )
+}
+
+artifactoryPublish {
+    publishConfigs ('appConfig')
+    mavenDescriptor = 'pom.xml'
+}

@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>5</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <authToken>TOKEN_NAME</authToken>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 9-16/4 * * 1-5</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export target=&quot;/var/www/html/zayo_perf&quot;
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;${target}/dtupd.txt
+
+fnChktcservState() {
+  echo &quot;$targ/$instance&quot; &gt; ${target}/${Component}_app.txt
+ echo &quot;Checking Component=$Component on targ=$targ in instance=$instance&quot;
+ k_Stat=`ssh tcserver@$targ &quot;cd instances/$instance/bin; ./tcruntime-ctl.sh status&quot;`
+  if [[ $k_Stat = *PID* ]]
+   then echo &quot;&lt;img src=../images/green.png&gt;&quot; &gt; ${target}/${Component}_envstate.txt
+        echo &quot;$instance is Up&quot;
+  else echo &quot;&lt;img src=../images/red.png&gt;&quot; &gt; ${target}/${Component}_envstate.txt
+       echo &quot;$instance is Down&quot;
+  fi
+}
+
+fnChkInsDate() {
+ inst=`ssh tcserver@$targ &quot;cd instances/$instance/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/$app.instdate.txt
+}
+
+fnVerCheck() {
+Version=`ssh tcserver@$targ &quot;grep Implementation-Version /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot;  &gt; $target/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/$app.txt
+ fi
+
+ if `ssh tcserver@$targ &quot;grep -q 1.6.0_24  /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/bigyellow16.png&gt;&quot; &gt; $target/$app.JDK.txt
+ elif `ssh tcserver@$targ &quot;grep -q 1.8.0_2  /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/biggreen18.png&gt;&quot; &gt; $target/$app.JDK.txt
+ else
+  echo &quot;&lt;img src=../images/disabled.png&gt;&quot; &gt; $target/$app.JDK.txt
+ fi
+
+}
+
+fnVerJar() {
+  echo &quot;$targ/$direct&quot; &gt; ${target}/${Component}_app.txt
+Version=`ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/bin; jar xf $jarName META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+ echo &quot;Not Present&quot;  &gt; $target/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/$app.txt
+ inst=`ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/bin; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/$app.instdate.txt
+ fi
+
+ if `ssh tcserver@$targ &quot;grep -q 1.6.0 /opt/tcserver/$direct/bin/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/bigyellow16.png&gt;&quot; &gt; $target/$app.JDK.txt
+ elif `ssh tcserver@$targ &quot;grep -q 1.8.0  /opt/tcserver/$direct/bin/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/biggreen18.png&gt;&quot; &gt; $target/$app.JDK.txt
+ else
+  echo &quot;&lt;img src=../images/disabled.png&gt;&quot; &gt; $target/$app.JDK.txt
+ fi
+ ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/bin; rm -fR META_INF&quot;
+}
+
+fnDBVerCheck() {
+export JDBC_URL=&quot;jdbc:oracle:thin:@208.54.248.212:1522:PERF1&quot;
+export DB_IP=&quot;208.54.248.212&quot;
+export DB_SID=&quot;PERF1&quot;
+cd /opt/build/scripts/zayo_perf
+echo &quot;Checking $Component on SID $DB_SID&quot;
+Version=`./check_dbversions_perf.sh -a ${Component} -e performance | tr -d &quot;\n&quot;`
+echo &quot;Version-$Version&quot;
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+  if grep -q &quot;expired&quot; /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log ; then
+   echo &quot;DB Version check failed due to expired password on component $Component&quot;
+   echo &quot;Pwd Expired&quot; &gt;$target/$Component.txt
+  fi
+  elif  [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+   echo &quot;Not Present&quot; | tee $target/$Component.txt
+  else
+    echo &quot;${Version}&quot; | tee $target/$Component.txt
+fi
+}
+
+fnLogCheck() {
+  d1=`ssh tcserver@${targ} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${targ} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$target/diskspace.txt
+  l1=`ssh tcserver@${targ} &quot;du instances/$instance/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${targ} &quot;du -h instances/$instance/logs | awk &apos;{print $1}&apos;&quot;`;export lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;img src=../images/red.png&gt;&quot; | tee $target/$Componentapp.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;img src=../images/yellow.png&gt;&quot; | tee $target/$Component.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;img src=../images/green.png&gt;&quot;| tee $target/$Component.logs
+  fi
+
+}
+
+
+fnZayos_Sys() {
+case $app in
+ Dynamic-Ad-Insertion-cm)
+  inar[0]=cv-pfcluster03.cv.perf:PF_CM_01:Dynamic-Ad-Insertion-cm
+ ;;
+ metadata-publisher)
+  inar[0]=cv-pfcluster02.cv.perf:PF_METAPUB_01:publisher
+ ;;
+ int-test-support)
+  inar[0]=cv-pffeeder02.cv.perf:mocksvr01:int-test-support
+ ;;
+ ad-load-manager)
+  inar[0]=cv-pfcluster03.cv.perf:PF_ALM_01:ad-load-manager
+ ;;
+ ADI-MDI)
+  inar[0]=cv-pfcluster04.cv.perf:PF_ADI-MDI_01:ADI-MDI-Ingest
+ ;; 
+ dai-dce)
+  inar[0]=cv-pfdce.cv.perf:PF_DCE_01:dai-dce-server
+ ;;
+ dai-national-cis)
+  inar[0]=cv-pfcluster01.cv.perf:PF_NCIS_01:nCisClient
+ ;;
+ dmp-config)
+  inar[0]=cv-pfcluster01.cv.perf:PF_DMP:dmp-config
+ ;;
+ dai-cip)
+  inar[0]=cv-pfcluster03.cv.perf:pf_dai_cip:dai-cip
+ ;;
+ acp)
+  inar[0]=cv-pfcluster02.cv.perf:pf_acp:acp
+ ;;
+ POIS)
+  inar[0]=cv-pfpois01.cv.perf:PF_POIS_01:pois
+  inar[1]=cv-pfpois02.cv.perf:PF_POIS_02:pois
+ ;;
+ impression_collector)
+  inar[0]=cv-pfimp_coll01.cv.perf:PF_IMPCOL_01:impression_collector_server
+  inar[1]=cv-pfimp_coll02.cv.perf:PF_IMPCOL_02:impression_collector_server
+ ;;
+ dai-cip-feedback)
+  inar[0]=cv-pfcip_feedbk01.cv.perf:PF_FBN_01:cip-feedback
+  inar[1]=cv-pfcip_feedbk02.cv.perf:PF_FBN_02:cip-feedback
+ ;;
+ Pgmr-Cpgn-Int)
+  inar[0]=cv-pfpci01.cv.perf:PF_PCI_01:pci
+  inar[1]=cv-pfpci02.cv.perf:PF_PCI_02:pci
+ ;;
+ smsi-publisher)
+  inar[0]=cv-pfsmsi_pub01.cv.perf:PF_SMSIPUB_01:smsi-pub
+  inar[1]=cv-pfsmsi_pub02.cv.perf:PF_SMSIPUB_02:smsi-pub
+  inar[2]=cv-pfsmsi_pub03.cv.perf:PF_SMSIPUB_03:smsi-pub
+  inar[3]=cv-pfsmsi_pub04.cv.perf:PF_SMSIPUB_04:smsi-pub
+ ;;
+ dai-smsi)
+  inar[0]=cv-pfsmsi_ing01.cv.perf:PF_SMSI_01:smsi
+  inar[1]=cv-pfsmsi_ing02.cv.perf:PF_SMSI_02:smsi
+  inar[2]=cv-pfsmsi_ing03.cv.perf:PF_SMSI_03:smsi
+  inar[3]=cv-pfsmsi_ing04.cv.perf:PF_SMSI_04:smsi
+ ;;
+ dai-smsi-relay)
+  inar[0]=cv-pfsmsi_relay01.cv.perf:PF_SMSIREL_01:smsi-relay
+  inar[1]=cv-pfsmsi_relay02.cv.perf:PF_SMSIREL_02:smsi-relay
+  inar[2]=cv-pfsmsi_relay03.cv.perf:PF_SMSIREL_03:smsi-relay
+  inar[3]=cv-pfsmsi_relay04.cv.perf:PF_SMSIREL_04:smsi-relay
+ ;;
+  smsi-msp-relay)
+  inar[0]=cv-pfsmsi_relay01.cv.perf:MSP_RELAY01:smsi-msp-relay
+  inar[1]=cv-pfsmsi_relay02.cv.perf:MSP_RELAY02:smsi-msp-relay
+  inar[2]=cv-pfsmsi_relay03.cv.perf:MSP_RELAY03:smsi-msp-relay
+  inar[3]=cv-pfsmsi_relay04.cv.perf:MSP_RELAY04:smsi-msp-relay
+  inar[4]=cv-pfsmsi_relay05.cv.perf:MSP_RELAY05:smsi-msp-relay
+  inar[5]=cv-pfsmsi_relay06.cv.perf:MSP_RELAY06:smsi-msp-relay
+ ;;
+ SDC-session-collector)
+  inar[0]=cv-pfscol01.cv.perf:PF_SESCOL_01:sdc-session-collector-server:sdc-session-collector-server
+  inar[1]=cv-pfscol02.cv.perf:PF_SESCOL_02:sdc-session-collector-server:sdc-session-collector-server
+  inar[2]=cv-pfscol03.cv.perf:PF_SESCOL_03:sdc-session-collector-server:sdc-session-collector-server
+  inar[3]=cv-pfscol04.cv.perf:PF_SESCOL_04:sdc-session-collector-server:sdc-session-collector-server
+  inar[4]=cv-pfscol05.cv.perf:PF_SESCOL_05:sdc-session-collector-server:sdc-session-collector-server
+ ;;
+ request-mgr)
+  inar[0]=cv-pfrqman01.cv.perf:PF_REQMAN_01:ROOT:request-manager:REQMAN:REQMAN
+  inar[1]=cv-pfrqman02.cv.perf:PF_REQMAN_02:ROOT:request-manager
+  inar[2]=cv-pfrqman03.cv.perf:PF_REQMAN_03:ROOT:request-manager
+  inar[3]=cv-pfrqman04.cv.perf:PF_REQMAN_04:ROOT:request-manager
+  inar[4]=cv-pfrqman05.cv.perf:PF_REQMAN_05:ROOT:request-manager
+ ;;
+  Dynamic-Ad-Insertion-engine)
+  inar[0]=cv-pfdec_eng01.cv.perf:PF_DECENG_01:ads
+  inar[1]=cv-pfdec_eng02.cv.perf:PF_DECENG_02:ads
+  inar[2]=cv-pfdec_eng03.cv.perf:PF_DECENG_03:ads
+  inar[3]=cv-pfdec_eng04.cv.perf:PF_DECENG_04:ads
+  inar[4]=cv-pfdec_eng05.cv.perf:PF_DECENG_05:ads
+  inar[5]=cv-pfdec_eng06.cv.perf:PF_DECENG_06:ads
+  inar[6]=cv-pfde_ciping01.cv.perf:PF_CIPING_01:ads
+  inar[7]=cv-pfde_ciping02.cv.perf:PF_CIPING_02:ads
+  inar[8]=cv-pfde_ciping03.cv.perf:PF_CIPING_03:ads
+  inar[9]=cv-pfde_ciping04.cv.perf:PF_CIPING_04:ads
+  inar[10]=cv-pfcluster01.cv.perf:PF_CIS_01:cis
+ ;;
+  caas-core)
+  inar[0]=::::CAAS_CORE:CAAS_CORE
+ ;;
+  ads-core)
+  inar[0]=::::ADS_CORE_MSO1:ADS_CORE_MSO1
+ ;;
+  dai-etl-feeder)
+  inar[0]=::::DAI_REPORTING_SAFI:DAI_REPORTING_SAFI
+ ;;
+  smsi_reporting)
+  inar[0]=::::SMSI_REPORTING:SMSI_REPORTING
+ ;;
+esac
+}
+
+echo &quot;######################################################################&quot;
+echo &quot;Checking the tcserver state and installation date for Performance Envs&quot;
+echo &quot;######################################################################&quot;
+
+#export Components=&quot;Dynamic-Ad-Insertion-cm&quot;
+export Components=&quot;Dynamic-Ad-Insertion-cm metadata-publisher int-test-support ad-load-manager dai-dce dai-national-cis dai-cip acp POIS impression_collector dai-cip-feedback Pgmr-Cpgn-Int smsi-publisher dai-smsi dai-smsi-relay smsi-msp-relay request-mgr SDC-session-collector Dynamic-Ad-Insertion-engine&quot;
+
+export target=&quot;/var/www/html/zayo_perf&quot;
+
+for j in ${Components}; do
+ unset k
+ unset &apos;inar[@]&apos;
+ export app=$j
+ fnZayos_Sys $app
+ export k=0
+ for i in ${inar[@]}; do
+  if [[ $app = dai-cip || $app = acp ]]; then
+    export targ=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+    export direct=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+    export jarname=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+    export Component=$app$k
+    echo &quot;Checking Jar component on System-&gt; $targ   Instance-&gt;$direct   Jarname-&gt; $jarname&quot;
+    if [[ $k = 0 ]]; then
+    fnVerJar
+    fi
+    k=$((k+1))
+  else
+    export targ=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+    export instance=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+    export webapps=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+    export Component=$app$k
+    echo &quot;Checking WebApp component-&gt; $app - $Component on System-&gt; $targ   Instance-&gt;$instance  Webapps-&gt;$webapps&quot;
+    if [[ $k = 0 ]]; then
+    fnChkInsDate
+    fnVerCheck
+    fi
+    fnChktcservState
+    fnLogCheck
+    k=$((k+1))
+  fi
+ done
+done
+
+export DBComponents=&quot;caas-core ads-core dai-etl-feeder smsi_reporting&quot;
+
+for j in ${DBComponents}; do
+     export Component=&quot;${j}&quot;
+     export app=$j
+     fnDBVerCheck
+done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

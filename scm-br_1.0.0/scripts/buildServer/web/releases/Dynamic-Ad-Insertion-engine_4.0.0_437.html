@@ -1,0 +1,98 @@
+<b><u>Component Release Info for Sprint QuickDraw:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_437</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie: VODDAI-6270 fix, CIP Ingest accepts unlimited goals, PC% data default set to 0.3, PC% functionality not applied to ASAP or unlimited goals, Frequency Capping CIP Ingest and Decision Engine Logic</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_437/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_437/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_437/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_437/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_437/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_437/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_437/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_437/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_420</b></u><br>
+<pre>
+* <font color=blue>0148c0c</font>-<font color=green>(2014-09-08)</font><font color=black><b>changed Impression collector purge gherkin</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_437)</font>
+* <font color=blue>430aac0</font>-<font color=green>(2014-09-08)</font><font color=black><b>Changed local context to match scrum</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>7a36214</font>-<font color=green>(2014-09-08)</font><font color=black><b>removed http from scrum fq url</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (tag: v_4.0.0_436)</font>
+* <font color=blue>dc690d0</font>-<font color=green>(2014-09-08)</font><font color=black><b>added IC Scrum URL's to properties</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>aedb205</font>-<font color=green>(2014-09-08)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>bdd46af</font>-<font color=green>(2014-09-08)</font><font color=black><b>Updated Pom to Support Second Jetty Shutdown</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>7fab40f</font>-<font color=green>(2014-09-08)</font><font color=black><b>adding another FC test, fixing xml for said test</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_435)</font>
+* |   <font color=blue>6d7a06d</font>-<font color=green>(2014-09-05)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>44bd4a0</font>-<font color=green>(2014-09-05)</font><font color=black><b>adding TerminalAddress gherkin step to FC qualifier tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| *   <font color=blue>22e7c7d</font>-<font color=green>(2014-09-05)</font><font color=black><b>Merge branch 'br_4.0.0.2' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>dcdf274</font>-<font color=green>(2014-09-05)</font><font color=black><b>Merge branch 'br_4.0.0.1' into br_4.0.0.2</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0.2_1, br_4.0.0.2)</font>
+| | * <font color=blue>37b19ff</font>-<font color=green>(2014-09-04)</font><font color=black><b>added end bracket ] to cip ingest series metadata tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (origin/br_4.0.0.1, br_4.0.0.1)</font>
+| | * <font color=blue>0a47cb5</font>-<font color=green>(2014-09-02)</font><font color=black><b>Changed the xpath to include the right ]</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0.1_2)</font>
+| * <font color=blue>026e771</font>-<font color=green>(2014-09-04)</font><font color=black><b>checking in gherkin clear impression collector step for FC tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>e6e98aa</font>-<font color=green>(2014-09-04)</font><font color=black><b>removing type from Comcast Placement Requests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>5190441</font>-<font color=green>(2014-09-04)</font><font color=black><b>Fixed constructor issues</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>f4b2646</font>-<font color=green>(2014-09-04)</font><font color=black><b>Added persistence of views</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* |   <font color=blue>7baab0c</font>-<font color=green>(2014-09-04)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>dacbca9</font>-<font color=green>(2014-09-04)</font><font color=black><b>Changed rmi port</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>4ab9cd3</font>-<font color=green>(2014-09-04)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>fff9525</font>-<font color=green>(2014-09-04)</font><font color=black><b>Frequency cap fixes</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* |   <font color=blue>55d0f3e</font>-<font color=green>(2014-09-04)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>8d724e3</font>-<font color=green>(2014-09-03)</font><font color=black><b>Added checks to ensure that if no terminal address present, we skip fc</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>ab314c3</font>-<font color=green>(2014-09-03)</font><font color=black><b>Fixed the passing in of the rmi url</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>e12fcce</font>-<font color=green>(2014-09-03)</font><font color=black><b>Remove dev tag</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>e51e339</font>-<font color=green>(2014-09-02)</font><font color=black><b>Freq Cap unit test fixes</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>6fa540a</font>-<font color=green>(2014-09-02)</font><font color=black><b>Casting campaignId to int</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| *   <font color=blue>7714a29</font>-<font color=green>(2014-09-02)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\  
+| * | <font color=blue>d6ee93e</font>-<font color=green>(2014-09-02)</font><font color=black><b>Added Impression collector hook</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | |   <font color=blue>5dd2257</font>-<font color=green>(2014-08-28)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \ \  
+| | |/  
+| |/|   
+| * | <font color=blue>b510196</font>-<font color=green>(2014-08-27)</font><font color=black><b>Added ImpressionCollector server properties</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_429)</font>
+* | |   <font color=blue>c1f3dad</font>-<font color=green>(2014-08-28)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \ \  
+| |/ /  
+| * | <font color=blue>2da8a21</font>-<font color=green>(2014-08-27)</font><font color=black><b>Added FC properties</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_428)</font>
+* | |   <font color=blue>c5ab2ce</font>-<font color=green>(2014-08-27)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \ \  
+| |/ /  
+| * | <font color=blue>3c637f7</font>-<font color=green>(2014-08-26)</font><font color=black><b>removing hbase steps from FC tests...updating DB xml's</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_427)</font>
+| * | <font color=blue>3e91c4a</font>-<font color=green>(2014-08-26)</font><font color=black><b>Added code to stand up the Impression Collector as part of local profile</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>5b36b42</font>-<font color=green>(2014-08-27)</font><font color=black><b>moved frequency capping to its own folder</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/ /  
+* | <font color=blue>3cab147</font>-<font color=green>(2014-08-25)</font><font color=black><b>changes default pc converstion percentage in tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (tag: v_4.0.0_426)</font>
+* | <font color=blue>9e59388</font>-<font color=green>(2014-08-25)</font><font color=black><b>final changes to goal tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* | <font color=blue>4914dba</font>-<font color=green>(2014-08-25)</font><font color=black><b>Modified validation to allow null goal's if unlimited type.</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_425)</font>
+|/  
+* <font color=blue>82ad4c4</font>-<font color=green>(2014-08-25)</font><font color=black><b>Fixed Goal Calculation logic</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>d2c4112</font>-<font color=green>(2014-08-25)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| *   <font color=blue>3d05c55</font>-<font color=green>(2014-08-25)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\  
+| * | <font color=blue>eef1db9</font>-<font color=green>(2014-08-25)</font><font color=black><b>frequency capping tests copied over to main line</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* | | <font color=blue>d976659</font>-<font color=green>(2014-08-25)</font><font color=black><b>Wired new viewStore through spring</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>81d9253</font>-<font color=green>(2014-08-25)</font><font color=black><b>Refactored naming of HBase Wrapper</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|/  
+* <font color=blue>a1c0d43</font>-<font color=green>(2014-08-25)</font><font color=black><b>Added case to decision for a goal that has been turned off</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>fd3df9b</font>-<font color=green>(2014-08-22)</font><font color=black><b>Pulled over Frequency Cap folder and merged in budgeting code</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_424)</font>
+* <font color=blue>fe90fc1</font>-<font color=green>(2014-08-22)</font><font color=black><b>updated null goal values for unlimited campaigns to -1</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>bca6df3</font>-<font color=green>(2014-08-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>946fcb1</font>-<font color=green>(2014-08-21)</font><font color=black><b>Merged in Tracking ID changes from Freq Cap</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_423)</font>
+* | <font color=blue>658dca8</font>-<font color=green>(2014-08-22)</font><font color=black><b>refactor to goal tests of cip ingest and de</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>e1c98de</font>-<font color=green>(2014-08-20)</font><font color=black><b>VODDAI-6182</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_4.0.0_422)</font>
+* <font color=blue>8f6ea5a</font>-<font color=green>(2014-08-20)</font><font color=black><b>VODDAI-6184, VODDAI-6185, VODDAI-6186</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>dc930cd</font>-<font color=green>(2014-08-19)</font><font color=black><b>Fixed tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_421)</font>
+* <font color=blue>35c7c7a</font>-<font color=green>(2014-08-19)</font><font color=black><b>messageId validation change</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font></pre>
+<hr>
+<p>

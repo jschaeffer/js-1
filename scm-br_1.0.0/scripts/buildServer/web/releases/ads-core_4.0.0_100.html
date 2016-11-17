@@ -1,0 +1,51 @@
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_100</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0-changelog.xml
+core/model/src/main/resources/liquibase/core-4.0.0-data/008-cdonovan-provider_video_def.sql
+core/model/src/main/resources/liquibase/core-4.0.0/008-bgriese-alter-campaign-item.xml
+core/model/src/main/resources/liquibase/core-4.0.0/009-cdonovan-alter-campaign-item-media-asset.xml
+core/model/src/main/resources/liquibase/core-4.0.0/017-bgriese-add-MCLPS.xml
+core/model/src/main/resources/liquibase/core-4.0.0/018-cdonovan-add-MCLPS-CIMA.xml
+core/model/src/main/resources/liquibase/core-4.0.0/020-bgriese-placement-limit-migration.xml
+core/model/src/main/resources/liquibase/core-dev-4.0.0-changelog.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_93</b></u><br>
+<pre>
+* <font color=blue>b6dc217</font>-<font color=green>(2014-07-01)</font><font color=black><b>Added update statement to handle pre existing records</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_100)</font>
+* <font color=blue>5b989ea</font>-<font color=green>(2014-07-01)</font><font color=black><b>Taking into account nulled values.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_99)</font>
+* <font color=blue>72849db</font>-<font color=green>(2014-07-01)</font><font color=black><b>Migration for placement limit data.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_98)</font>
+*   <font color=blue>fad7d22</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merged 'Placement Limit' branch into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>921b533</font>-<font color=green>(2014-06-25)</font><font color=black><b>Merged main line in</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (origin/PlacementLimit)</font>
+| * <font color=blue>ec0dbbd</font>-<font color=green>(2014-06-11)</font><font color=black><b>Merge branch 'br_4.0.0' into PlacementLimit</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>f7c31e7</font>-<font color=green>(2014-06-09)</font><font color=black><b>Updating JPA object to reflect schema changes.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>6b330da</font>-<font color=green>(2014-06-06)</font><font color=black><b>Added check for the 0 case</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>57db5ea</font>-<font color=green>(2014-06-06)</font><font color=black><b>added break and session limit defaults to cima</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>931c04e</font>-<font color=green>(2014-06-06)</font><font color=black><b>Adding defaults for limits.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>eaf9038</font>-<font color=green>(2014-06-03)</font><font color=black><b>Default placement sep to 1, instead of 0.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>b8d23d6</font>-<font color=green>(2014-06-03)</font><font color=black><b>Changing default to 1.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>72c0c7d</font>-<font color=green>(2014-05-30)</font><font color=black><b>VODDAI-5525</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>2535b1f</font>-<font color=green>(2014-05-28)</font><font color=black><b>Merge branch 'br_4.0.0' into PlacementLimit</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>2ee92d3</font>-<font color=green>(2014-04-03)</font><font color=black><b>Added To string functionality to refreh chain</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>c49173c</font>-<font color=green>(2014-03-26)</font><font color=black><b>Updated scripts to include migration of existing data</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>7c078b4</font>-<font color=green>(2014-03-12)</font><font color=black><b>Added null case check</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>bb0af5b</font>-<font color=green>(2014-03-12)</font><font color=black><b>Adding Break and Session limit fields to CIMA</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>a32955f</font>-<font color=green>(2014-03-12)</font><font color=black><b>Added accessors for session Limit and Break Limit</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>b90e29b</font>-<font color=green>(2014-03-10)</font><font color=black><b>Refactored the separationEnum to include alias' for cipValue</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>c623c7e</font>-<font color=green>(2014-01-15)</font><font color=black><b>Overriding tostring method.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>3380d69</font>-<font color=green>(2014-01-09)</font><font color=black><b>Adding placement and session limits to campaign item.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>5aa523d</font>-<font color=green>(2014-06-27)</font><font color=black><b>Added new golden data to dev only</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4ca02f6</font>-<font color=green>(2014-06-27)</font><font color=black><b>adding a helper script to rebuild the db.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>df5c8e6</font>-<font color=green>(2014-06-24)</font><font color=black><b>Changed delete query and naming in vodendponitcheck</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_97, origin/frequencyCap)</font>
+* <font color=blue>a7621c6</font>-<font color=green>(2014-06-24)</font><font color=black><b>Changed the header for Deregistration</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_96)</font>
+* <font color=blue>3034e0e</font>-<font color=green>(2014-06-23)</font><font color=black><b>Added CIS Notification headers</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_95, v_4.0.0_94)</font></pre>
+<hr>
+<p>

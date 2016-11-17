@@ -1,0 +1,14 @@
+Running from: /opt/cie/jenkins.war
+webroot: EnvVars.masterEnvVars.get("JENKINS_HOME")
+Exception in thread "main" java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at Main._main(Main.java:293)
+	at Main.main(Main.java:98)
+Caused by: java.lang.IllegalArgumentException: Unrecognized option: --ajp13
+	at winstone.cmdline.CmdLineParser.parse(CmdLineParser.java:53)
+	at winstone.Launcher.getArgsFromCommandLine(Launcher.java:363)
+	at winstone.Launcher.main(Launcher.java:336)
+	... 6 more

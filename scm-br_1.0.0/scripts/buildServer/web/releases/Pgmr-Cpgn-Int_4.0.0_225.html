@@ -1,0 +1,74 @@
+<b><u>Component Release Info for Sprint Ninja_Turtles:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_225</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+CAAS Core 4.0.0_146
+PCI 4.0.0_225: NEW Change Tracking DB; Improved Asset Placement Limit interpretation; Bug fixes (Provider, CQG order)
+New Properties: NEW DB properties, new message.log (See Readme)
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_4.0.0_225/diff.txt>Pgmr-Cpgn-Int_v_4.0.0_225/config/pci-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_4.0.0_225/diff.txt>Pgmr-Cpgn-Int_v_4.0.0_225/config/pci-log4j.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_4.0.0_225/diff.txt>Pgmr-Cpgn-Int_v_4.0.0_225/data-store/src/main/resources/liquibase/cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_4.0.0_225/diff.txt>Pgmr-Cpgn-Int_v_4.0.0_225/data-store/src/main/resources/liquibase/cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_4.0.0_225/diff.txt>Pgmr-Cpgn-Int_v_4.0.0_225/data-store/src/main/resources/liquibase/cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_4.0.0_225/diff.txt>Pgmr-Cpgn-Int_v_4.0.0_225/data-store/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/resources/liquibase/cisys/genUser.Marley.sql
+data-store/src/main/resources/liquibase/cisys/genUser.devint.sql
+data-store/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+data-store/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+data-store/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+data-store/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+data-store/src/main/resources/liquibase/pci-4.0.0/001-kleider-create-schema.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_199</b></u><br>
+<pre>
+* <font color=blue>b07f541</font>-<font color=green>(2014-07-22)</font><font color=black><b>New CQG feature, Change Tracking updates</b></font><font color=grey>- (morganhuber)</font><font color=red> (HEAD, v_4.0.0_225, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>db91bce</font>-<font color=green>(2014-07-22)</font><font color=black><b>change PCI schema name to match common-test</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>457ef34</font>-<font color=green>(2014-07-22)</font><font color=black><b>Added configuration details to the readme</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>99a34a3</font>-<font color=green>(2014-07-21)</font><font color=black><b>Morgan's Practice Feature</b></font><font color=grey>- (morganhuber)</font><font color=red> (v_4.0.0_224, v_4.0.0_223)</font>
+* <font color=blue>3148499</font>-<font color=green>(2014-07-21)</font><font color=black><b>Added comments in the provider updates test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>29f8821</font>-<font color=green>(2014-07-18)</font><font color=black><b>Fixed tests for provider update and 6020</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_222)</font>
+*   <font color=blue>8dbc694</font>-<font color=green>(2014-07-17)</font><font color=black><b>Added tests for story 6020 and bug 6045</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_221)</font>
+|\  
+| * <font color=blue>5a6e492</font>-<font color=green>(2014-07-17)</font><font color=black><b>VODDAI-6020 allow null for break/session limit</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>c2c780c</font>-<font color=green>(2014-07-17)</font><font color=black><b>Added tests for story 6020 and bug 6045</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>a464666</font>-<font color=green>(2014-07-17)</font><font color=black><b>Fix for videoDef and Network update</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>6111cf9</font>-<font color=green>(2014-07-16)</font><font color=black><b>VODDAI-6023 fix for metadata qualifier not in last position.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_220)</font>
+* <font color=blue>bbdc6a5</font>-<font color=green>(2014-07-17)</font><font color=black><b>Fixed missing paren in liquibase</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_219, v_4.0.0_218)</font>
+* <font color=blue>caad51e</font>-<font color=green>(2014-07-16)</font><font color=black><b>Adding initial Schema ownership creation scripts</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (v_4.0.0_217, v_4.0.0_216, v_4.0.0_215)</font>
+* <font color=blue>4a79f35</font>-<font color=green>(2014-07-16)</font><font color=black><b>Revert "Revert "Added tracking database logic.""</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_214)</font>
+*   <font color=blue>0d01a14</font>-<font color=green>(2014-07-15)</font><font color=black><b>Added default placementLimit tests and EMPTY CQGs for placementLimits</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_213)</font>
+|\  
+| * <font color=blue>ef9a9a4</font>-<font color=green>(2014-07-15)</font><font color=black><b>moved get of xpath to after test for xpath</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_212)</font>
+| * <font color=blue>b398cb3</font>-<font color=green>(2014-07-15)</font><font color=black><b>VODDAI-6018 create exemption for empty term of placement limit terms in validatePositiveInt</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_211)</font>
+| * <font color=blue>661bb02</font>-<font color=green>(2014-07-15)</font><font color=black><b>VODDAI-6018 create exemption for empty term of placement limit terms ignore int test and empty string</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_210)</font>
+| * <font color=blue>fd7f83f</font>-<font color=green>(2014-07-15)</font><font color=black><b>VODDAI-6018 create exemption for empty term of placement limit terms ignore int test and empty string</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>3f92650</font>-<font color=green>(2014-07-15)</font><font color=black><b>VODDAI-6018 create exemption for empty term of placement limit terms ignore int test</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_209)</font>
+| * <font color=blue>41254d9</font>-<font color=green>(2014-07-15)</font><font color=black><b>VODDAI-6018 create exemption for empty term of placement limit terms</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_208)</font>
+* | <font color=blue>2036938</font>-<font color=green>(2014-07-15)</font><font color=black><b>Added default placementLimit tests and EMPTY CQGs for placementLimits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>bf81fa7</font>-<font color=green>(2014-07-15)</font><font color=black><b>Revert "Added tracking database logic."</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_207)</font>
+* <font color=blue>e94fec2</font>-<font color=green>(2014-07-15)</font><font color=black><b>VODDAI-6018 PCI save break limit of one when no Qualifier for placement limit</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_206)</font>
+* <font color=blue>5039365</font>-<font color=green>(2014-07-10)</font><font color=black><b>Added tracking database logic.</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_205)</font>
+* <font color=blue>7eab985</font>-<font color=green>(2014-07-10)</font><font color=black><b>Updated new messageLog check. Updated adSeperation of BTB and null session and breakLimits when none is provided to us</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3a6f590</font>-<font color=green>(2014-07-10)</font><font color=black><b>Updated new messageLog check. Updated adSeperation of BTB and null session and breakLimits when none is provided to us</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>c47207c</font>-<font color=green>(2014-07-10)</font><font color=black><b>Added revDate checks, updated error msgs, and added PEID/GUID/CampOrder variable setting</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>e7d366b</font>-<font color=green>(2014-07-09)</font><font color=black><b>Modified some features for duplicate tests, added comments, and test improvement</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_204)</font>
+*   <font color=blue>e29b13f</font>-<font color=green>(2014-07-08)</font><font color=black><b>Updated some feature files. Test cleanup to continue from persistGoal. Some comments added where tests to be removed, or verified.</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_203)</font>
+|\  
+| * <font color=blue>cfde7ab</font>-<font color=green>(2014-07-08)</font><font color=black><b>Updated scrum3 log properties (really this time)</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_202)</font>
+* | <font color=blue>beb674b</font>-<font color=green>(2014-07-08)</font><font color=black><b>Updated some feature files. Test cleanup to continue from persistGoal. Some comments added where tests to be removed, or verified.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>52efa33</font>-<font color=green>(2014-07-08)</font><font color=black><b>Updated scrum3 log properties</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_201)</font>
+* <font color=blue>23f7cfb</font>-<font color=green>(2014-07-07)</font><font color=black><b>Added slight mods in updateNotice feature for initial log checking. Test cleanup to continue from CIPpersist feature.</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_200)</font>
+*   <font color=blue>9fb16e3</font>-<font color=green>(2014-07-07)</font><font color=black><b>Modified revision lessThan and equalTo tests to have accurate DB checks and log error checks. Removed unneeded cipImmediate DB flag check</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>cc27f76</font>-<font color=green>(2014-07-07)</font><font color=black><b>Properties to log incoming and outgoing soap messages.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>34fc55f</font>-<font color=green>(2014-07-07)</font><font color=black><b>Modified revision lessThan and equalTo tests to have accurate DB checks and log error checks</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>2d0e76f</font>-<font color=green>(2014-07-07)</font><font color=black><b>Changed the rname/gname to have more representative data</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>7795488</font>-<font color=green>(2014-07-07)</font><font color=black><b>Changed the rname/gname to have actual data</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

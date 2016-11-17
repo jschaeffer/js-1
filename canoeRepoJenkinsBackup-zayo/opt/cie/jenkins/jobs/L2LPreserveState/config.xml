@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h3&gt;What does this job do?&lt;br&gt;&#xd;
+&lt;ul&gt;&lt;h4&gt;&lt;li&gt;This job goes out to the selected system&apos;s end points and gathers a list of the current tcserver status for all applications across the selected system.&#xd;
+&lt;li&gt;This information is then saved off to a tmp location and all running applications are then stopped. &#xd;
+  &lt;li&gt;The information gathered by this job is automatically pulled and used when preforming a restart using the L2LRessurectState job.&lt;/h4&gt;&lt;/ul&gt;&lt;/h3&gt;&#xd;
+&#xd;
+&lt;h5&gt;Copyright Canoe Ventures 2014&lt;/h5&gt;&lt;font size=4 color=white&gt;L2L_pass_1!&lt;/font&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUserPassword</name>
+          <description>Enter authorized password</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Suite</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Base</string>
+              <string>FW</string>
+              <string>Google</string>
+              <string>Cox</string>
+              <string>Broadway</string>
+              <string>Rentrak</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+# Remove the comment from the following line to bypass the password entry 
+# Note this should only be done by the SCM representative for SCM installation work
+export DeployUserPassword=&quot;L2L_pass_1!&quot;
+ 
+if [ ${DeployUserPassword} = &quot;L2L_pass_1!&quot; ] ; then
+    echo &quot;&lt;h2&gt;Proceeding with deployment&lt;/h2&gt;&quot;
+else
+    echo &quot;Invalid password supplied!&quot;
+    echo &quot;Exiting!&quot;
+    exit 1
+fi
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+export action
+export Suite
+
+source /opt/build/scripts/zayos_sys_L2L.sh
+fnGetCompList
+
+
+rm /var/www/html/lab2lab/$Suite/RestartRaw.txt
+rm /var/www/html/lab2lab/$Suite/ToRestart.txt
+
+touch /var/www/html/lab2lab/$Suite/ToRestart.txt
+
+export j=0
+for Comp in ${Component}; do
+
+export Comp
+
+touch /var/www/html/lab2lab/$Suite/RestartRaw.txt
+
+source /opt/build/scripts/zayos_sys_L2L.sh
+fnZayos_Sys
+
+  for z in ${inar[@]}; do
+
+  export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+  export APPSERVER_IP=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+  export INSTANCE=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+  k=$((k+1))
+    echo &quot; &quot;
+    echo &quot;************************************************************************&quot;
+    echo &quot;Instance -&gt; $INSTANCE   APPSERVER_IP -&gt; $APPSERVER_IP   Suite -&gt; $Suite&quot;
+    echo &quot; &quot;
+    echo &quot;status $INSTANCE on $APPSERVER_IP&quot;
+    echo &quot;/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status&quot;
+    echo &quot; &quot;
+          /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status &gt;&gt; /var/www/html/lab2lab/$Suite/RestartRaw.txt
+
+    if grep &quot;NOT RUNNING&quot; /var/www/html/lab2lab/$Suite/RestartRaw.txt ; then
+	echo &quot;$Comp on $Suite is NOT Running and will NOT be restarted.&quot;
+    elif grep &quot;PID&quot; /var/www/html/lab2lab/$Suite/RestartRaw.txt ; then
+	echo &quot;cmpar[$j]=$Comp:$APPSERVER_IP:$INSTANCE&quot; &gt;&gt; /var/www/html/lab2lab/$Suite/ToRestart.txt
+	echo &quot;$Comp on $Suite IS Running and WILL be restarted.&quot;
+          j=$((j+1))
+    fi
+rm /var/www/html/lab2lab/$Suite/RestartRaw.txt
+    echo &quot; &quot;
+    echo &quot;************************************************************************&quot;
+  done
+  export k=0
+  unset inar
+  unset APPSERVER_IP
+  unset INSTANCE
+  unset z
+done
+
+export k=0
+export j=0
+source /var/www/html/lab2lab/$Suite/ToRestart.txt
+
+echo &quot;Applications stopping:&quot;
+for l in `cat /var/www/html/lab2lab/$Suite/ToRestart.txt` ; do
+  export COMPONENT=&quot;$(echo ${cmpar[$j]} | cut -f1 -d:)&quot;
+  echo $COMPONENT
+  j=$((j+1))
+done
+
+echo &quot; &quot;
+
+export j=0
+for i in `cat /var/www/html/lab2lab/$Suite/ToRestart.txt` ; do
+
+echo $i
+  source /var/www/html/lab2lab/$Suite/ToRestart.txt
+  export COMPONENT=&quot;$(echo ${cmpar[$j]} | cut -f1 -d:)&quot;
+  export APPSERVER_IP=&quot;$(echo ${cmpar[$j]} | cut -f2 -d:)&quot;
+  export INSTANCE=&quot;$(echo ${cmpar[$j]} | cut -f3 -d:)&quot;
+  j=$((j+1))
+
+
+  echo &quot;$COMPONENT is Stopping&quot;
+    echo &quot;Running -&gt; /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} stop&quot;
+    echo &quot; &quot;
+    /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} stop
+    
+        echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt; &gt; /var/www/html/lab2lab/$Suite/$DeployTarg/${Component}0.envstate.txt&quot;
+    echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt;&quot; &gt; /var/www/html/lab2lab/$Suite/$DeployTarg/${Component}0.envstate.txt
+done
+
+echo &quot;*******************************************&quot;
+echo &quot;Jar section&quot;
+echo &quot;*******************************************&quot;
+
+
+source /opt/build/scripts/zayos_sys_L2L.sh
+fnGetCompListJar
+unset Comp
+
+for Comp in ${Component}; do
+
+source /opt/build/scripts/zayos_sys_L2L.sh
+fnZayos_Sys
+  export k=0
+  export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+  export APPSERVER_IP=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+
+if [[ $Comp = &quot;dai-cip&quot; ]]; then 
+export jarup=`ssh tcserver@${APPSERVER_IP} &quot;ps -ef | grep dai-cip&quot;`
+isempty=`echo $jarup | grep dai-cip.jar`
+  if [ -z &quot;$isempty&quot; ]; then
+     echo &quot;No dai-cip process&quot;
+  else
+   echo &quot;dai-cip processes active - Stopping&quot;
+   echo &quot;ssh tcserver@${APPSERVER_IP} cd dai_cip; ./launcher.sh stop&quot;
+   ssh tcserver@${APPSERVER_IP} &quot;cd dai_cip; ./launcher.sh stop&quot;
+#JWS DAI-CIp and ACP can&apos;t be restarted remotely so commenting
+#JWS echo &quot;cmpar[$j]=dai-cip:$APPSERVER_IP&quot; &gt;&gt; /var/www/html/lab2lab/$Suite/ToRestart.txt
+  fi
+elif [[ $Comp = &quot;acp&quot; ]]; then 
+export jarup=`ssh tcserver@${APPSERVER_IP} &quot;ps -ef | grep acp&quot;`
+isempty=`echo $jarup | grep acp.jar`
+  if [ -z &quot;$isempty&quot; ]; then
+    echo &quot;No acp process&quot;
+  else
+  echo &quot;acp processes active - Stopping&quot;
+echo &quot;ssh tcserver@${APPSERVER_IP} cd acp; ./launcher.sh stop&quot;
+  ssh tcserver@${APPSERVER_IP} &quot;cd acp; ./launcher.sh stop&quot;
+#JWS DAI-CIp and ACP can&apos;t be restarted remotely so commenting
+#JWS echo &quot;cmpar[$j]=acp:$APPSERVER_IP&quot; &gt;&gt; /var/www/html/lab2lab/$Suite/ToRestart.txt
+ fi
+fi
+ done
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+
+echo &quot;&lt;b&gt;--- Suite Preservation and stop ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;${Suite} preserved and shutdown by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+export BUILD_TAG
+export DeployUser
+export Suite
+export DeployTarg=&quot;zayo_L2L&quot;
+
+echo &quot;&lt;b&gt;URL For shutdown output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+for i in `cat /var/www/html/lab2lab/$Suite/ToRestart.txt`; do
+ echo &quot;$i | awk -F&quot;=&quot; &apos;{print $2}&apos;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+done
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+cd /opt/build/scripts
+source /opt/build/scripts/zayos_sys_L2L.sh
+fnGetSysList
+./shutdown-vapp.sh $VApp
+echo &quot;VApp shutdown -&gt; $VApp    Systems -&gt; $Syslist&quot;
+echo &quot;&lt;b&gt;&lt;font color=red&gt;down&lt;/font&gt;&lt;/b&gt;&quot; &gt;/var/www/html/lab2lab/$Suite/sysstate.txt
+edate=`date | awk &apos;{print \$2,\$3,\$4}&apos;`
+echo &quot;Environment Lab-to-Lab $Suite shutdown by $DeployUser $BUILD_NUMBER - $edate&quot; &gt;&gt;/var/www/html/sysactivity/L2L_$Suite.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

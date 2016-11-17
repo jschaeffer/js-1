@@ -1,0 +1,125 @@
+<b><u>Component Release Info:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi-relay</b><br><u>Version</u><b>&nbspr_4.0.0_134</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana>Julie: DAI SMSi Relay – 4.0.0_134
+CAAS Core – 4.0.0_112
+Metadata: Refactor to support production data volumes. New lookup for Programmer to hash hhID. New Architecture, Relay job refactored.</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_99</b></u><br>
+<pre>
+* <font color=blue>b24a4bc</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. Added created_dt back to the vod_xxx insert calls.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_134, r_4.0.0_134)</font>
+* <font color=blue>4ad1aba</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. add index.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_133)</font>
+* <font color=blue>ceaadc7</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. add index.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>7e99b21</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. add index.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>96e2c91</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. add index.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>6d8fe0e</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. add archive id from session_info_archive to avoid dups.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>5d75c38</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. try distinct select to fix dup in relay status.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_132)</font>
+* <font color=blue>01bbdbd</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. Fixed dups in relay status.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_131)</font>
+* <font color=blue>a823cce</font>-<font color=green>(2014-03-01)</font><font color=black><b>VODDAI-5248. only after pre dedup records.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_130)</font>
+* <font color=blue>c567c9a</font>-<font color=green>(2014-03-01)</font><font color=black><b>Revert "VODDAI-5248. changed to go after pre dedup records only go back 1 hour by default."</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>cb601a9</font>-<font color=green>(2014-02-28)</font><font color=black><b>VODDAI-5248. changed to go after pre dedup records only go back 1 hour by default.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_129, v_4.0.0_128)</font>
+* <font color=blue>5698175</font>-<font color=green>(2014-02-28)</font><font color=black><b>moved around feature files into more specified folders</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>6b4ba13</font>-<font color=green>(2014-02-27)</font><font color=black><b>FInal regression test changes</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_127)</font>
+* <font color=blue>51bca9f</font>-<font color=green>(2014-02-26)</font><font color=black><b>updated features to pass final local regression</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_126)</font>
+* <font color=blue>b1bc5ee</font>-<font color=green>(2014-02-26)</font><font color=black><b>adding comments for testing</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>d3eae93</font>-<font color=green>(2014-02-26)</font><font color=black><b>Set default behavior for maxSessions</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_125)</font>
+* <font color=blue>7b7738b</font>-<font color=green>(2014-02-26)</font><font color=black><b>deleted tag</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_124)</font>
+* <font color=blue>91263ca</font>-<font color=green>(2014-02-26)</font><font color=black><b>purge test updates</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+*   <font color=blue>0584a8f</font>-<font color=green>(2014-02-26)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-smsi-relay into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>544ae02</font>-<font color=green>(2014-02-26)</font><font color=black><b>Fixed property file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>0f7b6bc</font>-<font color=green>(2014-02-26)</font><font color=black><b>Added Day Check Test and Purge Job Test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>adfd5d1</font>-<font color=green>(2014-02-26)</font><font color=black><b>Cleaned up integration test properties.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>f7a362f</font>-<font color=green>(2014-02-26)</font><font color=black><b>Updated scrum setup files</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>225a242</font>-<font color=green>(2014-02-26)</font><font color=black><b>Updated properties</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_123)</font>
+| * <font color=blue>da36fd8</font>-<font color=green>(2014-02-26)</font><font color=black><b>Scrum 1 genuser</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>b11ac82</font>-<font color=green>(2014-02-26)</font><font color=black><b>Updated genUser files</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_122)</font>
+* | <font color=blue>95f1a5d</font>-<font color=green>(2014-02-26)</font><font color=black><b>VODDAI-5248. bug updating watermark fixed.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>d20a06c</font>-<font color=green>(2014-02-26)</font><font color=black><b>VODDAI-5248. added an hour to session for race condition of placements.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>dce58dc</font>-<font color=green>(2014-02-26)</font><font color=black><b>Fixed connection parameters</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_121)</font>
+* <font color=blue>e886e9e</font>-<font color=green>(2014-02-26)</font><font color=black><b>Added date check to the update statement.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>66ab6ac</font>-<font color=green>(2014-02-26)</font><font color=black><b>Adding Marley genuser script</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (v_4.0.0_120, v_4.0.0_119, v_4.0.0_118)</font>
+* <font color=blue>6c87624</font>-<font color=green>(2014-02-26)</font><font color=black><b>VODDAI-5248. Added a created_dt to the temp table and the status table so we can update in bulk.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>6ae91a6</font>-<font color=green>(2014-02-25)</font><font color=black><b>Added cisys files</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_117)</font>
+*   <font color=blue>bdc0871</font>-<font color=green>(2014-02-25)</font><font color=black><b>merge conflcts fixed</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_116)</font>
+|\  
+| * <font color=blue>9ddd629</font>-<font color=green>(2014-02-25)</font><font color=black><b>Added bad providerID test to baseline, updated reset lines to modified for caas core</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* | <font color=blue>e348209</font>-<font color=green>(2014-02-25)</font><font color=black><b>adding day_check feature</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+|/  
+* <font color=blue>35932ab</font>-<font color=green>(2014-02-25)</font><font color=black><b>adding de-duping and thread relay tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>33ac97f</font>-<font color=green>(2014-02-25)</font><font color=black><b>Adding order by criteria.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>7d0cd0e</font>-<font color=green>(2014-02-25)</font><font color=black><b>Readme updates</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>a18fbc2</font>-<font color=green>(2014-02-24)</font><font color=black><b>added visit id column to session relay status checks...added test names to ack validation test</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_115)</font>
+* <font color=blue>5f03cb2</font>-<font color=green>(2014-02-24)</font><font color=black><b>changing Placement_Status_Relay to Session_Relay_Status</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>c032129</font>-<font color=green>(2014-02-24)</font><font color=black><b>Visit Status Relay tables removed</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>e6357f3</font>-<font color=green>(2014-02-24)</font><font color=black><b>sql statements updated</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>317a462</font>-<font color=green>(2014-02-24)</font><font color=black><b>relay test refactor galore</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>12b1b38</font>-<font color=green>(2014-02-24)</font><font color=black><b>Additional removal of code for session refactor</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>3c42ff3</font>-<font color=green>(2014-02-24)</font><font color=black><b>Updated to use new session rules</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>7a34fae</font>-<font color=green>(2014-02-24)</font><font color=black><b>VODDAI-5248. no need to drop tables do not exist.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>0584fdf</font>-<font color=green>(2014-02-24)</font><font color=black><b>VODDAI-5248. refactor addeing session_start to vod_xxx tables.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>354703d</font>-<font color=green>(2014-02-24)</font><font color=black><b>VODDAI-5248. null condition for visit result.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>111a761</font>-<font color=green>(2014-02-24)</font><font color=black><b>VODDAI-5248. refactor relay to use session status.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>027348c</font>-<font color=green>(2014-02-24)</font><font color=black><b>VODDAI-5248. refactor relay to use session status.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>4cf26dc</font>-<font color=green>(2014-02-24)</font><font color=black><b>VODDAI-5248. refactor to use session only relay.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>c4b7e22</font>-<font color=green>(2014-02-21)</font><font color=black><b>De-dupe job changed to run instantaneously</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_114)</font>
+*   <font color=blue>15a96e9</font>-<font color=green>(2014-02-21)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-smsi-relay into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>fdf4a62</font>-<font color=green>(2014-02-21)</font><font color=black><b>Added properties to cucumber properties.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>bd8521e</font>-<font color=green>(2014-02-21)</font><font color=black><b>Fixed hash logic</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>df5decb</font>-<font color=green>(2014-02-21)</font><font color=black><b>VODDAI-5248. added purge logic to delete anything 5 days older than watermark.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+*   <font color=blue>7f964c0</font>-<font color=green>(2014-02-21)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-smsi-relay into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>86d4777</font>-<font color=green>(2014-02-21)</font><font color=black><b>updated read me</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>a4d0934</font>-<font color=green>(2014-02-21)</font><font color=black><b>A ton of Relay Test Refactoring changes</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>468b9b3</font>-<font color=green>(2014-02-21)</font><font color=black><b>Updated query for performance</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>c86a0d1</font>-<font color=green>(2014-02-21)</font><font color=black><b>Updated tests.  Also changed the unknown programmer logic.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>97e6fd7</font>-<font color=green>(2014-02-21)</font><font color=black><b>VODDAI-5248. fixed bug updating watermark.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>8a368a3</font>-<font color=green>(2014-02-21)</font><font color=black><b>VODDAI-5248. removed index, added date limit in merge command.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+*   <font color=blue>50cc5c5</font>-<font color=green>(2014-02-21)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-smsi-relay into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>207f5f7</font>-<font color=green>(2014-02-20)</font><font color=black><b>test changes for relay refactor</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_113)</font>
+| * <font color=blue>8f054fc</font>-<font color=green>(2014-02-20)</font><font color=black><b>removed update in for debugging</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>9837ff3</font>-<font color=green>(2014-02-20)</font><font color=black><b>Wired new date check through entire project.  Able to update now.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>cfafcef</font>-<font color=green>(2014-02-20)</font><font color=black><b>fixed servlet issue</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>c5d70fd</font>-<font color=green>(2014-02-20)</font><font color=black><b>Set default schema</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>a43c6a6</font>-<font color=green>(2014-02-20)</font><font color=black><b>Updated for new schema</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>c58a9ec</font>-<font color=green>(2014-02-20)</font><font color=black><b>Fixed merge issues from reporting</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>c60787a</font>-<font color=green>(2014-02-20)</font><font color=black><b>moved old features into their own folders...added new schema checks</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>db6ffca</font>-<font color=green>(2014-02-21)</font><font color=black><b>VODDAI-5248. added day limit to merge queries.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>bd44e81</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5248. improve queuing for parallel process in Oracle.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>aef76ab</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5248. improve queuing for parallel process in Oracle.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>1f6eaee</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5248. improve queuing for parallel process in Oracle.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>fe6e5f1</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5248. select parallel changes for smsi-relay.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>bf14abe</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5248. select parallel changes for smsi-relay.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+*   <font color=blue>949a6ce</font>-<font color=green>(2014-02-20)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-smsi-relay into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>b562cf5</font>-<font color=green>(2014-02-20)</font><font color=black><b>Converted cooCache to ProgrammerNameCache</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>24d9680</font>-<font color=green>(2014-02-20)</font><font color=black><b>changes to support new programmer cache</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>cbd1fca</font>-<font color=green>(2014-02-19)</font><font color=black><b>Wired in new relay read/update queries.</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_112)</font>
+| * <font color=blue>67ad9d4</font>-<font color=green>(2014-02-19)</font><font color=black><b>Wiring in the thread list values</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>8f8d782</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5248. database changes for smsi-relay.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>0728723</font>-<font color=green>(2014-02-19)</font><font color=black><b>VODDAI-5248. Stored procedure created along with data structures.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>b79cf0a</font>-<font color=green>(2014-02-18)</font><font color=black><b>Added unique session links and new tables</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_111)</font>
+* <font color=blue>7dc5f66</font>-<font color=green>(2014-02-18)</font><font color=black><b>Initital DB creation checkin</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>8f92e44</font>-<font color=green>(2014-02-12)</font><font color=black><b>Fixed ordering problem</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_110)</font>
+* <font color=blue>46d3013</font>-<font color=green>(2014-02-12)</font><font color=black><b>Hints on query for perf</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_109)</font>
+* <font color=blue>dc71f76</font>-<font color=green>(2014-02-12)</font><font color=black><b>adding more robust checks to late incoming smsi tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>cf5ec10</font>-<font color=green>(2014-02-12)</font><font color=black><b>Changes to handle late visits</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_108)</font>
+* <font color=blue>eebd9d1</font>-<font color=green>(2014-02-11)</font><font color=black><b>adding new checks for late incoming smsi relay data</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>a69fffb</font>-<font color=green>(2014-02-11)</font><font color=black><b>fixed ordering problem</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_107)</font>
+* <font color=blue>9734d4f</font>-<font color=green>(2014-02-11)</font><font color=black><b>adding new test for late smsi data coming in</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_106)</font>
+* <font color=blue>bcf3242</font>-<font color=green>(2014-02-11)</font><font color=black><b>New query for performance</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_105)</font>
+* <font color=blue>999450a</font>-<font color=green>(2014-02-11)</font><font color=black><b>Moving the Sysdate check back out to 5</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_104)</font>
+* <font color=blue>3f507d8</font>-<font color=green>(2014-02-11)</font><font color=black><b>Fixed rogue semi-colon</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_103)</font>
+* <font color=blue>bcb5725</font>-<font color=green>(2014-02-11)</font><font color=black><b>Updated query for performance</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_102)</font>
+* <font color=blue>55b794d</font>-<font color=green>(2014-02-08)</font><font color=black><b>changed some sql inserts to have the relay success columns</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_101)</font>
+* <font color=blue>308b014</font>-<font color=green>(2014-02-08)</font><font color=black><b>changes to ack feature to reflect opportunities having relay success = -1</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>5505ca0</font>-<font color=green>(2014-02-08)</font><font color=black><b>updated ack db check to reflect a relay success for opportunites = -1</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>eeefada</font>-<font color=green>(2014-02-08)</font><font color=black><b>changed data files for opportunites to all have a relay success = -1, and placements and presentation for canoe placements that weren't followed by a freewheel placement with a relay success = -1</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>ab3693a</font>-<font color=green>(2014-02-07)</font><font color=black><b>changed sql statements to add relay success column</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_100)</font></pre>
+<hr>
+<p>

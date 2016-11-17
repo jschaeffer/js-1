@@ -1,0 +1,25 @@
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.0.0_146</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Perf: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. </b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0/026-dad-fc_trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/027-mpm-placement-limits-redo.xml
+core/model/src/main/resources/liquibase/core-4.0.0/028-dad-placementLimit.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_141</b></u><br>
+<pre>
+* <font color=blue>4221bb7</font>-<font color=green>(2014-07-01)</font><font color=black><b>Added Placement Limit trigger changes back in for campaign item media asset</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_146)</font>
+* <font color=blue>41bd681</font>-<font color=green>(2014-07-01)</font><font color=black><b>Added Placement Limit trigger changes back in.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_145)</font>
+* <font color=blue>9b00218</font>-<font color=green>(2014-07-01)</font><font color=black><b>Reimplement placement limits migration script.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_144)</font>
+* <font color=blue>d0fd934</font>-<font color=green>(2014-07-01)</font><font color=black><b>Revert "New column changes to support relay"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>0e9f809</font>-<font color=green>(2014-07-01)</font><font color=black><b>Revert "Fixed data for unit tests"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>b6fc5aa</font>-<font color=green>(2014-07-01)</font><font color=black><b>VODDAI-4031 Trigger cip immediate for frequency cap changes</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>f750eb2</font>-<font color=green>(2014-06-30)</font><font color=black><b>Fixed data for unit tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_143)</font>
+* <font color=blue>48e7bcd</font>-<font color=green>(2014-06-27)</font><font color=black><b>New column changes to support relay</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_142)</font></pre>
+<hr>
+<p>

@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Instances</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>  Dynamic-Ad-Insertion-engine)</string>
+              <string> Base</string>
+              <string>cv-l2lcmc-clstr1:CMC_DE01:ads</string>
+              <string>cv-l2lcmc-clstr2:CMC_DE02:ads</string>
+              <string>cv-l2ltwc-clstr1:TWC_DE01:ads</string>
+              <string>cv-l2ltwc-clstr2:TWC_DE02:ads</string>
+              <string> FW</string>
+              <string>cv-l2lfw-clstr2:FW_DE01:ads</string>
+              <string> Google</string>
+              <string>cv-l2lggl-clstr2:GGL_DE01:ads</string>
+              <string> Cox</string>
+              <string>cv-l2lcox-clstr1:COX_DE01:ads</string>
+              <string>cv-l2lcox-clstr2:COX_DE02:ads</string>
+              <string> Broadway</string>
+              <string>cv-l2lbrd-clstr2:BRD_DE01:ads</string>
+              <string> </string>
+              <string> </string>
+              <string> Dynamic-Ad-Insertion-cm)</string>
+              <string> Base</string>
+              <string>cv-l2lcmc-clstr2:CMC_CM:Dynamic-Ad-Insertion-cm</string>
+              <string>cv-l2ltwc-clstr2:TWC_CM:Dynamic-Ad-Insertion-cm</string>
+              <string> FW</string>
+              <string>cv-l2lfw-clstr2:FW_CM:Dynamic-Ad-Insertion-cm</string>
+              <string> Google</string>
+              <string>cv-l2lggl-clstr2:GGL_CM:Dynamic-Ad-Insertion-cm</string>
+              <string> Cox</string>
+              <string>cv-l2lcox-clstr2:COX_CM:Dynamic-Ad-Insertion-cm</string>
+              <string> Broadway</string>
+              <string>cv-l2lbrd-clstr2:BRD_CM:Dynamic-Ad-Insertion-cm</string>
+              <string> </string>
+              <string> request-mgr)</string>
+              <string>  cv-l2ltwc-clstr5:TWC_REQMAN:request-manager</string>
+              <string> </string>
+              <string> dai-cip-feedback)</string>
+              <string> Base</string>
+              <string>cv-l2lcmc-clstr2:CMC_FN:cip-server</string>
+              <string>cv-l2ltwc-clstr2:TWC_FN:cip-server</string>
+              <string> Google</string>
+              <string>cv-l2lggl-clstr3:GGL_FN:cip-server</string>
+              <string> </string>
+              <string> </string>
+              <string> Pgmr-Cpgn-Int)</string>
+              <string> FW</string>
+              <string>cv-l2lfw-clstr1:FW_PCI:Ppci</string>
+              <string> Google</string>
+              <string>cv-l2lggl-clstr1:GGL_PCI:pci</string>
+              <string> Broadway</string>
+              <string>cv-l2lbrd-clstr1:BRD_PCI:pci</string>
+              <string></string>
+              <string> </string>
+              <string> metadata-publisher)</string>
+              <string>cv-l2lfw-clstr4:FW_META_PUB:publisher</string>
+              <string> </string>
+              <string> smsi-publisher)</string>
+              <string> Base</string>
+              <string>cv-l2lcmc-clstr1:CMC_SMSI_PUB:smsi-publisher</string>
+              <string>cv-l2ltwc-clstr1:TWC_SMSI_PUB:smsi-publisher</string>
+              <string> FW</string>
+              <string>cv-l2lfw-clstr2:FW_SMSI_PUB:smsi-publisher</string>
+              <string> Google</string>
+              <string>cv-l2lggl-clstr2:GGL_SMSI_PUB:smsi-publisher</string>
+              <string> Cox</string>
+              <string>cv-l2lcox-clstr1:COX_SMSI_PUB:smsi-publisher</string>
+              <string> Broadway</string>
+              <string>cv-l2lbrd-clstr2:BRD_SMSI_PUB:smsi-publisher</string>
+              <string></string>
+              <string> </string>
+              <string> dai-smsi)</string>
+              <string> Base</string>
+              <string>cv-l2lcmc-clstr3:CMC_SMSI:safi-smsi-server</string>
+              <string>cv-l2ltwc-clstr3:TWC_SMSI:safi-smsi-server</string>
+              <string> FW</string>
+              <string>cv-l2lfw-clstr1:FW_SMSI:safi-smsi-server</string>
+              <string> Google</string>
+              <string>cv-l2lggl-clstr1:GGL_SMSI:safi-smsi-server</string>
+              <string> Cox</string>
+              <string>cv-l2lcox-clstr3:COX_SMSI:safi-smsi-server</string>
+              <string> Broadway</string>
+              <string>cv-l2lbrd-clstr1:BRD_SMSI:safi-smsi-server</string>
+              <string></string>
+              <string> </string>
+              <string>dai-smsi-relay)</string>
+              <string> FW</string>
+              <string>cv-l2lfw-clstr3:FW_SMSI_RELAY:smsi-relay-client</string>
+              <string> Google</string>
+              <string>cv-l2lggl-clstr3:GGL_SMSI_RELAY:smsi-relay-client</string>
+              <string> Broadway</string>
+              <string>cv-l2lbrd-clstr3:BRD_SMSI_RELAY:smsi-relay-client</string>
+              <string></string>
+              <string> ad-load-manager)</string>
+              <string>cv-l2lcox-clstr5:COX_ALM:alm-server</string>
+              <string></string>
+              <string> dai-national-cis)</string>
+              <string>cv-l2lfw-clstr4:FW_NCIS:dai-national-cis</string>
+              <string> </string>
+              <string> POIS)</string>
+              <string>cv-l2lcox-clstr5:COX_POIS:POIS</string>
+              <string> </string>
+              <string> impression_collector)</string>
+              <string> Base</string>
+              <string>cv-l2lcmc-clstr3:CMC_IMPCOL:impression_collector_server</string>
+              <string>cv-l2ltwc-clstr3:TWC_IMPCOL:impression_collector_server</string>
+              <string> FW</string>
+              <string>cv-l2lfw-clstr3:FW_IMPCOL:impression_collector_server</string>
+              <string> Google</string>
+              <string>cv-l2lggl-clstr3:GGL_IMPCOL:impression_collector_server</string>
+              <string> Cox</string>
+              <string>cv-l2lcox-clstr3:COX_IMPCOL:impression_collector_server</string>
+              <string> Broadway</string>
+              <string>cv-l2lbrd-clstr3:BRD_IMPCOL:impression_collector_server</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+
+if [[ $Instances = &quot;--BASE--&quot; || $Instances = &quot;--FreeWheel--&quot; || $Instances = &quot;--Kodiak--&quot; || -z $Instances ]]; then
+   echo &quot;$Instances is an invalid selection please select a specific Set of parameters&quot;
+   exit
+fi
+
+
+echo &quot;&lt;b&gt;--- Restart ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;tcServer Restart on ${DeployTarg} by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+export SelInst=`echo &quot;$Instances&quot; | sed &apos;s?,? ?g&apos;`
+
+##############
+# Execute a command. Do not fail on exit.
+##############
+executeCommandNoFail() {
+
+    if [ ${VERBOSE} = 1 ] ; then
+        echo &quot;Executing : $1&quot;
+    fi
+
+    RESULT=`eval &quot;$1&quot;`
+
+    if [ ${VERBOSE} = 1 ] ; then
+        echo &quot;Result : $RESULT&quot;
+    fi
+}
+
+
+export Parameter=$Instances
+export DeployTarg=&quot;l2lBase&quot;
+export DeployUser
+export restComp=&quot;n&quot;
+export VERBOSE=&quot;1&quot;
+echo &quot;Instance -&gt; $Instance   RestartTarg -&gt; $RestartTarg   DeployTarg -&gt; $DeployTarg&quot;
+
+
+     export Instance=&quot;$(echo $Parameter | cut -f2 -d:)&quot;
+     export RestartTarg=&quot;$(echo $Parameter | cut -f1 -d:)&quot; 
+     export Appname=&quot;$(echo $Parameter | cut -f3 -d:)&quot;
+
+
+
+   echo ${Instance}
+   echo ${Parameter} 
+   cd /opt/build/scripts
+   executeCommandNoFail &quot;./tcServerAdmin.sh $RestartTarg instances/$Instance stop&quot;
+   sleep 3
+   executeCommandNoFail &quot;./tcServerAdmin.sh $RestartTarg instances/$Instance start&quot;
+   sleep 3
+   executeCommandNoFail &quot;./tcServerAdmin.sh $RestartTarg instances/$Instance status&quot; 
+
+
+#echo &quot;&lt;b&gt;URL For Restart output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+#echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+#echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+#mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+#cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+#rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+#rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

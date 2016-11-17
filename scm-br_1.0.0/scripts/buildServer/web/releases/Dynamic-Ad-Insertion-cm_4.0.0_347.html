@@ -1,0 +1,194 @@
+<b><u>Component Release Info for Sprint Orlando:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_4.0.0_347</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Joel:
+
+- Multiple Providers!
+- Performance Improvements for Campaign Search & Media Asset Status
+- Metadata Operator changes to support Ignore Case (no GUI change)
+- Goal Strategy default to Even
+- Total Goal added to Campaign View Pag</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_347/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_347/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_334</b></u><br>
+<pre>
+*   <font color=blue>d225391</font>-<font color=green>(2014-08-05)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.2.0_1, v_4.0.0_347)</font>
+|\  
+| *   <font color=blue>cec49a4</font>-<font color=green>(2014-08-04)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red> (v_4.0.0_346)</font>
+| |\  
+| | * <font color=blue>5015910</font>-<font color=green>(2014-08-04)</font><font color=black><b>create camp item media assets feature update</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * | <font color=blue>0eb0e0f</font>-<font color=green>(2014-08-04)</font><font color=black><b>Fixed Edit Campaign Item Media Assets</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |/  
+| * <font color=blue>977c7b7</font>-<font color=green>(2014-08-04)</font><font color=black><b>Create Campaign Item Copy now works</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| * <font color=blue>2efde49</font>-<font color=green>(2014-08-04)</font><font color=black><b>and marked a broken test case</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>18dbc80</font>-<font color=green>(2014-08-04)</font><font color=black><b>removed @joel</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| *   <font color=blue>b2e2a52</font>-<font color=green>(2014-08-04)</font><font color=black><b>ok, merge conflict, some other crap. whatever</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |\  
+| | * <font color=blue>af006be</font>-<font color=green>(2014-08-04)</font><font color=black><b>renamed saveB to save</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| | * <font color=blue>b8045d3</font>-<font color=green>(2014-08-04)</font><font color=black><b>Added Searches (with new column headers); re-ordered table deletes</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * | <font color=blue>1e9bb12</font>-<font color=green>(2014-08-04)</font><font color=black><b>updates for features that look at campaign search results..</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * | <font color=blue>51b0e21</font>-<font color=green>(2014-08-04)</font><font color=black><b>changed johns confusing changes to full_reinit & reset_data xml files...</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/  
+| *   <font color=blue>284d214</font>-<font color=green>(2014-08-04)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |\  
+| | * <font color=blue>7e87218</font>-<font color=green>(2014-08-04)</font><font color=black><b>Modified Strategy; Added MEDIA_ASSET; re-ordered tables reset/reinit</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * | <font color=blue>9645884</font>-<font color=green>(2014-08-04)</font><font color=black><b>deleted unused dataset. altered full-rinit for genre issue. changed IgnoreCase to NoCase, and modified datasets that had metadata in place. feature edits for metadata changes</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/  
+* | <font color=blue>d74f8df</font>-<font color=green>(2014-08-05)</font><font color=black><b>Fixed squished campaign show header.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>31e678a</font>-<font color=green>(2014-08-03)</font><font color=black><b>Support for case-insenstive metadata operators.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>6b39a46</font>-<font color=green>(2014-08-04)</font><font color=black><b>Removed link to "stable" cm</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>691eb75</font>-<font color=green>(2014-08-04)</font><font color=black><b>Removed deprecated test.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>b26d02f</font>-<font color=green>(2014-08-04)</font><font color=black><b>Removed deprecated service declarations in controllers.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>c27369d</font>-<font color=green>(2014-08-01)</font><font color=black><b>Removed unused tests.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>a5c8ccd</font>-<font color=green>(2014-08-01)</font><font color=black><b>Merge sunsetV1</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>a318a27</font>-<font color=green>(2014-07-31)</font><font color=black><b>converted remaining unit tests to spock</b></font><font color=grey>- (Scott Davis)</font><font color=red> (origin/feature/sunsetV1)</font>
+| * <font color=blue>0d3bc2f</font>-<font color=green>(2014-07-31)</font><font color=black><b>converted campaign, bootstrap junit tests to spock</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>201658d</font>-<font color=green>(2014-07-31)</font><font color=black><b>converted adAsset unit tests to spock</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>13f1d5b</font>-<font color=green>(2014-07-31)</font><font color=black><b>added metrics for 'after' sunsetting V1.</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>01e31ee</font>-<font color=green>(2014-07-31)</font><font color=black><b>cleaned up unit tests - all passing after the purge</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>26fb835</font>-<font color=green>(2014-07-31)</font><font color=black><b>cleaned up css and images</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>f31742f</font>-<font color=green>(2014-07-31)</font><font color=black><b>cleaned up services</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>009862d</font>-<font color=green>(2014-07-31)</font><font color=black><b>cleaned up controllers</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>bb06b9f</font>-<font color=green>(2014-07-31)</font><font color=black><b>removed v1 views</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* |   <font color=blue>611978c</font>-<font color=green>(2014-08-01)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>f958781</font>-<font color=green>(2014-08-01)</font><font color=black><b>asset status changes & reset_data.xml change, added media_asset_availability</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | | <font color=blue>702ff1d</font>-<font color=green>(2014-08-01)</font><font color=black><b>Removed unused services, controller methods and tests.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>4ee46f4</font>-<font color=green>(2014-08-01)</font><font color=black><b>Removed unused controller method.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | <font color=blue>738393e</font>-<font color=green>(2014-08-01)</font><font color=black><b>Sort asset statuses by MSO.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/ /  
+* | <font color=blue>31e1547</font>-<font color=green>(2014-08-01)</font><font color=black><b>Fixed unit test.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>4a8b8ee</font>-<font color=green>(2014-07-31)</font><font color=black><b>Refactoring for asset availability directly from asset rather than having to lookup status.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>f101f93</font>-<font color=green>(2014-08-01)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>a266152</font>-<font color=green>(2014-07-31)</font><font color=black><b>Made scenarios to test MCLPS and break limit and session limit</b></font><font color=grey>- (David Choi)</font><font color=red> (v_4.0.0_344)</font>
+| * |   <font color=blue>7a9a0c5</font>-<font color=green>(2014-07-31)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |\ \  
+| | * | <font color=blue>7427c5e</font>-<font color=green>(2014-07-31)</font><font color=black><b>Total added and views changed to impressions</b></font><font color=grey>- (David Choi)</font><font color=red> (v_4.0.0_343)</font>
+| * | | <font color=blue>78fbc49</font>-<font color=green>(2014-07-31)</font><font color=black><b>couple test mods and jira tracking text file</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/ /  
+| * |   <font color=blue>6f30a5a</font>-<font color=green>(2014-07-31)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |\ \  
+| | |/  
+| | * <font color=blue>55d6a13</font>-<font color=green>(2014-07-30)</font><font color=black><b>added filetree for pre-v1 sunsetting</b></font><font color=grey>- (Scott Davis)</font><font color=red> (v_4.0.0_342)</font>
+| | * <font color=blue>4788b87</font>-<font color=green>(2014-07-30)</font><font color=black><b>added a 'before' snapshot of LOC, files, etc. for the v1 sunsetting</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| | * <font color=blue>070a77e</font>-<font color=green>(2014-07-30)</font><font color=black><b>fixed 'zero is not null' bug for both new insertions AND updates on campaign items</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * | <font color=blue>3709e12</font>-<font color=green>(2014-07-30)</font><font color=black><b>JiraTracking text file underway</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/  
+| *   <font color=blue>93cee0f</font>-<font color=green>(2014-07-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| |\  
+| | * <font color=blue>4f5a656</font>-<font color=green>(2014-07-30)</font><font color=black><b>Added a line to test default as "EVEN"</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| | * <font color=blue>44f54bc</font>-<font color=green>(2014-07-30)</font><font color=black><b>Thought this was already gone!</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | *   <font color=blue>ff8aabf</font>-<font color=green>(2014-07-30)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_341)</font>
+| | |\  
+| | * | <font color=blue>8bab435</font>-<font color=green>(2014-07-30)</font><font color=black><b>Removed 'V2' from feature name</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * | | <font color=blue>8e1cbee</font>-<font color=green>(2014-07-30)</font><font color=black><b>fixed goal allocation '0 is not null... mostly' bug</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| | |/  
+| |/|   
+| * | <font color=blue>c90a5a6</font>-<font color=green>(2014-07-29)</font><font color=black><b>changed default goal strategy to Even for line items</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * | <font color=blue>f0e2642</font>-<font color=green>(2014-07-29)</font><font color=black><b>renamed functionality feature folders with _ at the beginning to keep them at the top of the features folder</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/  
+* | <font color=blue>c5e0cf4</font>-<font color=green>(2014-07-31)</font><font color=black><b>Revert "Updated Bootstrap.groovy to accomodate new and updated domain classes."</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>c2aba21</font>-<font color=green>(2014-07-31)</font><font color=black><b>Updated Bootstrap.groovy to accomodate new and updated domain classes.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>151079a</font>-<font color=green>(2014-07-29)</font><font color=black><b>removal of old CM tests & data</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>b79a52a</font>-<font color=green>(2014-07-28)</font><font color=black><b>couple feature updates</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>eb2ccbb</font>-<font color=green>(2014-07-28)</font><font color=black><b>Fixed issue with metadata not being reset when line item cancel button is clicked.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>b51e570</font>-<font color=green>(2014-07-28)</font><font color=black><b>turned off sql logging</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>2b99038</font>-<font color=green>(2014-07-28)</font><font color=black><b>turned off sql logging</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>ee06be2</font>-<font color=green>(2014-07-28)</font><font color=black><b>added caas.sh script for updating caas-core, reloading data.</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>1dd9d5c</font>-<font color=green>(2014-07-24)</font><font color=black><b>Campaign search performance improvements.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>54ccd2d</font>-<font color=green>(2014-07-28)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| *   <font color=blue>a1e94af</font>-<font color=green>(2014-07-25)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\  
+| * | <font color=blue>3272b73</font>-<font color=green>(2014-07-25)</font><font color=black><b>Changed Metadata Targeting Operator Values</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+* | | <font color=blue>9d205ec</font>-<font color=green>(2014-07-28)</font><font color=black><b>Resolved conflicts around cancelling line items and rendering goal allocation override.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>7a501a6</font>-<font color=green>(2014-07-25)</font><font color=black><b>Changed variable name.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>6b4db79</font>-<font color=green>(2014-07-25)</font><font color=black><b>Fixed issue with goal allocations not reverting on cancel.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>81e6d30</font>-<font color=green>(2014-07-25)</font><font color=black><b>Fixed missing validation with session and placement limit fields.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>eb5ad1f</font>-<font color=green>(2014-07-25)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>31ae837</font>-<font color=green>(2014-07-25)</font><font color=black><b>made changes according to johns regression</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| * <font color=blue>42c6f75</font>-<font color=green>(2014-07-25)</font><font color=black><b>Made More Changes to Create Features and 5MinuteTestV1</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| *   <font color=blue>1316ca1</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |\  
+| | *   <font color=blue>535cee1</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| | |\  
+| | * | <font color=blue>d4e53a0</font>-<font color=green>(2014-07-24)</font><font color=black><b>Made Changes to Create Features and deleted playground</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| * | | <font color=blue>f5f7be4</font>-<font color=green>(2014-07-24)</font><font color=black><b>deleted davids playground</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| | |/  
+| |/|   
+| * |   <font color=blue>cc13043</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |\ \  
+| | |/  
+| | * <font color=blue>7d96ee1</font>-<font color=green>(2014-07-24)</font><font color=black><b>Fixed Init feature</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| | * <font color=blue>184dd43</font>-<font color=green>(2014-07-24)</font><font color=black><b>Changes to Create Features</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| | *   <font color=blue>665713b</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| | |\  
+| | | * <font color=blue>78ae26e</font>-<font color=green>(2014-07-24)</font><font color=black><b>edit camp form feature update</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| | * |   <font color=blue>42ac120</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| | |\ \  
+| | * \ \   <font color=blue>35956fd</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| | |\ \ \  
+| | * | | | <font color=blue>741127a</font>-<font color=green>(2014-07-24)</font><font color=black><b>removed characters in init_databse</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| * | | | | <font color=blue>48feca2</font>-<font color=green>(2014-07-24)</font><font color=black><b>Add Total Goal to C-Item Grid Assertion</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | |_|_|/  
+| |/| | |   
+| * | | |   <font color=blue>0478fd1</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |\ \ \ \  
+| | * | | | <font color=blue>36f8e01</font>-<font color=green>(2014-07-24)</font><font color=black><b>consolidating old CM stuff</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| | * | | | <font color=blue>aadcc69</font>-<font color=green>(2014-07-24)</font><font color=black><b>validation features updated, notes for bugs mike is working on</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * | | | | <font color=blue>297286e</font>-<font color=green>(2014-07-24)</font><font color=black><b>changed Grid HTML assertion</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |/ / / /  
+| * | | |   <font color=blue>4231495</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |\ \ \ \  
+| | * \ \ \   <font color=blue>fc0fc06</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| | |\ \ \ \  
+| | * | | | | <font color=blue>3b984f2</font>-<font color=green>(2014-07-24)</font><font color=black><b>removed beta/index from all features</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * | | | | | <font color=blue>550974c</font>-<font color=green>(2014-07-24)</font><font color=black><b>added campaign to dataset</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| | |/ / / /  
+| |/| | | |   
+| * | | | |   <font color=blue>34901bd</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |\ \ \ \ \  
+| | |/ / / /  
+| | * | | | <font color=blue>dba2015</font>-<font color=green>(2014-07-24)</font><font color=black><b>Edit Features updated.  Search/Validation feature changed data file being loaded</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| | * | | |   <font color=blue>4719ae5</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| | |\ \ \ \  
+| | | | |_|/  
+| | | |/| |   
+| | * | | | <font color=blue>ce43414</font>-<font color=green>(2014-07-24)</font><font color=black><b>camp search data update</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| | | |_|/  
+| | |/| |   
+| * | | | <font color=blue>e79e844</font>-<font color=green>(2014-07-24)</font><font color=black><b>Update Smoke Tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |/ / /  
+* | | | <font color=blue>36a334c</font>-<font color=green>(2014-07-25)</font><font color=black><b>Fixed error indicators on feeds on networks for line item edit.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/ /  
+|/| |   
+* | |   <font color=blue>9903dda</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \ \  
+| |/ /  
+| * | <font color=blue>9cb85c3</font>-<font color=green>(2014-07-23)</font><font color=black><b>V2 SmokeTest Updates</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>0100256</font>-<font color=green>(2014-07-24)</font><font color=black><b>Modified hide spinner routine to avoid round trips to the server. This change is under debate.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/ /  
+* | <font color=blue>ead1e9e</font>-<font color=green>(2014-07-23)</font><font color=black><b>Fixed missing memento extension.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>4a58b7f</font>-<font color=green>(2014-07-23)</font><font color=black><b>Put the @initDatabase annotation back to the right scenario.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>7a1ef30</font>-<font color=green>(2014-06-13)</font><font color=black><b>prod data xml & edits to init feature.  change sc4 properties to point to prod database</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+*   <font color=blue>9f3d572</font>-<font color=green>(2014-07-23)</font><font color=black><b>Merge branch 'feedback-by-campaign-item' into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>b31da6b</font>-<font color=green>(2014-07-22)</font><font color=black><b>format numbers in line item grid view, Total Goal on campaign show page</b></font><font color=grey>- (jmhassell)</font><font color=red> (origin/feedback-by-campaign-item)</font>
+| * <font color=blue>50abf5d</font>-<font color=green>(2014-07-20)</font><font color=black><b>Added insertions and views on line item grid.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>ec9d847</font>-<font color=green>(2014-07-21)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_335)</font>
+|\  
+| * <font color=blue>fd5d74d</font>-<font color=green>(2014-07-21)</font><font color=black><b>Updated smoke test for 9-char goal max length; clarify manual test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>1abe673</font>-<font color=green>(2014-07-21)</font><font color=black><b>feature updates</b></font><font color=grey>- (jmhassell)</font><font color=red></font></pre>
+<hr>
+<p>

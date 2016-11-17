@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>15</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+/opt/build/scripts/roottcServerAdmin.sh dvappdai04 stop
+
+exit 0</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=&quot;3.0.0_31&quot;
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+print
+print Beginning Rebuild from scratch for db to Production package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+./kill_dbsessions.sh -a Dynamic-Ad-Insertion-core -e scrum3
+
+cd /opt/checkouts/tmpDynamic-Ad-Insertion-core/cisys
+
+echo &quot;@genUser.scrum3.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.121)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=scrum003)))&apos;
+
+STATUS=${?}
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./deployRebuildDb.sh -a Dynamic-Ad-Insertion-core -t Dynamic-Ad-Insertion-core -i cm -r ${VERSION} -e scrum3 -j &quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot; -p SC3_CORE -u SC3_CORE -v
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+/opt/build/scripts/roottcServerAdmin.sh dvappdai04 start
+
+exit 0</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+cd /opt/build/scripts
+
+#VERSION=`./check_dbversions.sh -a caas-core -e devint`
+VERSION=&quot;3.0.0_31&quot;
+
+echo &quot;DAI-Core-${VERSION}&quot; &gt; /var/www/html/scrum3/core.txt</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=&quot;1.2.0_9&quot;
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+
+cd /opt/checkouts/oss_deployment/scripts
+
+print Beginning Roll-forward update for app/db from existing version ${EXIST_VERS} to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+print
+
+./deploy.sh -a oss_bar -t oss_bar -e 10.13.18.117 -i oss_bar -r ${VERSION} -j &quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot; -p SC3_OSS_BAR -u SC3_OSS_BAR -v
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./tmpdeployapp.sh -a oss_bar -t oss_bar -e scrum3 -r ${VERSION} -i oss_bar -v 
+
+STATUS=${?}
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=&quot;1.2.0_9&quot;
+print oss_bar-${VERSION} &gt; /var/www/html/scrum3/bar.txt
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

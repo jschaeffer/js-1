@@ -1,0 +1,65 @@
+<style type="text/css">
+{
+	margin:0;
+	padding:0;
+}
+
+#matrixDemo {
+	overflow:hidden; /* wrap floats */
+	width:15px; /* trips haslayout, wraps floats in IE */
+	background:url(top_bar2.png) 0 0 no-repeat;
+}
+
+#matrixDemo li {
+	position:relative;
+	float:left;
+	width:5px;
+	height:25px;
+	overflow:hidden;
+	background:#CCC;
+}
+
+#matrixDemo a {
+	position:absolute;
+	/*
+		There's a bug where IE won't re-render position changes unless an
+		items display state changes, so we set inline here, which gets
+		overridden by the absolute positioning anyways. Then we change
+		it to block in the hover state
+	*/
+	display:inline;
+	top:0;
+	left:0;
+	width:5px;
+	height:25px;
+	overflow:hidden;
+	text-indent:-999em;
+	text-decoration:none;
+	outline:none;
+	background:url(top_bar2.png) 0 -25px no-repeat;
+}
+
+#matrixDemo a:active,
+#matrixDemo a:focus,
+#matrixDemo a:hover {
+	display:block; /* see "#matrixDemo a" for explanation */
+	top:-50px;
+}
+
+#matrixDemo .selected a {
+	top:-100px;
+}
+
+#button1 a {
+        background-position:-5px -25px;
+}
+
+#button2 a {
+	background-position:-10px -25px;
+}
+
+#button3 a {
+	background-position:-15px -25px;
+}
+
+</style> 

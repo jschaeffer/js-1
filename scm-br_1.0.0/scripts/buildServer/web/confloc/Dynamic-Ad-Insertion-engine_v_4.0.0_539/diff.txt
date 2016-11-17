@@ -1,0 +1,24 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
+index d9215b5..674a1b2 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
+@@ -1,15 +1,15 @@
+ JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH=""
+-CLASSPATH=""
++JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
++CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  "
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"

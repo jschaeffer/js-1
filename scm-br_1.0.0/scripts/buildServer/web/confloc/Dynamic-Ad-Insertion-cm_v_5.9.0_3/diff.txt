@@ -1,0 +1,1004 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum1.groovy b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum1.groovy
+new file mode 100644
+index 0000000..303a561
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum1.groovy
+@@ -0,0 +1,8 @@
++cm.app.contexthelp.fCampaignEdit_name.title = "Campaign Name"
++cm.app.contexthelp.fCampaignEdit_name.body = "<p>The <b>name</b> of the campaign.</p><p>All HTML is supported. Be wise about it.</p>"
++
++cm.app.contexthelp.fCampaignEdit_statuscode.title = "Campaign Status"
++cm.app.contexthelp.fCampaignEdit_statuscode.body = "<p>The <b>status</b> of the campaign.</p><p>All HTML is supported. Be wise about it.</p>"
++
++cm.app.contexthelp.fLineItemEdit_networks.title = "Networks"
++cm.app.contexthelp.fLineItemEdit_networks.body = "<p>Networks stuff</p>"
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum2.groovy b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum2.groovy
+new file mode 100644
+index 0000000..303a561
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum2.groovy
+@@ -0,0 +1,8 @@
++cm.app.contexthelp.fCampaignEdit_name.title = "Campaign Name"
++cm.app.contexthelp.fCampaignEdit_name.body = "<p>The <b>name</b> of the campaign.</p><p>All HTML is supported. Be wise about it.</p>"
++
++cm.app.contexthelp.fCampaignEdit_statuscode.title = "Campaign Status"
++cm.app.contexthelp.fCampaignEdit_statuscode.body = "<p>The <b>status</b> of the campaign.</p><p>All HTML is supported. Be wise about it.</p>"
++
++cm.app.contexthelp.fLineItemEdit_networks.title = "Networks"
++cm.app.contexthelp.fLineItemEdit_networks.body = "<p>Networks stuff</p>"
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum3.groovy b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum3.groovy
+new file mode 100644
+index 0000000..303a561
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum3.groovy
+@@ -0,0 +1,8 @@
++cm.app.contexthelp.fCampaignEdit_name.title = "Campaign Name"
++cm.app.contexthelp.fCampaignEdit_name.body = "<p>The <b>name</b> of the campaign.</p><p>All HTML is supported. Be wise about it.</p>"
++
++cm.app.contexthelp.fCampaignEdit_statuscode.title = "Campaign Status"
++cm.app.contexthelp.fCampaignEdit_statuscode.body = "<p>The <b>status</b> of the campaign.</p><p>All HTML is supported. Be wise about it.</p>"
++
++cm.app.contexthelp.fLineItemEdit_networks.title = "Networks"
++cm.app.contexthelp.fLineItemEdit_networks.body = "<p>Networks stuff</p>"
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum4.groovy b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum4.groovy
+new file mode 100644
+index 0000000..95e29d2
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum4.groovy
+@@ -0,0 +1,177 @@
++//
++////////CAMPAIGN FIELDS
++//// Campaign Name
++cm.app.contexthelp.fCampaignEdit_name.title = "Campaign Name"
++cm.app.contexthelp.fCampaignEdit_name.body = "<p>The <b>name</b> of the campaign.</p>"
++//// Status
++//cm.app.contexthelp.fCampaignEdit_statuscode.title = "Campaign Status"
++//cm.app.contexthelp.fCampaignEdit_statuscode.body = "<p>The <b>status</b> of the campaign.</p>"
++//// Programmer
++//cm.app.contexthelp.fCampaignEdit_programmer.title = "Programmer"
++//cm.app.contexthelp.fCampaignEdit_programmer.body = "<p>The <b>Programmer</b> associated with the campaign.</p>"
++//// Flight Window Start
++//cm.app.contexthelp.fCampaignEdit_startDate.title = "Flight Window Start"
++//cm.app.contexthelp.fCampaignEdit_startDate.body = "<p>The <b>date and time</b> of the campaign's start.</p>"
++//// Flight Window End
++//cm.app.contexthelp.fCampaignEdit_finalDate.title = "Flight Window End"
++//cm.app.contexthelp.fCampaignEdit_finalDate.body = "<p>The <b>date and time</b> of the campaign's end.</p>"
++//// Order Reference ID
++//cm.app.contexthelp.fCampaignEdit_orderId.title = "Order Reference ID"
++//cm.app.contexthelp.fCampaignEdit_orderId.body = "<p>To <b>be</b> provided.</p>"
++//// Goal Type
++cm.app.contexthelp.fCampaignEdit_goalType.title = "Goal Type"
++cm.app.contexthelp.fCampaignEdit_goalType.body = "<p>This is <b>just</b> an example &quot;quotes&quot;</p>"
++//// Description
++//cm.app.contexthelp.fCampaignEdit_description.title = "Description"
++//cm.app.contexthelp.fCampaignEdit_description.body = "<p>The <b>description</b> of the campaign.</p>"
++//
++//
++////////LINE ITEM FIELDS
++//////SETTINGS TAB
++//// Status
++//cm.app.contexthelp.fLineItemEdit_status.title = "Status"
++//cm.app.contexthelp.fLineItemEdit_status.body = "Description"
++//// Active Start
++//cm.app.contexthelp.fLineItemEdit_startDate.title = "Active Start Day/Time"
++//cm.app.contexthelp.fLineItemEdit_startDate.body = "Description"
++//// Active End
++//cm.app.contexthelp.fLineItemEdit_finalDate.title = "Active End Day/Time"
++//cm.app.contexthelp.fLineItemEdit_finalDate.body = "Description"
++//// Description
++//cm.app.contexthelp.fLineItemEdit_description.title = "Description"
++//cm.app.contexthelp.fLineItemEdit_description.body = "Description"
++//// Priority
++//cm.app.contexthelp.fLineItemEdit_priority.title = "Priority"
++//cm.app.contexthelp.fLineItemEdit_priority.body = "Description"
++//// Value
++//cm.app.contexthelp.fLineItemEdit_value.title = "Value"
++//cm.app.contexthelp.fLineItemEdit_value.body = "Description"
++//// Goal Quantity
++//cm.app.contexthelp.fLineItemEdit_goal.title = "Goal Quantity"
++//cm.app.contexthelp.fLineItemEdit_goal.body = "Description"
++//// Goal Strategy
++cm.app.contexthelp.fLineItemEdit_strategy.title = "Goal Strategy"
++cm.app.contexthelp.fLineItemEdit_strategy.body = "Description"
++//// Placement Preference
++//cm.app.contexthelp.fLineItemEdit_placementPref.title = "Placement Preference"
++//cm.app.contexthelp.fLineItemEdit_placementPref.body = "Description"
++//
++//
++//////NETWORKS/ADS TAB
++//// Networks
++cm.app.contexthelp.fLineItemEdit_networks.title = "Networks"
++cm.app.contexthelp.fLineItemEdit_networks.body = "Description"
++//// Ads
++//cm.app.contexthelp.fLineItemEdit_ads.title = "Ads"
++//cm.app.contexthelp.fLineItemEdit_ads.body = "Description"
++//// Ad Start
++//cm.app.contexthelp.fLima_startDate.title = "Ad Start Date"
++//cm.app.contexthelp.fLima_startDate.body = "Description"
++//// Ad End
++//cm.app.contexthelp.fLima_endDate.title = "Ad End Date"
++//cm.app.contexthelp.fLima_endDate.body = "Description"
++//// Ad Rotation
++//cm.app.contexthelp.fLima_rotation.title = "Ad Rotation"
++//cm.app.contexthelp.fLima_rotation.body = "Description"
++//// Ad Separation
++//cm.app.contexthelp.fLima_adSeparation.title = "Ad Separation"
++//cm.app.contexthelp.fLima_adSeparation.body = "Description"
++//// Ad Break Limit
++//cm.app.contexthelp.fLima_breakLimit.title = "Ad Break Limit"
++//cm.app.contexthelp.fLima_breakLimit.body = "Description"
++//// Ad Session Limit
++//cm.app.contexthelp.fLima_sessionLimit.title = "Ad Session Limit"
++//cm.app.contexthelp.fLima_sessionLimit.body = "Description"
++//// Ad Enabled
++//cm.app.contexthelp.fLima_enabled.title = "Ad Enabled"
++//cm.app.contexthelp.fLima_enabled.body = "Description"
++//
++//
++//////CATEGORY TAB
++//// Product Category
++//cm.app.contexthelp.fLineItemEdit_productCategory.title = "Product Category"
++//cm.app.contexthelp.fLineItemEdit_productCategory.body = "Description"
++//// Promo Line Item
++//cm.app.contexthelp.fProductCategory_isPromo.title = "Promo Line Item"
++//cm.app.contexthelp.fProductCategory_isPromo.body = "Description"
++//// Exclusivity
++cm.app.contexthelp.fLineItemEdit_exclusivity.title = "Exclusivity"
++cm.app.contexthelp.fLineItemEdit_exclusivity.body = "Description"
++//// Category Exclusions
++//cm.app.contexthelp.fLineItemEdit_categoryExclusions.title = "Catoegory Exclusions"
++//cm.app.contexthelp.fLineItemEdit_categoryExclusions.body = "Description"
++//
++//
++//////PLACEMENT CONSTRAINTS TAB
++//// Frequency Capping
++cm.app.contexthelp.fLineItemEdit_frequencyCapping.title = "Frequency Capping"
++cm.app.contexthelp.fLineItemEdit_frequencyCapping.body = "Description"
++//// Minimum Break Separation
++//cm.app.contexthelp.fLineItemEdit_breakMin.title = "Minimum Break Separation"
++//cm.app.contexthelp.fLineItemEdit_breakMin.body = "Description"
++//// Minimum Placement Separation
++//cm.app.contexthelp.fLineItemEdit_placementMin.title = "Minimum Placement Separation"
++//cm.app.contexthelp.fLineItemEdit_placementMin.body = "Description"
++//// Break Limit
++//cm.app.contexthelp.fLineItemEdit_breakLimit.title = "Break Limit"
++//cm.app.contexthelp.fLineItemEdit_breakLimit.body = "Description"
++//// Session Limit
++//cm.app.contexthelp.fLineItemEdit_sessionLimit.title = "Session Limit"
++//cm.app.contexthelp.fLineItemEdit_sessionLimit.body = "Description"
++//
++//
++//////BREAKS/POSITIONS TAB
++//// Break
++//cm.app.contexthelp.fLineItemEdit_opportunityType.title = "Break Opportunity Type"
++//cm.app.contexthelp.fLineItemEdit_opportunityType.body = "Description"
++//// Mid-Roll PO Group
++//cm.app.contexthelp.fLineItemEdit_poGroup.title = "Mid-Roll PO Group"
++//cm.app.contexthelp.fLineItemEdit_poGroup.body = "Description"
++//// Position
++cm.app.contexthelp.fLineItemEdit_position.title = "Position"
++cm.app.contexthelp.fLineItemEdit_position.body = "Description"
++//
++//
++//////METADATA TAB
++//// Target
++cm.app.contexthelp.fLineItemMetadataCondition.title = "Target"
++cm.app.contexthelp.fLineItemMetadataCondition.body = "Description"
++//// Operator
++//cm.app.contexthelp.fLineItemEditMetadataOperator.title = "Operator"
++//cm.app.contexthelp.fLineItemEditMetadataOperator.body = "Description"
++//// Value
++//cm.app.contexthelp.fLineItemEditMetadataValue.title = "Value"
++//cm.app.contexthelp.fLineItemEditMetadataValue.body = "Description"
++//
++//
++//////DAYPARTS TAB
++//// Days
++cm.app.contexthelp.fLineItemEdit_daypartsDays.title = "Days"
++cm.app.contexthelp.fLineItemEdit_daypartsDays.body = "Description"
++//// Start Time
++//cm.app.contexthelp.fLineItemEdit_daypartsStartTime.title = "Start Time"
++//cm.app.contexthelp.fLineItemEdit_daypartsStartTime.body = "Description"
++//// End Time
++//cm.app.contexthelp.fLineItemEdit_daypartsEndTime.title = "End Time"
++//cm.app.contexthelp.fLineItemEdit_daypartsEndTime.body = "Description"
++//
++//
++//////ADMIN TAB
++//// Billing
++//cm.app.contexthelp.fLineItemEdit_billing.title = "Billing"
++//cm.app.contexthelp.fLineItemEdit_billing.body = "Description"
++//// Percentage
++//cm.app.contexthelp.fLineItemEdit_discountPercentage.title = "Percentage"
++//cm.app.contexthelp.fLineItemEdit_discountPercentage.body = "Description"
++//// Discount Start
++//cm.app.contexthelp.fLineItemEdit_discountStartDate.title = "Discount Start"
++//cm.app.contexthelp.fLineItemEdit_discountStartDate.body = "Description"
++//// Discount End
++//cm.app.contexthelp.fLineItemEdit_discountEndDate.title = "Discount End"
++//cm.app.contexthelp.fLineItemEdit_discountEndDate.body = "Description"
++//// Line Item Notes
++//cm.app.contexthelp.fLineItemEdit_notes.title = "Notes"
++//cm.app.contexthelp.fLineItemEdit_notes.body = "Description"
++//// Goal Allocation
++//cm.app.contexthelp.fLineItemEdit_goalAllocation.title = "Goal Allocation"
++//cm.app.contexthelp.fLineItemEdit_goalAllocation.body = "Description""
+\ No newline at end of file
+diff --git a/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum8.groovy b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum8.groovy
+new file mode 100644
+index 0000000..303a561
+--- /dev/null
++++ b/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum8.groovy
+@@ -0,0 +1,8 @@
++cm.app.contexthelp.fCampaignEdit_name.title = "Campaign Name"
++cm.app.contexthelp.fCampaignEdit_name.body = "<p>The <b>name</b> of the campaign.</p><p>All HTML is supported. Be wise about it.</p>"
++
++cm.app.contexthelp.fCampaignEdit_statuscode.title = "Campaign Status"
++cm.app.contexthelp.fCampaignEdit_statuscode.body = "<p>The <b>status</b> of the campaign.</p><p>All HTML is supported. Be wise about it.</p>"
++
++cm.app.contexthelp.fLineItemEdit_networks.title = "Networks"
++cm.app.contexthelp.fLineItemEdit_networks.body = "<p>Networks stuff</p>"
+\ No newline at end of file
+diff --git a/config/privacy_policy.scrum1.html b/config/privacy_policy.scrum1.html
+new file mode 100644
+index 0000000..9fe22f3
+--- /dev/null
++++ b/config/privacy_policy.scrum1.html
+@@ -0,0 +1,71 @@
++<h3>Canoe Campaign Manager  Privacy Policy</h3>
++<p>Posted: February 10, 2015</p>
++<p>Canoe Ventures, LLC ("Canoe," "we," or  "us") (the owner and operator of cm.canoeventures.com) is committed  to respecting your privacy. This website privacy policy ("Privacy  Policy") is applicable to the cm.canoeventures.com website ("Canoe  Campaign Manager") produced and maintained by Canoe, and governs your use  of cm.canoeventures.com.&nbsp; <strong>Use of Canoe Campaign Manager constitutes your acceptance of this  Privacy Policy. If you do not agree to the terms of this Privacy Policy, please  do not use Canoe Campaign Manager.</strong></p>
++<p>In order to use Canoe  Campaign Manager, you must first be authorized by Canoe. To apply, you  must submit a short application with some personal information. For purposes of  this Privacy Policy, "personal information" means information used to  directly identify an individual person, such as first and last name associated  with an address.</p>
++<p>Except as noted below, Canoe will not disclose your personal  information to any company not affiliated with Canoe. Canoe does not sell or  rent personal information collected on this site.</p>
++<p>To protect your privacy and prevent unauthorized use, please  keep the website credentials issued to you from Canoe (IDs and passwords) in a  secure place. Also, whenever you use Canoe  Campaign Manager from a public workstation, be sure to logout of the  systems and close all web browser windows before you leave the public workstation.</p>
++<p>In this Privacy Policy, we explain the following:</p>
++<ul>
++    <li>What information we  collect directly from you.</li>
++    <li>What information we  collect automatically.</li>
++    <li>What, if any,  disclosures of information we might make.</li>
++    <li>Our data retention  policy.</li>
++    <li>Our access and correction  policy.</li>
++    <li>Our security measures.</li>
++    <li>How we interact with  links to or from 3rd party sites.</li>
++    <li>How we restrict data  collection from children.</li>
++    <li>How we might change  our privacy policy.</li>
++    <li>Notice to visitors  from outside the U.S.</li>
++    <li>Notice to California  residents: Your California Privacy Rights</li>
++</ul>
++<h3>Information Collected  Directly From You</h3>
++<p> In general, we collect and use information about you through Canoe Campaign Manager for  registration, site administration, and to inform you of Canoe Campaign Manager related news</p>
++<p>To complete registration for Canoe  Campaign Manager you must submit personal information including your first  and last name, business phone number (mobile number is acceptable) and business  email. Canoe will treat your personal information as confidential and will not  sell, rent or otherwise share or disclose it to any unaffiliated third party  without consent except as provided for in this Privacy Policy.</p>
++<p>We may also collect and retain information you provide through  the use of Canoe Campaign Manager For example,  if you send us an e-mail, we will collect your e-mail address and the contents  of your message. We will use your e-mail address and the information included  in your message to respond to you.</p>
++<h3>Information Collected  and Stored Automatically</h3>
++<h5>Cookies</h5>
++<p>A cookie is a small text file placed on your computer by a web  server for record-keeping purposes. We use session cookies on Canoe Campaign Manager to enhance  your experience of the site and to help you move through it easily.</p>
++<p>Cookies created on your computer by Canoe  Campaign Manager do not contain any personal information.</p>
++<p>Depending on your browser configuration, if you register with Canoe Campaign Manager you may be  asked for permission to store a cookie on your computer's hard drive. This  cookie will allow the web site to recognize you and your access privileges when  you visit again, and to tailor the information presented to you.</p>
++<p> Canoe Campaign Manager uses  cookies and web beacons to provide enhanced functionality (e.g., user ID and  password prompts) and to aggregate traffic data (e.g., what pages are the most  popular). You have many choices with regards to the management of cookies on  your computer. All major browsers allow you to block or delete cookies from  your system. To learn more about your ability to manage cookies, please consult  the privacy features in your browser.</p>
++<h3>Logs and Network  Monitoring</h3>
++<p>We maintain log files of all access to Canoe  Campaign Manager and monitor network traffic for purposes of site  management and security. We use this information to help diagnose problems with  the server and to carry out other administrative tasks. We may also use log  analysis tools for such purposes as creating summary statistics to determine  which information is of most interest to users, identifying system problem  areas, and determining technical requirements. The following information is  typically collected in these files:</p>
++<ul>
++    <li>the Internet Protocol  address and domain name of your Internet Service Provider;</li>
++    <li>the date and time you  visited;</li>
++    <li>the type of browser  and operating system you use;</li>
++    <li>the queries submitted;</li>
++    <li>the web pages or  services you accessed from Canoe Campaign  Manager </li>
++    <li>the amount of time  spent at each page;</li>
++    <li>the web page from  which you accessed Canoe Campaign Manager and</li>
++    <li>the page from which Canoe Campaign Manager was linked.</li>
++</ul>
++<h3>Disclosure of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We may disclose personal information collected through Canoe Campaign Manager to third  parties without your consent if the collection or disclosure is for the purpose  of validating your identity or performing necessary functions on our behalf. In such cases, the third parties are  restricted from using, selling or otherwise disclosing your personal  information in any way other than to perform the necessary functions requested.</p>
++<p> We may be required to disclose personal information if required  to do so by law or in the good-faith belief that such disclosure is necessary  to (a) comply with applicable law, subpoena or other legal process; (b)  investigate any unauthorized use of Canoe  Campaign Manager (c) respond to claims that any content may violate the  rights of third parties; and (d) protect the rights, property or personal  safety of Canoe, Canoe Campaign Manager or its  users.</p>
++<p> We may also disclose aggregated and anonymous information about  you and other users of Canoe Campaign  Manager to unaffiliated third parties. Such information will be used  solely for statistical or analytics purposes, and does not include any personal  information about you or any other user of Canoe  Campaign Manager</p>
++<h3>Retention of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We retain the information collected through this web site for as  long as is reasonable and for the purposes for which it was collected or to  satisfy legal requirements. These purposes typically include business, legal,  accounting or tax purposes. If these purposes no longer apply, we will destroy  the information according to our internal policies and procedures.</p>
++<h3>Security</h3>
++<p>We use physical, technical, and administrative safeguards to  limit access to Canoe Campaign Manager to those  who are authorized, and to secure its contents. We cannot guarantee, however,  that these practices will prevent every unauthorized attempt to access, use, or  disclose personal information. We also expect you to protect your information  and ensure that no unauthorized users can obtain access to Canoe Campaign Manager or your  information indirectly or directly from you.</p>
++<p>For security purposes and to maintain the availability of Canoe Campaign Manager for all  users, we may employ mechanisms to monitor traffic, to identify unauthorized  attempts to upload/download or change information or otherwise use Canoe Campaign Manager in  unauthorized ways or to damage this website.</p>
++<h3>Links to Third-Party  Sites</h3>
++<p>Canoe Campaign Manager may  contain links to, and may be linked from, sites outside of Canoe. Once you  leave Canoe Campaign Manager and visit  such sites, you will be subject to the privacy policies and terms of use of  that site. We are not responsible for such privacy policies, terms of use, or  the content of such sites. A link to an outside web site on our website does  not constitute an endorsement or sponsorship of such website or its content.</p>
++<h3>Notice about  Children's Privacy</h3>
++<p>Canoe Campaign Manager is not  intended for children under the age of 13. We do not knowingly solicit or  receive any information from such children. In the event that we become aware  that we have received personal information of a child under the age of 13, we  will immediately delete such information from our records.</p>
++<h3>Changes to Privacy  Policy</h3>
++<p>We may change this Privacy Policy from time to time, and reserve  the right to do so without notice. We will, however, notify you of material  changes by posting the revised Privacy Policy on the website. We encourage you  to periodically review Canoe Campaign  Manager for such changes to the Privacy Policy. The revised Privacy  Policy will be effective on the date it is posted unless the revised policy  states otherwise. If you use the website after the effective date of the  revised Privacy Policy, we will conclude that you accept the revised Privacy  Policy.</p>
++<h3>Notice to visitors  from outside the U.S.</h3>
++<p>Canoe Campaign Manager is  published in the United States. By visiting this website, by using services  offered through Canoe Campaign Manager or by  providing personal information to us, you agree that we may collect, use, and  disclose your personal information as described in this Privacy Policy,  including by transferring such information from the country where you live to  the United States.</p>
++<h3>Notice to California  Residents</h3>
++<p>California law permits users of Canoe  Campaign Manager who are California residents to request certain  information regarding the disclosure of personal information to third parties  for direct marketing purposes. Such requests must be submitted to us at:</p>
++<p>Canoe Ventures, LLC Canoe  Campaign Manager California Privacy Request<br>
++    160 Inverness Drive West<br>
++    Suite 200<br>
++    Englewood, CO 80122</p>
++<p>Such requests may be made only once per calendar year. We may  not respond to requests sent to addresses other than the one shown above.</p>
++<p>Contact Information</p>
++<p>For questions regarding this Privacy Policy, please contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
++<p>Privacy Statement<br>
++    Version 2.1<br>
++    Last Revised: February 10, 2015</p>
+diff --git a/config/privacy_policy.scrum2.html b/config/privacy_policy.scrum2.html
+new file mode 100644
+index 0000000..9fe22f3
+--- /dev/null
++++ b/config/privacy_policy.scrum2.html
+@@ -0,0 +1,71 @@
++<h3>Canoe Campaign Manager  Privacy Policy</h3>
++<p>Posted: February 10, 2015</p>
++<p>Canoe Ventures, LLC ("Canoe," "we," or  "us") (the owner and operator of cm.canoeventures.com) is committed  to respecting your privacy. This website privacy policy ("Privacy  Policy") is applicable to the cm.canoeventures.com website ("Canoe  Campaign Manager") produced and maintained by Canoe, and governs your use  of cm.canoeventures.com.&nbsp; <strong>Use of Canoe Campaign Manager constitutes your acceptance of this  Privacy Policy. If you do not agree to the terms of this Privacy Policy, please  do not use Canoe Campaign Manager.</strong></p>
++<p>In order to use Canoe  Campaign Manager, you must first be authorized by Canoe. To apply, you  must submit a short application with some personal information. For purposes of  this Privacy Policy, "personal information" means information used to  directly identify an individual person, such as first and last name associated  with an address.</p>
++<p>Except as noted below, Canoe will not disclose your personal  information to any company not affiliated with Canoe. Canoe does not sell or  rent personal information collected on this site.</p>
++<p>To protect your privacy and prevent unauthorized use, please  keep the website credentials issued to you from Canoe (IDs and passwords) in a  secure place. Also, whenever you use Canoe  Campaign Manager from a public workstation, be sure to logout of the  systems and close all web browser windows before you leave the public workstation.</p>
++<p>In this Privacy Policy, we explain the following:</p>
++<ul>
++    <li>What information we  collect directly from you.</li>
++    <li>What information we  collect automatically.</li>
++    <li>What, if any,  disclosures of information we might make.</li>
++    <li>Our data retention  policy.</li>
++    <li>Our access and correction  policy.</li>
++    <li>Our security measures.</li>
++    <li>How we interact with  links to or from 3rd party sites.</li>
++    <li>How we restrict data  collection from children.</li>
++    <li>How we might change  our privacy policy.</li>
++    <li>Notice to visitors  from outside the U.S.</li>
++    <li>Notice to California  residents: Your California Privacy Rights</li>
++</ul>
++<h3>Information Collected  Directly From You</h3>
++<p> In general, we collect and use information about you through Canoe Campaign Manager for  registration, site administration, and to inform you of Canoe Campaign Manager related news</p>
++<p>To complete registration for Canoe  Campaign Manager you must submit personal information including your first  and last name, business phone number (mobile number is acceptable) and business  email. Canoe will treat your personal information as confidential and will not  sell, rent or otherwise share or disclose it to any unaffiliated third party  without consent except as provided for in this Privacy Policy.</p>
++<p>We may also collect and retain information you provide through  the use of Canoe Campaign Manager For example,  if you send us an e-mail, we will collect your e-mail address and the contents  of your message. We will use your e-mail address and the information included  in your message to respond to you.</p>
++<h3>Information Collected  and Stored Automatically</h3>
++<h5>Cookies</h5>
++<p>A cookie is a small text file placed on your computer by a web  server for record-keeping purposes. We use session cookies on Canoe Campaign Manager to enhance  your experience of the site and to help you move through it easily.</p>
++<p>Cookies created on your computer by Canoe  Campaign Manager do not contain any personal information.</p>
++<p>Depending on your browser configuration, if you register with Canoe Campaign Manager you may be  asked for permission to store a cookie on your computer's hard drive. This  cookie will allow the web site to recognize you and your access privileges when  you visit again, and to tailor the information presented to you.</p>
++<p> Canoe Campaign Manager uses  cookies and web beacons to provide enhanced functionality (e.g., user ID and  password prompts) and to aggregate traffic data (e.g., what pages are the most  popular). You have many choices with regards to the management of cookies on  your computer. All major browsers allow you to block or delete cookies from  your system. To learn more about your ability to manage cookies, please consult  the privacy features in your browser.</p>
++<h3>Logs and Network  Monitoring</h3>
++<p>We maintain log files of all access to Canoe  Campaign Manager and monitor network traffic for purposes of site  management and security. We use this information to help diagnose problems with  the server and to carry out other administrative tasks. We may also use log  analysis tools for such purposes as creating summary statistics to determine  which information is of most interest to users, identifying system problem  areas, and determining technical requirements. The following information is  typically collected in these files:</p>
++<ul>
++    <li>the Internet Protocol  address and domain name of your Internet Service Provider;</li>
++    <li>the date and time you  visited;</li>
++    <li>the type of browser  and operating system you use;</li>
++    <li>the queries submitted;</li>
++    <li>the web pages or  services you accessed from Canoe Campaign  Manager </li>
++    <li>the amount of time  spent at each page;</li>
++    <li>the web page from  which you accessed Canoe Campaign Manager and</li>
++    <li>the page from which Canoe Campaign Manager was linked.</li>
++</ul>
++<h3>Disclosure of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We may disclose personal information collected through Canoe Campaign Manager to third  parties without your consent if the collection or disclosure is for the purpose  of validating your identity or performing necessary functions on our behalf. In such cases, the third parties are  restricted from using, selling or otherwise disclosing your personal  information in any way other than to perform the necessary functions requested.</p>
++<p> We may be required to disclose personal information if required  to do so by law or in the good-faith belief that such disclosure is necessary  to (a) comply with applicable law, subpoena or other legal process; (b)  investigate any unauthorized use of Canoe  Campaign Manager (c) respond to claims that any content may violate the  rights of third parties; and (d) protect the rights, property or personal  safety of Canoe, Canoe Campaign Manager or its  users.</p>
++<p> We may also disclose aggregated and anonymous information about  you and other users of Canoe Campaign  Manager to unaffiliated third parties. Such information will be used  solely for statistical or analytics purposes, and does not include any personal  information about you or any other user of Canoe  Campaign Manager</p>
++<h3>Retention of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We retain the information collected through this web site for as  long as is reasonable and for the purposes for which it was collected or to  satisfy legal requirements. These purposes typically include business, legal,  accounting or tax purposes. If these purposes no longer apply, we will destroy  the information according to our internal policies and procedures.</p>
++<h3>Security</h3>
++<p>We use physical, technical, and administrative safeguards to  limit access to Canoe Campaign Manager to those  who are authorized, and to secure its contents. We cannot guarantee, however,  that these practices will prevent every unauthorized attempt to access, use, or  disclose personal information. We also expect you to protect your information  and ensure that no unauthorized users can obtain access to Canoe Campaign Manager or your  information indirectly or directly from you.</p>
++<p>For security purposes and to maintain the availability of Canoe Campaign Manager for all  users, we may employ mechanisms to monitor traffic, to identify unauthorized  attempts to upload/download or change information or otherwise use Canoe Campaign Manager in  unauthorized ways or to damage this website.</p>
++<h3>Links to Third-Party  Sites</h3>
++<p>Canoe Campaign Manager may  contain links to, and may be linked from, sites outside of Canoe. Once you  leave Canoe Campaign Manager and visit  such sites, you will be subject to the privacy policies and terms of use of  that site. We are not responsible for such privacy policies, terms of use, or  the content of such sites. A link to an outside web site on our website does  not constitute an endorsement or sponsorship of such website or its content.</p>
++<h3>Notice about  Children's Privacy</h3>
++<p>Canoe Campaign Manager is not  intended for children under the age of 13. We do not knowingly solicit or  receive any information from such children. In the event that we become aware  that we have received personal information of a child under the age of 13, we  will immediately delete such information from our records.</p>
++<h3>Changes to Privacy  Policy</h3>
++<p>We may change this Privacy Policy from time to time, and reserve  the right to do so without notice. We will, however, notify you of material  changes by posting the revised Privacy Policy on the website. We encourage you  to periodically review Canoe Campaign  Manager for such changes to the Privacy Policy. The revised Privacy  Policy will be effective on the date it is posted unless the revised policy  states otherwise. If you use the website after the effective date of the  revised Privacy Policy, we will conclude that you accept the revised Privacy  Policy.</p>
++<h3>Notice to visitors  from outside the U.S.</h3>
++<p>Canoe Campaign Manager is  published in the United States. By visiting this website, by using services  offered through Canoe Campaign Manager or by  providing personal information to us, you agree that we may collect, use, and  disclose your personal information as described in this Privacy Policy,  including by transferring such information from the country where you live to  the United States.</p>
++<h3>Notice to California  Residents</h3>
++<p>California law permits users of Canoe  Campaign Manager who are California residents to request certain  information regarding the disclosure of personal information to third parties  for direct marketing purposes. Such requests must be submitted to us at:</p>
++<p>Canoe Ventures, LLC Canoe  Campaign Manager California Privacy Request<br>
++    160 Inverness Drive West<br>
++    Suite 200<br>
++    Englewood, CO 80122</p>
++<p>Such requests may be made only once per calendar year. We may  not respond to requests sent to addresses other than the one shown above.</p>
++<p>Contact Information</p>
++<p>For questions regarding this Privacy Policy, please contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
++<p>Privacy Statement<br>
++    Version 2.1<br>
++    Last Revised: February 10, 2015</p>
+diff --git a/config/privacy_policy.scrum3.html b/config/privacy_policy.scrum3.html
+new file mode 100644
+index 0000000..9fe22f3
+--- /dev/null
++++ b/config/privacy_policy.scrum3.html
+@@ -0,0 +1,71 @@
++<h3>Canoe Campaign Manager  Privacy Policy</h3>
++<p>Posted: February 10, 2015</p>
++<p>Canoe Ventures, LLC ("Canoe," "we," or  "us") (the owner and operator of cm.canoeventures.com) is committed  to respecting your privacy. This website privacy policy ("Privacy  Policy") is applicable to the cm.canoeventures.com website ("Canoe  Campaign Manager") produced and maintained by Canoe, and governs your use  of cm.canoeventures.com.&nbsp; <strong>Use of Canoe Campaign Manager constitutes your acceptance of this  Privacy Policy. If you do not agree to the terms of this Privacy Policy, please  do not use Canoe Campaign Manager.</strong></p>
++<p>In order to use Canoe  Campaign Manager, you must first be authorized by Canoe. To apply, you  must submit a short application with some personal information. For purposes of  this Privacy Policy, "personal information" means information used to  directly identify an individual person, such as first and last name associated  with an address.</p>
++<p>Except as noted below, Canoe will not disclose your personal  information to any company not affiliated with Canoe. Canoe does not sell or  rent personal information collected on this site.</p>
++<p>To protect your privacy and prevent unauthorized use, please  keep the website credentials issued to you from Canoe (IDs and passwords) in a  secure place. Also, whenever you use Canoe  Campaign Manager from a public workstation, be sure to logout of the  systems and close all web browser windows before you leave the public workstation.</p>
++<p>In this Privacy Policy, we explain the following:</p>
++<ul>
++    <li>What information we  collect directly from you.</li>
++    <li>What information we  collect automatically.</li>
++    <li>What, if any,  disclosures of information we might make.</li>
++    <li>Our data retention  policy.</li>
++    <li>Our access and correction  policy.</li>
++    <li>Our security measures.</li>
++    <li>How we interact with  links to or from 3rd party sites.</li>
++    <li>How we restrict data  collection from children.</li>
++    <li>How we might change  our privacy policy.</li>
++    <li>Notice to visitors  from outside the U.S.</li>
++    <li>Notice to California  residents: Your California Privacy Rights</li>
++</ul>
++<h3>Information Collected  Directly From You</h3>
++<p> In general, we collect and use information about you through Canoe Campaign Manager for  registration, site administration, and to inform you of Canoe Campaign Manager related news</p>
++<p>To complete registration for Canoe  Campaign Manager you must submit personal information including your first  and last name, business phone number (mobile number is acceptable) and business  email. Canoe will treat your personal information as confidential and will not  sell, rent or otherwise share or disclose it to any unaffiliated third party  without consent except as provided for in this Privacy Policy.</p>
++<p>We may also collect and retain information you provide through  the use of Canoe Campaign Manager For example,  if you send us an e-mail, we will collect your e-mail address and the contents  of your message. We will use your e-mail address and the information included  in your message to respond to you.</p>
++<h3>Information Collected  and Stored Automatically</h3>
++<h5>Cookies</h5>
++<p>A cookie is a small text file placed on your computer by a web  server for record-keeping purposes. We use session cookies on Canoe Campaign Manager to enhance  your experience of the site and to help you move through it easily.</p>
++<p>Cookies created on your computer by Canoe  Campaign Manager do not contain any personal information.</p>
++<p>Depending on your browser configuration, if you register with Canoe Campaign Manager you may be  asked for permission to store a cookie on your computer's hard drive. This  cookie will allow the web site to recognize you and your access privileges when  you visit again, and to tailor the information presented to you.</p>
++<p> Canoe Campaign Manager uses  cookies and web beacons to provide enhanced functionality (e.g., user ID and  password prompts) and to aggregate traffic data (e.g., what pages are the most  popular). You have many choices with regards to the management of cookies on  your computer. All major browsers allow you to block or delete cookies from  your system. To learn more about your ability to manage cookies, please consult  the privacy features in your browser.</p>
++<h3>Logs and Network  Monitoring</h3>
++<p>We maintain log files of all access to Canoe  Campaign Manager and monitor network traffic for purposes of site  management and security. We use this information to help diagnose problems with  the server and to carry out other administrative tasks. We may also use log  analysis tools for such purposes as creating summary statistics to determine  which information is of most interest to users, identifying system problem  areas, and determining technical requirements. The following information is  typically collected in these files:</p>
++<ul>
++    <li>the Internet Protocol  address and domain name of your Internet Service Provider;</li>
++    <li>the date and time you  visited;</li>
++    <li>the type of browser  and operating system you use;</li>
++    <li>the queries submitted;</li>
++    <li>the web pages or  services you accessed from Canoe Campaign  Manager </li>
++    <li>the amount of time  spent at each page;</li>
++    <li>the web page from  which you accessed Canoe Campaign Manager and</li>
++    <li>the page from which Canoe Campaign Manager was linked.</li>
++</ul>
++<h3>Disclosure of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We may disclose personal information collected through Canoe Campaign Manager to third  parties without your consent if the collection or disclosure is for the purpose  of validating your identity or performing necessary functions on our behalf. In such cases, the third parties are  restricted from using, selling or otherwise disclosing your personal  information in any way other than to perform the necessary functions requested.</p>
++<p> We may be required to disclose personal information if required  to do so by law or in the good-faith belief that such disclosure is necessary  to (a) comply with applicable law, subpoena or other legal process; (b)  investigate any unauthorized use of Canoe  Campaign Manager (c) respond to claims that any content may violate the  rights of third parties; and (d) protect the rights, property or personal  safety of Canoe, Canoe Campaign Manager or its  users.</p>
++<p> We may also disclose aggregated and anonymous information about  you and other users of Canoe Campaign  Manager to unaffiliated third parties. Such information will be used  solely for statistical or analytics purposes, and does not include any personal  information about you or any other user of Canoe  Campaign Manager</p>
++<h3>Retention of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We retain the information collected through this web site for as  long as is reasonable and for the purposes for which it was collected or to  satisfy legal requirements. These purposes typically include business, legal,  accounting or tax purposes. If these purposes no longer apply, we will destroy  the information according to our internal policies and procedures.</p>
++<h3>Security</h3>
++<p>We use physical, technical, and administrative safeguards to  limit access to Canoe Campaign Manager to those  who are authorized, and to secure its contents. We cannot guarantee, however,  that these practices will prevent every unauthorized attempt to access, use, or  disclose personal information. We also expect you to protect your information  and ensure that no unauthorized users can obtain access to Canoe Campaign Manager or your  information indirectly or directly from you.</p>
++<p>For security purposes and to maintain the availability of Canoe Campaign Manager for all  users, we may employ mechanisms to monitor traffic, to identify unauthorized  attempts to upload/download or change information or otherwise use Canoe Campaign Manager in  unauthorized ways or to damage this website.</p>
++<h3>Links to Third-Party  Sites</h3>
++<p>Canoe Campaign Manager may  contain links to, and may be linked from, sites outside of Canoe. Once you  leave Canoe Campaign Manager and visit  such sites, you will be subject to the privacy policies and terms of use of  that site. We are not responsible for such privacy policies, terms of use, or  the content of such sites. A link to an outside web site on our website does  not constitute an endorsement or sponsorship of such website or its content.</p>
++<h3>Notice about  Children's Privacy</h3>
++<p>Canoe Campaign Manager is not  intended for children under the age of 13. We do not knowingly solicit or  receive any information from such children. In the event that we become aware  that we have received personal information of a child under the age of 13, we  will immediately delete such information from our records.</p>
++<h3>Changes to Privacy  Policy</h3>
++<p>We may change this Privacy Policy from time to time, and reserve  the right to do so without notice. We will, however, notify you of material  changes by posting the revised Privacy Policy on the website. We encourage you  to periodically review Canoe Campaign  Manager for such changes to the Privacy Policy. The revised Privacy  Policy will be effective on the date it is posted unless the revised policy  states otherwise. If you use the website after the effective date of the  revised Privacy Policy, we will conclude that you accept the revised Privacy  Policy.</p>
++<h3>Notice to visitors  from outside the U.S.</h3>
++<p>Canoe Campaign Manager is  published in the United States. By visiting this website, by using services  offered through Canoe Campaign Manager or by  providing personal information to us, you agree that we may collect, use, and  disclose your personal information as described in this Privacy Policy,  including by transferring such information from the country where you live to  the United States.</p>
++<h3>Notice to California  Residents</h3>
++<p>California law permits users of Canoe  Campaign Manager who are California residents to request certain  information regarding the disclosure of personal information to third parties  for direct marketing purposes. Such requests must be submitted to us at:</p>
++<p>Canoe Ventures, LLC Canoe  Campaign Manager California Privacy Request<br>
++    160 Inverness Drive West<br>
++    Suite 200<br>
++    Englewood, CO 80122</p>
++<p>Such requests may be made only once per calendar year. We may  not respond to requests sent to addresses other than the one shown above.</p>
++<p>Contact Information</p>
++<p>For questions regarding this Privacy Policy, please contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
++<p>Privacy Statement<br>
++    Version 2.1<br>
++    Last Revised: February 10, 2015</p>
+diff --git a/config/privacy_policy.scrum4.html b/config/privacy_policy.scrum4.html
+new file mode 100644
+index 0000000..9fe22f3
+--- /dev/null
++++ b/config/privacy_policy.scrum4.html
+@@ -0,0 +1,71 @@
++<h3>Canoe Campaign Manager  Privacy Policy</h3>
++<p>Posted: February 10, 2015</p>
++<p>Canoe Ventures, LLC ("Canoe," "we," or  "us") (the owner and operator of cm.canoeventures.com) is committed  to respecting your privacy. This website privacy policy ("Privacy  Policy") is applicable to the cm.canoeventures.com website ("Canoe  Campaign Manager") produced and maintained by Canoe, and governs your use  of cm.canoeventures.com.&nbsp; <strong>Use of Canoe Campaign Manager constitutes your acceptance of this  Privacy Policy. If you do not agree to the terms of this Privacy Policy, please  do not use Canoe Campaign Manager.</strong></p>
++<p>In order to use Canoe  Campaign Manager, you must first be authorized by Canoe. To apply, you  must submit a short application with some personal information. For purposes of  this Privacy Policy, "personal information" means information used to  directly identify an individual person, such as first and last name associated  with an address.</p>
++<p>Except as noted below, Canoe will not disclose your personal  information to any company not affiliated with Canoe. Canoe does not sell or  rent personal information collected on this site.</p>
++<p>To protect your privacy and prevent unauthorized use, please  keep the website credentials issued to you from Canoe (IDs and passwords) in a  secure place. Also, whenever you use Canoe  Campaign Manager from a public workstation, be sure to logout of the  systems and close all web browser windows before you leave the public workstation.</p>
++<p>In this Privacy Policy, we explain the following:</p>
++<ul>
++    <li>What information we  collect directly from you.</li>
++    <li>What information we  collect automatically.</li>
++    <li>What, if any,  disclosures of information we might make.</li>
++    <li>Our data retention  policy.</li>
++    <li>Our access and correction  policy.</li>
++    <li>Our security measures.</li>
++    <li>How we interact with  links to or from 3rd party sites.</li>
++    <li>How we restrict data  collection from children.</li>
++    <li>How we might change  our privacy policy.</li>
++    <li>Notice to visitors  from outside the U.S.</li>
++    <li>Notice to California  residents: Your California Privacy Rights</li>
++</ul>
++<h3>Information Collected  Directly From You</h3>
++<p> In general, we collect and use information about you through Canoe Campaign Manager for  registration, site administration, and to inform you of Canoe Campaign Manager related news</p>
++<p>To complete registration for Canoe  Campaign Manager you must submit personal information including your first  and last name, business phone number (mobile number is acceptable) and business  email. Canoe will treat your personal information as confidential and will not  sell, rent or otherwise share or disclose it to any unaffiliated third party  without consent except as provided for in this Privacy Policy.</p>
++<p>We may also collect and retain information you provide through  the use of Canoe Campaign Manager For example,  if you send us an e-mail, we will collect your e-mail address and the contents  of your message. We will use your e-mail address and the information included  in your message to respond to you.</p>
++<h3>Information Collected  and Stored Automatically</h3>
++<h5>Cookies</h5>
++<p>A cookie is a small text file placed on your computer by a web  server for record-keeping purposes. We use session cookies on Canoe Campaign Manager to enhance  your experience of the site and to help you move through it easily.</p>
++<p>Cookies created on your computer by Canoe  Campaign Manager do not contain any personal information.</p>
++<p>Depending on your browser configuration, if you register with Canoe Campaign Manager you may be  asked for permission to store a cookie on your computer's hard drive. This  cookie will allow the web site to recognize you and your access privileges when  you visit again, and to tailor the information presented to you.</p>
++<p> Canoe Campaign Manager uses  cookies and web beacons to provide enhanced functionality (e.g., user ID and  password prompts) and to aggregate traffic data (e.g., what pages are the most  popular). You have many choices with regards to the management of cookies on  your computer. All major browsers allow you to block or delete cookies from  your system. To learn more about your ability to manage cookies, please consult  the privacy features in your browser.</p>
++<h3>Logs and Network  Monitoring</h3>
++<p>We maintain log files of all access to Canoe  Campaign Manager and monitor network traffic for purposes of site  management and security. We use this information to help diagnose problems with  the server and to carry out other administrative tasks. We may also use log  analysis tools for such purposes as creating summary statistics to determine  which information is of most interest to users, identifying system problem  areas, and determining technical requirements. The following information is  typically collected in these files:</p>
++<ul>
++    <li>the Internet Protocol  address and domain name of your Internet Service Provider;</li>
++    <li>the date and time you  visited;</li>
++    <li>the type of browser  and operating system you use;</li>
++    <li>the queries submitted;</li>
++    <li>the web pages or  services you accessed from Canoe Campaign  Manager </li>
++    <li>the amount of time  spent at each page;</li>
++    <li>the web page from  which you accessed Canoe Campaign Manager and</li>
++    <li>the page from which Canoe Campaign Manager was linked.</li>
++</ul>
++<h3>Disclosure of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We may disclose personal information collected through Canoe Campaign Manager to third  parties without your consent if the collection or disclosure is for the purpose  of validating your identity or performing necessary functions on our behalf. In such cases, the third parties are  restricted from using, selling or otherwise disclosing your personal  information in any way other than to perform the necessary functions requested.</p>
++<p> We may be required to disclose personal information if required  to do so by law or in the good-faith belief that such disclosure is necessary  to (a) comply with applicable law, subpoena or other legal process; (b)  investigate any unauthorized use of Canoe  Campaign Manager (c) respond to claims that any content may violate the  rights of third parties; and (d) protect the rights, property or personal  safety of Canoe, Canoe Campaign Manager or its  users.</p>
++<p> We may also disclose aggregated and anonymous information about  you and other users of Canoe Campaign  Manager to unaffiliated third parties. Such information will be used  solely for statistical or analytics purposes, and does not include any personal  information about you or any other user of Canoe  Campaign Manager</p>
++<h3>Retention of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We retain the information collected through this web site for as  long as is reasonable and for the purposes for which it was collected or to  satisfy legal requirements. These purposes typically include business, legal,  accounting or tax purposes. If these purposes no longer apply, we will destroy  the information according to our internal policies and procedures.</p>
++<h3>Security</h3>
++<p>We use physical, technical, and administrative safeguards to  limit access to Canoe Campaign Manager to those  who are authorized, and to secure its contents. We cannot guarantee, however,  that these practices will prevent every unauthorized attempt to access, use, or  disclose personal information. We also expect you to protect your information  and ensure that no unauthorized users can obtain access to Canoe Campaign Manager or your  information indirectly or directly from you.</p>
++<p>For security purposes and to maintain the availability of Canoe Campaign Manager for all  users, we may employ mechanisms to monitor traffic, to identify unauthorized  attempts to upload/download or change information or otherwise use Canoe Campaign Manager in  unauthorized ways or to damage this website.</p>
++<h3>Links to Third-Party  Sites</h3>
++<p>Canoe Campaign Manager may  contain links to, and may be linked from, sites outside of Canoe. Once you  leave Canoe Campaign Manager and visit  such sites, you will be subject to the privacy policies and terms of use of  that site. We are not responsible for such privacy policies, terms of use, or  the content of such sites. A link to an outside web site on our website does  not constitute an endorsement or sponsorship of such website or its content.</p>
++<h3>Notice about  Children's Privacy</h3>
++<p>Canoe Campaign Manager is not  intended for children under the age of 13. We do not knowingly solicit or  receive any information from such children. In the event that we become aware  that we have received personal information of a child under the age of 13, we  will immediately delete such information from our records.</p>
++<h3>Changes to Privacy  Policy</h3>
++<p>We may change this Privacy Policy from time to time, and reserve  the right to do so without notice. We will, however, notify you of material  changes by posting the revised Privacy Policy on the website. We encourage you  to periodically review Canoe Campaign  Manager for such changes to the Privacy Policy. The revised Privacy  Policy will be effective on the date it is posted unless the revised policy  states otherwise. If you use the website after the effective date of the  revised Privacy Policy, we will conclude that you accept the revised Privacy  Policy.</p>
++<h3>Notice to visitors  from outside the U.S.</h3>
++<p>Canoe Campaign Manager is  published in the United States. By visiting this website, by using services  offered through Canoe Campaign Manager or by  providing personal information to us, you agree that we may collect, use, and  disclose your personal information as described in this Privacy Policy,  including by transferring such information from the country where you live to  the United States.</p>
++<h3>Notice to California  Residents</h3>
++<p>California law permits users of Canoe  Campaign Manager who are California residents to request certain  information regarding the disclosure of personal information to third parties  for direct marketing purposes. Such requests must be submitted to us at:</p>
++<p>Canoe Ventures, LLC Canoe  Campaign Manager California Privacy Request<br>
++    160 Inverness Drive West<br>
++    Suite 200<br>
++    Englewood, CO 80122</p>
++<p>Such requests may be made only once per calendar year. We may  not respond to requests sent to addresses other than the one shown above.</p>
++<p>Contact Information</p>
++<p>For questions regarding this Privacy Policy, please contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
++<p>Privacy Statement<br>
++    Version 2.1<br>
++    Last Revised: February 10, 2015</p>
+diff --git a/config/privacy_policy.scrum8.html b/config/privacy_policy.scrum8.html
+new file mode 100644
+index 0000000..9fe22f3
+--- /dev/null
++++ b/config/privacy_policy.scrum8.html
+@@ -0,0 +1,71 @@
++<h3>Canoe Campaign Manager  Privacy Policy</h3>
++<p>Posted: February 10, 2015</p>
++<p>Canoe Ventures, LLC ("Canoe," "we," or  "us") (the owner and operator of cm.canoeventures.com) is committed  to respecting your privacy. This website privacy policy ("Privacy  Policy") is applicable to the cm.canoeventures.com website ("Canoe  Campaign Manager") produced and maintained by Canoe, and governs your use  of cm.canoeventures.com.&nbsp; <strong>Use of Canoe Campaign Manager constitutes your acceptance of this  Privacy Policy. If you do not agree to the terms of this Privacy Policy, please  do not use Canoe Campaign Manager.</strong></p>
++<p>In order to use Canoe  Campaign Manager, you must first be authorized by Canoe. To apply, you  must submit a short application with some personal information. For purposes of  this Privacy Policy, "personal information" means information used to  directly identify an individual person, such as first and last name associated  with an address.</p>
++<p>Except as noted below, Canoe will not disclose your personal  information to any company not affiliated with Canoe. Canoe does not sell or  rent personal information collected on this site.</p>
++<p>To protect your privacy and prevent unauthorized use, please  keep the website credentials issued to you from Canoe (IDs and passwords) in a  secure place. Also, whenever you use Canoe  Campaign Manager from a public workstation, be sure to logout of the  systems and close all web browser windows before you leave the public workstation.</p>
++<p>In this Privacy Policy, we explain the following:</p>
++<ul>
++    <li>What information we  collect directly from you.</li>
++    <li>What information we  collect automatically.</li>
++    <li>What, if any,  disclosures of information we might make.</li>
++    <li>Our data retention  policy.</li>
++    <li>Our access and correction  policy.</li>
++    <li>Our security measures.</li>
++    <li>How we interact with  links to or from 3rd party sites.</li>
++    <li>How we restrict data  collection from children.</li>
++    <li>How we might change  our privacy policy.</li>
++    <li>Notice to visitors  from outside the U.S.</li>
++    <li>Notice to California  residents: Your California Privacy Rights</li>
++</ul>
++<h3>Information Collected  Directly From You</h3>
++<p> In general, we collect and use information about you through Canoe Campaign Manager for  registration, site administration, and to inform you of Canoe Campaign Manager related news</p>
++<p>To complete registration for Canoe  Campaign Manager you must submit personal information including your first  and last name, business phone number (mobile number is acceptable) and business  email. Canoe will treat your personal information as confidential and will not  sell, rent or otherwise share or disclose it to any unaffiliated third party  without consent except as provided for in this Privacy Policy.</p>
++<p>We may also collect and retain information you provide through  the use of Canoe Campaign Manager For example,  if you send us an e-mail, we will collect your e-mail address and the contents  of your message. We will use your e-mail address and the information included  in your message to respond to you.</p>
++<h3>Information Collected  and Stored Automatically</h3>
++<h5>Cookies</h5>
++<p>A cookie is a small text file placed on your computer by a web  server for record-keeping purposes. We use session cookies on Canoe Campaign Manager to enhance  your experience of the site and to help you move through it easily.</p>
++<p>Cookies created on your computer by Canoe  Campaign Manager do not contain any personal information.</p>
++<p>Depending on your browser configuration, if you register with Canoe Campaign Manager you may be  asked for permission to store a cookie on your computer's hard drive. This  cookie will allow the web site to recognize you and your access privileges when  you visit again, and to tailor the information presented to you.</p>
++<p> Canoe Campaign Manager uses  cookies and web beacons to provide enhanced functionality (e.g., user ID and  password prompts) and to aggregate traffic data (e.g., what pages are the most  popular). You have many choices with regards to the management of cookies on  your computer. All major browsers allow you to block or delete cookies from  your system. To learn more about your ability to manage cookies, please consult  the privacy features in your browser.</p>
++<h3>Logs and Network  Monitoring</h3>
++<p>We maintain log files of all access to Canoe  Campaign Manager and monitor network traffic for purposes of site  management and security. We use this information to help diagnose problems with  the server and to carry out other administrative tasks. We may also use log  analysis tools for such purposes as creating summary statistics to determine  which information is of most interest to users, identifying system problem  areas, and determining technical requirements. The following information is  typically collected in these files:</p>
++<ul>
++    <li>the Internet Protocol  address and domain name of your Internet Service Provider;</li>
++    <li>the date and time you  visited;</li>
++    <li>the type of browser  and operating system you use;</li>
++    <li>the queries submitted;</li>
++    <li>the web pages or  services you accessed from Canoe Campaign  Manager </li>
++    <li>the amount of time  spent at each page;</li>
++    <li>the web page from  which you accessed Canoe Campaign Manager and</li>
++    <li>the page from which Canoe Campaign Manager was linked.</li>
++</ul>
++<h3>Disclosure of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We may disclose personal information collected through Canoe Campaign Manager to third  parties without your consent if the collection or disclosure is for the purpose  of validating your identity or performing necessary functions on our behalf. In such cases, the third parties are  restricted from using, selling or otherwise disclosing your personal  information in any way other than to perform the necessary functions requested.</p>
++<p> We may be required to disclose personal information if required  to do so by law or in the good-faith belief that such disclosure is necessary  to (a) comply with applicable law, subpoena or other legal process; (b)  investigate any unauthorized use of Canoe  Campaign Manager (c) respond to claims that any content may violate the  rights of third parties; and (d) protect the rights, property or personal  safety of Canoe, Canoe Campaign Manager or its  users.</p>
++<p> We may also disclose aggregated and anonymous information about  you and other users of Canoe Campaign  Manager to unaffiliated third parties. Such information will be used  solely for statistical or analytics purposes, and does not include any personal  information about you or any other user of Canoe  Campaign Manager</p>
++<h3>Retention of  Information Collected Through Canoe Campaign Manager</h3>
++<p>We retain the information collected through this web site for as  long as is reasonable and for the purposes for which it was collected or to  satisfy legal requirements. These purposes typically include business, legal,  accounting or tax purposes. If these purposes no longer apply, we will destroy  the information according to our internal policies and procedures.</p>
++<h3>Security</h3>
++<p>We use physical, technical, and administrative safeguards to  limit access to Canoe Campaign Manager to those  who are authorized, and to secure its contents. We cannot guarantee, however,  that these practices will prevent every unauthorized attempt to access, use, or  disclose personal information. We also expect you to protect your information  and ensure that no unauthorized users can obtain access to Canoe Campaign Manager or your  information indirectly or directly from you.</p>
++<p>For security purposes and to maintain the availability of Canoe Campaign Manager for all  users, we may employ mechanisms to monitor traffic, to identify unauthorized  attempts to upload/download or change information or otherwise use Canoe Campaign Manager in  unauthorized ways or to damage this website.</p>
++<h3>Links to Third-Party  Sites</h3>
++<p>Canoe Campaign Manager may  contain links to, and may be linked from, sites outside of Canoe. Once you  leave Canoe Campaign Manager and visit  such sites, you will be subject to the privacy policies and terms of use of  that site. We are not responsible for such privacy policies, terms of use, or  the content of such sites. A link to an outside web site on our website does  not constitute an endorsement or sponsorship of such website or its content.</p>
++<h3>Notice about  Children's Privacy</h3>
++<p>Canoe Campaign Manager is not  intended for children under the age of 13. We do not knowingly solicit or  receive any information from such children. In the event that we become aware  that we have received personal information of a child under the age of 13, we  will immediately delete such information from our records.</p>
++<h3>Changes to Privacy  Policy</h3>
++<p>We may change this Privacy Policy from time to time, and reserve  the right to do so without notice. We will, however, notify you of material  changes by posting the revised Privacy Policy on the website. We encourage you  to periodically review Canoe Campaign  Manager for such changes to the Privacy Policy. The revised Privacy  Policy will be effective on the date it is posted unless the revised policy  states otherwise. If you use the website after the effective date of the  revised Privacy Policy, we will conclude that you accept the revised Privacy  Policy.</p>
++<h3>Notice to visitors  from outside the U.S.</h3>
++<p>Canoe Campaign Manager is  published in the United States. By visiting this website, by using services  offered through Canoe Campaign Manager or by  providing personal information to us, you agree that we may collect, use, and  disclose your personal information as described in this Privacy Policy,  including by transferring such information from the country where you live to  the United States.</p>
++<h3>Notice to California  Residents</h3>
++<p>California law permits users of Canoe  Campaign Manager who are California residents to request certain  information regarding the disclosure of personal information to third parties  for direct marketing purposes. Such requests must be submitted to us at:</p>
++<p>Canoe Ventures, LLC Canoe  Campaign Manager California Privacy Request<br>
++    160 Inverness Drive West<br>
++    Suite 200<br>
++    Englewood, CO 80122</p>
++<p>Such requests may be made only once per calendar year. We may  not respond to requests sent to addresses other than the one shown above.</p>
++<p>Contact Information</p>
++<p>For questions regarding this Privacy Policy, please contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
++<p>Privacy Statement<br>
++    Version 2.1<br>
++    Last Revised: February 10, 2015</p>
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index 2739645..973a67f 100755
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index 2739645..973a67f 100755
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index 2739645..973a67f 100755
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index 2739645..973a67f 100755
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+diff --git a/config/setenv.scrum8.sh b/config/setenv.scrum8.sh
+index 4d29a91..973a67f 100644
+--- a/config/setenv.scrum8.sh
++++ b/config/setenv.scrum8.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss228K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/cm
+ export DAI_CM_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-config.properties
+ export DAI_LOG4J_CONFIG=$APPHOME_DIR/conf/Dynamic-Ad-Insertion-cm-log4j.groovy
+diff --git a/config/terms_of_use.scrum1.html b/config/terms_of_use.scrum1.html
+new file mode 100644
+index 0000000..45523e3
+--- /dev/null
++++ b/config/terms_of_use.scrum1.html
+@@ -0,0 +1,53 @@
++<strong>PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THIS WEBSITE. </strong>
++<p> The following terms of use ("Terms of Use") apply to the Canoe website at www.canoeventures.com, including all subdomains, (the "Website") owned and operated by Canoe Ventures LLC ("Canoe", "we", "us" or "our"). By accessing, browsing and/or using the Website, you acknowledge that you have read, understood and agree to be bound by these Terms of Use in their entirety and any modifications to these Terms of Use. In addition, you agree to comply with all applicable laws, rules and regulations governing your use of the Website. If you do not agree to these Terms of Use, you are not permitted to access, browse or use the Website. </p>
++<p> Please return to the Website and review these Terms of Use from time to time, as they may be amended without notice to you. Any changes to these Terms of Use will be effective immediately upon the posting of the revised Terms of Use at the Website. The most recent modification date will be noted by the "Last Updated" date above. Your continued use of the Website after any such date constitutes your acceptance of these Terms of Use as modified. Please note that your use of certain content and features of the Website may be subject to additional terms. By using such content and features, you also agree to be bound by such additional terms. </p>
++<p> You are solely responsible for providing any hardware, systems and software programs you use to access the Website, and any associated fees, charges and expenses. </p>
++<h3>PRIVACY </h3>
++<p>Similar to other commercial websites, the Website may utilize standard technology called "cookies" and web server logs to collect information about how the Website is used. Cookies are a feature of web browser software that allows web servers to recognize the computer used to access a website. Cookies are small pieces of data that are stored by a user's web browser on the user's hard drive. Information gathered through cookies and web server logs may include the IP address of the visiting computer, the date and time of visits, the pages viewed, time spent at the Website, and the websites visited just before and just after the Website. This information is collected on an aggregate basis and is not associated with any personally identifiable information you may provide to us We reserve the right to use aggregated information for any lawful purpose. </p>
++<p> You can, of course, disable cookies on your computer by indicating this in the preferences or options menus in your web browser. However, it is possible that some parts of the Website will not operate correctly or as intended if you disable cookies. You should consult your browser provider if you have any questions regarding disabling cookies. </p>
++<p> If you choose to submit a question or provide your comments to us, we will collect your email address to respond directly to you. Please confirm your email address is correct and current to ensure you can receive a response. Although we do not share your email address with third parties for their marketing purposes, we reserve the right to use your email address to respond to your request, for other internal purposes. </p>
++<h3>PROPRIETARY RIGHTS</h3>
++<p>This Website is owned and operated by Canoe and, in the case of certain features and content, its affiliates, licensors and/or third party service providers, and unless otherwise indicated, all the content appearing at the Website (collectively, "Content") is the property of Canoe and its affiliates, licensors and/or third party service providers and protected, without limitation, by U.S. and foreign copyright, trademark and other intellectual property laws. All trademarks, service marks, trade names, logos and other indicia of origin (collectively, "Marks") appearing on the Website are the property of Canoe and its affiliates, licensors, and/or third party service providers. You may not make any use of any Content or Marks without the prior written consent of Canoe and any applicable third party. </p>
++<h3>LICENSE GRANT </h3>
++<p>Canoe grants to you a limited, non-exclusive, non-transferable license to access and use the Website in accordance with these Terms of Use. Canoe may terminate this license at any time for any reason. No Content from the Website may be copied, reproduced, republished, uploaded, posted, transmitted, or distributed in any way without Canoe's permission, except that you may download one copy of Content on any single computer for your personal non-commercial use, only, provided you keep intact all copyright and other proprietary notices. Modification of the Content or use of the Content for any other purpose may be a violation of copyright, trademark, trade secret rights and others' proprietary rights belonging to Canoe, its licensors and/or third party service providers. For purposes of these Terms of Use, the use of any such Content on any other website or networked computer environment is prohibited. You may not use any device, software or routine to interfere or attempt to interfere with the proper working of the Website and you may not take any action that imposes an unreasonable or disproportionately large load on Canoe's network or infrastructure. Canoe reserves all rights not explicitly granted in these Terms of Use. </p>
++<h3>YOUR CONDUCT </h3>
++<p> In using or accessing the Website you agree: </p>
++<ul>
++    <li>not to disrupt or interfere with the security of, or otherwise abuse, the Website, or any services, system resources, accounts, servers or networks connected to or accessible through the Website or affiliated or linked websites; </li>
++    <li>not to disrupt or interfere with any other user's enjoyment of the Website; </li>
++    <li>not to upload, post or otherwise transmit through or on the Website any viruses or other harmful, disruptive or destructive files; </li>
++    <li>not to use, frame or utilize framing techniques to enclose any Canoe Marks or other proprietary information (including the images and information available through the Website, the content of any text or the layout/design of any page) without Canoe's express written consent; </li>
++    <li>not to use meta tags or any other "hidden text" utilizing a Canoe Mark, trademark or product name without Canoe's express written consent;</li>
++    <li>not to attempt to obtain unauthorized access to the Website or portions of the Website that are restricted from general access; and </li>
++    <li>not to submit to us any material that is knowingly false and/or defamatory, inaccurate, abusive, vulgar, hateful, harassing, obscene, profane, sexually oriented, threatening, invasive of a person's privacy or otherwise in violation of any law. </li>
++</ul>
++<p> You agree to immediately notify us if you suspect fraudulent or abusive activity, or any activity in violation of these Terms of Use. If you so notify us, or we otherwise suspect fraudulent or abusive activity, you agree to cooperate with us in any fraud investigation and to use any fraud prevention or other measures we prescribe. </p>
++<h3>SUBMISSIONS </h3>
++<p>By transmitting email, messages, suggestions, ideas or concepts (each, a "Submission"), whether unsolicited or solicited, to us through the Website or in any other media, you are granting Canoe a royalty-free, fully paid, nonexclusive, perpetual, unrestricted, worldwide license to publish, transmit, perform, display, create derivative works from and otherwise use the Submission(s) for any purpose, including, but not limited to, advertising and promotional purposes, in any media, now or hereafter known. No credit or compensation is due to you for such use. Canoe also has the right, but not the obligation, to use your name (and image or likeness, if provided in connection with a Submission), city and state in connection with broadcast, print, online or other use or publication of your Submission(s). All Submissions become the unrestricted licensed property of Canoe and may be edited for use. Note that any such Submission may be subject to additional terms, conditions and restrictions provided to you at the time of such Submission. </p>
++<p>You warrant and represent that you own or otherwise control any and all rights in and to the Submission(s) and that public posting and use of the Submissions by Canoe will not infringe or violate the rights of any third party in any manner. </p>
++<h3>ELECTRONIC COMMUNICATIONS </h3>
++<p>When you submit a question or comment through the Website or send emails to us, you are communicating with us electronically. You consent to receive communications from us electronically. We will communicate with you by return email or by posting notices on the Website. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing. </p>
++<h3>LINKS AND THIRD PARTIES </h3>
++<p>Links on the Website to third party websites (including, without limitation, sponsors, advertisers and issuers) that you encounter via the Website are solely provided as a convenience to you. If you use these links, you will leave the Website. You agree that Canoe will not be responsible or liable for any dispute, loss or damage of any sort incurred as a result of any dealings between you and any such third parties. In addition, you acknowledge that Canoe does not endorse, verify, or make any representations regarding any third party advertisements, products or services. It is your sole responsibility to research and verify the legitimacy of any entity and content linked to the Website.</p>
++<h3>CHANGES TO WEBSITE</h3>
++<p>Canoe may add, change, discontinue, remove or suspend any portion of the Website at any time, without notice. </p>
++<h3>TERMINATION</h3>
++<p>Canoe reserves the right, without notice and at its sole discretion, to suspend or terminate these Terms of Use and/or your ability to access or use the Website, and to block or prevent future access to and use of the Website for any reason, including your breach of these Terms of Use or other conduct by you that Canoe considers inappropriate. Canoe reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Website (or any part thereof) with or without notice. Except as otherwise expressly stated in the Terms of Use, you agree that Canoe shall not be liable to you or to any third party for any modification, suspension or discontinuation of the Website (or any portion thereof).</p>
++<h3>DISCLAIMER </h3>
++<p>THE WEBSITE, IN WHOLE AND IN PART (INCLUDING, WITHOUT LIMITATION, CONTENT), IS PROVIDED, TRANSMITTED, DISTRIBUTED, AND MADE AVAILABLE TO YOU "AS IS" AND "AS AVAILABLE" WITHOUT EXPRESS OR IMPLIED WARRANTIES OF ANY KIND, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, CANOE MAKES NO WARRANTY: (A) THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR FREE; (B) THAT DEFECTS OR ERRORS IN THE SERVICE WILL BE CORRECTED; (C) THAT THE SERVICE WILL BE FREE FROM VIRUSES OR OTHER HARMFUL COMPONENTS; (D) AS TO THE QUALITY, ACCURACY, COMPLETENESS AND VALIDITY OF ANY INFORMATION OR MATERIALS IN CONNECTION WITH THE SERVICE; (E) THAT YOUR USE OF THE SERVICE WILL MEET YOUR REQUIREMENTS; OR (F) THAT TRANSMISSIONS OR DATA WILL BE SECURE. </p>
++<h3>LIMITATION OF LIABILITY</h3>
++<p>YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT YOU ASSUME TOTAL RESPONSIBILITY AND RISK FOR YOUR USE OF THE WEBSITE AND THE RESULTS AND PERFORMANCE THEREOF. </p>
++<p> IN NO EVENT AND UNDER NO CAUSE OF ACTION, INCLUDING, WITHOUT LIMITATION, NEGLIGENCE, SHALL CANOE AND ITS AFFILIATED ENTITIES OR ANY OF THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES OR AUTHORIZED AGENTS (COLLECTIVELY, THE "CANOE PARTIES") BE LIABLE FOR ANY DAMAGES, CLAIMS OR LOSSES INCURRED (INCLUDING, WITHOUT LIMITATION, COMPENSATORY, INCIDENTAL, INDIRECT, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES), HOWEVER CAUSED, AND UNDER ANY THEORY OF LIABILITY ARISING IN CONNECTION WITH: (A) THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (B) YOUR USE OR INABILITY TO USE THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (C) ANY THIRD PARTY WEBSITE OR SERVICE USED IN CONNECTION WITH OR AVAILABLE THROUGH THE WEBSITE; (D) UNAUTHORIZED ACCESS TO OR ALTERATION OR LOSS OF YOUR TRANSMISSIONS OR DATA OR OTHER INFORMATION THAT IS SENT OR RECEIVED IN CONNECTION WITH THE WEBSITE; OR (E) ERRORS, SYSTEM DOWN TIME, NETWORK OR SYSTEM OUTAGES, FILE CORRUPTION OR SERVICE INTERRUPTIONS, EVEN IF A CANOE PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, CLAIMS OR LOSSES. </p>
++<p>NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, CANOE'S CUMULATIVE LIABILITY TO YOU ARISING FROM ANY CAUSE WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF ANY, BY YOU FOR ACCESS TO THE WEBSITE. IF NO AMOUNTS WERE PAID, YOUR SOLE REMEDY UNDER THESE TERMS OF USE SHALL BE TO DISCONTINUE ANY USE OF THE WEBSITE. </p>
++<h3>EXCLUSIONS </h3>
++<p>SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER, EXCLUSION OR LIMITATION OF CERTAIN WARRANTIES, LIABILITIES AND DAMAGES, SO SOME OF THE ABOVE DISCLAIMERS, EXCLUSIONS AND LIMITATIONS MAY NOT APPLY TO YOU. IN SUCH JURISDICTIONS, CANOE'S LIABILITY WILL BE LIMITED TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW. </p>
++<h3>INDEMNIFICATION </h3>
++<p>By using the Website, you agree to indemnify, defend and hold harmless the Canoe Parties from and against any actual or alleged claims, demands, causes of action, judgments, damages, losses, liabilities, and all costs and expenses of defense (including, without limitation, reasonable attorneys' and other legal fees and costs) arising out of or relating to: (1) your violation of these Terms of Use or any law, rule or regulation; (2) your use of the Website, including, without limitation, any Content available on the Website and any activity of yours on the Website; (3) loss of any data or account information; and (4) any Submissions. You will cooperate as fully and reasonably as required by Canoe in the defense of any claim. Canoe reserves the right to assume the exclusive defense and control of any matter subject to indemnification by you, and you will not in any event settle any claim without the prior written consent of Canoe. </p>
++<h3>FORCE MAJEURE </h3>
++<p>Canoe will not be responsible for any delay, failure in performance or interruption of service, resulting directly or indirectly from acts of God, acts of civil or military authorities, civil disturbances, wars, strikes or other labor disputes, fires, transportation contingencies, interruptions in telecommunications or Internet services or network provider services, failure of equipment and/or software, other catastrophes or any other occurrences which are beyond Canoe's reasonable control.</p>
++<h3>INTERNATIONAL USERS</h3>
++<p>Canoe makes no representation that the Website and Content are appropriate or available for use at locations outside of the United States, and access to them from territories where they may be deemed illegal is prohibited. If you access this Website from a location outside of the United States, you are responsible for compliance with all local laws. </p>
++<h3>MISCELLANEOUS</h3>
++<p>These Terms of Use shall be exclusively governed by and construed in accordance with the laws of the State of Colorado within the United States of America without giving effect to any principles of conflicts of law. Any dispute arising from these Terms of Use or the Website shall be resolved in the state or federal courts residing in Denver, Colorado and you irrevocably agree to the jurisdiction of such courts. The Terms of Use constitute the entire agreement between Canoe and you with respect to your use of the Website. Any cause of action you may have with respect to the Website must be commenced within one (1) year after the claim or cause of action arises, notwithstanding any statutes of limitation to the contrary. If any provision of these Terms of Use shall be unlawful, void or for any reason unenforceable, then that provision shall be deemed severable from these Terms of Use and shall not affect the validity and enforceability of any remaining provisions. Our failure to enforce any provision of this Agreement shall not be deemed a waiver of such provision nor of the right to enforce such provision. Nothing in these Terms of Use will be construed as creating a joint venture, partnership, employment or agency relationship between you and Canoe, and you do not have any authority to create any obligation or make any representation on Canoe's behalf. You may not assign these Terms of Use by operation of law or otherwise, without Canoe's written consent. </p>
++<h3>CONTACT US</h3>
++<p>If you have any comments or questions regarding these Terms of Use, or wish to report any violation, contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
+diff --git a/config/terms_of_use.scrum2.html b/config/terms_of_use.scrum2.html
+new file mode 100644
+index 0000000..45523e3
+--- /dev/null
++++ b/config/terms_of_use.scrum2.html
+@@ -0,0 +1,53 @@
++<strong>PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THIS WEBSITE. </strong>
++<p> The following terms of use ("Terms of Use") apply to the Canoe website at www.canoeventures.com, including all subdomains, (the "Website") owned and operated by Canoe Ventures LLC ("Canoe", "we", "us" or "our"). By accessing, browsing and/or using the Website, you acknowledge that you have read, understood and agree to be bound by these Terms of Use in their entirety and any modifications to these Terms of Use. In addition, you agree to comply with all applicable laws, rules and regulations governing your use of the Website. If you do not agree to these Terms of Use, you are not permitted to access, browse or use the Website. </p>
++<p> Please return to the Website and review these Terms of Use from time to time, as they may be amended without notice to you. Any changes to these Terms of Use will be effective immediately upon the posting of the revised Terms of Use at the Website. The most recent modification date will be noted by the "Last Updated" date above. Your continued use of the Website after any such date constitutes your acceptance of these Terms of Use as modified. Please note that your use of certain content and features of the Website may be subject to additional terms. By using such content and features, you also agree to be bound by such additional terms. </p>
++<p> You are solely responsible for providing any hardware, systems and software programs you use to access the Website, and any associated fees, charges and expenses. </p>
++<h3>PRIVACY </h3>
++<p>Similar to other commercial websites, the Website may utilize standard technology called "cookies" and web server logs to collect information about how the Website is used. Cookies are a feature of web browser software that allows web servers to recognize the computer used to access a website. Cookies are small pieces of data that are stored by a user's web browser on the user's hard drive. Information gathered through cookies and web server logs may include the IP address of the visiting computer, the date and time of visits, the pages viewed, time spent at the Website, and the websites visited just before and just after the Website. This information is collected on an aggregate basis and is not associated with any personally identifiable information you may provide to us We reserve the right to use aggregated information for any lawful purpose. </p>
++<p> You can, of course, disable cookies on your computer by indicating this in the preferences or options menus in your web browser. However, it is possible that some parts of the Website will not operate correctly or as intended if you disable cookies. You should consult your browser provider if you have any questions regarding disabling cookies. </p>
++<p> If you choose to submit a question or provide your comments to us, we will collect your email address to respond directly to you. Please confirm your email address is correct and current to ensure you can receive a response. Although we do not share your email address with third parties for their marketing purposes, we reserve the right to use your email address to respond to your request, for other internal purposes. </p>
++<h3>PROPRIETARY RIGHTS</h3>
++<p>This Website is owned and operated by Canoe and, in the case of certain features and content, its affiliates, licensors and/or third party service providers, and unless otherwise indicated, all the content appearing at the Website (collectively, "Content") is the property of Canoe and its affiliates, licensors and/or third party service providers and protected, without limitation, by U.S. and foreign copyright, trademark and other intellectual property laws. All trademarks, service marks, trade names, logos and other indicia of origin (collectively, "Marks") appearing on the Website are the property of Canoe and its affiliates, licensors, and/or third party service providers. You may not make any use of any Content or Marks without the prior written consent of Canoe and any applicable third party. </p>
++<h3>LICENSE GRANT </h3>
++<p>Canoe grants to you a limited, non-exclusive, non-transferable license to access and use the Website in accordance with these Terms of Use. Canoe may terminate this license at any time for any reason. No Content from the Website may be copied, reproduced, republished, uploaded, posted, transmitted, or distributed in any way without Canoe's permission, except that you may download one copy of Content on any single computer for your personal non-commercial use, only, provided you keep intact all copyright and other proprietary notices. Modification of the Content or use of the Content for any other purpose may be a violation of copyright, trademark, trade secret rights and others' proprietary rights belonging to Canoe, its licensors and/or third party service providers. For purposes of these Terms of Use, the use of any such Content on any other website or networked computer environment is prohibited. You may not use any device, software or routine to interfere or attempt to interfere with the proper working of the Website and you may not take any action that imposes an unreasonable or disproportionately large load on Canoe's network or infrastructure. Canoe reserves all rights not explicitly granted in these Terms of Use. </p>
++<h3>YOUR CONDUCT </h3>
++<p> In using or accessing the Website you agree: </p>
++<ul>
++    <li>not to disrupt or interfere with the security of, or otherwise abuse, the Website, or any services, system resources, accounts, servers or networks connected to or accessible through the Website or affiliated or linked websites; </li>
++    <li>not to disrupt or interfere with any other user's enjoyment of the Website; </li>
++    <li>not to upload, post or otherwise transmit through or on the Website any viruses or other harmful, disruptive or destructive files; </li>
++    <li>not to use, frame or utilize framing techniques to enclose any Canoe Marks or other proprietary information (including the images and information available through the Website, the content of any text or the layout/design of any page) without Canoe's express written consent; </li>
++    <li>not to use meta tags or any other "hidden text" utilizing a Canoe Mark, trademark or product name without Canoe's express written consent;</li>
++    <li>not to attempt to obtain unauthorized access to the Website or portions of the Website that are restricted from general access; and </li>
++    <li>not to submit to us any material that is knowingly false and/or defamatory, inaccurate, abusive, vulgar, hateful, harassing, obscene, profane, sexually oriented, threatening, invasive of a person's privacy or otherwise in violation of any law. </li>
++</ul>
++<p> You agree to immediately notify us if you suspect fraudulent or abusive activity, or any activity in violation of these Terms of Use. If you so notify us, or we otherwise suspect fraudulent or abusive activity, you agree to cooperate with us in any fraud investigation and to use any fraud prevention or other measures we prescribe. </p>
++<h3>SUBMISSIONS </h3>
++<p>By transmitting email, messages, suggestions, ideas or concepts (each, a "Submission"), whether unsolicited or solicited, to us through the Website or in any other media, you are granting Canoe a royalty-free, fully paid, nonexclusive, perpetual, unrestricted, worldwide license to publish, transmit, perform, display, create derivative works from and otherwise use the Submission(s) for any purpose, including, but not limited to, advertising and promotional purposes, in any media, now or hereafter known. No credit or compensation is due to you for such use. Canoe also has the right, but not the obligation, to use your name (and image or likeness, if provided in connection with a Submission), city and state in connection with broadcast, print, online or other use or publication of your Submission(s). All Submissions become the unrestricted licensed property of Canoe and may be edited for use. Note that any such Submission may be subject to additional terms, conditions and restrictions provided to you at the time of such Submission. </p>
++<p>You warrant and represent that you own or otherwise control any and all rights in and to the Submission(s) and that public posting and use of the Submissions by Canoe will not infringe or violate the rights of any third party in any manner. </p>
++<h3>ELECTRONIC COMMUNICATIONS </h3>
++<p>When you submit a question or comment through the Website or send emails to us, you are communicating with us electronically. You consent to receive communications from us electronically. We will communicate with you by return email or by posting notices on the Website. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing. </p>
++<h3>LINKS AND THIRD PARTIES </h3>
++<p>Links on the Website to third party websites (including, without limitation, sponsors, advertisers and issuers) that you encounter via the Website are solely provided as a convenience to you. If you use these links, you will leave the Website. You agree that Canoe will not be responsible or liable for any dispute, loss or damage of any sort incurred as a result of any dealings between you and any such third parties. In addition, you acknowledge that Canoe does not endorse, verify, or make any representations regarding any third party advertisements, products or services. It is your sole responsibility to research and verify the legitimacy of any entity and content linked to the Website.</p>
++<h3>CHANGES TO WEBSITE</h3>
++<p>Canoe may add, change, discontinue, remove or suspend any portion of the Website at any time, without notice. </p>
++<h3>TERMINATION</h3>
++<p>Canoe reserves the right, without notice and at its sole discretion, to suspend or terminate these Terms of Use and/or your ability to access or use the Website, and to block or prevent future access to and use of the Website for any reason, including your breach of these Terms of Use or other conduct by you that Canoe considers inappropriate. Canoe reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Website (or any part thereof) with or without notice. Except as otherwise expressly stated in the Terms of Use, you agree that Canoe shall not be liable to you or to any third party for any modification, suspension or discontinuation of the Website (or any portion thereof).</p>
++<h3>DISCLAIMER </h3>
++<p>THE WEBSITE, IN WHOLE AND IN PART (INCLUDING, WITHOUT LIMITATION, CONTENT), IS PROVIDED, TRANSMITTED, DISTRIBUTED, AND MADE AVAILABLE TO YOU "AS IS" AND "AS AVAILABLE" WITHOUT EXPRESS OR IMPLIED WARRANTIES OF ANY KIND, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, CANOE MAKES NO WARRANTY: (A) THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR FREE; (B) THAT DEFECTS OR ERRORS IN THE SERVICE WILL BE CORRECTED; (C) THAT THE SERVICE WILL BE FREE FROM VIRUSES OR OTHER HARMFUL COMPONENTS; (D) AS TO THE QUALITY, ACCURACY, COMPLETENESS AND VALIDITY OF ANY INFORMATION OR MATERIALS IN CONNECTION WITH THE SERVICE; (E) THAT YOUR USE OF THE SERVICE WILL MEET YOUR REQUIREMENTS; OR (F) THAT TRANSMISSIONS OR DATA WILL BE SECURE. </p>
++<h3>LIMITATION OF LIABILITY</h3>
++<p>YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT YOU ASSUME TOTAL RESPONSIBILITY AND RISK FOR YOUR USE OF THE WEBSITE AND THE RESULTS AND PERFORMANCE THEREOF. </p>
++<p> IN NO EVENT AND UNDER NO CAUSE OF ACTION, INCLUDING, WITHOUT LIMITATION, NEGLIGENCE, SHALL CANOE AND ITS AFFILIATED ENTITIES OR ANY OF THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES OR AUTHORIZED AGENTS (COLLECTIVELY, THE "CANOE PARTIES") BE LIABLE FOR ANY DAMAGES, CLAIMS OR LOSSES INCURRED (INCLUDING, WITHOUT LIMITATION, COMPENSATORY, INCIDENTAL, INDIRECT, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES), HOWEVER CAUSED, AND UNDER ANY THEORY OF LIABILITY ARISING IN CONNECTION WITH: (A) THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (B) YOUR USE OR INABILITY TO USE THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (C) ANY THIRD PARTY WEBSITE OR SERVICE USED IN CONNECTION WITH OR AVAILABLE THROUGH THE WEBSITE; (D) UNAUTHORIZED ACCESS TO OR ALTERATION OR LOSS OF YOUR TRANSMISSIONS OR DATA OR OTHER INFORMATION THAT IS SENT OR RECEIVED IN CONNECTION WITH THE WEBSITE; OR (E) ERRORS, SYSTEM DOWN TIME, NETWORK OR SYSTEM OUTAGES, FILE CORRUPTION OR SERVICE INTERRUPTIONS, EVEN IF A CANOE PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, CLAIMS OR LOSSES. </p>
++<p>NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, CANOE'S CUMULATIVE LIABILITY TO YOU ARISING FROM ANY CAUSE WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF ANY, BY YOU FOR ACCESS TO THE WEBSITE. IF NO AMOUNTS WERE PAID, YOUR SOLE REMEDY UNDER THESE TERMS OF USE SHALL BE TO DISCONTINUE ANY USE OF THE WEBSITE. </p>
++<h3>EXCLUSIONS </h3>
++<p>SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER, EXCLUSION OR LIMITATION OF CERTAIN WARRANTIES, LIABILITIES AND DAMAGES, SO SOME OF THE ABOVE DISCLAIMERS, EXCLUSIONS AND LIMITATIONS MAY NOT APPLY TO YOU. IN SUCH JURISDICTIONS, CANOE'S LIABILITY WILL BE LIMITED TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW. </p>
++<h3>INDEMNIFICATION </h3>
++<p>By using the Website, you agree to indemnify, defend and hold harmless the Canoe Parties from and against any actual or alleged claims, demands, causes of action, judgments, damages, losses, liabilities, and all costs and expenses of defense (including, without limitation, reasonable attorneys' and other legal fees and costs) arising out of or relating to: (1) your violation of these Terms of Use or any law, rule or regulation; (2) your use of the Website, including, without limitation, any Content available on the Website and any activity of yours on the Website; (3) loss of any data or account information; and (4) any Submissions. You will cooperate as fully and reasonably as required by Canoe in the defense of any claim. Canoe reserves the right to assume the exclusive defense and control of any matter subject to indemnification by you, and you will not in any event settle any claim without the prior written consent of Canoe. </p>
++<h3>FORCE MAJEURE </h3>
++<p>Canoe will not be responsible for any delay, failure in performance or interruption of service, resulting directly or indirectly from acts of God, acts of civil or military authorities, civil disturbances, wars, strikes or other labor disputes, fires, transportation contingencies, interruptions in telecommunications or Internet services or network provider services, failure of equipment and/or software, other catastrophes or any other occurrences which are beyond Canoe's reasonable control.</p>
++<h3>INTERNATIONAL USERS</h3>
++<p>Canoe makes no representation that the Website and Content are appropriate or available for use at locations outside of the United States, and access to them from territories where they may be deemed illegal is prohibited. If you access this Website from a location outside of the United States, you are responsible for compliance with all local laws. </p>
++<h3>MISCELLANEOUS</h3>
++<p>These Terms of Use shall be exclusively governed by and construed in accordance with the laws of the State of Colorado within the United States of America without giving effect to any principles of conflicts of law. Any dispute arising from these Terms of Use or the Website shall be resolved in the state or federal courts residing in Denver, Colorado and you irrevocably agree to the jurisdiction of such courts. The Terms of Use constitute the entire agreement between Canoe and you with respect to your use of the Website. Any cause of action you may have with respect to the Website must be commenced within one (1) year after the claim or cause of action arises, notwithstanding any statutes of limitation to the contrary. If any provision of these Terms of Use shall be unlawful, void or for any reason unenforceable, then that provision shall be deemed severable from these Terms of Use and shall not affect the validity and enforceability of any remaining provisions. Our failure to enforce any provision of this Agreement shall not be deemed a waiver of such provision nor of the right to enforce such provision. Nothing in these Terms of Use will be construed as creating a joint venture, partnership, employment or agency relationship between you and Canoe, and you do not have any authority to create any obligation or make any representation on Canoe's behalf. You may not assign these Terms of Use by operation of law or otherwise, without Canoe's written consent. </p>
++<h3>CONTACT US</h3>
++<p>If you have any comments or questions regarding these Terms of Use, or wish to report any violation, contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
+diff --git a/config/terms_of_use.scrum3.html b/config/terms_of_use.scrum3.html
+new file mode 100644
+index 0000000..45523e3
+--- /dev/null
++++ b/config/terms_of_use.scrum3.html
+@@ -0,0 +1,53 @@
++<strong>PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THIS WEBSITE. </strong>
++<p> The following terms of use ("Terms of Use") apply to the Canoe website at www.canoeventures.com, including all subdomains, (the "Website") owned and operated by Canoe Ventures LLC ("Canoe", "we", "us" or "our"). By accessing, browsing and/or using the Website, you acknowledge that you have read, understood and agree to be bound by these Terms of Use in their entirety and any modifications to these Terms of Use. In addition, you agree to comply with all applicable laws, rules and regulations governing your use of the Website. If you do not agree to these Terms of Use, you are not permitted to access, browse or use the Website. </p>
++<p> Please return to the Website and review these Terms of Use from time to time, as they may be amended without notice to you. Any changes to these Terms of Use will be effective immediately upon the posting of the revised Terms of Use at the Website. The most recent modification date will be noted by the "Last Updated" date above. Your continued use of the Website after any such date constitutes your acceptance of these Terms of Use as modified. Please note that your use of certain content and features of the Website may be subject to additional terms. By using such content and features, you also agree to be bound by such additional terms. </p>
++<p> You are solely responsible for providing any hardware, systems and software programs you use to access the Website, and any associated fees, charges and expenses. </p>
++<h3>PRIVACY </h3>
++<p>Similar to other commercial websites, the Website may utilize standard technology called "cookies" and web server logs to collect information about how the Website is used. Cookies are a feature of web browser software that allows web servers to recognize the computer used to access a website. Cookies are small pieces of data that are stored by a user's web browser on the user's hard drive. Information gathered through cookies and web server logs may include the IP address of the visiting computer, the date and time of visits, the pages viewed, time spent at the Website, and the websites visited just before and just after the Website. This information is collected on an aggregate basis and is not associated with any personally identifiable information you may provide to us We reserve the right to use aggregated information for any lawful purpose. </p>
++<p> You can, of course, disable cookies on your computer by indicating this in the preferences or options menus in your web browser. However, it is possible that some parts of the Website will not operate correctly or as intended if you disable cookies. You should consult your browser provider if you have any questions regarding disabling cookies. </p>
++<p> If you choose to submit a question or provide your comments to us, we will collect your email address to respond directly to you. Please confirm your email address is correct and current to ensure you can receive a response. Although we do not share your email address with third parties for their marketing purposes, we reserve the right to use your email address to respond to your request, for other internal purposes. </p>
++<h3>PROPRIETARY RIGHTS</h3>
++<p>This Website is owned and operated by Canoe and, in the case of certain features and content, its affiliates, licensors and/or third party service providers, and unless otherwise indicated, all the content appearing at the Website (collectively, "Content") is the property of Canoe and its affiliates, licensors and/or third party service providers and protected, without limitation, by U.S. and foreign copyright, trademark and other intellectual property laws. All trademarks, service marks, trade names, logos and other indicia of origin (collectively, "Marks") appearing on the Website are the property of Canoe and its affiliates, licensors, and/or third party service providers. You may not make any use of any Content or Marks without the prior written consent of Canoe and any applicable third party. </p>
++<h3>LICENSE GRANT </h3>
++<p>Canoe grants to you a limited, non-exclusive, non-transferable license to access and use the Website in accordance with these Terms of Use. Canoe may terminate this license at any time for any reason. No Content from the Website may be copied, reproduced, republished, uploaded, posted, transmitted, or distributed in any way without Canoe's permission, except that you may download one copy of Content on any single computer for your personal non-commercial use, only, provided you keep intact all copyright and other proprietary notices. Modification of the Content or use of the Content for any other purpose may be a violation of copyright, trademark, trade secret rights and others' proprietary rights belonging to Canoe, its licensors and/or third party service providers. For purposes of these Terms of Use, the use of any such Content on any other website or networked computer environment is prohibited. You may not use any device, software or routine to interfere or attempt to interfere with the proper working of the Website and you may not take any action that imposes an unreasonable or disproportionately large load on Canoe's network or infrastructure. Canoe reserves all rights not explicitly granted in these Terms of Use. </p>
++<h3>YOUR CONDUCT </h3>
++<p> In using or accessing the Website you agree: </p>
++<ul>
++    <li>not to disrupt or interfere with the security of, or otherwise abuse, the Website, or any services, system resources, accounts, servers or networks connected to or accessible through the Website or affiliated or linked websites; </li>
++    <li>not to disrupt or interfere with any other user's enjoyment of the Website; </li>
++    <li>not to upload, post or otherwise transmit through or on the Website any viruses or other harmful, disruptive or destructive files; </li>
++    <li>not to use, frame or utilize framing techniques to enclose any Canoe Marks or other proprietary information (including the images and information available through the Website, the content of any text or the layout/design of any page) without Canoe's express written consent; </li>
++    <li>not to use meta tags or any other "hidden text" utilizing a Canoe Mark, trademark or product name without Canoe's express written consent;</li>
++    <li>not to attempt to obtain unauthorized access to the Website or portions of the Website that are restricted from general access; and </li>
++    <li>not to submit to us any material that is knowingly false and/or defamatory, inaccurate, abusive, vulgar, hateful, harassing, obscene, profane, sexually oriented, threatening, invasive of a person's privacy or otherwise in violation of any law. </li>
++</ul>
++<p> You agree to immediately notify us if you suspect fraudulent or abusive activity, or any activity in violation of these Terms of Use. If you so notify us, or we otherwise suspect fraudulent or abusive activity, you agree to cooperate with us in any fraud investigation and to use any fraud prevention or other measures we prescribe. </p>
++<h3>SUBMISSIONS </h3>
++<p>By transmitting email, messages, suggestions, ideas or concepts (each, a "Submission"), whether unsolicited or solicited, to us through the Website or in any other media, you are granting Canoe a royalty-free, fully paid, nonexclusive, perpetual, unrestricted, worldwide license to publish, transmit, perform, display, create derivative works from and otherwise use the Submission(s) for any purpose, including, but not limited to, advertising and promotional purposes, in any media, now or hereafter known. No credit or compensation is due to you for such use. Canoe also has the right, but not the obligation, to use your name (and image or likeness, if provided in connection with a Submission), city and state in connection with broadcast, print, online or other use or publication of your Submission(s). All Submissions become the unrestricted licensed property of Canoe and may be edited for use. Note that any such Submission may be subject to additional terms, conditions and restrictions provided to you at the time of such Submission. </p>
++<p>You warrant and represent that you own or otherwise control any and all rights in and to the Submission(s) and that public posting and use of the Submissions by Canoe will not infringe or violate the rights of any third party in any manner. </p>
++<h3>ELECTRONIC COMMUNICATIONS </h3>
++<p>When you submit a question or comment through the Website or send emails to us, you are communicating with us electronically. You consent to receive communications from us electronically. We will communicate with you by return email or by posting notices on the Website. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing. </p>
++<h3>LINKS AND THIRD PARTIES </h3>
++<p>Links on the Website to third party websites (including, without limitation, sponsors, advertisers and issuers) that you encounter via the Website are solely provided as a convenience to you. If you use these links, you will leave the Website. You agree that Canoe will not be responsible or liable for any dispute, loss or damage of any sort incurred as a result of any dealings between you and any such third parties. In addition, you acknowledge that Canoe does not endorse, verify, or make any representations regarding any third party advertisements, products or services. It is your sole responsibility to research and verify the legitimacy of any entity and content linked to the Website.</p>
++<h3>CHANGES TO WEBSITE</h3>
++<p>Canoe may add, change, discontinue, remove or suspend any portion of the Website at any time, without notice. </p>
++<h3>TERMINATION</h3>
++<p>Canoe reserves the right, without notice and at its sole discretion, to suspend or terminate these Terms of Use and/or your ability to access or use the Website, and to block or prevent future access to and use of the Website for any reason, including your breach of these Terms of Use or other conduct by you that Canoe considers inappropriate. Canoe reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Website (or any part thereof) with or without notice. Except as otherwise expressly stated in the Terms of Use, you agree that Canoe shall not be liable to you or to any third party for any modification, suspension or discontinuation of the Website (or any portion thereof).</p>
++<h3>DISCLAIMER </h3>
++<p>THE WEBSITE, IN WHOLE AND IN PART (INCLUDING, WITHOUT LIMITATION, CONTENT), IS PROVIDED, TRANSMITTED, DISTRIBUTED, AND MADE AVAILABLE TO YOU "AS IS" AND "AS AVAILABLE" WITHOUT EXPRESS OR IMPLIED WARRANTIES OF ANY KIND, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, CANOE MAKES NO WARRANTY: (A) THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR FREE; (B) THAT DEFECTS OR ERRORS IN THE SERVICE WILL BE CORRECTED; (C) THAT THE SERVICE WILL BE FREE FROM VIRUSES OR OTHER HARMFUL COMPONENTS; (D) AS TO THE QUALITY, ACCURACY, COMPLETENESS AND VALIDITY OF ANY INFORMATION OR MATERIALS IN CONNECTION WITH THE SERVICE; (E) THAT YOUR USE OF THE SERVICE WILL MEET YOUR REQUIREMENTS; OR (F) THAT TRANSMISSIONS OR DATA WILL BE SECURE. </p>
++<h3>LIMITATION OF LIABILITY</h3>
++<p>YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT YOU ASSUME TOTAL RESPONSIBILITY AND RISK FOR YOUR USE OF THE WEBSITE AND THE RESULTS AND PERFORMANCE THEREOF. </p>
++<p> IN NO EVENT AND UNDER NO CAUSE OF ACTION, INCLUDING, WITHOUT LIMITATION, NEGLIGENCE, SHALL CANOE AND ITS AFFILIATED ENTITIES OR ANY OF THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES OR AUTHORIZED AGENTS (COLLECTIVELY, THE "CANOE PARTIES") BE LIABLE FOR ANY DAMAGES, CLAIMS OR LOSSES INCURRED (INCLUDING, WITHOUT LIMITATION, COMPENSATORY, INCIDENTAL, INDIRECT, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES), HOWEVER CAUSED, AND UNDER ANY THEORY OF LIABILITY ARISING IN CONNECTION WITH: (A) THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (B) YOUR USE OR INABILITY TO USE THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (C) ANY THIRD PARTY WEBSITE OR SERVICE USED IN CONNECTION WITH OR AVAILABLE THROUGH THE WEBSITE; (D) UNAUTHORIZED ACCESS TO OR ALTERATION OR LOSS OF YOUR TRANSMISSIONS OR DATA OR OTHER INFORMATION THAT IS SENT OR RECEIVED IN CONNECTION WITH THE WEBSITE; OR (E) ERRORS, SYSTEM DOWN TIME, NETWORK OR SYSTEM OUTAGES, FILE CORRUPTION OR SERVICE INTERRUPTIONS, EVEN IF A CANOE PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, CLAIMS OR LOSSES. </p>
++<p>NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, CANOE'S CUMULATIVE LIABILITY TO YOU ARISING FROM ANY CAUSE WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF ANY, BY YOU FOR ACCESS TO THE WEBSITE. IF NO AMOUNTS WERE PAID, YOUR SOLE REMEDY UNDER THESE TERMS OF USE SHALL BE TO DISCONTINUE ANY USE OF THE WEBSITE. </p>
++<h3>EXCLUSIONS </h3>
++<p>SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER, EXCLUSION OR LIMITATION OF CERTAIN WARRANTIES, LIABILITIES AND DAMAGES, SO SOME OF THE ABOVE DISCLAIMERS, EXCLUSIONS AND LIMITATIONS MAY NOT APPLY TO YOU. IN SUCH JURISDICTIONS, CANOE'S LIABILITY WILL BE LIMITED TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW. </p>
++<h3>INDEMNIFICATION </h3>
++<p>By using the Website, you agree to indemnify, defend and hold harmless the Canoe Parties from and against any actual or alleged claims, demands, causes of action, judgments, damages, losses, liabilities, and all costs and expenses of defense (including, without limitation, reasonable attorneys' and other legal fees and costs) arising out of or relating to: (1) your violation of these Terms of Use or any law, rule or regulation; (2) your use of the Website, including, without limitation, any Content available on the Website and any activity of yours on the Website; (3) loss of any data or account information; and (4) any Submissions. You will cooperate as fully and reasonably as required by Canoe in the defense of any claim. Canoe reserves the right to assume the exclusive defense and control of any matter subject to indemnification by you, and you will not in any event settle any claim without the prior written consent of Canoe. </p>
++<h3>FORCE MAJEURE </h3>
++<p>Canoe will not be responsible for any delay, failure in performance or interruption of service, resulting directly or indirectly from acts of God, acts of civil or military authorities, civil disturbances, wars, strikes or other labor disputes, fires, transportation contingencies, interruptions in telecommunications or Internet services or network provider services, failure of equipment and/or software, other catastrophes or any other occurrences which are beyond Canoe's reasonable control.</p>
++<h3>INTERNATIONAL USERS</h3>
++<p>Canoe makes no representation that the Website and Content are appropriate or available for use at locations outside of the United States, and access to them from territories where they may be deemed illegal is prohibited. If you access this Website from a location outside of the United States, you are responsible for compliance with all local laws. </p>
++<h3>MISCELLANEOUS</h3>
++<p>These Terms of Use shall be exclusively governed by and construed in accordance with the laws of the State of Colorado within the United States of America without giving effect to any principles of conflicts of law. Any dispute arising from these Terms of Use or the Website shall be resolved in the state or federal courts residing in Denver, Colorado and you irrevocably agree to the jurisdiction of such courts. The Terms of Use constitute the entire agreement between Canoe and you with respect to your use of the Website. Any cause of action you may have with respect to the Website must be commenced within one (1) year after the claim or cause of action arises, notwithstanding any statutes of limitation to the contrary. If any provision of these Terms of Use shall be unlawful, void or for any reason unenforceable, then that provision shall be deemed severable from these Terms of Use and shall not affect the validity and enforceability of any remaining provisions. Our failure to enforce any provision of this Agreement shall not be deemed a waiver of such provision nor of the right to enforce such provision. Nothing in these Terms of Use will be construed as creating a joint venture, partnership, employment or agency relationship between you and Canoe, and you do not have any authority to create any obligation or make any representation on Canoe's behalf. You may not assign these Terms of Use by operation of law or otherwise, without Canoe's written consent. </p>
++<h3>CONTACT US</h3>
++<p>If you have any comments or questions regarding these Terms of Use, or wish to report any violation, contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
+diff --git a/config/terms_of_use.scrum4.html b/config/terms_of_use.scrum4.html
+new file mode 100644
+index 0000000..45523e3
+--- /dev/null
++++ b/config/terms_of_use.scrum4.html
+@@ -0,0 +1,53 @@
++<strong>PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THIS WEBSITE. </strong>
++<p> The following terms of use ("Terms of Use") apply to the Canoe website at www.canoeventures.com, including all subdomains, (the "Website") owned and operated by Canoe Ventures LLC ("Canoe", "we", "us" or "our"). By accessing, browsing and/or using the Website, you acknowledge that you have read, understood and agree to be bound by these Terms of Use in their entirety and any modifications to these Terms of Use. In addition, you agree to comply with all applicable laws, rules and regulations governing your use of the Website. If you do not agree to these Terms of Use, you are not permitted to access, browse or use the Website. </p>
++<p> Please return to the Website and review these Terms of Use from time to time, as they may be amended without notice to you. Any changes to these Terms of Use will be effective immediately upon the posting of the revised Terms of Use at the Website. The most recent modification date will be noted by the "Last Updated" date above. Your continued use of the Website after any such date constitutes your acceptance of these Terms of Use as modified. Please note that your use of certain content and features of the Website may be subject to additional terms. By using such content and features, you also agree to be bound by such additional terms. </p>
++<p> You are solely responsible for providing any hardware, systems and software programs you use to access the Website, and any associated fees, charges and expenses. </p>
++<h3>PRIVACY </h3>
++<p>Similar to other commercial websites, the Website may utilize standard technology called "cookies" and web server logs to collect information about how the Website is used. Cookies are a feature of web browser software that allows web servers to recognize the computer used to access a website. Cookies are small pieces of data that are stored by a user's web browser on the user's hard drive. Information gathered through cookies and web server logs may include the IP address of the visiting computer, the date and time of visits, the pages viewed, time spent at the Website, and the websites visited just before and just after the Website. This information is collected on an aggregate basis and is not associated with any personally identifiable information you may provide to us We reserve the right to use aggregated information for any lawful purpose. </p>
++<p> You can, of course, disable cookies on your computer by indicating this in the preferences or options menus in your web browser. However, it is possible that some parts of the Website will not operate correctly or as intended if you disable cookies. You should consult your browser provider if you have any questions regarding disabling cookies. </p>
++<p> If you choose to submit a question or provide your comments to us, we will collect your email address to respond directly to you. Please confirm your email address is correct and current to ensure you can receive a response. Although we do not share your email address with third parties for their marketing purposes, we reserve the right to use your email address to respond to your request, for other internal purposes. </p>
++<h3>PROPRIETARY RIGHTS</h3>
++<p>This Website is owned and operated by Canoe and, in the case of certain features and content, its affiliates, licensors and/or third party service providers, and unless otherwise indicated, all the content appearing at the Website (collectively, "Content") is the property of Canoe and its affiliates, licensors and/or third party service providers and protected, without limitation, by U.S. and foreign copyright, trademark and other intellectual property laws. All trademarks, service marks, trade names, logos and other indicia of origin (collectively, "Marks") appearing on the Website are the property of Canoe and its affiliates, licensors, and/or third party service providers. You may not make any use of any Content or Marks without the prior written consent of Canoe and any applicable third party. </p>
++<h3>LICENSE GRANT </h3>
++<p>Canoe grants to you a limited, non-exclusive, non-transferable license to access and use the Website in accordance with these Terms of Use. Canoe may terminate this license at any time for any reason. No Content from the Website may be copied, reproduced, republished, uploaded, posted, transmitted, or distributed in any way without Canoe's permission, except that you may download one copy of Content on any single computer for your personal non-commercial use, only, provided you keep intact all copyright and other proprietary notices. Modification of the Content or use of the Content for any other purpose may be a violation of copyright, trademark, trade secret rights and others' proprietary rights belonging to Canoe, its licensors and/or third party service providers. For purposes of these Terms of Use, the use of any such Content on any other website or networked computer environment is prohibited. You may not use any device, software or routine to interfere or attempt to interfere with the proper working of the Website and you may not take any action that imposes an unreasonable or disproportionately large load on Canoe's network or infrastructure. Canoe reserves all rights not explicitly granted in these Terms of Use. </p>
++<h3>YOUR CONDUCT </h3>
++<p> In using or accessing the Website you agree: </p>
++<ul>
++    <li>not to disrupt or interfere with the security of, or otherwise abuse, the Website, or any services, system resources, accounts, servers or networks connected to or accessible through the Website or affiliated or linked websites; </li>
++    <li>not to disrupt or interfere with any other user's enjoyment of the Website; </li>
++    <li>not to upload, post or otherwise transmit through or on the Website any viruses or other harmful, disruptive or destructive files; </li>
++    <li>not to use, frame or utilize framing techniques to enclose any Canoe Marks or other proprietary information (including the images and information available through the Website, the content of any text or the layout/design of any page) without Canoe's express written consent; </li>
++    <li>not to use meta tags or any other "hidden text" utilizing a Canoe Mark, trademark or product name without Canoe's express written consent;</li>
++    <li>not to attempt to obtain unauthorized access to the Website or portions of the Website that are restricted from general access; and </li>
++    <li>not to submit to us any material that is knowingly false and/or defamatory, inaccurate, abusive, vulgar, hateful, harassing, obscene, profane, sexually oriented, threatening, invasive of a person's privacy or otherwise in violation of any law. </li>
++</ul>
++<p> You agree to immediately notify us if you suspect fraudulent or abusive activity, or any activity in violation of these Terms of Use. If you so notify us, or we otherwise suspect fraudulent or abusive activity, you agree to cooperate with us in any fraud investigation and to use any fraud prevention or other measures we prescribe. </p>
++<h3>SUBMISSIONS </h3>
++<p>By transmitting email, messages, suggestions, ideas or concepts (each, a "Submission"), whether unsolicited or solicited, to us through the Website or in any other media, you are granting Canoe a royalty-free, fully paid, nonexclusive, perpetual, unrestricted, worldwide license to publish, transmit, perform, display, create derivative works from and otherwise use the Submission(s) for any purpose, including, but not limited to, advertising and promotional purposes, in any media, now or hereafter known. No credit or compensation is due to you for such use. Canoe also has the right, but not the obligation, to use your name (and image or likeness, if provided in connection with a Submission), city and state in connection with broadcast, print, online or other use or publication of your Submission(s). All Submissions become the unrestricted licensed property of Canoe and may be edited for use. Note that any such Submission may be subject to additional terms, conditions and restrictions provided to you at the time of such Submission. </p>
++<p>You warrant and represent that you own or otherwise control any and all rights in and to the Submission(s) and that public posting and use of the Submissions by Canoe will not infringe or violate the rights of any third party in any manner. </p>
++<h3>ELECTRONIC COMMUNICATIONS </h3>
++<p>When you submit a question or comment through the Website or send emails to us, you are communicating with us electronically. You consent to receive communications from us electronically. We will communicate with you by return email or by posting notices on the Website. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing. </p>
++<h3>LINKS AND THIRD PARTIES </h3>
++<p>Links on the Website to third party websites (including, without limitation, sponsors, advertisers and issuers) that you encounter via the Website are solely provided as a convenience to you. If you use these links, you will leave the Website. You agree that Canoe will not be responsible or liable for any dispute, loss or damage of any sort incurred as a result of any dealings between you and any such third parties. In addition, you acknowledge that Canoe does not endorse, verify, or make any representations regarding any third party advertisements, products or services. It is your sole responsibility to research and verify the legitimacy of any entity and content linked to the Website.</p>
++<h3>CHANGES TO WEBSITE</h3>
++<p>Canoe may add, change, discontinue, remove or suspend any portion of the Website at any time, without notice. </p>
++<h3>TERMINATION</h3>
++<p>Canoe reserves the right, without notice and at its sole discretion, to suspend or terminate these Terms of Use and/or your ability to access or use the Website, and to block or prevent future access to and use of the Website for any reason, including your breach of these Terms of Use or other conduct by you that Canoe considers inappropriate. Canoe reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Website (or any part thereof) with or without notice. Except as otherwise expressly stated in the Terms of Use, you agree that Canoe shall not be liable to you or to any third party for any modification, suspension or discontinuation of the Website (or any portion thereof).</p>
++<h3>DISCLAIMER </h3>
++<p>THE WEBSITE, IN WHOLE AND IN PART (INCLUDING, WITHOUT LIMITATION, CONTENT), IS PROVIDED, TRANSMITTED, DISTRIBUTED, AND MADE AVAILABLE TO YOU "AS IS" AND "AS AVAILABLE" WITHOUT EXPRESS OR IMPLIED WARRANTIES OF ANY KIND, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, CANOE MAKES NO WARRANTY: (A) THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR FREE; (B) THAT DEFECTS OR ERRORS IN THE SERVICE WILL BE CORRECTED; (C) THAT THE SERVICE WILL BE FREE FROM VIRUSES OR OTHER HARMFUL COMPONENTS; (D) AS TO THE QUALITY, ACCURACY, COMPLETENESS AND VALIDITY OF ANY INFORMATION OR MATERIALS IN CONNECTION WITH THE SERVICE; (E) THAT YOUR USE OF THE SERVICE WILL MEET YOUR REQUIREMENTS; OR (F) THAT TRANSMISSIONS OR DATA WILL BE SECURE. </p>
++<h3>LIMITATION OF LIABILITY</h3>
++<p>YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT YOU ASSUME TOTAL RESPONSIBILITY AND RISK FOR YOUR USE OF THE WEBSITE AND THE RESULTS AND PERFORMANCE THEREOF. </p>
++<p> IN NO EVENT AND UNDER NO CAUSE OF ACTION, INCLUDING, WITHOUT LIMITATION, NEGLIGENCE, SHALL CANOE AND ITS AFFILIATED ENTITIES OR ANY OF THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES OR AUTHORIZED AGENTS (COLLECTIVELY, THE "CANOE PARTIES") BE LIABLE FOR ANY DAMAGES, CLAIMS OR LOSSES INCURRED (INCLUDING, WITHOUT LIMITATION, COMPENSATORY, INCIDENTAL, INDIRECT, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES), HOWEVER CAUSED, AND UNDER ANY THEORY OF LIABILITY ARISING IN CONNECTION WITH: (A) THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (B) YOUR USE OR INABILITY TO USE THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (C) ANY THIRD PARTY WEBSITE OR SERVICE USED IN CONNECTION WITH OR AVAILABLE THROUGH THE WEBSITE; (D) UNAUTHORIZED ACCESS TO OR ALTERATION OR LOSS OF YOUR TRANSMISSIONS OR DATA OR OTHER INFORMATION THAT IS SENT OR RECEIVED IN CONNECTION WITH THE WEBSITE; OR (E) ERRORS, SYSTEM DOWN TIME, NETWORK OR SYSTEM OUTAGES, FILE CORRUPTION OR SERVICE INTERRUPTIONS, EVEN IF A CANOE PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, CLAIMS OR LOSSES. </p>
++<p>NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, CANOE'S CUMULATIVE LIABILITY TO YOU ARISING FROM ANY CAUSE WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF ANY, BY YOU FOR ACCESS TO THE WEBSITE. IF NO AMOUNTS WERE PAID, YOUR SOLE REMEDY UNDER THESE TERMS OF USE SHALL BE TO DISCONTINUE ANY USE OF THE WEBSITE. </p>
++<h3>EXCLUSIONS </h3>
++<p>SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER, EXCLUSION OR LIMITATION OF CERTAIN WARRANTIES, LIABILITIES AND DAMAGES, SO SOME OF THE ABOVE DISCLAIMERS, EXCLUSIONS AND LIMITATIONS MAY NOT APPLY TO YOU. IN SUCH JURISDICTIONS, CANOE'S LIABILITY WILL BE LIMITED TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW. </p>
++<h3>INDEMNIFICATION </h3>
++<p>By using the Website, you agree to indemnify, defend and hold harmless the Canoe Parties from and against any actual or alleged claims, demands, causes of action, judgments, damages, losses, liabilities, and all costs and expenses of defense (including, without limitation, reasonable attorneys' and other legal fees and costs) arising out of or relating to: (1) your violation of these Terms of Use or any law, rule or regulation; (2) your use of the Website, including, without limitation, any Content available on the Website and any activity of yours on the Website; (3) loss of any data or account information; and (4) any Submissions. You will cooperate as fully and reasonably as required by Canoe in the defense of any claim. Canoe reserves the right to assume the exclusive defense and control of any matter subject to indemnification by you, and you will not in any event settle any claim without the prior written consent of Canoe. </p>
++<h3>FORCE MAJEURE </h3>
++<p>Canoe will not be responsible for any delay, failure in performance or interruption of service, resulting directly or indirectly from acts of God, acts of civil or military authorities, civil disturbances, wars, strikes or other labor disputes, fires, transportation contingencies, interruptions in telecommunications or Internet services or network provider services, failure of equipment and/or software, other catastrophes or any other occurrences which are beyond Canoe's reasonable control.</p>
++<h3>INTERNATIONAL USERS</h3>
++<p>Canoe makes no representation that the Website and Content are appropriate or available for use at locations outside of the United States, and access to them from territories where they may be deemed illegal is prohibited. If you access this Website from a location outside of the United States, you are responsible for compliance with all local laws. </p>
++<h3>MISCELLANEOUS</h3>
++<p>These Terms of Use shall be exclusively governed by and construed in accordance with the laws of the State of Colorado within the United States of America without giving effect to any principles of conflicts of law. Any dispute arising from these Terms of Use or the Website shall be resolved in the state or federal courts residing in Denver, Colorado and you irrevocably agree to the jurisdiction of such courts. The Terms of Use constitute the entire agreement between Canoe and you with respect to your use of the Website. Any cause of action you may have with respect to the Website must be commenced within one (1) year after the claim or cause of action arises, notwithstanding any statutes of limitation to the contrary. If any provision of these Terms of Use shall be unlawful, void or for any reason unenforceable, then that provision shall be deemed severable from these Terms of Use and shall not affect the validity and enforceability of any remaining provisions. Our failure to enforce any provision of this Agreement shall not be deemed a waiver of such provision nor of the right to enforce such provision. Nothing in these Terms of Use will be construed as creating a joint venture, partnership, employment or agency relationship between you and Canoe, and you do not have any authority to create any obligation or make any representation on Canoe's behalf. You may not assign these Terms of Use by operation of law or otherwise, without Canoe's written consent. </p>
++<h3>CONTACT US</h3>
++<p>If you have any comments or questions regarding these Terms of Use, or wish to report any violation, contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>
+diff --git a/config/terms_of_use.scrum8.html b/config/terms_of_use.scrum8.html
+new file mode 100644
+index 0000000..45523e3
+--- /dev/null
++++ b/config/terms_of_use.scrum8.html
+@@ -0,0 +1,53 @@
++<strong>PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THIS WEBSITE. </strong>
++<p> The following terms of use ("Terms of Use") apply to the Canoe website at www.canoeventures.com, including all subdomains, (the "Website") owned and operated by Canoe Ventures LLC ("Canoe", "we", "us" or "our"). By accessing, browsing and/or using the Website, you acknowledge that you have read, understood and agree to be bound by these Terms of Use in their entirety and any modifications to these Terms of Use. In addition, you agree to comply with all applicable laws, rules and regulations governing your use of the Website. If you do not agree to these Terms of Use, you are not permitted to access, browse or use the Website. </p>
++<p> Please return to the Website and review these Terms of Use from time to time, as they may be amended without notice to you. Any changes to these Terms of Use will be effective immediately upon the posting of the revised Terms of Use at the Website. The most recent modification date will be noted by the "Last Updated" date above. Your continued use of the Website after any such date constitutes your acceptance of these Terms of Use as modified. Please note that your use of certain content and features of the Website may be subject to additional terms. By using such content and features, you also agree to be bound by such additional terms. </p>
++<p> You are solely responsible for providing any hardware, systems and software programs you use to access the Website, and any associated fees, charges and expenses. </p>
++<h3>PRIVACY </h3>
++<p>Similar to other commercial websites, the Website may utilize standard technology called "cookies" and web server logs to collect information about how the Website is used. Cookies are a feature of web browser software that allows web servers to recognize the computer used to access a website. Cookies are small pieces of data that are stored by a user's web browser on the user's hard drive. Information gathered through cookies and web server logs may include the IP address of the visiting computer, the date and time of visits, the pages viewed, time spent at the Website, and the websites visited just before and just after the Website. This information is collected on an aggregate basis and is not associated with any personally identifiable information you may provide to us We reserve the right to use aggregated information for any lawful purpose. </p>
++<p> You can, of course, disable cookies on your computer by indicating this in the preferences or options menus in your web browser. However, it is possible that some parts of the Website will not operate correctly or as intended if you disable cookies. You should consult your browser provider if you have any questions regarding disabling cookies. </p>
++<p> If you choose to submit a question or provide your comments to us, we will collect your email address to respond directly to you. Please confirm your email address is correct and current to ensure you can receive a response. Although we do not share your email address with third parties for their marketing purposes, we reserve the right to use your email address to respond to your request, for other internal purposes. </p>
++<h3>PROPRIETARY RIGHTS</h3>
++<p>This Website is owned and operated by Canoe and, in the case of certain features and content, its affiliates, licensors and/or third party service providers, and unless otherwise indicated, all the content appearing at the Website (collectively, "Content") is the property of Canoe and its affiliates, licensors and/or third party service providers and protected, without limitation, by U.S. and foreign copyright, trademark and other intellectual property laws. All trademarks, service marks, trade names, logos and other indicia of origin (collectively, "Marks") appearing on the Website are the property of Canoe and its affiliates, licensors, and/or third party service providers. You may not make any use of any Content or Marks without the prior written consent of Canoe and any applicable third party. </p>
++<h3>LICENSE GRANT </h3>
++<p>Canoe grants to you a limited, non-exclusive, non-transferable license to access and use the Website in accordance with these Terms of Use. Canoe may terminate this license at any time for any reason. No Content from the Website may be copied, reproduced, republished, uploaded, posted, transmitted, or distributed in any way without Canoe's permission, except that you may download one copy of Content on any single computer for your personal non-commercial use, only, provided you keep intact all copyright and other proprietary notices. Modification of the Content or use of the Content for any other purpose may be a violation of copyright, trademark, trade secret rights and others' proprietary rights belonging to Canoe, its licensors and/or third party service providers. For purposes of these Terms of Use, the use of any such Content on any other website or networked computer environment is prohibited. You may not use any device, software or routine to interfere or attempt to interfere with the proper working of the Website and you may not take any action that imposes an unreasonable or disproportionately large load on Canoe's network or infrastructure. Canoe reserves all rights not explicitly granted in these Terms of Use. </p>
++<h3>YOUR CONDUCT </h3>
++<p> In using or accessing the Website you agree: </p>
++<ul>
++    <li>not to disrupt or interfere with the security of, or otherwise abuse, the Website, or any services, system resources, accounts, servers or networks connected to or accessible through the Website or affiliated or linked websites; </li>
++    <li>not to disrupt or interfere with any other user's enjoyment of the Website; </li>
++    <li>not to upload, post or otherwise transmit through or on the Website any viruses or other harmful, disruptive or destructive files; </li>
++    <li>not to use, frame or utilize framing techniques to enclose any Canoe Marks or other proprietary information (including the images and information available through the Website, the content of any text or the layout/design of any page) without Canoe's express written consent; </li>
++    <li>not to use meta tags or any other "hidden text" utilizing a Canoe Mark, trademark or product name without Canoe's express written consent;</li>
++    <li>not to attempt to obtain unauthorized access to the Website or portions of the Website that are restricted from general access; and </li>
++    <li>not to submit to us any material that is knowingly false and/or defamatory, inaccurate, abusive, vulgar, hateful, harassing, obscene, profane, sexually oriented, threatening, invasive of a person's privacy or otherwise in violation of any law. </li>
++</ul>
++<p> You agree to immediately notify us if you suspect fraudulent or abusive activity, or any activity in violation of these Terms of Use. If you so notify us, or we otherwise suspect fraudulent or abusive activity, you agree to cooperate with us in any fraud investigation and to use any fraud prevention or other measures we prescribe. </p>
++<h3>SUBMISSIONS </h3>
++<p>By transmitting email, messages, suggestions, ideas or concepts (each, a "Submission"), whether unsolicited or solicited, to us through the Website or in any other media, you are granting Canoe a royalty-free, fully paid, nonexclusive, perpetual, unrestricted, worldwide license to publish, transmit, perform, display, create derivative works from and otherwise use the Submission(s) for any purpose, including, but not limited to, advertising and promotional purposes, in any media, now or hereafter known. No credit or compensation is due to you for such use. Canoe also has the right, but not the obligation, to use your name (and image or likeness, if provided in connection with a Submission), city and state in connection with broadcast, print, online or other use or publication of your Submission(s). All Submissions become the unrestricted licensed property of Canoe and may be edited for use. Note that any such Submission may be subject to additional terms, conditions and restrictions provided to you at the time of such Submission. </p>
++<p>You warrant and represent that you own or otherwise control any and all rights in and to the Submission(s) and that public posting and use of the Submissions by Canoe will not infringe or violate the rights of any third party in any manner. </p>
++<h3>ELECTRONIC COMMUNICATIONS </h3>
++<p>When you submit a question or comment through the Website or send emails to us, you are communicating with us electronically. You consent to receive communications from us electronically. We will communicate with you by return email or by posting notices on the Website. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing. </p>
++<h3>LINKS AND THIRD PARTIES </h3>
++<p>Links on the Website to third party websites (including, without limitation, sponsors, advertisers and issuers) that you encounter via the Website are solely provided as a convenience to you. If you use these links, you will leave the Website. You agree that Canoe will not be responsible or liable for any dispute, loss or damage of any sort incurred as a result of any dealings between you and any such third parties. In addition, you acknowledge that Canoe does not endorse, verify, or make any representations regarding any third party advertisements, products or services. It is your sole responsibility to research and verify the legitimacy of any entity and content linked to the Website.</p>
++<h3>CHANGES TO WEBSITE</h3>
++<p>Canoe may add, change, discontinue, remove or suspend any portion of the Website at any time, without notice. </p>
++<h3>TERMINATION</h3>
++<p>Canoe reserves the right, without notice and at its sole discretion, to suspend or terminate these Terms of Use and/or your ability to access or use the Website, and to block or prevent future access to and use of the Website for any reason, including your breach of these Terms of Use or other conduct by you that Canoe considers inappropriate. Canoe reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Website (or any part thereof) with or without notice. Except as otherwise expressly stated in the Terms of Use, you agree that Canoe shall not be liable to you or to any third party for any modification, suspension or discontinuation of the Website (or any portion thereof).</p>
++<h3>DISCLAIMER </h3>
++<p>THE WEBSITE, IN WHOLE AND IN PART (INCLUDING, WITHOUT LIMITATION, CONTENT), IS PROVIDED, TRANSMITTED, DISTRIBUTED, AND MADE AVAILABLE TO YOU "AS IS" AND "AS AVAILABLE" WITHOUT EXPRESS OR IMPLIED WARRANTIES OF ANY KIND, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, CANOE MAKES NO WARRANTY: (A) THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR FREE; (B) THAT DEFECTS OR ERRORS IN THE SERVICE WILL BE CORRECTED; (C) THAT THE SERVICE WILL BE FREE FROM VIRUSES OR OTHER HARMFUL COMPONENTS; (D) AS TO THE QUALITY, ACCURACY, COMPLETENESS AND VALIDITY OF ANY INFORMATION OR MATERIALS IN CONNECTION WITH THE SERVICE; (E) THAT YOUR USE OF THE SERVICE WILL MEET YOUR REQUIREMENTS; OR (F) THAT TRANSMISSIONS OR DATA WILL BE SECURE. </p>
++<h3>LIMITATION OF LIABILITY</h3>
++<p>YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT YOU ASSUME TOTAL RESPONSIBILITY AND RISK FOR YOUR USE OF THE WEBSITE AND THE RESULTS AND PERFORMANCE THEREOF. </p>
++<p> IN NO EVENT AND UNDER NO CAUSE OF ACTION, INCLUDING, WITHOUT LIMITATION, NEGLIGENCE, SHALL CANOE AND ITS AFFILIATED ENTITIES OR ANY OF THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES OR AUTHORIZED AGENTS (COLLECTIVELY, THE "CANOE PARTIES") BE LIABLE FOR ANY DAMAGES, CLAIMS OR LOSSES INCURRED (INCLUDING, WITHOUT LIMITATION, COMPENSATORY, INCIDENTAL, INDIRECT, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES), HOWEVER CAUSED, AND UNDER ANY THEORY OF LIABILITY ARISING IN CONNECTION WITH: (A) THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (B) YOUR USE OR INABILITY TO USE THE WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY CONTENT; (C) ANY THIRD PARTY WEBSITE OR SERVICE USED IN CONNECTION WITH OR AVAILABLE THROUGH THE WEBSITE; (D) UNAUTHORIZED ACCESS TO OR ALTERATION OR LOSS OF YOUR TRANSMISSIONS OR DATA OR OTHER INFORMATION THAT IS SENT OR RECEIVED IN CONNECTION WITH THE WEBSITE; OR (E) ERRORS, SYSTEM DOWN TIME, NETWORK OR SYSTEM OUTAGES, FILE CORRUPTION OR SERVICE INTERRUPTIONS, EVEN IF A CANOE PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, CLAIMS OR LOSSES. </p>
++<p>NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, CANOE'S CUMULATIVE LIABILITY TO YOU ARISING FROM ANY CAUSE WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF ANY, BY YOU FOR ACCESS TO THE WEBSITE. IF NO AMOUNTS WERE PAID, YOUR SOLE REMEDY UNDER THESE TERMS OF USE SHALL BE TO DISCONTINUE ANY USE OF THE WEBSITE. </p>
++<h3>EXCLUSIONS </h3>
++<p>SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER, EXCLUSION OR LIMITATION OF CERTAIN WARRANTIES, LIABILITIES AND DAMAGES, SO SOME OF THE ABOVE DISCLAIMERS, EXCLUSIONS AND LIMITATIONS MAY NOT APPLY TO YOU. IN SUCH JURISDICTIONS, CANOE'S LIABILITY WILL BE LIMITED TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW. </p>
++<h3>INDEMNIFICATION </h3>
++<p>By using the Website, you agree to indemnify, defend and hold harmless the Canoe Parties from and against any actual or alleged claims, demands, causes of action, judgments, damages, losses, liabilities, and all costs and expenses of defense (including, without limitation, reasonable attorneys' and other legal fees and costs) arising out of or relating to: (1) your violation of these Terms of Use or any law, rule or regulation; (2) your use of the Website, including, without limitation, any Content available on the Website and any activity of yours on the Website; (3) loss of any data or account information; and (4) any Submissions. You will cooperate as fully and reasonably as required by Canoe in the defense of any claim. Canoe reserves the right to assume the exclusive defense and control of any matter subject to indemnification by you, and you will not in any event settle any claim without the prior written consent of Canoe. </p>
++<h3>FORCE MAJEURE </h3>
++<p>Canoe will not be responsible for any delay, failure in performance or interruption of service, resulting directly or indirectly from acts of God, acts of civil or military authorities, civil disturbances, wars, strikes or other labor disputes, fires, transportation contingencies, interruptions in telecommunications or Internet services or network provider services, failure of equipment and/or software, other catastrophes or any other occurrences which are beyond Canoe's reasonable control.</p>
++<h3>INTERNATIONAL USERS</h3>
++<p>Canoe makes no representation that the Website and Content are appropriate or available for use at locations outside of the United States, and access to them from territories where they may be deemed illegal is prohibited. If you access this Website from a location outside of the United States, you are responsible for compliance with all local laws. </p>
++<h3>MISCELLANEOUS</h3>
++<p>These Terms of Use shall be exclusively governed by and construed in accordance with the laws of the State of Colorado within the United States of America without giving effect to any principles of conflicts of law. Any dispute arising from these Terms of Use or the Website shall be resolved in the state or federal courts residing in Denver, Colorado and you irrevocably agree to the jurisdiction of such courts. The Terms of Use constitute the entire agreement between Canoe and you with respect to your use of the Website. Any cause of action you may have with respect to the Website must be commenced within one (1) year after the claim or cause of action arises, notwithstanding any statutes of limitation to the contrary. If any provision of these Terms of Use shall be unlawful, void or for any reason unenforceable, then that provision shall be deemed severable from these Terms of Use and shall not affect the validity and enforceability of any remaining provisions. Our failure to enforce any provision of this Agreement shall not be deemed a waiver of such provision nor of the right to enforce such provision. Nothing in these Terms of Use will be construed as creating a joint venture, partnership, employment or agency relationship between you and Canoe, and you do not have any authority to create any obligation or make any representation on Canoe's behalf. You may not assign these Terms of Use by operation of law or otherwise, without Canoe's written consent. </p>
++<h3>CONTACT US</h3>
++<p>If you have any comments or questions regarding these Terms of Use, or wish to report any violation, contact <a href="mailto:orders@canoeventures.com">orders@canoeventures.com</a></p>

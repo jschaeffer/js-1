@@ -1,0 +1,71 @@
+<b><u>Component Release Info for Sprint Copacabana:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-etl-feeder</b><br><u>Version</u><b>&nbspr_4.0.0_269</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>None provided</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/023-yliu-convert-to-use-session-start-date.xml
+src/main/resources/liquibase/cisys/genUser.RH65.sql
+src/main/resources/liquibase/dai-ods-4.0.5-changelog.xml
+src/main/resources/liquibase/dai-ods-4.0.5/018-yliu-ebas-rollup.xml
+src/main/resources/liquibase/dai-ods-4.0.5/022-yliu-change-ent-desc.xml
+src/main/resources/liquibase/dai-ods-4.0.5/023-yliu-add-view-flag.xml
+src/main/resources/liquibase/dai-ods-4.0.5/023-yliu-convert-to-use-session-start-date.xml
+src/main/resources/liquibase/dai-ods-4.0.5/024-yliu-add-product-category.xml
+src/main/resources/liquibase/dai-ods-4.0.5/025-yliu-fact-tables-refactor-redo.xml
+src/main/resources/liquibase/dai-ods-4.0.5/026-yliu-IIR-rollup-redo.xml
+src/main/resources/liquibase/dai-ods-4.0.5/027-yliu-ebas-rollup-redo.xml
+src/main/resources/liquibase/dai-ods-4.0.5/028-yliu-IIR-add-promo-imp.xml
+src/main/resources/liquibase/dai-ods-4.0.5/029-yliu-disable-parallel-more.xml
+src/main/resources/liquibase/dai-ods-4.0.5/030-yliu-fact-null-values.xml
+src/main/resources/liquibase/dai-ods-4.0.5/031-yliu-campaign-item-in-scope.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0.1_6</b></u><br>
+<pre>
+* <font color=blue>fcfd52d</font>-<font color=green>(2015-02-17)</font><font color=black><b>VODDAI-6994. fixed logic to add empty campaign_item in the final aggregate outer join table.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_269)</font>
+*   <font color=blue>7d0c50a</font>-<font color=green>(2015-02-12)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_268)</font>
+|\  
+| * <font color=blue>e045e24</font>-<font color=green>(2015-02-12)</font><font color=black><b>Adding changes to test IIR</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+* | <font color=blue>46027f8</font>-<font color=green>(2015-02-12)</font><font color=black><b>VODDAI-6994. added outer join for null of device and household.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+*   <font color=blue>33e6531</font>-<font color=green>(2015-02-11)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_267)</font>
+|\  
+| * <font color=blue>21a075a</font>-<font color=green>(2015-02-09)</font><font color=black><b>Made changes to the SQL for updating the data. This is due to the IIR and running aggreation with the new star schema</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+| * <font color=blue>e07f5d5</font>-<font color=green>(2015-02-09)</font><font color=black><b>Adding test case items from the 4.0.0.1 branch to 4.0.0 branch</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+* | <font color=blue>c32c94e</font>-<font color=green>(2015-02-11)</font><font color=black><b>VODDAI-6993. performance improvements for production.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>69f14d5</font>-<font color=green>(2015-02-09)</font><font color=black><b>VODDAI-6993. Initial cut.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_266)</font>
+*   <font color=blue>786ec42</font>-<font color=green>(2015-01-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>f96f764</font>-<font color=green>(2015-01-13)</font><font color=black><b>updating features</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+* | <font color=blue>81258f8</font>-<font color=green>(2015-01-05)</font><font color=black><b>changes to make the aggregation go faster.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>1d28d29</font>-<font color=green>(2014-12-09)</font><font color=black><b>Adding the excel spreadsheet for the pre-cloud solution</b></font><font color=grey>- (Noel Garza)</font><font color=red> (tag: v_4.0.0_265)</font>
+* <font color=blue>dda2811</font>-<font color=green>(2014-11-21)</font><font color=black><b>VODDAI-6636. have to align the IIR rollup tables so innner join is possible by MS.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_264)</font>
+* <font color=blue>e3f8f30</font>-<font color=green>(2014-11-20)</font><font color=black><b>VODDAI-6636. fixed AD_ASSET_STATUS_VW so it does not include campaign_item.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_263)</font>
+* <font color=blue>d6928d2</font>-<font color=green>(2014-11-19)</font><font color=black><b>VODDAI-6636. added view_flag =1 in calc. Plus production changes to parallel(2).</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_262)</font>
+* <font color=blue>21fddc8</font>-<font color=green>(2014-11-19)</font><font color=black><b>VODDAI-6636. increased buffer size to hold the new promo string, 20 was not enough.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_261)</font>
+* <font color=blue>2ee076c</font>-<font color=green>(2014-11-18)</font><font color=black><b>VODDAI-6636. Use TV promo existing category as promo.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_260)</font>
+* <font color=blue>0e67430</font>-<font color=green>(2014-11-12)</font><font color=black><b>VODDAI-6636. add promo metric to IIR.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_259)</font>
+* <font color=blue>e602099</font>-<font color=green>(2014-11-12)</font><font color=black><b>VODDAI-6636. add promo count in insight_visit_agg_daily.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_258)</font>
+* <font color=blue>3ff0799</font>-<font color=green>(2014-11-10)</font><font color=black><b>ADding RH65 system DB script for J1.8 testing</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (tag: v_4.0.0_257)</font>
+* <font color=blue>804197b</font>-<font color=green>(2014-11-06)</font><font color=black><b>VODDAI-6430. updated ent_asset_desc to asset_idstring even if there is no asset id found in caas data.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_256, tag: r_4.0.0_256)</font>
+* <font color=blue>c11080a</font>-<font color=green>(2014-11-03)</font><font color=black><b>VODDAI-6430. added update metadata stored procedure.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_255)</font>
+*   <font color=blue>8dc8c90</font>-<font color=green>(2014-10-31)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>dbeb6a6</font>-<font color=green>(2014-10-31)</font><font color=black><b>adding changes for Sprint U: VODDAI-6502, VODDAI-6459, VODDAI-6492, VODDAI-6204, VODDAI-6237</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+* | <font color=blue>2d124f7</font>-<font color=green>(2014-10-31)</font><font color=black><b>VODDAI-6430. fixed aggregation to use ent asset id.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>22b23e7</font>-<font color=green>(2014-10-30)</font><font color=black><b>VODDAI-6430. refactored rollup based on ent_asset_id.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+*   <font color=blue>2a10226</font>-<font color=green>(2014-10-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>237e2ce</font>-<font color=green>(2014-10-22)</font><font color=black><b>Adding Sprint T test results</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+| *   <font color=blue>57779bb</font>-<font color=green>(2014-10-22)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+| |\  
+| * | <font color=blue>b03e434</font>-<font color=green>(2014-10-22)</font><font color=black><b>adding testing for Sprint T</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+|  /  
+* | <font color=blue>331eeff</font>-<font color=green>(2014-10-24)</font><font color=black><b>VODDAI-6459. added video def, etc in the manual output.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>e0e77e7</font>-<font color=green>(2014-10-21)</font><font color=black><b>VODDAI-6431. fixed ebas roll up to have the correct numbers.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_254)</font>
+* <font color=blue>9f15ffc</font>-<font color=green>(2014-10-15)</font><font color=black><b>VODDAI-5666. added new things back from production release.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font></pre>
+<hr>
+<p>

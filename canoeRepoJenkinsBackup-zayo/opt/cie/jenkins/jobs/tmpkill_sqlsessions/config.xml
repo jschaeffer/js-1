@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+cd /opt/build/scripts
+
+./kill_sessions_genscrum.sh
+
+#echo &quot;@kill_sessions_genscrum.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.120)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=scrum002)))&apos;
+
+echo &quot;-------------------&quot;
+
+#for i in `cat /tmp/ora_session_kill.sql | grep ALTER`; do
+#  echo $i 
+#done</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

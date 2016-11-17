@@ -1,0 +1,4 @@
+cmpar[0]=Dynamic-Ad-Insertion-engine:cv-l2lbrd-clstr2:BRD_DE01
+cmpar[1]=Dynamic-Ad-Insertion-cm:cv-l2lbrd-clstr2:BRD_CM
+cmpar[2]=Pgmr-Cpgn-Int:cv-l2lbrd-clstr1:BRD_PCI
+cmpar[3]=dai-smsi:cv-l2lbrd-clstr1:BRD_SMSI

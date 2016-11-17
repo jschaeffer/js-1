@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h3&gt;What does this job do?&lt;br&gt;&#xd;
+&lt;ul&gt;&lt;h4&gt;&lt;li&gt;This job refrences the restart list created by the L2LPreserveState for the selected system and starts the applications listed in that file.&#xd;
+&lt;li&gt;Once all processes are started, a Refresh job is kicked off to display the latest actions/states.&#xd;
+&lt;/h4&gt;&lt;/ul&gt;&lt;/h3&gt;&#xd;
+&#xd;
+&lt;h5&gt;Copyright Canoe Ventures 2014&lt;/h5&gt;&lt;font size=4 color=white&gt;L2L_pass_1!&lt;/font&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUserPassword</name>
+          <description>Enter authorized password</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Suite</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Base</string>
+              <string>FW</string>
+              <string>Google</string>
+              <string>Cox</string>
+              <string>Broadway</string>
+              <string>Rentrak</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+# Remove the comment from the following line to bypass the password entry 
+# Note this should only be done by the SCM representative for SCM installation work
+export DeployUserPassword=&quot;L2L_pass_1!&quot;
+ 
+if [ ${DeployUserPassword} = &quot;L2L_pass_1!&quot; ] ; then
+    echo &quot;&lt;h2&gt;Proceeding with deployment&lt;/h2&gt;&quot;
+else
+    echo &quot;Invalid password supplied!&quot;
+    echo &quot;Exiting!&quot;
+    exit 1
+fi
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+source /opt/build/scripts/zayos_sys_L2L.sh
+cd /opt/build/scripts
+
+#### Section to restart the VApps to enable end system app server restart
+fnGetSysList
+./startup-vapp.sh $VApp
+echo &quot;VApp shutdown -&gt; $VApp    Systems -&gt; $Syslist&quot;
+
+
+# Ping below to be used with the startup of the VM itself (uncomment when employing the above Section to restart)
+for b in $Syslist; do
+ while :;do
+        status=`ping -c 2 $b | awk &apos;/100% packet loss/ {print}&apos;`
+        if [[ &quot;$status&quot; ]] ; then
+          echo &quot;$b Not Started yet&quot;;
+          sleep 5
+        else
+         echo &quot;Started $b&quot; ;break
+        fi
+ done
+done
+#### End section
+
+
+fnGetCompList
+
+export Suite
+rm /var/www/html/lab2lab/$Suite/RestartRaw.txt
+
+touch /var/www/html/lab2lab/$Suite/ToRestart.txt
+
+SuiteRestart=`cat /var/www/html/lab2lab/SuiteRestart.txt`
+#if [[ $Suite != $SuiteRestart ]] ; then
+#  echo &quot;Warning previously ran L2LPreserveState was not ran against $Suite ! Please Run L2LPreserveState!&quot;
+#  exit
+#fi 
+
+
+export k=0
+export j=0
+source /var/www/html/lab2lab/$Suite/ToRestart.txt
+
+echo &quot;Previously running applications starting:&quot;
+for l in `cat /var/www/html/lab2lab/$Suite/ToRestart.txt` ; do
+  export COMPONENT=&quot;$(echo ${cmpar[$j]} | cut -f1 -d:)&quot;
+  echo $COMPONENT
+  j=$((j+1))
+done
+
+echo &quot; &quot;
+
+export j=0
+for i in `cat /var/www/html/lab2lab/$Suite/ToRestart.txt` ; do
+
+echo $i
+  source /var/www/html/lab2lab/$Suite/ToRestart.txt
+  export COMPONENT=&quot;$(echo ${cmpar[$j]} | cut -f1 -d:)&quot;
+  export APPSERVER_IP=&quot;$(echo ${cmpar[$j]} | cut -f2 -d:)&quot;
+  export INSTANCE=&quot;$(echo ${cmpar[$j]} | cut -f3 -d:)&quot;
+  j=$((j+1))
+
+
+#jws if [[ $COMPONENT = &quot;dai-cip&quot; ]]; then 
+#jws export jarup=`ssh tcserver@${APPSERVER_IP} &quot;ps -ef | grep dai-cip&quot;`
+#jws isempty=`echo $jarup | grep dai-cip.jar`
+#jws   if [ -z &quot;$isempty&quot; ]; then
+#jws   echo &quot;dai-cip processes inactive - Starting&quot;
+#jws   echo &quot;ssh tcserver@${APPSERVER_IP} cd dai_cip; ./launcher.sh start&quot;
+#jws   ssh tcserver@${APPSERVER_IP} &quot;cd dai_cip; ./launcher.sh start&quot;
+#jws  else
+#jws   echo &quot;Error: Jar Processes still ACTIVE. Please run L2LPreserveState and retry.
+#jws   exit
+#jws  fi
+#jws  elif [[ $COMPONENT = &quot;acp&quot; ]]; then 
+#jws export jarup=`ssh tcserver@${APPSERVER_IP} &quot;ps -ef | grep acp&quot;`
+#jws isempty=`echo $jarup | grep acp.jar`
+#jws  if [ -z &quot;$isempty&quot; ]; then
+#jws  echo &quot;acp processes inactive - Starting&quot;
+#jws  echo &quot;ssh tcserver@${APPSERVER_IP} cd acp; ./launcher.sh start&quot;
+#jws  ssh tcserver@${APPSERVER_IP} &quot;cd acp; ./launcher.sh start&quot;
+#jws  else
+#jws   echo &quot;&quot;
+#jws   echo &quot;Error: Jar Processes still ACTIVE. Please run L2LPreserveState and retry.
+#jws   exit
+#jws  fi
+#jws else
+#jws    echo &quot;Running -&gt; /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} start&quot;
+#jws    echo &quot; &quot;
+     /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} start
+#jws fi
+done
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+echo &quot;&lt;b&gt;--- Suite Resurection ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;${Suite} resurrected by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+export BUILD_TAG
+export DeployUser
+export Suite
+export DeployTarg=&quot;zayo_L2L&quot;
+
+# Set getVer to 0 to default to devint version
+#
+
+cd /opt/build/scripts
+echo &quot;&lt;b&gt;&lt;font color=green&gt;up&lt;/font&gt;&lt;/b&gt;&quot; &gt;/var/www/html/lab2lab/$Suite/sysstate.txt
+edate=`date | awk &apos;{print \$2,\$3,\$4}&apos;`
+echo &quot;Environment Lab-to-Lab $Suite restarted by $DeployUser $BUILD_NUMBER - $edate&quot; &gt;&gt;/var/www/html/sysactivity/L2L_$Suite.txt
+
+echo &quot;&lt;b&gt;URL For resurrect output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.29">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
+          </configs>
+          <projects>lab-to-labEnv-Refresh</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <block>
+            <buildStepFailureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </buildStepFailureThreshold>
+            <unstableThreshold>
+              <name>UNSTABLE</name>
+              <ordinal>1</ordinal>
+              <color>YELLOW</color>
+              <completeBuild>true</completeBuild>
+            </unstableThreshold>
+            <failureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </failureThreshold>
+          </block>
+          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
+        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

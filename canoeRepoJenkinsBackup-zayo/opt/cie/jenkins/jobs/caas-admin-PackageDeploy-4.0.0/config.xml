@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9.1">
+      <projectUrl>https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>git@github.com:CanoeVentures/caas-admin.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_4.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/caas-admin/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H 22 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export APP_VERSION=`cat ${WORKSPACE}/application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+sed -e &quot;s|$APP_VERSION|4.0.0_${BUILD_NUMBER}|&quot; -i &apos;&apos; ${WORKSPACE}/application.properties
+echo &quot;Replacing app.version in application.properties from $APP_VERSION to 4.0.0_${BUILD_NUMBER}&quot;</command>
+    </hudson.tasks.Shell>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.7">
+      <targets>clean war</targets>
+      <name>Grails 2.0.4</name>
+      <grailsWorkDir>/opt/cvbuild/.caas-admin_work4.0_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.caas-admin_project4.0_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9190</serverPort>
+      <properties>grails.env=dev
+geb.env=firefox
+grails.project.plugins.dir=/opt/cvbuild/.grails/2.0.4/projects/caas-admin-compile4.0</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+      <plainOutput>true</plainOutput>
+      <stackTrace>false</stackTrace>
+      <verbose>false</verbose>
+      <refreshDependencies>false</refreshDependencies>
+    </com.g2one.hudson.grails.GrailsBuilder>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+export ProjFile=&quot;/opt/build/scm/scripts/buildServer/properties/projects/caas-admin/project.properties&quot;
+echo &quot;ProjFile -&gt; $ProjFile&quot;
+export ProjLoc=`cat $ProjFile | awk -F&quot;=&quot; &apos;/projectRoot/ {print $2;exit;}&apos;`
+echo &quot;Replacing -&gt; $ProjLoc with $WORKSPACE&quot;
+sed -e &quot;s|${ProjLoc}|\&quot;${WORKSPACE}\&quot;|&quot; -i &apos;&apos; $ProjFile
+
+/opt/build/scripts/CreateJenkinsRelease.sh caas-admin caas-admin br_4.0.0 ${BUILD_NUMBER}
+
+#/opt/build/scripts/createRelease.sh caas-admin caas-admin br_4.0.0 ${BUILD_NUMBER}</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export VERSION=&quot;4.0.0_${BUILD_NUMBER}&quot;
+export Component=&quot;caas-admin&quot;; echo &quot;Component - $Component&quot;
+export DB_Rebuild=&quot;Yes&quot;; echo &quot;DB_Rebuild - $DB_Rebuild&quot;
+export Version=${VERSION}; echo &quot;Version - $Version&quot;
+export Clear_Logs=&quot;Yes&quot;; echo &quot;Clear_Logs - $Clear_Logs&quot;
+export DeployTarg=&quot;devint&quot;; echo &quot;DeployTarg - $DeployTarg&quot;
+export DeployUser=&quot;Jenkins&quot;; echo &quot;DeployUser = $DeployUser&quot;
+export BUILD_TAG
+
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to $DeployTarg by $DeployUser &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Component: &lt;/b&gt;$Component &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+cd /opt/build/scripts
+./Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser
+
+echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;yes &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/devint.html /opt/build/scm/scripts/buildServer/log/devint.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/devint.tmp &gt; /opt/build/scm/scripts/buildServer/log/devint.html
+rm /opt/build/scm/scripts/buildServer/log/devint.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;4.0.0_${BUILD_NUMBER}&quot; &gt; /var/www/html/devint/caas-admin.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.37"/>
+  </publishers>
+  <buildWrappers/>
+</project>

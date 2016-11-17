@@ -1,0 +1,504 @@
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_5.0.0_11</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Upgrade to JAVA 1.8, 
+
+new tables for beaconing
+
+campaign_item_media_url_trk</b></font></pre>
+
+<h4>Relocated DB GenUser scripting and DB Liquibase scripting from core/model/src/main/resources to model/src/main</h4>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/model/src/main/old_cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/model/src/main/old_cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/model/src/main/old_cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/model/src/main/old_cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/cisys/genUser.Marley.sql
+core/model/src/main/resources/liquibase/cisys/genUser.MicroDev.sql
+core/model/src/main/resources/liquibase/cisys/genUser.RH65.sql
+core/model/src/main/resources/liquibase/cisys/genUser.devint.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+core/model/src/main/resources/liquibase/cisys/postADS.Marley.sql
+core/model/src/main/resources/liquibase/core-4.0.0-changelog.xml
+core/model/src/main/resources/liquibase/core-4.0.0/001-mpm-jan2014-caas-core-rebaseline.xml
+core/model/src/main/resources/liquibase/core-4.0.0/002-dad-4905-ad_provider.xml
+core/model/src/main/resources/liquibase/core-4.0.0/003-yliu-rm-mlogs.xml
+core/model/src/main/resources/liquibase/core-4.0.0/004-dad-4837-ad_provider_video_def.xml
+core/model/src/main/resources/liquibase/core-4.0.0/005-bgriese-ad_sent_success.xml
+core/model/src/main/resources/liquibase/core-4.0.0/005-mpm-5092-drop-unique-metadata-target-constraint.xml
+core/model/src/main/resources/liquibase/core-4.0.0/006-mpm-media-asset-view-timezone-offset.xml
+core/model/src/main/resources/liquibase/core-4.0.0/007-mpm-placement-limits.xml
+core/model/src/main/resources/liquibase/core-4.0.0/008-mpm-media-asset-view-separation.xml
+core/model/src/main/resources/liquibase/core-4.0.0/009-dad-initrans.xml
+core/model/src/main/resources/liquibase/core-4.0.0/010-dad-goldenData.xml
+core/model/src/main/resources/liquibase/core-4.0.0/011-mpm-placement-limits-undo.xml
+core/model/src/main/resources/liquibase/core-4.0.0/012-dad-priority_size.xml
+core/model/src/main/resources/liquibase/core-4.0.0/013-dad-ci_frequency_cap.xml
+core/model/src/main/resources/liquibase/core-4.0.0/014-dad-metadata_target_indx.xml
+core/model/src/main/resources/liquibase/core-4.0.0/015-khl-feed_priority_size.xml
+core/model/src/main/resources/liquibase/core-4.0.0/016-dad-cima_frequency_cap.xml
+core/model/src/main/resources/liquibase/core-4.0.0/017-dad-mclps.xml
+core/model/src/main/resources/liquibase/core-4.0.0/018-dad-metaData.xml
+core/model/src/main/resources/liquibase/core-4.0.0/019-mpm-mclps-defaults.xml
+core/model/src/main/resources/liquibase/core-4.0.0/020-dad-item_cls.xml
+core/model/src/main/resources/liquibase/core-4.0.0/021-khl-acp-trigger-update.xml
+core/model/src/main/resources/liquibase/core-4.0.0/022-mpm-cm-performance-indices.xml
+core/model/src/main/resources/liquibase/core-4.0.0/023-mpm-campaign-item-label-field-length.xml
+core/model/src/main/resources/liquibase/core-4.0.0/024-dad-item_feed.xml
+core/model/src/main/resources/liquibase/core-4.0.0/025-csd-feed-republish-detail.xml
+core/model/src/main/resources/liquibase/core-4.0.0/026-dad-fc_trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/027-mpm-placement-limits-redo.xml
+core/model/src/main/resources/liquibase/core-4.0.0/028-dad-placementLimit.xml
+core/model/src/main/resources/liquibase/core-4.0.0/029-dad-order_owner_Feed.xml
+core/model/src/main/resources/liquibase/core-4.0.0/030-mpm-asset_availability.xml
+core/model/src/main/resources/liquibase/core-4.0.0/031-mpm-metadata-operator-ignore-case.xml
+core/model/src/main/resources/liquibase/core-4.0.0/032-mpm-campaign-sort-trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/033-dad-metadata.xml
+core/model/src/main/resources/liquibase/core-4.0.0/034-dad-media_trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/035-khl-bye_bye_cip_update_interval.xml
+core/model/src/main/resources/liquibase/core-4.0.0/036-mpm-campaignitem-insertions-views-count.xml
+core/model/src/main/resources/liquibase/core-4.0.0/037-mpm-undo-insertions-views-count.xml
+core/model/src/main/resources/liquibase/core-4.0.0/038-mpm-create-data-dictionary-table.xml
+core/model/src/main/resources/liquibase/core-4.0.0/039-mpm-create-flashback-archives.xml
+core/model/src/main/resources/liquibase/core-4.0.0/040-mpm-migrate-categories.xml
+core/model/src/main/resources/liquibase/core-4.0.0/041-mpm-ci-feed-enabled.xml
+core/model/src/main/resources/liquibase/core-4.0.0/042-dad-campid.xml
+core/model/src/main/resources/liquibase/core-4.0.0/043-mpm-metadata_group-order.xml
+core/model/src/main/resources/liquibase/core-4.0.0/044-mpm-cima-order.xml
+core/model/src/main/resources/liquibase/core-4.0.0/045-mpm-product-category-alias.xml
+core/model/src/main/resources/liquibase/core-4.0.0/046-dad-linearbroadcast.xml
+core/model/src/main/resources/liquibase/core-4.0.0/047-jmh-line-item-notes.xml
+core/model/src/main/resources/liquibase/core-4.0.0/048-mpm-maa-trigger-hint.xml
+core/model/src/main/resources/liquibase/core-4.0.0/049-jmh-drop-typeCode.xml
+core/model/src/main/resources/liquibase/master-changelog.xml
+core/model/src/main/resources/liquibase/ojdbc6.jar
+model/src/main/liquibase/cisys/dropUser.sql
+model/src/main/liquibase/cisys/genUser.sql
+model/src/main/liquibase/cisys/postADS.Marley.sql
+model/src/main/liquibase/core-4.0.0-changelog.xml
+model/src/main/liquibase/core-4.0.0/001-mpm-jan2014-caas-core-rebaseline.xml
+model/src/main/liquibase/core-4.0.0/002-dad-4905-ad_provider.xml
+model/src/main/liquibase/core-4.0.0/003-yliu-rm-mlogs.xml
+model/src/main/liquibase/core-4.0.0/004-dad-4837-ad_provider_video_def.xml
+model/src/main/liquibase/core-4.0.0/005-bgriese-ad_sent_success.xml
+model/src/main/liquibase/core-4.0.0/005-mpm-5092-drop-unique-metadata-target-constraint.xml
+model/src/main/liquibase/core-4.0.0/006-mpm-media-asset-view-timezone-offset.xml
+model/src/main/liquibase/core-4.0.0/007-mpm-placement-limits.xml
+model/src/main/liquibase/core-4.0.0/008-mpm-media-asset-view-separation.xml
+model/src/main/liquibase/core-4.0.0/009-dad-initrans.xml
+model/src/main/liquibase/core-4.0.0/010-dad-goldenData.xml
+model/src/main/liquibase/core-4.0.0/011-mpm-placement-limits-undo.xml
+model/src/main/liquibase/core-4.0.0/012-dad-priority_size.xml
+model/src/main/liquibase/core-4.0.0/013-dad-ci_frequency_cap.xml
+model/src/main/liquibase/core-4.0.0/014-dad-metadata_target_indx.xml
+model/src/main/liquibase/core-4.0.0/015-khl-feed_priority_size.xml
+model/src/main/liquibase/core-4.0.0/016-dad-cima_frequency_cap.xml
+model/src/main/liquibase/core-4.0.0/017-dad-mclps.xml
+model/src/main/liquibase/core-4.0.0/018-dad-metaData.xml
+model/src/main/liquibase/core-4.0.0/019-mpm-mclps-defaults.xml
+model/src/main/liquibase/core-4.0.0/020-dad-item_cls.xml
+model/src/main/liquibase/core-4.0.0/021-khl-acp-trigger-update.xml
+model/src/main/liquibase/core-4.0.0/022-mpm-cm-performance-indices.xml
+model/src/main/liquibase/core-4.0.0/023-mpm-campaign-item-label-field-length.xml
+model/src/main/liquibase/core-4.0.0/024-dad-item_feed.xml
+model/src/main/liquibase/core-4.0.0/025-csd-feed-republish-detail.xml
+model/src/main/liquibase/core-4.0.0/026-dad-fc_trigger.xml
+model/src/main/liquibase/core-4.0.0/027-mpm-placement-limits-redo.xml
+model/src/main/liquibase/core-4.0.0/028-dad-placementLimit.xml
+model/src/main/liquibase/core-4.0.0/029-dad-order_owner_Feed.xml
+model/src/main/liquibase/core-4.0.0/030-mpm-asset_availability.xml
+model/src/main/liquibase/core-4.0.0/031-mpm-metadata-operator-ignore-case.xml
+model/src/main/liquibase/core-4.0.0/032-mpm-campaign-sort-trigger.xml
+model/src/main/liquibase/core-4.0.0/033-dad-metadata.xml
+model/src/main/liquibase/core-4.0.0/034-dad-media_trigger.xml
+model/src/main/liquibase/core-4.0.0/035-khl-bye_bye_cip_update_interval.xml
+model/src/main/liquibase/core-4.0.0/036-mpm-campaignitem-insertions-views-count.xml
+model/src/main/liquibase/core-4.0.0/037-mpm-undo-insertions-views-count.xml
+model/src/main/liquibase/core-4.0.0/038-mpm-create-data-dictionary-table.xml
+model/src/main/liquibase/core-4.0.0/039-mpm-create-flashback-archives.xml
+model/src/main/liquibase/core-4.0.0/040-mpm-migrate-categories.xml
+model/src/main/liquibase/core-4.0.0/041-mpm-ci-feed-enabled.xml
+model/src/main/liquibase/core-4.0.0/042-dad-campid.xml
+model/src/main/liquibase/core-4.0.0/043-mpm-metadata_group-order.xml
+model/src/main/liquibase/core-4.0.0/044-mpm-cima-order.xml
+model/src/main/liquibase/core-4.0.0/045-mpm-product-category-alias.xml
+model/src/main/liquibase/core-4.0.0/046-dad-linearbroadcast.xml
+model/src/main/liquibase/core-4.0.0/047-jmh-line-item-notes.xml
+model/src/main/liquibase/core-4.0.0/048-mpm-maa-trigger-hint.xml
+model/src/main/liquibase/core-4.0.0/049-jmh-drop-typeCode.xml
+model/src/main/liquibase/core-4.0.0/050-mpm-beaconing.xml
+model/src/main/liquibase/master-changelog.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.5.0_1</b></u><br>
+<pre>
+* <font color=blue>4dbd152</font>-<font color=green>(2015-04-09)</font><font color=black><b>Moved mikes code change to the correct directory</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_11, tag: v_5.0.0_10, tag: r_5.0.0_11)</font>
+* <font color=blue>0a50dad</font>-<font color=green>(2015-03-20)</font><font color=black><b>Tables and classes to store beaconing information</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_9)</font>
+* <font color=blue>ed6556b</font>-<font color=green>(2015-03-24)</font><font color=black><b>Moved liquibase stuff to conform with how Jeff wants it.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_8, tag: v_5.0.0_7, tag: v_4.5.0_5, tag: v_4.5.0_4)</font>
+* <font color=blue>fed1449</font>-<font color=green>(2015-03-20)</font><font color=black><b>Fixed maven so it can run the liquibase once again.  genUser scripts are now generated.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_6, tag: v_5.0.0_5)</font>
+* <font color=blue>a4c536b</font>-<font color=green>(2015-03-16)</font><font color=black><b>Java 8 first pass.</b></font><font color=grey>- (kennethleider)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_5.9.0_3</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+Java 1.8
+
+New beaconing feature
+Configuration changes- Setenv. In scrum, made the following changes to JVM_OPTS:
+- Removed -Xss192k
+- Changed -Xms256m to -Xms512m
+- Removed -XX:MaxPermSize=256</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum1.groovy.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum2.groovy.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum3.groovy.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum4.groovy.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/Dynamic-Ad-Insertion-cm-contexthelp.scrum8.groovy.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/privacy_policy.scrum1.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/privacy_policy.scrum2.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/privacy_policy.scrum3.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/privacy_policy.scrum4.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/privacy_policy.scrum8.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/setenv.scrum1.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/setenv.scrum2.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/setenv.scrum3.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/setenv.scrum4.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/setenv.scrum8.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/terms_of_use.scrum1.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/terms_of_use.scrum2.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/terms_of_use.scrum3.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/terms_of_use.scrum4.html.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.9.0_3/diff.txt>Dynamic-Ad-Insertion-cm_v_5.9.0_3/config/terms_of_use.scrum8.html.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.7.0_10</b></u><br>
+<pre>
+* <font color=blue>f6f1576</font>-<font color=green>(2015-04-13)</font><font color=black><b>Fixed bug where a new lima would result in a JavaScript error after saving line item.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.9.0_3)</font>
+* <font color=blue>7fa9811</font>-<font color=green>(2015-04-13)</font><font color=black><b>Fixed namespacing default.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>4207384</font>-<font color=green>(2015-03-16)</font><font color=black><b>Fetch and store beaconing info</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.9.0_2)</font>
+* <font color=blue>7fedd05</font>-<font color=green>(2015-04-09)</font><font color=black><b>Updated version to 5.9.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>6e7c77b</font>-<font color=green>(2015-03-24)</font><font color=black><b>Added scrum 1/2/3/8 Context</b></font><font color=grey>- (jwwood87)</font><font color=red> (HEAD, tag: v_5.9.0_1, tag: v_5.8.0_8, origin/br_5.8.0, br_5.8.0)</font>
+* <font color=blue>78eb60d</font>-<font color=green>(2015-03-24)</font><font color=black><b>Deleted Scrum 1/2/3/8 Context</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>279f68a</font>-<font color=green>(2015-03-24)</font><font color=black><b>Added scrum 1/2/3/8 Terms</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>243722c</font>-<font color=green>(2015-03-24)</font><font color=black><b>Deleted Scrum 1/2/3/8 Terms</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>62019a7</font>-<font color=green>(2015-03-24)</font><font color=black><b>Added scrum 1/2/3/8 Privacy</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>3b8bd78</font>-<font color=green>(2015-03-24)</font><font color=black><b>Deleted Scrum1/2/3/8 Privacy</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>8253a9b</font>-<font color=green>(2015-03-24)</font><font color=black><b>Added Scrum4 Terms file</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>a750bde</font>-<font color=green>(2015-03-24)</font><font color=black><b>Delete Scrum4 Terms file</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>2990591</font>-<font color=green>(2015-03-24)</font><font color=black><b>Added scrum4 Privacy file</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>dd73bd6</font>-<font color=green>(2015-03-24)</font><font color=black><b>Delete Scrum4 Privacy file</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>4ebdfcc</font>-<font color=green>(2015-03-24)</font><font color=black><b>Added scrum4 context help file</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>04d6a56</font>-<font color=green>(2015-03-24)</font><font color=black><b>Deleted Scrum4 context help file</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>43111bb</font>-<font color=green>(2015-03-24)</font><font color=black><b>Removed and Returned Scrum4  ContextHelp file to repo</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>93941a0</font>-<font color=green>(2015-03-20)</font><font color=black><b>Setenv updates for Java 1.8.25</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>39ae578</font>-<font color=green>(2015-03-18)</font><font color=black><b>Updated application.properties</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>a6fea2a</font>-<font color=green>(2015-03-17)</font><font color=black><b>Changed Campaign Goal to Impressions</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>33206dc</font>-<font color=green>(2015-03-16)</font><font color=black><b>Changed audit for an Unlimited campaign; updated manual tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>3ee48f5</font>-<font color=green>(2015-03-16)</font><font color=black><b>Added @Ignore on broken unit tests, removed stub unit tests. Attempting to clean up and improve test coverage.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>199806c</font>-<font color=green>(2015-03-13)</font><font color=black><b>Added @Edit and @Search Annotations</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.8.0_7, tag: v_5.8.0_5, tag: v_5.8.0_4, tag: v_5.8.0_3, tag: v_5.8.0_2, tag: v_5.8.0_1, origin/br_5.7.0, origin/HEAD, br_5.7.0)</font>
+* <font color=blue>570284d</font>-<font color=green>(2015-03-13)</font><font color=black><b>Fixed Unlimited Campaign assertions</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>d460909</font>-<font color=green>(2015-03-13)</font><font color=black><b>fixed product category delete test, and removed some @joels</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>0712dbf</font>-<font color=green>(2015-03-12)</font><font color=black><b>Changed Views to Impressions; added @Create  Annotation</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>f157eac</font>-<font color=green>(2015-03-12)</font><font color=black><b>Changed grid assertion from Views to Impressions</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>7ecdfa5</font>-<font color=green>(2015-03-12)</font><font color=black><b>Updated IAW Campaign Goal/Type</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>de9d2e9</font>-<font color=green>(2015-03-12)</font><font color=black><b>Finished with User Acceptance tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-cip</b><br><u>Version</u><b>&nbspr_5.0.0_21</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+CAAS Core 5.0.0_11
+Metadata:  Fixed revision collision issue (7385)</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_8</b></u><br>
+<pre>
+* <font color=blue>7fdc870</font>-<font color=green>(2015-04-14)</font><font color=black><b>Undo that last change</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_21)</font>
+* <font color=blue>8229622</font>-<font color=green>(2015-04-14)</font><font color=black><b>Fixed dbunit test-empty.xml</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>442219b</font>-<font color=green>(2015-04-14)</font><font color=black><b>Added   slf4j-log4j12 to dependencies.  So that dependent libraries can log again.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>36cb7fe</font>-<font color=green>(2015-04-13)</font><font color=black><b>Fixed compile error</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_20)</font>
+* <font color=blue>22ac8f9</font>-<font color=green>(2015-04-13)</font><font color=black><b>Using caas-core 5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>58fec81</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7385 removed the or test for not canoe CIPs</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_19)</font>
+* <font color=blue>bf25550</font>-<font color=green>(2015-04-10)</font><font color=black><b>Switched campaign from insertions to views and adjusted the campItem scores appropriately</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9d8f640</font>-<font color=green>(2015-04-08)</font><font color=black><b>Fix for the disabled feed cip status reset issue</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_18, tag: v_5.0.0_17)</font>
+* <font color=blue>57d699b</font>-<font color=green>(2015-04-08)</font><font color=black><b>Fix for the disabled feed cip status reset issue</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>0f0bed3</font>-<font color=green>(2015-04-08)</font><font color=black><b>Update setenv and README to change the garbage collector.</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ee65783</font>-<font color=green>(2015-04-06)</font><font color=black><b>Reset cucumber to use 1.0.1</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_16)</font>
+*   <font color=blue>4488b7c</font>-<font color=green>(2015-04-06)</font><font color=black><b>Merge branch 'br_5.0.0' of github.com:CanoeVentures/dai-cip into br_5.0.0</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| * <font color=blue>8dc714e</font>-<font color=green>(2015-04-01)</font><font color=black><b>Switched the goalType values from insertions to views</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_15)</font>
+| * <font color=blue>6284cc6</font>-<font color=green>(2015-03-19)</font><font color=black><b>Adjusted orders of some values where explicit orders were defined</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.1_1, tag: v_5.0.0_14, tag: v_5.0.0_13)</font>
+* <font color=blue>585460d</font>-<font color=green>(2015-04-01)</font><font color=black><b>Switched the goalType values from insertions to views</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4e2749f</font>-<font color=green>(2015-03-19)</font><font color=black><b>Adjusted orders of some values where explicit orders were defined</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>792b0cf</font>-<font color=green>(2015-03-18)</font><font color=black><b>Added test for newish reloadable files, and removed typeCode</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>8a480fe</font>-<font color=green>(2015-03-18)</font><font color=black><b>Updated Cucumber dependency</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>0e3928b</font>-<font color=green>(2015-04-06)</font><font color=black><b>Fixes for CIP immediate flag getting reset by batch.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0.1_3)</font>
+* <font color=blue>fcee9f6</font>-<font color=green>(2015-04-01)</font><font color=black><b>Add dependency on Spring 4.0.5 in test</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0.1_2)</font>
+* <font color=blue>d85b583</font>-<font color=green>(2015-04-01)</font><font color=black><b>Added catch for SpringFramework optimistic lock exception</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4613521</font>-<font color=green>(2015-04-01)</font><font color=black><b>Update for safeSave delay plus more tries.  Changed cipProcessor to save only dirty items.</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspacp</b><br><u>Version</u><b>&nbspr_5.0.0_22</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+CAAS Core 5.0.0_11
+Metadata:  Upgrade to JAVA 1.8</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/acp_v_5.0.0_22/diff.txt>acp_v_5.0.0_22/config/log4j.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/acp_v_5.0.0_22/diff.txt>acp_v_5.0.0_22/config/log4j.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/acp_v_5.0.0_22/diff.txt>acp_v_5.0.0_22/config/log4j.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/acp_v_5.0.0_22/diff.txt>acp_v_5.0.0_22/config/setenv.scrum1.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/acp_v_5.0.0_22/diff.txt>acp_v_5.0.0_22/config/setenv.scrum2.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/acp_v_5.0.0_22/diff.txt>acp_v_5.0.0_22/config/setenv.scrum3.sh.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_51</b></u><br>
+<pre>
+* <font color=blue>881d2c9</font>-<font color=green>(2015-04-06)</font><font color=black><b>Added java bin directory to launcher.sh command</b></font><font color=grey>- (kennethleider)</font><font color=red> (HEAD, tag: v_5.0.0_22, origin/br_5.0.0, br_5.0.0)</font>
+* <font color=blue>2a19c64</font>-<font color=green>(2015-04-02)</font><font color=black><b>Fixing up integration-test</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_21)</font>
+* <font color=blue>dff5818</font>-<font color=green>(2015-03-24)</font><font color=black><b>Adding Version token</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (tag: v_5.0.0_20, tag: v_5.0.0_18, tag: v_5.0.0_17, tag: v_5.0.0_14, tag: v_5.0.0_13, tag: v_5.0.0_12, tag: v_5.0.0_${BUILD_VERSION}, tag: v_4.0.0_55)</font>
+* <font color=blue>3a48690</font>-<font color=green>(2015-03-24)</font><font color=black><b>Reworked packaging to allow log4j2 to work.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_9, tag: v_5.0.0_8, tag: v_5.0.0_11)</font>
+* <font color=blue>723b36d</font>-<font color=green>(2015-03-16)</font><font color=black><b>Moved to caas core 5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>c83ba88</font>-<font color=green>(2015-03-03)</font><font color=black><b>Updated to use Java 1.8</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_5.0.0_16</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+CAAS Core 5.0.0_11
+Metadata:  Goes with new CAAS Core</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_5.0.0_16/diff.txt>Pgmr-Cpgn-Int_v_5.0.0_16/config/setenv.scrum3.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_5.0.0_16/diff.txt>Pgmr-Cpgn-Int_v_5.0.0_16/data-store/src/main/resources/liquibase/cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_5.0.0_16/diff.txt>Pgmr-Cpgn-Int_v_5.0.0_16/data-store/src/main/resources/liquibase/cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_5.0.0_16/diff.txt>Pgmr-Cpgn-Int_v_5.0.0_16/data-store/src/main/resources/liquibase/cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Pgmr-Cpgn-Int_v_5.0.0_16/diff.txt>Pgmr-Cpgn-Int_v_5.0.0_16/data-store/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/cisys/dropUser.sql
+data-store/src/main/liquibase/cisys/genUser.sql
+data-store/src/main/liquibase/master-changelog.xml
+data-store/src/main/liquibase/pci-4.0.0/001-kleider-create-schema.xml
+data-store/src/main/resources/liquibase/cisys/genUser.Marley.sql
+data-store/src/main/resources/liquibase/cisys/genUser.RH65.sql
+data-store/src/main/resources/liquibase/cisys/genUser.devint.sql
+data-store/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+data-store/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+data-store/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+data-store/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+data-store/src/main/resources/liquibase/master-changelog.xml
+data-store/src/main/resources/liquibase/pci-4.0.0/001-kleider-create-schema.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_5</b></u><br>
+<pre>
+* <font color=blue>bb0b6fe</font>-<font color=green>(2015-04-02)</font><font color=black><b>Now uses caas core 5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_16, tag: v_5.0.0_15, tag: v_5.0.0_14, tag: v_5.0.0_13)</font>
+* <font color=blue>87c6841</font>-<font color=green>(2015-04-01)</font><font color=black><b>Excluding funked up c3p0 dependency</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_9, tag: v_5.0.0_8, tag: v_5.0.0_7, tag: v_5.0.0_12, tag: v_5.0.0_11, tag: v_5.0.0_10)</font>
+* <font color=blue>457d39b</font>-<font color=green>(2015-04-01)</font><font color=black><b>Switched goalTypes from insertions to views</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4d18246</font>-<font color=green>(2015-03-19)</font><font color=black><b>Removed campaign.typeCode tests. Switched some categoryTargeting values</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ed1b4b9</font>-<font color=green>(2015-03-18)</font><font color=black><b>Upgraded to 4.5.0 caas core</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>208b32a</font>-<font color=green>(2015-03-03)</font><font color=black><b>Add java_home to scrum3</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>e128316</font>-<font color=green>(2015-03-02)</font><font color=black><b>Removed core-ws jar conflicts</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_132</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+Metadata – New ADS to DCE functionality added for VodSystemRef; new CAMPAIGN_ITEM_GOAL_DETAIL purge job for ADS_CORE; no new properties</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0-changelog.xml
+core/model/src/main/resources/liquibase/core-4.0.0/029-cdonovan-alter-CIG-partitions.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_127</b></u><br>
+<pre>
+* <font color=blue>107ed6e</font>-<font color=green>(2015-04-14)</font><font color=black><b>Changed purge job to only require one day of data, and put in a safety check based on psn_rollup_last_run</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_132, origin/br_4.0.0_132)</font>
+* <font color=blue>8e0bae9</font>-<font color=green>(2015-04-02)</font><font color=black><b>removed clean up step for this sprint</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_131, origin/br_4.0.0_131)</font>
+* <font color=blue>a761796</font>-<font color=green>(2015-04-02)</font><font color=black><b>changed single quote</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>80f27d8</font>-<font color=green>(2015-04-02)</font><font color=black><b>Changes to add partitioning to campaign_item_goal</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_520</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+ADS Core - 4.0.0_132
+SMSi Pub DB – 5.0.0_12
+Metadata – New ADS to DCE functionality added for VodSystemRef; new CAMPAIGN_ITEM_GOAL_DETAIL purge job for ADS_CORE; no new properties
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_517</b></u><br>
+<pre>
+* <font color=blue>73228c4</font>-<font color=green>(2015-04-13)</font><font color=black><b>added code to truncate admdata to 3 characters</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_520)</font>
+*   <font color=blue>76cf0e3</font>-<font color=green>(2015-04-09)</font><font color=black><b>Merge branch 'DCE-refactor' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_519)</font>
+|\  
+| * <font color=blue>774cfb9</font>-<font color=green>(2015-04-03)</font><font color=black><b>adding missing vodsystemRef tests</b></font><font color=grey>- (T-Sam23)</font><font color=red> (origin/DCE-refactor)</font>
+| * <font color=blue>4d427d4</font>-<font color=green>(2015-04-03)</font><font color=black><b>refactor of ADS-to-DCE messages complete with VBOID</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>5032f7e</font>-<font color=green>(2015-04-03)</font><font color=black><b>changing second twc dce scenario</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>efe8330</font>-<font color=green>(2015-04-02)</font><font color=black><b>Added property to integration tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>44f4e0b</font>-<font color=green>(2015-04-02)</font><font color=black><b>first scenario for TWC and Comcast done</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>e28611b</font>-<font color=green>(2015-04-01)</font><font color=black><b>Fixes for passing vodsysref in tracking</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>d234f22</font>-<font color=green>(2015-03-24)</font><font color=black><b>Changes to pass on vodSysRef - does not handle psn yet</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>b8380f1</font>-<font color=green>(2015-03-27)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (jsamuelson024)</font><font color=red> (tag: v_4.0.0_518)</font>
+|/  
+* <font color=blue>ac9964e</font>-<font color=green>(2015-03-24)</font><font color=black><b>Set the check to be case insensitive</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_5.0.0_12</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>KassI:
+
+Upgrade to JAVA 1.8</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_5.0.0_12/diff.txt>smsi-publisher_v_5.0.0_12/config/setenv.scrum1.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_5.0.0_12/diff.txt>smsi-publisher_v_5.0.0_12/config/setenv.scrum2.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_5.0.0_12/diff.txt>smsi-publisher_v_5.0.0_12/config/setenv.scrum3.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_5.0.0_12/diff.txt>smsi-publisher_v_5.0.0_12/config/setenv.scrum4.sh.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/cisys/dropUser.sql
+data-store/src/main/liquibase/cisys/genUser.sql
+data-store/src/main/liquibase/master-changelog.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0-changelog.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/001-yliu-create-smsi-publisher-structure.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/002-yliu-clean-smsi-publisher-data-stored-proc.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/003-fix-yliu-enable-prg.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/004-yliu-add-column-to-placement.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/005-yliu-new-gc-logic.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/006-kleider-poGroupIndex-support.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/007-yliu-force-nocompress.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/008-kleider-direct_commit.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0-changelog.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/001-kleider-create-smsi-publisher-structure.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/002-kleider-publish-session-once.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/003-kleider-denormalize.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/004-kleider-managed-ip.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/005-kleider-performance.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/006-DAD-index_columns.xml
+data-store/src/main/liquibase/smsi-publisher-3.0.0-changelog.xml
+data-store/src/main/liquibase/smsi-publisher-3.0.0/001-kleider-create-smsi-publisher-structure.xml
+data-store/src/main/liquibase/smsi-publisher-3.0.0/002-kleider-device_id.xml
+data-store/src/main/resources/liquibase/master-changelog.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0-changelog.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/001-yliu-create-smsi-publisher-structure.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/002-yliu-clean-smsi-publisher-data-stored-proc.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/003-fix-yliu-enable-prg.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/004-yliu-add-column-to-placement.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/005-yliu-new-gc-logic.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/006-kleider-poGroupIndex-support.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/007-yliu-force-nocompress.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/008-kleider-direct_commit.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0-changelog.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/001-kleider-create-smsi-publisher-structure.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/002-kleider-publish-session-once.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/003-kleider-denormalize.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/004-kleider-managed-ip.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/005-kleider-performance.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/006-DAD-index_columns.xml
+data-store/src/main/resources/liquibase/smsi-publisher-3.0.0-changelog.xml
+data-store/src/main/resources/liquibase/smsi-publisher-3.0.0/001-kleider-create-smsi-publisher-structure.xml
+data-store/src/main/resources/liquibase/smsi-publisher-3.0.0/002-kleider-device_id.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_298</b></u><br>
+<pre>
+* <font color=blue>7c8f654</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7203:  Generation of xml message  more eagerly releases objects to the garbage collector.  Replaced the sender logic with a basic HTTP connection to save memory.  I think WebServiceTemplate was transforming my SOAP body string into XML, and wasting a ton of memory in the process.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_12)</font>
+* <font color=blue>fe4feba</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7203:  Generation of xml message  more eagerly releases objects to the garbage collector.  Replaced the sender logic with a basic HTTP connection to save memory.  I think WebServiceTemplate was transforming my SOAP body string into XML, and wasting a ton of memory in the process.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>9c32bc1</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7384: Log messages when a job exceeds it reservation duration</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>306b7a8</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7383: Log messages for full session queries</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>fa27980</font>-<font color=green>(2015-04-07)</font><font color=black><b>Updating stacksize for jdk1.8</b></font><font color=grey>- (lyamhassell)</font><font color=red> (tag: v_5.0.0_11)</font>
+* <font color=blue>7cc6879</font>-<font color=green>(2015-04-07)</font><font color=black><b>Updating setenv for JDK1.8</b></font><font color=grey>- (lyamhassell)</font><font color=red> (tag: v_5.0.0_10)</font>
+* <font color=blue>c88b076</font>-<font color=green>(2015-04-07)</font><font color=black><b>Fix DB password case</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_9)</font>
+* <font color=blue>85b963d</font>-<font color=green>(2015-04-07)</font><font color=black><b>Put the local and scrum db names in line.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_8)</font>
+* <font color=blue>63af7e7</font>-<font color=green>(2015-04-06)</font><font color=black><b>Put log4j 1 back</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>1b0fc28</font>-<font color=green>(2015-04-06)</font><font color=black><b>Fixed liquibase location to work with common-lib</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_7, tag: v_5.0.0_6)</font>
+* <font color=blue>cfca653</font>-<font color=green>(2015-03-24)</font><font color=black><b>Merge branch 'br_4.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_5)</font>
+* <font color=blue>74b8e04</font>-<font color=green>(2015-03-24)</font><font color=black><b>VODDAI-7208: Will never publish a negative runtime</b></font><font color=grey>- (kennethleider)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-metadata-ingestion</b><br><u>Version</u><b>&nbspr_5.0.0_12</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+CAAS Core 5.0.0_11
+Metadata:  Goes with new CAAS Core
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_6</b></u><br>
+<pre>
+* <font color=blue>4a263ae</font>-<font color=green>(2015-04-08)</font><font color=black><b>Fixed the find to use trimmed asset id</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_12)</font>
+* <font color=blue>a829242</font>-<font color=green>(2015-04-08)</font><font color=black><b>Changes for CAAS 5.0.0 logging.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_11)</font>
+* <font color=blue>6c0bf8f</font>-<font color=green>(2015-04-08)</font><font color=black><b>Added slg4j-log4j12 dependency</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>ee2f779</font>-<font color=green>(2015-04-08)</font><font color=black><b>Fixed some runtime errors</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>12dc0d7</font>-<font color=green>(2015-04-07)</font><font color=black><b>Using caas-core 5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_10)</font>
+* <font color=blue>a261ab5</font>-<font color=green>(2015-03-31)</font><font color=black><b>Reverting to CAAS 4.4 for Red Hot Comet (trim space)</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_9, tag: v_5.0.0_8, tag: v_5.0.0_7, tag: v_4.0.0_59)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspPOIS</b><br><u>Version</u><b>&nbspr_5.0.0_18</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Metadata:  Fixed Signal Asset export issue; Now using Request SessionStart</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_9</b></u><br>
+<pre>
+* <font color=blue>4696069</font>-<font color=green>(2015-04-15)</font><font color=black><b>Fix for missing sessionStart passing null test</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_18)</font>
+* <font color=blue>36a00aa</font>-<font color=green>(2015-04-15)</font><font color=black><b>Added code and message to determine why scrum 3 not doing null test on SessionDate</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>67833bc</font>-<font color=green>(2015-04-15)</font><font color=black><b>Added code to determine why scrum 3 not doing null test on SessionDate</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>0cb343c</font>-<font color=green>(2015-04-08)</font><font color=black><b>VODDAI-7260 use session start in admap selection criteria</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_17)</font>
+* <font color=blue>650d787</font>-<font color=green>(2015-04-08)</font><font color=black><b>Added export validation to asset-ingest tests; added sessionStart to Requests/Request Validation</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (tag: v_5.0.0_16)</font>
+* <font color=blue>944e8c3</font>-<font color=green>(2015-04-08)</font><font color=black><b>VODDAI-7258 Validation of POIS sessionStart</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>b527703</font>-<font color=green>(2015-04-08)</font><font color=black><b>VODDAI-7342 Missing namespace for cablelabs core</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3c70b93</font>-<font color=green>(2015-04-06)</font><font color=black><b>Cleaned up wrong warm-up code</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_15)</font>
+* <font color=blue>a6ac3f1</font>-<font color=green>(2015-04-03)</font><font color=black><b>Changes for gatling test</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_14, tag: v_4.0.0_13)</font>
+* <font color=blue>1b78810</font>-<font color=green>(2015-04-03)</font><font color=black><b>VODDAI-7283: Fixed SignalRegion debug</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>06ad928</font>-<font color=green>(2015-04-03)</font><font color=black><b>add sample QueryResponse</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>5d99177</font>-<font color=green>(2015-04-03)</font><font color=black><b>Fix for startup timeout.</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>e98f27a</font>-<font color=green>(2015-04-02)</font><font color=black><b>Added log4j2 dependencies</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_12)</font>
+* <font color=blue>7962549</font>-<font color=green>(2015-03-23)</font><font color=black><b>7171 and 7211 slight change, queryRequest and adMap validation features</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>0893291</font>-<font color=green>(2015-03-18)</font><font color=black><b>Re-org Export, Import, Hold tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>1f8d3d2</font>-<font color=green>(2015-03-16)</font><font color=black><b>Test Case cleanup</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>def8613</font>-<font color=green>(2015-03-16)</font><font color=black><b>Increased more timeout periods</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>7ff19f5</font>-<font color=green>(2015-03-16)</font><font color=black><b>Increased timeout periods</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>12e561d</font>-<font color=green>(2015-03-16)</font><font color=black><b>Update to Readme</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>579fc74</font>-<font color=green>(2015-03-13)</font><font color=black><b>New Import-Export Integration feature</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>f32c1fc</font>-<font color=green>(2015-03-13)</font><font color=black><b>Change Ad Map Group to reference AltID instead of UriID. Changed Requests to SOAP1.1</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>5b0724d</font>-<font color=green>(2015-03-12)</font><font color=black><b>Changed to use SOAP 1.1</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>17cb6b1</font>-<font color=green>(2015-03-12)</font><font color=black><b>VODDAI-7211 Remove business validation for version</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>907d791</font>-<font color=green>(2015-03-10)</font><font color=black><b>Missed a pom</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>b5a5f00</font>-<font color=green>(2015-03-10)</font><font color=black><b>VODDAI-7171: PlacmentOpportunityRegion is now optional</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>4adf1c1</font>-<font color=green>(2015-03-10)</font><font color=black><b>Udpated to common-lib 5.0.0 dependencies</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>760b4cf</font>-<font color=green>(2015-03-10)</font><font color=black><b>POGroups to PlacementOpportunityGroups in URL</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>078598c</font>-<font color=green>(2015-03-10)</font><font color=black><b>Able to import/export title with null linearBroadcastDate</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>eb04b80</font>-<font color=green>(2015-03-10)</font><font color=black><b>Fix admap unit test</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>bcf1691</font>-<font color=green>(2015-03-10)</font><font color=black><b>log export directory on export</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>70d10b2</font>-<font color=green>(2015-03-09)</font><font color=black><b>Reverted the change I made for AdMap Key to be AltURI and changed to send alt id to the save method.</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>609f8bc</font>-<font color=green>(2015-03-09)</font><font color=black><b>Fix for null pointer when adMap not found.  Also changed AdMap Key to be AltURI</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>127de65</font>-<font color=green>(2015-03-09)</font><font color=black><b>Replaced deprecated Round-Robin with Round-Robin-Pool</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>912ac11</font>-<font color=green>(2015-03-04)</font><font color=black><b>update setenv for Java 8</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>a9f6df1</font>-<font color=green>(2015-02-27)</font><font color=black><b>updating version numbers to 5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font></pre>
+<hr>
+<p>

@@ -1,0 +1,47 @@
+<b><u>Component Release Info for Sprint Orlando:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-etl-feeder</b><br><u>Version</u><b>&nbspr_4.0.0_219</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/dai-ods-4.0.2-changelog.xml
+src/main/resources/liquibase/dai-ods-4.0.2/029-yliu-multiprovider.xml
+src/main/resources/liquibase/dai-ods-4.0.2/030-yliu-update-agg-metadata.xml
+src/main/resources/liquibase/dai-ods-4.0.2/031-yliu-add-operator-service-group.xml
+src/main/resources/liquibase/dai-ods-4.0.3-changelog.xml
+src/main/resources/liquibase/dai-ods-4.0.3/001-yliu-rebase-tables.xml
+src/main/resources/liquibase/dai-ods-4.0.3/002-yliu-rebase-drop-mv.xml
+src/main/resources/liquibase/dai-ods-4.0.3/003-yliu-rebase-job-log.xml
+src/main/resources/liquibase/dai-ods-4.0.3/004-yliu-rebase-ingest-procs.xml
+src/main/resources/liquibase/dai-ods-4.0.3/005-yliu-rebase-dedup-procs.xml
+src/main/resources/liquibase/dai-ods-4.0.3/006-yliu-rebase-report-views.xml
+src/main/resources/liquibase/dai-ods-4.0.3/007-yliu-rebase-aggregation.xml
+src/main/resources/liquibase/dai-ods-4.0.3/008-yliu-rebase-mapreduce-qc.xml
+src/main/resources/liquibase/master-changelog.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_213</b></u><br>
+<pre>
+* <font color=blue>6bee40a</font>-<font color=green>(2014-07-28)</font><font color=black><b>added ad desc back to view.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_219)</font>
+* <font color=blue>fb7faaf</font>-<font color=green>(2014-07-28)</font><font color=black><b>added commit at the end.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_218)</font>
+* <font color=blue>9ab0477</font>-<font color=green>(2014-07-28)</font><font color=black><b>added multiprovider for agg daily tables.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_217)</font>
+* <font color=blue>e69c67f</font>-<font color=green>(2014-07-28)</font><font color=black><b>fixed stored proc errors.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_216)</font>
+* <font color=blue>9a74641</font>-<font color=green>(2014-07-28)</font><font color=black><b>fixed indexes.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_215)</font>
+* <font color=blue>b8d7764</font>-<font color=green>(2014-07-28)</font><font color=black><b>rebase - get all together.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>d9e9698</font>-<font color=green>(2014-07-25)</font><font color=black><b>rebase initial cut.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+*   <font color=blue>b953f99</font>-<font color=green>(2014-07-23)</font><font color=black><b>Merge branch 'multiprovider' into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_214)</font>
+|\  
+| * <font color=blue>359aa40</font>-<font color=green>(2014-07-15)</font><font color=black><b>VODDAI-5910. fixed the view.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (origin/multiprovider)</font>
+| * <font color=blue>ad82cc1</font>-<font color=green>(2014-07-01)</font><font color=black><b>VODDAI-5910. fixed empty impressions.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| * <font color=blue>7a86a1d</font>-<font color=green>(2014-06-27)</font><font color=black><b>VODDAI-5910. recompile the invoice views.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| * <font color=blue>7a05ab3</font>-<font color=green>(2014-06-27)</font><font color=black><b>VODDAI-5910. database changes for multiprovider.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| * <font color=blue>da3e002</font>-<font color=green>(2014-06-26)</font><font color=black><b>VODDAI-5910. migrate scripts to multiprovider.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| * <font color=blue>0f626c5</font>-<font color=green>(2014-06-26)</font><font color=black><b>VODDAI-5887. add multiple providers to campaign_item.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* |   <font color=blue>d144a46</font>-<font color=green>(2014-06-27)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\ \  
+| |/  
+|/|   
+| * <font color=blue>9d09f06</font>-<font color=green>(2014-06-27)</font><font color=black><b>Adding updated data to the campaign media asset table</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+* | <font color=blue>7c9fbcc</font>-<font color=green>(2014-06-26)</font><font color=black><b>VODDAI-5910. added multiprovider support.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>2553195</font>-<font color=green>(2014-06-25)</font><font color=black><b>UPdates to test cases for modications to Ad and Entertainment Summary Reports. And daily eBas</b></font><font color=grey>- (Noel Garza)</font><font color=red></font></pre>
+<hr>
+<p>

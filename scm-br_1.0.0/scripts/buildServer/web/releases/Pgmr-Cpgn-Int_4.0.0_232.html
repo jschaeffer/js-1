@@ -1,0 +1,90 @@
+<b><u>Component Release Info for Sprint Orlando:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_232</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Supports MCLPS, Multiple Providers, "ignore case" operators
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_225</b></u><br>
+<pre>
+* <font color=blue>4abd016</font>-<font color=green>(2014-07-29)</font><font color=black><b>Fixed test in multiParentBundles for 4432, if ANY parentBundle is bad, we reject entire CIP</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_232, v_4.0.0_231)</font>
+*   <font color=blue>90d2b41</font>-<font color=green>(2014-07-29)</font><font color=black><b>Added multiParent and multiChild bundle CIPs to the tracking db tests. ALSO added multiProvider test for tracking db tests.</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_230)</font>
+|\  
+| * <font color=blue>3b43fb7</font>-<font color=green>(2014-07-29)</font><font color=black><b>Fixed really stupid Exception catching Bug.  What idiot coded that?</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>370ea82</font>-<font color=green>(2014-07-29)</font><font color=black><b>Added multiParent and multiChild bundle CIPs to the tracking db tests. ALSO added multiProvider test for tracking db tests.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>6743611</font>-<font color=green>(2014-07-29)</font><font color=black><b>Updated tests in MCLPS for ignoring bad namespace. Fixed test in createAdAsset feature for db row check. Fixed phaseSetGoal feature for goalRuleSelector is REQUIRED</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>95d9383</font>-<font color=green>(2014-07-28)</font><font color=black><b>Getting that last stupid case of MCLPS working.</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_229)</font>
+* <font color=blue>2eea48f</font>-<font color=green>(2014-07-28)</font><font color=black><b>VODDAI-6091 - Revision out of order will now be in the response.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>d7fbfe8</font>-<font color=green>(2014-07-28)</font><font color=black><b>Added tests for MCLPS limits and only one EMPTY term defined. Also fixed tests post merge with multiProvider branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>c0bf8f0</font>-<font color=green>(2014-07-25)</font><font color=black><b>modify tests for multi-provider merge</b></font><font color=grey>- (morganhuber)</font><font color=red> (v_4.0.0_228)</font>
+|\  
+| * <font color=blue>f3feaa4</font>-<font color=green>(2014-07-25)</font><font color=black><b>VODDAI-6094, VODDAI-6095, VODDAI-6096: Additional validation business logic for placement limits</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>0531c37</font>-<font color=green>(2014-07-25)</font><font color=black><b>Added scenarios for PCI placementLimits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| *   <font color=blue>e5824f3</font>-<font color=green>(2014-07-24)</font><font color=black><b>Added some extra features for MCLPS scenarios</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_227)</font>
+| |\  
+| * | <font color=blue>f05ba5f</font>-<font color=green>(2014-07-24)</font><font color=black><b>Added some extra features for MCLPS scenarios</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | | <font color=blue>d31e480</font>-<font color=green>(2014-07-25)</font><font color=black><b>modify tests for multi-provider merge</b></font><font color=grey>- (morganhuber)</font><font color=red></font>
+* | | <font color=blue>4e526a6</font>-<font color=green>(2014-07-25)</font><font color=black><b>modify tests for multi-provider merge</b></font><font color=grey>- (morganhuber)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>605116d</font>-<font color=green>(2014-07-24)</font><font color=black><b>New CQG feature, Change Tracking updates</b></font><font color=grey>- (morganhuber)</font><font color=red></font>
+|/  
+* <font color=blue>4c95cd7</font>-<font color=green>(2014-07-23)</font><font color=black><b>Merge fixes</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_226)</font>
+*   <font color=blue>d5e800e</font>-<font color=green>(2014-07-23)</font><font color=black><b>Merge remote-tracking branch 'origin/multiprovider' into br_4.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\  
+| * <font color=blue>e5abae0</font>-<font color=green>(2014-07-22)</font><font color=black><b>Removed unnecessary files for homegenous ranking. Moving to daiCIP sender</b></font><font color=grey>- (Matt Major)</font><font color=red> (origin/multiprovider)</font>
+| * <font color=blue>9cf4b8f</font>-<font color=green>(2014-07-22)</font><font color=black><b>Added campOrderOwner data template and a homogenousRanking feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>cf4826c</font>-<font color=green>(2014-07-21)</font><font color=black><b>VODDAI-5985 update cip priority</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>17e3320</font>-<font color=green>(2014-07-18)</font><font color=black><b>VODDAI-5985 save bundle priority to campaign_item priority</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>d435c29</font>-<font color=green>(2014-06-26)</font><font color=black><b>Fixed terminology in a multiProvider test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>a8731e8</font>-<font color=green>(2014-06-25)</font><font color=black><b>VODDAI-5944: campaignItemFeeds is now a Set</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>d417812</font>-<font color=green>(2014-06-24)</font><font color=black><b>Added tests for provider and bucket value updates, and 1 CIP, 2 parentBundle with and without different programmers</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>7167507</font>-<font color=green>(2014-06-23)</font><font color=black><b>With comments, and a few outstanding tests in multiProvider feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>eeedc10</font>-<font color=green>(2014-06-23)</font><font color=black><b>multi-provider notes</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| * <font color=blue>644c453</font>-<font color=green>(2014-06-23)</font><font color=black><b>Using new CampaignItemFeed primary key.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>b3ccb16</font>-<font color=green>(2014-06-19)</font><font color=black><b>Added template, added comments and db table check in multiProvider feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>4fe4dbb</font>-<font color=green>(2014-06-18)</font><font color=black><b>PCI multiProvider tests 3894, 95, 3903, 04</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>1216caa</font>-<font color=green>(2014-06-17)</font><font color=black><b>Added feature and template file for multiProvider function</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>2a87f5e</font>-<font color=green>(2014-06-16)</font><font color=black><b>Added some error messages</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>8ec72b6</font>-<font color=green>(2014-06-16)</font><font color=black><b>Multi providers not supported.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>922cba2</font>-<font color=green>(2014-07-23)</font><font color=black><b>Added back the updateMCLPS feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>859ecb7</font>-<font color=green>(2014-07-23)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Pgmr-Cpgn-Int into br_4.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\  
+| * <font color=blue>ee47e6f</font>-<font color=green>(2014-07-23)</font><font color=black><b>Added tests for upper/lower level placementLimits for 0 and 10, modified campInfo test for removal of gname and rname attributes</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* |   <font color=blue>46b6664</font>-<font color=green>(2014-07-23)</font><font color=black><b>Merge remote-tracking branch 'origin/mclps' into br_4.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\ \  
+| |/  
+|/|   
+| * <font color=blue>92b81c4</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed placementLimit template from MCLPS branch</b></font><font color=grey>- (Matt Major)</font><font color=red> (origin/mclps)</font>
+| *   <font color=blue>8b31e8e</font>-<font color=green>(2014-05-15)</font><font color=black><b>Merge branch 'mclps' of github.com:CanoeVentures/Pgmr-Cpgn-Int into mclps</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| |\  
+| | * <font color=blue>92a44f6</font>-<font color=green>(2014-05-06)</font><font color=black><b>Added some validation around xpath and error msg around MCLPS term value</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>fb2804f</font>-<font color=green>(2014-05-06)</font><font color=black><b>Persist updated break and placement mins</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>b23f925</font>-<font color=green>(2014-05-06)</font><font color=black><b>Modified feature for more robust tests.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>73d9c17</font>-<font color=green>(2014-05-06)</font><font color=black><b>Added operation test for placement separation operator</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>59e4394</font>-<font color=green>(2014-05-06)</font><font color=black><b>Added test for 5521. Added tables to clear in testEmpty template</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>699f262</font>-<font color=green>(2014-05-05)</font><font color=black><b>Removed itemFreq feature. Exists only in itemFreqCap branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>0d0eec3</font>-<font color=green>(2014-05-05)</font><font color=black><b>Removed freqCap template. Exists only in itemFreqCap branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>9032faa</font>-<font color=green>(2014-05-05)</font><font color=black><b>Modified MCLPS template to new format</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>a958319</font>-<font color=green>(2014-05-05)</font><font color=black><b>Modified mclps tests for new format</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>6a2f9e8</font>-<font color=green>(2014-05-01)</font><font color=black><b>VODDAI-5519 Support for placement minimum</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f0be029</font>-<font color=green>(2014-05-06)</font><font color=black><b>Added some validation around xpath and error msg around MCLPS term value</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>22fec57</font>-<font color=green>(2014-05-06)</font><font color=black><b>Persist updated break and placement mins</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>3049391</font>-<font color=green>(2014-05-06)</font><font color=black><b>Modified feature for more robust tests.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>82dd1c9</font>-<font color=green>(2014-05-06)</font><font color=black><b>Added operation test for placement separation operator</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>dfdfe4b</font>-<font color=green>(2014-05-06)</font><font color=black><b>Added test for 5521. Added tables to clear in testEmpty template</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>2fe5f5d</font>-<font color=green>(2014-05-05)</font><font color=black><b>Removed itemFreq feature. Exists only in itemFreqCap branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>f07dc50</font>-<font color=green>(2014-05-05)</font><font color=black><b>Removed freqCap template. Exists only in itemFreqCap branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>cfaa3a6</font>-<font color=green>(2014-05-05)</font><font color=black><b>Modified MCLPS template to new format</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>0ff4ed7</font>-<font color=green>(2014-05-05)</font><font color=black><b>Modified mclps tests for new format</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>8501bf7</font>-<font color=green>(2014-05-01)</font><font color=black><b>VODDAI-5519 Support for placement minimum</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c14d5a9</font>-<font color=green>(2014-07-23)</font><font color=black><b>Beefed up changeTracking feature a bit, preparing for regression</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>6d1642a</font>-<font color=green>(2014-07-23)</font><font color=black><b>Merging Morgan/Matt changes to updateNotice template. Changed assetPEID reference to AssetId in template and updateNotice db test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>e6ac065</font>-<font color=green>(2014-07-21)</font><font color=black><b>Slight modification to updateNotice template. Added messageLog test 5893 5895</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>1208445</font>-<font color=green>(2014-07-21)</font><font color=black><b>Slight modification to updateNotice template. Added messageLog test 5893 5895</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

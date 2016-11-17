@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.26">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/smsi-admin.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_3.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <includedRegions></includedRegions>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.5">
+      <spec></spec>
+    </com.cloudbees.jenkins.GitHubPushTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;SMSI_ADMIN_HOME = ${SMSI_ADMIN_HOME}&quot;
+ls -alR $SMSI_ADMIN_HOME
+echo &quot;Replacing contents from SMSI_ADMIN_HOME with ./config config files&quot;
+rm -fr /opt/cvbuild/config/smsi-admin/*.properties
+
+cd ${WORKSPACE}/config
+for base in *scrum3.properties*; do new=`echo $base | sed &apos;s/scrum3.//g&apos;`; echo &quot;Renaming $base to $new and copying to ${SMSI_ADMIN_HOME}&quot;; cp $base $SMSI_ADMIN_HOME/$new; ls -al $SMSI_ADMIN_HOME/$new; done
+
+ls -alR $SMSI_ADMIN_HOME
+
+echo &quot;Showing config file content&quot;
+cd ${SMSI_ADMIN_HOME}
+cat *.properties</command>
+    </hudson.tasks.Shell>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.6.3">
+      <targets>clean war &quot;test-app :unit&quot;</targets>
+      <name>Grails 2.0.4</name>
+      <grailsWorkDir>/opt/cvbuild/.smsi-admin_work_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.smsi-admin_project_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9190</serverPort>
+      <properties>grails.env=dev
+geb.env=firefox
+grails.project.plugins.dir=/opt/cvbuild/.grails/2.0.4/projects/smsi-admin-compile
+SMSI_ADMIN_CONFIG=/opt/cvbuild/config/smsi-admin/smsi-admin-config.properties
+SMSI_ADMIN_LOG4J_CONFIG=/opt/cvbuild/config/smsi-admin/smsi-admin-log4j.groovy
+CROWD_PROPERTIES=/opt/cvbuild/config/smsi-admin/smsi-admin-crowd.properties 
+CROWD_EHCACHE=/opt/cvbuild/config/smsi-admin/smsi-admin-crowd-ehcache.xml</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+    </com.g2one.hudson.grails.GrailsBuilder>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.6.3">
+      <targets>&quot;test-app :integration&quot;</targets>
+      <name>Grails 2.0.4</name>
+      <grailsWorkDir>/opt/cvbuild/.smsi-admin_work_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.smsi-admin_project_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9190</serverPort>
+      <properties>grails.env=dev
+geb.env=firefox
+grails.project.plugins.dir=/opt/cvbuild/.grails/2.0.4/projects/smsi-admin-compile
+SMSI_ADMIN_CONFIG=/opt/cvbuild/config/smsi-admin/smsi-admin-config.properties
+SMSI_ADMIN_LOG4J_CONFIG=/opt/cvbuild/config/smsi-admin/smsi-admin-log4j.groovy
+CROWD_PROPERTIES=/opt/cvbuild/config/smsi-admin/smsi-admin-crowd.properties 
+CROWD_EHCACHE=/opt/cvbuild/config/smsi-admin/smsi-admin-crowd-ehcache.xml</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+    </com.g2one.hudson.grails.GrailsBuilder>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.6.3">
+      <targets>&quot;test-app :cucumber @important&quot;</targets>
+      <name>Grails 2.0.4</name>
+      <grailsWorkDir>/opt/cvbuild/.smsi-admin_work_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.smsi-admin_project_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9190</serverPort>
+      <properties>grails.env=dev
+grails.project.plugins.dir=/opt/cvbuild/.grails/2.0.4/projects/smsi-admin-compile
+SMSI_ADMIN_CONFIG=/opt/cvbuild/config/smsi-admin/smsi-admin-config.properties
+SMSI_ADMIN_LOG4J_CONFIG=/opt/cvbuild/config/smsi-admin/smsi-admin-log4j.groovy
+CROWD_PROPERTIES=/opt/cvbuild/config/smsi-admin/smsi-admin-crowd.properties 
+CROWD_EHCACHE=/opt/cvbuild/config/smsi-admin/smsi-admin-crowd-ehcache.xml</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+    </com.g2one.hudson.grails.GrailsBuilder>
+  </builders>
+  <publishers>
+    <hudson.tasks.junit.JUnitResultArchiver>
+      <testResults>**/target/test-reports/*.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <testDataPublishers/>
+    </hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.15">
+      <recipientList>jeff.schaeffer@canoeventures.com,michael.munhall@canoeventures.com,ryan.grow@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList>$PROJECT_DEFAULT_RECIPIENTS</recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <sendToDevelopers>true</sendToDevelopers>
+            <sendToRequester>false</sendToRequester>
+            <includeCulprits>false</includeCulprits>
+            <sendToRecipientList>true</sendToRecipientList>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.8">
+      <timeoutMinutes>20</timeoutMinutes>
+      <failBuild>true</failBuild>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+    <hudson.plugins.xvnc.Xvnc plugin="xvnc@1.11">
+      <takeScreenshot>false</takeScreenshot>
+    </hudson.plugins.xvnc.Xvnc>
+  </buildWrappers>
+</project>

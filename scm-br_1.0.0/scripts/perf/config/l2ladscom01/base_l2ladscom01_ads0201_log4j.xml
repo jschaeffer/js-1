@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="logfile" class="org.apache.log4j.FileAppender">
+        <param name="File" value="/opt/tcserver/instances/ads0201/logs/ads-error.log"/>
+        <param name="append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="QUALIFIER" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/opt/tcserver/instances/ads0201/logs/qualifer.log"/>
+        <param name="append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="VALIDATION_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file"   value="/opt/tcserver/instances/ads0201/logs/validation.log" />
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} %p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="REQUEST_RESPONSE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/opt/tcserver/instances/ads0201/logs/request-response.ads0201.log"/>
+        <param name="append" value="true"/>
+        <param name="datePattern" value="'.'yyyy-MM-dd-HH"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="COMMON_SERVICE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file"   value="/opt/tcserver/instances/ads0201/logs/service.log" />
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="PERFORMANCE_MONITORING_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file"   value="/opt/tcserver/instances/ads0201/logs/performance.log" />
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} %p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="hibernate_log" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="/opt/tcserver/instances/ads0201/logs/hibernate.log"/>
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="FORWARDING" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="/opt/tcserver/instances/ads0201/logs/forwarding.log"/> <!-- Update this path for your environment. -->
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
+        </layout>
+    </appender>
+
+    <category name="dai.interfaces.forwarding" additivity="false">
+        <priority value="INFO" /> <!-- Set to INFO unless debugging -->
+        <appender-ref ref="FORWARDING"/>
+    </category>
+
+    <category name="org.hibernate" additivity="false">
+        <priority value="ERROR" />
+        <appender-ref ref="hibernate_log"/>
+    </category>
+
+    <category name="dai.de.monitoring.MonitoringChain" additivity="false">
+        <priority value="INFO" />
+        <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+    </category>
+
+    <category name="dai.core.util.ValidationLogger" additivity="false">
+        <priority value="WARN" />
+        <appender-ref ref="VALIDATION_LOG"/>
+    </category>
+
+    <category name="dai.de.scorer.ScorerLogger" additivity="false">
+        <priority value="INFO" />
+        <appender-ref ref="QUALIFIER"/>
+    </category>
+
+    <category name="dai.de.qualifier.QualifierLogger" additivity="false">
+        <priority value="INFO"/>
+        <appender-ref ref="QUALIFIER"/>
+    </category>
+
+    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
+        <priority value="TRACE"/>
+        <appender-ref ref="REQUEST_RESPONSE"/>
+    </category>
+
+    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
+        <priority value="TRACE"/>
+        <appender-ref ref="REQUEST_RESPONSE"/>
+    </category>
+
+    <category name="dai.de.service.ServiceLogger" additivity="false">
+        <priority value="INFO" />
+        <appender-ref ref="COMMON_SERVICE"/>
+    </category>
+
+    <category name="dai.de.selector.SelectionLogger" additivity="false">
+        <priority value="INFO" />
+        <appender-ref ref="QUALIFIER"/>
+    </category>
+
+    <root>
+        <level value="WARN"/>
+        <appender-ref ref="logfile"/>
+    </root>
+
+</log4j:configuration>

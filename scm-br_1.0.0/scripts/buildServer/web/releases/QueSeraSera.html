@@ -1,0 +1,228 @@
+<b><u>Component Release Info for Sprint QueSeraSera:</b></u><p>
+<u>Release of Component</u><b>&nbspMicroDev</b><br><u>Version</u><b>&nbspr_4.0.0_257</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Val:
+
+VODDAI-7267 - Expose QAM and Other Device Impression Metrics to Microstrategy Build Report Objects for DEbAS
+VODDAI-7889 - Move Daily EbAS Report into MRC/EbAS folder
+VODDAI-7333 - New EbAS Report with QAM and Other Device Impressions Delineated, and Series ID and Name
+VODDAI-7574 - Sunset Inventory Insight Report (individual MS report instance)
+VODDAI-7924 - TASK - Refine DCE sqoop query
+VODDAI-7926 - TASK - Support DCE test data set creation
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_255</b></u><br>
+<pre>
+* <font color=blue>1132482</font>-<font color=green>(2015-08-27)</font><font color=black><b>VODDAI-7267. add dates to eBas.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_257)</font>
+* <font color=blue>ff7c82d</font>-<font color=green>(2015-08-26)</font><font color=black><b>VODDAI-7267. add metrics for eBas.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_256)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint QueSeraSera:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi_reporting</b><br><u>Version</u><b>&nbspr_5.0.0_34</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Val:
+
+VODDAI-7267 - Expose QAM and Other Device Impression Metrics to Microstrategy Build Report Objects for DEbAS
+VODDAI-7889 - Move Daily EbAS Report into MRC/EbAS folder
+VODDAI-7333 - New EbAS Report with QAM and Other Device Impressions Delineated, and Series ID and Name
+VODDAI-7574 - Sunset Inventory Insight Report (individual MS report instance)
+VODDAI-7924 - TASK - Refine DCE sqoop query
+VODDAI-7926 - TASK - Support DCE test data set creation
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/smsi-reporting-5.0.0-changelog.xml
+src/main/resources/liquibase/smsi-reporting-5.0.0/023-yliu-ebas-rollup-side-by-side.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_32</b></u><br>
+<pre>
+* <font color=blue>ca57eec</font>-<font color=green>(2015-08-26)</font><font color=black><b>VODDAI-7267. fixed view_flag bug.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_5.0.0_35, tag: v_5.0.0_34)</font>
+* <font color=blue>810e582</font>-<font color=green>(2015-08-26)</font><font color=black><b>VODDAI-7924. added pivot function for the sqoop task.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_5.0.0_33)</font>
+* <font color=blue>52b4a49</font>-<font color=green>(2015-08-20)</font><font color=black><b>VODDAI-7267. fixed date bug.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>45c89d5</font>-<font color=green>(2015-08-20)</font><font color=black><b>VODDAI-7267. fixed date bug.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>c40fd4b</font>-<font color=green>(2015-08-20)</font><font color=black><b>VODDAI-7267. add QAM and OTHER view to ebas.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>061d719</font>-<font color=green>(2015-08-03)</font><font color=black><b>SPRINT O features and data files</b></font><font color=grey>- (valturcin)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint QueSeraSera:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_5.0.0_33</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Metadata: Supports VAST Beaconing.  Schema updates: New Beacon table, new columns in "Placement" (BEACONS) and "Presentation" (END_VIEWED).
+Caveat:  ONLY eligible for perf environment.  *Only verified with REMA, NOT with ADS.*</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/smsi-publisher-3.0.0/003-beacons.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_24</b></u><br>
+<pre>
+* <font color=blue>52c5424</font>-<font color=green>(2015-09-01)</font><font color=black><b>added $AKKA_CONFIG to java opts</b></font><font color=grey>- (MajorMatt)</font><font color=red> (tag: v_5.0.0_33)</font>
+* <font color=blue>d90dab5</font>-<font color=green>(2015-09-01)</font><font color=black><b>Fixing NullPointerExceptions</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>8ec023f</font>-<font color=green>(2015-08-31)</font><font color=black><b>Beacon glue code example</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_32)</font>
+* <font color=blue>1902675</font>-<font color=green>(2015-08-28)</font><font color=black><b>VODDAI-7946: Save Beacons to DB</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_31)</font>
+* <font color=blue>76add1e</font>-<font color=green>(2015-08-27)</font><font color=black><b>Added akka.config.file to setenv.sh</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_30)</font>
+* <font color=blue>02d1ad9</font>-<font color=green>(2015-08-26)</font><font color=black><b>VODDAI-7708: Added END_VIEWED column to presentation</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_29)</font>
+* <font color=blue>cb54a51</font>-<font color=green>(2015-08-26)</font><font color=black><b>VODDAI-7946: Framework for transmission of Beacons</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>22a4b31</font>-<font color=green>(2015-08-06)</font><font color=black><b>VODDAI-7180,VODDAI-7181: Added a Beacons column to the Placement Table</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_28)</font>
+* <font color=blue>f6d697b</font>-<font color=green>(2015-07-29)</font><font color=black><b>Added StoreBeacons event to scte-ingest</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_27, tag: v_5.0.0_26)</font>
+* <font color=blue>6f0f562</font>-<font color=green>(2015-07-15)</font><font color=black><b>Modified tests for Zayo performance</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_25)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint QueSeraSera:</b></u><p>
+<u>Release of Component</u><b>&nbsprequest-mgr</b><br><u>Version</u><b>&nbspr_5.0.0_147</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>kassi:
+
+Metadata: VAST functionality for Google ADS; Beaconing logic for Comcast PSNs. Uses old Session Collector.
+Caveat:  ONLY eligible for perf environment.
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/dai-sdc-5.0.0/008-khl-timeout.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_94</b></u><br>
+<pre>
+* <font color=blue>8e902e1</font>-<font color=green>(2015-08-31)</font><font color=black><b>Comcast and TWC validation for PSN</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_147)</font>
+* <font color=blue>d3f2ae4</font>-<font color=green>(2015-08-28)</font><font color=black><b>VODDAI-7708: Saving correct format from complete beacons to db</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_146)</font>
+* <font color=blue>4b4abfe</font>-<font color=green>(2015-08-28)</font><font color=black><b>Fixed messed up package for RouteFactory</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>405473b</font>-<font color=green>(2015-08-28)</font><font color=black><b>Massive refactor of root package.  And moved some of the message classes around.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>b2b8b65</font>-<font color=green>(2015-08-28)</font><font color=black><b>VODDAI-7191 fix index start value</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_145)</font>
+* <font color=blue>67670d0</font>-<font color=green>(2015-08-27)</font><font color=black><b>VODDAI-7191 fix position compile issue</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_144)</font>
+* <font color=blue>a7544c4</font>-<font color=green>(2015-08-27)</font><font color=black><b>VODDAI-7191 update sequences</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>259c527</font>-<font color=green>(2015-08-25)</font><font color=black><b>VODDAI-7938 SpotScopedEvents.Events</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_143)</font>
+* <font color=blue>2ce680f</font>-<font color=green>(2015-08-25)</font><font color=black><b>VODDAI-7937 SpotScopedEvents.Spot</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>fc14b67</font>-<font color=green>(2015-08-25)</font><font color=black><b>VODDAI-7935 EntertainmentScopedEvents</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>af990f3</font>-<font color=green>(2015-08-25)</font><font color=black><b>VODDAI-7191 Changes to Placement Decision</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_142)</font>
+* <font color=blue>6008203</font>-<font color=green>(2015-08-24)</font><font color=black><b>New feature, and reOrganized tests</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_141)</font>
+*   <font color=blue>49267fe</font>-<font color=green>(2015-08-21)</font><font color=black><b>Added some files and built test for 7191</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_140)</font>
+|\  
+| * <font color=blue>32e8874</font>-<font color=green>(2015-08-21)</font><font color=black><b>Work on PSN validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>fde1ee4</font>-<font color=green>(2015-08-21)</font><font color=black><b>Added some files and built test for 7191</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>9f9bdee</font>-<font color=green>(2015-08-21)</font><font color=black><b>Many tests for end of PUSHIT commitments</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>2660c9c</font>-<font color=green>(2015-08-20)</font><font color=black><b>Fix for maxDuration and maxPlacement Includes changes for PSN validations</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_139)</font>
+* <font color=blue>9cf9881</font>-<font color=green>(2015-08-19)</font><font color=black><b>Removed unused import</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_138)</font>
+* <font color=blue>255e14d</font>-<font color=green>(2015-08-19)</font><font color=black><b>Refactor Vast</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>333b8fd</font>-<font color=green>(2015-08-19)</font><font color=black><b>VODDAI-7188 Correct identity string</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+*   <font color=blue>8b78c69</font>-<font color=green>(2015-08-18)</font><font color=black><b>Updated some tags, fixed some test cases, woooo!!</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_137)</font>
+|\  
+| * <font color=blue>2b88425</font>-<font color=green>(2015-08-18)</font><font color=black><b>VODDAI-7173 Add Error Url handling.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_136)</font>
+| * <font color=blue>0d8e8c0</font>-<font color=green>(2015-08-18)</font><font color=black><b>Catch builder errors</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>dc147d3</font>-<font color=green>(2015-08-17)</font><font color=black><b>DeadLetterActor</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_135)</font>
+| * <font color=blue>3d81df9</font>-<font color=green>(2015-08-17)</font><font color=black><b>Fix for duration comparison</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_134)</font>
+| * <font color=blue>1117b13</font>-<font color=green>(2015-08-17)</font><font color=black><b>Fix for vast duration format.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_133)</font>
+* | <font color=blue>786d6fd</font>-<font color=green>(2015-08-18)</font><font color=black><b>Updated some tags, fixed some test cases, woooo!!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>55028d8</font>-<font color=green>(2015-08-18)</font><font color=black><b>Added @failed tag for current test issues. Replaced all responses loaded to mockServer with VAST. Some test commenting to be reverted in the future.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>8da9529</font>-<font color=green>(2015-08-17)</font><font color=black><b>Increased ask time for controller</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_132)</font>
+* <font color=blue>e85f68e</font>-<font color=green>(2015-08-17)</font><font color=black><b>Fixed VastSmipleTest</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_131)</font>
+* <font color=blue>d244d8c</font>-<font color=green>(2015-08-17)</font><font color=black><b>changed sdc round trip timer to 8s</b></font><font color=grey>- (MajorMatt)</font><font color=red></font>
+* <font color=blue>ddc4345</font>-<font color=green>(2015-08-17)</font><font color=black><b>comment out timeout test</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_130)</font>
+* <font color=blue>12b58c4</font>-<font color=green>(2015-08-14)</font><font color=black><b>fix for StatusCode class</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_129)</font>
+* <font color=blue>e8b46e5</font>-<font color=green>(2015-08-14)</font><font color=black><b>Gatling test is ready to share</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>c62a229</font>-<font color=green>(2015-08-14)</font><font color=black><b>VODDAI-7173: Opportunity_placement_sequence defaults to 1 for Vast.AD@sequence is misssing</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>51edfc9</font>-<font color=green>(2015-08-14)</font><font color=black><b>VODDAI-7191 Construct PlacementDecision added validations</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>f0da531</font>-<font color=green>(2015-08-13)</font><font color=black><b>Removed id from VastDecision</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_128)</font>
+* <font color=blue>967436a</font>-<font color=green>(2015-08-13)</font><font color=black><b>VODDAI-7191 Construct Placement Decision not including pod opt items.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_127)</font>
+* <font color=blue>3f7e8d7</font>-<font color=green>(2015-08-12)</font><font color=black><b>Fix for namespace prefix</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_126)</font>
+* <font color=blue>fc78721</font>-<font color=green>(2015-08-12)</font><font color=black><b>Built out sample vastResponse template, added some tests for VAST validation stories</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>0694d26</font>-<font color=green>(2015-08-11)</font><font color=black><b>VODDAI-7190 Client Context also combined paid empty and invalid into single test</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_125)</font>
+* <font color=blue>af1a65b</font>-<font color=green>(2015-08-11)</font><font color=black><b>Added Scrum 4 to Cucumber properties</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>6960f89</font>-<font color=green>(2015-08-10)</font><font color=black><b>VODDAI-7189 include SystemContext</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_124)</font>
+* <font color=blue>2ec58e8</font>-<font color=green>(2015-08-10)</font><font color=black><b>Added optional elements into VAST response, added test for 7768 and 7176 in VASTpersist feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3c03c25</font>-<font color=green>(2015-08-07)</font><font color=black><b>VODDAI-7180, VODDAI-7181: Now we save beacons to the smsi publisher database</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_123)</font>
+* <font color=blue>2156a99</font>-<font color=green>(2015-08-06)</font><font color=black><b>VODDAI-7188 PlacementResponse attributes</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_122)</font>
+* <font color=blue>15478d7</font>-<font color=green>(2015-08-06)</font><font color=black><b>Fix for all responses bad</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+*   <font color=blue>98dab27</font>-<font color=green>(2015-08-06)</font><font color=black><b>Tests for 7173, 4, 5 and 7768 added. They are rough. Configurable budget marked with @KEN</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>be6403a</font>-<font color=green>(2015-08-06)</font><font color=black><b>Added vast test harness Added call to original source when all vast responses bad.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_121)</font>
+| * <font color=blue>975023f</font>-<font color=green>(2015-08-06)</font><font color=black><b>A stub placement response is now returned from VAST</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_120)</font>
+* | <font color=blue>16511d9</font>-<font color=green>(2015-08-06)</font><font color=black><b>Tests for 7173, 4, 5 and 7768 added. They are rough. Configurable budget marked with @KEN</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>98d63a0</font>-<font color=green>(2015-08-05)</font><font color=black><b>Hooked in PSR Builder</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_119)</font>
+*   <font color=blue>84f40dc</font>-<font color=green>(2015-08-05)</font><font color=black><b>VERY ROUGH vast validation test added with @VAST tag</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>8c6f1dd</font>-<font color=green>(2015-08-05)</font><font color=black><b>Framework for building the PlacementResponse from VAST</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>c98ddb8</font>-<font color=green>(2015-08-05)</font><font color=black><b>Changed VastController to use configurable timeout.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_118)</font>
+| * <font color=blue>1579741</font>-<font color=green>(2015-08-05)</font><font color=black><b>Changed service interface to take a VastDestination</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>9cf7617</font>-<font color=green>(2015-08-05)</font><font color=black><b>VERY ROUGH vast validation test added with @VAST tag</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>10c87d6</font>-<font color=green>(2015-08-04)</font><font color=black><b>Error message changes</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_117)</font>
+|\  
+| * <font color=blue>7eebbe2</font>-<font color=green>(2015-08-04)</font><font color=black><b>Revert actor config changes</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>038c748</font>-<font color=green>(2015-08-04)</font><font color=black><b>VODDAI-7176 log message for late VAST response</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>2fc9954</font>-<font color=green>(2015-08-04)</font><font color=black><b>VODDAI-7768: Made integration tests work</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>fec44f2</font>-<font color=green>(2015-08-04)</font><font color=black><b>VODDAI-7768: Made integration tests work</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>8b23792</font>-<font color=green>(2015-08-03)</font><font color=black><b>VODDAI-7768: Added a TIMEOUT column to the destination table with a default value of 2500.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_116)</font>
+| * <font color=blue>2312236</font>-<font color=green>(2015-08-03)</font><font color=black><b>VODDAI-7175 Linear element validations</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>d9ed556</font>-<font color=green>(2015-08-03)</font><font color=black><b>VODDAI-7173 Inline element validations</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>16aba1c</font>-<font color=green>(2015-08-03)</font><font color=black><b>Fix compile failure</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>7d5a92c</font>-<font color=green>(2015-08-03)</font><font color=black><b>Wired actorService into VastTransmitter</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>ccd4d1e</font>-<font color=green>(2015-08-04)</font><font color=black><b>Error message changes</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>2137a1a</font>-<font color=green>(2015-08-03)</font><font color=black><b>Fixed error messages, added some tests, removed tags</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>afd9cf1</font>-<font color=green>(2015-07-31)</font><font color=black><b>@matty tags on questionable tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>e6ae0de</font>-<font color=green>(2015-07-30)</font><font color=black><b>Changed sender to use future.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_115, tag: v_5.0.0_114, tag: v_5.0.0_113, tag: v_5.0.0_112, tag: v_5.0.0_111, tag: v_5.0.0_110, tag: v_5.0.0_109, tag: v_5.0.0_108)</font>
+| * <font color=blue>40662c8</font>-<font color=green>(2015-07-30)</font><font color=black><b>VODDAI-7178:  Added the destination identity to the logging MDC.  Update the RouteServlet and SCTETransmistter to log messages to thre RequestResponse logger.  Updated the log4j2 configuration to create a request response log per destination</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>2876c91</font>-<font color=green>(2015-07-30)</font><font color=black><b>Fixed extracting Tracking from SpotScopedEvents</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>54a0b7d</font>-<font color=green>(2015-07-30)</font><font color=black><b>Vast send/receive parse validate and send error to provided url</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_107)</font>
+| * <font color=blue>985d314</font>-<font color=green>(2015-07-30)</font><font color=black><b>Will only find one tracking element now</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_106, tag: v_5.0.0_105)</font>
+* |   <font color=blue>a2f2b44</font>-<font color=green>(2015-07-31)</font><font color=black><b>@matty tags on questionable tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>00ea53f</font>-<font color=green>(2015-07-29)</font><font color=black><b>First shot at saving Beacons.  Now with all the files</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_104)</font>
+| * <font color=blue>a4a3416</font>-<font color=green>(2015-07-29)</font><font color=black><b>First shot at saving Beacons</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>aca794a</font>-<font color=green>(2015-07-29)</font><font color=black><b>Improved error message during failed SCTE transmit</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>9b6145f</font>-<font color=green>(2015-07-28)</font><font color=black><b>Vast response active validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_103)</font>
+| * <font color=blue>5a3d08e</font>-<font color=green>(2015-07-28)</font><font color=black><b>First commit on Vast sending framework multiple messages</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f50a3c1</font>-<font color=green>(2015-07-28)</font><font color=black><b>Made VastLoader more thread safe</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* |   <font color=blue>869032d</font>-<font color=green>(2015-07-28)</font><font color=black><b>@matty tags for tests to be re-run, added some tests for 777X VAST validation, added xml for VAST response!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>5e8dcfb</font>-<font color=green>(2015-07-28)</font><font color=black><b>Refactoring VastLoader</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>8b90a96</font>-<font color=green>(2015-07-28)</font><font color=black><b>First commit on Vast sending framework validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>2112068</font>-<font color=green>(2015-07-28)</font><font color=black><b>VODDAI-7795 : More unit testing</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>766b4a2</font>-<font color=green>(2015-07-28)</font><font color=black><b>@matty tags for tests to be re-run, added some tests for 777X VAST validation, added xml for VAST response!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>f3d8e80</font>-<font color=green>(2015-07-27)</font><font color=black><b>Trying to fix typo in message name</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_102)</font>
+* <font color=blue>0d54c8e</font>-<font color=green>(2015-07-27)</font><font color=black><b>Trying to fix typo in message name</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>84e9d71</font>-<font color=green>(2015-07-27)</font><font color=black><b>VODDAI-7795 : Cleaned up the code.  Need to unit test and then I think we are done.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>768630c</font>-<font color=green>(2015-07-27)</font><font color=black><b>Code clean up</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>351b1dc</font>-<font color=green>(2015-07-27)</font><font color=black><b>Removing XmlUtil class</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>37a546a</font>-<font color=green>(2015-07-27)</font><font color=black><b>Added tests inside VASTpersist feature for newest 777X validation stories</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>122724d</font>-<font color=green>(2015-07-22)</font><font color=black><b>VODDAI-7795 : The refactor is mostly done.  But there are a lot of little details to be worked out.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_101)</font>
+* | <font color=blue>8487b66</font>-<font color=green>(2015-07-27)</font><font color=black><b>Added tests inside VASTpersist feature for newest 777X validation stories</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>0ef4762</font>-<font color=green>(2015-07-21)</font><font color=black><b>Added regression tag on unspecified dev and HHid test inside vastPersist feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>94c802e</font>-<font color=green>(2015-07-21)</font><font color=black><b>Added manual test for 7744 inside psnRouting feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_100)</font>
+* <font color=blue>4ad92b9</font>-<font color=green>(2015-07-21)</font><font color=black><b>Pulled opportunity dropping scenario out into seperate test within the VASTpersist feature. Added test for 6522 fault tolerant routing into the presentationInfo feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>1e9aa3a</font>-<font color=green>(2015-07-21)</font><font color=black><b>Merge with Ken code</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>502932f</font>-<font color=green>(2015-07-20)</font><font color=black><b>VODDAI-7770 : Refactored the data extraction logic into the request metadata.  Next step is to reuse that code for the persistence logic.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_99)</font>
+| * <font color=blue>18a61bd</font>-<font color=green>(2015-07-20)</font><font color=black><b>Fixed happy path VAST test</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>3af6e6a</font>-<font color=green>(2015-07-20)</font><font color=black><b>Fixed BAD URL test</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>3ed2673</font>-<font color=green>(2015-07-21)</font><font color=black><b>Removed some tags, fixed opportunityID calls</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>c489909</font>-<font color=green>(2015-07-20)</font><font color=black><b>Added @regression tags, fixed some templates that were causing me issues</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>3520582</font>-<font color=green>(2015-07-17)</font><font color=black><b>First commit on Vast sending framework</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_98)</font>
+* |   <font color=blue>6efd4ea</font>-<font color=green>(2015-07-16)</font><font color=black><b>Improved tests for 7050</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>9f5c37d</font>-<font color=green>(2015-07-16)</font><font color=black><b>VODDAI-7050: Fixed VAST last parameter calculation</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_97)</font>
+* | <font color=blue>adaf58d</font>-<font color=green>(2015-07-16)</font><font color=black><b>Improved tests for 7050</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>d4fd30a</font>-<font color=green>(2015-07-16)</font><font color=black><b>Added some tests for sprint N commits. also switched URL for Zayo</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>e215003</font>-<font color=green>(2015-07-15)</font><font color=black><b>VODDAI-7744: Can now reconnect to the session collector when one dies.  Request for data are done in parallel to all session collectors, as are transmissions of data.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_96)</font>
+* <font color=blue>3603b0c</font>-<font color=green>(2015-07-08)</font><font color=black><b>Test for 7050 in vastPersist feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_95)</font>
+*   <font color=blue>167d9f1</font>-<font color=green>(2015-07-08)</font><font color=black><b>Completing Kassi and Matt feature improvements</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>e431684</font>-<font color=green>(2015-07-08)</font><font color=black><b>ContentNotif persistence</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* | <font color=blue>7a78bcf</font>-<font color=green>(2015-07-08)</font><font color=black><b>Added @regression tags to necessary tests. Fixed Unroutable error msg, added test for 7048 and working on 7050</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>82782f2</font>-<font color=green>(2015-07-08)</font><font color=black><b>Modified VAST db template</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>93f9029</font>-<font color=green>(2015-07-08)</font><font color=black><b>Fixed VAST db template, modified test in VASTvalidation for the configurable labels. Added KEN tag for test that is failing</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

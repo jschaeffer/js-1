@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.5">
+      <projectUrl>https://github.com/CanoeVentures/dai-billing/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.3.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/dai-billing.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_3.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <includedRegions></includedRegions>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+/opt/build/scripts/createRelease.sh dai-billing dai-billing br_3.0.0 ${BUILD_NUMBER}</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+EXIST_VERS=`ssh tcserver@dvappdai04 &quot;grep Implementation-Version /opt/tcserver/instances/billing/webapps/dai-billing/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+VERSION=&quot;3.0.0_${BUILD_NUMBER}&quot;
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+cd /opt/build/scripts
+./kill_dbsessions.sh -a dai-billing -e scrum3
+
+cd /opt/checkouts/oss_deployment/scripts
+
+print Beginning Roll-forward update for app/db from existing version ${EXIST_VERS} to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+print
+./deploy.sh -a dai-billing -t dai-billing -e 10.13.18.117 -i billing -r ${VERSION} -j &quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot; -p SC3_BILLING -u SC3_BILLING -v
+print ------------------------------------------------------------------------------------------------------------
+print Beginning Roll-back for app/db to prior version ${EXIST_VERS} from latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+print
+./deploy.sh -a dai-billing -t dai-billing -e 10.13.18.117 -i billing -r ${EXIST_VERS} -j &quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot; -p SC3_BILLING -u SC3_BILLING -v
+print ------------------------------------------------------------------------------------------------------------
+print Beginning Roll-forward update for app/db from existing version ${EXIST_VERS} to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+./deploy.sh -a dai-billing -t dai-billing -e 10.13.18.117 -i billing -r ${VERSION} -j &quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot; -p SC3_BILLING -u SC3_BILLING -v
+
+print
+print Beginning Rebuild from scratch for app/db to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+
+cd /opt/build/scripts
+./kill_dbsessions.sh -a dai-billing -e scrum3
+
+cd /opt/checkouts/dai-billing/grails-app/migrations/cisys
+echo &quot;@genUser.scrum3.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.121)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=scrum003)))&apos;
+
+STATUS=${?}
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./deployRebuildDb.sh -a dai-billing -t dai-billing -i billing -r ${VERSION} -e scrum3 -j &quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot; -p SC3_BILLING -u SC3_BILLING -v</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+VERSION=&quot;3.0.0_${BUILD_NUMBER}&quot;
+
+echo &quot;dai-billing-${VERSION}&quot; &gt; /var/www/html/scrum3/bill.txt
+echo &quot;dai-billing-${VERSION}&quot; &gt; /var/www/html/scrum3/billdb.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.31"/>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.27.1">
+      <recipientList>jeff.schaeffer@canoeventures.com, michael.munhall@canoe-ventures.com, Sid.Gregory@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <sendToDevelopers>true</sendToDevelopers>
+            <sendToRequester>false</sendToRequester>
+            <includeCulprits>false</includeCulprits>
+            <sendToRecipientList>true</sendToRecipientList>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

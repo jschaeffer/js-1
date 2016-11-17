@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.jira.JiraProjectProperty_-DescriptorImpl plugin="jira@2.2.1">
+  <sites>
+    <hudson.plugins.jira.JiraSite>
+      <url>https://cvjira.atlassian.net/</url>
+      <useHTTPAuth>false</useHTTPAuth>
+      <userName>cvbuild</userName>
+      <password>89XSRSzgMxWCEAVUfin2DUyqtG7qRDa1FwLFINucaII=</password>
+      <supportsWikiStyleComment>false</supportsWikiStyleComment>
+      <recordScmChanges>true</recordScmChanges>
+      <updateJiraIssueForAllStatus>true</updateJiraIssueForAllStatus>
+      <timeout>10</timeout>
+      <dateTimePattern></dateTimePattern>
+    </hudson.plugins.jira.JiraSite>
+  </sites>
+</hudson.plugins.jira.JiraProjectProperty_-DescriptorImpl>

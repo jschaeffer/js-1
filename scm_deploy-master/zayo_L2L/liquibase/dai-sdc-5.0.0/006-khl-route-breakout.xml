@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="kleider" id="20150618-Denormalize">
+        <addColumn tableName="ADM_ENDPOINT">
+            <column name="ROUTE_GROUP" type="VARCHAR2(64 BYTE)"/>
+        </addColumn>
+        <addColumn tableName="ROUTE">
+            <column name="ROUTE_GROUP" type="VARCHAR2(64 BYTE)"/>
+            <column name="PROVIDER_ID" type="VARCHAR2(64 BYTE)"/>
+        </addColumn>
+        <createTable tableName="PLATFORM">
+            <column name="ROUTE_GROUP" type="VARCHAR2(64 BYTE)"/>
+            <column name="PLATFORM" type="VARCHAR2(256 BYTE)"/>
+            <column name="VARIANT" type="VARCHAR2(256 BYTE)"/>
+            <column name="MULTIPLE_MESSAGES" type="BOOLEAN"/>
+        </createTable>
+
+        <dropNotNullConstraint tableName="ROUTE" columnName="VARIANT"/>
+        <sql splitStatements="true">
+            update ADM_ENDPOINT set ROUTE_GROUP = IDENTITY;
+            insert into route(ROUTE_ID, REGISTRATION_ID, ADS_ID, PROVIDER_ID) select SEQ_ROUTE_ID.NEXTVAL, ID, ADS_ID, PROVIDER_ID from registration;
+            update route set provider_id = (select provider_id from registration where registration.id = route.registration_id);
+            update route set route_group = (select route_group from registration, adm_endpoint where route.registration_id = registration.id and registration.adm_id = adm_endpoint.id);
+            insert into platform select distinct route_group, platform, variant, 0 from route where platform is not null;
+        </sql>
+
+        
+        <dropUniqueConstraint tableName="ROUTE" constraintName="ROUTE_UNIQUE"/>
+        <dropColumn tableName="ROUTE" columnName="VARIANT"/>
+        <dropColumn tableName="ROUTE" columnName="REGISTRATION_ID"/>
+        <dropColumn tableName="REGISTRATION" columnName="ADS_ID"/>
+
+        <addNotNullConstraint tableName="ADM_ENDPOINT" columnName="ROUTE_GROUP"/>
+        <addNotNullConstraint tableName="ROUTE" columnName="ROUTE_GROUP"/>
+        <addNotNullConstraint tableName="ROUTE" columnName="PROVIDER_ID"/>
+        <addUniqueConstraint tableName="ROUTE" columnNames="ROUTE_GROUP,PROVIDER_ID,PLATFORM"/>
+        <addUniqueConstraint tableName="PLATFORM" columnNames="ROUTE_GROUP,PLATFORM"/>
+    </changeSet>
+
+    <changeSet author="kleider" id="20150623-VAST">
+        <renameTable newTableName="SCTE_DESTINATION" oldTableName="ADS_ENDPOINT"/>
+        <renameColumn tableName="SCTE_DESTINATION" oldColumnName="ID" newColumnName="DEST_ID"/>
+        <renameColumn tableName="ROUTE" oldColumnName="ADS_ID" newColumnName="DEST_ID"/>
+
+        <addColumn tableName="ADM_ENDPOINT">
+            <column name="AVAILABILITY_ID" type="VARCHAR(64)"/>
+        </addColumn>
+
+        <createTable tableName="DESTINATION">
+            <column name="DEST_ID" type="NUMBER"/>
+            <column name="IDENTITY" type="VARCHAR2(64)"/>
+            <column name="HIDE_HHID" type="BOOLEAN" defaultValue="0"/>
+            <column name="HIDE_DEVICE_ID" type="BOOLEAN" defaultValue="0"/>
+            <column name="HIDE_PLATFORM" type="BOOLEAN" defaultValue="0"/>
+            <column name="HIDE_TARGET_CODES" type="BOOLEAN" defaultValue="0"/>
+            <column name="OBFUSCATE_HHID" type="BOOLEAN" defaultValue="0"/>
+            <column name="OBFUSCATE_DEVICE_ID" type="BOOLEAN" defaultValue="0"/>
+        </createTable>
+
+        <createTable tableName="VAST_DESTINATION">
+            <column name="DEST_ID" type="NUMBER"/>
+            <column name="VAST_URL" type="VARCHAR2(255)"/>
+            <column name="SESSION_LABEL" type="VARCHAR2(64)"/>
+            <column name="DEVICE_LABEL" type="VARCHAR2(64)"/>
+            <column name="HOUSEHOLD_LABEL" type="VARCHAR2(64)"/>
+            <column name="PLATFORM_LABEL" type="VARCHAR2(64)"/>
+            <column name="DEVICE_TYPE_LABEL" type="VARCHAR2(64)"/>
+            <column name="LOCAL_TIME_LABEL" type="VARCHAR2(64)"/>
+            <column name="AD_AVAILABILITY_LABEL" type="VARCHAR2(64)"/>
+            <column name="ASSET_ID_LABEL" type="VARCHAR2(64)"/>
+            <column name="PROVIDER_ID_LABEL" type="VARCHAR2(64)"/>
+            <column name="OPP_COUNT_LABEL" type="VARCHAR2(64)"/>
+            <column name="OPP_NUMBER_LABEL" type="VARCHAR2(64)"/>
+            <column name="BREAK_LABEL" type="VARCHAR2(64)"/>
+            <column name="MID_ROLL_LABEL" type="VARCHAR2(64)"/>
+            <column name="BOP_LABEL" type="VARCHAR2(64)"/>
+            <column name="OPP_TYPE_LABEL" type="VARCHAR2(64)"/>
+            <column name="AD_TYPE_LABEL" type="VARCHAR2(64)"/>
+            <column name="IS_LAST_LABEL" type="VARCHAR2(64)"/>
+            <column name="BOE_LABEL" type="VARCHAR2(64)"/>
+            <column name="MIN_DURATION_LABEL" type="VARCHAR2(64)"/>
+            <column name="MAX_DURATION_LABEL" type="VARCHAR2(64)"/>
+            <column name="MAX_PLACEMENTS_LABEL" type="VARCHAR2(64)"/>
+        </createTable>
+
+        <sql splitStatements="true">
+            insert into destination(DEST_ID, IDENTITY) select DEST_ID, IDENTITY from SCTE_DESTINATION;
+        </sql>
+
+        <addPrimaryKey tableName="DESTINATION" columnNames="DEST_ID"/>
+        <addPrimaryKey tableName="VAST_DESTINATION" columnNames="DEST_ID"/>
+        <dropColumn tableName="SCTE_DESTINATION" columnName="IDENTITY"/>
+        <dropForeignKeyConstraint baseTableName="ROUTE" constraintName="FK_ROUTE_ADS"/>
+
+        <addForeignKeyConstraint baseTableName="ROUTE" baseColumnNames="DEST_ID" constraintName="FK_ROUTE_DESTINATION" referencedTableName="DESTINATION" referencedColumnNames="DEST_ID"/>
+        <addForeignKeyConstraint baseTableName="SCTE_DESTINATION" baseColumnNames="DEST_ID" constraintName="FK_SCTE_DESTINATION" referencedTableName="DESTINATION" referencedColumnNames="DEST_ID"/>
+        <addForeignKeyConstraint baseTableName="VAST_DESTINATION" baseColumnNames="DEST_ID" constraintName="FK_VAST_DESTINATION" referencedTableName="DESTINATION" referencedColumnNames="DEST_ID"/>
+    </changeSet>
+    
+</databaseChangeLog>

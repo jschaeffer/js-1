@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jfrog.hudson.ArtifactoryBuilder_-DescriptorImpl plugin="artifactory@2.5.1">
+  <useCredentialsPlugin>false</useCredentialsPlugin>
+  <artifactoryServers>
+    <org.jfrog.hudson.ArtifactoryServer>
+      <url>https://canoe_ventures.jfrog.io/canoe_ventures</url>
+      <id>https://canoe-ventures.artifactoryonline.com/canoe_ventures</id>
+      <timeout>300</timeout>
+      <bypassProxy>false</bypassProxy>
+      <deployerCredentialsConfig>
+        <credentials>
+          <username>cvbuild</username>
+          <password>RGx0ZGJneWQx</password>
+        </credentials>
+        <credentialsId></credentialsId>
+        <overridingCredentials>false</overridingCredentials>
+      </deployerCredentialsConfig>
+    </org.jfrog.hudson.ArtifactoryServer>
+  </artifactoryServers>
+  <pushToBintrayEnabled>false</pushToBintrayEnabled>
+</org.jfrog.hudson.ArtifactoryBuilder_-DescriptorImpl>

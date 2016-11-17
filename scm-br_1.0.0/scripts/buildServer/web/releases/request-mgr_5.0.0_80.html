@@ -1,0 +1,65 @@
+<b><u>Component Release Info for Sprint LetItBe:</b></u><p>
+<u>Release of Component</u><b>&nbsprequest-mgr</b><br><u>Version</u><b>&nbspr_5.0.0_80</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Goes with Session Collector 5.0.0_10
+Metadata – PHASE 2 COMPLETE: Req/Resp/PSN data persisted to SMS Publisher DB.  Ingests Title/Movie metadata from Canoe NCIS.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/dai-sdc-5.0.0/005-dad-metadata.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_66</b></u><br>
+<pre>
+* <font color=blue>55acaeb</font>-<font color=green>(2015-06-22)</font><font color=black><b>VODDAI-7167: Now using ViewerEvent in Play Time calculation</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_80)</font>
+* <font color=blue>eb1a4f3</font>-<font color=green>(2015-06-19)</font><font color=black><b>VODDAI-4667 Fix for missing urlId on TitleRef and MovieRef</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_79)</font>
+* <font color=blue>4737c62</font>-<font color=green>(2015-06-19)</font><font color=black><b>VODDAI-7415 Length Tests for TitleBrief, TitleMedium, TitleLong</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3ad628b</font>-<font color=green>(2015-06-19)</font><font color=black><b>Added viewerEvents request and PSN for 7167 viewerEvents test</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_78)</font>
+* <font color=blue>6d3881a</font>-<font color=green>(2015-06-18)</font><font color=black><b>Soem bug fixes</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_77)</font>
+*   <font color=blue>526ad14</font>-<font color=green>(2015-06-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\  
+| * <font color=blue>990e27f</font>-<font color=green>(2015-06-18)</font><font color=black><b>Update rema-configuration.functional.properties</b></font><font color=grey>- (MajorMatt)</font><font color=red></font>
+* |   <font color=blue>7d18413</font>-<font color=green>(2015-06-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>b818288</font>-<font color=green>(2015-06-18)</font><font color=black><b>Fixed ads in remaConfig, fixed cucumber is empty to should be empty</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>32c10a3</font>-<font color=green>(2015-06-17)</font><font color=black><b>Fixed empty table checks</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|/  
+* <font color=blue>88f34ca</font>-<font color=green>(2015-06-17)</font><font color=black><b>Fixed some tests, added some tests, tags left for ken and I</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_76)</font>
+* <font color=blue>dd85f94</font>-<font color=green>(2015-06-17)</font><font color=black><b>VODDAI-7167: Only care about scale for "viewed" events.  Added support for "BOS"</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_75)</font>
+* <font color=blue>29a31ac</font>-<font color=green>(2015-06-17)</font><font color=black><b>VODDAI-7415 Tests for TitleBrief, TitleMedium, TitleLong</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c67cac9</font>-<font color=green>(2015-06-16)</font><font color=black><b>Added 7168 feature for presentation_info feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_74)</font>
+*   <font color=blue>f8c38c1</font>-<font color=green>(2015-06-16)</font><font color=black><b>added tests for 7168 runTime and fixed ads config committing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>97807cc</font>-<font color=green>(2015-06-16)</font><font color=black><b>Fix for optional start and end date</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_73)</font>
+* | <font color=blue>e418314</font>-<font color=green>(2015-06-16)</font><font color=black><b>added tests for 7168 runTime and fixed ads config committing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>bf4b3fc</font>-<font color=green>(2015-06-16)</font><font color=black><b>Added tag for ken insight</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>695d2fa</font>-<font color=green>(2015-06-16)</font><font color=black><b>Two new features, presentationInfo and spotEvents feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f87b94a</font>-<font color=green>(2015-06-16)</font><font color=black><b>Validation error fixes, some test improvements</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>cb81676</font>-<font color=green>(2015-06-15)</font><font color=black><b>Logging now uses the scala library</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_72)</font>
+* <font color=blue>9654d6d</font>-<font color=green>(2015-06-12)</font><font color=black><b>Added Cucumber ServerUrl property for Scrum4</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_71)</font>
+* <font color=blue>c4e4115</font>-<font color=green>(2015-06-12)</font><font color=black><b>Fixes for missing uriId, added xsd</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>0d7ab68</font>-<font color=green>(2015-06-12)</font><font color=black><b>Fixes for missing uriId</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3f9b3da</font>-<font color=green>(2015-06-12)</font><font color=black><b>ContentNotif Asset tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>b484d44</font>-<font color=green>(2015-06-12)</font><font color=black><b>I think I've coded all the PSN stories</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>70903bf</font>-<font color=green>(2015-06-12)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\  
+| *   <font color=blue>0db4005</font>-<font color=green>(2015-06-12)</font><font color=black><b>Added @ken tag on test for missing assetRef in response. Added xmlns definition on HP_PSN_Routing xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| |\  
+| * | <font color=blue>3c9971a</font>-<font color=green>(2015-06-12)</font><font color=black><b>Added @ken tag on test for missing assetRef in response. Added xmlns definition on HP_PSN_Routing xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * | <font color=blue>6c6c6c5</font>-<font color=green>(2015-06-11)</font><font color=black><b>New files for many opps used for 7147</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | | <font color=blue>1515bc7</font>-<font color=green>(2015-06-12)</font><font color=black><b>Cleaned up the collection code</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>f182255</font>-<font color=green>(2015-06-12)</font><font color=black><b>Removed the collect trait for Routes, and just added a field.  The route returned by the route selector now uses the description from the message, not the one that matches the route.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>4be78d2</font>-<font color=green>(2015-06-11)</font><font color=black><b>Persist Title Records</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_70)</font>
+|/  
+* <font color=blue>c50e27e</font>-<font color=green>(2015-06-11)</font><font color=black><b>Added test for 6346 6348 and more tests for 7147</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5e1859c</font>-<font color=green>(2015-06-10)</font><font color=black><b>More tests for 7147. Need one more for podOptimization/position attriubte impact</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_69)</font>
+*   <font color=blue>965f7e9</font>-<font color=green>(2015-06-10)</font><font color=black><b>New test for placementInfo breakPlacementSequence 7147</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_68)</font>
+|\  
+| * <font color=blue>0285e5e</font>-<font color=green>(2015-06-09)</font><font color=black><b>Moved dependency versions to nirvana</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_67)</font>
+| * <font color=blue>a41a6c4</font>-<font color=green>(2015-06-09)</font><font color=black><b>Removed used metadata module</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ada2ce5</font>-<font color=green>(2015-06-10)</font><font color=black><b>New test for placementInfo breakPlacementSequence 7147</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

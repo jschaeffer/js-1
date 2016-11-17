@@ -1,0 +1,183 @@
+<b><u>Component Release Info for Sprint RunningWithTheDevil:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi</b><br><u>Version</u><b>&nbspr_5.0.0_13</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+CAAS Core - 5.1.0_9
+ETL/Report DB - 4.0.0.1_8
+Relay DB – 5.0.0_44
+Metadata - Ripped Broadway Relay persistence out of Ingester. Removed Broadway Relay properties from the properties file.
+Note: Already been deployed to Rentrak performance</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_5.0.0_13/diff.txt>dai-smsi_v_5.0.0_13/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_170</b></u><br>
+<pre>
+* <font color=blue>e776d1b</font>-<font color=green>(2015-09-15)</font><font color=black><b>removing all Broadway "relay2" checks from all tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_13)</font>
+* <font color=blue>8b28de2</font>-<font color=green>(2015-09-14)</font><font color=black><b>removed Broadway</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_12)</font>
+*   <font color=blue>e7677fc</font>-<font color=green>(2015-09-09)</font><font color=black><b>Merge branch 'cloudera-prod' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_11)</font>
+|\  
+| * <font color=blue>067395d</font>-<font color=green>(2015-08-31)</font><font color=black><b>using consistent names</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (origin/cloudera-prod)</font>
+| * <font color=blue>e2a0970</font>-<font color=green>(2015-08-31)</font><font color=black><b>Change to create new connection per call</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>41ff4cf</font>-<font color=green>(2015-09-08)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_10)</font>
+|\ \  
+| * | <font color=blue>0aa88a7</font>-<font color=green>(2015-09-08)</font><font color=black><b>updating tests for scrum1 and README for new build</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | | <font color=blue>83c0102</font>-<font color=green>(2015-09-08)</font><font color=black><b>Repointed to new wsdl</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>ac2a997</font>-<font color=green>(2015-09-08)</font><font color=black><b>Excluded conflicting dependencies</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/ /  
+* | <font color=blue>aafa98c</font>-<font color=green>(2015-09-02)</font><font color=black><b>added calendarutil log</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_9, tag: v_5.0.0_8)</font>
+* | <font color=blue>767ca14</font>-<font color=green>(2015-09-02)</font><font color=black><b>changing HHID check on first test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>7fd3ef0</font>-<font color=green>(2015-09-02)</font><font color=black><b>changing scrum1 hbase url property</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>6abcb01</font>-<font color=green>(2015-09-01)</font><font color=black><b>Revert "Cleaning up setenv.sh files."</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_5.0.0_7)</font>
+* | <font color=blue>3b1bc42</font>-<font color=green>(2015-09-01)</font><font color=black><b>Revert "Cleaning up setenv.sh files."</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>d0bc6ac</font>-<font color=green>(2015-09-01)</font><font color=black><b>Cleaning up setenv.sh files.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_5.0.0_6)</font>
+* | <font color=blue>c274479</font>-<font color=green>(2015-09-01)</font><font color=black><b>Cleaning up setenv.sh files.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>45e96fb</font>-<font color=green>(2015-08-31)</font><font color=black><b>updated setenv file for log4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_5)</font>
+* | <font color=blue>befc5c6</font>-<font color=green>(2015-08-31)</font><font color=black><b>removing incorrect vm arguments.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_5.0.0_4)</font>
+* | <font color=blue>ca9ece0</font>-<font color=green>(2015-08-31)</font><font color=black><b>a little bit of reorganization</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_3)</font>
+* | <font color=blue>70ce7f3</font>-<font color=green>(2015-08-31)</font><font color=black><b>adding hbase info to scrum property files.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>909acce</font>-<font color=green>(2015-08-31)</font><font color=black><b>dummy template for hbase relay data generation</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_2)</font>
+* | <font color=blue>f1231dd</font>-<font color=green>(2015-08-20)</font><font color=black><b>change to hbase checks for switch to ^^</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red> (tag: v_5.0.0_1)</font>
+|/  
+*   <font color=blue>86bb549</font>-<font color=green>(2015-08-20)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>8f78de4</font>-<font color=green>(2015-07-20)</font><font color=black><b>supplementing gitignore.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>d8911ba</font>-<font color=green>(2015-08-13)</font><font color=black><b>adding operator to hbase checks in Ingester</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>bf3005c</font>-<font color=green>(2015-08-20)</font><font color=black><b>Changed field separators to ^^</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+*   <font color=blue>6a885e3</font>-<font color=green>(2015-08-13)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>6e53b9f</font>-<font color=green>(2015-08-11)</font><font color=black><b>updating watermarks and owner id test check</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>4a51548</font>-<font color=green>(2015-08-10)</font><font color=black><b>adding in HBASE checks for owner identifier test</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>9b9d3c8</font>-<font color=green>(2015-08-10)</font><font color=black><b>adding deviceID to all Ingester HBASE checks</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>8017939</font>-<font color=green>(2015-08-13)</font><font color=black><b>Added operator</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>3f7dc7b</font>-<font color=green>(2015-08-10)</font><font color=black><b>fixed sos</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>670db85</font>-<font color=green>(2015-08-10)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>893b822</font>-<font color=green>(2015-08-10)</font><font color=black><b>checking in hbase de-dupe checks</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>3fc7380</font>-<font color=green>(2015-08-10)</font><font color=black><b>saving deviceId</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>e8ed2bf</font>-<font color=green>(2015-08-07)</font><font color=black><b>adding tests to get Hbase persistence up to date with Oracle persistence</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>fee4ac3</font>-<font color=green>(2015-08-06)</font><font color=black><b>continuing adding hbase checks to Ingester tests</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>a98797f</font>-<font color=green>(2015-08-05)</font><font color=black><b>new glue code checks in baseline persist hbase test - first two scenarios</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>5c4f8d3</font>-<font color=green>(2015-08-03)</font><font color=black><b>adding pod_optimized_COO xml template</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+*   <font color=blue>6aab17e</font>-<font color=green>(2015-08-03)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>080717d</font>-<font color=green>(2015-07-31)</font><font color=black><b>editing cron xml file</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>d3fa9e4</font>-<font color=green>(2015-08-03)</font><font color=black><b>Changes to store titleAssetId by session</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>d38a807</font>-<font color=green>(2015-07-31)</font><font color=black><b>Passing in status columns via property file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>a28b5ba</font>-<font color=green>(2015-07-30)</font><font color=black><b>fixing the data gen feature</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>c36e3d8</font>-<font color=green>(2015-07-27)</font><font color=black><b>adding several tables to caas test empty</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>ab355a3</font>-<font color=green>(2015-07-24)</font><font color=black><b>Seeding the scan row w/ the last digit from the timestamp</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>96ae264</font>-<font color=green>(2015-07-23)</font><font color=black><b>Saving the COO in both the scan row id, and the placement data</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>6f0b2ce</font>-<font color=green>(2015-07-23)</font><font color=black><b>Adding coo to the scan row key</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>05737d5</font>-<font color=green>(2015-07-22)</font><font color=black><b>correcting xml templates</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>0a10ba4</font>-<font color=green>(2015-07-20)</font><font color=black><b>Changed : to $^</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4770c03</font>-<font color=green>(2015-07-20)</font><font color=black><b>Updated static reference</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>83929df</font>-<font color=green>(2015-07-17)</font><font color=black><b>test changes</b></font><font color=grey>- (jsamuelson024)</font><font color=red></font>
+* <font color=blue>e876e70</font>-<font color=green>(2015-07-17)</font><font color=black><b>adding smoke test for relay</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>69f6193</font>-<font color=green>(2015-07-17)</font><font color=black><b>Changed the status flags to use a char</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>f26de2d</font>-<font color=green>(2015-07-16)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>9fd4c34</font>-<font color=green>(2015-07-10)</font><font color=black><b>updating environmental configs for Zayo deployments</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>0a28903</font>-<font color=green>(2015-07-16)</font><font color=black><b>Changed the row key for the Relay Table</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>d06d521</font>-<font color=green>(2015-07-10)</font><font color=black><b>Changes to support log4j 2 logging</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>a984ead</font>-<font color=green>(2015-07-10)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>f31b293</font>-<font color=green>(2015-07-09)</font><font color=black><b>Adding in additional persistence tests and glue code steps</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>c6b0056</font>-<font color=green>(2015-07-10)</font><font color=black><b>Fixed merge error</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>6262c02</font>-<font color=green>(2015-07-09)</font><font color=black><b>Updating scrum configs.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>e724ecd</font>-<font color=green>(2015-07-08)</font><font color=black><b>Removing wrong log4j configuration in pom</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>3c25731</font>-<font color=green>(2015-07-08)</font><font color=black><b>externalizing log settings.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>7f8d6ca</font>-<font color=green>(2015-07-08)</font><font color=black><b>Removing code that was commented out instead of deleted properly.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>c32c6e4</font>-<font color=green>(2015-07-08)</font><font color=black><b>Cleaning up unnecessary code.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>4b1e9fb</font>-<font color=green>(2015-07-08)</font><font color=black><b>Removing copy/pasted interface code.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>59c36bd</font>-<font color=green>(2015-07-07)</font><font color=black><b>refactoring tests with new glue code, adding derivative ID to templates</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+*   <font color=blue>dd8fb3e</font>-<font color=green>(2015-07-06)</font><font color=black><b>conflict resolved</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>02060f4</font>-<font color=green>(2015-07-06)</font><font color=black><b>Removing Craig from the test file.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>4ec204e</font>-<font color=green>(2015-07-06)</font><font color=black><b>changing background and a few other steps of base baseline persist</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>cd5fb2e</font>-<font color=green>(2015-07-06)</font><font color=black><b>Row check gherkin</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>1a39a52</font>-<font color=green>(2015-07-02)</font><font color=black><b>Changes to support hbase testing</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>e922f83</font>-<font color=green>(2015-07-02)</font><font color=black><b>Updated test</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>dccf4ad</font>-<font color=green>(2015-07-02)</font><font color=black><b>Refactored dao and added dataLoad test.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>8613066</font>-<font color=green>(2015-07-02)</font><font color=black><b>changes to first hbase persist scenario</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* <font color=blue>6fccdb5</font>-<font color=green>(2015-07-02)</font><font color=black><b>Added tests for domainConversion</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>25f8e0e</font>-<font color=green>(2015-07-02)</font><font color=black><b>package refactoring</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>6ad172d</font>-<font color=green>(2015-07-01)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>3374cf2</font>-<font color=green>(2015-07-01)</font><font color=black><b>owner identifier test change for HBase checks</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>330905b</font>-<font color=green>(2015-07-01)</font><font color=black><b>HBase refactor for de-duping, offline and persistence</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>22cda1d</font>-<font color=green>(2015-07-01)</font><font color=black><b>Added placementRef and updated test data</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>15e186e</font>-<font color=green>(2015-07-01)</font><font color=black><b>Fixed test data and added prepender to op/pl/visit</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>d3d1d7d</font>-<font color=green>(2015-07-01)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>5cad6e5</font>-<font color=green>(2015-06-29)</font><font color=black><b>Adding new scenarios to HBase Ingest tests for multiple elements</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * <font color=blue>8532926</font>-<font color=green>(2015-06-29)</font><font color=black><b>new HBase feature, moving alias feature into new folder</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+* | <font color=blue>89abb53</font>-<font color=green>(2015-07-01)</font><font color=black><b>Added Conversion tool to convert domain to string</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>33dd594</font>-<font color=green>(2015-06-29)</font><font color=black><b>Adding back in relay saves</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>6e6fc9c</font>-<font color=green>(2015-06-29)</font><font color=black><b>Fixed goofy merge issue on revert</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>36a2531</font>-<font color=green>(2015-06-29)</font><font color=black><b>Reverting relay checks</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>730d84d</font>-<font color=green>(2015-06-29)</font><font color=black><b>Revert "removing relay checks"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>47bd481</font>-<font color=green>(2015-06-29)</font><font color=black><b>Replaced log4j w/ new version</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>381f18d</font>-<font color=green>(2015-06-29)</font><font color=black><b>Merge branch 'HBaseIngest' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| *   <font color=blue>0a1bf0b</font>-<font color=green>(2015-06-26)</font><font color=black><b>Merge remote-tracking branch 'origin/HBaseIngest' into HBaseIngest</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (origin/HBaseIngest)</font>
+| |\  
+| | * <font color=blue>97f7383</font>-<font color=green>(2015-06-25)</font><font color=black><b>moving persistence tests around</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>0d867ee</font>-<font color=green>(2015-06-26)</font><font color=black><b>Initial HBase save checkin</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| * <font color=blue>c6e30af</font>-<font color=green>(2015-06-25)</font><font color=black><b>Removed all Relay persistence code.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>e2510e2</font>-<font color=green>(2015-06-25)</font><font color=black><b>Merge branch 'br_4.0.0' into HBaseIngest</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| *   <font color=blue>5221409</font>-<font color=green>(2015-06-25)</font><font color=black><b>Merge remote-tracking branch 'origin/HBaseIngest' into HBaseIngest</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>bd968eb</font>-<font color=green>(2015-06-25)</font><font color=black><b>removing relay checks</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| | * <font color=blue>49a9a4c</font>-<font color=green>(2015-06-25)</font><font color=black><b>removing all traces of relay in new branch</b></font><font color=grey>- (Tyler Samuelson)</font><font color=red></font>
+| * | <font color=blue>241c786</font>-<font color=green>(2015-06-25)</font><font color=black><b>Removed smsi_settings test</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| * <font color=blue>22a5e13</font>-<font color=green>(2015-06-04)</font><font color=black><b>enabling hbase</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>a253a1b</font>-<font color=green>(2015-06-03)</font><font color=black><b>Converted LateLogger to use new sl4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>d0fcf1c</font>-<font color=green>(2015-06-03)</font><font color=black><b>Updated int test log4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>45fd7df</font>-<font color=green>(2015-06-03)</font><font color=black><b>fixed test log4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>52e3b16</font>-<font color=green>(2015-06-03)</font><font color=black><b>Fixed logging for java8</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>3478dd8</font>-<font color=green>(2015-06-02)</font><font color=black><b>Merge branch 'br_5.0.0' into HBaseIngest</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>e2833da</font>-<font color=green>(2015-06-02)</font><font color=black><b>Merged in 4.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>0e32e0c</font>-<font color=green>(2015-06-02)</font><font color=black><b>Temporary check in to merge 5.0 branch in</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>c1949f1</font>-<font color=green>(2015-04-28)</font><font color=black><b>Registered save service</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>4b67830</font>-<font color=green>(2015-04-28)</font><font color=black><b>Adding back in saves</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>30d3ad6</font>-<font color=green>(2015-04-28)</font><font color=black><b>Fixed setting service lookup</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>18c1bdb</font>-<font color=green>(2015-04-27)</font><font color=black><b>Changes to support ingest</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>a8d5713</font>-<font color=green>(2015-04-20)</font><font color=black><b>Initial changes for HBase persistence</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>7a3f86f</font>-<font color=green>(2015-03-26)</font><font color=black><b>Log4j2 configs.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (origin/java8)</font>
+* <font color=blue>fd2977c</font>-<font color=green>(2015-03-26)</font><font color=black><b>Updating to 5.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>6414969</font>-<font color=green>(2015-03-23)</font><font color=black><b>Upgrading to version 5.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>e151cd2</font>-<font color=green>(2015-03-23)</font><font color=black><b>Removing duplicate entry.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>3a259c0</font>-<font color=green>(2015-03-23)</font><font color=black><b>Updating to 5.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>14d13a7</font>-<font color=green>(2015-03-17)</font><font color=black><b>Cleaning up dead code.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>e8bd55a</font>-<font color=green>(2015-03-17)</font><font color=black><b>Upgrading to servlet 3.0.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>e5d0a0b</font>-<font color=green>(2015-03-17)</font><font color=black><b>Adding new log4j2 XML.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>4f45a92</font>-<font color=green>(2015-03-17)</font><font color=black><b>Always enabling schema validation.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>1a47c8f</font>-<font color=green>(2015-03-17)</font><font color=black><b>Removing CORE depedencies.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>0af0a20</font>-<font color=green>(2015-03-17)</font><font color=black><b>Fixing SMSIsettings bug.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>02fde32</font>-<font color=green>(2015-03-09)</font><font color=black><b>Interim checkin.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font></pre>
+<hr>
+<p>

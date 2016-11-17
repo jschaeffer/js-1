@@ -1,0 +1,81 @@
+<b><u>Component Release Info for Sprint Ninja_Turtles:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_4.0.0_334</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Joel: Campaign Manager 4.0.0_334 – Released to PROD.  Tested against CAAS-Core 4.0.0_146
+• VODDAI-5868 – Wait Indicator
+• VODDAI-5886 – Date Selector
+• VODDAI-5947 – Improve Cog Wheel Functionality
+• VODDAI-6019 – Placement Constraint > Break Limit not defaulted to ‘1’ for new campaign 
+• VODDAI-6047 – Goal on Campaign Line not allowing enough digits</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_322</b></u><br>
+<pre>
+*   <font color=blue>b6e207d</font>-<font color=green>(2014-07-18)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Scott Davis)</font><font color=red> (v_4.0.0_334)</font>
+|\  
+| * <font color=blue>0f0f2e9</font>-<font color=green>(2014-07-18)</font><font color=black><b>adding reset_dataxml to all features</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_333)</font>
+* | <font color=blue>7946064</font>-<font color=green>(2014-07-18)</font><font color=black><b>moved save spinner next to save button due to error handling</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+|/  
+*   <font color=blue>a2f445b</font>-<font color=green>(2014-07-18)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+|\  
+| * <font color=blue>e860e5f</font>-<font color=green>(2014-07-18)</font><font color=black><b>max length for goal quantity</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_332)</font>
+* | <font color=blue>e7ee3bd</font>-<font color=green>(2014-07-18)</font><font color=black><b>backing out 'save' spinner for campaign, adAsset, lineItem due to non-happy path failures (e.g. validation errors) failing to redraw the screen correctly.</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+|/  
+* <font color=blue>64dcc93</font>-<font color=green>(2014-07-18)</font><font color=black><b>forcing a refresh on campaign line items to hide the spinner correctly</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>7502ac3</font>-<font color=green>(2014-07-17)</font><font color=black><b>added a bit of top padding campaign line item spinner</b></font><font color=grey>- (Scott Davis)</font><font color=red> (v_4.0.0_331)</font>
+* <font color=blue>9477196</font>-<font color=green>(2014-07-17)</font><font color=black><b>removed unused spinner.gif reference in betaIndex.css</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>d07851b</font>-<font color=green>(2014-07-17)</font><font color=black><b>added spinner for campaign show screen for lineItems</b></font><font color=grey>- (Scott Davis)</font><font color=red> (origin/feature/spinner2, origin/develop)</font>
+*   <font color=blue>6cfcd1a</font>-<font color=green>(2014-07-17)</font><font color=black><b>merged spinner, perf</b></font><font color=grey>- (Scott Davis)</font><font color=red> (v_4.0.0_330)</font>
+|\  
+| * <font color=blue>468748a</font>-<font color=green>(2014-07-16)</font><font color=black><b>added perf to lineItem save</b></font><font color=grey>- (Scott Davis)</font><font color=red> (origin/feature/perf)</font>
+| * <font color=blue>b0c6192</font>-<font color=green>(2014-07-16)</font><font color=black><b>Added perf timing for campaign save</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>1d1e143</font>-<font color=green>(2014-07-16)</font><font color=black><b>refactored perf into separate file; added polyfill for firefox, safari</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>10cac71</font>-<font color=green>(2014-07-16)</font><font color=black><b>refactored perf start/stop into methods instead of copy/paste disease...</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>659e2e3</font>-<font color=green>(2014-07-16)</font><font color=black><b>added perf timing for adAsset save</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>80d89fb</font>-<font color=green>(2014-07-16)</font><font color=black><b>fixed typo in adAssetShow for perf</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>48bdc0a</font>-<font color=green>(2014-07-16)</font><font color=black><b>instrumented all routes, layouts with perf timing.</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>3c0ee16</font>-<font color=green>(2014-07-16)</font><font color=black><b>perf timing for search (campaign, adAsset)</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* | <font color=blue>d677135</font>-<font color=green>(2014-07-16)</font><font color=black><b>added spinner on save for campaign, adAsset, and lineItem</b></font><font color=grey>- (Scott Davis)</font><font color=red> (v_4.0.0_329)</font>
+|/  
+* <font color=blue>f915325</font>-<font color=green>(2014-07-16)</font><font color=black><b>Set default break limit to 1.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>38cb205</font>-<font color=green>(2014-07-15)</font><font color=black><b>added wait spinner for all actions; most happen so quickly that this should be a no-op in most cases.</b></font><font color=grey>- (Scott Davis)</font><font color=red> (v_4.0.0_328)</font>
+* <font color=blue>c42e2ac</font>-<font color=green>(2014-07-15)</font><font color=black><b>cleaned up show/hide spinner - centralized to router.js</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>c58e889</font>-<font color=green>(2014-07-15)</font><font color=black><b>simple/adv search spinners for campaign, assets</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>aae0a2c</font>-<font color=green>(2014-07-10)</font><font color=black><b>added spinner to adv dialog box; not enabled; just a placeholder</b></font><font color=grey>- (Scott Davis)</font><font color=red> (v_4.0.0_327)</font>
+* <font color=blue>4b36e68</font>-<font color=green>(2014-07-10)</font><font color=black><b>added spinner on startup</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>9e2b68f</font>-<font color=green>(2014-07-10)</font><font color=black><b>added spinner for simple search on campaign, adAsset</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>f0a0e4e</font>-<font color=green>(2014-07-10)</font><font color=black><b>Added 2 steps to verify Placement Limits CAAS Persistence</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>5df69f0</font>-<font color=green>(2014-07-10)</font><font color=black><b>added spinner to campaign search, ad search to indicate wait time.</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+* <font color=blue>bef9191</font>-<font color=green>(2014-07-09)</font><font color=black><b>Manual test list--changed referenced scenario</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_326)</font>
+* <font color=blue>fb180e1</font>-<font color=green>(2014-07-09)</font><font color=black><b>Removed ToDo; removed manual test for 5806</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+*   <font color=blue>c07a63d</font>-<font color=green>(2014-07-09)</font><font color=black><b>Merge branch 'feature/cog' into develop</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+|\  
+| * <font color=blue>b208ff4</font>-<font color=green>(2014-07-09)</font><font color=black><b>qtip show solo:true turns the tooltips into singletons</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| * <font color=blue>eaaf01f</font>-<font color=green>(2014-07-09)</font><font color=black><b>added delays to qtips</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+|/  
+*   <font color=blue>695f744</font>-<font color=green>(2014-07-09)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+|\  
+| * <font color=blue>a27b1d8</font>-<font color=green>(2014-07-08)</font><font color=black><b>Used Admin ID instead of Prev Btn</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>190a7f4</font>-<font color=green>(2014-07-08)</font><font color=black><b>Changed radial to radio</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>4b19b81</font>-<font color=green>(2014-07-08)</font><font color=black><b>Added steps to verify bug 5843; changed radial to radio</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>2a2c5bb</font>-<font color=green>(2014-07-09)</font><font color=black><b>tweaked all datepickers to show 2 months</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+|/  
+* <font color=blue>68bd2fb</font>-<font color=green>(2014-07-07)</font><font color=black><b>Added a silent:true to prevent unnecessary re-rendering.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_324)</font>
+* <font color=blue>604e9e0</font>-<font color=green>(2014-07-07)</font><font color=black><b>Removed console.log output.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>eeccc23</font>-<font color=green>(2014-07-07)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| *   <font color=blue>a243ba6</font>-<font color=green>(2014-07-07)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |\  
+| * | <font color=blue>0b69b82</font>-<font color=green>(2014-07-07)</font><font color=black><b>change of many v1 features to accommodate for placement limitation</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * | <font color=blue>0fe3197</font>-<font color=green>(2014-07-02)</font><font color=black><b>final feature updates</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | | <font color=blue>d950839</font>-<font color=green>(2014-07-07)</font><font color=black><b>Better rollback when clicking line item cancel, fixed width issue on line item form.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>241f110</font>-<font color=green>(2014-07-02)</font><font color=black><b>Modified scenario for 256-char Ad Asset name</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_323)</font>
+* | <font color=blue>c11e457</font>-<font color=green>(2014-07-02)</font><font color=black><b>Updated for PL changes</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|/  
+* <font color=blue>82d0b43</font>-<font color=green>(2014-07-02)</font><font color=black><b>Twekas due to PL change; mis-spelled word</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>f70a392</font>-<font color=green>(2014-07-02)</font><font color=black><b>Made changes to some ad seperation code to accomodate changes made</b></font><font color=grey>- (David Choi)</font><font color=red></font></pre>
+<hr>
+<p>

@@ -1,0 +1,74 @@
+<list>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>dai_scm-PackageDeploy-4.0.0</n>
+    <nb>5</nb>
+    <d>
+      <time>1360620496000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>270</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>dai_scm-PackageDeploy-4.0.0</n>
+    <nb>4</nb>
+    <d>
+      <time>1360620432000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>217</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>dai_scm-PackageDeploy-4.0.0</n>
+    <nb>3</nb>
+    <d>
+      <time>1360620415000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>333</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>dai_scm-PackageDeploy-4.0.0</n>
+    <nb>2</nb>
+    <d>
+      <time>1360618578000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>284</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>dai_scm-PackageDeploy-4.0.0</n>
+    <nb>1</nb>
+    <d>
+      <time>1360617125000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>179</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>smsi-admin-compile-4.0.0</n>
+    <nb>1</nb>
+    <d>
+      <time>1362002448000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>308506</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+</list>

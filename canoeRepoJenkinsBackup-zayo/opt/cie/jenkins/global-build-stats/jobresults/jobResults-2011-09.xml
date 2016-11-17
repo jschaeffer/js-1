@@ -1,0 +1,182 @@
+<list>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>15</nb>
+    <d>
+      <time>1316042480000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>63301</du>
+    <nn>master</nn>
+    <un>anonymous</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>FAILURE</r>
+    <n>canoe-security-compile</n>
+    <nb>14</nb>
+    <d>
+      <time>1316040249000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>8798</du>
+    <nn>master</nn>
+    <un>anonymous</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>13</nb>
+    <d>
+      <time>1316039159000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>79291</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>12</nb>
+    <d>
+      <time>1315598159000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>57293</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>11</nb>
+    <d>
+      <time>1315597617000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>58774</du>
+    <nn>master</nn>
+    <un>Phil Zimmerman</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>10</nb>
+    <d>
+      <time>1315505459000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>57655</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>9</nb>
+    <d>
+      <time>1315505159000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>58244</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>8</nb>
+    <d>
+      <time>1315503868000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>64205</du>
+    <nn>master</nn>
+    <un>Phil Zimmerman</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>ABORTED</r>
+    <n>canoe-security-compile</n>
+    <nb>7</nb>
+    <d>
+      <time>1315503852000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>7034</du>
+    <nn>master</nn>
+    <un>Phil Zimmerman</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>6</nb>
+    <d>
+      <time>1315348539000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>65938</du>
+    <nn>master</nn>
+    <un>anonymous</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>5</nb>
+    <d>
+      <time>1315331759000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>58251</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>FAILURE</r>
+    <n>canoe-security-compile</n>
+    <nb>4</nb>
+    <d>
+      <time>1315328759000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>57419</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>3</nb>
+    <d>
+      <time>1315323059000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>60835</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>2</nb>
+    <d>
+      <time>1315253459000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>64523</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>1</nb>
+    <d>
+      <time>1314908056000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>69519</du>
+    <nn>master</nn>
+    <un>Phil Zimmerman</un>
+  </jbr>
+</list>

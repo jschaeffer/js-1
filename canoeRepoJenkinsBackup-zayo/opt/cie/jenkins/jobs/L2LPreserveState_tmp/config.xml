@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h3&gt;What does this job do?&lt;br&gt;&#xd;
+&lt;ul&gt;&lt;h4&gt;&lt;li&gt;This job goes out to the selected system&apos;s end points and gathers a list of the current tcserver status for all applications across the selected system.&#xd;
+&lt;li&gt;This information is then saved off to a tmp location and all running applications are then stopped. &#xd;
+  &lt;li&gt;The information gathered by this job is automatically pulled and used when preforming a restart using the L2LRessurectState job.&lt;/h4&gt;&lt;/ul&gt;&lt;/h3&gt;&#xd;
+&#xd;
+&lt;h5&gt;Copyright Canoe Ventures 2014&lt;/h5&gt;&lt;font size=4 color=white&gt;L2L_pass_1!&lt;/font&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUserPassword</name>
+          <description>Enter authorized password</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Suite</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Base</string>
+              <string>FW</string>
+              <string>Google</string>
+              <string>Cox</string>
+              <string>Broadway</string>
+              <string>Rentrak</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+export action
+export Suite
+
+source /opt/build/scripts/zayos_sys_L2L.sh
+fnGetCompList
+
+
+rm /var/www/html/lab2lab/$Suite/RestartRaw.txt
+rm /var/www/html/lab2lab/$Suite/ToRestart.txt
+
+touch /var/www/html/lab2lab/$Suite/ToRestart.txt
+
+export j=0
+for Comp in ${Component}; do
+
+export Comp
+
+touch /var/www/html/lab2lab/$Suite/RestartRaw.txt
+
+source /opt/build/scripts/zayos_sys_L2L.sh
+fnZayos_Sys
+
+  for z in ${inar[@]}; do
+# Not executed  while [[ $(echo ${inar[$k]} | cut -f1 -d:) = $Suite ]]; do
+
+  export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+  export APPSERVER_IP=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+  export INSTANCE=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+  k=$((k+1))
+    echo &quot; &quot;
+    echo &quot;************************************************************************&quot;
+    echo &quot;Instance -&gt; $INSTANCE   APPSERVER_IP -&gt; $APPSERVER_IP   Suite -&gt; $Suite&quot;
+    echo &quot; &quot;
+    echo &quot;status $INSTANCE on $APPSERVER_IP&quot;
+    echo &quot;/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status&quot;
+    echo &quot; &quot;
+          /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status &gt;&gt; /var/www/html/lab2lab/$Suite/RestartRaw.txt
+
+    if grep &quot;NOT RUNNING&quot; /var/www/html/lab2lab/$Suite/RestartRaw.txt ; then
+	echo &quot;$Comp on $Suite is NOT Running and will NOT be restarted.&quot;
+    elif grep &quot;PID&quot; /var/www/html/lab2lab/$Suite/RestartRaw.txt ; then
+	echo &quot;cmpar[$j]=$Comp:$APPSERVER_IP:$INSTANCE&quot; &gt;&gt; /var/www/html/lab2lab/$Suite/ToRestart.txt
+	echo &quot;$Comp on $Suite IS Running and WILL be restarted.&quot;
+          j=$((j+1))
+    fi
+rm /var/www/html/lab2lab/$Suite/RestartRaw.txt
+    echo &quot; &quot;
+    echo &quot;************************************************************************&quot;
+  done
+  export k=0
+  unset inar
+  unset APPSERVER_IP
+  unset INSTANCE
+  unset z
+done
+
+cat /var/www/html/lab2lab/$Suite/ToRestart.txt
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

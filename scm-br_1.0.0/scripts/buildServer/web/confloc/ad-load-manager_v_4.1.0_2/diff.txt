@@ -1,0 +1,360 @@
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum1.properties b/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
+index 6910c2a..21d3906 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum1.properties
+@@ -1,41 +1,33 @@
+-schema.validation.enabled=true
+-
+-validation.logging.enabled=true
+-
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++###ALM Database Configurations###
++config.dir=../conf
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC1_ALM
+ db.password=SC1_ALM
+-
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-caas.db.username=SC1_CAAS
+-caas.db.password=SC1_CAAS
+-caas.db.max.idle=10
+-caas.db.pool.size=10
+-caas.db.pool.initialSize=5
+-
+-config.dir=../conf
+-
+-# Defaults pool sizes are based on max oracle XE can handle, production should be much more
+ db.pool.initialSize=50
+ db.pool.size=300
+ db.test.idle=60
+ db.max.idle=1800
+ db.checkout.timeout=2000
+ 
+-application.server.protocol=http
+-application.server.host=localhost
+-mock.http.port=9190
+-mock.http.context=int-test-support
+-
+-# The POIS URL where messages will be published to
+-application.endpoints.publish=http://10.13.18.115:9535/int-test-support/POIS-Mock
+-
+-# The number of movie assets and associated assets to publish to POIS in a single message.
+-application.publisher.batchSize=1000
++###CAAS CORE Database Configurations###
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC1_CAAS
++caas.db.password=SC1_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
+ 
++###Logging Properties###
++schema.validation.enabled=true
++validation.logging.enabled=true
++alm.qualifier.log.enabled=true
+ alm.operator=COX
+ 
+-alm.qualifier.log.enabled=true
++###ALM to POIS Publish Properties###
++application.endpoints.publish=http://10.66.12.11:9535/int-test-support/POIS-Mock
++application.publisher.batchSize=1000
++publish.job.hour=0
++publish.job.minute=23
+ 
+ ##Commented out to prevent interference at the test SFTP site (which is shared)
+ ## SFTP configuration
+@@ -46,8 +38,5 @@ alm.qualifier.log.enabled=true
+ #alm.sftp.completeD=/completed
+ #alm.sftp.failureD=/failure
+ #alm.sftp.filePattern=*.csv
+-
+-sftp.job.interval=0 0 23 * * ?
+-
+-publish.job.hour=0
+-publish.job.minute=23
+\ No newline at end of file
++#alm.sftp.port=22
++#sftp.job.interval=0 0 23 * * ?
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum2.properties b/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
+index 6a2fb0a..8f5c0ce 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum2.properties
+@@ -1,41 +1,33 @@
+-schema.validation.enabled=true
+-
+-validation.logging.enabled=true
+-
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++###ALM Database Configurations###
++config.dir=../conf
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC2_ALM
+ db.password=SC2_ALM
+-
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-caas.db.username=SC2_CAAS
+-caas.db.password=SC2_CAAS
+-caas.db.max.idle=10
+-caas.db.pool.size=10
+-caas.db.pool.initialSize=5
+-
+-config.dir=../conf
+-
+-# Defaults pool sizes are based on max oracle XE can handle, production should be much more
+ db.pool.initialSize=50
+ db.pool.size=300
+ db.test.idle=60
+ db.max.idle=1800
+ db.checkout.timeout=2000
+ 
+-application.server.protocol=http
+-application.server.host=localhost
+-mock.http.port=9190
+-mock.http.context=int-test-support
+-
+-# The POIS URL where messages will be published to
+-application.endpoints.publish=http://10.13.18.116:9535/int-test-support/POIS-Mock
+-
+-# The number of movie assets and associated assets to publish to POIS in a single message.
+-application.publisher.batchSize=1000
++###CAAS CORE Database Configurations###
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC2_CAAS
++caas.db.password=SC2_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
+ 
++###Logging Properties###
++schema.validation.enabled=true
++validation.logging.enabled=true
++alm.qualifier.log.enabled=true
+ alm.operator=COX
+ 
+-alm.qualifier.log.enabled=true
++###ALM to POIS Publish Properties###
++application.endpoints.publish=http://10.66.12.12:9535/int-test-support/POIS-Mock
++application.publisher.batchSize=1000
++publish.job.hour=0
++publish.job.minute=23
+ 
+ ##Commented out to prevent interference at the test SFTP site (which is shared)
+ ## SFTP configuration
+@@ -46,8 +38,5 @@ alm.qualifier.log.enabled=true
+ #alm.sftp.completeD=/completed
+ #alm.sftp.failureD=/failure
+ #alm.sftp.filePattern=*.csv
+-
+-sftp.job.interval=0 0 23 * * ?
+-
+-publish.job.hour=0
+-publish.job.minute=23
+\ No newline at end of file
++#alm.sftp.port=22
++#sftp.job.interval=0 0 23 * * ?
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum3.properties b/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
+index 5fff89c..3e6a07b 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum3.properties
+@@ -1,41 +1,33 @@
+-schema.validation.enabled=true
+-
+-validation.logging.enabled=true
+-
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++###ALM Database Configurations###
++config.dir=../conf
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC3_ALM
+ db.password=SC3_ALM
+-
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-caas.db.username=SC3_CAAS
+-caas.db.password=SC3_CAAS
+-caas.db.max.idle=10
+-caas.db.pool.size=10
+-caas.db.pool.initialSize=5
+-
+-config.dir=../conf
+-
+-# Defaults pool sizes are based on max oracle XE can handle, production should be much more
+ db.pool.initialSize=50
+ db.pool.size=300
+ db.test.idle=60
+ db.max.idle=1800
+ db.checkout.timeout=2000
+ 
+-application.server.protocol=http
+-application.server.host=localhost
+-mock.http.port=9190
+-mock.http.context=int-test-support
+-
+-# The POIS URL where messages will be published to
+-application.endpoints.publish=http://10.13.18.117:9535/int-test-support/POIS-Mock
+-
+-# The number of movie assets and associated assets to publish to POIS in a single message.
+-application.publisher.batchSize=1000
++###CAAS CORE Database Configurations###
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC3_CAAS
++caas.db.password=SC3_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
+ 
++###Logging Properties###
++schema.validation.enabled=true
++validation.logging.enabled=true
++alm.qualifier.log.enabled=true
+ alm.operator=COX
+ 
+-alm.qualifier.log.enabled=true
++###ALM to POIS Publish Properties###
++application.endpoints.publish=http://10.66.12.13:9535/int-test-support/POIS-Mock
++application.publisher.batchSize=1000
++publish.job.hour=0
++publish.job.minute=23
+ 
+ ##Commented out to prevent interference at the test SFTP site (which is shared)
+ ## SFTP configuration
+@@ -46,8 +38,5 @@ alm.qualifier.log.enabled=true
+ #alm.sftp.completeD=/completed
+ #alm.sftp.failureD=/failure
+ #alm.sftp.filePattern=*.csv
+-
+-sftp.job.interval=0 0 23 * * ?
+-
+-publish.job.hour=0
+-publish.job.minute=23
+\ No newline at end of file
++#alm.sftp.port=22
++#sftp.job.interval=0 0 23 * * ?
+diff --git a/alm-server/src/main/resources/configs/dai-alm.scrum4.properties b/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
+index 50f8ccf..ec2f7c8 100644
+--- a/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
++++ b/alm-server/src/main/resources/configs/dai-alm.scrum4.properties
+@@ -1,41 +1,33 @@
+-schema.validation.enabled=true
+-
+-validation.logging.enabled=true
+-
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++###ALM Database Configurations###
++config.dir=../conf
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC4_ALM
+ db.password=SC4_ALM
+-
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-caas.db.username=SC4_CAAS
+-caas.db.password=SC4_CAAS
+-caas.db.max.idle=10
+-caas.db.pool.size=10
+-caas.db.pool.initialSize=5
+-
+-config.dir=../conf
+-
+-# Defaults pool sizes are based on max oracle XE can handle, production should be much more
+ db.pool.initialSize=50
+ db.pool.size=300
+ db.test.idle=60
+ db.max.idle=1800
+ db.checkout.timeout=2000
+ 
+-application.server.protocol=http
+-application.server.host=localhost
+-mock.http.port=9190
+-mock.http.context=int-test-support
+-
+-# The POIS URL where messages will be published to
+-application.endpoints.publish=http://10.13.18.122:9535/int-test-support/POIS-Mock
+-
+-# The number of movie assets and associated assets to publish to POIS in a single message.
+-application.publisher.batchSize=1000
++###CAAS CORE Database Configurations###
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC4_CAAS
++caas.db.password=SC4_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
+ 
++###Logging Properties###
++schema.validation.enabled=true
++validation.logging.enabled=true
++alm.qualifier.log.enabled=true
+ alm.operator=COX
+ 
+-alm.qualifier.log.enabled=true
++###ALM to POIS Publish Properties###
++application.endpoints.publish=http://10.66.12.14:9535/int-test-support/POIS-Mock
++application.publisher.batchSize=1000
++publish.job.hour=0
++publish.job.minute=23
+ 
+ ##Commented out to prevent interference at the test SFTP site (which is shared)
+ ## SFTP configuration
+@@ -46,8 +38,5 @@ alm.qualifier.log.enabled=true
+ #alm.sftp.completeD=/completed
+ #alm.sftp.failureD=/failure
+ #alm.sftp.filePattern=*.csv
+-
+-sftp.job.interval=0 0 23 * * ?
+-
+-publish.job.hour=0
+-publish.job.minute=23
+\ No newline at end of file
++#alm.sftp.port=22
++#sftp.job.interval=0 0 23 * * ?
+diff --git a/alm-server/src/main/resources/configs/setenv.scrum1.sh b/alm-server/src/main/resources/configs/setenv.scrum1.sh
+index e4b5863..8dec580 100755
+--- a/alm-server/src/main/resources/configs/setenv.scrum1.sh
++++ b/alm-server/src/main/resources/configs/setenv.scrum1.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+diff --git a/alm-server/src/main/resources/configs/setenv.scrum2.sh b/alm-server/src/main/resources/configs/setenv.scrum2.sh
+index e4b5863..8dec580 100755
+--- a/alm-server/src/main/resources/configs/setenv.scrum2.sh
++++ b/alm-server/src/main/resources/configs/setenv.scrum2.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+diff --git a/alm-server/src/main/resources/configs/setenv.scrum3.sh b/alm-server/src/main/resources/configs/setenv.scrum3.sh
+index e4b5863..8dec580 100755
+--- a/alm-server/src/main/resources/configs/setenv.scrum3.sh
++++ b/alm-server/src/main/resources/configs/setenv.scrum3.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+diff --git a/alm-server/src/main/resources/configs/setenv.scrum4.sh b/alm-server/src/main/resources/configs/setenv.scrum4.sh
+index e4b5863..8dec580 100755
+--- a/alm-server/src/main/resources/configs/setenv.scrum4.sh
++++ b/alm-server/src/main/resources/configs/setenv.scrum4.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"

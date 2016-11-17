@@ -1,0 +1,32 @@
+<b><u>Component Release Info:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi-relay</b><br><u>Version</u><b>&nbspr_4.0.0_142</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana>Julie: Comcast has instructed us to NOT pass any form of hhId in our SMSi that we send to FW. The new build of SMSi Relay that hard codes the hhId in the SMSi message to “undefined” was signed off on today (Friday March 7) from a functional perspective. Tom has instructed us to deploy this to production prior to Tuesday March 11. 
+DAI SMSi Relay – 4.0.0_142 
+ETL Feeder – 4.0.0_186 (currently in production) 
+SMSi Ingestor – 4.0.0_92 (currently in production) 
+Metadata: Hard-coded the VodSessionInfo@hhId attribute to ‘undefined’ </b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_134</b></u><br>
+<pre>
+* <font color=blue>34ceaf2</font>-<font color=green>(2014-03-07)</font><font color=black><b>Removed programmerNameCache references from bean</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_142, r_4.0.0_142)</font>
+* <font color=blue>72ddcd4</font>-<font color=green>(2014-03-07)</font><font color=black><b>Refactored hhId checks to 'undefined'</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_141)</font>
+*   <font color=blue>06a73d1</font>-<font color=green>(2014-03-07)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-smsi-relay into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>e6d9c1b</font>-<font color=green>(2014-03-07)</font><font color=black><b>undefined</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>e9881a3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Removing programmer name cache and setting hhid to "unknown"</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_140)</font>
+| * <font color=blue>af4b9fc</font>-<font color=green>(2014-03-06)</font><font color=black><b>Revert b24a4bc..9fa9611 and keep scrum changes.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_139)</font>
+| * <font color=blue>9fa9611</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5331. changes index builds etc from prod.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| * <font color=blue>711d68a</font>-<font color=green>(2014-03-06)</font><font color=black><b>adding configuration for additional scrums.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_138)</font>
+| * <font color=blue>39657da</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5248. took APPEND out of insert.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| * <font color=blue>6bd5647</font>-<font color=green>(2014-03-03)</font><font color=black><b>VODDAI-5248. build index for merge command.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_137)</font>
+| * <font color=blue>89ceecf</font>-<font color=green>(2014-03-03)</font><font color=black><b>Adding watermark sql update for purge job go back days</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>18170cf</font>-<font color=green>(2014-03-03)</font><font color=black><b>VODDAI-5248. index juggle.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_136)</font>
+| *   <font color=blue>e3cedc6</font>-<font color=green>(2014-03-03)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-smsi-relay into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| |\  
+| | * <font color=blue>80b92aa</font>-<font color=green>(2014-03-03)</font><font color=black><b>moved a comment below the "Feature" part of the feature</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_135)</font>
+| * | <font color=blue>408c833</font>-<font color=green>(2014-03-03)</font><font color=black><b>VODDAI-5248. purge interval added in the relay_status_watermark table as go_back_purge_days.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| * | <font color=blue>2018fef</font>-<font color=green>(2014-03-03)</font><font color=black><b>VODDAI-5248. purge interval added in the relay_status_watermark table as go_back_purge_days.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+| |/  
+| * <font color=blue>2d50e5e</font>-<font color=green>(2014-03-03)</font><font color=black><b>VODDAI-5248. fixed the dedup logic to use session_start.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>09684c9</font>-<font color=green>(2014-03-07)</font><font color=black><b>Refactored hhId checks to 'undefined'</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font></pre>
+<hr>
+<p>

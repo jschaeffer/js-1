@@ -1,0 +1,10 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://www.cablelabs.com/namespaces/safi/xsd/cip/1.1">
+   <soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+     <wsa:Action>http://www.cablelabs.com/namespaces/AdvAds/xsd/cip/1.1/ptCIPService/ReadRequest</wsa:Action>
+     <wsa:MessageID>uuid:435cfc05-920e-4c18-a86f-241b744d54d6</wsa:MessageID>
+   </soap:Header>
+   <soap:Body>
+      <ns:ReadRequest CipGUID="gGwJD9QeQbWikRjP5tTEZQ" CipVer="-1"/>
+   </soap:Body>
+</soap:Envelope>
+

@@ -1,0 +1,60 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+index 94b6a6f..2e3f7d5 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+@@ -37,6 +37,10 @@ cm.app.inactivityAutoLogoutTimer=240
+ # Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
++# Link to description of methodology
++# Optional. If no link is provided it will not show on page.
++cm.app.descriptionOfMethodologyLink=http://www.canoeventures.com/DOM.html
++
+ # "Contact Us" email address.
+ # OptionalIf no link is provided it will not show on page
+ cm.app.contactUsEmail=helpdesk@canoeventures.com
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+index 2054f0c..cd2e658 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties
+@@ -37,6 +37,10 @@ cm.app.inactivityAutoLogoutTimer=240
+ # Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
++# Link to description of methodology
++# Optional. If no link is provided it will not show on page.
++cm.app.descriptionOfMethodologyLink=http://www.canoeventures.com/DOM.html
++
+ # "Contact Us" email address.
+ # OptionalIf no link is provided it will not show on page
+ cm.app.contactUsEmail=helpdesk@canoeventures.com
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+index e200684..91081b2 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties
+@@ -37,6 +37,10 @@ cm.app.inactivityAutoLogoutTimer=240
+ # Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
++# Link to description of methodology
++# Optional. If no link is provided it will not show on page.
++cm.app.descriptionOfMethodologyLink=http://www.canoeventures.com/DOM.html
++
+ # "Contact Us" email address.
+ # OptionalIf no link is provided it will not show on page
+ cm.app.contactUsEmail=helpdesk@canoeventures.com
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+index c0fa5d6..1f11e84 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+@@ -39,6 +39,10 @@ cm.app.inactivityAutoLogoutTimer=240
+ # Optional. If no link is provided it will not show on page.
+ cm.app.userGuideLink=http://www.canoeventures.com/help/CM-userGuide.pdf
+ 
++# Link to description of methodology
++# Optional. If no link is provided it will not show on page.
++cm.app.descriptionOfMethodologyLink=http://www.canoeventures.com/DOM.html
++
+ # "Contact Us" email address.
+ # OptionalIf no link is provided it will not show on page
+ cm.app.contactUsEmail=helpdesk@canoeventures.com

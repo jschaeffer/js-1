@@ -1,0 +1,789 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h2&gt;Custom Deployment job&lt;/h2&gt; Universal across all Canoe Dev/Scrum systems.&#xd;
+&#xd;
+Parameter Driven.  User supplies needed parameters to initiate the deploy job</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description>&lt;h3&gt;Enter the User id and summary of purpose for deployment&lt;/h3&gt;</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description>&lt;h3&gt;Select Component to Deploy&lt;/h3&gt;</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>Dynamic-Ad-Insertion-engine</string>
+              <string>ads-core</string>
+              <string>caas-core</string>
+              <string>dai-billing</string>
+              <string>dai-cip-feedback</string>
+              <string>dai-cip</string>
+              <string>dai-etl-feeder</string>
+              <string>dai-lincoln</string>
+              <string>dai-smsi</string>
+              <string>int-test-support</string>
+              <string>ops-dce-scte-cfa-reporting-agent</string>
+              <string>ops-dce-safi-reporting-agent</string>
+              <string>ops-dt-domain</string>
+              <string>ops-dt</string>
+              <string>oss_bar</string>
+              <string>ops-dce-metadata-agent</string>
+              <string>smsi-admin</string>
+              <string>smsi-publisher</string>
+              <string>dai_amm</string>
+              <string>caas-admin</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Version</name>
+          <description>&lt;h3&gt;Enter Build Version to Deploy.  Build Version of component to be deployed (must be entered as &lt;b&gt;version number + build number&lt;/b&gt; ie; &lt;u&gt;4.0.0_35&lt;/u&gt;)&lt;p&gt; Open &lt;a href=http://10.13.18.168/releaseTars/&gt;SCM Staging Area&lt;/a&gt; to discover valid versions to use.
+
+If no version is selected the version selection will happen as follows:
+&lt;ul&gt;&lt;li&gt;For DevInt Environment - Existing version will be redeployed
+&lt;li&gt;For Scrum Environments - DevInt version will be used for version to deploy
+&lt;/ul&gt;&lt;/h3&gt;</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>DB_Rebuild</name>
+          <description>If there is a DB associated with this component, do you want to rebuild from scratch or perform just a liquibase update against the existing schema?</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>No</string>
+              <string>Yes</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Clear_Logs</name>
+          <description>This option will clear all the log files for the selected component.</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>No</string>
+              <string>Yes</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+export DeployTarg=&quot;devint&quot;
+
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to ${DeployTarg} by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Component: &lt;/b&gt;${Component} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+
+# Set initial getVer flags to &apos;No&apos;
+#
+getVer=&quot;0&quot;
+
+# Setup APP/DB specific variables
+#
+case $Component in
+   caas-core)
+     export DB_USER=&quot;CAAS&quot;
+     export DB_PASS=&quot;CAAS&quot;
+   ;;
+   ads-core)
+     export DB_USER=&quot;ADS&quot;
+     export DB_PASS=&quot;ADS&quot;
+   ;;
+   dai-etl-feeder)
+     export DB_USER=&quot;REPORTING_ODS&quot;
+     export DB_PASS=&quot;REPORTING_ODS&quot;
+   ;;
+   ops-dt-domain)
+     export DB_USER=&quot;OPS_DT&quot;
+     export DB_PASS=&quot;OPS_DT&quot;
+   ;;
+   oss_bar)
+     export DB_USER=&quot;OSS_BAR&quot;
+     export DB_PASS=&quot;OSS_BAR&quot;
+   ;;
+   smsi-publisher)
+     export DB_USER=&quot;SMSIPUB&quot;
+     export DB_PASS=&quot;SMSIPUB&quot;
+   ;;
+   dai_amm)
+     export DB_USER=&quot;AMM&quot;
+     export DB_PASS=&quot;AMM&quot;
+   ;;
+esac
+
+# Setup Environment specific variables
+#
+case $DeployTarg in
+   devint)
+     export DeployTarg
+     export targname=&quot;dvappdai01&quot;
+     export APPSERVER_IP=&quot;10.13.18.113&quot;
+     export SIDTarg=&quot;dev003&quot;
+     export DBIP=&quot;10.13.18.111&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.111:1522:dev003&quot;
+     export DB_USER=&quot;DI_${DB_USER}&quot;
+     export DB_PASS=&quot;DI_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;DI_CAAS&quot;
+     export ETL_BAR=&quot;DI_OSS-BAR&quot;
+     export ETL_BILLING=&quot;DI_BILLING&quot;
+   ;;
+   scrum1)
+     export targname=&quot;dvappdai02&quot;
+     export APPSERVER_IP=&quot;10.13.18.115&quot;
+     export SIDTarg=&quot;scrum001&quot;
+     export DBIP=&quot;10.13.18.119&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.119:1522:scrum001&quot;
+     export DB_USER=&quot;SC1_${DB_USER}&quot;
+     export DB_PASS=&quot;SC1_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;SC1_CAAS&quot;
+     export ETL_BAR=&quot;SC1_OSS-BAR&quot;
+     export ETL_BILLING=&quot;SC1_BILLING&quot;
+   ;;
+   scrum2)
+     export targname=&quot;dvappdai03&quot;
+     export APPSERVER_IP=&quot;10.13.18.116&quot;
+     export SIDTarg=&quot;scrum002&quot;
+     export DBIP=&quot;10.13.18.120&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.120:1522:scrum002&quot;
+     export DB_USER=&quot;SC2_${DB_USER}&quot;
+     export DB_PASS=&quot;SC2_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;SC2_CAAS&quot;
+     export ETL_BAR=&quot;SC2_OSS-BAR&quot;
+     export ETL_BILLING=&quot;SC2_BILLING&quot;
+   ;;
+   scrum3)
+     export targname=&quot;dvappdai04&quot;
+     export APPSERVER_IP=&quot;10.13.18.117&quot;
+     export SIDTarg=&quot;scrum003&quot;
+     export DBIP=&quot;10.13.18.121&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot;
+     export DB_USER=&quot;SC3_${DB_USER}&quot;
+     export DB_PASS=&quot;SC3_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;SC3_CAAS&quot;
+     export ETL_BAR=&quot;SC3_OSS-BAR&quot;
+     export ETL_BILLING=&quot;SC3_BILLING&quot;
+   ;;
+esac
+
+# Verify User supplies a Username and Purpose for the Deployment
+#
+if [ -z ${DeployUser} ] ; then
+    print &quot;&lt;h2&gt;User must supply a user name and summary of deploy purpose&lt;/h2&gt;&quot;
+    exit 1
+fi
+
+# Check to see if this deployment is intended for the DevInt system and if it is, whether a new or existing version should be used
+#
+if [ ${DeployTarg} = &quot;devint&quot; ] ; then
+  if [ -z ${Version} ] ; then
+    getVer=&quot;1&quot;
+    print &quot;For DevInt deployments, if no version is supplied, the existing version will be redeployed&quot;
+  fi
+  else
+# If not a DevInt deploy, check to see if a version is supplied and notify the user that no version will indicate a DevInt version upgrade to the selected Scrum system
+#
+  if [ -z ${Version} ] ; then
+        getVer=&quot;1&quot;
+    print &quot;For Scrum deployments, if no version is supplied, the existing DevInt version will be deployed&quot;
+  fi
+fi
+
+cd /opt/checkouts/oss_deployment/scripts
+
+case $Component in
+################################################
+   dai-billing) 
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/billing/webapps/dai-billing/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       /opt/build/scripts/tcServerAdmin.sh ${targname} billing stop
+       cd /opt/build/scripts
+       ./kill_dbsessions.sh -a dai-billing -e ${DeployTarg}
+       if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+        cd /opt/checkouts/dai-billing/grails-app/migrations/cisys
+        export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed&quot;
+        exit ${STATUS}
+      fi
+       fi
+      if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from dai-billing on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/billing/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/billing/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/billing/logs&quot;`
+        echo ${ClearList}
+      fi       
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeploy.sh -a ${Component} -e ${DeployTarg} -r ${Version} -v
+       echo &quot;dai-billing-${Version}&quot; &gt; /var/www/html/${DeployTarg}/bill.txt
+       echo &quot;dai-billing-${Version}&quot; &gt; /var/www/html/${DeplotTarg}/billdb.txt
+       ;;
+################################################
+    dai_amm)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/dai_amm/webapps/dai_amm/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+         if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+        /opt/build/scripts/tcServerAdmin.sh ${targname} dai_amm stop
+        ./kill_dbsessions.sh -a dai_amm -e ${DeployTarg}
+        cd /opt/checkouts/dai_amm/grails-app/migrations/cisys
+        export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+         STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+          echo &quot;Schema creation failed&quot;
+          exit ${STATUS}
+         fi
+       fi
+      if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from dai_amm on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/dai_amm/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/dai_amm/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/dai_amm/logs&quot;`
+        echo ${ClearList}
+      fi          
+        cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeploy.sh -a ${Component} -e ${DeployTarg} -r ${Version} -v
+        echo &quot;dai_amm-${Version}&quot; &gt; /var/www/html/${DeployTarg}/amm.txt
+    ;;
+################################################
+    Dynamic-Ad-Insertion-cm)
+       if [ ${getVer} = &quot;1&quot; ] ; then 
+              Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/cm/webapps/Dynamic-Ad-Insertion-cm*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+      if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from Campaign Manager on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/cm/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/cm/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/cm/logs&quot;`
+        echo ${ClearList}
+      fi         
+       ./tmpdeployapp.sh -a ${Component} -t ${Component} -e ${DeployTarg} -r ${Version} -i cm -v
+       echo &quot;Dynamic-Ad-Insertion-cm-${Version}&quot; &gt; /var/www/html/${DeployTarg}/cm.txt
+       ;;
+################################################
+     caas-admin)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/caas-admin/webapps/caas-admin/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos; | tr -d &apos;\r&apos;&quot;`
+      fi
+      cd /opt/checkouts/oss_deployment/scripts
+      if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from caas-admin on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/caas-admin/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/caas-admin/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/caas-admin/logs&quot;`
+        echo ${ClearList}
+      fi  
+     ./tmpdeployapp.sh -a ${Component} -t ${Component} -e ${DeployTarg} -r ${Version} -i ${Component} -v 
+      echo &quot;caas-admin-${Version}&quot; &gt; /var/www/html/${DeployTarg}/ca.txt
+    ;;
+################################################
+    Dynamic-Ad-Insertion-engine)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/ads/webapps/ads*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from ADS on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/ads/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/ads/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/ads/logs&quot;`
+        echo ${ClearList}
+	echo &quot;Removing log files from PSN on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/psn/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/psn/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/psn/logs&quot;`
+        echo ${ClearList}  
+	echo &quot;Removing log files from CIS on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/cis/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/cis/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/cis/logs&quot;`
+        echo ${ClearList}              
+       fi  
+       ./tmpdeployapp.sh -a ads -t ${Component} -e ${DeployTarg} -r ${Version} -i ads -v
+       ./tmpdeployapp.sh -a ads -t ${Component} -e ${DeployTarg} -r ${Version} -i psn -v 
+       ./tmpdeployapp.sh -a cis -t ${Component} -e ${DeployTarg} -r ${Version} -i cis -v 
+       echo &quot;Dynamic-Ad-Insertion-engine-${Version}&quot; &gt; /var/www/html/${DeployTarg}/de.txt
+       ;;
+################################################    
+    dai-cip-feedback)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/cip/webapps/cip-server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from cip on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/cip/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/cip/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/cip/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeployapp.sh -a cip-server -t ${Component} -e ${DeployTarg} -r ${Version} -i cip -v
+
+       echo &quot;dai-cip-feedback-${Version}&quot; &gt; /var/www/html/scrum1/cip-feedback.txt 
+       ;;
+################################################
+    dai-cip)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;cd /opt/tcserver/dai-cip/cip-batch; jar xf dai-cip-batch.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+       fi
+        ssh tcserver@${targname} &quot;cd dai-cip/cip-immediate; ./cipstartstop.sh stop&quot;
+        ssh tcserver@${targname} &quot;cd dai-cip/cip-batch; ./cipstartstop.sh stop&quot;
+       cd /opt/checkouts/oss_deployment/scripts
+       ./deployjar.sh -a dai-cip -t ${Component} -e ${DeployTarg} -r ${Version} -v 
+       echo &quot;dai-cip-${Version}&quot; &gt; /var/www/html/${DeployTarg}/cip.txt
+       ;;
+################################################   
+    dai-lincoln)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;cd /opt/tcserver/log_splitter; jar xf lincoln-1.2.0.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+       fi
+       cd /opt/checkouts/oss_deployment/scripts
+       ./deployjar.sh -a dai-lincoln -t ${Component} -e ${DeployTarg} -r ${Version} -v
+       echo &quot;dai-lincoln-${Version}&quot; &gt; /var/www/html/${DepolyTarg}/log.txt
+       ;;
+################################################
+    dai-smsi)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/smsi/webapps/safi-smsi-server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from smsi on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/smsi/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/smsi/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/smsi/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+        ./tmpdeployapp.sh -a safi-smsi-server -t ${Component} -e ${DeployTarg} -i smsi -r ${Version} 
+       print dai-smsi-${Version} &gt; /var/www/html/${DeployTarg}/smsi.txt
+       print dai-smsi-${Version} &gt; /var/www/html/${DeployTarg}/smsi_db.txt
+       ;;
+################################################
+    int-test-support)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/mock_svr/webapps/int-test-support/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;` 
+       fi
+       if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from mock_svr on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/mock_svr/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/mock_svr/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/mock_svr/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeployapp.sh -a int-test-support -t ${Component} -e ${DeployTarg} -r ${Version} -i mock_svr -v
+       echo &quot;int-test-support-${Version}&quot; &gt; /var/www/html/${Deploytarg}/mock_svr.txt      
+       ;;
+################################################
+    ops-dce-scte-cfa-reporting-agent)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/dce-agent-001/webapps/ops-dce-scte-cfa-reporting-agent/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from dce-agent-001 on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/dce-agent-001/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/dce-agent-001/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/dce-agent-001/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeployapp.sh -a ${Component}  -t ${Component} -e ${DeployTarg} -r ${Version} -i dce-agent-001 -v
+       echo &quot;ops-dce-scte-cfa-reporting-agent-${Version}&quot; &gt; /var/www/html/${DeployTarg}/dce-agent-001.txt 
+       ;;
+################################################  
+    ops-dce-safi-reporting-agent)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/dce-agent-002/webapps/ops-dce-safi-reporting-agent/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from dce-agent-002 on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/dce-agent-002/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/dce-agent-002/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/dce-agent-002/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+        ./tmpdeployapp.sh -a ${Component}  -t ${Component} -e ${DeployTarg} -r ${Version} -i dce-agent-002 -v
+       echo &quot;ops-dce-safi-reporting-agent-${Version}&quot; &gt; /var/www/html/${DeployTarg}/dce-agent-002.txt
+
+       ;;
+################################################
+    ops-dt)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/ops-dt/webapps/ops-dt/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from ops-dt on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/ops-dt/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/ops-dt/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/ops-dt/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeployapp.sh -a ${Component} -t ${Component} -e ${DeployTarg} -r ${Version} -i ${Component} -v
+       echo &quot;ops-dt-${Version}&quot; &gt; /var/www/html/${DeployTarg}/opsdt.txt
+       ;;
+################################################          
+    oss_bar)
+       Deployed_Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       print &quot;Deploying version: ${Version}&quot;
+       /opt/build/scripts/tcServerAdmin.sh ${targname} oss_bar stop
+
+       cd /opt/build/scripts
+       ./kill_dbsessions.sh -a oss_bar -e ${DeployTarg}
+       if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+        cd /opt/checkouts/oss_bar/grails-app/migrations/cisys
+        export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed&quot;
+        exit ${STATUS}
+      fi
+        fi
+      if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from oss_bar on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/oss_bar/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/oss_bar/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/oss_bar/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeploy.sh -a oss_bar -e ${DeployTarg} -r ${Version}
+       echo &quot;&lt;td&gt;oss_bar-${Version}&quot; &gt; /var/www/html/${DeployTarg}/bar.txt
+       echo &quot;&lt;td&gt;oss_bar-${Version}&quot; &gt; /var/www/html/${DeployTarg}/bardb.txt
+       ;;
+################################################
+    smsi-admin)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/smsi-admin/webapps/smsi-admin/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+          print &quot;Deploying version: ${Version}&quot;
+       fi
+       if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from smsi-admin on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/smsi-admin/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/smsi-admin/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/smsi-admin/billing/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeployapp.sh -a smsi-admin -t ${Component} -e ${DeployTarg} -r ${Version} -i smsi-admin -v
+       echo &quot;smsi-admin-${Version}&quot; &gt; /var/www/html/${DeployTarg}/smsi-admin.txt
+       ;;
+################################################
+    smsi-publisher)
+       Deployed_Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/smsipub/webapps/smsi-publisher*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/smsipub/webapps/smsi-publisher*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+       /opt/build/scripts/tcServerAdmin.sh ${targname} smsipub stop
+
+       cd /opt/build/scripts
+       ./kill_dbsessions.sh -a smsi-publisher -e ${DeployTarg}
+
+       if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+        cd /opt/checkouts/smsi-publisher/config/cisys
+        export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed&quot;
+        exit ${STATUS}
+      fi
+       fi
+      if [[ ${Clear_Logs} = &quot;Yes&quot; ]] ; then
+	echo &quot;Removing log files from smsipub on ${targname}&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/smsipub/logs&quot;`
+        echo ${ClearList}
+        `ssh tcserver@${targname} &quot;rm /opt/tcserver/instances/smsipub/logs/*log*&quot;`
+        echo &quot;--------------------------------------------------&quot;
+	ClearList=`ssh tcserver@${targname} &quot;ls /opt/tcserver/instances/smsipub/logs&quot;`
+        echo ${ClearList}
+       fi 
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeploy.sh -a ${Component} -e ${DeployTarg} -r ${Version} -v 
+
+       echo &quot;smsi-publisher-${Version}&quot; &gt; /var/www/html/${DeployTarg}/smsipub.txt
+       echo &quot;smsi-publisher-${Version}&quot; &gt; /var/www/html/${DeployTarg}/smsipub.txt
+       ;;
+
+################################################
+    caas-core)
+
+      cd /opt/build/scripts
+      Deployed_Version=`./check_dbversions.sh -a caas-core -e ${DeployTarg}`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`./check_dbversions.sh -a caas-core -e devint`
+       STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+            echo &quot;Check version status failed&quot;
+         exit ${STATUS}
+         fi
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+      /opt/build/scripts/roottcServerAdmin.sh ${targname} stop
+      ./kill_dbsessions.sh -a caas-core -e ${DeployTarg}
+      if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+
+        ssh tcserver@${targname} &quot;cd dai-cip/cip-immediate; ./cipstartstop.sh stop&quot;
+        ssh tcserver@${targname} &quot;cd dai-cip/cip-batch; ./cipstartstop.sh stop&quot;
+
+        cd /opt/checkouts/caas-core/core/model/src/main/resources/liquibase/cisys
+        export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed&quot;
+        exit ${STATUS}
+      fi
+    fi
+    cd /opt/checkouts/oss_deployment/scripts
+
+    ./deployRebuildDb.sh -a caas-core -t caas-core -i cm -r ${Version} -e ${DeployTarg} -j &quot;${JDBC_URL}&quot; -p ${DB_PASS} -u ${DB_USER} -v
+    /opt/build/scripts/roottcServerAdmin.sh ${targname} start
+    cd /opt/build/scripts
+    ETL_VERS=`./check_dbversions.sh -a dai-etl-feeder -e ${DeployTarg}`
+    echo &quot;&lt;td bgcolor=\&quot;lightyellow\&quot;&gt;&lt;font color=red&gt;Needs update&lt;br&gt;dai-etl-feeder_${ETL_VERS}&lt;/font&gt;&quot; &gt; /var/www/html/${DeployTarg}/etldb.txt
+    BAR_VERS=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+    echo &quot;&lt;td bgcolor=\&quot;lightyellow\&quot;&gt;&lt;font color=red&gt;Needs update&lt;br&gt;oss_bar_${BAR_VERS}&lt;/font&gt;&quot; &gt; /var/www/html/${DeployTarg}/bardb.txt
+    echo &quot;caas-core-${Version}&quot; &gt; /var/www/html/${DeployTarg}/caas-coredb.txt
+;;
+################################################
+    ads-core)
+
+      cd /opt/build/scripts
+      Deployed_Version=`./check_dbversions.sh -a ads-core -e ${DeployTarg}`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`./check_dbversions.sh -a ads-core -e devint`
+       STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+            echo &quot;Check version status failed&quot;
+         exit ${STATUS}
+         fi
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+
+      /opt/build/scripts/roottcServerAdmin.sh ${targname} stop
+
+      ./kill_dbsessions.sh -a ads-core -e ${DeployTarg}
+      if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+        cd /opt/checkouts/ads-core/core/model/src/main/resources/liquibase/cisys
+        export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed&quot;
+        exit ${STATUS}
+      fi
+    fi
+    cd /opt/checkouts/oss_deployment/scripts
+
+    ./deployRebuildDb.sh -a ads-core -t ads-core -i cm -r ${Version} -e ${DeployTarg} -j &quot;${JDBC_URL}&quot; -p ${DB_PASS} -u ${DB_USER} -v
+    /opt/build/scripts/roottcServerAdmin.sh ${targname} start
+    echo &quot;ads-core-${Version}&quot; &gt; /var/www/html/${DeployTarg}/ads-coredb.txt
+;;
+################################################
+    dai-etl-feeder)
+
+     /opt/build/scripts/tcServerAdmin.sh ${targname} report stop
+     /opt/build/scripts/tcServerAdmin.sh ${targname} oss_bar stop
+     /opt/build/scripts/tcServerAdmin.sh ${targname} smsi stop
+     /opt/build/scripts/tcServerAdmin.sh ${targname} smsi-admin stop
+
+      cd /opt/build/scripts
+      Deployed_Version=`./check_dbversions.sh -a dai-etl-feeder -e ${DeployTarg}`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`./check_dbversions.sh -a dai-etl-feeder -e devint`
+       STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+            echo &quot;Check version status failed.  Do you need to do a PackageDeploy first?&quot;
+         exit ${STATUS}
+         fi
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+
+    ./kill_dbsessions.sh -a dai-etl-feeder -e ${DeployTarg}
+    if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+      cd /opt/checkouts/dai-etl-feeder/src/main/resources/liquibase/cisys
+      export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed.  Are there users sessions that need to be destroyed?&quot;
+        exit ${STATUS}
+      fi
+    fi
+    cd /opt/checkouts/oss_deployment/scripts
+
+     ./deployJarRebuild.sh -a ${Component} -t ${Component} -e ${DeployTarg} -r ${Version} -j &quot;${JDBC_URL}&quot; -p ${DB_PASS}  -u ${DB_USER} -c ${ETL_CAAS} -b ${ETL_BAR} -o ${ETL_BILLING} -v
+     /opt/build/scripts/tcServerAdmin.sh ${targname} report start
+     /opt/build/scripts/tcServerAdmin.sh ${targname} oss_bar start
+     /opt/build/scripts/tcServerAdmin.sh ${targname} smsi start
+     /opt/build/scripts/tcServerAdmin.sh ${targname} smsi-admin start
+
+    echo &quot;&lt;td&gt;dai-etl-feeder-${Version}&quot; &gt; /var/www/html/${DeployTarg}/etldb.txt
+;;
+################################################
+    ops-dt-domain)
+     /opt/build/scripts/tcServerAdmin.sh ${targname} ops-dt stop
+     /opt/build/scm/scripts/buildServer/groovy/bin/tcServerAdmin.sh ${targname} dce-agent-001 stop
+     /opt/build/scm/scripts/buildServer/groovy/bin/tcServerAdmin.sh ${targname} dce-agent-002 stop
+
+     cd /opt/build/scripts
+     Deployed_Version=`./check_dbversions.sh -a ${Component} -e ${DeployTarg}`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`./check_dbversions.sh -a ${Component} -e devint`
+       STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+            echo &quot;Check version status failed.  Do you need to do a PackageDeploy first?&quot;
+         exit ${STATUS}
+         fi
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+
+    ./kill_dbsessions.sh -a ${Component} -e ${DeployTarg}
+    if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+      cd /opt/checkouts/ops-dt-domain/grails-app/migrations/cisys
+      export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed.  Are there users sessions that need to be destroyed?&quot;
+        exit ${STATUS}
+      fi
+    fi
+    cd /opt/checkouts/oss_deployment/scripts
+
+     ./deployRebuildDb.sh -a ${Component} -t ${Component} -i ops-dt -r ${Version} -e ${DeployTarg} -j &quot;${JDBC_URL}&quot; -p DI_OPS_DT -u DI_OPS_DT -v
+    /opt/build/scripts/tcServerAdmin.sh ${targname} ops-dt start
+    /opt/build/scm/scripts/buildServer/groovy/bin/tcServerAdmin.sh ${targname} dce-agent-001 start
+    /opt/build/scm/scripts/buildServer/groovy/bin/tcServerAdmin.sh ${targname} dce-agent-002 start
+    echo &quot;ops-dt-db-${VERSION}&quot; &gt; /var/www/html/${DeployTarg}/opsdtdb.txt
+;;
+
+    *)
+      print &quot;No Deploy...&quot;;;
+esac
+
+if [ ${getVer} = &quot;1&quot; ] ; then
+    echo &quot;&lt;b&gt;Version: &lt;/b&gt;${Version} derived from DevInt by default&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+else
+   echo &quot;&lt;b&gt;Version: &lt;/b&gt;${Version} specified by user&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+fi
+echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;${DB_Rebuild} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

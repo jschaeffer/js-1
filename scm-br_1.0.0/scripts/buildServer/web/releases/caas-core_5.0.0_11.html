@@ -1,0 +1,149 @@
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_5.0.0_11</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Upgrade to JAVA 1.8, 
+
+new tables for beaconing
+
+campaign_item_media_url_trk</b></font></pre>
+
+<h4>Relocated DB GenUser scripting and DB Liquibase scripting from core/model/src/main/resources to model/src/main</h4>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/model/src/main/old_cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/model/src/main/old_cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/model/src/main/old_cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_5.0.0_11/diff.txt>caas-core_v_5.0.0_11/model/src/main/old_cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/cisys/genUser.Marley.sql
+core/model/src/main/resources/liquibase/cisys/genUser.MicroDev.sql
+core/model/src/main/resources/liquibase/cisys/genUser.RH65.sql
+core/model/src/main/resources/liquibase/cisys/genUser.devint.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+core/model/src/main/resources/liquibase/cisys/postADS.Marley.sql
+core/model/src/main/resources/liquibase/core-4.0.0-changelog.xml
+core/model/src/main/resources/liquibase/core-4.0.0/001-mpm-jan2014-caas-core-rebaseline.xml
+core/model/src/main/resources/liquibase/core-4.0.0/002-dad-4905-ad_provider.xml
+core/model/src/main/resources/liquibase/core-4.0.0/003-yliu-rm-mlogs.xml
+core/model/src/main/resources/liquibase/core-4.0.0/004-dad-4837-ad_provider_video_def.xml
+core/model/src/main/resources/liquibase/core-4.0.0/005-bgriese-ad_sent_success.xml
+core/model/src/main/resources/liquibase/core-4.0.0/005-mpm-5092-drop-unique-metadata-target-constraint.xml
+core/model/src/main/resources/liquibase/core-4.0.0/006-mpm-media-asset-view-timezone-offset.xml
+core/model/src/main/resources/liquibase/core-4.0.0/007-mpm-placement-limits.xml
+core/model/src/main/resources/liquibase/core-4.0.0/008-mpm-media-asset-view-separation.xml
+core/model/src/main/resources/liquibase/core-4.0.0/009-dad-initrans.xml
+core/model/src/main/resources/liquibase/core-4.0.0/010-dad-goldenData.xml
+core/model/src/main/resources/liquibase/core-4.0.0/011-mpm-placement-limits-undo.xml
+core/model/src/main/resources/liquibase/core-4.0.0/012-dad-priority_size.xml
+core/model/src/main/resources/liquibase/core-4.0.0/013-dad-ci_frequency_cap.xml
+core/model/src/main/resources/liquibase/core-4.0.0/014-dad-metadata_target_indx.xml
+core/model/src/main/resources/liquibase/core-4.0.0/015-khl-feed_priority_size.xml
+core/model/src/main/resources/liquibase/core-4.0.0/016-dad-cima_frequency_cap.xml
+core/model/src/main/resources/liquibase/core-4.0.0/017-dad-mclps.xml
+core/model/src/main/resources/liquibase/core-4.0.0/018-dad-metaData.xml
+core/model/src/main/resources/liquibase/core-4.0.0/019-mpm-mclps-defaults.xml
+core/model/src/main/resources/liquibase/core-4.0.0/020-dad-item_cls.xml
+core/model/src/main/resources/liquibase/core-4.0.0/021-khl-acp-trigger-update.xml
+core/model/src/main/resources/liquibase/core-4.0.0/022-mpm-cm-performance-indices.xml
+core/model/src/main/resources/liquibase/core-4.0.0/023-mpm-campaign-item-label-field-length.xml
+core/model/src/main/resources/liquibase/core-4.0.0/024-dad-item_feed.xml
+core/model/src/main/resources/liquibase/core-4.0.0/025-csd-feed-republish-detail.xml
+core/model/src/main/resources/liquibase/core-4.0.0/026-dad-fc_trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/027-mpm-placement-limits-redo.xml
+core/model/src/main/resources/liquibase/core-4.0.0/028-dad-placementLimit.xml
+core/model/src/main/resources/liquibase/core-4.0.0/029-dad-order_owner_Feed.xml
+core/model/src/main/resources/liquibase/core-4.0.0/030-mpm-asset_availability.xml
+core/model/src/main/resources/liquibase/core-4.0.0/031-mpm-metadata-operator-ignore-case.xml
+core/model/src/main/resources/liquibase/core-4.0.0/032-mpm-campaign-sort-trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/033-dad-metadata.xml
+core/model/src/main/resources/liquibase/core-4.0.0/034-dad-media_trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/035-khl-bye_bye_cip_update_interval.xml
+core/model/src/main/resources/liquibase/core-4.0.0/036-mpm-campaignitem-insertions-views-count.xml
+core/model/src/main/resources/liquibase/core-4.0.0/037-mpm-undo-insertions-views-count.xml
+core/model/src/main/resources/liquibase/core-4.0.0/038-mpm-create-data-dictionary-table.xml
+core/model/src/main/resources/liquibase/core-4.0.0/039-mpm-create-flashback-archives.xml
+core/model/src/main/resources/liquibase/core-4.0.0/040-mpm-migrate-categories.xml
+core/model/src/main/resources/liquibase/core-4.0.0/041-mpm-ci-feed-enabled.xml
+core/model/src/main/resources/liquibase/core-4.0.0/042-dad-campid.xml
+core/model/src/main/resources/liquibase/core-4.0.0/043-mpm-metadata_group-order.xml
+core/model/src/main/resources/liquibase/core-4.0.0/044-mpm-cima-order.xml
+core/model/src/main/resources/liquibase/core-4.0.0/045-mpm-product-category-alias.xml
+core/model/src/main/resources/liquibase/core-4.0.0/046-dad-linearbroadcast.xml
+core/model/src/main/resources/liquibase/core-4.0.0/047-jmh-line-item-notes.xml
+core/model/src/main/resources/liquibase/core-4.0.0/048-mpm-maa-trigger-hint.xml
+core/model/src/main/resources/liquibase/core-4.0.0/049-jmh-drop-typeCode.xml
+core/model/src/main/resources/liquibase/master-changelog.xml
+core/model/src/main/resources/liquibase/ojdbc6.jar
+model/src/main/liquibase/cisys/dropUser.sql
+model/src/main/liquibase/cisys/genUser.sql
+model/src/main/liquibase/cisys/postADS.Marley.sql
+model/src/main/liquibase/core-4.0.0-changelog.xml
+model/src/main/liquibase/core-4.0.0/001-mpm-jan2014-caas-core-rebaseline.xml
+model/src/main/liquibase/core-4.0.0/002-dad-4905-ad_provider.xml
+model/src/main/liquibase/core-4.0.0/003-yliu-rm-mlogs.xml
+model/src/main/liquibase/core-4.0.0/004-dad-4837-ad_provider_video_def.xml
+model/src/main/liquibase/core-4.0.0/005-bgriese-ad_sent_success.xml
+model/src/main/liquibase/core-4.0.0/005-mpm-5092-drop-unique-metadata-target-constraint.xml
+model/src/main/liquibase/core-4.0.0/006-mpm-media-asset-view-timezone-offset.xml
+model/src/main/liquibase/core-4.0.0/007-mpm-placement-limits.xml
+model/src/main/liquibase/core-4.0.0/008-mpm-media-asset-view-separation.xml
+model/src/main/liquibase/core-4.0.0/009-dad-initrans.xml
+model/src/main/liquibase/core-4.0.0/010-dad-goldenData.xml
+model/src/main/liquibase/core-4.0.0/011-mpm-placement-limits-undo.xml
+model/src/main/liquibase/core-4.0.0/012-dad-priority_size.xml
+model/src/main/liquibase/core-4.0.0/013-dad-ci_frequency_cap.xml
+model/src/main/liquibase/core-4.0.0/014-dad-metadata_target_indx.xml
+model/src/main/liquibase/core-4.0.0/015-khl-feed_priority_size.xml
+model/src/main/liquibase/core-4.0.0/016-dad-cima_frequency_cap.xml
+model/src/main/liquibase/core-4.0.0/017-dad-mclps.xml
+model/src/main/liquibase/core-4.0.0/018-dad-metaData.xml
+model/src/main/liquibase/core-4.0.0/019-mpm-mclps-defaults.xml
+model/src/main/liquibase/core-4.0.0/020-dad-item_cls.xml
+model/src/main/liquibase/core-4.0.0/021-khl-acp-trigger-update.xml
+model/src/main/liquibase/core-4.0.0/022-mpm-cm-performance-indices.xml
+model/src/main/liquibase/core-4.0.0/023-mpm-campaign-item-label-field-length.xml
+model/src/main/liquibase/core-4.0.0/024-dad-item_feed.xml
+model/src/main/liquibase/core-4.0.0/025-csd-feed-republish-detail.xml
+model/src/main/liquibase/core-4.0.0/026-dad-fc_trigger.xml
+model/src/main/liquibase/core-4.0.0/027-mpm-placement-limits-redo.xml
+model/src/main/liquibase/core-4.0.0/028-dad-placementLimit.xml
+model/src/main/liquibase/core-4.0.0/029-dad-order_owner_Feed.xml
+model/src/main/liquibase/core-4.0.0/030-mpm-asset_availability.xml
+model/src/main/liquibase/core-4.0.0/031-mpm-metadata-operator-ignore-case.xml
+model/src/main/liquibase/core-4.0.0/032-mpm-campaign-sort-trigger.xml
+model/src/main/liquibase/core-4.0.0/033-dad-metadata.xml
+model/src/main/liquibase/core-4.0.0/034-dad-media_trigger.xml
+model/src/main/liquibase/core-4.0.0/035-khl-bye_bye_cip_update_interval.xml
+model/src/main/liquibase/core-4.0.0/036-mpm-campaignitem-insertions-views-count.xml
+model/src/main/liquibase/core-4.0.0/037-mpm-undo-insertions-views-count.xml
+model/src/main/liquibase/core-4.0.0/038-mpm-create-data-dictionary-table.xml
+model/src/main/liquibase/core-4.0.0/039-mpm-create-flashback-archives.xml
+model/src/main/liquibase/core-4.0.0/040-mpm-migrate-categories.xml
+model/src/main/liquibase/core-4.0.0/041-mpm-ci-feed-enabled.xml
+model/src/main/liquibase/core-4.0.0/042-dad-campid.xml
+model/src/main/liquibase/core-4.0.0/043-mpm-metadata_group-order.xml
+model/src/main/liquibase/core-4.0.0/044-mpm-cima-order.xml
+model/src/main/liquibase/core-4.0.0/045-mpm-product-category-alias.xml
+model/src/main/liquibase/core-4.0.0/046-dad-linearbroadcast.xml
+model/src/main/liquibase/core-4.0.0/047-jmh-line-item-notes.xml
+model/src/main/liquibase/core-4.0.0/048-mpm-maa-trigger-hint.xml
+model/src/main/liquibase/core-4.0.0/049-jmh-drop-typeCode.xml
+model/src/main/liquibase/core-4.0.0/050-mpm-beaconing.xml
+model/src/main/liquibase/master-changelog.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.5.0_1</b></u><br>
+<pre>
+* <font color=blue>4dbd152</font>-<font color=green>(2015-04-09)</font><font color=black><b>Moved mikes code change to the correct directory</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_11, tag: v_5.0.0_10, tag: r_5.0.0_11)</font>
+* <font color=blue>0a50dad</font>-<font color=green>(2015-03-20)</font><font color=black><b>Tables and classes to store beaconing information</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_9)</font>
+* <font color=blue>ed6556b</font>-<font color=green>(2015-03-24)</font><font color=black><b>Moved liquibase stuff to conform with how Jeff wants it.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_8, tag: v_5.0.0_7, tag: v_4.5.0_5, tag: v_4.5.0_4)</font>
+* <font color=blue>fed1449</font>-<font color=green>(2015-03-20)</font><font color=black><b>Fixed maven so it can run the liquibase once again.  genUser scripts are now generated.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_6, tag: v_5.0.0_5)</font>
+* <font color=blue>a4c536b</font>-<font color=green>(2015-03-16)</font><font color=black><b>Java 8 first pass.</b></font><font color=grey>- (kennethleider)</font><font color=red></font></pre>
+<hr>
+<p>

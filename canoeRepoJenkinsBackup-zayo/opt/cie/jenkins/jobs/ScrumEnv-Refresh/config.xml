@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+
+export targs=&quot;devint scrum1 scrum2 scrum3 scrum4 Marley&quot;
+
+for i in $targs; do
+
+case $i in
+  devint)
+     export targs=&quot;devint&quot;
+     export targname=&quot;dvappdai01&quot;;;
+  scrum1)
+     export targs=&quot;scrum1&quot;
+     export targname=&quot;dvappdai02&quot;;;
+  scrum2)
+     export targs=&quot;scrum2&quot;
+     export targname=&quot;dvappdai03&quot;;;
+  scrum3)
+     export targs=&quot;scrum3&quot;
+     export targname=&quot;dvappdai04&quot;;;
+  scrum4)
+     export targs=&quot;scrum4&quot;
+     export targname=&quot;dvappdai05&quot;;;
+  Marley)
+     export targs=&quot;Marley&quot;
+     export targname=&quot;itappdai01&quot;;;
+
+esac
+
+for x in $i; do
+
+cd /opt/build/scripts
+
+echo &quot;./envRefresh.sh $targs&quot;
+./envRefresh.sh $targs
+
+done
+done</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

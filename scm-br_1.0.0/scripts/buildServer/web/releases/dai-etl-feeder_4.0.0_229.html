@@ -1,0 +1,43 @@
+<b><u>Component Release Info for Sprint Orlando:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-etl-feeder</b><br><u>Version</u><b>&nbspr_4.0.0_229</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/dai-ods-4.0.3-changelog.xml
+src/main/resources/liquibase/dai-ods-4.0.3/009-yliu-add-operator-service-group.xml
+src/main/resources/liquibase/dai-ods-4.0.3/010-yliu-sess-opp-rollup.xml
+src/main/resources/liquibase/dai-ods-4.0.3/011-yliu-sess-opp-rollup-qc.xml
+src/main/resources/liquibase/dai-ods-4.0.3/013-yliu-drop-flight-window.xml
+src/main/resources/liquibase/dai-ods-4.0.3/014-yliu-add-ent-id.xml
+src/main/resources/liquibase/dai-ods-4.0.3/015-yliu-dedup-parallel-four.xml
+src/main/resources/liquibase/dai-ods-4.0.3/016-yliu-aggregation-parallel-four.xml
+src/main/resources/liquibase/dai-ods-4.0.3/017-yliu-pre-invoice-view-fix.xml
+src/main/resources/liquibase/dai-ods-4.0.3/018-yliu-campaign-desc-plus-device-id.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_219</b></u><br>
+<pre>
+* <font color=blue>ca6d2f5</font>-<font color=green>(2014-08-15)</font><font color=black><b>pre-invoice view fix.</b></font><font color=grey>- (yliu)</font><font color=red> (v_4.0.0_229)</font>
+* <font color=blue>abff16a</font>-<font color=green>(2014-08-15)</font><font color=black><b>forgot to take dai_reporting_safi. out</b></font><font color=grey>- (yliu)</font><font color=red> (v_4.0.0_228)</font>
+*   <font color=blue>b448285</font>-<font color=green>(2014-08-15)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (yliu)</font><font color=red> (v_4.0.0_227)</font>
+|\  
+| * <font color=blue>704e229</font>-<font color=green>(2014-08-13)</font><font color=black><b>Adding the updated multi-provider work for the red hot comet (VODDAI-6132). Which contaoins updated test cases and data.</b></font><font color=grey>- (Noel Garza)</font><font color=red> (v_4.0.0_226)</font>
+* | <font color=blue>bbc733d</font>-<font color=green>(2014-08-15)</font><font color=black><b>changed invoice base view to handle multiple days for a month.</b></font><font color=grey>- (yliu)</font><font color=red></font>
+|/  
+* <font color=blue>5094ffa</font>-<font color=green>(2014-08-13)</font><font color=black><b>VODDAI-6051. column width change.</b></font><font color=grey>- (yliu)</font><font color=red> (v_4.0.0_225)</font>
+* <font color=blue>ea50a12</font>-<font color=green>(2014-08-11)</font><font color=black><b>revert to avoid conflicts</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_224)</font>
+* <font color=blue>7cb166e</font>-<font color=green>(2014-08-11)</font><font color=black><b>revert to avoid conflicts</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_223)</font>
+* <font color=blue>d3d5323</font>-<font color=green>(2014-08-11)</font><font color=black><b>revert back so there is no conflict.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_222)</font>
+* <font color=blue>d189965</font>-<font color=green>(2014-08-11)</font><font color=black><b>retrofit prod - get rid of ad flight windows from reports.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_221)</font>
+* <font color=blue>b852026</font>-<font color=green>(2014-08-07)</font><font color=black><b>double counting avoided by losing flight windows in ad_asset_status_vw.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>a1aebb7</font>-<font color=green>(2014-08-06)</font><font color=black><b>Added new column to session info</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>8e25c14</font>-<font color=green>(2014-08-06)</font><font color=black><b>added distinct to make the ad_asset_status_vw unique with advertiser name.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+*   <font color=blue>6829f13</font>-<font color=green>(2014-08-04)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_220)</font>
+|\  
+| * <font color=blue>7fb0ecf</font>-<font color=green>(2014-08-01)</font><font color=black><b>Adding the new multi-provider automation test cases.</b></font><font color=grey>- (Noel Garza)</font><font color=red></font>
+* | <font color=blue>75bac99</font>-<font color=green>(2014-08-04)</font><font color=black><b>VODDAI-5665. Roll up tables and stored procedures for insight reports.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|/  
+* <font color=blue>e46c920</font>-<font color=green>(2014-07-30)</font><font color=black><b>changed parallel(auto) to parallel(4) for all.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>c0fe68e</font>-<font color=green>(2014-07-29)</font><font color=black><b>fixed bugies.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>e3d7d50</font>-<font color=green>(2014-07-29)</font><font color=black><b>added rollup of all things.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font></pre>
+<hr>
+<p>

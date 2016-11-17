@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SelEnv</name>
+          <description>Creates Versioning path for select system (For now... MUAHAHAHAHA!)</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>devint</string>
+              <string>scrum1</string>
+              <string>scrum2</string>
+              <string>scrum3</string>
+              <string>scrum4</string>
+              <string>Marley</string>
+              <string>Performance</string>
+              <string>lab-to-lab</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#export EnvList=`echo &quot;$SelEnv&quot; | sed &apos;s?,? ?g`
+
+#for SelEnv in $EnvList
+#do
+
+#export SelEnv
+
+#that stuff is broken. it was for checkboxes... everybody likes checkboxes, and it would make refreshing multiple environments easier
+
+cd /opt/build/scripts
+
+unset targs
+
+export targs=&quot;$SelEnv&quot;
+echo &quot;./Verpath.sh $targs&quot;
+./Verpath.sh $targs
+
+
+#done</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

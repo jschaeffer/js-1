@@ -1,0 +1,70 @@
+<b><u>Component Release Info for Sprint Insane:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi-relay</b><br><u>Version</u><b>&nbspr_5.0.0_29</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+CAAS Core - 5.0.0_11
+Metadata – Fixes for VODDAI-7503 and VODDAI-7504: Certification/Security handling for Relay to Google and SOAP Header removal for FreeWheel. CxF removed from Relay. 7 new properties added to the SMSi Relay properties file. 
+
+use.ssl.handshake=true
+secure.protocol=false
+use.certificate=false
+keystore.path=
+keystore.type=
+server.protocol=TLS
+keystore.password=
+
+Documentation on these properties incoming from Craig. 
+
+Also added new Logger to log4j property file.
+        <Logger name="dai.interfaces.smsi.relay.service.SslHandshakeSend" level="trace" additivity="false">
+            <appender-ref ref="requestResponseLog" level="trace"/>
+        </Logger>
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_5.0.0_29/diff.txt>dai-smsi-relay_v_5.0.0_29/config/log4j.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_5.0.0_29/diff.txt>dai-smsi-relay_v_5.0.0_29/config/log4j.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_5.0.0_29/diff.txt>dai-smsi-relay_v_5.0.0_29/config/log4j.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_5.0.0_29/diff.txt>dai-smsi-relay_v_5.0.0_29/config/log4j.scrum4.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_5.0.0_29/diff.txt>dai-smsi-relay_v_5.0.0_29/config/smsi-relay-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_5.0.0_29/diff.txt>dai-smsi-relay_v_5.0.0_29/config/smsi-relay-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_5.0.0_29/diff.txt>dai-smsi-relay_v_5.0.0_29/config/smsi-relay-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_5.0.0_29/diff.txt>dai-smsi-relay_v_5.0.0_29/config/smsi-relay-env-application.scrum4.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_6</b></u><br>
+<pre>
+* <font color=blue>d601cfb</font>-<font color=green>(2015-05-13)</font><font color=black><b>Adding Loggin</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_29)</font>
+* <font color=blue>7d55c81</font>-<font color=green>(2015-05-13)</font><font color=black><b>Fixed cert issue</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_28)</font>
+* <font color=blue>dbb6938</font>-<font color=green>(2015-05-12)</font><font color=black><b>Passed in useCertificate</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_27)</font>
+* <font color=blue>44d377d</font>-<font color=green>(2015-05-12)</font><font color=black><b>Externalized loading of certificate</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_26)</font>
+* <font color=blue>3fd5e29</font>-<font color=green>(2015-05-08)</font><font color=black><b>updating watermarks</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_5.0.0_25)</font>
+* <font color=blue>827e7e7</font>-<font color=green>(2015-05-08)</font><font color=black><b>Externalized password</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_24)</font>
+* <font color=blue>e86b42e</font>-<font color=green>(2015-05-08)</font><font color=black><b>Pointing at new static</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_23)</font>
+* <font color=blue>ab5a0ba</font>-<font color=green>(2015-05-08)</font><font color=black><b>fixed unit test</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>224c8a9</font>-<font color=green>(2015-05-07)</font><font color=black><b>changed the message type</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_22, tag: v_5.0.0_21)</font>
+* <font color=blue>6918fcf</font>-<font color=green>(2015-05-07)</font><font color=black><b>added config to env log4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>3d4f233</font>-<font color=green>(2015-05-07)</font><font color=black><b>Changed to a soap 1.2 message</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_20, tag: v_5.0.0_19, tag: v_5.0.0_18, tag: v_5.0.0_17)</font>
+* <font color=blue>f203c68</font>-<font color=green>(2015-05-07)</font><font color=black><b>updated unit test</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_16)</font>
+*   <font color=blue>903281b</font>-<font color=green>(2015-05-07)</font><font color=black><b>Merge branch 'SslHandshake' into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>16e20ae</font>-<font color=green>(2015-05-07)</font><font color=black><b>added new property</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (origin/SslHandshake)</font>
+| * <font color=blue>f3f9263</font>-<font color=green>(2015-05-06)</font><font color=black><b>Supporting http/https connections and other prod changes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>7ff0754</font>-<font color=green>(2015-05-06)</font><font color=black><b>updated property files</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>ec9b2e2</font>-<font color=green>(2015-05-06)</font><font color=black><b>Unit test changes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>ae5a555</font>-<font color=green>(2015-05-06)</font><font color=black><b>Changed to support new sslHandshake</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>994e14e</font>-<font color=green>(2015-05-05)</font><font color=black><b>Revert 4176992..7570284</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_15)</font>
+* <font color=blue>7570284</font>-<font color=green>(2015-05-01)</font><font color=black><b>Added note to force use of defaultSSLSocketFactory</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_14)</font>
+* <font color=blue>4f5f2b2</font>-<font color=green>(2015-05-01)</font><font color=black><b>Changed the way we are including the sslfactory</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_13)</font>
+* <font color=blue>f21e585</font>-<font color=green>(2015-05-01)</font><font color=black><b>Creating default TLSClient</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_12)</font>
+* <font color=blue>45f2913</font>-<font color=green>(2015-05-01)</font><font color=black><b>added logging</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_11)</font>
+* <font color=blue>c7442cc</font>-<font color=green>(2015-05-01)</font><font color=black><b>Externalized keystore type</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_10)</font>
+* <font color=blue>8e80c4e</font>-<font color=green>(2015-05-01)</font><font color=black><b>Externalized the password</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_9)</font>
+*   <font color=blue>a8a2f1b</font>-<font color=green>(2015-05-01)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/dai-smsi-relay into br_5.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_5.0.0_8)</font>
+|\  
+| * <font color=blue>2c6d419</font>-<font color=green>(2015-04-30)</font><font color=black><b>updating watermarks and test empty</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_5.0.0_7)</font>
+* <font color=blue>d784c9c</font>-<font color=green>(2015-05-01)</font><font color=black><b>Changed keystone type to jks</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>610a7b8</font>-<font color=green>(2015-04-30)</font><font color=black><b>Initial implementation of SSL Handshake</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>

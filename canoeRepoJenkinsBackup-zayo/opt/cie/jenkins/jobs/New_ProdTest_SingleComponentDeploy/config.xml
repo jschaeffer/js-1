@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>New Production Environment - Comcast Cloud based</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description>Select Component to Deploy</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>dai-cip-feedback</string>
+              <string>caas-admin</string>
+              <string>dai_amm</string>
+              <string>dai-smsi</string>
+              <string>dai-smsi-relay</string>
+              <string>smsi-admin</string>
+              <string>Dynamic-Ad-Insertion-engine:ALL</string>
+              <string>Dynamic-Ad-Insertion-engine:ADS1</string>
+              <string>Dynamic-Ad-Insertion-engine:ADS2</string>
+              <string>smsi-publisher</string>
+              <string>Pgmr-Cpgn-Int</string>
+              <string>ops-dt</string>
+              <string>ops-dce-metadata-agent</string>
+              <string>oss_bar</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Version</name>
+          <description>Enter Version to Deploy.  Must be entered as &lt;b&gt;version number + build number&lt;/b&gt; ie; &lt;u&gt;4.0.0_35&lt;/u&gt;)</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+if  [[ $BUILD_USER_ID = &quot;jschaeffer&quot; || $BUILD_USER_ID = &quot;clecrone&quot; || $BUILD_USER_ID = &quot;lhassell&quot; ]]; then
+    echo &quot;&lt;h2&gt;Authorized Deployer - Proceeding with deployment&lt;/h2&gt;&quot;
+else
+    echo &quot;Unauthorized User!&quot;
+    echo &quot;Exiting!&quot;
+    exit 1
+fi
+
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+export BUILD_TAG
+export Component
+export Version
+export DeployTarg=&quot;newprodtest&quot;
+echo &quot;&lt;b&gt;Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to ${DeployTarg} by ${BUILD_USER} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+     export CompSet=&quot;$(echo $Component | cut -f2 -d:)&quot;
+     export Component=&quot;$(echo $Component | cut -f1 -d:)&quot;
+
+cd /opt/build/scripts/newprodtest
+./New_ProdTest_Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $BUILD_USER_ID $CompSet
+
+
+if grep -q &quot;ERROR:&quot; /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log ; then
+   echo &quot;Deployment Failed.&quot;
+   echo &quot;&lt;font bgcolor=black color=red&gt;&lt;b&gt;&amp;nbsp Deployment Failed !!&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;b&gt;&amp;nbsp URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+   rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   exit 1
+  else
+   echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+   mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+   rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+   rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+fi
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.3"/>
+  </buildWrappers>
+</project>

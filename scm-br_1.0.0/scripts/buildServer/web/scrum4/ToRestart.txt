@@ -1,0 +1,9 @@
+request-mgr
+SDC-session-collector
+metadata-publisher
+mock_svr
+cm
+smsipub
+dai-national-cis
+dai-dce
+dmp-config

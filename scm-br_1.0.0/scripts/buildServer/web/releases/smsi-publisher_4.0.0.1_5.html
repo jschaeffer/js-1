@@ -1,0 +1,41 @@
+<b><u>Component Release Info for Sprint Orlando:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_4.0.0.1_5</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Performance improvements
+New properties:
+# (Reloadable) Mark Sessions as ready to publish if presentation have been added to the DB
+smsipub.ready-sessions.job.reservation.duration=60
+smsipub.ready-sessions.job.enable=true
+smsipub.job.executor.pool.size=1
+smsipub.job.lookup.rate=10000
+smsipub.job.repair.rate=300000
+
+Removed properties:
+smsipub.publish.job.executor.pool.size=1
+smsipub.housekeeping.job.executor.pool.size=1</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_4.0.0.1_5/diff.txt>smsi-publisher_v_4.0.0.1_5/config/smsi-publisher.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_4.0.0.1_5/diff.txt>smsi-publisher_v_4.0.0.1_5/config/smsi-publisher.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_4.0.0.1_5/diff.txt>smsi-publisher_v_4.0.0.1_5/config/smsi-publisher.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_4.0.0.1_5/diff.txt>smsi-publisher_v_4.0.0.1_5/config/smsi-publisher.scrum4.properties.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/resources/liquibase/smsi-publisher-3.0.0/001-kleider-create-smsi-publisher-structure.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_256</b></u><br>
+<pre>
+* <font color=blue>51d25cf</font>-<font color=green>(2014-07-31)</font><font color=black><b>Cleaned up compressed send code a little</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0.1_5)</font>
+* <font color=blue>4274bdc</font>-<font color=green>(2014-07-30)</font><font color=black><b>Added readySessions feature to test new job</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0.1_4)</font>
+* <font color=blue>54784c0</font>-<font color=green>(2014-07-30)</font><font color=black><b>Upped some wait times, added sessions-ready job code line to all features</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>01c0a4b</font>-<font color=green>(2014-07-30)</font><font color=black><b>Added clearJobs script and readySession time default</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0.1_3)</font>
+|\  
+| * <font color=blue>5c158ed</font>-<font color=green>(2014-07-29)</font><font color=black><b>Removing content-length header.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0.1_2)</font>
+| * <font color=blue>4517cb9</font>-<font color=green>(2014-07-29)</font><font color=black><b>Changing Context to Content.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>c718251</font>-<font color=green>(2014-07-29)</font><font color=black><b>Added Gzip functionality</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>4b5e792</font>-<font color=green>(2014-07-30)</font><font color=black><b>Added clearJobs script and readySession time default</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>5c3e8cc</font>-<font color=green>(2014-07-24)</font><font color=black><b>VODDAI-6060: Only one job per lot at a time.  Added ready-session job to the publisher.  Removed "update session_status" from the scte_ingester.  Added logic to spread jobs out over time</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0.1_1)</font>
+* <font color=blue>a5001fc</font>-<font color=green>(2014-07-24)</font><font color=black><b>Merge branch 'streamlining' into br_4.0.0.1</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>72172c7</font>-<font color=green>(2014-05-21)</font><font color=black><b>Only one job per lot can run at a time.  Added ready-sessions</b></font><font color=grey>- (kennethleider)</font><font color=red></font></pre>
+<hr>
+<p>

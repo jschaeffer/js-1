@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9.1">
+      <projectUrl>https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>git@github.com:CanoeVentures/Dynamic-Ad-Insertion-cm.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_5.1.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u20</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H 22 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export APP_VERSION=`cat ${WORKSPACE}/application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+sed -e &quot;s|$APP_VERSION|5.1.0_${BUILD_NUMBER}|&quot; -i &apos;&apos; ${WORKSPACE}/application.properties
+echo &quot;Replacing app.version in application.properties from $APP_VERSION to 5.1.0_${BUILD_NUMBER}&quot;</command>
+    </hudson.tasks.Shell>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.7">
+      <targets>clean war -no-tests</targets>
+      <name>Grails 2.4.3</name>
+      <grailsWorkDir>/opt/cvbuild/.DAI-Campaign-mgmt_work2435.1_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.DAI-Campaign-mgmt_project2435.1_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9191</serverPort>
+      <properties>geb.env=phantomjs
+grails.project.plugins.dir=/opt/cvbuild/.grails/243/projects/DAI-CampaignMgmt-compile2435.1</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+      <plainOutput>true</plainOutput>
+      <stackTrace>false</stackTrace>
+      <verbose>false</verbose>
+      <refreshDependencies>true</refreshDependencies>
+    </com.g2one.hudson.grails.GrailsBuilder>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+export ProjFile=&quot;/opt/build/scm/scripts/buildServer/properties/projects/Dynamic-Ad-Insertion-cm/project.properties&quot;
+echo &quot;ProjFile -&gt; $ProjFile&quot;
+export ProjLoc=`cat $ProjFile | awk -F&quot;=&quot; &apos;/projectRoot/ {print $2;exit;}&apos;`
+echo &quot;Replacing -&gt; $ProjLoc with $WORKSPACE&quot;
+sed -e &quot;s|${ProjLoc}|\&quot;${WORKSPACE}\&quot;|&quot; -i &apos;&apos; $ProjFile
+
+cat $ProjFile
+
+/opt/build/scripts/CreateJenkinsRelease.sh Dynamic-Ad-Insertion-cm Dynamic-Ad-Insertion-cm br_5.1.0 ${BUILD_NUMBER}
+
+#/opt/build/scripts/createRelease.sh Dynamic-Ad-Insertion-cm Dynamic-Ad-Insertion-cm br_5.1.0 ${BUILD_NUMBER}
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export VERSION=&quot;5.0.0_${BUILD_NUMBER}&quot;
+export Component=&quot;Dynamic-Ad-Insertion&quot;; echo &quot;Component - $Component&quot;
+export DB_Rebuild=&quot;Yes&quot;; echo &quot;DB_Rebuild - $DB_Rebuild&quot;
+export Version=${VERSION}; echo &quot;Version - $Version&quot;
+export Clear_Logs=&quot;Yes&quot;; echo &quot;Clear_Logs - $Clear_Logs&quot;
+export DeployTarg=&quot;devint&quot;; echo &quot;DeployTarg - $DeployTarg&quot;
+export DeployUser=&quot;Jenkins&quot;; echo &quot;DeployUser = $DeployUser&quot;
+export BUILD_TAG
+
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to $DeployTarg by $DeployUser &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Component: &lt;/b&gt;$Component &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+cd /opt/build/scripts
+./Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;5.1.0_${BUILD_NUMBER}&quot; &gt; /var/www/html/devint/Dynamic-Ad-Insertion-cm.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.37"/>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.11">
+      <timeoutMinutes>3</timeoutMinutes>
+      <failBuild>true</failBuild>
+      <writingDescription>false</writingDescription>
+      <timeoutPercentage>0</timeoutPercentage>
+      <timeoutType>likelyStuck</timeoutType>
+      <timeoutMinutesElasticDefault>3</timeoutMinutesElasticDefault>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+  </buildWrappers>
+</project>

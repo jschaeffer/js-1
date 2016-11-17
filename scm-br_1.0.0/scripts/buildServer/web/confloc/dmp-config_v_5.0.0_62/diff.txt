@@ -1,0 +1,31 @@
+diff --git a/config/dmp-config-config.scrum1.properties b/config/dmp-config-config.scrum1.properties
+index dec2579..8f1381a 100644
+--- a/config/dmp-config-config.scrum1.properties
++++ b/config/dmp-config-config.scrum1.properties
+@@ -1 +1 @@
+-grails.mongo.connectionString=mongodb://dmp.config:aardvark@dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum1
++grails.mongo.connectionString=mongodb://cv-dvmongodb01:27017/dmp-config-scrum1
+\ No newline at end of file
+diff --git a/config/dmp-config-config.scrum2.properties b/config/dmp-config-config.scrum2.properties
+index 7999d84..7ac4536 100644
+--- a/config/dmp-config-config.scrum2.properties
++++ b/config/dmp-config-config.scrum2.properties
+@@ -1 +1 @@
+-grails.mongo.connectionString=mongodb://dmp.config:aardvark@dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum2
++grails.mongo.connectionString=mongodb://cv-dvmongodb01:27017/dmp-config-scrum2
+diff --git a/config/dmp-config-config.scrum3.properties b/config/dmp-config-config.scrum3.properties
+index c2107c8..a18bdee 100644
+--- a/config/dmp-config-config.scrum3.properties
++++ b/config/dmp-config-config.scrum3.properties
+@@ -1 +1 @@
+-grails.mongo.connectionString=mongodb://dmp.config:aardvark@dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum3
++grails.mongo.connectionString=mongodb://cv-dvmongodb01:27017/dmp-config-scrum3
+\ No newline at end of file
+diff --git a/config/dmp-config-config.scrum4.properties b/config/dmp-config-config.scrum4.properties
+index 3564566..fabdb5e 100644
+--- a/config/dmp-config-config.scrum4.properties
++++ b/config/dmp-config-config.scrum4.properties
+@@ -1 +1 @@
+-grails.mongo.connectionString=mongodb://dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum4
++grails.mongo.connectionString=mongodb://cv-dvmongodb01:27017/dmp-config-scrum4
+\ No newline at end of file

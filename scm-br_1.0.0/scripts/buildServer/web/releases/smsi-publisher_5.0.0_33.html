@@ -1,0 +1,24 @@
+<b><u>Component Release Info for Sprint QueSeraSera:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_5.0.0_33</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Metadata: Supports VAST Beaconing.  Schema updates: New Beacon table, new columns in "Placement" (BEACONS) and "Presentation" (END_VIEWED).
+Caveat:  ONLY eligible for perf environment.  *Only verified with REMA, NOT with ADS.*</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/smsi-publisher-3.0.0/003-beacons.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_24</b></u><br>
+<pre>
+* <font color=blue>52c5424</font>-<font color=green>(2015-09-01)</font><font color=black><b>added $AKKA_CONFIG to java opts</b></font><font color=grey>- (MajorMatt)</font><font color=red> (tag: v_5.0.0_33)</font>
+* <font color=blue>d90dab5</font>-<font color=green>(2015-09-01)</font><font color=black><b>Fixing NullPointerExceptions</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>8ec023f</font>-<font color=green>(2015-08-31)</font><font color=black><b>Beacon glue code example</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_32)</font>
+* <font color=blue>1902675</font>-<font color=green>(2015-08-28)</font><font color=black><b>VODDAI-7946: Save Beacons to DB</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_31)</font>
+* <font color=blue>76add1e</font>-<font color=green>(2015-08-27)</font><font color=black><b>Added akka.config.file to setenv.sh</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_30)</font>
+* <font color=blue>02d1ad9</font>-<font color=green>(2015-08-26)</font><font color=black><b>VODDAI-7708: Added END_VIEWED column to presentation</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_29)</font>
+* <font color=blue>cb54a51</font>-<font color=green>(2015-08-26)</font><font color=black><b>VODDAI-7946: Framework for transmission of Beacons</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>22a4b31</font>-<font color=green>(2015-08-06)</font><font color=black><b>VODDAI-7180,VODDAI-7181: Added a Beacons column to the Placement Table</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_28)</font>
+* <font color=blue>f6d697b</font>-<font color=green>(2015-07-29)</font><font color=black><b>Added StoreBeacons event to scte-ingest</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_27, tag: v_5.0.0_26)</font>
+* <font color=blue>6f0f562</font>-<font color=green>(2015-07-15)</font><font color=black><b>Modified tests for Zayo performance</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_25)</font></pre>
+<hr>
+<p>

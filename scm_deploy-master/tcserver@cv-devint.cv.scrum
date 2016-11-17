@@ -1,0 +1,21 @@
+#!/bin/ksh
+
+#Lyam Hassell:/09/26/14
+#Short script used to search all application port numbers and send them to a list
+
+cd /opt/tcserver/instances
+applist=`ls`
+
+ for i in $applist; do
+  echo "*********************" >> portNum.txt
+  echo "$i" >> portNum.txt
+  echo "*********************" >> portNum.txt
+  tail $i/conf/catalina.properties >> portNum.txt
+  sed -i /xml-apis.jar/d portNum.txt
+  sed -i /xmlParserAPIs.jar/d portNum.txt
+  sed -i /xpp3_min/d portNum.txt
+  sed -i /xstream-/d portNum.txt
+  sed -i /zipfs.jar/d portNum.txt
+  sed -i /base.shutdown.port/d portNum.txt
+ done
+

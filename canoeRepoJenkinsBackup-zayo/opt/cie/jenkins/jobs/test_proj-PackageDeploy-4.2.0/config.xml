@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9.1">
+      <projectUrl>https://github.com/CanoeVentures/test_proj/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>git@github.com:CanoeVentures/test_proj.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_4.2.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/test_proj</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+cd $WORKSPACE
+
+export VERSION=&quot;4.2.0&quot;
+export PROJECT=&quot;test_proj&quot;
+
+echo &quot;Updating poms with ${VERSION}_${BUILD_NUMBER}&quot;
+groovy update.groovy ${VERSION}_${BUILD_NUMBER}
+
+echo &quot;Running Maven Versions plugin to update dependency information&quot;
+mvn versions:use-latest-versions -Dincludes=leider.ken,com.canoe,com.canoeventures -DgenerateBackupPoms=false
+mvn versions:update-parent -DgenerateBackupPoms=false
+</command>
+    </hudson.tasks.Shell>
+    <org.jfrog.hudson.maven3.Maven3Builder plugin="artifactory@2.2.4">
+      <mavenName>Maven3.2</mavenName>
+      <rootPom>pom.xml</rootPom>
+      <goals>clean install -U -DskipTests</goals>
+      <mavenOpts></mavenOpts>
+    </org.jfrog.hudson.maven3.Maven3Builder>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+export VERSION=&quot;4.2.0&quot;
+export PROJECT=&quot;test_proj&quot;
+echo &quot;Building version $VERSION of project $PROJECT&quot;
+
+# Section to point project.properties to this build&apos;s workspace
+export ProjFile=&quot;/opt/build/scm/scripts/buildServer/properties/projects/${PROJECT}/project.properties&quot;
+echo &quot;ProjFile -&gt; $ProjFile&quot;
+export ProjLoc=`cat $ProjFile | awk -F&quot;=&quot; &apos;/projectRoot/ {print $2;exit;}&apos;`
+echo &quot;Replacing -&gt; $ProjLoc with $WORKSPACE&quot;
+sed -e &quot;s|${ProjLoc}|\&quot;${WORKSPACE}\&quot;|&quot; -i &apos;&apos; $ProjFile
+cat $ProjFile
+# Section end
+
+echo &quot;Running CreateJenkinsRelease &quot;
+/opt/build/scripts/CreateJenkinsRelease.sh ${PROJECT} ${PROJECT} br_${VERSION} ${BUILD_NUMBER}
+
+echo &quot;Capturing Dependency info in pom.xmls and running dependency:tree&quot;
+cd ${WORKSPACE}
+find . -type f -name &quot;pom.xml&quot; -exec tar -rvf /opt/build/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_poms.tar &apos;{}&apos; \;
+
+mvn dependency:tree -DoutputFile=dependsTree.txt
+
+find . -type f -name &quot;dependsTree.txt&quot; -exec cat &gt;&gt; /opt/build/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_dependencies.txt &apos;{}&apos; \;
+
+echo &quot;Creating build branch to store revised pom.xml files&quot;
+/opt/build/scripts/createBuildLod.sh ${PROJECT} br_${VERSION} br_${VERSION}_${BUILD_NUMBER}
+
+cd /opt/checkouts/${PROJECT}
+git checkout br_${VERSION}_${BUILD_NUMBER} || exit 1
+echo &quot;Build branch created.  Adding pom files to branch&quot;
+tar -xvf /opt/build/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_poms.tar || exit 1
+git add . || exit 1
+git commit -m&quot;Checking in .pom file modifications for build ${VERSION}_${BUILD_NUMBER} dependency versions&quot; || exit 1
+git push origin || exit 1
+
+
+echo &quot;Dependency tree output is here: http://cvbuild.cv.infra/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_dependencies.txt&quot;
+echo &quot;Poms are captured in .tar format here: http://cvbuild.cv.infra/releaseTars/${PROJECT}/${PROJECT}_${VERSION}_${BUILD_NUMBER}_poms.tar&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <org.jfrog.hudson.maven3.ArtifactoryMaven3Configurator plugin="artifactory@2.2.4">
+      <details>
+        <artifactoryName>https://canoe-ventures.artifactoryonline.com/canoe_ventures</artifactoryName>
+        <repositoryKey>libs-releases-local</repositoryKey>
+        <snapshotsRepositoryKey>libs-snapshots-local</snapshotsRepositoryKey>
+        <artifactoryUrl>https://canoe-ventures.artifactoryonline.com/canoe_ventures</artifactoryUrl>
+        <stagingPlugin/>
+      </details>
+      <deployArtifacts>true</deployArtifacts>
+      <artifactDeploymentPatterns>
+        <includePatterns></includePatterns>
+        <excludePatterns></excludePatterns>
+      </artifactDeploymentPatterns>
+      <includeEnvVars>false</includeEnvVars>
+      <deployBuildInfo>true</deployBuildInfo>
+      <runChecks>false</runChecks>
+      <violationRecipients></violationRecipients>
+      <includePublishArtifacts>false</includePublishArtifacts>
+      <scopes></scopes>
+      <discardOldBuilds>false</discardOldBuilds>
+      <discardBuildArtifacts>true</discardBuildArtifacts>
+      <matrixParams></matrixParams>
+      <enableIssueTrackerIntegration>false</enableIssueTrackerIntegration>
+      <filterExcludedArtifactsFromBuild>false</filterExcludedArtifactsFromBuild>
+      <envVarsPatterns>
+        <includePatterns></includePatterns>
+        <excludePatterns>*password*,*secret*</excludePatterns>
+      </envVarsPatterns>
+      <licenseAutoDiscovery>true</licenseAutoDiscovery>
+      <disableLicenseAutoDiscovery>false</disableLicenseAutoDiscovery>
+      <aggregateBuildIssues>false</aggregateBuildIssues>
+      <aggregationBuildStatus>Released</aggregationBuildStatus>
+      <blackDuckRunChecks>false</blackDuckRunChecks>
+      <blackDuckAppName></blackDuckAppName>
+      <blackDuckAppVersion></blackDuckAppVersion>
+      <blackDuckReportRecipients></blackDuckReportRecipients>
+      <blackDuckScopes></blackDuckScopes>
+      <blackDuckIncludePublishedArtifacts>false</blackDuckIncludePublishedArtifacts>
+      <autoCreateMissingComponentRequests>true</autoCreateMissingComponentRequests>
+      <autoDiscardStaleComponentRequests>true</autoDiscardStaleComponentRequests>
+    </org.jfrog.hudson.maven3.ArtifactoryMaven3Configurator>
+  </buildWrappers>
+</project>

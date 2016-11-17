@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>System</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Base</string>
+              <string>FreeWheel</string>
+              <string>Google</string>
+              <string>Broadway</string>
+              <string>Cox</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>action</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>status</string>
+              <string>stop</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+export action
+if [[ $System = &quot;Base&quot; ]]; then
+export Component=&quot;Dynamic-Ad-Insertion-engine Dynamic-Ad-Insertion-cm request-mgr dai-cip-feedback smsi-publisher dai-smsi SDC-session-collector impression_collector &quot;
+
+elif [[ $System = &quot;FW&quot; ]]; then
+export Component=&quot;Dynamic-Ad-Insertion-engine Dynamic-Ad-Insertion-cm dai-cip-feedback Pgmr-Cpgn-Int metadata-publisher smsi-publisher dai-smsi dai-smsi-relay dai-national-cis impression_collector &quot;
+
+elif [[ $System = &quot;Google&quot; ]]; then
+export Component=&quot;Dynamic-Ad-Insertion-engine Dynamic-Ad-Insertion-cm dai-cip-feedback Pgmr-Cpgn-Int smsi-publisher dai-smsi dai-smsi-relay impression_collector &quot;
+
+elif [[ $System = &quot;Cox&quot; ]]; then
+export Component=&quot;Dynamic-Ad-Insertion-engine Dynamic-Ad-Insertion-cm dai-cip-feedback smsi-publisher dai-smsi ad-load-manager impression_collector POIS&quot;
+
+elif [[ $System = &quot;Broadway&quot; ]]; then
+export Component=&quot;Dynamic-Ad-Insertion-engine Dynamic-Ad-Insertion-cm dai-cip-feedback Pgmr-Cpgn-Int smsi-publisher dai-smsi dai-smsi-relay impression_collector &quot;
+fi
+
+for Comp in ${Component}; do
+
+export Suite=$System
+export Comp
+
+source /opt/build/scripts/zayos_sys_L2L.sh
+  export k=0
+  export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+  export APPSERVER_IP=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+  export INSTANCE=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+  k=$((k+1))
+
+if [[ $Suite = &quot;No&quot; ]]; then
+    echo &quot;No $Comp on $Suite&quot;
+fi 
+
+    echo &quot;Instance -&gt; $Instance   $APPSERVER_IP -&gt; $APPSERVER_IP   Suite -&gt; $Suite&quot;
+
+    echo &quot;$Action $Instance on $RestartTarg&quot;
+    echo &quot;/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} $action&quot;
+    /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} $action
+
+done</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

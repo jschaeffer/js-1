@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/ops-dt/webapps/ops-dt/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+print
+print Beginning Rebuild from scratch for app/db to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+
+/opt/build/scripts/tcServerAdmin.sh dvappdai04 ops-dt stop
+
+cd /opt/build/scripts
+./kill_dbsessions.sh -a ops-dt -e scrum3
+
+cd /opt/checkouts/ops-dt/grails-app/migrations/cisys
+echo &quot;@genUser.scrum3.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.121)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=scrum003)))&apos;
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./deployRebuildDb.sh -a ops-dt -t ops-dt -i ops-dt -r ${VERSION} -e scrum3 -j &quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot; -p SC3_OPS_DT -u SC3_OPS_DT -v</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+VERSION=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/ops-dt/webapps/ops-dt/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+echo &quot;ops-dt-${VERSION}&quot; &gt; /var/www/html/scrum3/opsdt.txt
+echo &quot;ops-dt-${VERSION}&quot; &gt; /var/www/html/scrum3/opsdt.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

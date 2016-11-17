@@ -1,0 +1,75 @@
+<b><u>Component Release Info for Sprint Harrison:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_4.0.0_236</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana>Julie:
+
+Metadata - New configuration for ADS ‘deadhead’ for operations troubleshooting, Validation and persistence of FC rules, Adjusted the “Not Registered” entertainment asset validation error to throw to a new operations.log, CIS scheduled check only queries assets in LW plus 30 days prior to start, PSN/Insertion Rollup performance bug fix for Matterhorn
+New Properties - (1) ads.deadHead=false</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_214</b></u><br>
+<pre>
+* <font color=blue>45d1b34</font>-<font color=green>(2014-04-28)</font><font color=black><b>Actually commiting the index changes</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_236)</font>
+* <font color=blue>c91f77d</font>-<font color=green>(2014-04-28)</font><font color=black><b>Reverted scala dependency change</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_235)</font>
+* <font color=blue>fad4e7e</font>-<font color=green>(2014-04-28)</font><font color=black><b>Updated indices for better performance</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>9cbc946</font>-<font color=green>(2014-04-24)</font><font color=black><b>Updated scala library dependency</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_234)</font>
+* <font color=blue>87724aa</font>-<font color=green>(2014-04-22)</font><font color=black><b>Modified lots of tests and features to help full regression suite pass more consistently.</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_233)</font>
+* <font color=blue>0dc0acb</font>-<font color=green>(2014-04-17)</font><font color=black><b>ManagedIP test features, some test cleanup</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_232)</font>
+* <font color=blue>596f32c</font>-<font color=green>(2014-04-15)</font><font color=black><b>Modified features for managedIP testing</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_231)</font>
+* <font color=blue>1f326a1</font>-<font color=green>(2014-04-15)</font><font color=black><b>New managedIP stuff</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>c0857a5</font>-<font color=green>(2014-04-14)</font><font color=black><b>add configs, clean up tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (v_4.0.0_230)</font>
+* <font color=blue>8570a28</font>-<font color=green>(2014-04-14)</font><font color=black><b>Integration tests now use the application name to access log files locally.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>a765570</font>-<font color=green>(2014-04-14)</font><font color=black><b>VODDAI-5208: Managed IP runtime is now milliseconds</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>e4a3cdf</font>-<font color=green>(2014-04-14)</font><font color=black><b>VODDAI-5208: Fixed runtime calculation for managed IP</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_229)</font>
+* <font color=blue>74ff8f9</font>-<font color=green>(2014-04-14)</font><font color=black><b>Modified managedIP features</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>49a2cda</font>-<font color=green>(2014-04-14)</font><font color=black><b>Modified refactor newPres sql script, added xml and features for new managedIP fxnality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f8f0eb4</font>-<font color=green>(2014-04-11)</font><font color=black><b>Cleaned up data, cleanUp feature</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (v_4.0.0_228)</font>
+*   <font color=blue>83b8386</font>-<font color=green>(2014-04-11)</font><font color=black><b>Modified some templates, added notes and more checks in cleanUp feature.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>64fada1</font>-<font color=green>(2014-04-11)</font><font color=black><b>Fixed gitignore</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>e2daf27</font>-<font color=green>(2014-04-11)</font><font color=black><b>Added a flag to StatusReceived to indicate if it is managedIP or not</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* | <font color=blue>8b56bdb</font>-<font color=green>(2014-04-11)</font><font color=black><b>Modified some templates, added notes and more checks in cleanUp feature.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>a89e817</font>-<font color=green>(2014-04-10)</font><font color=black><b>updated offline, source, 3_sessions</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (v_4.0.0_227)</font>
+* <font color=blue>cb3d100</font>-<font color=green>(2014-04-10)</font><font color=black><b>updated Missing Opps files</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>491f923</font>-<font color=green>(2014-04-10)</font><font color=black><b>updated Missing Opps files</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>6227e56</font>-<font color=green>(2014-04-10)</font><font color=black><b>More tracking ID and GUID updates</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+*   <font color=blue>faaf9e9</font>-<font color=green>(2014-04-10)</font><font color=black><b>Modified templates for the new tracking/guid usage</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>9e2b707</font>-<font color=green>(2014-04-10)</font><font color=black><b>Update non development property configuration files</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_226)</font>
+* | <font color=blue>a637559</font>-<font color=green>(2014-04-10)</font><font color=black><b>Modified templates for the new tracking/guid usage</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>ddee449</font>-<font color=green>(2014-04-09)</font><font color=black><b>Resolved conflicts.</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (v_4.0.0_225)</font>
+*   <font color=blue>b03dddb</font>-<font color=green>(2014-04-09)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/smsi-publisher into br_4.0.0</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+|\  
+| * <font color=blue>e762ac2</font>-<font color=green>(2014-04-09)</font><font color=black><b>VODDAI-5208: Correctly save the process type based on the session variant</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+| * <font color=blue>3a100a3</font>-<font color=green>(2014-04-07)</font><font color=black><b>Modified refactor feature to have correct table names</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_224)</font>
+* | <font color=blue>72b9ede</font>-<font color=green>(2014-04-09)</font><font color=black><b>Updated tracking ID and GUIDs</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+|/  
+* <font color=blue>93277a3</font>-<font color=green>(2014-04-04)</font><font color=black><b>VODDAI-4919: Can now ingest managed-ip</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_223)</font>
+* <font color=blue>a01e609</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-4919: Can now publish managed-ip</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_222)</font>
+* <font color=blue>1bfdb0f</font>-<font color=green>(2014-04-01)</font><font color=black><b>Fixed placementFactory unit test</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_221)</font>
+* <font color=blue>1e79448</font>-<font color=green>(2014-03-31)</font><font color=black><b>Fixed title asset id.  Again.  What happened to you code change</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_220)</font>
+* <font color=blue>61bd1f3</font>-<font color=green>(2014-03-28)</font><font color=black><b>Configuration is now all up to date.</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_219)</font>
+* <font color=blue>85dc32c</font>-<font color=green>(2014-03-28)</font><font color=black><b>Integration with decision engine should now be done.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>11dd84f</font>-<font color=green>(2014-03-27)</font><font color=black><b>Updated scte-ingester unit tests.</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_218)</font>
+* <font color=blue>63dba61</font>-<font color=green>(2014-03-27)</font><font color=black><b>Fixed data access unit tests</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+*   <font color=blue>fb7a6d0</font>-<font color=green>(2014-03-27)</font><font color=black><b>Further refactoring of templates and some test cases.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>8853a32</font>-<font color=green>(2014-03-26)</font><font color=black><b>Created jobs for all tasks the publisher needs to do.</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_217)</font>
+| * <font color=blue>6ba446b</font>-<font color=green>(2014-03-26)</font><font color=black><b>Added job properties to cucumber configuration</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* | <font color=blue>f19e5b8</font>-<font color=green>(2014-03-27)</font><font color=black><b>Further refactoring of templates and some test cases.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>aea7527</font>-<font color=green>(2014-03-26)</font><font color=black><b>Modified placement and missingOpp xmls for new Db format. Slight test modification for new function</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>dcd5fcc</font>-<font color=green>(2014-03-25)</font><font color=black><b>Modified presentation.xml to have correct format for all 10 placement/opportunities</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_216)</font>
+* <font color=blue>3466635</font>-<font color=green>(2014-03-25)</font><font color=black><b>Got the basic integration test to work</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>e44bcec</font>-<font color=green>(2014-03-25)</font><font color=black><b>Changed test-empty, cleanUp feature, and presentation.xml for the new smsiPublisher format</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5eaf8a5</font>-<font color=green>(2014-03-25)</font><font color=black><b>Added new liquibase</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>f237b64</font>-<font color=green>(2014-03-25)</font><font color=black><b>Ready to merge</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>0511244</font>-<font color=green>(2014-03-24)</font><font color=black><b>First pass on horizontal scaling.  Some things seem to work.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>5d61d65</font>-<font color=green>(2014-03-21)</font><font color=black><b>Adding session_status table</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>8bf6b3e</font>-<font color=green>(2014-03-20)</font><font color=black><b>Denormalized looks ok</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>9cc4519</font>-<font color=green>(2014-03-14)</font><font color=black><b>Much more mature and full featured write benchmarks.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>65e057d</font>-<font color=green>(2014-03-12)</font><font color=black><b>Added PresentationLoader, setup several benchmarks, cleans out journal directory, and can now be packaged and deployed as stand alone jar.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>2589aba</font>-<font color=green>(2014-03-12)</font><font color=black><b>Modified the delayer to do a much better job of hitting the target rate.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>aeb7cc6</font>-<font color=green>(2014-03-10)</font><font color=black><b>Created benchmark program for session creation.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>2f5bf1b</font>-<font color=green>(2014-03-14)</font><font color=black><b>Added more checks in the cleanUp feature. Modified template to be correct. Added comments to tests.</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_215)</font></pre>
+<hr>
+<p>

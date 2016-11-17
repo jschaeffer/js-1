@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>5</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.5">
+      <projectUrl>https://github.com/CanoeVentures/dai-etl-feeder/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.26">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name></name>
+        <refspec></refspec>
+        <url>git@github.com:CanoeVentures/dai-etl-feeder.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_3.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/dai-etl-feeder/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <includedRegions></includedRegions>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+/opt/build/scripts/createRelease.sh dai-etl-feeder dai-etl-feeder br_3.0.0 ${BUILD_NUMBER}</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+EXIST_VERS=`ssh tcserver@dvappdai01 &quot;cd /opt/tcserver/dai_etl_feeder; jar xf dai-etl-feeder-3.0.0-SNAPSHOT.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+
+VERSION=&quot;3.0.0_${BUILD_NUMBER}&quot;
+
+print Gathering build version to be deployed
+print --------------------------------------
+print
+print Deploying version ${VERSION}
+print
+print
+
+cd /opt/checkouts/oss_deployment/scripts
+
+print Beginning Roll-forward update for app/db 
+print ------------------------------------------------------------------------------------------------------------
+print
+./deployjar.sh -a dai-etl-feeder -t dai-etl-feeder -e 10.13.18.113 -r ${VERSION} -j &quot;jdbc:oracle:thin:@10.13.18.111:1522:dev003&quot; -p DI_REPORTING_ODS -u DI_REPORTING_ODS -c DI_CORE -b DI_OSS_BAR -v
+
+print Beginning Roll-back for app/db to prior version ${EXIST_VERS} from latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+print
+./deployjar.sh -a dai-etl-feeder -t dai-etl-feeder -e 10.13.18.113 -r ${EXIST_VERS} -j &quot;jdbc:oracle:thin:@10.13.18.111:1522:dev003&quot; -p DI_REPORTING_ODS -u DI_REPORTING_ODS -c DI_CORE -b DI_OSS_BAR -v
+print
+
+print Beginning Roll-forward update for app/db from existing version ${EXIST_VERS} to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------------------------
+./deployjar.sh -a dai-etl-feeder -t dai-etl-feeder -e 10.13.18.113 -r ${VERSION} -j &quot;jdbc:oracle:thin:@10.13.18.111:1522:dev003&quot; -p DI_REPORTING_ODS -u DI_REPORTING_ODS -c DI_CORE -b DI_OSS_BAR -v
+
+STATUS=${?}
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+VERSION=&quot;3.0.0_${BUILD_NUMBER}&quot;
+
+/opt/build/scripts/tcServerAdmin.sh dvappdai01 report stop
+/opt/build/scripts/tcServerAdmin.sh dvappdai01 oss_bar stop
+
+cd /opt/build/scripts
+./kill_dbsessions.sh -a dai-etl-feeder -e devint
+
+print Beginning Rebuild from scratch for app/db to latest package version ${VERSION}
+print 
+print
+
+cd /opt/checkouts/dai-etl-feeder/src/main/resources/liquibase/cisys
+
+echo &quot;@genUser.devint.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.111)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=dev003)))&apos;
+
+STATUS=${?}
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./deployJarRebuild.sh -a dai-etl-feeder -t dai-etl-feeder -e devint -r ${VERSION} -j &quot;jdbc:oracle:thin:@10.13.18.111:1522:dev003&quot; -p DI_REPORTING_ODS -u DI_REPORTING_ODS -c DI_CORE -b DI_OSS_BAR -v
+
+/opt/build/scripts/tcServerAdmin.sh dvappdai01 report start
+/opt/build/scripts/tcServerAdmin.sh dvappdai01 oss_bar start</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+VERSION=&quot;3.0.0_${BUILD_NUMBER}&quot;
+
+echo &quot;dai-etl-feeder-${VERSION}&quot; &gt; /var/www/html/devint/etl.txt
+echo &quot;dai-etl-feeder-${VERSION}&quot; &gt; /var/www/html/devint/etldb.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.31"/>
+  </publishers>
+  <buildWrappers/>
+</project>

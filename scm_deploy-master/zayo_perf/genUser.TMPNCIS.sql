@@ -1,0 +1,11 @@
+CREATE USER TMPNCIS IDENTIFIED BY TMPNCIS DEFAULT TABLESPACE canoe_data_compress
+TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
+alter user TMPNCIS quota unlimited on canoe_data;
+alter user TMPNCIS quota unlimited on canoe_index;
+alter user TMPNCIS quota unlimited on canoe_data_compress;
+alter user TMPNCIS quota unlimited on canoe_data_compress2;
+
+GRANT TABLE_OWNER TO TMPNCIS;
+GRANT SELECT on TMPCAAS_CORE.FEED TO TMPNCIS;
+GRANT SELECT on TMPCAAS_CORE.PROVIDER TO TMPNCIS;
+GRANT SELECT on TMPCAAS_CORE.PROVIDER_ALIAS TO TMPNCIS;

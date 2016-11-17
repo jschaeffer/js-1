@@ -1,0 +1,1 @@
+./instances/cip/webapps/cip-server/META-INF/MANIFEST.MF

@@ -1,0 +1,61 @@
+<b><u>Component Release Info for Sprint Transformers:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_454</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Tyler:
+
+ADS Core - 4.0.0_118
+SMSi Pub DB - 4.0.0_281
+Metadata – New FC queuing mechanisms, Bug Fixes to VODDAI-6409 and 6295; Refactored Validation Error handling for DB lookups, PlacementRequest and PSN. No schema changes; new property to control PSN queuing to Impression Collector
+#Frequency Capping
+frequency.cap.max.persists=2500
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_454/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_454/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_454/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_454/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_454/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_454/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_454/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_454/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_454/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_454/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_454/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_454/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_454/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_454/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_454/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_454/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_444</b></u><br>
+<pre>
+* <font color=blue>6c973b2</font>-<font color=green>(2014-09-29)</font><font color=black><b>changing template to have stop ViewerEvent</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_454)</font>
+* <font color=blue>4d23c06</font>-<font color=green>(2014-09-26)</font><font color=black><b>Refactor to decouple PSN Validation from persistence</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_453)</font>
+* <font color=blue>ee44fcc</font>-<font color=green>(2014-09-26)</font><font color=black><b>Moving code to a reusable spot.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>41e75ca</font>-<font color=green>(2014-09-25)</font><font color=black><b>Validation code now uses DataAggregator interface.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>d42fde9</font>-<font color=green>(2014-09-25)</font><font color=black><b>Continued refactoring.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>85ede82</font>-<font color=green>(2014-09-25)</font><font color=black><b>Missed a file</b></font><font color=grey>- (Bob Griese)</font><font color=red> (tag: v_4.0.0_452)</font>
+* <font color=blue>b3f819b</font>-<font color=green>(2014-09-25)</font><font color=black><b>Further refactoring.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+*   <font color=blue>dbeb3cc</font>-<font color=green>(2014-09-25)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|\  
+| * <font color=blue>e7fb394</font>-<font color=green>(2014-09-24)</font><font color=black><b>updating changelog</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_451)</font>
+| * <font color=blue>f75f99b</font>-<font color=green>(2014-09-24)</font><font color=black><b>Extracted IdentityValidation</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>2503597</font>-<font color=green>(2014-09-23)</font><font color=black><b>Added missing param to unit test</b></font><font color=grey>- (dehmlowm)</font><font color=red> (tag: v_4.0.0_450)</font>
+| * <font color=blue>18d8601</font>-<font color=green>(2014-09-23)</font><font color=black><b>changelog</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>2586fd2</font>-<font color=green>(2014-09-23)</font><font color=black><b>changing BCL to be correct</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>e727a89</font>-<font color=green>(2014-09-23)</font><font color=black><b>Persist Max Prop + Freq Cap loging</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>cbd1a02</font>-<font color=green>(2014-09-23)</font><font color=black><b>Added new wsdl for the SDC project</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>4075ee7</font>-<font color=green>(2014-09-23)</font><font color=black><b>updated BCL before scrum deploy</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (tag: v_4.0.0_448)</font>
+| * <font color=blue>2c712f7</font>-<font color=green>(2014-09-23)</font><font color=black><b>changed hhid in twc tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>7cc2fdd</font>-<font color=green>(2014-09-23)</font><font color=black><b>PsnPusher IMpl</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| *   <font color=blue>a56837a</font>-<font color=green>(2014-09-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (tag: v_4.0.0_447)</font>
+| |\  
+| | * <font color=blue>2566f00</font>-<font color=green>(2014-09-22)</font><font color=black><b>Added actual exception message</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| | * <font color=blue>e162a12</font>-<font color=green>(2014-09-22)</font><font color=black><b>Added budget watcher for PSN and Placements</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * | <font color=blue>ec80aeb</font>-<font color=green>(2014-09-22)</font><font color=black><b>Added refresh cache lines to PL_CIMA and new HHID to TWC Baseline SMS</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |/  
+| * <font color=blue>ea64f51</font>-<font color=green>(2014-09-19)</font><font color=black><b>VODDAI-6295</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_446)</font>
+| * <font color=blue>1b2ec38</font>-<font color=green>(2014-09-19)</font><font color=black><b>changes to template for cox psn test</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>1f43bd7</font>-<font color=green>(2014-09-19)</font><font color=black><b>fixed template name in new cox psn test</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>7f66435</font>-<font color=green>(2014-09-19)</font><font color=black><b>added psn test for cox</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| *   <font color=blue>03fcf3a</font>-<font color=green>(2014-09-16)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (tag: v_4.0.0_445)</font>
+| |\  
+| | * <font color=blue>d3a57f5</font>-<font color=green>(2014-09-16)</font><font color=black><b>Added Budget watcher</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>d58562c</font>-<font color=green>(2014-09-16)</font><font color=black><b>test changes during final regression</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>8a7501b</font>-<font color=green>(2014-09-25)</font><font color=black><b>Refactoring utils.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>c11b725</font>-<font color=green>(2014-09-24)</font><font color=black><b>Refactoring to use new util classes.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font></pre>
+<hr>
+<p>

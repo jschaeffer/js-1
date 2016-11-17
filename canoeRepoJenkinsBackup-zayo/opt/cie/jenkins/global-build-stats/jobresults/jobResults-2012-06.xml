@@ -1,0 +1,158 @@
+<list>
+  <jbr plugin="global-build-stats@1.3">
+    <r>FAILURE</r>
+    <n>js-1-CreateRelease-10.0.0</n>
+    <nb>1</nb>
+    <d>
+      <time>1339195790000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>3249</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>25</nb>
+    <d>
+      <time>1341103854000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1055</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>24</nb>
+    <d>
+      <time>1341017454000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>907</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>23</nb>
+    <d>
+      <time>1340931054000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1195</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>22</nb>
+    <d>
+      <time>1340844629000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1159</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>21</nb>
+    <d>
+      <time>1340758229000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1263</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>20</nb>
+    <d>
+      <time>1340671868000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1299</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>19</nb>
+    <d>
+      <time>1340585468000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1043</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>18</nb>
+    <d>
+      <time>1340499068000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1012</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>17</nb>
+    <d>
+      <time>1340412668000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1077</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>16</nb>
+    <d>
+      <time>1340326268000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1084</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>15</nb>
+    <d>
+      <time>1340239868000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1242</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>setGrails203</n>
+    <nb>14</nb>
+    <d>
+      <time>1340153468000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>1146</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+</list>

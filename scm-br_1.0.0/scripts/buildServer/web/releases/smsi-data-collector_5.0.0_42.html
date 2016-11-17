@@ -1,0 +1,154 @@
+<b><u>Component Release Info for Sprint Insane:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-data-collector</b><br><u>Version</u><b>&nbspr_5.0.0_42</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Initial Release - On the shelf
+
+Kassi:
+
+Dependencies:  Session Collector 5.0.0_10
+Metadata:  Request/Response/PSN routing capabilities.</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/dai-sdc.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/dai-sdc.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/dai-sdc.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/dai-sdc.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/log4j.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/log4j.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/log4j.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/log4j.scrum4.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/setenv.scrum1.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/setenv.scrum2.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/setenv.scrum3.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/config/setenv.scrum4.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/liquibase/cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/liquibase/cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/liquibase/cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-data-collector_v_5.0.0_42/diff.txt>smsi-data-collector_v_5.0.0_42/dai-sdc-server/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>dai-sdc-server/src/main/resources/liquibase/cisys/genUser.Marley.sql
+dai-sdc-server/src/main/resources/liquibase/cisys/genUser.RH65.sql
+dai-sdc-server/src/main/resources/liquibase/cisys/genUser.devint.sql
+dai-sdc-server/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+dai-sdc-server/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+dai-sdc-server/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+dai-sdc-server/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+dai-sdc-server/src/main/resources/liquibase/dai-sdc-4.0.0/001-csd-baseline.xml
+dai-sdc-server/src/main/resources/liquibase/master-changelog.xml
+data-store/src/main/liquibase/cisys/dropUser.sql
+data-store/src/main/liquibase/cisys/genUser.sql
+data-store/src/main/liquibase/dai-sdc-5.0.0/001-csd-baseline.xml
+data-store/src/main/liquibase/dai-sdc-5.0.0/002-khl-platform.xml
+data-store/src/main/liquibase/master-changelog.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_3</b></u><br>
+<pre>
+* <font color=blue>680d0a0</font>-<font color=green>(2015-05-11)</font><font color=black><b>Fixed deregistration identity check.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_42, tag: r_5.0.0_42)</font>
+* <font color=blue>a67f050</font>-<font color=green>(2015-05-08)</font><font color=black><b>Now we can return a PSA for PSN we cannot route</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_41)</font>
+* <font color=blue>1c12303</font>-<font color=green>(2015-05-08)</font><font color=black><b>VODDAI-7470: Using log4j2</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>0f61197</font>-<font color=green>(2015-05-08)</font><font color=black><b>Added response and PSA error response templates for business validation. Improved timeout modified tests for request and PSN features, added malformed PSN tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>e9a611a</font>-<font color=green>(2015-05-08)</font><font color=black><b>Made the routing logic more insensitive.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_40)</font>
+| *   <font color=blue>c8699f6</font>-<font color=green>(2015-05-07)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |\  
+| * \   <font color=blue>5b1d40d</font>-<font color=green>(2015-05-07)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>c23bd9a</font>-<font color=green>(2015-05-06)</font><font color=black><b>Created a database access service.  Mostly a code organization thing.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | | <font color=blue>08198c6</font>-<font color=green>(2015-05-06)</font><font color=black><b>No longer needs to go to the internet for XML schemas</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | | | <font color=blue>667e123</font>-<font color=green>(2015-05-08)</font><font color=black><b>Added response and PSA error response templates for business validation. Improved timeout modified tests for request and PSN features, added malformed PSN tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| |_|/  
+|/| |   
+* | | <font color=blue>cff0af2</font>-<font color=green>(2015-05-07)</font><font color=black><b>Added tests for malformed request, case insensitivity for paltform, timeout modification, no placement response, mesageRef nonMatching</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_39)</font>
+| |/  
+|/|   
+* | <font color=blue>39adf74</font>-<font color=green>(2015-05-06)</font><font color=black><b>Added check for messageRef in request error response</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_38)</font>
+* | <font color=blue>82c8a35</font>-<font color=green>(2015-05-06)</font><font color=black><b>Added defaultConfigfile to cukeProperties, added test for PSN routing when default endpoint is used, modified chronJob reschedule test - Ken to help bug fix</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_37)</font>
+|/  
+* <font color=blue>b982ba3</font>-<font color=green>(2015-05-05)</font><font color=black><b>VODDAI-7404 Use SCTE_130-2_2008a.xsd for validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_36)</font>
+* <font color=blue>d4e384f</font>-<font color=green>(2015-05-05)</font><font color=black><b>VODDAI-7404 Use SCTE_130-4_2008a.xsd for validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>b1ecc2b</font>-<font color=green>(2015-05-05)</font><font color=black><b>added targetCode attributes to test ability to find platformKey, added necessary templates</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>3a7abd8</font>-<font color=green>(2015-05-05)</font><font color=black><b>Add route to table clearing, fixed requestResponse tests, improving PSN tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>67109fc</font>-<font color=green>(2015-05-05)</font><font color=black><b>Adding unit tests</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>871ed24</font>-<font color=green>(2015-05-05)</font><font color=black><b>Add route to table clearing, fixed requestResponse tests, improving PSN tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* |   <font color=blue>f70b447</font>-<font color=green>(2015-05-04)</font><font color=black><b>Renamed two features, removed repeat tests in adsReg feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>6ac0260</font>-<font color=green>(2015-05-04)</font><font color=black><b>VODDAI-7440, VODDAI-7427, VODDAI-7433, VODDAI-7502: Route with platform</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_35)</font>
+* | <font color=blue>2ca60d8</font>-<font color=green>(2015-05-04)</font><font color=black><b>Renamed two features, removed repeat tests in adsReg feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>1ee5360</font>-<font color=green>(2015-05-04)</font><font color=black><b>Merging</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>baf1876</font>-<font color=green>(2015-04-29)</font><font color=black><b>VODDAI-7471 Servlet for metadata ingestion</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_34)</font>
+| * <font color=blue>dfd6f74</font>-<font color=green>(2015-04-28)</font><font color=black><b>VODDAI-6414 : Fixed deregistration error message.</b></font><font color=grey>- (Kenneth Leider)</font><font color=red> (tag: v_5.0.0_33)</font>
+| * <font color=blue>59fd3c1</font>-<font color=green>(2015-04-28)</font><font color=black><b>Updated Response validation (serviceCheck, ADSReg, ADSDeReg.)</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| * <font color=blue>f9678c0</font>-<font color=green>(2015-04-28)</font><font color=black><b>VODDAI-6412, VODDAI-6414, VODDAI-6419 : Fixed routermanagement response checking that we were not doing.</b></font><font color=grey>- (Kenneth Leider)</font><font color=red> (tag: v_5.0.0_32)</font>
+| * <font color=blue>4dd1c61</font>-<font color=green>(2015-04-24)</font><font color=black><b>VODDAI-7468: Updated configuration (removed some properties) and documented the bejeezus out of it.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_31)</font>
+* | <font color=blue>4113cb3</font>-<font color=green>(2015-05-04)</font><font color=black><b>Lots of updates that i forgot to push, like a jerk</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>55cf416</font>-<font color=green>(2015-04-24)</font><font color=black><b>VODDAI-6457: Now checking identity in the ListADM response</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_30)</font>
+* <font color=blue>dbe06c5</font>-<font color=green>(2015-04-24)</font><font color=black><b>Changed URLs, added tests, fixed tests, continuing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5633cc6</font>-<font color=green>(2015-04-22)</font><font color=black><b>Updating README</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_29)</font>
+* <font color=blue>377c521</font>-<font color=green>(2015-04-22)</font><font color=black><b>Using a version 1.0.0.1 of oc-scte-adm</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_28)</font>
+*   <font color=blue>770cc0c</font>-<font color=green>(2015-04-21)</font><font color=black><b>Merge conflict of listADMservices</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_27)</font>
+|\  
+| * <font color=blue>21037ba</font>-<font color=green>(2015-04-21)</font><font color=black><b>VODDAI-7405: Added schema validation on registration responses.  Fixed commits to Reservation table.  Added version check</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>70d8c1b</font>-<font color=green>(2015-04-21)</font><font color=black><b>Switched url to .117, added tests in the list, reg, dereg, and service check features</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>d67b7ad</font>-<font color=green>(2015-04-17)</font><font color=black><b>Adjustments for scrum3 running. Added tests to the listADMservices feature according to stories 6407 and 6457</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_26)</font>
+|\  
+| * <font color=blue>ab08273</font>-<font color=green>(2015-04-16)</font><font color=black><b>VODDAI-6493: Add collecting back in, but only for configured ADSEndpoints.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_25)</font>
+| * <font color=blue>ba292b1</font>-<font color=green>(2015-04-16)</font><font color=black><b>Now exporting JAVA_HOME in setenv</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_24, tag: v_5.0.0_23)</font>
+| * <font color=blue>750ee1d</font>-<font color=green>(2015-04-16)</font><font color=black><b>The setenv did not look good.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>d31aca8</font>-<font color=green>(2015-04-17)</font><font color=black><b>Adjustments for scrum3 running. Added tests to the listADMservices feature according to stories 6407 and 6457</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>e12bf6a</font>-<font color=green>(2015-04-15)</font><font color=black><b>Cleaned up routing tests.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_22)</font>
+* <font color=blue>8564816</font>-<font color=green>(2015-04-13)</font><font color=black><b>Cleaned up registration tests.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_21)</font>
+* <font color=blue>36176f6</font>-<font color=green>(2015-04-13)</font><font color=black><b>Some packaging fixes</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_20)</font>
+* <font color=blue>c7d968f</font>-<font color=green>(2015-04-09)</font><font color=black><b>Changed to logback, Removed smsi-publisher so that phase 1 can proceed.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_19, tag: v_5.0.0_18, tag: v_5.0.0_17, tag: v_5.0.0_16)</font>
+* <font color=blue>7a7f31d</font>-<font color=green>(2015-04-08)</font><font color=black><b>Fixing up unit tests</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_15)</font>
+* <font color=blue>5972f0e</font>-<font color=green>(2015-04-02)</font><font color=black><b>Added log4j2 dependencies</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>3fd847c</font>-<font color=green>(2015-03-24)</font><font color=black><b>Moved liquibase stuff to comply with database-parent</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>09eddfc</font>-<font color=green>(2015-03-24)</font><font color=black><b>Adding VERSION token in pom</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (tag: v_5.0.0_14, tag: v_5.0.0_13, tag: v_5.0.0_12)</font>
+* <font color=blue>6b72dbf</font>-<font color=green>(2015-03-23)</font><font color=black><b>VODDAI-6500, VODDAI-6346, VODDAI-6348:  Can persist most of the session and opportunity stuff.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_11, tag: v_5.0.0_10)</font>
+*   <font color=blue>2e2a5bf</font>-<font color=green>(2015-03-23)</font><font color=black><b>Used newer glueCode, added scrum3 server details in cucumberProperties file</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>f7f27ff</font>-<font color=green>(2015-03-20)</font><font color=black><b>Ready for merge back into 5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red> (origin/khl_test)</font>
+| *   <font color=blue>e6ba8e0</font>-<font color=green>(2015-03-18)</font><font color=black><b>Merge branch 'khl_test' of https://github.com/CanoeVentures/smsi_data_collector into khl_test</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |\  
+| | * <font color=blue>ab1fee5</font>-<font color=green>(2015-03-18)</font><font color=black><b>Put liquibase back in src/main/resources.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| | * <font color=blue>c871b24</font>-<font color=green>(2015-03-16)</font><font color=black><b>some pom fixes</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| | * <font color=blue>b8030ba</font>-<font color=green>(2015-03-11)</font><font color=black><b>Adding Extractor logic for session and opportunity</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| | * <font color=blue>e017269</font>-<font color=green>(2015-03-07)</font><font color=black><b>Moved routing code to it's own module.  Removed decision-engine dependencies.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| | * <font color=blue>9c2a880</font>-<font color=green>(2015-03-04)</font><font color=black><b>Broke routing into it's own module</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| | * <font color=blue>3564fcd</font>-<font color=green>(2015-03-04)</font><font color=black><b>More work on routing</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| | * <font color=blue>237678a</font>-<font color=green>(2015-03-03)</font><font color=black><b>Some architectural details to support vast.  Support for routing based on context path, and some stubby spring integration stuff.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | <font color=blue>acbf863</font>-<font color=green>(2015-03-18)</font><font color=black><b>Put liquibase back in src/main/resources.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | <font color=blue>173ff29</font>-<font color=green>(2015-03-16)</font><font color=black><b>some pom fixes</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | <font color=blue>198d21b</font>-<font color=green>(2015-03-11)</font><font color=black><b>Adding Extractor logic for session and opportunity</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | <font color=blue>941209b</font>-<font color=green>(2015-03-07)</font><font color=black><b>Moved routing code to it's own module.  Removed decision-engine dependencies.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | <font color=blue>a717867</font>-<font color=green>(2015-03-04)</font><font color=black><b>Broke routing into it's own module</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | <font color=blue>30f31b1</font>-<font color=green>(2015-03-04)</font><font color=black><b>More work on routing</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * | <font color=blue>8e7a7e2</font>-<font color=green>(2015-03-03)</font><font color=black><b>Some architectural details to support vast.  Support for routing based on context path, and some stubby spring integration stuff.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | | <font color=blue>345bd06</font>-<font color=green>(2015-03-23)</font><font color=black><b>Used newer glueCode, added scrum3 server details in cucumberProperties file</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | | <font color=blue>ec45f2a</font>-<font color=green>(2015-03-23)</font><font color=black><b>Used newer glueCode, added scrum3 server details in cucumberProperties file</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/ /  
+* | <font color=blue>1d15a11</font>-<font color=green>(2015-03-16)</font><font color=black><b>Fixing setenv.sh files for Java 1.8</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (tag: v_5.0.0_8)</font>
+* | <font color=blue>2f1d486</font>-<font color=green>(2015-03-16)</font><font color=black><b>Removing offending function files.  To be readded when the app is coded for use</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (tag: v_5.0.0_7)</font>
+* | <font color=blue>d479b72</font>-<font color=green>(2015-03-16)</font><font color=black><b>Re-adding files removed through config cleanup</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (tag: v_5.0.0_6, tag: v_5.0.0_5)</font>
+* | <font color=blue>57f4cd6</font>-<font color=green>(2015-03-03)</font><font color=black><b>Temporarily added Routed messages to vast-service</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_4)</font>
+* | <font color=blue>737572c</font>-<font color=green>(2015-03-03)</font><font color=black><b>Added VAST module and placeholder classes</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|/  
+* <font color=blue>5d56f9e</font>-<font color=green>(2015-03-02)</font><font color=black><b>Fixed bugs from refactoring db code.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>3f79aa7</font>-<font color=green>(2015-03-02)</font><font color=black><b>Cleaned up configuration</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>a334b25</font>-<font color=green>(2015-03-02)</font><font color=black><b>Removed Stream code</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>45b768b</font>-<font color=green>(2015-03-02)</font><font color=black><b>Broke data access into seperate module</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>53b6541</font>-<font color=green>(2015-02-26)</font><font color=black><b>Updated version to 5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>fed4759</font>-<font color=green>(2015-02-25)</font><font color=black><b>using common-lang tuples</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>dbb9b79</font>-<font color=green>(2015-02-25)</font><font color=black><b>Added reloadable configuration.  Pruned some dead code.  Reworked logging to use markers.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>e568c4c</font>-<font color=green>(2015-02-24)</font><font color=black><b>Remove conflicting jaxb binding libraries</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>e40f7e2</font>-<font color=green>(2015-02-23)</font><font color=black><b>kicking integration tests up a notch.  Bam!</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>a357aa4</font>-<font color=green>(2015-02-23)</font><font color=black><b>Tied validation classes under a single interface</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>854a7db</font>-<font color=green>(2015-02-23)</font><font color=black><b>Upgraded to java 8.  Switched to log4j 2.  Updated dependencies to latest versions.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>fc7065f</font>-<font color=green>(2015-02-23)</font><font color=black><b>Fixed bug where an unregistered entry in the Registration Table caused the application to fail to start.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>35e647b</font>-<font color=green>(2015-02-19)</font><font color=black><b>VODDAI-7071: Upgraded to java 8.</b></font><font color=grey>- (kennethleider)</font><font color=red></font></pre>
+<hr>
+<p>

@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<TITLE>Expandable and collapsible table - demo</TITLE>
+<script type="text/javascript">
+function toggle_visibility(tbid,lnkid)
+{
+  var obj = document.getElementsByTagName("table");
+  for(i=0;i<obj.length;i++)
+  {
+   if(obj[i].id && obj[i].id != tbid)
+   {
+    document.getElementById(obj[i].id).style.display = "none";
+    x = obj[i].id.substring(3);
+    document.getElementById("lnk"+x).value = "[+] Expand";
+    }
+   }
+  if(document.all){document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block";}
+  else{document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table";}
+  document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-] Collapse" ? "[+] Expand" : "[-] Collapse";
+ }
+</script>
+<style type="text/css">
+#tbl1,#tbl2 {display:none;}
+#lnk1,#lnk2 {border:none;background:none;width:85px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: verdana,helvetica,arial,sans-serif}
+a {TEXT-DECORATION: none;}
+</style>
+</head>
+
+<body>
+ <table width="772px" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr bgcolor="#4682B4" height="50">
+   <td width="5%"></td>
+   <td width="45%"><font size="4" face="tahoma" color="white"><strong>Header 1</strong></font></td>
+   <td bgcolor="#4682B4" align="center" width="50%"><input id="lnk1" type="button" value="[+] Expand" onclick="toggle_visibility('tbl1','lnk1');"></td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <table width="103%" border="0" cellpadding="5" cellspacing="0" id="tbl1">
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Product Code</td>
+      <td width="50%" align="center">XXXXXXX</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Biometric Devices</td>
+      <td width="50%" align="center">Four XXXXXXXX</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Control Devices</td>
+      <td width="50%" align="center">Two XXXXXXX</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Proximity Cards</td>
+      <td width="50%" align="center">XXXXXX</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Power Supply</td>
+      <td width="50%" align="center">One XXXXX</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Software</td>
+      <td width="50%" align="center">One XXXXX</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Communication</td>
+      <td width="50%" align="center">One XXXXXX</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Installation Manual</td>
+      <td width="50%" align="center">One XXXXXXX</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Quick Look</td>
+      <td width="50%" align="center">Picture 1</td>
+    </table>
+   </td>
+  </tr>
+ </table>
+
+ <table width="772px" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr bgcolor="#4682B4" height="15">
+   <td width="5%"></td>
+   <td width="45%"><font size="4" face="tahoma" color="white"><strong>Header 2</strong></font></td>
+   <td width="50%" bgcolor="#4682B4" align="center"><input id="lnk2" type="button" value="[+] Expand" onclick="toggle_visibility('tbl2','lnk2');"></td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <table width="103%" border="0" cellpadding="5" cellspacing="0" id="tbl2">
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Product Code</td>
+      <td width="50%" align="center">YYYYYYYY</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Biometric Devices</td>
+      <td width="50%" align="center">Four YYYYYYY</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Control Devices</td>
+      <td width="50%" align="center">Two YYYYYY</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Proximity Cards</td>
+      <td width="50%" align="center">YYYYY</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Power Supply</td>
+      <td width="50%" align="center">One YYYYYYY</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Software</td>
+      <td width="50%" align="center">One YYYYYY</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Communication</td>
+      <td width="50%" align="center">One YYYYYY</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Installation Manual</td>
+      <td width="50%" align="center">One YYYYYY</td>
+     </tr>
+     <tr>
+      <td width="5%"></td>
+      <td width="45%">Quick Look</td>
+      <td width="50%" align="center">Picture 2</td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+
+</body>
+</html> 

@@ -1,0 +1,29 @@
+<b><u>Component Release Info for Sprint LetItBe:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi_reporting</b><br><u>Version</u><b>&nbspr_5.0.0_26</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Val:
+
+VODDAI-7616 - TASK - create stored procs to populate new agg tables
+VODDAI-7615 - TASK - create new POP agg tables to support MRC changes
+VODDAI-7654 - TASK - Production run automation
+
+7616 & 7615 are both related to the updated PoP reports that contain IP and QAM impressions broken out into separate columns. There will be a new aggregate table that these new reports will use; no changes to existing tables.
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/smsi-reporting-5.0.0-changelog.xml
+src/main/resources/liquibase/smsi-reporting-5.0.0/019-yliu-prod-tuneup.xml
+src/main/resources/liquibase/smsi-reporting-5.0.0/020-yliu-variant-side-by-side.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_23</b></u><br>
+<pre>
+* <font color=blue>15c96ba</font>-<font color=green>(2015-06-18)</font><font color=black><b>VODDAI-7615. got rid of testing code.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_5.0.0_26)</font>
+* <font color=blue>7bc584a</font>-<font color=green>(2015-06-16)</font><font color=black><b>VODDAI-7615. changed to use canoe_data_compress instead of canoe_data_compress2.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_5.0.0_25)</font>
+* <font color=blue>cb603f9</font>-<font color=green>(2015-06-16)</font><font color=black><b>VODDAI-7615. added new agg for QAM and OTHER side by side.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>ea862cc</font>-<font color=green>(2015-06-16)</font><font color=black><b>VODDAI-7615. added new agg for QAM and OTHER side by side.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_5.0.0_24)</font>
+* <font color=blue>19f99c9</font>-<font color=green>(2015-06-10)</font><font color=black><b>Adding changes for spint K</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+* <font color=blue>47d02bf</font>-<font color=green>(2015-05-22)</font><font color=black><b>Adding comments to sprint deliverables file</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+* <font color=blue>40043ad</font>-<font color=green>(2015-05-22)</font><font color=black><b>Sprint J features and Results</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+* <font color=blue>90606bf</font>-<font color=green>(2015-05-21)</font><font color=black><b>Adding features for reports with no campaign filter</b></font><font color=grey>- (valturcin)</font><font color=red></font>
+* <font color=blue>4e02c69</font>-<font color=green>(2015-05-21)</font><font color=black><b>Adding features for reports with no campaign filter</b></font><font color=grey>- (valturcin)</font><font color=red></font></pre>
+<hr>
+<p>

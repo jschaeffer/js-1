@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>4</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/Dynamic-Ad-Insertion-cm.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_2.1.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <com.cloudbees.jenkins.GitHubPushTrigger>
+      <spec></spec>
+    </com.cloudbees.jenkins.GitHubPushTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+/opt/build/scripts/cleanIvyCache.sh com.canoeventures.dai core-model
+
+/opt/build/scripts/cleanIvyCache.sh com.canoeventures.dai core-services</command>
+    </hudson.tasks.Shell>
+    <com.g2one.hudson.grails.GrailsBuilder>
+      <targets>clean war &quot;test-app -unit&quot;</targets>
+      <name>Grails 2.0.3</name>
+      <grailsWorkDir>/opt/cvbuild/.DAI-Campaign-mgmt_work_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.DAI-Campaign-mgmt_project_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9190</serverPort>
+      <properties>grails.env=dev
+geb.env=firefox
+grails.project.plugins.dir=/opt/cvbuild/.grails/2.0.3/projects/DAI-CampaignMgmt-compile</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+    </com.g2one.hudson.grails.GrailsBuilder>
+  </builders>
+  <publishers>
+    <hudson.tasks.junit.JUnitResultArchiver>
+      <testResults>**/target/test-reporting/*.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <testDataPublishers/>
+    </hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.plugins.jira.JiraIssueUpdater/>
+    <hudson.plugins.sonar.SonarPublisher>
+      <configVersion>1</configVersion>
+      <branch>2.0.0</branch>
+      <language>grvy</language>
+      <mavenOpts></mavenOpts>
+      <jobAdditionalProperties></jobAdditionalProperties>
+      <mavenInstallationName></mavenInstallationName>
+      <rootPom></rootPom>
+      <lightProject>
+        <groupId>com.canoeventures</groupId>
+        <artifactId>Dynamic-Ad-Insertion-cm</artifactId>
+        <projectName>DAI Campaign Manager</projectName>
+        <projectVersion>2.1.0</projectVersion>
+        <projectDescription></projectDescription>
+        <javaVersion>1.6</javaVersion>
+        <projectSrcDir>grails-app/domain, grails-app/controllers, grails-app/services, grails-app/jobs</projectSrcDir>
+        <projectSrcEncoding></projectSrcEncoding>
+        <projectBinDir>target/classes</projectBinDir>
+        <reports>
+          <surefireReportsPath>target/test-reports</surefireReportsPath>
+          <coberturaReportPath></coberturaReportPath>
+          <cloverReportPath></cloverReportPath>
+        </reports>
+      </lightProject>
+    </hudson.plugins.sonar.SonarPublisher>
+    <com.progress.hudson.ScheduleFailedBuildsPublisher>
+      <interval>20</interval>
+      <maxRetries>3</maxRetries>
+    </com.progress.hudson.ScheduleFailedBuildsPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper>
+      <timeoutMinutes>5</timeoutMinutes>
+      <failBuild>true</failBuild>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+    <hudson.plugins.xvnc.Xvnc>
+      <takeScreenshot>false</takeScreenshot>
+    </hudson.plugins.xvnc.Xvnc>
+  </buildWrappers>
+</project>

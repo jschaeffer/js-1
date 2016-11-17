@@ -1,0 +1,76 @@
+<b><u>Component Release Info for Sprint CaptainUnderpants:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-cip</b><br><u>Version</u><b>&nbspr_4.0.0_286</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+- Against CAAS Core 4.0.0_182
+- Fixed 6538 (null pointer exceptions when batch/immediate run simultaneously), Immediate now publishes closed Canoe campaigns, fixed 4832 (batch sending old data).
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_267</b></u><br>
+<pre>
+* <font color=blue>1de3056</font>-<font color=green>(2014-10-24)</font><font color=black><b>Moved reset of process context</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_286)</font>
+* <font color=blue>fa81f22</font>-<font color=green>(2014-10-24)</font><font color=black><b>Fix concurrent senders to be separate for batch and immediate</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_285)</font>
+* <font color=blue>a6e92d4</font>-<font color=green>(2014-10-24)</font><font color=black><b>VODDAI-4382 Fixes all outstanding issues.  Including random null pointer.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_284)</font>
+* <font color=blue>4db03b3</font>-<font color=green>(2014-10-23)</font><font color=black><b>VODDAI-4382 Make exception for non-canoe CIPs whose revisions will be the same.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_283)</font>
+* <font color=blue>9f41630</font>-<font color=green>(2014-10-23)</font><font color=black><b>Fix debug list/map tracking</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ab78b0f</font>-<font color=green>(2014-10-23)</font><font color=black><b>VODDAI-4382 Track revision problem campaignItems</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ea1682f</font>-<font color=green>(2014-10-23)</font><font color=black><b>VODDAI-4382 Added check on revision for all campaignItem safe saves</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_282)</font>
+* <font color=blue>8892750</font>-<font color=green>(2014-10-22)</font><font color=black><b>VODDAI-6542 Include in log if message from immediate or batch</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_281)</font>
+* <font color=blue>87f4576</font>-<font color=green>(2014-10-22)</font><font color=black><b>VODDAI-4382 Moved PreProcessing to before all other processes</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>f0dd18d</font>-<font color=green>(2014-10-20)</font><font color=black><b>Updated cucumber framework to match common-lib.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_280)</font>
+* <font color=blue>77f623a</font>-<font color=green>(2014-10-17)</font><font color=black><b>VODDAI-6508 Fix if filter</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_279)</font>
+* <font color=blue>ede913a</font>-<font color=green>(2014-10-17)</font><font color=black><b>VODDAI-6508 Don't filter canoe expired (closed or cancelled)</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_278)</font>
+* <font color=blue>b6b7fff</font>-<font color=green>(2014-10-16)</font><font color=black><b>Fix on previous debug</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_277)</font>
+* <font color=blue>a1bdaff</font>-<font color=green>(2014-10-16)</font><font color=black><b>Added debug for line 110 or 124 null pointer error</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_276)</font>
+* <font color=blue>db97be4</font>-<font color=green>(2014-10-14)</font><font color=black><b>Added some refreshCaches, made campItems in window in PriorityData</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_275)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint CaptainUnderpants:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_261</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+- Against CAAS Core 4.0.0_182
+- Fixed 6541 (Use FW line item start/end for line item window)
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_259</b></u><br>
+<pre>
+* <font color=blue>cfe6294</font>-<font color=green>(2014-10-22)</font><font color=black><b>VODDAI-6541 Don't widen campaign Item dates.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_261)</font>
+* <font color=blue>1927e99</font>-<font color=green>(2014-10-22)</font><font color=black><b>Added my tags for verification of flightWindow issue. Added comments for variability in ProductCategoryExclusion selection</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>1416cf1</font>-<font color=green>(2014-09-29)</font><font color=black><b>Removed tags, fixed test error, added comment in createGuid feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_260)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint CaptainUnderpants:</b></u><p>
+<u>Release of Component</u><b>&nbspMicroDev</b><br><u>Version</u><b>&nbspr_4.0.0_189</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>None provided</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_186</b></u><br>
+<pre>
+* <font color=blue>a2f1e9b</font>-<font color=green>(2014-10-28)</font><font color=black><b>fixed area to include total for ent report.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_189)</font>
+* <font color=blue>24dbf80</font>-<font color=green>(2014-10-27)</font><font color=black><b>VODDAI-6237. added network prompt to freeform ebas.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_188)</font>
+* <font color=blue>4ac250a</font>-<font color=green>(2014-10-21)</font><font color=black><b>VODDAI-6492. added product category as metedata attribute for campaign_item.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_187)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint CaptainUnderpants:</b></u><p>
+<u>Release of Component</u><b>&nbspops-dce-metadata-agent</b><br><u>Version</u><b>&nbspr_4.0.0_119</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>First official release:<br>Kassi:
+
+- Extract files from Comcast/TWC simultaneously; Ingest csv files for multiple providers at once; ingest based on highest record count per provider</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b></b></u><br>
+<pre>
+</pre>
+<hr>
+<p>

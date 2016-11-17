@@ -1,0 +1,98 @@
+diff --git a/config/pci-env-application.scrum3.properties b/config/pci-env-application.scrum3.properties
+index 6d0f22a..b3d8466 100644
+--- a/config/pci-env-application.scrum3.properties
++++ b/config/pci-env-application.scrum3.properties
+@@ -6,6 +6,17 @@ db.password=SC3_CAAS
+ #This is the connection pool size
+ db.pool.size=30
+ 
++pci.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++pci.db.username=SC3_PCI
++pci.db.password=SC3_PCI
++pci.db.pool.size=30
++pci.db.testPeriod.idle=60
++pci.db.test.idle=60
++pci.db.max.idle=5
++pci.db.pool.initialSize=5
++pci.db.checkout.timeout=20000
++
++
+ #This is the connection idle time
+ db.testPeriod.idle=60
+ 
+diff --git a/config/pci-log4j.scrum3.properties b/config/pci-log4j.scrum3.properties
+index e17e873..cf2aa23 100644
+--- a/config/pci-log4j.scrum3.properties
++++ b/config/pci-log4j.scrum3.properties
+@@ -5,6 +5,18 @@ log4j.appender.R.File=/opt/tcserver/instances/Pgmr-Cpgn-Int/logs/pci-error.log
+ log4j.appender.R.layout=org.apache.log4j.PatternLayout
+ log4j.appender.R.layout.ConversionPattern=%d [%t] %-5p %c %x - %m%n
+ 
++log4j.appender.M=org.apache.log4j.FileAppender
++log4j.appender.M.File=/opt/tcserver/instances/Pgmr-Cpgn-Int/logs/message.log
++log4j.appender.M.layout=org.apache.log4j.PatternLayout
++log4j.appenderMR.layout.ConversionPattern=%d [%t] %-5p %c %x - %m%n
++
+ log4j.appender.Console=org.apache.log4j.ConsoleAppender
+ log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+ log4j.appender.Console.layout.ConversionPattern=%d [%t] %-5p %c %x - %m%n
++
++#log4j.logger.org.springframework.ws.server.MessageTracing.received=TRACE, M
++log4j.additivity.org.springframework.ws.server.MessageTracing.received=false
++log4j.logger.org.springframework.ws.server.MessageTracing.sent=TRACE, M
++log4j.additivity.org.springframework.ws.server.MessageTracing.sent=false
++log4j.logger.org.springframework.ws.server.MessageDispatcher=TRACE, M
++log4j.additivity.org.springframework.ws.server.MessageDispatcher=false
+\ No newline at end of file
+diff --git a/data-store/src/main/resources/liquibase/cisys/genUser.scrum1.sql b/data-store/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+new file mode 100644
+index 0000000..18d5b12
+--- /dev/null
++++ b/data-store/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+@@ -0,0 +1,7 @@
++CREATE USER SC1_PCI IDENTIFIED BY SC1_PCI DEFAULT TABLESPACE canoe_data_compress
++TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
++
++GRANT TABLE_OWNER TO SC1_PCI; 
++GRANT RESOURCE TO SC1_PCI;
++Grant create session, alter session to SC1_PCI;
++ 
+diff --git a/data-store/src/main/resources/liquibase/cisys/genUser.scrum2.sql b/data-store/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+new file mode 100644
+index 0000000..b3f35e4
+--- /dev/null
++++ b/data-store/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+@@ -0,0 +1,7 @@
++CREATE USER SC2_PCI IDENTIFIED BY SC2_PCI DEFAULT TABLESPACE canoe_data_compress
++TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
++
++GRANT TABLE_OWNER TO SC2_PCI; 
++GRANT RESOURCE TO SC2_PCI;
++Grant create session, alter session to SC2_PCI;
++ 
+diff --git a/data-store/src/main/resources/liquibase/cisys/genUser.scrum3.sql b/data-store/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+new file mode 100644
+index 0000000..2d3c214
+--- /dev/null
++++ b/data-store/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+@@ -0,0 +1,7 @@
++CREATE USER SC3_PCI IDENTIFIED BY SC3_PCI DEFAULT TABLESPACE canoe_data_compress
++TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
++
++GRANT TABLE_OWNER TO SC3_PCI; 
++GRANT RESOURCE TO SC3_PCI;
++Grant create session, alter session to SC3_PCI;
++ 
+diff --git a/data-store/src/main/resources/liquibase/cisys/genUser.scrum4.sql b/data-store/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+new file mode 100644
+index 0000000..86e7aeb
+--- /dev/null
++++ b/data-store/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+@@ -0,0 +1,7 @@
++CREATE USER SC4_PCI IDENTIFIED BY SC4_PCI DEFAULT TABLESPACE canoe_data_compress
++TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
++
++GRANT TABLE_OWNER TO SC4_PCI; 
++GRANT RESOURCE TO SC4_PCI;
++Grant create session, alter session to SC4_PCI;
++ 

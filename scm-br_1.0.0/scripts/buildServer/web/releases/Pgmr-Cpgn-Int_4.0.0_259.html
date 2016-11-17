@@ -1,0 +1,43 @@
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_259</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Changes since prod (4.0.0_256): Will interpret/persist numeric portion of FW CampOrder ONLY (not the name portion).
+
+MUST be deployed with CAAS-Core 4.0.0_182</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_249</b></u><br>
+<pre>
+* <font color=blue>6ddd279</font>-<font color=green>(2014-09-29)</font><font color=black><b>VODDAI-6356 fix for handling of "|"</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_259)</font>
+*   <font color=blue>fe75a63</font>-<font color=green>(2014-09-29)</font><font color=black><b>Made test in persistCampInfo more explicit. fixed test for 6356 in createGuid feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>5a868a4</font>-<font color=green>(2014-09-29)</font><font color=black><b>VODDAI-6356 fix on campaignOrderOwner</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_258)</font>
+| * <font color=blue>d64ac29</font>-<font color=green>(2014-09-29)</font><font color=black><b>VODDAI-6356 fix on campaignOrderOwner</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>b0d52a6</font>-<font color=green>(2014-09-29)</font><font color=black><b>VODDAI-6356 use only up to pipe for campaignOrder</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_257)</font>
+* | <font color=blue>c4296f3</font>-<font color=green>(2014-09-29)</font><font color=black><b>Made test in persistCampInfo more explicit. fixed test for 6356 in createGuid feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>706d752</font>-<font color=green>(2014-09-29)</font><font color=black><b>Updated createGuid 6356 feature with prod formatted campOrder</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>1df9067</font>-<font color=green>(2014-09-29)</font><font color=black><b>Changed test name in persistCampInfo feature. Updated 6356 test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ae02077</font>-<font color=green>(2014-09-29)</font><font color=black><b>Added test for 6356 in createGuid feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>78782c1</font>-<font color=green>(2014-09-26)</font><font color=black><b>VODDAI-6426 Set Campaign Item Media Asset enable flag based on incoming recState from Child Bundle</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_256)</font>
+*   <font color=blue>5eaeb9c</font>-<font color=green>(2014-09-26)</font><font color=black><b>Changed multiCIPvendor scenario name and removed header from google xml</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_255)</font>
+|\  
+| * <font color=blue>f005f44</font>-<font color=green>(2014-09-25)</font><font color=black><b>Revert "VODDAI-6329 Use @Action annotation for Update Notice messages"</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_254)</font>
+| * <font color=blue>3400eef</font>-<font color=green>(2014-09-25)</font><font color=black><b>Revert "VODDAI-6329 Use @Action annotation for Update Notice messages"</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>5243c93</font>-<font color=green>(2014-09-26)</font><font color=black><b>Changed multiCIPvendor scenario name and removed header from google xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>ae34d9d</font>-<font color=green>(2014-09-26)</font><font color=black><b>Updated PCC category numbers, added campItemFeed enabled column</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>901a65e</font>-<font color=green>(2014-09-18)</font><font color=black><b>Improved 6313 6315 test in multiProvider feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_253, tag: v_4.0.0_252)</font>
+|\  
+| * <font color=blue>5462d42</font>-<font color=green>(2014-09-17)</font><font color=black><b>VODDAI-6313, VODDAI-6315 PCI enabled flag for campaignItemFeed</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_251)</font>
+| * <font color=blue>2aca8dd</font>-<font color=green>(2014-09-17)</font><font color=black><b>VODDAI-6329 Use @Action annotation for Update Notice messages remove must understand interceptor</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f608de4</font>-<font color=green>(2014-09-17)</font><font color=black><b>VODDAI-6329 Use @Action annotation for Update Notice messages</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>b8c96de</font>-<font color=green>(2014-09-18)</font><font color=black><b>Improved 6313 6315 test in multiProvider feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>fad475d</font>-<font color=green>(2014-09-15)</font><font color=black><b>Modified test for 6313</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>89a49f7</font>-<font color=green>(2014-09-15)</font><font color=black><b>One test issue for PCC, grabbed different PCC code than expected, fully pass functionality. Added test for 6313 sprint S. Added bad namespace test for freqCapping</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_250)</font></pre>
+<hr>
+<p>

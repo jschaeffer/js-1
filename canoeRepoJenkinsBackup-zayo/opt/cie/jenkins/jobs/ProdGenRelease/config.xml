@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h1&gt;Title:  &lt;b&gt;Generate Release Notes for Production installs&lt;/b&gt;&lt;/h1&gt; &#xd;
+&#xd;
+&lt;h2&gt;&lt;u&gt;Description:&lt;/u&gt; &lt;b&gt;Used Primarily to discover configuration changes or database changes, this job will create the Production install release notes for specified components, add the Scrum metadata to the header, create a release tag in the git repository and push to GitHub  &#xd;
+  &lt;ul&gt;&#xd;
+     &lt;li&gt;Select the component being released&#xd;
+     &lt;li&gt;Input the Current Production Version&#xd;
+     &lt;li&gt;Input the release Version&#xd;
+  &lt;/ul&gt;&#xd;
+       &lt;/h2&gt; &lt;br&gt;&lt;/b&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>Sprint</name>
+          <description>Enter Production Install name where release was defined</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description>&lt;h3&gt;Select Component to Release&lt;/h3&gt;</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>caas-core</string>
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>dai-cip</string>
+              <string>dai-cip-feedback</string>
+              <string>caas-admin</string>
+              <string>dai_amm</string>
+              <string>dai_amm_publisher</string>
+              <string>acp</string>
+              <string>ops-dt</string>
+              <string>ops-dce-scte-cfa-reporting-agent</string>
+              <string>ops-dce-safi-reporting-agent</string>
+              <string>Pgmr-Cpgn-Int</string>
+              <string>dai-dce</string>
+              <string>metadata-publisher</string>
+              <string>dai-etl-feeder</string>
+              <string>scte-feeder</string>
+              <string>MicroDev</string>
+              <string>dai-smsi</string>
+              <string>dai-smsi-relay</string>
+              <string>dai-billing</string>
+              <string>smsi-admin</string>
+              <string>ads-core</string>
+              <string>Dynamic-Ad-Insertion-engine</string>
+              <string>smsi-publisher</string>
+              <string>dai-national-cis</string>
+              <string>dai-metadata-ingestion</string>
+              <string>ops-dt-domain</string>
+              <string>ops-dce-metadata-agent</string>
+              <string>dai-lincoln</string>
+              <string>oss_bar</string>
+              <string>int-test-support</string>
+              <string>dai_scm</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PriorVersion</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Version</name>
+          <description>&lt;h3&gt;Enter Package Version to Release. (must be entered as &lt;b&gt;version number + build number&lt;/b&gt; ie; &lt;u&gt;4.0.0_35&lt;/u&gt;)&lt;p&gt; Open &lt;a href=http://cvbuild.cv.infra/releaseTars/&gt;SCM Staging Area&lt;/a&gt; to discover valid versions to use.
+</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>Metadata</name>
+          <description>Enter Scrum team&apos;s metadata text</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Tag</name>
+          <description>Create a Release Tag?</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>No</string>
+              <string>Yes</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+echo &quot;&lt;b&gt;&lt;u&gt;Component Release Info for Sprint $Sprint:&lt;/b&gt;&lt;/u&gt;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;u&gt;Release of Component&lt;/u&gt;&lt;b&gt;&amp;nbsp${Component}&lt;/b&gt;&lt;br&gt;&lt;u&gt;Version&lt;/u&gt;&lt;b&gt;&amp;nbspr_${Version}&lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+export BUILD_TAG
+export Component
+export vVersion=v_${Version}
+export pVersion=r_${PriorVersion}
+export Metadata
+export tmpMetadata
+export Tag
+echo &quot;## Component Release Info:&quot; &gt;&gt; /tmp/$vVersion.txt
+echo &quot;#### Release of Component ${Component}&quot; &gt;&gt; /tmp/$vVersion.txt
+echo &quot;#### Version r_${Version}&quot; &gt;&gt; /tmp/$vVersion.txt
+
+cd /opt/build/scripts
+./ProdRelNote.sh $Component $vVersion $Metadata $Tag $BUILD_TAG
+
+mv /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /var/www/html/releases/${Component}_${Version}.html
+echo &quot;Here is the output for this activity: http://cvbuild.cv.infra:/releases/${Component}_${Version}.html&quot;
+
+cd /var/www/html/releases
+rm $Sprint.html
+for i in `cat components.txt`; do 
+  for g in `ls -1 $i*.html`; do 
+    if grep $Sprint $g &gt; /dev/null
+     then 
+       cat $g &gt;&gt; $Sprint.html
+    fi
+  done
+done
+echo &quot;Here is the current cumulative Production Install release page for $Sprint : /var/www/html/releases/${Sprint}.html&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

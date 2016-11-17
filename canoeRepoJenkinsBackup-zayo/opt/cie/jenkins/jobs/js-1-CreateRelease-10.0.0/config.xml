@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>js-1 CreateRelease job for br_10.0.0</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;Official Release build for js-1 br_10.0.0&quot;
+
+echo &quot;Command is ls -al /opt/cie/jenkins/jobs/dai-smsi-NightlyBuild-3.0.0/lastSuccessful/com.canoeventures.dai\$safi-smsi-server/archive/com.canoeventures.dai/safi-smsi-server&quot;
+
+ls -al /opt/cie/jenkins/jobs/dai-smsi-NightlyBuild-3.0.0/lastSuccessful/com.canoeventures.dai\$safi-smsi-server/archive/com.canoeventures.dai/safi-smsi-server</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;Substituting version info&quot;
+
+echo &quot;cd /opt/cie/jenkins/jobs/oss_bar-Scrum1Fallback-1.2.0&quot;
+
+cd /opt/cie/jenkins/jobs/oss_bar-Scrum1Fallback-1.2.0
+sed -e &apos;s|VERSION=\&quot;1.2.0_[0-9][0-9][0-9]\&quot;|VERSION=\&quot;1.2.0_114\&quot;|&quot; -i &apos;&apos; config.xml
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

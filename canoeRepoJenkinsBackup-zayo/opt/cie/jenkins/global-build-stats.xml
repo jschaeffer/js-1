@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.global__build__stats.GlobalBuildStatsPlugin version="9">
+  <buildStatConfigs/>
+  <retentionStrategies/>
+</hudson.plugins.global__build__stats.GlobalBuildStatsPlugin>

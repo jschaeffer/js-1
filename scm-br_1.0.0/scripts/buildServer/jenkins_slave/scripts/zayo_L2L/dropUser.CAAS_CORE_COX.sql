@@ -1,0 +1,1 @@
+drop user "CAAS_CORE_COX" CASCADE;

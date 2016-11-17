@@ -1,0 +1,675 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index 4a0c116..e15e01e 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -1,5 +1,5 @@
+ ###ADS Database Connections###
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC1_ADS
+ db.password=SC1_ADS
+ db.pool.initialSize=10
+@@ -39,9 +39,9 @@ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+ 
+ ###FeedbackNotice Publication###
+-cip.feedback.publisher.url=http://10.13.18.115:9535/int-test-support/FbN-Ing-Mock
++cip.feedback.publisher.url=http://10.66.12.11:9535/int-test-support/FbN-Ing-Mock
+ cip.feedback.publisher.job.enabled=true
+-cip.feedback.publisher.job.interval=0 0/15 * * * ?
++cip.feedback.publisher.job.interval=0 0 0 1 * ?
+ 
+ ###Cache Jobs###
+ ads.refresh.interval=0 */2 * * * ?
+@@ -55,7 +55,7 @@ ads.evenGoal.refresh.minutes=1
+ 
+ ###Data Correlation Engine###
+ ads.dce.enabled=false
+-ads.dce.url=http://localhost
++ads.dce.url=http://10.66.12.11:9535/int-test-support/dce
+ ads.dce.schedule=0 0/1 * * * ?
+ identity.ads=SCRUM1
+ 
+@@ -68,14 +68,14 @@ cis.batchsave.size=1000
+ ###Frequency Capping###
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.115:13654
++frequency.cap.url=10.66.12.11:13654
+ frequency.cap.max.persists=2500
+ 
+ ###SCTE-130 Ingestor###
+ 
+ smsipub.enabled=true
+ 
+-smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ smsipub.db.username=SC1_SMSIPUB
+ smsipub.db.password=SC1_SMSIPUB
+ smsipub.db.pool.initialSize=50
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index d2bafbd..dd99933 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -1,5 +1,5 @@
+ ###ADS Database Connections###
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC2_ADS
+ db.password=SC2_ADS
+ db.pool.initialSize=10
+@@ -39,7 +39,7 @@ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+ 
+ ###FeedbackNotice Publication###
+-cip.feedback.publisher.url=http://10.13.18.115:9535/int-test-support/FbN-Ing-Mock
++cip.feedback.publisher.url=http://10.66.12.12:9535/int-test-support/FbN-Ing-Mock
+ cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+@@ -55,9 +55,9 @@ ads.evenGoal.refresh.minutes=1
+ 
+ ###Data Correlation Engine###
+ ads.dce.enabled=false
+-ads.dce.url=http://localhost
++ads.dce.url=http://10.66.12.12:9535/int-test-support/dce
+ ads.dce.schedule=0 0/1 * * * ?
+-identity.ads=SCRUM1
++identity.ads=SCRUM2
+ 
+ ###Ad Asset Status Purge Job###
+ ads.purge.endpointStatus.DaysBackToPurge=30
+@@ -68,16 +68,16 @@ cis.batchsave.size=1000
+ ###Frequency Capping###
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.115:13654
++frequency.cap.url=10.66.12.12:13654
+ frequency.cap.max.persists=2500
+ 
+ ###SCTE-130 Ingestor###
+ 
+ smsipub.enabled=true
+ 
+-smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-smsipub.db.username=SC1_SMSIPUB
+-smsipub.db.password=SC1_SMSIPUB
++smsipub.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++smsipub.db.username=SC2_SMSIPUB
++smsipub.db.password=SC2_SMSIPUB
+ smsipub.db.pool.initialSize=50
+ smsipub.db.pool.size=200
+ smsipub.db.test.idle=60
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index 9b22860..76dd0a6 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -1,5 +1,5 @@
+ ###ADS Database Connections###
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC3_ADS
+ db.password=SC3_ADS
+ db.pool.initialSize=10
+@@ -39,7 +39,7 @@ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+ 
+ ###FeedbackNotice Publication###
+-cip.feedback.publisher.url=http://10.13.18.115:9535/int-test-support/FbN-Ing-Mock
++cip.feedback.publisher.url=http://10.66.12.13:9535/int-test-support/FbN-Ing-Mock
+ cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+@@ -55,9 +55,9 @@ ads.evenGoal.refresh.minutes=1
+ 
+ ###Data Correlation Engine###
+ ads.dce.enabled=false
+-ads.dce.url=http://localhost
++ads.dce.url=http://10.66.12.13:9535/int-test-support/dce
+ ads.dce.schedule=0 0/1 * * * ?
+-identity.ads=SCRUM1
++identity.ads=SCRUM3
+ 
+ ###Ad Asset Status Purge Job###
+ ads.purge.endpointStatus.DaysBackToPurge=30
+@@ -68,16 +68,16 @@ cis.batchsave.size=1000
+ ###Frequency Capping###
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.115:13654
++frequency.cap.url=10.66.12.13:13654
+ frequency.cap.max.persists=2500
+ 
+ ###SCTE-130 Ingestor###
+ 
+ smsipub.enabled=true
+ 
+-smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-smsipub.db.username=SC1_SMSIPUB
+-smsipub.db.password=SC1_SMSIPUB
++smsipub.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++smsipub.db.username=SC3_SMSIPUB
++smsipub.db.password=SC3_SMSIPUB
+ smsipub.db.pool.initialSize=50
+ smsipub.db.pool.size=200
+ smsipub.db.test.idle=60
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index ec201e5..e1466a0 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -1,5 +1,5 @@
+ ###ADS Database Connections###
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC4_ADS
+ db.password=SC4_ADS
+ db.pool.initialSize=10
+@@ -39,7 +39,7 @@ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+ 
+ ###FeedbackNotice Publication###
+-cip.feedback.publisher.url=http://10.13.18.115:9535/int-test-support/FbN-Ing-Mock
++cip.feedback.publisher.url=http://10.66.12.14:9535/int-test-support/FbN-Ing-Mock
+ cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+@@ -55,9 +55,9 @@ ads.evenGoal.refresh.minutes=1
+ 
+ ###Data Correlation Engine###
+ ads.dce.enabled=false
+-ads.dce.url=http://localhost
++ads.dce.url=http://10.66.12.14:9535/int-test-support/dce
+ ads.dce.schedule=0 0/1 * * * ?
+-identity.ads=SCRUM1
++identity.ads=SCRUM4
+ 
+ ###Ad Asset Status Purge Job###
+ ads.purge.endpointStatus.DaysBackToPurge=30
+@@ -68,16 +68,16 @@ cis.batchsave.size=1000
+ ###Frequency Capping###
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.115:13654
++frequency.cap.url=10.66.12.14:13654
+ frequency.cap.max.persists=2500
+ 
+ ###SCTE-130 Ingestor###
+ 
+ smsipub.enabled=true
+ 
+-smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-smsipub.db.username=SC1_SMSIPUB
+-smsipub.db.password=SC1_SMSIPUB
++smsipub.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++smsipub.db.username=SC4_SMSIPUB
++smsipub.db.password=SC4_SMSIPUB
+ smsipub.db.pool.initialSize=50
+ smsipub.db.pool.size=200
+ smsipub.db.test.idle=60
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
+index acc0b5b..d9215b5 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
+@@ -1,15 +1,15 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  "
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum2.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum2.sh
+index 677041d..e2a623b 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum2.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum2.sh
+@@ -1,15 +1,15 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true"
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum3.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum3.sh
+index 677041d..b28e19e 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum3.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum3.sh
+@@ -1,15 +1,15 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC"
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  "
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum4.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum4.sh
+index 677041d..dc91152 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum4.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum4.sh
+@@ -1,15 +1,15 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true "
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum1.sh b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum1.sh
+index 04b2028..3d534a8 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum1.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum1.sh
+@@ -1,15 +1,15 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/psn
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true  -Dinsight-max-frames=10000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true "
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum2.sh b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum2.sh
+index 04b2028..d4490ed 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum2.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum2.sh
+@@ -1,15 +1,15 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC   "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/psn
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true  -Dinsight-max-frames=10000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true "
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum3.sh b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum3.sh
+index 04b2028..3d534a8 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum3.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum3.sh
+@@ -1,15 +1,15 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/psn
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true  -Dinsight-max-frames=10000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true "
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum4.sh b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum4.sh
+index 04b2028..4ca2558 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum4.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum4.sh
+@@ -1,15 +1,15 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+-JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+-CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC   "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/psn
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true  -Dinsight-max-frames=10000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true"
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+index 7944963..a86a893 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+@@ -1,5 +1,5 @@
+ ###ADS Database Connections###
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC1_ADS
+ db.password=SC1_ADS
+ db.pool.size=30
+@@ -42,5 +42,5 @@ ads.metadata.cache.deliveryVariance=10
+ crypt.key.path=/opt/tcserver/crypt/qa.key
+ 
+ ###Batching###
+-cis.batchsave.size=1000
++cis.batchsave.size=10
+ cis.sender.batch.size=1000
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+index c01a578..a2a1705 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+@@ -1,5 +1,5 @@
+ ###ADS Database Connections###
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC2_CAAS
+ db.password=SC2_CAAS
+ db.pool.size=30
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+index 570fad5..bb00241 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+@@ -1,5 +1,5 @@
+ ###ADS Database Connections###
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC3_CORE
+ db.password=SC3_CORE
+ db.pool.size=30
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum4.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum4.properties
+new file mode 100644
+index 0000000..9debceb
+--- /dev/null
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum4.properties
+@@ -0,0 +1,46 @@
++###ADS Database Connections###
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++db.username=SC4_CORE
++db.password=SC4_CORE
++db.pool.size=30
++db.test.idle=60
++db.pool.initialSize=50
++db.max.idle=600
++db.checkout.timeout=3000
++
++###Operator Specific Configurations###
++ads.operatorId=2
++identity.cis=CANOE_CIS
++ads.deadHead=false
++
++###Logging###
++validation.logging.enabled=true
++cis.logger.enabled=true
++
++###Scheduled Jobs###
++cis.adhoc.job=0/3 * * * * ?
++cis.scheduled.job=0 0 0/8 * * ?
++cis.registrationCheck.job=0/3 * * * * ?
++cis.managedIp.job=0 0 0 1/1 * ?
++
++###Offline Mode###
++ads.online=true
++ads.offline.retry.count=3
++ads.offline.retry.millis=3000
++offline.cache.dir=/opt/tcserver/instances/cis/offline/cache
++
++###Cache Jobs###
++ads.cache.mediaAsset.job = 0 0/5 * * * ?
++ads.cache.cisEndpointIdentityMap.job = 0 0 0/8 * * ?
++ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
++ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
++ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
++ads.cache.assetMetadata.job = 0 0 0/1 * * ?
++ads.metadata.cache.deliveryVariance=10
++
++###Security###
++crypt.key.path=/opt/tcserver/crypt/qa.key
++
++###Batching###
++cis.batchsave.size=1000
++cis.sender.batch.size=1000
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/log4j_cis.scrum4.xml b/dai-interfaces/cis/src/main/resources/config/log4j_cis.scrum4.xml
+new file mode 100644
+index 0000000..84a236b
+--- /dev/null
++++ b/dai-interfaces/cis/src/main/resources/config/log4j_cis.scrum4.xml
+@@ -0,0 +1,86 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
++
++<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
++
++    <appender name="console" class="org.apache.log4j.ConsoleAppender">
++        <param name="Target" value="System.out"/>
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </layout>
++    </appender>
++
++    <appender name="logfile" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="File" value="/opt/tcserver/instances/cis/logs/cis-error.log"/>
++        <param name="append" value="true"/>
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </layout>
++    </appender>
++
++    <appender name="CIS_LOG" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file" value="/opt/tcserver/instances/cis/logs/cis.log"/>
++        <param name="append" value="true"/>
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </layout>
++    </appender>
++
++    <appender name="AD_HOC_LOG" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file" value="/opt/tcserver/instances/cis/logs/cis_ad_hoc.log"/>
++        <param name="append" value="true"/>
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </layout>
++    </appender>
++
++    <appender name="SCHEDULED_LOG" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file" value="/opt/tcserver/instances/cis/logs/cis_scheduled.log"/>
++        <param name="append" value="true"/>
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </layout>
++    </appender>
++
++    <appender name="REQUEST_RESPONSE" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file" value="/opt/tcserver/instances/cis/logs/cis-request-response.log"/>
++        <param name="append" value="true"/>
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="dai.interfaces.job.AdHocQuery" additivity="false">
++        <priority value="INFO"/>
++        <appender-ref ref="AD_HOC_LOG"/>
++    </category>
++
++    <category name="dai.interfaces.job.ScheduledQuery" additivity="false">
++        <priority value="INFO"/>
++        <appender-ref ref="SCHEDULED_LOG"/>
++    </category>
++
++    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
++        <priority value="TRACE"/>
++        <appender-ref ref="REQUEST_RESPONSE"/>
++    </category>
++
++    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
++        <priority value="TRACE"/>
++        <appender-ref ref="REQUEST_RESPONSE"/>
++    </category>
++
++    <category name="dai.interfaces.job.CISLogger" additivity="false">
++        <priority value="INFO"/>
++        <appender-ref ref="CIS_LOG"/>
++    </category>
++
++    <root>
++        <level value="WARN" />
++        <appender-ref ref="console" />
++        <appender-ref ref="logfile" />
++    </root>
++
++
++</log4j:configuration>
++
+diff --git a/dai-interfaces/cis/src/main/resources/config/setenv.scrum1.sh b/dai-interfaces/cis/src/main/resources/config/setenv.scrum1.sh
+index 999f8ee..4544514 100755
+--- a/dai-interfaces/cis/src/main/resources/config/setenv.scrum1.sh
++++ b/dai-interfaces/cis/src/main/resources/config/setenv.scrum1.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+@@ -11,5 +11,5 @@ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA
+ export APPHOME_DIR=/opt/tcserver/instances/cis
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j_cis.xml
+-JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
++JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/dev.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/cis/src/main/resources/config/setenv.scrum2.sh b/dai-interfaces/cis/src/main/resources/config/setenv.scrum2.sh
+index 999f8ee..4544514 100755
+--- a/dai-interfaces/cis/src/main/resources/config/setenv.scrum2.sh
++++ b/dai-interfaces/cis/src/main/resources/config/setenv.scrum2.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+@@ -11,5 +11,5 @@ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA
+ export APPHOME_DIR=/opt/tcserver/instances/cis
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j_cis.xml
+-JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
++JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/dev.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/cis/src/main/resources/config/setenv.scrum3.sh b/dai-interfaces/cis/src/main/resources/config/setenv.scrum3.sh
+index 999f8ee..4544514 100755
+--- a/dai-interfaces/cis/src/main/resources/config/setenv.scrum3.sh
++++ b/dai-interfaces/cis/src/main/resources/config/setenv.scrum3.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+@@ -11,5 +11,5 @@ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA
+ export APPHOME_DIR=/opt/tcserver/instances/cis
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j_cis.xml
+-JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
++JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/dev.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/cis/src/main/resources/config/setenv.scrum4.sh b/dai-interfaces/cis/src/main/resources/config/setenv.scrum4.sh
+new file mode 100644
+index 0000000..4544514
+--- /dev/null
++++ b/dai-interfaces/cis/src/main/resources/config/setenv.scrum4.sh
+@@ -0,0 +1,15 @@
++# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.6.0_29"
++AGENT_PATHS=""
++JAVA_AGENTS=""
++JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
++CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
++export APPHOME_DIR=/opt/tcserver/instances/cis
++export CONFIG_DIR=$APPHOME_DIR/conf
++export LOG4J_XML=$APPHOME_DIR/conf/log4j_cis.xml
++JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/dev.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH  -Dinsight-max-frames=10000"

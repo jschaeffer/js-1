@@ -1,0 +1,13 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+index 4d19e48..47afa9a 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties
+@@ -2,6 +2,8 @@ dataSource.driverClassName=oracle.jdbc.OracleDriver
+ dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ dataSource.username=SC4_CAAS
+ dataSource.password=SC4_CAAS
++#dataSource.username=caas_core_4_120
++#dataSource.password=caas_core
+ hibernate.c3p0.initialPoolSize=3
+ hibernate.c3p0.maxPoolSize=15
+ hibernate.c3p0.idleConnectionTestPeriod=10

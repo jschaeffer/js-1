@@ -1,0 +1,455 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>5</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SelEnv</name>
+          <description>Select Environment to refresh</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>all</string>
+              <string>devint</string>
+              <string>scrum1</string>
+              <string>scrum2</string>
+              <string>scrum3</string>
+              <string>scrum4</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <authToken>TOKEN_NAME</authToken>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>DevintResurrectState</upstreamProjects>
+      <threshold>
+        <name>UNSTABLE</name>
+        <ordinal>1</ordinal>
+        <color>YELLOW</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 3 * * 1-5</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+cd /opt/build/scripts
+
+fnCheckState() {
+sysstate=`cat /var/www/html/$envname/sysstate.txt`
+}
+
+unset targs
+unset posttargs
+
+fnVerCheck() {
+#LH 12/17/15, Old method: Version=`ssh tcserver@$targ &quot;grep Implementation-Version /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ Version=`ssh tcserver@$targ &quot;cd /opt/tcserver/instances/$instance/webapps; jar xf ${webapps}.war META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ ssh tcserver@$targ &quot;cd /opt/tcserver/instances/$instance/webapps; rm -fr META-INF&quot;
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+ echo &quot;Not Installed&quot; | tee /var/www/html/$x/$Component.txt
+  else
+ echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+ if `ssh tcserver@$targ &quot;grep -q 1.6.0 /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/bigyellow16.png&gt;&quot; &gt;/var/www/html/$x/$Component.JDK.txt
+ elif `ssh tcserver@$targ &quot;grep -q 1.8.0  /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/biggreen18.png&gt;&quot; &gt;/var/www/html/$x/$Component.JDK.txt
+ else
+  echo &quot;&lt;img src=../images/disabled.png&gt;&quot; &gt; /var/www/html/$x/$Component.JDK.txt
+ fi
+
+# JDKVer=`ssh tcserver@$targ &quot;grep 1.6.0_24 /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | #tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+# if [[ -z &quot;$JDKVer&quot; || ${JDKVer} == *select* || ${JDKVer} == *from* ]]; then
+#  echo &quot;&lt;img src=../images/red.png&gt;&quot; &gt; /var/www/html/$x/$Component.JDK.txt
+# elif [[ ${JDKVer} == *1.6.0_24* ]]; then
+#  echo &quot;&lt;img src=../images/yellow.png&gt;&quot; &gt;/var/www/html/$x/$Component.JDK.txt
+# elif [[ ${JDKVer} == *1.8.0_20* ]]; then
+#  echo &quot;&lt;img src=../images/green.png&gt;&quot; &gt;/var/www/html/$x/$Component.JDK.txt
+##  echo &quot;&lt;td class=dash bgcolor=#00FF00&gt;${JDKVer}&lt;/td&gt;&quot; &gt;/var/www/html/$x/$Component.JDK.txt
+# else
+#  echo &quot;&lt;img src=../images/red.png&gt;&quot; &gt;/var/www/html/$x/$Component.JDK.txt
+# fi
+}
+
+fnChktcservState() {
+ k_Stat=`/opt/build/scripts/tcServerAdmin.sh $targ $instance status | awk &apos;/STATUS|Status/ {print}&apos;`
+  echo &quot;k_Stat is $k_Stat&quot;
+  if [[ $k_Stat = *PID* ]]
+   then
+     echo &quot;&lt;img src=../images/biggreen.png width=32 height=32/&gt; &gt; /var/www/html/$envname/$instance.envstate.txt&quot;
+     echo &quot;&lt;img src=../images/biggreen.png width=32 height=32/&gt;&quot; &gt; /var/www/html/$envname/$instance.envstate.txt
+  elif [[ $k_Stat = *NOT* ]]
+   then 
+     echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt; &gt; /var/www/html/$envname/$instance.envstate.txt&quot;
+     echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt;&quot; &gt; /var/www/html/$envname/$instance.envstate.txt
+  fi
+}
+
+fnLogCheck() {
+  d1=`ssh tcserver@${targ} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${targ} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$target/diskspace.txt
+  l1=`ssh tcserver@${targ} &quot;du instances/$instance/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${targ} &quot;du -h instances/$instance/logs | awk &apos;{print $1}&apos;&quot;`;export lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;img src=../images/red.png&gt;&quot; | tee $target/$Componentapp.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;img src=../images/yellow.png&gt;&quot; | tee $target/$Component.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;img src=../images/green.png&gt;&quot;| tee $target/$Component.logs
+  fi
+}
+
+fnVerJar() {
+ echo &quot;$targ/$direct&quot; &gt; ${target}/${Component}_app.txt
+ Version=`ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/$jarLoc; jar xf $jarName META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+  if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+   echo &quot;Not Installed&quot;  &gt; $target/$app.txt
+  else
+   echo &quot;$Version&quot; &gt; $target/$app.txt
+  fi
+ if `ssh tcserver@$targ &quot;grep -q 1.6.0_24  /opt/tcserver/$direct/$jarLoc/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/bigyellow16.png&gt;&quot; &gt;/var/www/html/$x/$Component.JDK.txt
+ elif `ssh tcserver@$targ &quot;grep -q 1.8.0_2  /opt/tcserver/$direct/$jarLoc/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/biggreen18.png&gt;&quot; &gt;/var/www/html/$x/$Component.JDK.txt
+ else
+  echo &quot;&lt;img src=../images/disabled.png&gt;&quot; &gt; /var/www/html/$x/$Component.JDK.txt
+ fi
+ ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/$jarLoc; rm -fR META_INF&quot;
+}
+
+fnDBVerCheck() {
+Version=`./check_dbversions.sh -a ${Component} -e ${envname} | tr -d &quot;\n&quot;`
+ if [[ ${Version} == *&quot;expired&quot;* ]]; then
+   echo &quot;DB Version check failed due to expired password on component $Component&quot;
+   echo &quot;Pwd Exp&quot; &gt;/var/www/html/$envname/$Component.txt
+ elif  [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+   echo &quot;No DB&quot; | tee /var/www/html/$envname/$Component.txt
+ else
+    echo &quot;${Version}&quot; | tee /var/www/html/$envname/$Component.txt
+ fi
+}
+
+executeMicroDevCommand() {
+ echo &quot;Executing : $1&quot;
+ FUNC_RV=`eval &quot;$1&quot;`
+ if [ $? -ne 0 ] ; then
+     echo &quot;ERROR: Error executing $1&quot;
+     exit 1
+ fi
+}
+
+fnCreateSCP() {
+ if [ -f /tmp/MDVer.scp ] ; then
+  rm /tmp/MDVer.scp
+ fi
+ 
+ echo &quot;LIST DESCRIPTION FOR PROJECT CONFIGURATION FROM PROJECT \&quot;${MSDSN}\&quot;;&quot; &gt;&gt; /tmp/MDVer.scp 
+}
+
+fnSendSCP() {
+ scp /tmp/MDVer.scp /tmp/deploymenyWorkArea/${Component}/MDVer.scp
+}
+
+fnExectueSCP() {
+  export JARCPCMD=&quot;\&quot;cd /tmp/deploymenyWorkArea/${Component}; /opt/Microstrategy/MicroStrategy/bin/mstrcmdmgr -n SCRUM -u Administrator -p test_1234 -f /tmp/deploymenyWorkArea/${Component}/MDVer.scp -o /tmp/deploymenyWorkArea/${Component}/MDVer.log\&quot;&quot;
+  executeMicroDevCommand &quot;ssh mstradmin@10.66.12.18 ${JARCPCMD}&quot;
+}
+
+fnMDVerCheck() {
+#Version=`ssh mstradmin@10.66.12.18 &quot;cat /tmp/deploymentWorkArea/${Component}/MDVer.log | awk -F\&quot;=\&quot; &apos;/Description/ {print $2}&apos;&quot;`
+ Version=`ssh mstradmin@10.66.12.18 &quot;grep Description /tmp/deploymentWorkArea/${Component}/MDVer.log | sed s/Description// | sed s/=//&quot;`
+ echo &quot;${Version}&quot; | tee /var/www/html/$Component.txt
+}
+
+export targs=&quot;$SelEnv&quot;
+
+if [[ $SelEnv = &quot;all&quot; ]]; then
+   export targs=&quot;devint scrum1 scrum2 scrum3 scrum4&quot;
+fi
+
+for i in $targs; do
+case $i in
+  devint)
+     export envname=&quot;devint&quot;
+     export targ=&quot;cv-devint.cv.scrum&quot;
+     ;;
+  scrum1)
+     export envname=&quot;scrum1&quot;
+     export targ=&quot;cv-scrum01.cv.scrum&quot;
+     ;;
+  scrum2)
+     export envname=&quot;scrum2&quot;
+     export targ=&quot;cv-scrum02.cv.scrum&quot;
+     ;;
+  scrum3)
+     export envname=&quot;scrum3&quot;
+     export targ=&quot;cv-scrum03.cv.scrum&quot;
+     ;;
+  scrum4)
+     export envname=&quot;scrum4&quot;
+     export targ=&quot;cv-scrum04.cv.scrum&quot;
+     ;;
+esac
+
+export target=&quot;/var/www/html/${envname}&quot;
+
+ for x in $i; do
+
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;Reporting targ=$i in $target&quot;
+echo &quot;&quot;
+echo &quot;&quot;
+
+cd /opt/build/scripts
+echo &quot;Refreshing this dashboard data currently.  Page will refresh automatically at 60 seconds&quot; &gt;/var/www/html/$envname/dtupd.txt
+
+## Changing to Component and targenv for all pieces
+## Webapps section
+
+fnRunChecks() {
+ Component=&quot;dai-national-cis&quot;
+ instance=$Component
+ webapps=&quot;nCisClient&quot;
+ fnVerCheck
+ fnChktcservState
+# fnLogCheck
+
+ Component=&quot;dai-dce&quot;
+ instance=$Component
+ webapps=&quot;dai-dce-server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;metadata-publisher&quot;
+ instance=$Component
+ webapps=&quot;publisher&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;Dynamic-Ad-Insertion-cm&quot;
+ instance=&quot;cm&quot;
+ webapps=$Component
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;Dynamic-Ad-Insertion-engine&quot;
+ instance=&quot;ads&quot;
+ webapps=&quot;ads&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;dai-cip-feedback&quot;
+ instance=&quot;cip&quot;
+ webapps=&quot;cip-server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;impression_collector&quot;
+ instance=$Component
+ webapps=&quot;impression_collector_server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;POIS&quot;
+ instance=$Component
+ webapps=&quot;pois&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;dai-smsi&quot;
+ instance=&quot;smsi&quot;
+ webapps=&quot;safi-smsi-server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+Component=&quot;ad-load-manager&quot;
+ instance=&quot;$Component&quot;
+ webapps=&quot;alm-server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+Component=&quot;request-mgr&quot;
+ instance=&quot;$Component&quot;
+ webapps=&quot;ROOT&quot;
+ #webapps=&quot;request-manager&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+Component=&quot;SDC-session-collector&quot;
+ instance=&quot;$Component&quot;
+ webapps=&quot;sdc-session-collector-server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;int-test-support&quot;
+ instance=&quot;mock_svr&quot;
+ webapps=$Component
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;Pgmr-Cpgn-Int&quot;
+ instance=$Component
+ webapps=&quot;pci&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;smsi-publisher&quot;
+ instance=&quot;smsipub&quot;
+ webapps=$Component
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;dai-smsi-relay&quot;
+ instance=$Component
+ webapps=&quot;smsi-relay-client&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;dmp-config&quot;
+ instance=$Component
+ webapps=&quot;$Component&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;ops-dce-metadata-agent&quot;
+ instance=&quot;dce-mdata&quot;
+ webapps=$Component
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+ 
+ Component=&quot;MicroDev_iir&quot;
+ MSDSN=&quot;Scrum2_test_iir&quot;
+ fnCreateSCP
+ fnSendSCP
+ fnExecuteSCP
+ 
+
+## .jar component section
+
+ Component=&quot;dai-cip&quot;
+ direct=&quot;dai-cip&quot;
+ jarLoc=&quot;bin&quot;
+ jarName=&quot;dai-cip.jar&quot;
+ fnVerJar
+
+ Component=&quot;acp&quot;
+ direct=&quot;acp&quot;
+ jarLoc=&quot;bin&quot;
+ jarName=&quot;acp.jar&quot;
+ fnVerJar
+ 
+ Component=&quot;Sheringham&quot;
+ direct=&quot;Sheringham&quot;
+ jarLoc=&quot;bin&quot;
+ jarName=&quot;sheringham-server.jar&quot;
+ fnVerJar
+
+ Component=&quot;dai-metadata-ingestion&quot;
+ direct=&quot;dai-metadata-ingestion&quot;
+ jarLoc=&quot;&quot;
+ jarName=&quot;ingester.jar&quot;
+ fnVerJar
+
+## DB component section
+
+ Component=&quot;caas-core&quot;
+ fnDBVerCheck
+
+ Component=&quot;ads-core&quot;
+ fnDBVerCheck
+
+ Component=&quot;dai-etl-feeder&quot;
+ fnDBVerCheck
+ 
+ Component=&quot;smsi_reporting&quot;
+ fnDBVerCheck
+ }
+ 
+fnCheckState
+ if [[ $sysstate = *down* ]]
+  then
+  echo &quot;$Suite is currently down and cannot be checked until it is brought back up.&quot;
+ else
+  fnRunChecks
+ fi
+
+done
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;/var/www/html/$envname/dtupd.txt
+done
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

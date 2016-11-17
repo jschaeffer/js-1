@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="cdonovan" id="20140929-Baseline">
+        <sql splitStatements="true">
+            CREATE SEQUENCE SEQ_ADM_ENDPOINT_ID MINVALUE 10000 cache 10000;
+            CREATE SEQUENCE SEQ_ADS_ENDPOINT_ID MINVALUE 10000 cache 10000;
+            CREATE SEQUENCE SEQ_REG_ID MINVALUE 10000 cache 10000;
+
+            --------------------------------------------------------
+            --  DDL for Table ADM_ENDPOINT
+            --------------------------------------------------------
+
+            CREATE TABLE "ADM_ENDPOINT"
+            (	"ID" NUMBER,
+            "URL" VARCHAR2(255 BYTE),
+            "IDENTITY" VARCHAR2(64 BYTE),
+            "AUTH" VARCHAR2(128 BYTE)
+            ) SEGMENT CREATION DEFERRED
+            PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255
+            NOCOMPRESS LOGGING;
+            --------------------------------------------------------
+            --  DDL for Table ADS_ENDPOINT
+            --------------------------------------------------------
+
+            CREATE TABLE "ADS_ENDPOINT"
+            (	"ID" NUMBER,
+            "PR_URL" VARCHAR2(255 BYTE),
+            "PSN_URL" VARCHAR2(255 BYTE),
+            "SC_URL" VARCHAR2(255 BYTE),
+            "IDENTITY" VARCHAR2(64 BYTE)
+            ) SEGMENT CREATION DEFERRED
+            PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255
+            NOCOMPRESS LOGGING;
+            --------------------------------------------------------
+            --  DDL for Table REGISTRATION
+            --------------------------------------------------------
+
+            CREATE TABLE "REGISTRATION"
+            (	"ID" NUMBER,
+            "ADM_ID" NUMBER,
+            "ADS_ID" NUMBER,
+            "PROVIDER_ID" VARCHAR2(64 BYTE),
+            "SERVICE_ID" VARCHAR2(64 BYTE),
+            "REG_REF" VARCHAR2(64 BYTE),
+            "REGISTERED" NUMBER(1,0),
+            "LAST_UPDATED" DATE
+            ) SEGMENT CREATION DEFERRED
+            PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255
+            NOCOMPRESS LOGGING;
+          
+            --------------------------------------------------------
+            --  DDL for Index ADM_ENDPOINT_PK
+            --------------------------------------------------------
+
+            CREATE UNIQUE INDEX "ADM_ENDPOINT_PK" ON "ADM_ENDPOINT" ("ID")
+            PCTFREE 10 INITRANS 2 MAXTRANS 255;
+            --------------------------------------------------------
+            --  DDL for Index ADS_ENDPOINT_PK
+            --------------------------------------------------------
+
+            CREATE UNIQUE INDEX "ADS_ENDPOINT_PK" ON "ADS_ENDPOINT" ("ID")
+            PCTFREE 10 INITRANS 2 MAXTRANS 255;
+            --------------------------------------------------------
+            --  DDL for Index REGISTRATION_PK
+            --------------------------------------------------------
+
+            CREATE UNIQUE INDEX "REGISTRATION_PK" ON "REGISTRATION" ("ID")
+            PCTFREE 10 INITRANS 2 MAXTRANS 255;
+            --------------------------------------------------------
+            --  Constraints for Table ADM_ENDPOINT
+            --------------------------------------------------------
+
+            ALTER TABLE "ADM_ENDPOINT" ADD CONSTRAINT "ADM_ENDPOINT_PK" PRIMARY KEY ("ID")
+            USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 ENABLE;
+            ALTER TABLE "ADM_ENDPOINT" MODIFY ("ID" NOT NULL ENABLE);
+            --------------------------------------------------------
+            --  Constraints for Table ADS_ENDPOINT
+            --------------------------------------------------------
+
+            ALTER TABLE "ADS_ENDPOINT" ADD CONSTRAINT "ADS_ENDPOINT_PK" PRIMARY KEY ("ID")
+            USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 ENABLE;
+            ALTER TABLE "ADS_ENDPOINT" MODIFY ("ID" NOT NULL ENABLE);
+            --------------------------------------------------------
+            --  Constraints for Table REGISTRATION
+            --------------------------------------------------------
+
+            ALTER TABLE "REGISTRATION" ADD CONSTRAINT "REGISTRATION_PK" PRIMARY KEY ("ID")
+            USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 ENABLE;
+            ALTER TABLE "REGISTRATION" MODIFY ("ID" NOT NULL ENABLE);
+            --------------------------------------------------------
+            --  Ref Constraints for Table REGISTRATION
+            --------------------------------------------------------
+
+            ALTER TABLE "REGISTRATION" ADD CONSTRAINT "FK_ADM_ENDPOINT" FOREIGN KEY ("ADM_ID")
+            REFERENCES "ADM_ENDPOINT" ("ID") ENABLE;
+            ALTER TABLE "REGISTRATION" ADD CONSTRAINT "FK_ADS_ENDPOINT" FOREIGN KEY ("ADS_ID")
+            REFERENCES "ADS_ENDPOINT" ("ID") ENABLE;
+
+
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>

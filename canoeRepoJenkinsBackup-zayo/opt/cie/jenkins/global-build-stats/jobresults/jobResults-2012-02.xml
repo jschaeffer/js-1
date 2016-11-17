@@ -1,0 +1,14 @@
+<list>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>canoe-security-compile</n>
+    <nb>17</nb>
+    <d>
+      <time>1328806743000</time>
+      <timezone>Navajo</timezone>
+    </d>
+    <du>60778</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+</list>

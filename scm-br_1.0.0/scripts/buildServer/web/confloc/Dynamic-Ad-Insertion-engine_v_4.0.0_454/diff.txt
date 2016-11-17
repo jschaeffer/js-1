@@ -1,0 +1,331 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index 44a0226..728c0c4 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -111,4 +111,14 @@ identity.ads=SCRUM1
+ #Purge job
+ ads.purge.endpointStatus.DaysBackToPurge=30
+ ads.purge.endpointStatus.enabled=true
+-ads.purge.endpointStatus.schedule=0 0 0 * * ?
+\ No newline at end of file
++ads.purge.endpointStatus.schedule=0 0 0 * * ?
++
++#Batch size of vodendpoint status updates
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.115:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index b368699..9321895 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -112,3 +112,13 @@ identity.ads=SCRUM2
+ ads.purge.endpointStatus.DaysBackToPurge=30
+ ads.purge.endpointStatus.enabled=true
+ ads.purge.endpointStatus.schedule=0 0 0 * * ?
++
++#Batch size of vodendpoint status updates
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.115:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index 21325a9..ac49f9f 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -112,3 +112,13 @@ identity.ads=SCRUM3
+ ads.purge.endpointStatus.DaysBackToPurge=30
+ ads.purge.endpointStatus.enabled=true
+ ads.purge.endpointStatus.schedule=0 0 0 * * ?
++
++#Batch size of vodendpoint status updates
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.117:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index d10b278..cc8e03a 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -113,3 +113,13 @@ identity.ads=SCRUM4
+ ads.purge.endpointStatus.DaysBackToPurge=30
+ ads.purge.endpointStatus.enabled=true
+ ads.purge.endpointStatus.schedule=0 0 0 * * ?
++
++#Batch size of vodendpoint status updates
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.122:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
+index 35cc851..4d71ccc 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
+@@ -65,7 +65,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -113,7 +113,7 @@
+         </layout>
+     </appender>
+ 
+-    <category name="dai.core.util.OperationsLogger" additivity="false">
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
+         <priority value="INFO" />
+         <appender-ref ref="OPERATIONS_LOG"/>
+     </category>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
+index 35cc851..4d71ccc 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
+@@ -65,7 +65,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -113,7 +113,7 @@
+         </layout>
+     </appender>
+ 
+-    <category name="dai.core.util.OperationsLogger" additivity="false">
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
+         <priority value="INFO" />
+         <appender-ref ref="OPERATIONS_LOG"/>
+     </category>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
+index 41e386b..9f21035 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
+@@ -78,7 +78,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -126,7 +126,7 @@
+         </layout>
+     </appender>
+ 
+-    <category name="dai.core.util.OperationsLogger" additivity="false">
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
+         <priority value="INFO" />
+         <appender-ref ref="OPERATIONS_LOG"/>
+     </category>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
+index 41e386b..9f21035 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
+@@ -78,7 +78,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -126,7 +126,7 @@
+         </layout>
+     </appender>
+ 
+-    <category name="dai.core.util.OperationsLogger" additivity="false">
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
+         <priority value="INFO" />
+         <appender-ref ref="OPERATIONS_LOG"/>
+     </category>
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+index 4e7537c..8ed4128 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+@@ -32,3 +32,5 @@ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
+ ads.deadHead=false
++
++cis.batchsave.size=1000
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+index 02e9b84..a5a881d 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+@@ -22,3 +22,5 @@ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
+ ads.deadHead=false
+ 
++cis.batchsave.size=1000
++
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+index a3b9bed..08bd907 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+@@ -22,3 +22,5 @@ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
+ ads.deadHead=false
+ 
++cis.batchsave.size=1000
++
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index 84ac536..728c0c4 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -120,4 +120,5 @@ cis.batchsave.size=1000
+ 
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.115:13654
+\ No newline at end of file
++frequency.cap.url=10.13.18.115:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index 00324aa..9321895 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -120,4 +120,5 @@ cis.batchsave.size=1000
+ 
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.115:13654
+\ No newline at end of file
++frequency.cap.url=10.13.18.115:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index aa7ed45..ac49f9f 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -121,3 +121,4 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.117:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index 438ab21..cc8e03a 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -122,3 +122,4 @@ cis.batchsave.size=1000
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.122:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
+index 35cc851..4d71ccc 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
+@@ -65,7 +65,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -113,7 +113,7 @@
+         </layout>
+     </appender>
+ 
+-    <category name="dai.core.util.OperationsLogger" additivity="false">
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
+         <priority value="INFO" />
+         <appender-ref ref="OPERATIONS_LOG"/>
+     </category>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
+index 35cc851..4d71ccc 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
+@@ -65,7 +65,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -113,7 +113,7 @@
+         </layout>
+     </appender>
+ 
+-    <category name="dai.core.util.OperationsLogger" additivity="false">
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
+         <priority value="INFO" />
+         <appender-ref ref="OPERATIONS_LOG"/>
+     </category>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
+index 41e386b..9f21035 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
+@@ -78,7 +78,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -126,7 +126,7 @@
+         </layout>
+     </appender>
+ 
+-    <category name="dai.core.util.OperationsLogger" additivity="false">
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
+         <priority value="INFO" />
+         <appender-ref ref="OPERATIONS_LOG"/>
+     </category>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
+index 41e386b..9f21035 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
+@@ -78,7 +78,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -126,7 +126,7 @@
+         </layout>
+     </appender>
+ 
+-    <category name="dai.core.util.OperationsLogger" additivity="false">
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
+         <priority value="INFO" />
+         <appender-ref ref="OPERATIONS_LOG"/>
+     </category>

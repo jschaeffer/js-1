@@ -1,0 +1,29 @@
+<b><u>Component Release Info for Sprint Ninja_Turtles:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_105</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+Decision Engine – 4.0.0_404
+ADS Core – 4.0.0_105 
+SMSi Publisher – 4.0.0_256
+Metdata – Fixed JIRA Issues 5974, 5961, 6009 and 6030
+New Properties – None</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0-changelog.xml
+core/model/src/main/resources/liquibase/core-4.0.0/021-csd-add-media_asset-index.sql
+core/model/src/main/resources/liquibase/core-4.0.0/022-csd-drop-uq-vod_endpoint_status.sql</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_104</b></u><br>
+<pre>
+* <font color=blue>6e6d429</font>-<font color=green>(2014-07-17)</font><font color=black><b>Added extra interfaces to the DAO for clarity between pulling all assets and ads only</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_105)</font>
+* <font color=blue>24bad70</font>-<font color=green>(2014-07-17)</font><font color=black><b>Fixed the way we pull recent status either by verified or most recent date.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>f20ac68</font>-<font color=green>(2014-07-17)</font><font color=black><b>Revert "Changed the dao to do time checks based on timeRequested."</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>ff802b8</font>-<font color=green>(2014-07-13)</font><font color=black><b>Changed the dao to do time checks based on timeRequested.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>14e24d2</font>-<font color=green>(2014-07-13)</font><font color=black><b>Moved the AD check into query to improve perf.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4da1e71</font>-<font color=green>(2014-07-13)</font><font color=black><b>DB changes to support perf and removing unneeded uq constraint.</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>100bb2f</font>-<font color=green>(2014-07-13)</font><font color=black><b>VODDAI-5961 - Changes to support rechecking for missing ad assets</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>6c89782</font>-<font color=green>(2014-07-11)</font><font color=black><b>Revert "Revert "Merge branch 'CISFeature' into br_4.0.0""</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>9860331</font>-<font color=green>(2014-07-10)</font><font color=black><b>Revert "Merge branch 'CISFeature' into br_4.0.0"</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>f6b6c0a</font>-<font color=green>(2014-07-10)</font><font color=black><b>Merge branch 'CISFeature' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>e7fac1b</font>-<font color=green>(2014-07-01)</font><font color=black><b>Initital checkin for CISFeature</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (origin/CISFeature)</font></pre>
+<hr>
+<p>

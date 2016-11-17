@@ -1,0 +1,26 @@
+<list>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>dai_scm-PackageDeploy-4.0.0</n>
+    <nb>6</nb>
+    <d>
+      <time>1366405911000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>447</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+  <jbr plugin="global-build-stats@1.3">
+    <r>SUCCESS</r>
+    <n>smsi-admin-PackageDeploy-4.0.0</n>
+    <nb>48</nb>
+    <d>
+      <time>1366084826000</time>
+      <timezone>America/Denver</timezone>
+    </d>
+    <du>980785</du>
+    <nn>master</nn>
+    <un>SYSTEM</un>
+  </jbr>
+</list>

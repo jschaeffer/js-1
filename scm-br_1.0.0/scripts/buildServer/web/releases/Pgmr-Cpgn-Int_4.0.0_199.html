@@ -1,0 +1,119 @@
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_199</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/resources/liquibase/master-changelog.xml
+data-store/src/main/resources/liquibase/pci-4.0.0/001-kleider-create-schema.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_194</b></u><br>
+<pre>
+* <font color=blue>54fb6b8</font>-<font color=green>(2014-07-02)</font><font color=black><b>Fixing Category Exclusion Enum value calculation.</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_199)</font>
+* <font color=blue>b6b3af4</font>-<font color=green>(2014-07-02)</font><font color=black><b>Added data access layer for cip history.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>5956c5f</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Pgmr-Cpgn-Int into br_4.0.0</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_198, v_4.0.0_197)</font>
+|\  
+| * <font color=blue>e2ef2cc</font>-<font color=green>(2014-06-24)</font><font color=black><b>Added checks for programmer values in the multiParentBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_196)</font>
+| * <font color=blue>8a66ef4</font>-<font color=green>(2014-06-20)</font><font color=black><b>Changed ruleSelector test and gname update for new function</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_195)</font>
+* <font color=blue>9d4fdd5</font>-<font color=green>(2014-06-24)</font><font color=black><b>Added checks for programmer values in the multiParentBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ab03ac0</font>-<font color=green>(2014-06-20)</font><font color=black><b>Changed ruleSelector test and gname update for new function</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9bf06b6</font>-<font color=green>(2014-06-19)</font><font color=black><b>VODDAI-5844: update campaign@description</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>ccff8ae</font>-<font color=green>(2014-06-19)</font><font color=black><b>Clear log file, updated error messages for multiProgrammer instances</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>7801cc9</font>-<font color=green>(2014-06-18)</font><font color=black><b>Added test for 5880 in phaseSetGoal feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b9dacc7</font>-<font color=green>(2014-06-17)</font><font color=black><b>Modified error message in multiParBundle feature for 3903</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>20fc34f</font>-<font color=green>(2014-06-17)</font><font color=black><b>Added check for dB record persistence in parentBundle @name test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>2bef2b6</font>-<font color=green>(2014-06-17)</font><font color=black><b>Switched lines in parentBundle gname test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3579428</font>-<font color=green>(2014-06-16)</font><font color=black><b>VODDAI-5880: no longer fail messages with an unknown ProcessRuleSelector@ruleId</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>727e980</font>-<font color=green>(2014-06-16)</font><font color=black><b>VODDAI-5844: update campaign@name and campaign_item@label</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>f68f435</font>-<font color=green>(2014-06-13)</font><font color=black><b>Modified parentBundle feature for 5844 and 5845</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>44a9d53</font>-<font color=green>(2014-06-12)</font><font color=black><b>Added test for PAID validation, IgnoreCase stories in but fail due to campMan dependencies</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>bbabf51</font>-<font color=green>(2014-06-11)</font><font color=black><b>VODDAI-3903: Changed error message if provider does not match campaign programmer.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>4b6dc07</font>-<font color=green>(2014-06-02)</font><font color=black><b>Added namespace restriction to operator test</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>752528c</font>-<font color=green>(2014-05-30)</font><font color=black><b>VODDAI-5804 Flipped asset id components</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4b63d46</font>-<font color=green>(2014-05-29)</font><font color=black><b>Modified stories for 5800, 5804, 5808</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3b5d9c3</font>-<font color=green>(2014-05-29)</font><font color=black><b>Modified commonQualifier for 5800</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4edaedb</font>-<font color=green>(2014-05-28)</font><font color=black><b>VODDAI-5800 Validate Group Qualifier operator</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>2ecf442</font>-<font color=green>(2014-05-28)</font><font color=black><b>VODDAI-5804 Validate PAID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>d40af5b</font>-<font color=green>(2014-05-28)</font><font color=black><b>Fixed missWritten childBundle test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ebaa822</font>-<font color=green>(2014-05-27)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Removed operator validation for Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>a28583b</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated namespace for SeriesName and ID to urn:cablelabs:md:xsd:title:3.0</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>6de2e95</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated operator validaitons based on current MD target validations</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3bfd2a7</font>-<font color=green>(2014-05-23)</font><font color=black><b>Added Db check for the operatore lt gt le ge for MD targeting</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4bf5819</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added MD CQG.Term@operator validations</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>29ac108</font>-<font color=green>(2014-05-19)</font><font color=black><b>Reformatted template to have all MD targets in one CQG. Removed unnecessary validation tests. Added peristence tests in persistMetaInfo feature with a new multi series target test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9541c21</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed namespace, corrected validation stories, added persistence test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5401b19</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID Fix for error message</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>42d3344</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID Fix for operators</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c177606</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3dfd316</font>-<font color=green>(2014-05-16)</font><font color=black><b>Fix for Frequency Capping not present</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>8268e02</font>-<font color=green>(2014-05-16)</font><font color=black><b>Added template for new series function</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b7a981d</font>-<font color=green>(2014-05-15)</font><font color=black><b>Added seriesID name features in commonQualifier</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ed1452a</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed MCLPS feature from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red> (origin/PlacementLimit)</font>
+* <font color=blue>4f5e25f</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed freCap feature from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>c9142c6</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed freqCap and mclps templates from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>1c1cea9</font>-<font color=green>(2014-05-15)</font><font color=black><b>merge conflict fix</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| *   <font color=blue>0a418e5</font>-<font color=green>(2014-04-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Pgmr-Cpgn-Int into PlacementLimit</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| |\  
+| | * <font color=blue>1fe232f</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>13eddb2</font>-<font color=green>(2014-03-21)</font><font color=black><b>Changed the separationConstraint value to none to prevent dual code use errors.. my bad!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>917b0ba</font>-<font color=green>(2014-03-20)</font><font color=black><b>Not allowing null value for campItemMediaAsset break limit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>f28deb7</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed main fxn tests from persistChildBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>cb726c2</font>-<font color=green>(2014-03-11)</font><font color=black><b>Modified spacing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>3b4657d</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed tests that have been moved to the PlacementLimit branch in CIPsender</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>2cd1b6f</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tags for newBranch stories. added new feature for 5109 and 5110</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>94cb0e0</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack - again</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>5d2b2d3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>ec09db3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent BackToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>5de522e</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added checks for term@operation is le for parent and child bundles, modified tests for child bundle limits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>3118663</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent decimal error</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>23b0c6a</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix for le test failure</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>75d0e42</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added test for operation does not equal OR and modified error messages</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>c07b6d0</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>3f40e69</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-4999, VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>fcd619c</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>9aa6494</font>-<font color=green>(2014-03-21)</font><font color=black><b>Changed the separationConstraint value to none to prevent dual code use errors.. my bad!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>a996115</font>-<font color=green>(2014-03-20)</font><font color=black><b>Not allowing null value for campItemMediaAsset break limit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>2d894e7</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed main fxn tests from persistChildBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>828efe9</font>-<font color=green>(2014-03-11)</font><font color=black><b>Modified spacing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>878a45c</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed tests that have been moved to the PlacementLimit branch in CIPsender</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>c02f59b</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tags for newBranch stories. added new feature for 5109 and 5110</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>6946849</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack - again</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f2a7bc9</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>dea6df5</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent BackToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>63ff330</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added checks for term@operation is le for parent and child bundles, modified tests for child bundle limits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>f7b7ce7</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent decimal error</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>3b6ed77</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix for le test failure</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>5a731b8</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added test for operation does not equal OR and modified error messages</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>5021d49</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>d63eef5</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-4999, VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ab1a8b8</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>7db78a4</font>-<font color=green>(2014-03-20)</font><font color=black><b>Not allowing null value for campItemMediaAsset break limit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>19e926d</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed tests that have been moved to the PlacementLimit branch in CIPsender</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>8e640dc</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tags for newBranch stories. added new feature for 5109 and 5110</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>a1ac0d8</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added checks for term@operation is le for parent and child bundles, modified tests for child bundle limits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3d19136</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix for le test failure</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4650fd3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added test for operation does not equal OR and modified error messages</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b0db2fd</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>9d31eea</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4dfedb4</font>-<font color=green>(2014-03-21)</font><font color=black><b>Changed the separationConstraint value to none to prevent dual code use errors.. my bad!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>04849ac</font>-<font color=green>(2014-03-20)</font><font color=black><b>Not allowing null value for campItemMediaAsset break limit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>a08cb68</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed main fxn tests from persistChildBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>56fa2ee</font>-<font color=green>(2014-03-11)</font><font color=black><b>Modified spacing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b777769</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed tests that have been moved to the PlacementLimit branch in CIPsender</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>32c6f65</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tags for newBranch stories. added new feature for 5109 and 5110</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4ba18ce</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack - again</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>f502e4b</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3401c34</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent BackToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>10ef8b0</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added checks for term@operation is le for parent and child bundles, modified tests for child bundle limits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d013e1c</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent decimal error</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>2553e31</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix for le test failure</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ce1d26f</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added test for operation does not equal OR and modified error messages</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4c25a90</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>01ee7cf</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-4999, VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>

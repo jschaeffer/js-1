@@ -1,0 +1,173 @@
+projectRoot="/opt/checkouts/dai_scm"
+commonTargetRoot="."
+webappDir="webapps"
+
+build {
+    build_args="ls"
+}
+
+jira {
+    update_jira="false"
+}
+
+database {
+
+    driver=""
+
+    liquibase {
+        update_liquibase="false"
+        base_dir=""
+        change_log_file="src/main/resources/liquibase/master-changelog.xml"
+        command="gradle -q -PPROJECT=Dynamic-Ad-Insertion-core updateSQL > update.sql"
+    }
+
+    env {
+        dev {
+            host=""
+            url=""
+            username=""
+            password=""
+        }
+        qa {
+            host=""
+            url=""
+            username=""
+            password=""
+        }
+        staging {
+            host=""
+            url=""
+            username=""
+            password=""
+        }
+        prod {
+            host=""
+            url=""
+            username=""
+            password=""
+        }
+    }
+}
+
+build_package {
+    pre_pkg_cmds {
+ 	echo "This is the Prebuild command1"
+	cd /opt/checkouts
+	pwd	
+    }
+    artifacts {
+        name {
+            dai_scm_proj="*.*"
+        }
+        location {
+            dai_scm_proj="$projectRoot"
+        }
+    }
+}
+
+deploy {
+    artifacts {
+        name {
+            cm="Dynamic-Ad-Insertion-cm*.war"
+        }
+        location {
+            cm="target"
+        }
+        deploy_type {
+            cm="archive"
+        }
+        webapp_project {
+            cm="Dynamic-Ad-Insertion-cm"
+        }
+    }
+    pre_deploy_cmds {
+    }
+
+    post_deploy_cmds {
+    }
+
+    local {
+        deployUser="pzimmerman"
+
+        environment {
+            name="pzimmerman.laptop"
+            ip="192.168.211.37"
+        }
+
+        tcserver {
+            base="/opt/tools/tcserver"
+            instance_home="$tcserver.base"
+            instance_name="dai_engine"
+            admin_script="tcruntime-ctl.sh"
+            status_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name status"
+            start_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name start"
+            stop_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop"
+        }
+    }
+
+    dev {
+        deployUser="tcserver"
+        webappProject="cm"
+	 artifacts {
+          name {
+              cm="Dynamic-Ad-Insertion-cm*.war"
+             }
+          location {
+              cm="target"
+             }
+          deploy_type {
+              cm="archive"
+             }
+          webapp_project {
+       	      cm="Dynamic-Ad-Insertion-cm"
+    	     }
+    	 }
+
+        environment {
+            name="dvappdai01"
+            ip="10.13.18.113"
+        }
+
+        tcserver {
+            base="/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE"
+            instance_home="/opt/tcserver/instances"
+            instance_name="cm"
+            admin_script="tcruntime-ctl.sh"
+            status_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name status"
+            start_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name start"
+            stop_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop"
+        }
+    }
+    scrum1 {
+        webappProject="cm"
+        deployUser="tcserver"
+         artifacts {
+          name {
+              cm="Dynamic-Ad-Insertion-cm*.war"
+             }
+          location {
+              cm="target"
+             }
+          deploy_type {
+              cm="archive"
+             }
+          webapp_project {
+              cm="Dynamic-Ad-Insertion-cm"
+             }
+         }
+        environment {
+            name="dvappdai02"
+            ip="10.13.18.115"
+        }
+
+        tcserver {
+            base="/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE"
+            instance_home="/opt/tcserver/instances"
+            instance_name="cm"
+            admin_script="tcruntime-ctl.sh"
+            status_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name status"
+            start_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name start"
+            stop_cmd="$tcserver.base/$tcserver.admin_script $tcserver.instance_name stop"
+        }
+    }
+}

@@ -1,0 +1,177 @@
+<b><u>Component Release Info for Sprint LetItBe:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_5.11.0_5</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+- Goes with CAAS 5.1.0_8
+- Feature 7641. Warning for Insertion vs Impression Placement Constraint
+- Feature 7623. Change to Ad Asset Frequency Capping
+- Feature 7608. Link to Description of Methodology
+- Feature 7280. Removed the “contains” MD operator
+- Feature 6601. Changed Placement Constraint UI for freq settings
+- Feature 6279. Break Limit value warning
+- Bug 7390. Hover over Campaign Line for Ads</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_5.11.0_5/diff.txt>Dynamic-Ad-Insertion-cm_v_5.11.0_5/config/Dynamic-Ad-Insertion-cm-config.scrum8.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.10.0_3</b></u><br>
+<pre>
+* <font color=blue>ac3e5f2</font>-<font color=green>(2015-06-17)</font><font color=black><b>New Scenario: Warning for Placement Constraints</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_5.11.0_5, tag: r_5.11.0_5)</font>
+*   <font color=blue>a571817</font>-<font color=green>(2015-06-16)</font><font color=black><b>Merge branch 'br_5.11.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.11.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.11.0_4)</font>
+|\  
+| * <font color=blue>c573413</font>-<font color=green>(2015-06-16)</font><font color=black><b>new test for warning on placement constraints... needs to be updated when code is done</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>79f155d</font>-<font color=green>(2015-06-16)</font><font color=black><b>Frequency cap warnings</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>e71e7b8</font>-<font color=green>(2015-06-16)</font><font color=black><b>small change to Network_CRUD feature</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>b953858</font>-<font color=green>(2015-06-15)</font><font color=black><b>Updated Edit MD feature with removal of contains</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.11.0_3)</font>
+* <font color=blue>51cdbea</font>-<font color=green>(2015-06-15)</font><font color=black><b>Added steps for Jira 7280 (removed MD contains)</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>a0e43ef</font>-<font color=green>(2015-06-15)</font><font color=black><b>bug 7390 test & updating IDs in Campaign Item grid view test case</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>e14f0b1</font>-<font color=green>(2015-06-12)</font><font color=black><b>Adjusted qtip IDs for lima ads on grid view</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.11.0_2)</font>
+* <font color=blue>a539dc3</font>-<font color=green>(2015-06-12)</font><font color=black><b>bug 7390 test in place, needs some code help i think</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>1e0c5ed</font>-<font color=green>(2015-06-11)</font><font color=black><b>Added steps for Description Of Methodology Link</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.11.0_1)</font>
+* <font color=blue>2d50fe6</font>-<font color=green>(2015-06-11)</font><font color=black><b>update to features for changes to Placement Constraints</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+*   <font color=blue>9735c80</font>-<font color=green>(2015-06-11)</font><font color=black><b>Merge branch 'br_5.11.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.11.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>9ce9e8e</font>-<font color=green>(2015-06-11)</font><font color=black><b>Update to MinPlacementSepEnum file, typo fixed.  Updated MCLPS scenario</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>7df43af</font>-<font color=green>(2015-06-11)</font><font color=black><b>Added warnings on break limit</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>946881a</font>-<font color=green>(2015-06-11)</font><font color=black><b>Adjusted field labels for lima break and session limits</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>f57a5e1</font>-<font color=green>(2015-06-11)</font><font color=black><b>Cleanup of placement constraints values and labels.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>3876fed</font>-<font color=green>(2015-06-10)</font><font color=black><b>Created enum for placement min values and labels.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>4627f15</font>-<font color=green>(2015-06-10)</font><font color=black><b>Merge branch 'br_5.11.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.11.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>2b9a939</font>-<font color=green>(2015-06-10)</font><font color=black><b>Added quick dataset scenarios; Tweaked manual tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>ef99cac</font>-<font color=green>(2015-06-10)</font><font color=black><b>Added break min label enum and implemented</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+*   <font color=blue>cc6b10a</font>-<font color=green>(2015-06-10)</font><font color=black><b>Merge branch 'br_5.11.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_5.11.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>efa14bf</font>-<font color=green>(2015-06-10)</font><font color=black><b>More changes to Placement Constraints tab, almost done.</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>067ee73</font>-<font color=green>(2015-06-10)</font><font color=black><b>Placement Constraints tab UI update.  Still under construction</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>6ebaac3</font>-<font color=green>(2015-06-10)</font><font color=black><b>Removed contains operator from metadata operators list.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>aacd81e</font>-<font color=green>(2015-06-10)</font><font color=black><b>Reformatted README and added new changelog instructions</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>a6a83c9</font>-<font color=green>(2015-06-10)</font><font color=black><b>Added config properties for DOM link, added DOM link to footer.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>b321464</font>-<font color=green>(2015-06-10)</font><font color=black><b>Updated app.version</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>755f072</font>-<font color=green>(2015-06-10)</font><font color=black><b>Fixed issue with line item grid asset overlays being off by 1 for each disabled asset.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>6251fe5</font>-<font color=green>(2015-06-09)</font><font color=black><b>small change to test cases for needing 2 or more characters in Autocomplete gherkin step</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_5.10.0_5, tag: v_5.10.0_4, origin/br_5.10.0)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint LetItBe:</b></u><p>
+<u>Release of Component</u><b>&nbspdmp-config</b><br><u>Version</u><b>&nbspr_5.0.0_53</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+- Feature 7532. Cursor focus on correct field
+- Feature 7388. DMP REST API</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_46</b></u><br>
+<pre>
+* <font color=blue>bab2a61</font>-<font color=green>(2015-06-18)</font><font color=black><b>Added dataset and scenario for API verification</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_53, tag: r_5.0.0_53)</font>
+* <font color=blue>5495847</font>-<font color=green>(2015-06-18)</font><font color=black><b>Added feature to verify API</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>6da6e64</font>-<font color=green>(2015-06-12)</font><font color=black><b>Simple REST API to fetch valid configurations</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_52)</font>
+* <font color=blue>36cb143</font>-<font color=green>(2015-06-12)</font><font color=black><b>Updated test for DMP cursor focus</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_51)</font>
+* <font color=blue>d4573b2</font>-<font color=green>(2015-06-12)</font><font color=black><b>Created JSON schema for config</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_5.0.0_50)</font>
+* <font color=blue>259434d</font>-<font color=green>(2015-06-12)</font><font color=black><b>Focus given to configuration name field</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>cd59c42</font>-<font color=green>(2015-06-10)</font><font color=black><b>finished 7532 with Copy MSOs</b></font><font color=grey>- (stevemarkel)</font><font color=red> (tag: v_5.0.0_49)</font>
+* <font color=blue>4912330</font>-<font color=green>(2015-06-10)</font><font color=black><b>jQuery selector for 1st enabled input or select element</b></font><font color=grey>- (stevemarkel)</font><font color=red></font>
+* <font color=blue>d3d6b97</font>-<font color=green>(2015-06-09)</font><font color=black><b>Added focus() to new Endpoints, new MSOs and new and edited Providers.</b></font><font color=grey>- (stevemarkel)</font><font color=red> (tag: v_5.0.0_48, tag: v_5.0.0_47)</font>
+* <font color=blue>e374e15</font>-<font color=green>(2015-06-09)</font><font color=black><b>(Re) added 'Regression' attribute to Navigation feature</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+*   <font color=blue>fe94c69</font>-<font color=green>(2015-06-09)</font><font color=black><b>Merge branch 'br_5.0.0' of https://github.com/CanoeVentures/dmp-config into br_5.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|\  
+| * <font color=blue>0d890b3</font>-<font color=green>(2015-06-09)</font><font color=black><b>Ignore brittle test</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>88e25ee</font>-<font color=green>(2015-06-09)</font><font color=black><b>Configuration controller unit tests</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>9394251</font>-<font color=green>(2015-06-09)</font><font color=black><b>Stubbed (and some implemented) unit tests for Configuration controller</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>1bd760c</font>-<font color=green>(2015-06-09)</font><font color=black><b>Unit tests for endpoints controller</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>adba233</font>-<font color=green>(2015-06-09)</font><font color=black><b>Added *.ser to .gitignore</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| * <font color=blue>a84499c</font>-<font color=green>(2015-06-09)</font><font color=black><b>Unit tests for MSO controller.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>9a2fe6f</font>-<font color=green>(2015-06-09)</font><font color=black><b>Updated DMP version assertion</b></font><font color=grey>- (jwwood87)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint LetItBe:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_5.0.0_24</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Metadata – no longer requires placement.tracking.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_22</b></u><br>
+<pre>
+* <font color=blue>59d810d</font>-<font color=green>(2015-06-19)</font><font color=black><b>VODDAI-7617: Tracking is no longer required for Placements.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_24)</font>
+* <font color=blue>bc4ceb8</font>-<font color=green>(2015-06-09)</font><font color=black><b>Feature clean-up, updated "app is configured with" lines</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (tag: v_5.0.0_23)</font>
+* <font color=blue>2eb4c9b</font>-<font color=green>(2015-06-09)</font><font color=black><b>Fixed log message</b></font><font color=grey>- (kennethleider)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint LetItBe:</b></u><p>
+<u>Release of Component</u><b>&nbsprequest-mgr</b><br><u>Version</u><b>&nbspr_5.0.0_80</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Goes with Session Collector 5.0.0_10
+Metadata – PHASE 2 COMPLETE: Req/Resp/PSN data persisted to SMS Publisher DB.  Ingests Title/Movie metadata from Canoe NCIS.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/dai-sdc-5.0.0/005-dad-metadata.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_66</b></u><br>
+<pre>
+* <font color=blue>55acaeb</font>-<font color=green>(2015-06-22)</font><font color=black><b>VODDAI-7167: Now using ViewerEvent in Play Time calculation</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_80)</font>
+* <font color=blue>eb1a4f3</font>-<font color=green>(2015-06-19)</font><font color=black><b>VODDAI-4667 Fix for missing urlId on TitleRef and MovieRef</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_79)</font>
+* <font color=blue>4737c62</font>-<font color=green>(2015-06-19)</font><font color=black><b>VODDAI-7415 Length Tests for TitleBrief, TitleMedium, TitleLong</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3ad628b</font>-<font color=green>(2015-06-19)</font><font color=black><b>Added viewerEvents request and PSN for 7167 viewerEvents test</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_78)</font>
+* <font color=blue>6d3881a</font>-<font color=green>(2015-06-18)</font><font color=black><b>Soem bug fixes</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_77)</font>
+*   <font color=blue>526ad14</font>-<font color=green>(2015-06-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\  
+| * <font color=blue>990e27f</font>-<font color=green>(2015-06-18)</font><font color=black><b>Update rema-configuration.functional.properties</b></font><font color=grey>- (MajorMatt)</font><font color=red></font>
+* |   <font color=blue>7d18413</font>-<font color=green>(2015-06-18)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>b818288</font>-<font color=green>(2015-06-18)</font><font color=black><b>Fixed ads in remaConfig, fixed cucumber is empty to should be empty</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>32c10a3</font>-<font color=green>(2015-06-17)</font><font color=black><b>Fixed empty table checks</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|/  
+* <font color=blue>88f34ca</font>-<font color=green>(2015-06-17)</font><font color=black><b>Fixed some tests, added some tests, tags left for ken and I</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_76)</font>
+* <font color=blue>dd85f94</font>-<font color=green>(2015-06-17)</font><font color=black><b>VODDAI-7167: Only care about scale for "viewed" events.  Added support for "BOS"</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_75)</font>
+* <font color=blue>29a31ac</font>-<font color=green>(2015-06-17)</font><font color=black><b>VODDAI-7415 Tests for TitleBrief, TitleMedium, TitleLong</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c67cac9</font>-<font color=green>(2015-06-16)</font><font color=black><b>Added 7168 feature for presentation_info feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_74)</font>
+*   <font color=blue>f8c38c1</font>-<font color=green>(2015-06-16)</font><font color=black><b>added tests for 7168 runTime and fixed ads config committing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>97807cc</font>-<font color=green>(2015-06-16)</font><font color=black><b>Fix for optional start and end date</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_73)</font>
+* | <font color=blue>e418314</font>-<font color=green>(2015-06-16)</font><font color=black><b>added tests for 7168 runTime and fixed ads config committing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>bf4b3fc</font>-<font color=green>(2015-06-16)</font><font color=black><b>Added tag for ken insight</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>695d2fa</font>-<font color=green>(2015-06-16)</font><font color=black><b>Two new features, presentationInfo and spotEvents feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f87b94a</font>-<font color=green>(2015-06-16)</font><font color=black><b>Validation error fixes, some test improvements</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>cb81676</font>-<font color=green>(2015-06-15)</font><font color=black><b>Logging now uses the scala library</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_72)</font>
+* <font color=blue>9654d6d</font>-<font color=green>(2015-06-12)</font><font color=black><b>Added Cucumber ServerUrl property for Scrum4</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_5.0.0_71)</font>
+* <font color=blue>c4e4115</font>-<font color=green>(2015-06-12)</font><font color=black><b>Fixes for missing uriId, added xsd</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>0d7ab68</font>-<font color=green>(2015-06-12)</font><font color=black><b>Fixes for missing uriId</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3f9b3da</font>-<font color=green>(2015-06-12)</font><font color=black><b>ContentNotif Asset tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>b484d44</font>-<font color=green>(2015-06-12)</font><font color=black><b>I think I've coded all the PSN stories</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>70903bf</font>-<font color=green>(2015-06-12)</font><font color=black><b>Merge remote-tracking branch 'origin/br_5.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+|\  
+| *   <font color=blue>0db4005</font>-<font color=green>(2015-06-12)</font><font color=black><b>Added @ken tag on test for missing assetRef in response. Added xmlns definition on HP_PSN_Routing xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| |\  
+| * | <font color=blue>3c9971a</font>-<font color=green>(2015-06-12)</font><font color=black><b>Added @ken tag on test for missing assetRef in response. Added xmlns definition on HP_PSN_Routing xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * | <font color=blue>6c6c6c5</font>-<font color=green>(2015-06-11)</font><font color=black><b>New files for many opps used for 7147</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | | <font color=blue>1515bc7</font>-<font color=green>(2015-06-12)</font><font color=black><b>Cleaned up the collection code</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>f182255</font>-<font color=green>(2015-06-12)</font><font color=black><b>Removed the collect trait for Routes, and just added a field.  The route returned by the route selector now uses the description from the message, not the one that matches the route.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>4be78d2</font>-<font color=green>(2015-06-11)</font><font color=black><b>Persist Title Records</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_70)</font>
+|/  
+* <font color=blue>c50e27e</font>-<font color=green>(2015-06-11)</font><font color=black><b>Added test for 6346 6348 and more tests for 7147</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5e1859c</font>-<font color=green>(2015-06-10)</font><font color=black><b>More tests for 7147. Need one more for podOptimization/position attriubte impact</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_69)</font>
+*   <font color=blue>965f7e9</font>-<font color=green>(2015-06-10)</font><font color=black><b>New test for placementInfo breakPlacementSequence 7147</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_68)</font>
+|\  
+| * <font color=blue>0285e5e</font>-<font color=green>(2015-06-09)</font><font color=black><b>Moved dependency versions to nirvana</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_67)</font>
+| * <font color=blue>a41a6c4</font>-<font color=green>(2015-06-09)</font><font color=black><b>Removed used metadata module</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ada2ce5</font>-<font color=green>(2015-06-10)</font><font color=black><b>New test for placementInfo breakPlacementSequence 7147</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

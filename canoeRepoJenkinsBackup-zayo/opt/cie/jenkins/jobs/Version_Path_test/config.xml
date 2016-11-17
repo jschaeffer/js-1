@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo &quot;###############################################################&quot;
+echo &quot;Checking the installation date for Lab to Lab&quot;
+echo &quot;###############################################################&quot;
+
+#export instances=&quot;ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub acp&quot;
+
+export environments=&quot;l2ladstw01 l2ladscom01 l2lcip01&quot;
+#export environments=&quot;l2ladstw01 l2ladscom01 l2lcip01 l2lcis01 l2lcm01 l2lfwciping01 l2lpsntw01 l2lpsncom01 l2lsmspub01 l2lsmsi01 l2lciptwl01 l2ladstwl01 l2lcistwl01 l2lcmtwl01 l2lpsntwl01 l2lsmsitwl01&quot;
+
+for j in ${environments}; do
+  case $j in
+   l2ladstw01)
+     app=ads0101
+     ;; 
+   l2ladscom01)
+     app=ads0201
+     ;;
+   l2lcip01)
+     export applist=&quot;dai-cip cip-feedback CIP_FN_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         cip-feedback)
+           app=cip-feedback
+           ;;
+          CIP_FN_FW)
+            app=CIP_FN_FW
+            ;;
+        esac
+      done
+      ;;
+   l2lcis01)
+     export applist=&quot;cis01 cis02&quot;
+     for x in ${applist}; do
+       case $x in
+         cis01)
+           app=cis01
+           ;;
+         cis02)
+           app=cis02
+           ;;
+        esac
+      done
+     ;;
+   l2lfwciping01)
+     export applist=&quot;FW_CIP_ING_01 FW_SMSI FW_SMSI_RELAY&quot;
+     for x in ${applist}; do
+       case $x in
+         FW_CIP_ING_01)
+           app=FW_CIP_ING_01
+           ;;
+         FW_SMSI)
+           app=FW_SMSI
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+         FW_SMSI_RELAY)
+           app=FW_SMSI_RELAY
+           ;;
+        esac
+      done
+     ;;
+   l2lcm01)
+     export applist=&quot;billing caas_admin cm_40 FW_CM&quot;
+     for x in ${applist}; do
+       case $x in
+         billing)
+           app=billing
+           ;;
+         caas_admin)
+           app=caas_admin
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+         FW_CM)
+           app=FW_CM
+           ;;
+        esac
+      done
+     ;;
+   l2lpsntw01)
+     app=psn0101
+     ;;
+   l2lpsncom01)
+     app=psn0201
+     ;;
+   l2lsmspub01)
+     app=smsi-pub
+     ;;
+   l2lsmsi01)
+     export applist=&quot;smsi, smsi-admin&quot;
+     for x in ${applist}; do
+       case x in
+        smsi)
+          app=smsi
+          ;;
+        smsi-admin)
+          app=smsi-admin
+          ;;
+        esac
+      done
+     ;;
+   l2ladstwl01)
+     app=ads0101
+     ;;
+   l2lciptwl01)
+     app=cip-feedback
+     ;;
+   l2lcistwl01)
+     export applist=&quot;cis01 CIS_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         cis01)
+           app=cis01
+           ;;
+         CIS_FW)
+           app=CIS_FW
+           ;;
+        esac
+      done
+     ;;
+   l2lcmtwl01)
+     export applist=&quot;Billing caas_admin cm_40&quot;
+     for x in ${applist}; do
+       case $x in
+         billing)
+           app=Billing
+           ;;
+         caas_admin)
+           app=caas_admin
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+        esac
+      done
+     ;;
+   l2lpsntwl01)
+     export applist=&quot;ADS_FW psn0101&quot;
+     for x in ${applist}; do
+       case $x in
+         ADS_FW)
+           app=ADS_FW
+           ;;
+         psn0101)
+           app=psn0101
+           ;;
+       esac
+     done
+     ;;  
+   l2lsmsitwl01)
+     app=smsi
+     ;;  
+   l2lsmspubtwl01)
+     export applist=&quot;smsi-pub SMSI_PUB_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         smsi-pub)
+           app=smsi-pub
+           ;;
+         SMSI_PUB_FW)
+           app=SMSI_PUB_FW
+           ;;
+        esac
+      done
+     ;;
+  esac
+
+
+export target=&quot;/var/www/html/lab2lab&quot;
+
+echo &quot;****************&quot;
+
+ for i in ${app}; do
+#  inst=`ssh tcserver@$j &quot;ls -al instances/$i/webapps/*.war | awk &apos;{print $6,$7,$8}&apos;&quot;`  
+    inst=`ssh tcserver@$j &quot;cd instances/$i/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;&lt;td&gt;$inst1&quot; &gt; $target/${i}.instdate.txt
+ echo $inst
+ done
+echo &quot;****************&quot;
+done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

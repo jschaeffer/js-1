@@ -1,0 +1,49 @@
+<b><u>Component Release Info:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-metadata-ingestion</b><br><u>Version</u><b>&nbspr_4.0.0_35</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana>Kassi: CAAS-core 4.0.0_112
+CIP-Sender 4.0.0_169: Line Item and LI Media Asset PlacementLimit; fixed 1000 CIP-Immediate issue
+PCI: 4.0.0_155:  Now ingests Line Item and LI Media Asset PlacementLimit
+Metadata Ingester 4.0.0_35 (Fixed Provider ID issue; now allows Z in license window)</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_24</b></u><br>
+<pre>
+* <font color=blue>01ad66c</font>-<font color=green>(2014-03-04)</font><font color=black><b>Accept DateTime with offset, when no offset create one with colon between hour and minutes</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_35, r_4.0.0_35)</font>
+* <font color=blue>a2cf7a3</font>-<font color=green>(2014-03-04)</font><font color=black><b>Added tests for licenseWindow offset and ZULU, added MAMV field 76 check in AdCases</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f1ab175</font>-<font color=green>(2014-03-04)</font><font color=black><b>Very slight mod to readME</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ee544a4</font>-<font color=green>(2014-02-28)</font><font color=black><b>updated ad asset overwrite tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (v_4.0.0_34)</font>
+* <font color=blue>db22b60</font>-<font color=green>(2014-02-28)</font><font color=black><b>VODDAI-5317 allow z in license offset</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>6fe388d</font>-<font color=green>(2014-02-26)</font><font color=black><b>providerID validation, match directory structure to scrum3</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (v_4.0.0_33)</font>
+*   <font color=blue>6dba736</font>-<font color=green>(2014-02-20)</font><font color=black><b>Changed adAsset xml slightly for results in tab3</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_32)</font>
+|\  
+| * <font color=blue>75234c6</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5277 Fix for missing Provider_Id</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>dc4e0e7</font>-<font color=green>(2014-02-20)</font><font color=black><b>Changed adAsset xml slightly for results in tab3</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>1df2020</font>-<font color=green>(2014-02-20)</font><font color=black><b>Updated updateAds xml and added timezoneCode line to readme. Check ingester.jar and ingestion-log4j files for correct directoryPath</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>4b05711</font>-<font color=green>(2014-02-20)</font><font color=black><b>Fix for missing assetName in ad update</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_31)</font>
+| * <font color=blue>c789142</font>-<font color=green>(2014-02-20)</font><font color=black><b>Fix for disappearing else</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_30)</font>
+| * <font color=blue>811f488</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5168 Provider must be valid</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_29)</font>
+| * <font color=blue>0a0c067</font>-<font color=green>(2014-02-20)</font><font color=black><b>Starting VODDAI-5168</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>fe21b15</font>-<font color=green>(2014-02-20)</font><font color=black><b>Updated updateAds xml and added timezoneCode line to readme</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>8d8e286</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5272 Store corrected provider in field 78 for entertainment</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_28)</font>
+* <font color=blue>69e41a1</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5172 Store corrected provider in field 78 for entertainment</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>87c9c1b</font>-<font color=green>(2014-02-20)</font><font color=black><b>VODDAI-5167 Fix for update of field 76</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>586284e</font>-<font color=green>(2014-02-19)</font><font color=black><b>VODDAI-4857 include provider alias to get video def.  Requires new code from caas-core</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_27)</font>
+*   <font color=blue>b5844ca</font>-<font color=green>(2014-02-19)</font><font color=black><b>Added file results in tab3 of Ad_Asset xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>44a80b1</font>-<font color=green>(2014-02-19)</font><font color=black><b>VODDAI-4857 Used feed for video def for entertainment assests.  This does not include provider Alias</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>00de7e9</font>-<font color=green>(2014-02-19)</font><font color=black><b>VODDAI-5171 HDContent no longer required</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>c53955f</font>-<font color=green>(2014-02-19)</font><font color=black><b>VODDAI-5167, VODDAI-5176, VODDAI-5177 Don't over right ad fields</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>7dc685c</font>-<font color=green>(2014-02-19)</font><font color=black><b>Added file results in tab3 of Ad_Asset xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>0935014</font>-<font color=green>(2014-02-19)</font><font color=black><b>Modified entAssetRegression</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>e2e1581</font>-<font color=green>(2014-02-19)</font><font color=black><b>Deleted old files, added new file for updating adAsset stories</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>a220150</font>-<font color=green>(2014-02-11)</font><font color=black><b>Added dateStamp to READme</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_26)</font>
+* <font color=blue>51cf228</font>-<font color=green>(2014-02-11)</font><font color=black><b>Added expected results for negative test Cases in the AdAssetCases excel file TAB3. Added note to README for NEW scrum3 processing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>1143c90</font>-<font color=green>(2014-02-03)</font><font color=black><b>centered results</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_25)</font>
+* <font color=blue>9f036d5</font>-<font color=green>(2014-02-03)</font><font color=black><b>Updated README</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>083893c</font>-<font color=green>(2014-02-03)</font><font color=black><b>Updated xcel files, changed durations to be 32, 37, and 38 for SD, HD, and A&E</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>50763f3</font>-<font color=green>(2014-02-03)</font><font color=black><b>Added correct ent. asset tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>8eab2fc</font>-<font color=green>(2014-02-03)</font><font color=black><b>Add Ent. Assets</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font></pre>
+<hr>
+<p>

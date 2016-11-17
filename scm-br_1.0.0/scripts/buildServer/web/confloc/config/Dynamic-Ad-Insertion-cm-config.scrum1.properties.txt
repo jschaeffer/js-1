@@ -1,0 +1,31 @@
+diff --git a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+index a5fbc1d..79f10e7 100644
+--- a/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
++++ b/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties
+@@ -1,13 +1,13 @@
+- dataSource.driverClassName=oracle.jdbc.OracleDriver
+- dataSource.url=jdbc:oracle:thin:@10.13.18.119:1522:scrum001
+- dataSource.username=SC1_CAAS
+- dataSource.password=SC1_CAAS
+- hibernate.c3p0.initialPoolSize=3
+- hibernate.c3p0.maxPoolSize=15
+- hibernate.c3p0.idleConnectionTestPeriod=10
+- hibernate.c3p0.maxIdleTime=120
++dataSource.driverClassName=oracle.jdbc.OracleDriver
++dataSource.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++dataSource.username=SC1_CAAS
++dataSource.password=SC1_CAAS
++hibernate.c3p0.initialPoolSize=3
++hibernate.c3p0.maxPoolSize=15
++hibernate.c3p0.idleConnectionTestPeriod=10
++hibernate.c3p0.maxIdleTime=120
+ 
+- # Crowd
+- crowd.rest.url=http://10.13.18.56:8095/crowd/rest
+- crowd.rest.basicAuthUser=cm
+- crowd.rest.basicAuthPassword=crowd
++# Crowd
++crowd.rest.url=http://10.13.18.56:8095/crowd/rest
++crowd.rest.basicAuthUser=cm
++crowd.rest.basicAuthPassword=crowd
+\ No newline at end of file

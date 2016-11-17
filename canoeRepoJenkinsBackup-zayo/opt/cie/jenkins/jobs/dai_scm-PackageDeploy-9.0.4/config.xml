@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9.1">
+      <projectUrl>https://github.com/CanoeVentures/dai_scm/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>git@github.com:CanoeVentures/dai_scm.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_9.0.4</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <org.jfrog.hudson.maven3.Maven3Builder plugin="artifactory@2.2.4">
+      <mavenName>Maven3.2</mavenName>
+      <rootPom>pom.xml</rootPom>
+      <goals>clean package</goals>
+      <mavenOpts></mavenOpts>
+    </org.jfrog.hudson.maven3.Maven3Builder>
+    <hudson.plugins.groovy.Groovy plugin="groovy@1.23">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>def VERSION = &quot;9.0.4&quot;
+def PROJECT = &quot;dai_scm&quot;
+def PROJFILE = &quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+
+String changelogtemp = &quot;&quot;&quot;
+projectRoot=&quot;/opt/cie/jenkins/jobs/dai_scm-PackageDeploy-$VERSION/workspace&quot;
+commonTargetRoot=&quot;target&quot;
+webappDir=&quot;webapps&quot;
+
+build {
+
+  build_args=&quot;mvn clean package&quot;
+}
+
+build_package {
+        pre_pkg_cmds {
+          pre_pkg_1=&quot;cd \$projectRoot/target; mkdir liquibase; cp \$projectRoot/liquibase/*.xml liquibase&quot;
+          pre_pkg_2=&quot;cd \$projectRoot/target; mv dai_scm-$VERSION-SNAPSHOT.war dai_scm.war&quot;
+        }
+    artifacts {
+        name {
+            bin=&quot;dai_scm.war&quot;
+            lb =&quot;liquibase&quot;
+            config=&quot;config&quot;
+        }
+        location {
+            bin=&quot;\$projectRoot/target&quot;
+            lb =&quot;\$projectRoot&quot;
+            config=&quot;\$projectRoot&quot;
+        }
+    }
+}
+&quot;&quot;&quot;
+
+File scriptName = new File(&quot;$PROJFILE&quot;)
+        scriptName.write(&quot;${changelogtemp}&quot;)
+        println scriptName</command>
+      </scriptSource>
+      <groovyName>(Default)</groovyName>
+      <parameters></parameters>
+      <scriptParameters></scriptParameters>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <classPath></classPath>
+    </hudson.plugins.groovy.Groovy>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+export ProjFile=&quot;/opt/build/scm/scripts/buildServer/properties/projects/dai_scm/project.properties&quot;
+echo &quot;ProjFile -&gt; $ProjFile&quot;
+export ProjLoc=`cat $ProjFile | awk -F&quot;=&quot; &apos;/projectRoot/ {print $2;exit;}&apos;`
+echo &quot;Replacing -&gt; $ProjLoc with $WORKSPACE&quot;
+sed -e &quot;s|${ProjLoc}|\&quot;${WORKSPACE}\&quot;|&quot; -i &apos;&apos; $ProjFile
+
+cat $ProjFile
+
+/opt/build/scripts/CreateJenkinsPackage.sh dai_scm dai_scm br_9.0.4 ${BUILD_NUMBER}
+
+#/opt/build/scripts/createTar.sh dai_scm br_9.0.4 
+
+#export CANOEUX_VERSION=`cat ${WORKSPACE}/application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+#echo &quot;Deploying CANOE-UX version ${CANOEUX_VERSION} to artifactory&quot;
+#cp grails-canoe-ux-${CANOEUX_VERSION}.zip canoe-ux-${CANOEUX_VERSION}.zip
+
+#/opt/build/scripts/createRelease.sh dai_scm dai_scm br_9.0.4 ${BUILD_NUMBER}
+
+#/opt/build/scripts/createSnapshot.sh dai_scm dai_scm br_9.0.4 ${BUILD_NUMBER}
+
+#echo ${WORKSPACE}
+
+#sed -e &quot;s|1.0.3-SNAPSHOT|\&quot;${VERSION}\&quot;|&quot; -i &apos;&apos; $i</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.git.GitPublisher plugin="git@2.2.7">
+      <configVersion>2</configVersion>
+      <pushMerge>false</pushMerge>
+      <pushOnlyIfSuccess>false</pushOnlyIfSuccess>
+      <forcePush>false</forcePush>
+      <tagsToPush>
+        <hudson.plugins.git.GitPublisher_-TagToPush>
+          <targetRepoName>origin</targetRepoName>
+          <tagName>v_9.0.4_${BUILD_NUMBER}</tagName>
+          <tagMessage></tagMessage>
+          <createTag>true</createTag>
+          <updateTag>false</updateTag>
+        </hudson.plugins.git.GitPublisher_-TagToPush>
+      </tagsToPush>
+    </hudson.plugins.git.GitPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

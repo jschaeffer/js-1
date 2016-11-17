@@ -1,0 +1,241 @@
+diff --git a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh
+index 8a4ef2e..4afc518 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh
++++ b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum1.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+diff --git a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh
+index ffefe71..9989e23 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh
++++ b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum2.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+diff --git a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh
+index 8a4ef2e..4afc518 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh
++++ b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum3.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+diff --git a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh
+index 8a4ef2e..4afc518 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh
++++ b/safi-smsi-server/src/main/resources/env_configs/setenv.scrum4.sh
+@@ -3,7 +3,7 @@
+ # JAVA_OPTS are used during START/STOP/RUN
+ # CATALINA_OPTS are used during START/RUN
+ 
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.6.0_29"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+index b91f557..e14f4a4 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+@@ -1,6 +1,6 @@
+ ###ETL-FEEDER Database Connection###
+ config.dir=.
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC1_REPORTING_ODS
+ db.password=SC1_REPORTING_ODS
+ db.max.idle=10
+@@ -29,7 +29,7 @@ smsi.late.veryLateMinutes = 2880
+ smsi.late.totalLateSessionsThreshold = 100
+ 
+ ###CAAS CORE Database Configuration###
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ caas.db.username=SC1_CAAS
+ caas.db.password=SC1_CAAS
+ caas.db.max.idle=10
+@@ -42,17 +42,22 @@ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+ 
+-freewheel.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++freewheel.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ freewheel.db.username=SC1_RELAY
+ freewheel.db.password=SC1_RELAY
+ freewheel.owner=freewheel.tv
+ 
+-google.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++google.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ google.db.username=SC1_RELAY1
+ google.db.password=SC1_RELAY1
+ google.owner=Google
+ 
+-broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++broadway.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ broadway.db.username=SC1_RELAY2
+ broadway.db.password=SC1_RELAY2
+ broadway.owner=Broadway Systems
++
++rentrak.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++rentrak.db.username=SC1_RELAY3
++rentrak.db.password=SC1_RELAY3
++rentrak.owner=freewheel.tv
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+index 894a430..481a763 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+@@ -1,6 +1,6 @@
+ ###ETL-FEEDER Database Connection###
+ config.dir=.
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC2_REPORTING_ODS
+ db.password=SC2_REPORTING_ODS
+ db.max.idle=10
+@@ -29,7 +29,7 @@ smsi.late.veryLateMinutes = 2880
+ smsi.late.totalLateSessionsThreshold = 100
+ 
+ ###CAAS CORE Database Configuration###
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ caas.db.username=SC2_CAAS
+ caas.db.password=SC2_CAAS
+ caas.db.max.idle=10
+@@ -42,17 +42,22 @@ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+ 
+-freewheel.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++freewheel.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ freewheel.db.username=SC2_RELAY
+ freewheel.db.password=SC2_RELAY
+ freewheel.owner=freewheel.tv
+ 
+-google.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++google.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ google.db.username=SC2_RELAY1
+ google.db.password=SC2_RELAY1
+ google.owner=Google
+ 
+-broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++broadway.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ broadway.db.username=SC2_RELAY2
+ broadway.db.password=SC2_RELAY2
+ broadway.owner=Broadway Systems
++
++rentrak.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++rentrak.db.username=SC2_RELAY3
++rentrak.db.password=SC2_RELAY3
++rentrak.owner=freewheel.tv
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+index f433511..c3dc8be 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+@@ -1,6 +1,6 @@
+ ###ETL-FEEDER Database Connection###
+ config.dir=.
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC3_REPORTING_ODS
+ db.password=SC3_REPORTING_ODS
+ db.max.idle=10
+@@ -29,7 +29,7 @@ smsi.late.veryLateMinutes = 2880
+ smsi.late.totalLateSessionsThreshold = 100
+ 
+ ###CAAS CORE Database Configuration###
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ caas.db.username=SC3_CAAS
+ caas.db.password=SC3_CAAS
+ caas.db.max.idle=10
+@@ -42,18 +42,22 @@ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+ 
+-freewheel.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++freewheel.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ freewheel.db.username=SC3_RELAY
+ freewheel.db.password=SC3_RELAY
+ freewheel.owner=freewheel.tv
+ 
+-google.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++google.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ google.db.username=SC3_RELAY1
+ google.db.password=SC3_RELAY1
+ google.owner=Google
+ 
+-broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++broadway.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ broadway.db.username=SC3_RELAY2
+ broadway.db.password=SC3_RELAY2
+ broadway.owner=Broadway Systems
+ 
++rentrak.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++rentrak.db.username=SC3_RELAY3
++rentrak.db.password=SC3_RELAY3
++rentrak.owner=freewheel.tv
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+index 917afcb..fd4fd4e 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+@@ -1,6 +1,6 @@
+ ###ETL-FEEDER Database Connection###
+ config.dir=.
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC4_REPORTING_ODS
+ db.password=SC4_REPORTING_ODS
+ db.max.idle=10
+@@ -29,7 +29,7 @@ smsi.late.veryLateMinutes = 2880
+ smsi.late.totalLateSessionsThreshold = 100
+ 
+ ###CAAS CORE Database Configuration###
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ caas.db.username=SC4_CAAS
+ caas.db.password=SC4_CAAS
+ caas.db.max.idle=10
+@@ -42,18 +42,22 @@ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+ 
+-freewheel.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++freewheel.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ freewheel.db.username=SC4_RELAY
+ freewheel.db.password=SC4_RELAY
+ freewheel.owner=freewheel.tv
+ 
+-google.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++google.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ google.db.username=SC4_RELAY1
+ google.db.password=SC4_RELAY1
+ google.owner=Google
+ 
+-broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++broadway.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ broadway.db.username=SC4_RELAY2
+ broadway.db.password=SC4_RELAY2
+ broadway.owner=Broadway Systems
+ 
++rentrak.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++rentrak.db.username=SC4_RELAY3
++rentrak.db.password=SC4_RELAY3
++rentrak.owner=freewheel.tv
+\ No newline at end of file

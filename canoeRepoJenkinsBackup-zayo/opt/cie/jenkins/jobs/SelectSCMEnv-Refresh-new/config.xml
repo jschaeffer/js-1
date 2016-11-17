@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SelEnv</name>
+          <description>Select Environment to refresh</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>all</string>
+              <string>devint</string>
+              <string>scrum1</string>
+              <string>scrum2</string>
+              <string>scrum3</string>
+              <string>scrum4</string>
+              <string>Marley</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <authToken>TOKEN_NAME</authToken>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 3 * * 1-5</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+cd /opt/build/scripts
+
+unset targs
+unset posttargs
+
+fnChktcservState() {
+  i_Stat=`/opt/build/scripts/tcServerAdmin.sh $targ $instance status | awk &apos;/STATUS/ {print $1,$2,$3,$4,$5}&apos;`
+    if [[ $i_Stat = &quot;STATUS Instance is RUNNING as&quot; ]]
+      then echo &quot;&lt;img src=../images/biggreen.png width=32 height=32/&gt;&quot; &gt; $target/$instance.envstate.txt
+    elif [[ $i_Stat = &quot;STATUS Instance is NOT RUNNING&quot; ]]
+      then echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt;&quot; &gt; $target/$instance.envstate.txt
+    fi
+}
+
+fnVerCheck() {
+Version=`ssh tcserver@$targ &quot;grep Implementation-Version /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+fnVerJar() {
+  echo &quot;$targ/$direct&quot; &gt; ${target}/${Component}_app.txt
+Version=`ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/$jarLoc; jar xf $jarName META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+ echo &quot;Not Present&quot;  &gt; $target/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/$app.txt
+ inst=`ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/$jarLoc; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/$app.instdate.txt
+ fi
+}
+
+fnLogCheck() {
+  d1=`ssh tcserver@${targ} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${targ} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$target/diskspace.txt
+  l1=`ssh tcserver@${targ} &quot;du instances/$instance/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${targ} &quot;du -h instances/$instance/logs | awk &apos;{print $1}&apos;&quot;`;export lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;img src=../images/red.png&gt;&quot; | tee $target/$Componentapp.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;img src=../images/yellow.png&gt;&quot; | tee $target/$Component.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;img src=../images/green.png&gt;&quot;| tee $target/$Component.logs
+  fi
+
+}
+
+export targs=&quot;$SelEnv&quot;
+
+if [[ $SelEnv = &quot;all&quot; ]]; then
+   export targs=&quot;devint scrum1 scrum2 scrum3 scrum4 Marley&quot;
+fi
+
+for i in $targs; do
+case $i in
+  devint)
+     export envname=&quot;devint&quot;
+     export targ=&quot;dvappdai01&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  scrum1)
+     export envname=&quot;scrum1&quot;
+     export targ=&quot;dvappdai02&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  scrum2)
+     export envname=&quot;scrum2&quot;
+     export targ=&quot;dvappdai03&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  scrum3)
+     export envname=&quot;scrum3&quot;
+     export targ=&quot;dvappdai04&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  scrum4)
+     export envname=&quot;scrum4&quot;
+     export targ=&quot;dvappdai05&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  Marley)
+     export envname=&quot;Marley&quot;
+     export targ=&quot;itappdai01&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+esac
+
+export target=&quot;/var/www/html/${envname}&quot;
+for x in $i; do
+
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;Reporting targ=$i in $target&quot;
+echo &quot;&quot;
+echo &quot;&quot;
+
+cd /opt/build/scripts
+echo &quot;Refreshing this dashboard data currently.  Please refresh this page in a minute or so&quot; &gt;/var/www/html/$envname/dtupd.txt
+
+## Changing to Component and targenv for all pieces
+## Webapps section
+
+ Component=&quot;dai-national-cis&quot;
+ instance=$Component
+ webapps=&quot;nCisClient&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;metadata-publisher&quot;
+ instance=$Component
+ webapps=&quot;publisher&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;Dynamic-Ad-Insertion-cm&quot;&quot;
+ instance=&quot;cm&quot;
+ webapps=$Component
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;Dynamic-Ad-Insertion-engine&quot;
+ instance=&quot;ads&quot;
+ webapps=&quot;ads&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;dai-cip-feedback&quot;
+ instance=&quot;cip&quot;
+ webapps=&quot;cip-server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;impression_collector&quot;
+ instance=$Component
+ webapps=&quot;impression_collector_server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;POIS&quot;
+ instance=$Component
+ webapps=&quot;pois&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;dai-smsi&quot;
+ instance=&quot;smsi&quot;
+ webapps=&quot;safi-smsi-server&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;int-test-support&quot;
+ instance=&quot;mock_svr&quot;
+ webapps=$Component
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;Pgmr-Cpgn-Int&quot;
+ instance=$Component
+ webapps=&quot;pci&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;smsi-publisher&quot;
+ instance=&quot;smsi-pub&quot;
+ webapps=$Component
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;dai-smsi-relay&quot;
+ instance=$Component
+ webapps=&quot;smsi-relay&quot;
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+ Component=&quot;ops-dce-metadata-agent&quot;
+ instance=&quot;dce-mdata&quot;
+ webapps=$Component
+ fnVerCheck
+ fnChktcservState
+ fnLogCheck
+
+## .jar component section
+
+ Component=&quot;dai-cip&quot;
+ direct=&quot;dai=cip&quot;
+ jarLoc=&quot;bin&quot;
+ jarName=&quot;dai-cip.jar&quot;
+ fnVerJar
+
+ Component=&quot;acp&quot;
+ direct=&quot;acp&quot;
+ jarLoc=&quot;bin&quot;
+ jarName=&quot;acp.jar&quot;
+ fnVerJar
+
+## DB component section
+
+Component=&quot;caas-core&quot;
+Version=`./check_dbversions.sh -a caas-core -e ${envname} | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;ads-core&quot;
+Version=`./check_dbversions.sh -a ads-core -e ${envname} | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai-etl-feeder (DB)&quot;
+Version=`./check_dbversions.sh -a dai-etl-feeder -e ${envname} | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$xt/ETL_Report_DB.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/ETL_Report_DB.txt
+  fi
+
+
+
+
+###
+echo &quot;Checking all application server (tcserver) instance states&quot;
+# Checking tcserver instance state post version check
+###
+
+export instances=&quot;metadata-publisher dai-national-cis ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub dai-smsi-relay dai-dce&quot;
+
+export target=&quot;/var/www/html/${envname}&quot;
+
+ for i in ${instances}; do
+  i_Stat=`/opt/build/scripts/tcServerAdmin.sh $targname $i status | awk &apos;/STATUS/ {print $1,$2,$3,$4,$5}&apos;`
+    if [[ $i_Stat = &quot;STATUS Instance is RUNNING as&quot; ]]
+      then echo &quot;&lt;img src=../images/biggreen.png width=32 height=32/&gt;&quot; &gt; $target/$i.envstate.txt
+    elif [[ $i_Stat = &quot;STATUS Instance is NOT RUNNING&quot; ]]
+      then echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt;&quot; &gt; $target/$i.envstate.txt
+    fi
+ done
+###
+echo &quot;Checking log directory usage across all installed appicationss&quot;
+# Checking log directory usage post version and tcserver state check
+###
+# var d = Disk Space (same as original)
+# var dh = Disk Space remaining in Human readable form
+# var l = Log space (same as original)
+# var lh = Log Space in Human readable form
+
+ for i in ${instances}; do
+  d1=`ssh tcserver@${targname} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${targname} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$target/diskspace.txt
+  l1=`ssh tcserver@${targname} &quot;du instances/$i/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${targname} &quot;du -h instances/$i/logs | awk &apos;{print $1}&apos;&quot;`;lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt;&quot; &gt; $target/$i.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;img src=../images/bigyellow.png width=32 height=32/&gt;&quot; &gt; $target/$i.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;img src=../images/biggreen.png width=32 height=32/&gt;&quot; &gt; $target/$i.logs
+  fi
+ done
+
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;/var/www/html/$envname/dtupd.txt
+done
+exit
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

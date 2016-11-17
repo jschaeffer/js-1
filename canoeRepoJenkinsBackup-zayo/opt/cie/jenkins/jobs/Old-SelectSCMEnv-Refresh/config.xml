@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SelEnv</name>
+          <description>Select Environment to refresh</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>all</string>
+              <string>devint</string>
+              <string>scrum1</string>
+              <string>scrum2</string>
+              <string>scrum3</string>
+              <string>scrum4</string>
+              <string>Marley</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <authToken>TOKEN_NAME</authToken>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 3 * * 1-5</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+cd /opt/build/scripts
+
+unset targs
+unset posttargs
+
+export targs=&quot;$SelEnv&quot;
+echo &quot;./envRefresh.sh $targs&quot;
+#./envRefresh.sh $targs
+
+if [[ $SelEnv = &quot;all&quot; ]]; then
+   export targs=&quot;devint scrum1 scrum2 scrum3 scrum4 Marley&quot;
+fi
+
+for i in $targs; do
+case $i in
+  devint)
+     export envname=&quot;devint&quot;
+     export targname=&quot;dvappdai01&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  scrum1)
+     export envname=&quot;scrum1&quot;
+     export targname=&quot;dvappdai02&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  scrum2)
+     export envname=&quot;scrum2&quot;
+     export targname=&quot;dvappdai03&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  scrum3)
+     export envname=&quot;scrum3&quot;
+     export targname=&quot;dvappdai04&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  scrum4)
+     export envname=&quot;scrum4&quot;
+     export targname=&quot;dvappdai05&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+  Marley)
+     export envname=&quot;Marley&quot;
+     export targname=&quot;itappdai01&quot;
+     echo &quot;Refreshing ${targs}&quot; &gt;/tmp/restart.log;;
+esac
+
+for x in $i; do
+
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;configuring targ=$i targname=$targname&quot;
+echo &quot;&quot;
+echo &quot;&quot;
+
+cd /opt/build/scripts
+echo &quot;Refreshing this dashboard data currently.  Please refresh this page in a minue or so&quot; &gt;/var/www/html/$envname/dtupd.txt
+
+## Changing to Component and targenv for all pieces
+
+Component=&quot;dai-national-cis&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/dai-national-cis/webapps/nCisClient/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;metadata-publisher&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/metadata-publisher/webapps/publisher/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai-billing&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/billing/webapps/dai-billing/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;Dynamic-Ad-Insertion-cm&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/cm/webapps/Dynamic-Ad-Insertion-cm*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;Dynamic-Ad-Insertion-engine&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/ads/webapps/ads*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai-cip-feedback&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/cip/webapps/cip-server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;impression_collector&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/impression_collector/webapps/impression_collector_server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;POIS&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/POIS/webapps/pois*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai-cip&quot;
+Version=`ssh tcserver@${targname} &quot;cd /opt/tcserver/dai-cip/bin; jar xf dai-cip.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;caas-admin&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/caas-admin/webapps/caas-admin/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai-lincoln&quot;
+Version=`ssh tcserver@${targname} &quot;cd /opt/tcserver/log_splitter; jar xf lincoln.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai-smsi&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/smsi/webapps/safi-smsi-server*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;int-test-support&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/mock_svr/webapps/int-test-support/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;Pgmr-Cpgn-Int&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/Pgmr-Cpgn-Int/webapps/pci/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *MANIFEST* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;ops-dce-scte-cfa-reporting-agent&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/dce-agent-001/webapps/ops-dce-scte-cfa-reporting-agent/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;ops-dce-safi-reporting-agent&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/dce-agent-002/webapps/ops-dce-safi-reporting-agent/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;ops-dt&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/ops-dt/webapps/ops-dt/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+#oss_bar
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/oss_bar.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/oss_bar.txt
+  fi
+
+Component=&quot;smsi-admin&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/smsi-admin/webapps/smsi-admin/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai_amm&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/dai_amm/webapps/dai_amm*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;smsi-publisher&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/smsipub/webapps/smsi-publisher*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai-smsi-relay&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/dai-smsi-relay/webapps/smsi-relay*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;ops-dce-metadata-agent&quot;
+Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/dce-mdata/webapps/ops-dce-metadata-agent/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;caas-core&quot;
+Version=`./check_dbversions.sh -a caas-core -e ${envname} | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;ads-core&quot;
+Version=`./check_dbversions.sh -a ads-core -e ${envname} | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+Component=&quot;dai-etl-feeder (DB)&quot;
+Version=`./check_dbversions.sh -a dai-etl-feeder -e ${envname} | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$xt/ETL_Report_DB.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/ETL_Report_DB.txt
+  fi
+
+
+Component=&quot;ops-dt-domain&quot;
+Version=`./check_dbversions.sh -a ops-dt-domain -e ${envname} | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+
+Component=&quot;smsi-publisher&quot;
+Version=`./check_dbversions.sh -a smsi-publisher -e ${envname} | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+  fi
+
+
+#Component=&quot;ops-dce-metadata-agent&quot;
+#Version=`./check_dbversions.sh -a dce-mdata -e ${envname}`
+#if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+#echo &quot;Not Present&quot; | tee /var/www/html/$x/$Component.txt
+#  else
+#echo &quot;${Version}&quot; | tee /var/www/html/$x/$Component.txt
+
+#  fi
+ done
+
+###
+echo &quot;Checking all application server (tcserver) instance states&quot;
+# Checking tcserver instance state post version check
+###
+
+export instances=&quot;metadata-publisher dai-national-cis ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub dai-smsi-relay dai-dce&quot;
+
+export target=&quot;/var/www/html/${envname}&quot;
+
+ for i in ${instances}; do
+  i_Stat=`/opt/build/scripts/tcServerAdmin.sh $targname $i status | awk &apos;/STATUS/ {print $1,$2,$3,$4,$5}&apos;`
+    if [[ $i_Stat = &quot;STATUS Instance is RUNNING as&quot; ]]
+      then echo &quot;&lt;img src=../images/biggreen.png width=32 height=32/&gt;&quot; &gt; $target/$i.envstate.txt
+    elif [[ $i_Stat = &quot;STATUS Instance is NOT RUNNING&quot; ]]
+      then echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt;&quot; &gt; $target/$i.envstate.txt
+    fi
+ done
+###
+echo &quot;Checking log directory usage across all installed appicationss&quot;
+# Checking log directory usage post version and tcserver state check
+###
+# var d = Disk Space (same as original)
+# var dh = Disk Space remaining in Human readable form
+# var l = Log space (same as original)
+# var lh = Log Space in Human readable form
+
+ for i in ${instances}; do
+  d1=`ssh tcserver@${targname} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${targname} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$target/diskspace.txt
+  l1=`ssh tcserver@${targname} &quot;du instances/$i/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${targname} &quot;du -h instances/$i/logs | awk &apos;{print $1}&apos;&quot;`;lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;img src=../images/bigred.png width=32 height=32/&gt;&quot; &gt; $target/$i.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;img src=../images/bigyellow.png width=32 height=32/&gt;&quot; &gt; $target/$i.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;img src=../images/biggreen.png width=32 height=32/&gt;&quot; &gt; $target/$i.logs
+  fi
+ done
+
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;/var/www/html/$envname/dtupd.txt
+done
+exit
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>This tool will run throught the steps necessary to create a new instance on a select machine.&#xd;
+&#xd;
+STILL IN TESTING!</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description>User name and description</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUserPassword</name>
+          <description>You shall not pass!</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>Component</name>
+          <description>Please input name of instance to be created. EX, Test_Component. 
+Required.</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>App</name>
+          <description>Please Specify what application name for the component is. This will be used to populate the server.xml on L2L and Perf instances. EX, smapp. 
+Required for L2L/Perf.</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Suite</name>
+          <description>Please Specify which Suite the instance will be Created on. EX, Scrum1. 
+Required.</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>devint</string>
+              <string>scrum1</string>
+              <string>scrum2</string>
+              <string>scrum3</string>
+              <string>scrum4</string>
+              <string>Lab-To-Lab</string>
+              <string>Performance</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployTarg</name>
+          <description>Please Specify what system the instance will be created on. EX, somehost-cluster2. 
+Required for L2L/Perf.</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>PortNum</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+
+echo $DeployUser
+if [[ $DeployUserPassword = &quot;SCMRox123!&quot; ]]; then
+  cd /opt/build/scripts
+# Taking out the stupid pick your own port crap that&apos;s all the sudden broke.  
+  ./NewTestCreate.sh -c ${Component} -s ${Suite} -v
+  #./NewTestCreate.sh -c ${Component} -s ${Suite} -t ${DeployTarg} -v
+else
+  echo &quot;I thought I said \&quot;You shall not pass\&quot;?&quot;
+fi</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

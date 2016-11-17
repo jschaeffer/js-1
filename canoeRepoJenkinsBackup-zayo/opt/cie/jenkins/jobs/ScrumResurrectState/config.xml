@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SelEnv</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>devint</string>
+              <string>scrum1</string>
+              <string>scrum2</string>
+              <string>scrum3</string>
+              <string>scrum4</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+export action
+
+export Suite=$SelEnv
+export DeployTarg=$SelEnv
+export Component=&quot;&quot;
+
+sysstate=`cat /var/www/html/$SelEnv/sysstate.txt`
+echo &quot;sysstate for SelEnv ($SelEnv) is $sysstate&quot;
+
+if [[ $sysstate = *down* ]]
+  then
+
+source /opt/build/scripts/ZayoSCMSysVars.sh
+
+# Section to Start the VM itself 
+cd /opt/build/scripts
+./startup-vapp.sh $SelEnv
+ 
+# Ping below to be used with the startup of the VM itself (uncomment when employing the above Section to restart)
+while :;do
+        status=`ping -c 2 $APPSERVER_IP | awk &apos;/100% packet loss/ {print}&apos;`
+        if [[ &quot;$status&quot; ]] ; then
+          echo &quot;Not Started yet&quot;;
+          sleep 5
+        else
+         echo &quot;Started&quot; ;break
+        fi
+done
+
+#LH: removed MS stop/start
+export Component=&quot;ad-load-manager request-mgr ads impression_collector SDC-session-collector cip metadata-publisher cis mock_svr smsi cm Pgmr-Cpgn-Int smsi-msp-relay smsipub dai-national-cis placement_response_mapper dai-smsi-relay POIS dce-mdata psn dai-dce dmp-config&quot; 
+
+rm /var/www/html/$Suite/RestartRaw.txt
+
+for Comp in ${Component}; do
+
+export Comp
+export INSTANCE=$Comp
+export APPSERVER_IP=$targname
+touch /var/www/html/$Suite/RestartRaw.txt
+
+    echo &quot;************************************************************************&quot;
+    echo &quot;$Comp&quot;
+    echo &quot;************************************************************************&quot;
+    echo &quot;Instance -&gt; $INSTANCE   APPSERVER_IP -&gt; $APPSERVER_IP   Suite -&gt; $Suite&quot;
+    echo &quot; &quot;
+    echo &quot;status $INSTANCE on $APPSERVER_IP&quot;
+    echo &quot; &quot;
+# if [[ `echo $Comp = | grep &apos;MicroDev*&apos; ` ]]; then
+#            if [[ $Suite = &quot;scrum2&quot; ]]; then
+#             fnSetMicro
+#             AppState=`ssh mstradmin@${APPSERVER_IP} &quot;/opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer gs&quot;`
+#             echo &quot;ssh mstradmin@${APPSERVER_IP} /opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer gs&quot;
+#	       if [[ `echo $AppState | grep &apos;can_be_paused&apos; ` ]]; then
+#		  echo &quot;Error: $Comp on $Suite IS still Running! Please Run scrumPreserveState before proceeding!&quot;
+#                  exit
+#	       elif [[ `echo $AppState | grep &apos;stopped&apos; ` ]]; then
+#		  echo &quot;$Comp on $Suite is NOT Running.&quot;
+#	       fi
+#	    elif [[ $Suite != &quot;scrum2&quot; ]]; then
+#	      echo &quot;No MD deployed on $Suite.&quot;
+#            fi
+
+#	  elif [[ $Comp != MicroDev* ]]; then
+          AppState=`/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status`
+          echo &quot;/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status&quot;
+		if [[ `echo $AppState | grep &apos;PID&apos; ` ]] ; then
+		  #echo &quot;Error: $Comp on $Suite IS still Running! Please Run scrumPreserveState before proceeding!&quot;
+          echo &quot;instance already running. will not be restarted.&quot;
+          #        exit
+		elif [[ `echo $AppState | grep &apos;NOT&apos; ` ]] ; then
+		  echo &quot;$Comp on $Suite is NOT Running.&quot;
+	        fi
+#             fi
+    echo &quot;AppState = $AppState&quot;
+    unset AppState
+done
+
+echo &quot;************************************************************************&quot;
+echo &quot;Restart beginning&quot;
+echo &quot;************************************************************************&quot;
+for i in `cat /var/www/html/$Suite/ToRestart.txt` ; do
+
+if [[ $i = dai-cip ]]; then
+# echo &quot;Restarting dai-cip&quot;
+# ssh tcserver@${APPSERVER_IP} &quot;cd dai-cip; exec ./launcher.sh start&quot;
+ echo &quot;dai-cip was running prior.  Not restarting on Scrum&quot;
+elif [[ $i = acp ]]; then
+ echo &quot;acp was running prior.  Not restarting on Scrum&quot;
+else
+  echo &quot;$i is Starting&quot;
+    if [[ `echo $i | grep &apos;MicroDev*&apos; ` ]]; then
+     if [[ $Suite = &quot;scrum2&quot; ]]; then
+	echo &quot;Running -&gt; ssh mstradmin@${APPSERVER_IP} /opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer start&quot;
+	ssh mstradmin@${APPSERVER_IP} &quot;/opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer start&quot;
+         echo &quot;Wait is set to 60s to give MicroDev required time for proper start-up before continuing&quot;
+	 wait 60
+     elif [[ $Suite != &quot;scrum2&quot; ]]; then
+          echo &quot;No MicroDev installed on $Suite&quot;
+     fi
+    elif [[ $i != &quot;MicroDev&quot; ]]; then
+    echo &quot;Running -&gt; /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${i} start&quot;
+    echo &quot; &quot;
+         /opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${i} start
+    fi
+ fi
+done
+
+echo &quot;&quot;
+echo &quot;************************************************************************&quot;
+echo &quot;Resurrection Check&quot;
+echo &quot;************************************************************************&quot;
+
+for i in `cat /var/www/html/$Suite/ToRestart.txt` ; do
+
+if [[ $Comp = MicroDev* ]]; then
+            if [[ $Suite = &quot;scrum2&quot; ]]; then
+             fnSetMicro
+             AppState=`ssh mstradmin@${APPSERVER_IP} &quot;/opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer gs`
+             echo &quot;ssh mstradmin@${APPSERVER_IP} /opt/Microstrategy/MicroStrategy/bin/mstrctl -s IntelligenceServer gs&quot;
+	       if [[ `echo $AppState | grep &apos;can_be_paused&apos; ` ]]; then
+		  echo &quot;$Comp on $Suite was Succesfully resurrected!&quot;
+	       elif [[ `echo $AppState | grep &apos;stop&apos; ` ]]; then
+               #LH: I wanna put better error checking here as microdev has multiple states of starting and stopping. need to find a keyword for stopped
+		  echo &quot;ERROR: $Comp on $Suite was NOT Succesfully resurrected! Seek SCM Assistance&quot;
+	       fi
+	    elif [[ $Suite != &quot;scrum2&quot; ]]; then
+	      echo &quot;No MD deployed on $Suite.&quot;
+            fi
+
+	  elif [[ $Comp != MicroDev* ]]; then
+          AppState=`/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status`
+          echo &quot;/opt/build/scripts/tcServerAdmin.sh ${APPSERVER_IP} ${INSTANCE} status&quot;
+		if [[ `echo $AppState grep | &apos;PID&apos; ` ]] ; then
+		  echo &quot;$Comp on $Suite was Succesfully resurrected!&quot;
+		elif [[ `echo $AppState | grep &apos;NOT&apos; ` ]] ; then
+		  echo &quot;ERROR: $Comp on $Suite was NOT Succesfully resurrected! Seek SCM Assistance&quot;
+	        fi
+             fi
+    echo &quot;AppState = $AppState&quot;
+    unset AppState
+done
+
+
+
+# Reporting section
+echo &quot;&lt;b&gt;--- Suite Resurection ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;${Suite} resurrected by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+export BUILD_TAG
+export DeployUser
+export Suite=$SelEnv
+export DeployTarg=$SelEnv
+
+# Set getVer to 0 to default to devint version
+#
+
+cd /opt/build/scripts
+echo &quot;&lt;b&gt;&lt;font color=green&gt;up&lt;/font&gt;&lt;/b&gt;&quot; &gt;/var/www/html/$Suite/sysstate.txt
+edate=`date | awk &apos;{print \$2,\$3,\$4}&apos;`
+echo &quot;Environment $SelEnv restarted by $DeployUser $BUILD_NUMBER - $edate&quot; &gt;&gt;/var/www/html/sysactivity/$SelEnv.txt
+
+echo &quot;&lt;b&gt;URL For resurrect output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;u&gt;Components attempted to restart from prior shutdown :&lt;/u&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+for i in `cat /var/www/html/$DeployTarg/ToRestart.txt`; do
+ echo &quot;$i&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+done
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+  echo &quot;$SelEnv has been resurrected and Deployment is ready to proceed&quot;
+ else
+  echo &quot;$SelEnv was already up. Deployment to proceed.&quot;
+  exit
+fi
+
+# Adding Slack notificaton 
+export webhook_url=&quot;https://hooks.slack.com/services/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&quot;
+export channel=&quot;#deployments&quot;
+export username=&quot;SCMUpdMgr&quot;
+export text=&quot;System Resurrect: ${DeployTarg} by ${DeployUser}\n-URL for console output: &lt;http://cvbuild.cv.infra:7001/job/${JOB_NAME}/${BUILD_NUMBER}/console|here&gt;&quot;
+escapedText=$(echo $text | sed &apos;s/&quot;/\&quot;/g&apos; | sed &quot;s/&apos;/\&apos;/g&quot; )
+json=&quot;{\&quot;channel\&quot;: \&quot;$channel\&quot;, \&quot;username\&quot;:\&quot;$username\&quot;, \&quot;icon_emoji\&quot;:\&quot;mega\&quot;, \&quot;attachments\&quot;:[{\&quot;color\&quot;:\&quot;good\&quot; , \&quot;text\&quot;: \&quot;$escapedText\&quot;}]}&quot;
+curl -s -d &quot;payload=$json&quot; &quot;$webhook_url&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.29">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
+          </configs>
+          <projects>SelectSCMEnv-Refresh</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <block>
+            <buildStepFailureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </buildStepFailureThreshold>
+            <unstableThreshold>
+              <name>UNSTABLE</name>
+              <ordinal>1</ordinal>
+              <color>YELLOW</color>
+              <completeBuild>true</completeBuild>
+            </unstableThreshold>
+            <failureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+              <completeBuild>true</completeBuild>
+            </failureThreshold>
+          </block>
+          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
+        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

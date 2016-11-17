@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h2&gt;Custom Deployment job&lt;/h2&gt; Universal across all Canoe Dev/Scrum systems.&#xd;
+&#xd;
+Parameter Driven.  User supplies needed parameters to initiate the deploy job</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description>&lt;h3&gt;Enter the User id and summary of purpose for deployment&lt;/h3&gt;</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description>&lt;h3&gt;Select Component to Deploy&lt;/h3&gt;</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>ads-core</string>
+              <string>caas-core</string>
+              <string>dai-billing</string>
+              <string>dai-etl-feeder</string>
+              <string>ops-dt-domain</string>
+              <string>oss_bar</string>
+              <string>smsi-publisher</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Version</name>
+          <description>&lt;h3&gt;Enter Build Version to Deploy.  Build Version of component to be deployed (must be entered as &lt;b&gt;version number + build number&lt;/b&gt; ie; &lt;u&gt;4.0.0_35&lt;/u&gt;)&lt;p&gt; Open &lt;a href=http://cvbuild.cv.infra/releaseTars/&gt;SCM Staging Area&lt;/a&gt; to discover valid versions to use.
+
+If no version is selected the version selection will happen as follows:
+&lt;ul&gt;&lt;li&gt;For DevInt Environment - Existing version will be redeployed
+&lt;li&gt;For Scrum Environments - DevInt version will be used for version to deploy
+&lt;/ul&gt;&lt;/h3&gt;</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>DB_Rebuild</name>
+          <description>Do you want to rebuild from scratch or perform just a liquibase update against the existing schema?</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>No</string>
+              <string>Yes</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+export DeployTarg=&quot;MicroDev&quot;
+
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to ${DeployTarg} by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Component: &lt;/b&gt;${Component} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+
+# Set initial getVer flags to &apos;No&apos;
+#
+getVer=&quot;0&quot;
+
+# Setup APP/DB specific variables
+#
+case $Component in
+   caas-core)
+     export DB_USER=&quot;CAAS&quot;
+     export DB_PASS=&quot;CAAS&quot;
+   ;;
+   ads-core)
+     export DB_USER=&quot;ADS&quot;
+     export DB_PASS=&quot;ADS&quot;
+   ;;
+   dai-etl-feeder)
+     export DB_USER=&quot;REPORTING_ODS&quot;
+     export DB_PASS=&quot;REPORTING_ODS&quot;
+   ;;
+   ops-dt-domain)
+     export DB_USER=&quot;OPS_DT&quot;
+     export DB_PASS=&quot;OPS_DT&quot;
+   ;;
+   oss_bar)
+     export DB_USER=&quot;OSS_BAR&quot;
+     export DB_PASS=&quot;OSS_BAR&quot;
+   ;;
+   smsi-publisher)
+     export DB_USER=&quot;SMSIPUB&quot;
+     export DB_PASS=&quot;SMSIPUB&quot;
+   ;;
+esac
+
+# Setup Environment specific variables
+#
+case $DeployTarg in
+   devint)
+     export DeployTarg
+     export targname=&quot;dvappdai01&quot;
+     export APPSERVER_IP=&quot;10.13.18.113&quot;
+     export SIDTarg=&quot;dev003&quot;
+     export DBIP=&quot;10.13.18.111&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.111:1522:dev003&quot;
+     export DB_USER=&quot;DI_${DB_USER}&quot;
+     export DB_PASS=&quot;DI_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;DI_CAAS&quot;
+     export ETL_BAR=&quot;DI_OSS-BAR&quot;
+     export ETL_BILLING=&quot;DI_BILLING&quot;
+   ;;
+   scrum1)
+     export targname=&quot;dvappdai02&quot;
+     export APPSERVER_IP=&quot;10.13.18.115&quot;
+     export SIDTarg=&quot;scrum001&quot;
+     export DBIP=&quot;10.13.18.119&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.119:1522:scrum001&quot;
+     export DB_USER=&quot;SC1_${DB_USER}&quot;
+     export DB_PASS=&quot;SC1_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;SC1_CAAS&quot;
+     export ETL_BAR=&quot;SC1_OSS-BAR&quot;
+     export ETL_BILLING=&quot;SC1_BILLING&quot;
+   ;;
+   scrum2)
+     export targname=&quot;dvappdai03&quot;
+     export APPSERVER_IP=&quot;10.13.18.116&quot;
+     export SIDTarg=&quot;scrum002&quot;
+     export DBIP=&quot;10.13.18.120&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.120:1522:scrum002&quot;
+     export DB_USER=&quot;SC2_${DB_USER}&quot;
+     export DB_PASS=&quot;SC2_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;SC2_CAAS&quot;
+     export ETL_BAR=&quot;SC2_OSS-BAR&quot;
+     export ETL_BILLING=&quot;SC2_BILLING&quot;
+   ;;
+   scrum3)
+     export targname=&quot;dvappdai04&quot;
+     export APPSERVER_IP=&quot;10.13.18.117&quot;
+     export SIDTarg=&quot;scrum003&quot;
+     export DBIP=&quot;10.13.18.121&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.121:1522:scrum003&quot;
+     export DB_USER=&quot;SC3_${DB_USER}&quot;
+     export DB_PASS=&quot;SC3_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;SC3_CAAS&quot;
+     export ETL_BAR=&quot;SC3_OSS-BAR&quot;
+     export ETL_BILLING=&quot;SC3_BILLING&quot;
+   ;;
+   MicroDev)
+     export SIDTarg=&quot;dev004&quot;
+     export DBIP=&quot;10.13.18.55&quot;
+     export JDBC_URL=&quot;jdbc:oracle:thin:@10.13.18.55:1522:dev004&quot;
+     export DB_USER=&quot;DI4_${DB_USER}&quot;
+     export DB_PASS=&quot;DI4_${DB_PASS}&quot;
+     export ETL_CAAS=&quot;SDI4CAAS&quot;
+     export ETL_BAR=&quot;DI4_OSS-BAR&quot;
+     export ETL_BILLING=&quot;DI4_BILLING&quot;
+   ;;
+esac
+
+print &quot;${targname}&quot;
+print &quot;${APPSERVER_IP}&quot;
+print &quot;${SIDTarg}&quot;
+print &quot;${JDBC_URL}&quot;
+
+# Verify User supplies a Username and Purpose for the Deployment
+#
+if [ -z ${DeployUser} ] ; then
+    print &quot;&lt;h2&gt;User must supply a user name and summary of deploy purpose&lt;/h2&gt;&quot;
+    exit 1
+fi
+
+# Check to see if this deployment is intended for the DevInt system and if it is, whether a new or existing version should be used
+#
+if [ ${DeployTarg} = &quot;devint&quot; ] ; then
+  if [ -z ${Version} ] ; then
+    getVer=&quot;1&quot;
+    print &quot;For DevInt deployments, if no version is supplied, the existing version will be redeployed&quot;
+  fi
+  else
+# If not a DevInt deploy, check to see if a version is supplied and notify the user that no version will indicate a DevInt version upgrade to the selected Scrum system
+#
+  if [ -z ${Version} ] ; then
+        getVer=&quot;1&quot;
+    print &quot;For Scrum deployments, if no version is supplied, the existing DevInt version will be deployed&quot;
+  fi
+fi
+
+print &quot;${Component} ${DeployTarg} ${Version}&quot;
+
+cd /opt/checkouts/oss_deployment/scripts
+
+case $Component in
+################################################
+   dai-billing) 
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/billing/webapps/dai-billing/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+
+       if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+         cd /opt/checkouts/dai-billing/grails-app/migrations/cisys
+         echo &quot;@genUser.MicroDev.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.55)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=dev004)))&apos;
+      STATUS=${?}
+        if [[ ${STATUS} != &quot;0&quot; ]]; then
+         echo &quot;Schema creation failed&quot;
+         exit ${STATUS}
+         fi
+       fi
+       cd /opt/checkouts/oss_deployment/scripts
+       ./MicroDevDB.sh -a dai-billing -t dai-billing -i binlling -r ${VERSION} -e MicroDev -j &quot;jdbc:oracle:thin:@10.13.18.55:1522:dev004&quot; -p DI4_BILLING -u DI4_BILLING -v
+       echo &quot;dai-billing-${Version}&quot; &gt; /var/www/html/${DeployTarg}/bill.txt
+       echo &quot;dai-billing-${Version}&quot; &gt; /var/www/html/${DeplotTarg}/billdb.txt
+       ;;
+################################################
+    oss_bar)
+       Deployed_Version=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       fi
+       print &quot;Deploying version: ${Version}&quot;
+
+       ./kill_dbsessions.sh -a oss_bar -e ${DeployTarg}
+       if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+       cd /opt/checkouts/oss_bar/grails-app/migrations/cisys
+       echo &quot;@genUser.MicroDev.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.55)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=dev004)))&apos;
+
+        fi
+       cd /opt/checkouts/oss_deployment/scripts
+       ./MicroDevDB.sh -a oss_bar -t oss_bar -i oss_bar -r ${VERSION} -e MicroDev -j &quot;jdbc:oracle:thin:@10.13.18.55:1522:dev004&quot; -p DI4_OSS_BAR -u DI4_OSS_BAR -v
+       echo &quot;&lt;td&gt;oss_bar-${Version}&quot; &gt; /var/www/html/${DeployTarg}/bar.txt
+       echo &quot;&lt;td&gt;oss_bar-${Version}&quot; &gt; /var/www/html/${DeployTarg}/bardb.txt
+       ;;
+################################################
+   smsi-publisher)
+       if [ ${getVer} = &quot;1&quot; ] ; then
+             Version=`ssh tcserver@dvappdai01 &quot;grep Implementation-Version /opt/tcserver/instances/smsipub/webapps/smsi-publisher*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+       cd /opt/build/scripts
+       ./kill_dbsessions.sh -a smsi-publisher -e ${DeployTarg}
+
+       if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+        cd /opt/checkouts/smsi-publisher/config/cisys
+        export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+       STATUS=${?}
+        if [[ ${STATUS} != &quot;0&quot; ]]; then
+         echo &quot;Schema creation failed&quot;
+         exit ${STATUS}
+        fi
+       fi
+       cd /opt/checkouts/oss_deployment/scripts
+       ./tmpdeploy.sh -a ${Component} -e ${DeployTarg} -r ${Version} -v 
+
+       echo &quot;smsi-publisher-${Version}&quot; &gt; /var/www/html/${DeployTarg}/smsipub.txt
+       echo &quot;smsi-publisher-${Version}&quot; &gt; /var/www/html/${DeployTarg}/smsipub.txt
+       ;;
+################################################
+    caas-core)
+
+      cd /opt/build/scripts
+      Deployed_Version=`./check_dbversions.sh -a caas-core -e ${DeployTarg}`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`./check_dbversions.sh -a caas-core -e devint`
+       STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+            echo &quot;Check version status failed&quot;
+         exit ${STATUS}
+         fi
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+
+      ./kill_dbsessions.sh -a caas-core -e ${DeployTarg}
+      if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+
+      cd /opt/checkouts/caas-core/core/model/src/main/resources/liquibase/cisys
+      echo &quot;@genUser.MicroDev.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.55)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=dev004)))&apos;
+
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed&quot;
+        exit ${STATUS}
+      fi
+    fi
+    cd /opt/checkouts/oss_deployment/scripts
+
+
+    ./MicroDevDB.sh -a caas-core -t caas-core -i cm -r ${VERSION} -e MicroDev -j &quot;jdbc:oracle:thin:@10.13.18.55:1522:dev004&quot; -p DI4_CAAS -u DI4_CAAS -v
+    /opt/build/scripts/roottcServerAdmin.sh ${targname} start
+    cd /opt/build/scripts
+    ETL_VERS=`./check_dbversions.sh -a dai-etl-feeder -e ${DeployTarg}`
+    echo &quot;&lt;td bgcolor=\&quot;lightyellow\&quot;&gt;&lt;font color=red&gt;Needs Mtrlzd View refresh or redeploy&lt;br&gt;dai-etl-feeder_${ETL_VERS}&lt;/font&gt;&quot; &gt; /var/www/html/${DeployTarg}/etldb.txt
+    BAR_VERS=`ssh tcserver@${targname} &quot;grep Implementation-Version /opt/tcserver/instances/oss_bar/webapps/oss_bar/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+    echo &quot;&lt;td bgcolor=\&quot;lightyellow\&quot;&gt;&lt;font color=red&gt;Needs Mtrlzd View refresh or redeploy&lt;br&gt;oss_bar_${BAR_VERS}&lt;/font&gt;&quot; &gt; /var/www/html/${DeployTarg}/bardb.txt
+    echo &quot;caas-core-${Version}&quot; &gt; /var/www/html/${DeployTarg}/caas-coredb.txt
+;;
+################################################
+    ads-core)
+
+      cd /opt/build/scripts
+      Deployed_Version=`./check_dbversions.sh -a ads-core -e ${DeployTarg}`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`./check_dbversions.sh -a ads-core -e devint`
+       STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+            echo &quot;Check version status failed&quot;
+         exit ${STATUS}
+         fi
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+
+      ./kill_dbsessions.sh -a ads-core -e ${DeployTarg}
+      if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+        cd /opt/checkouts/ads-core/core/model/src/main/resources/liquibase/cisys
+        export SQLCONN=&quot;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBIP})(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=${SIDTarg})))&quot;
+sqlplus -S cm_system/oracle123@$SQLCONN &lt;&lt;!
+set heading off
+define DeployTarg=&apos;$DeployTarg&apos;
+set verify off
+@genUser.${DeployTarg}.sql
+exit sql.sqlcode
+!
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed&quot;
+        exit ${STATUS}
+      fi
+    fi
+    cd /opt/checkouts/oss_deployment/scripts
+
+    ./deployRebuildDb.sh -a ads-core -t ads-core -i cm -r ${Version} -e ${DeployTarg} -j &quot;${JDBC_URL}&quot; -p ${DB_PASS} -u ${DB_USER} -v
+     echo &quot;ads-core-${Version}&quot; &gt; /var/www/html/${DeployTarg}/ads-coredb.txt
+;;
+################################################
+    dai-etl-feeder)
+
+       cd /opt/build/scripts
+      Deployed_Version=`./check_dbversions.sh -a dai-etl-feeder -e ${DeployTarg}`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`./check_dbversions.sh -a dai-etl-feeder -e devint`
+       STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+            echo &quot;Check version status failed.  Do you need to do a PackageDeploy first?&quot;
+         exit ${STATUS}
+         fi
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+
+./kill_sessions_etlMicroDev.sh
+echo &quot;@/tmp/ora_session_kill.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.55)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=dev004)))&apos;
+
+print Beginning Rebuild from scratch for app/db to latest package version ${VERSION}
+print ------------------------------------------------------------------------------------------#------------------
+cd /opt/checkouts/dai-etl-feeder/src/main/resources/liquibase/cisys
+
+echo &quot;@genUser.MicroDev.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.55)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=dev004)))&apos;
+
+STATUS=${?}
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi
+
+cd /opt/checkouts/oss_deployment/scripts
+
+./MicroDevDB.sh -a dai-etl-feeder -t dai-etl-feeder -i xxxxx -r ${VERSION} -e MicroDev -j &quot;jdbc:oracle:thin:@10.13.18.55:1522:dev004&quot; -p DI4_REPORTING_ODS -u DI4_REPORTING_ODS -c DI4_CAAS -b DI4_OSS_BAR -o DI4_BILLING -v
+
+STATUS=${?}
+echo &quot;Status is ${STATUS}&quot;
+if [[ ${STATUS} != &quot;0&quot; ]]; then
+    exit ${STATUS}
+fi
+
+
+    echo &quot;&lt;td&gt;dai-etl-feeder-${Version}&quot; &gt; /var/www/html/${DeployTarg}/etldb.txt
+;;
+################################################
+    ops-dt-domain)
+
+     cd /opt/build/scripts
+     Deployed_Version=`./check_dbversions.sh -a ${Component} -e ${DeployTarg}`
+       if [ ${getVer} = &quot;1&quot; ] ; then
+          Version=`./check_dbversions.sh -a ${Component} -e devint`
+       STATUS=${?}
+         if [[ ${STATUS} != &quot;0&quot; ]]; then
+            echo &quot;Check version status failed.  Do you need to do a PackageDeploy first?&quot;
+         exit ${STATUS}
+         fi
+       print &quot;Deploying version: ${Version}&quot;
+       fi
+
+    if [[ ${DB_Rebuild} = &quot;Yes&quot; ]] ; then
+    cd /opt/checkouts/ops-dt/grails-app/migrations/cisys
+    echo &quot;@genUser.MicroDev.sql;&quot; | sqlplus -s &apos;cm_system/oracle123@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.13.18.55)(PORT=1522)))(CONNECT_DATA=(SERVICE_NAME=dev004)))&apos;
+
+      STATUS=${?}
+      if [[ ${STATUS} != &quot;0&quot; ]]; then
+        echo &quot;Schema creation failed.  Are there users sessions that need to be destroyed?&quot;
+        exit ${STATUS}
+      fi
+    fi
+      cd /opt/checkouts/oss_deployment/scripts
+
+     ./MicroDevDB.sh -a ops-dt -t ops-dt -i ops-dt -r ${VERSION} -e MicroDev -j &quot;jdbc:oracle:thin:@10.13.18.55:1522:dev004&quot; -p DI4_OPS_DT -u DI4_OPS_DT -v
+
+    echo &quot;ops-dt-db-${VERSION}&quot; &gt; /var/www/html/${DeployTarg}/opsdtdb.txt
+;;
+
+    *)
+      print &quot;No Deploy...&quot;;;
+esac
+
+echo &quot;&lt;b&gt;Version: &lt;/b&gt;${Version} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;${DB_Rebuild} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

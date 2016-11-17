@@ -1,0 +1,5 @@
+Kassi: 
+CAAS-core 4.0.0_112 
+CIP-Sender 4.0.0_169: Line Item and LI Media Asset PlacementLimit; fixed 1000 
+CIP-Immediate issue PCI: 4.0.0_155: Now ingests Line Item and LI Media Asset PlacementLimit 
+Metadata Ingester 4.0.0_35: (Fixed Provider ID issue; now allows Z in license window)

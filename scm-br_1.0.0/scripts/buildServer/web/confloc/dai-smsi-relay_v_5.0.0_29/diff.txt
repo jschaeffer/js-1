@@ -1,0 +1,116 @@
+diff --git a/config/log4j.scrum1.xml b/config/log4j.scrum1.xml
+index e0e3cf9..8db4a20 100644
+--- a/config/log4j.scrum1.xml
++++ b/config/log4j.scrum1.xml
+@@ -36,5 +36,8 @@
+         <Logger name="org.apache.cxf.interceptor.LoggingOutInterceptor" level="trace" additivity="false">
+             <appender-ref ref="requestResponseLog" level="trace"/>
+         </Logger>
++        <Logger name="dai.interfaces.smsi.relay.service.SslHandshakeSend" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
+     </Loggers>
+ </Configuration>
+diff --git a/config/log4j.scrum2.xml b/config/log4j.scrum2.xml
+index e0e3cf9..8db4a20 100644
+--- a/config/log4j.scrum2.xml
++++ b/config/log4j.scrum2.xml
+@@ -36,5 +36,8 @@
+         <Logger name="org.apache.cxf.interceptor.LoggingOutInterceptor" level="trace" additivity="false">
+             <appender-ref ref="requestResponseLog" level="trace"/>
+         </Logger>
++        <Logger name="dai.interfaces.smsi.relay.service.SslHandshakeSend" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
+     </Loggers>
+ </Configuration>
+diff --git a/config/log4j.scrum3.xml b/config/log4j.scrum3.xml
+index e0e3cf9..8db4a20 100644
+--- a/config/log4j.scrum3.xml
++++ b/config/log4j.scrum3.xml
+@@ -36,5 +36,8 @@
+         <Logger name="org.apache.cxf.interceptor.LoggingOutInterceptor" level="trace" additivity="false">
+             <appender-ref ref="requestResponseLog" level="trace"/>
+         </Logger>
++        <Logger name="dai.interfaces.smsi.relay.service.SslHandshakeSend" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
+     </Loggers>
+ </Configuration>
+diff --git a/config/log4j.scrum4.xml b/config/log4j.scrum4.xml
+index e0e3cf9..8db4a20 100644
+--- a/config/log4j.scrum4.xml
++++ b/config/log4j.scrum4.xml
+@@ -36,5 +36,8 @@
+         <Logger name="org.apache.cxf.interceptor.LoggingOutInterceptor" level="trace" additivity="false">
+             <appender-ref ref="requestResponseLog" level="trace"/>
+         </Logger>
++        <Logger name="dai.interfaces.smsi.relay.service.SslHandshakeSend" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
+     </Loggers>
+ </Configuration>
+diff --git a/config/smsi-relay-env-application.scrum1.properties b/config/smsi-relay-env-application.scrum1.properties
+index 6b4a183..71b5eb0 100644
+--- a/config/smsi-relay-env-application.scrum1.properties
++++ b/config/smsi-relay-env-application.scrum1.properties
+@@ -23,3 +23,11 @@ smsi.record.count=7000
+ smsi.db.threads=0,1,2,3,4,5,6,7,8,9
+ smsi.days.check=5
+ smsi.max.sessions=1000
++
++use.ssl.handshake=false
++keystore.path=
++keystore.type=
++server.protocol=TLS
++secure.protocol=false
++keystore.password=
++use.certificate=false
+diff --git a/config/smsi-relay-env-application.scrum2.properties b/config/smsi-relay-env-application.scrum2.properties
+index 269c65d..f57db91 100644
+--- a/config/smsi-relay-env-application.scrum2.properties
++++ b/config/smsi-relay-env-application.scrum2.properties
+@@ -23,3 +23,11 @@ smsi.record.count=7000
+ smsi.db.threads=0,1,2,3,4,5,6,7,8,9
+ smsi.days.check=5
+ smsi.max.sessions=1000
++
++use.ssl.handshake=false
++keystore.path=
++keystore.type=
++server.protocol=TLS
++secure.protocol=false
++keystore.password=
++use.certificate=false
+diff --git a/config/smsi-relay-env-application.scrum3.properties b/config/smsi-relay-env-application.scrum3.properties
+index 767db1c..993f7c2 100644
+--- a/config/smsi-relay-env-application.scrum3.properties
++++ b/config/smsi-relay-env-application.scrum3.properties
+@@ -23,3 +23,11 @@ smsi.record.count=7000
+ smsi.db.threads=0,1,2,3,4,5,6,7,8,9
+ smsi.days.check=5
+ smsi.max.sessions=1000
++
++use.ssl.handshake=false
++keystore.path=
++keystore.type=
++server.protocol=TLS
++secure.protocol=false
++keystore.password=
++use.certificate=false
+diff --git a/config/smsi-relay-env-application.scrum4.properties b/config/smsi-relay-env-application.scrum4.properties
+index 03a3e9e..094d177 100644
+--- a/config/smsi-relay-env-application.scrum4.properties
++++ b/config/smsi-relay-env-application.scrum4.properties
+@@ -23,3 +23,11 @@ smsi.record.count=7000
+ smsi.db.threads=0,1,2,3,4,5,6,7,8,9
+ smsi.days.check=5
+ smsi.max.sessions=1000
++
++use.ssl.handshake=false
++keystore.path=
++keystore.type=
++server.protocol=TLS
++secure.protocol=false
++keystore.password=
++use.certificate=false

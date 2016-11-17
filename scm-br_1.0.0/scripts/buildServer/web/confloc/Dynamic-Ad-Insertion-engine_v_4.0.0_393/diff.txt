@@ -1,0 +1,56 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index b8f1262..44a0226 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -106,4 +106,9 @@ ads.dce.url=http://localhost
+ ads.dce.schedule=0 0/1 * * * ?
+ 
+ #The name of the ADS to send down to DCE
+-identity.ads=SCRUM1
+\ No newline at end of file
++identity.ads=SCRUM1
++
++#Purge job
++ads.purge.endpointStatus.DaysBackToPurge=30
++ads.purge.endpointStatus.enabled=true
++ads.purge.endpointStatus.schedule=0 0 0 * * ?
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index c1b8530..b368699 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -107,3 +107,8 @@ ads.dce.schedule=0 0/1 * * * ?
+ 
+ #The name of the ADS to send down to DCE
+ identity.ads=SCRUM2
++
++#Purge job
++ads.purge.endpointStatus.DaysBackToPurge=30
++ads.purge.endpointStatus.enabled=true
++ads.purge.endpointStatus.schedule=0 0 0 * * ?
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index 2d4c000..21325a9 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -107,3 +107,8 @@ ads.dce.schedule=0 0/1 * * * ?
+ 
+ #The name of the ADS to send down to DCE
+ identity.ads=SCRUM3
++
++#Purge job
++ads.purge.endpointStatus.DaysBackToPurge=30
++ads.purge.endpointStatus.enabled=true
++ads.purge.endpointStatus.schedule=0 0 0 * * ?
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index 23a91f2..d10b278 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -108,3 +108,8 @@ ads.dce.schedule=0 0/1 * * * ?
+ 
+ #The name of the ADS to send down to DCE
+ identity.ads=SCRUM4
++
++#Purge job
++ads.purge.endpointStatus.DaysBackToPurge=30
++ads.purge.endpointStatus.enabled=true
++ads.purge.endpointStatus.schedule=0 0 0 * * ?

@@ -1,0 +1,45 @@
+<b><u>Component Release Info for Sprint Picasso:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-etl-feeder</b><br><u>Version</u><b>&nbspr_4.0.0_238</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Noel:
+
+VODDAI-6051, VODDAI-5670: Opportunity Rollup and Supporting long character description 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/dai-ods-4.0.3-changelog.xml
+src/main/resources/liquibase/dai-ods-4.0.3/002-yliu-rebase-drop-mv.xml
+src/main/resources/liquibase/dai-ods-4.0.4-changelog.xml
+src/main/resources/liquibase/dai-ods-4.0.4/001-yliu-rebase-tables.xml
+src/main/resources/liquibase/dai-ods-4.0.4/002-yliu-rebase-drop-mv.xml
+src/main/resources/liquibase/dai-ods-4.0.4/003-yliu-rebase-job-log.xml
+src/main/resources/liquibase/dai-ods-4.0.4/004-yliu-rebase-ingest-procs.xml
+src/main/resources/liquibase/dai-ods-4.0.4/005-yliu-rebase-dedup-procs.xml
+src/main/resources/liquibase/dai-ods-4.0.4/006-yliu-rebase-report-views.xml
+src/main/resources/liquibase/dai-ods-4.0.4/007-yliu-rebase-aggregation.xml
+src/main/resources/liquibase/dai-ods-4.0.4/008-yliu-rebase-mapreduce-qc.xml
+src/main/resources/liquibase/dai-ods-4.0.4/009-yliu-add-operator-service-group.xml
+src/main/resources/liquibase/dai-ods-4.0.4/010-yliu-sess-opp-rollup.xml
+src/main/resources/liquibase/dai-ods-4.0.4/011-yliu-sess-opp-rollup-qc.xml
+src/main/resources/liquibase/dai-ods-4.0.4/013-yliu-drop-flight-window.xml
+src/main/resources/liquibase/dai-ods-4.0.4/014-yliu-add-ent-id.xml
+src/main/resources/liquibase/dai-ods-4.0.4/015-yliu-dedup-parallel-four.xml
+src/main/resources/liquibase/dai-ods-4.0.4/016-yliu-aggregation-parallel-four.xml
+src/main/resources/liquibase/dai-ods-4.0.4/017-yliu-pre-invoice-view-fix.xml
+src/main/resources/liquibase/dai-ods-4.0.4/018-yliu-campaign-desc-plus-device-id.xml
+src/main/resources/liquibase/master-changelog.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_229</b></u><br>
+<pre>
+* <font color=blue>c6a14ec</font>-<font color=green>(2014-08-19)</font><font color=black><b>added error checking code to drop table statements.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_238)</font>
+* <font color=blue>e879361</font>-<font color=green>(2014-08-19)</font><font color=black><b>added device id and campaign_desc length changes back.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_237)</font>
+* <font color=blue>559991f</font>-<font color=green>(2014-08-18)</font><font color=black><b>more changes to avoid conflicts more.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_236)</font>
+* <font color=blue>60eb380</font>-<font color=green>(2014-08-18)</font><font color=black><b>more changes to avoid conflicts.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_235)</font>
+* <font color=blue>515c99a</font>-<font color=green>(2014-08-18)</font><font color=black><b>changed all dates on changesets so there would not be conflicts deploying on top of existing.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_234)</font>
+* <font color=blue>99ae954</font>-<font color=green>(2014-08-18)</font><font color=black><b>changed all dates on changesets so there would not be conflicts deploying on top of existing.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_233)</font>
+* <font color=blue>683da16</font>-<font color=green>(2014-08-18)</font><font color=black><b>rebase because caas changes to operator.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_232)</font>
+*   <font color=blue>9d3f99b</font>-<font color=green>(2014-08-15)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-etl-feeder into br_4.0.0</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+|\  
+| * <font color=blue>4e5efb7</font>-<font color=green>(2014-08-15)</font><font color=black><b>campaign desc change plus device id</b></font><font color=grey>- (yliu)</font><font color=red> (v_4.0.0_231, v_4.0.0_230)</font>
+* <font color=blue>ad02b6d</font>-<font color=green>(2014-08-15)</font><font color=black><b>campaign desc change plus device id</b></font><font color=grey>- (Yong Liu)</font><font color=red></font></pre>
+<hr>
+<p>

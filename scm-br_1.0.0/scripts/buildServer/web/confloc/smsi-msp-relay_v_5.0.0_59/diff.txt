@@ -1,0 +1,720 @@
+diff --git a/config/log4j.scrum1.xml b/config/log4j.scrum1.xml
+new file mode 100644
+index 0000000..1282d7d
+--- /dev/null
++++ b/config/log4j.scrum1.xml
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/msp-relay-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi-msp-relay/logs/relay/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="dai.interfaces.smsi.relay.service.SendService" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+diff --git a/config/log4j.scrum2.xml b/config/log4j.scrum2.xml
+new file mode 100644
+index 0000000..1282d7d
+--- /dev/null
++++ b/config/log4j.scrum2.xml
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/msp-relay-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi-msp-relay/logs/relay/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="dai.interfaces.smsi.relay.service.SendService" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+diff --git a/config/log4j.scrum3.xml b/config/log4j.scrum3.xml
+new file mode 100644
+index 0000000..1282d7d
+--- /dev/null
++++ b/config/log4j.scrum3.xml
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/msp-relay-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi-msp-relay/logs/relay/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="dai.interfaces.smsi.relay.service.SendService" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+diff --git a/config/log4j.scrum4.xml b/config/log4j.scrum4.xml
+new file mode 100644
+index 0000000..1282d7d
+--- /dev/null
++++ b/config/log4j.scrum4.xml
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/msp-relay-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi-msp-relay/logs/relay/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="dai.interfaces.smsi.relay.service.SendService" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+diff --git a/config/relay-env-application.scrum1.properties b/config/relay-env-application.scrum1.properties
+new file mode 100644
+index 0000000..69fef00
+--- /dev/null
++++ b/config/relay-env-application.scrum1.properties
+@@ -0,0 +1,36 @@
++#CAAS Database Connection
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC1_CAAS
++caas.db.password=SC1_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
++caas.db.test.idle=60
++
++#HBase Properties
++hbase.url=10.66.12.22
++hbase.port=2181
++hbase.read.size=1000
++hbase.status.column=rentrakStatus
++hbase.identity=rentrak1
++
++#Relay Message Options
++relay.publish.schedule=0 0/5 * * * ?
++campaign.order.owner=freewheel.tv|Google|Broadway
++connection.timeout.millis=60000
++sessions.per.message=1000
++relay.start.seed=0
++relay.end.seed=9
++relay.partner=Rentrak
++
++#Security Options
++secure.protocol=false
++use.certificate=false
++keystore.path=
++keystore.type=
++server.protocol=
++keystore.password=
++
++dmp.url=http://10.66.12.11:9535/int-test-support/DMP
++dmp.cache.deliveryVariance=14
++relay.cache.refresh.schedule=0 0 0/1 * * ?
+diff --git a/config/relay-env-application.scrum2.properties b/config/relay-env-application.scrum2.properties
+new file mode 100644
+index 0000000..9f8c0eb
+--- /dev/null
++++ b/config/relay-env-application.scrum2.properties
+@@ -0,0 +1,36 @@
++#CAAS Database Connection
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC2_CAAS
++caas.db.password=SC2_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
++caas.db.test.idle=60
++
++#HBase Properties
++hbase.url=
++hbase.port=
++hbase.read.size=1000
++hbase.status.column=rentrakStatus
++hbase.identity=rentrak1
++
++#Relay Message Options
++relay.publish.schedule=0 0/5 * * * ?
++campaign.order.owner=freewheel.tv|Google|Broadway
++connection.timeout.millis=60000
++sessions.per.message=1000
++relay.start.seed=0
++relay.end.seed=9
++relay.partner=Rentrak
++
++#Security Options
++secure.protocol=false
++use.certificate=false
++keystore.path=
++keystore.type=
++server.protocol=
++keystore.password=
++
++dmp.url=
++dmp.cache.deliveryVariance=14
++relay.cache.refresh.schedule=0 0 0/1 * * ?
+diff --git a/config/relay-env-application.scrum3.properties b/config/relay-env-application.scrum3.properties
+new file mode 100644
+index 0000000..0c41042
+--- /dev/null
++++ b/config/relay-env-application.scrum3.properties
+@@ -0,0 +1,36 @@
++#CAAS Database Connection
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC3_CAAS
++caas.db.password=SC3_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
++caas.db.test.idle=60
++
++#HBase Properties
++hbase.url=
++hbase.port=
++hbase.read.size=1000
++hbase.status.column=rentrakStatus
++hbase.identity=rentrak1
++
++#Relay Message Options
++relay.publish.schedule=0 0/5 * * * ?
++campaign.order.owner=freewheel.tv|Google|Broadway
++connection.timeout.millis=60000
++sessions.per.message=1000
++relay.start.seed=0
++relay.end.seed=9
++relay.partner=Rentrak
++
++#Security Options
++secure.protocol=false
++use.certificate=false
++keystore.path=
++keystore.type=
++server.protocol=
++keystore.password=
++
++dmp.url=
++dmp.cache.deliveryVariance=14
++relay.cache.refresh.schedule=0 0 0/1 * * ?
+diff --git a/config/relay-env-application.scrum4.properties b/config/relay-env-application.scrum4.properties
+new file mode 100644
+index 0000000..e94bca8
+--- /dev/null
++++ b/config/relay-env-application.scrum4.properties
+@@ -0,0 +1,36 @@
++#CAAS Database Connection
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC4_CAAS
++caas.db.password=SC4_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
++caas.db.test.idle=60
++
++#HBase Properties
++hbase.url=
++hbase.port=
++hbase.read.size=1000
++hbase.status.column=rentrakStatus
++hbase.identity=rentrak1
++
++#Relay Message Options
++relay.publish.schedule=0 0/5 * * * ?
++campaign.order.owner=freewheel.tv|Google|Broadway
++connection.timeout.millis=60000
++sessions.per.message=1000
++relay.start.seed=0
++relay.end.seed=9
++relay.partner=Rentrak
++
++#Security Options
++secure.protocol=false
++use.certificate=false
++keystore.path=
++keystore.type=
++server.protocol=
++keystore.password=
++
++dmp.url=
++dmp.cache.deliveryVariance=14
++relay.cache.refresh.schedule=0 0 0/1 * * ?
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+new file mode 100644
+index 0000000..de97a2e
+--- /dev/null
++++ b/config/setenv.scrum1.sh
+@@ -0,0 +1,9 @@
++setenv.devint.sh# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++JVM_OPTS="-Djava.awt.headless=true -Xms256m -Xmx512m"
++export APPHOME_DIR=/opt/tcserver/instances/smsi-msp-relay
++JAVA_OPTS="$JVM_OPTS -Dschema.validation.enabled=true -Dlog4j.configurationFile=$APPHOME_DIR/conf/log4j.xml -Dconfig.dir=$APPHOME_DIR/conf -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+new file mode 100644
+index 0000000..02f0151
+--- /dev/null
++++ b/config/setenv.scrum2.sh
+@@ -0,0 +1,9 @@
++# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++JVM_OPTS="-Djava.awt.headless=true -Xms256m -Xmx512m"
++export APPHOME_DIR=/opt/tcserver/instances/smsi-msp-relay
++JAVA_OPTS="$JVM_OPTS -Dschema.validation.enabled=true -Dlog4j.configurationFile=$APPHOME_DIR/conf/log4j.xml -Dconfig.dir=$APPHOME_DIR/conf -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+new file mode 100644
+index 0000000..02f0151
+--- /dev/null
++++ b/config/setenv.scrum3.sh
+@@ -0,0 +1,9 @@
++# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++JVM_OPTS="-Djava.awt.headless=true -Xms256m -Xmx512m"
++export APPHOME_DIR=/opt/tcserver/instances/smsi-msp-relay
++JAVA_OPTS="$JVM_OPTS -Dschema.validation.enabled=true -Dlog4j.configurationFile=$APPHOME_DIR/conf/log4j.xml -Dconfig.dir=$APPHOME_DIR/conf -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+new file mode 100644
+index 0000000..02f0151
+--- /dev/null
++++ b/config/setenv.scrum4.sh
+@@ -0,0 +1,9 @@
++# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++JVM_OPTS="-Djava.awt.headless=true -Xms256m -Xmx512m"
++export APPHOME_DIR=/opt/tcserver/instances/smsi-msp-relay
++JAVA_OPTS="$JVM_OPTS -Dschema.validation.enabled=true -Dlog4j.configurationFile=$APPHOME_DIR/conf/log4j.xml -Dconfig.dir=$APPHOME_DIR/conf -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key"
+diff --git a/config/log4j.scrum1.xml b/config/log4j.scrum1.xml
+new file mode 100644
+index 0000000..1282d7d
+--- /dev/null
++++ b/config/log4j.scrum1.xml
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/msp-relay-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi-msp-relay/logs/relay/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="dai.interfaces.smsi.relay.service.SendService" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+diff --git a/config/log4j.scrum2.xml b/config/log4j.scrum2.xml
+new file mode 100644
+index 0000000..1282d7d
+--- /dev/null
++++ b/config/log4j.scrum2.xml
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/msp-relay-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi-msp-relay/logs/relay/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="dai.interfaces.smsi.relay.service.SendService" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+diff --git a/config/log4j.scrum3.xml b/config/log4j.scrum3.xml
+new file mode 100644
+index 0000000..1282d7d
+--- /dev/null
++++ b/config/log4j.scrum3.xml
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/msp-relay-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi-msp-relay/logs/relay/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="dai.interfaces.smsi.relay.service.SendService" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+diff --git a/config/log4j.scrum4.xml b/config/log4j.scrum4.xml
+new file mode 100644
+index 0000000..1282d7d
+--- /dev/null
++++ b/config/log4j.scrum4.xml
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="info">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c:%L - %m%n"/>
++        </Console>
++        <File name="errorLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/msp-relay-error.log">
++            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n"/>
++        </File>
++        <RollingFile name="requestResponseLog" fileName="/opt/tcserver/instances/smsi-msp-relay/logs/request-response.log"
++                     filePattern="/opt/tcserver/instances/smsi-msp-relay/logs/relay/request-response-%d{yyyy-MM-dd}.log">
++            <PatternLayout pattern="%m%n"/>
++            <Policies>
++                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
++            </Policies>
++        </RollingFile>
++    </Appenders>
++    <Loggers>
++        <Root level="info">
++            <AppenderRef ref="Console"/>
++            <AppenderRef ref="errorLog"/>
++        </Root>
++        <Logger name="dai.interfaces.smsi.relay.service.SendService" level="trace" additivity="false">
++            <appender-ref ref="requestResponseLog" level="trace"/>
++        </Logger>
++    </Loggers>
++</Configuration>
+diff --git a/config/relay-env-application.scrum1.properties b/config/relay-env-application.scrum1.properties
+new file mode 100644
+index 0000000..69fef00
+--- /dev/null
++++ b/config/relay-env-application.scrum1.properties
+@@ -0,0 +1,36 @@
++#CAAS Database Connection
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC1_CAAS
++caas.db.password=SC1_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
++caas.db.test.idle=60
++
++#HBase Properties
++hbase.url=10.66.12.22
++hbase.port=2181
++hbase.read.size=1000
++hbase.status.column=rentrakStatus
++hbase.identity=rentrak1
++
++#Relay Message Options
++relay.publish.schedule=0 0/5 * * * ?
++campaign.order.owner=freewheel.tv|Google|Broadway
++connection.timeout.millis=60000
++sessions.per.message=1000
++relay.start.seed=0
++relay.end.seed=9
++relay.partner=Rentrak
++
++#Security Options
++secure.protocol=false
++use.certificate=false
++keystore.path=
++keystore.type=
++server.protocol=
++keystore.password=
++
++dmp.url=http://10.66.12.11:9535/int-test-support/DMP
++dmp.cache.deliveryVariance=14
++relay.cache.refresh.schedule=0 0 0/1 * * ?
+diff --git a/config/relay-env-application.scrum2.properties b/config/relay-env-application.scrum2.properties
+new file mode 100644
+index 0000000..9f8c0eb
+--- /dev/null
++++ b/config/relay-env-application.scrum2.properties
+@@ -0,0 +1,36 @@
++#CAAS Database Connection
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC2_CAAS
++caas.db.password=SC2_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
++caas.db.test.idle=60
++
++#HBase Properties
++hbase.url=
++hbase.port=
++hbase.read.size=1000
++hbase.status.column=rentrakStatus
++hbase.identity=rentrak1
++
++#Relay Message Options
++relay.publish.schedule=0 0/5 * * * ?
++campaign.order.owner=freewheel.tv|Google|Broadway
++connection.timeout.millis=60000
++sessions.per.message=1000
++relay.start.seed=0
++relay.end.seed=9
++relay.partner=Rentrak
++
++#Security Options
++secure.protocol=false
++use.certificate=false
++keystore.path=
++keystore.type=
++server.protocol=
++keystore.password=
++
++dmp.url=
++dmp.cache.deliveryVariance=14
++relay.cache.refresh.schedule=0 0 0/1 * * ?
+diff --git a/config/relay-env-application.scrum3.properties b/config/relay-env-application.scrum3.properties
+new file mode 100644
+index 0000000..0c41042
+--- /dev/null
++++ b/config/relay-env-application.scrum3.properties
+@@ -0,0 +1,36 @@
++#CAAS Database Connection
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC3_CAAS
++caas.db.password=SC3_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
++caas.db.test.idle=60
++
++#HBase Properties
++hbase.url=
++hbase.port=
++hbase.read.size=1000
++hbase.status.column=rentrakStatus
++hbase.identity=rentrak1
++
++#Relay Message Options
++relay.publish.schedule=0 0/5 * * * ?
++campaign.order.owner=freewheel.tv|Google|Broadway
++connection.timeout.millis=60000
++sessions.per.message=1000
++relay.start.seed=0
++relay.end.seed=9
++relay.partner=Rentrak
++
++#Security Options
++secure.protocol=false
++use.certificate=false
++keystore.path=
++keystore.type=
++server.protocol=
++keystore.password=
++
++dmp.url=
++dmp.cache.deliveryVariance=14
++relay.cache.refresh.schedule=0 0 0/1 * * ?
+diff --git a/config/relay-env-application.scrum4.properties b/config/relay-env-application.scrum4.properties
+new file mode 100644
+index 0000000..e94bca8
+--- /dev/null
++++ b/config/relay-env-application.scrum4.properties
+@@ -0,0 +1,36 @@
++#CAAS Database Connection
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC4_CAAS
++caas.db.password=SC4_CAAS
++caas.db.max.idle=10
++caas.db.pool.size=10
++caas.db.pool.initialSize=5
++caas.db.test.idle=60
++
++#HBase Properties
++hbase.url=
++hbase.port=
++hbase.read.size=1000
++hbase.status.column=rentrakStatus
++hbase.identity=rentrak1
++
++#Relay Message Options
++relay.publish.schedule=0 0/5 * * * ?
++campaign.order.owner=freewheel.tv|Google|Broadway
++connection.timeout.millis=60000
++sessions.per.message=1000
++relay.start.seed=0
++relay.end.seed=9
++relay.partner=Rentrak
++
++#Security Options
++secure.protocol=false
++use.certificate=false
++keystore.path=
++keystore.type=
++server.protocol=
++keystore.password=
++
++dmp.url=
++dmp.cache.deliveryVariance=14
++relay.cache.refresh.schedule=0 0 0/1 * * ?
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+new file mode 100644
+index 0000000..de97a2e
+--- /dev/null
++++ b/config/setenv.scrum1.sh
+@@ -0,0 +1,9 @@
++setenv.devint.sh# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++JVM_OPTS="-Djava.awt.headless=true -Xms256m -Xmx512m"
++export APPHOME_DIR=/opt/tcserver/instances/smsi-msp-relay
++JAVA_OPTS="$JVM_OPTS -Dschema.validation.enabled=true -Dlog4j.configurationFile=$APPHOME_DIR/conf/log4j.xml -Dconfig.dir=$APPHOME_DIR/conf -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+new file mode 100644
+index 0000000..02f0151
+--- /dev/null
++++ b/config/setenv.scrum2.sh
+@@ -0,0 +1,9 @@
++# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++JVM_OPTS="-Djava.awt.headless=true -Xms256m -Xmx512m"
++export APPHOME_DIR=/opt/tcserver/instances/smsi-msp-relay
++JAVA_OPTS="$JVM_OPTS -Dschema.validation.enabled=true -Dlog4j.configurationFile=$APPHOME_DIR/conf/log4j.xml -Dconfig.dir=$APPHOME_DIR/conf -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+new file mode 100644
+index 0000000..02f0151
+--- /dev/null
++++ b/config/setenv.scrum3.sh
+@@ -0,0 +1,9 @@
++# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++JVM_OPTS="-Djava.awt.headless=true -Xms256m -Xmx512m"
++export APPHOME_DIR=/opt/tcserver/instances/smsi-msp-relay
++JAVA_OPTS="$JVM_OPTS -Dschema.validation.enabled=true -Dlog4j.configurationFile=$APPHOME_DIR/conf/log4j.xml -Dconfig.dir=$APPHOME_DIR/conf -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+new file mode 100644
+index 0000000..02f0151
+--- /dev/null
++++ b/config/setenv.scrum4.sh
+@@ -0,0 +1,9 @@
++# Edit this file to set custom options
++# Tomcat accepts two parameters JAVA_OPTS and CATALINA_OPTS
++# JAVA_OPTS are used during START/STOP/RUN
++# CATALINA_OPTS are used during START/RUN
++
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++JVM_OPTS="-Djava.awt.headless=true -Xms256m -Xmx512m"
++export APPHOME_DIR=/opt/tcserver/instances/smsi-msp-relay
++JAVA_OPTS="$JVM_OPTS -Dschema.validation.enabled=true -Dlog4j.configurationFile=$APPHOME_DIR/conf/log4j.xml -Dconfig.dir=$APPHOME_DIR/conf -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dcrypt.key.path=/opt/tcserver/crypt/qa.key"

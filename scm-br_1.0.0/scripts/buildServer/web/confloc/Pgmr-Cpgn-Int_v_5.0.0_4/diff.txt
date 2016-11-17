@@ -1,0 +1,128 @@
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index c83a6dd..e101918 100644
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/Pgmr-Cpgn-Int
+ export PCI_CONFIG=$APPHOME_DIR/conf/pci-env-application.properties
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dlog4j.configuration=$APPHOME_DIR/conf/pci-log4j.properties -Dconfig.file=$PCI_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index c83a6dd..e101918 100644
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/Pgmr-Cpgn-Int
+ export PCI_CONFIG=$APPHOME_DIR/conf/pci-env-application.properties
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dlog4j.configuration=$APPHOME_DIR/conf/pci-log4j.properties -Dconfig.file=$PCI_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index c83a6dd..7237ffa 100644
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/Pgmr-Cpgn-Int
+ export PCI_CONFIG=$APPHOME_DIR/conf/pci-env-application.properties
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dlog4j.configuration=$APPHOME_DIR/conf/pci-log4j.properties -Dconfig.file=$PCI_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index c83a6dd..e101918 100644
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/Pgmr-Cpgn-Int
+ export PCI_CONFIG=$APPHOME_DIR/conf/pci-env-application.properties
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dlog4j.configuration=$APPHOME_DIR/conf/pci-log4j.properties -Dconfig.file=$PCI_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index c83a6dd..e101918 100644
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/Pgmr-Cpgn-Int
+ export PCI_CONFIG=$APPHOME_DIR/conf/pci-env-application.properties
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dlog4j.configuration=$APPHOME_DIR/conf/pci-log4j.properties -Dconfig.file=$PCI_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index c83a6dd..e101918 100644
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/Pgmr-Cpgn-Int
+ export PCI_CONFIG=$APPHOME_DIR/conf/pci-env-application.properties
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dlog4j.configuration=$APPHOME_DIR/conf/pci-log4j.properties -Dconfig.file=$PCI_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index c83a6dd..7237ffa 100644
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/Pgmr-Cpgn-Int
+ export PCI_CONFIG=$APPHOME_DIR/conf/pci-env-application.properties
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dlog4j.configuration=$APPHOME_DIR/conf/pci-log4j.properties -Dconfig.file=$PCI_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index c83a6dd..e101918 100644
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -1,9 +1,9 @@
+-JAVA_HOME="/usr/java/latest"
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms256m -Xmx512m -XX:MaxPermSize=256m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Duser.timezone=America/New_York -Dgemfire.disableShutdownHook=true -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
+ export APPHOME_DIR=/opt/tcserver/instances/Pgmr-Cpgn-Int
+ export PCI_CONFIG=$APPHOME_DIR/conf/pci-env-application.properties
+ JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dlog4j.configuration=$APPHOME_DIR/conf/pci-log4j.properties -Dconfig.file=$PCI_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dinsight-max-frames=6000"

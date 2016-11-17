@@ -1,0 +1,279 @@
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+index 3421c21..b91f557 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum1.properties
+@@ -1,4 +1,4 @@
+-# Further, you can also just pass the individual parameters as system properties -Djdbc.url=blah for instance. config.dir=../ads-config
++###ETL-FEEDER Database Connection###
+ config.dir=.
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC1_REPORTING_ODS
+@@ -6,30 +6,29 @@ db.password=SC1_REPORTING_ODS
+ db.max.idle=10
+ db.pool.size=10
+ db.pool.initialSize=5
+-
+-validation.logging.enabled=true
+-performance.logging.enabled=true
+-smsi.millisecond.threshold=250
+-smsi.save.threads=150
+-smsi.save.queue=100000
+-schema.validation.enabled=true
+-smsi.late.enabled = true
+-smsi.late.lateMinutes = 1440
+-smsi.late.veryLateMinutes = 2880
+-smsi.late.tooManyLate = 100
+-
+-
+-#Determines the size and wait times for creation of batch inserts
+ database.batch.maxBatch=10000
+ database.batch.minBatchWait=250
+ database.batch.maxBatchWait=1500
+ 
++###Offline Mode Configurations###
+ smsi.offline.retry.count=3
+ smsi.offline.retry.millis=500
+-db.checkout.timeout=3000
++relay.offline.check.schedule = 0/20 * * * * ?
+ 
++###Logging Configurations###
++validation.logging.enabled=true
++schema.validation.enabled=true
++performance.logging.enabled=true
+ smsi.logDuplicates = true
++smsi.millisecond.threshold=250
+ 
++###Late/On_Time/Very_Late Logic###
++smsi.late.enabled = true
++smsi.late.lateMinutes = 1440
++smsi.late.veryLateMinutes = 2880
++smsi.late.totalLateSessionsThreshold = 100
++
++###CAAS CORE Database Configuration###
+ caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ caas.db.username=SC1_CAAS
+ caas.db.password=SC1_CAAS
+@@ -37,6 +36,8 @@ caas.db.max.idle=10
+ caas.db.pool.size=10
+ caas.db.pool.initialSize=5
+ 
++###SMSI RELAY Database Configurations###
++relay.cache.reload.schedule = 0 0 0/1 * * ?
+ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+@@ -55,6 +56,3 @@ broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ broadway.db.username=SC1_RELAY2
+ broadway.db.password=SC1_RELAY2
+ broadway.owner=Broadway Systems
+-
+-relay.cache.reload.schedule = 0 0 0/1 * * ?
+-
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+index dfdcfa3..894a430 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum2.properties
+@@ -1,4 +1,4 @@
+-# Further, you can also just pass the individual parameters as system properties -Djdbc.url=blah for instance. config.dir=../ads-config
++###ETL-FEEDER Database Connection###
+ config.dir=.
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC2_REPORTING_ODS
+@@ -6,30 +6,29 @@ db.password=SC2_REPORTING_ODS
+ db.max.idle=10
+ db.pool.size=10
+ db.pool.initialSize=5
+-
+-validation.logging.enabled=true
+-performance.logging.enabled=true
+-smsi.millisecond.threshold=250
+-smsi.save.threads=150
+-smsi.save.queue=100000
+-schema.validation.enabled=true
+-smsi.late.enabled = true
+-smsi.late.lateMinutes = 1440
+-smsi.late.veryLateMinutes = 2880
+-smsi.late.tooManyLate = 100
+-
+-
+-#Determines the size and wait times for creation of batch inserts
+ database.batch.maxBatch=10000
+ database.batch.minBatchWait=250
+ database.batch.maxBatchWait=1500
+ 
++###Offline Mode Configurations###
+ smsi.offline.retry.count=3
+ smsi.offline.retry.millis=500
+-db.checkout.timeout=3000
++relay.offline.check.schedule = 0/20 * * * * ?
+ 
++###Logging Configurations###
++validation.logging.enabled=true
++schema.validation.enabled=true
++performance.logging.enabled=true
+ smsi.logDuplicates = true
++smsi.millisecond.threshold=250
++
++###Late/On_Time/Very_Late Logic###
++smsi.late.enabled = true
++smsi.late.lateMinutes = 1440
++smsi.late.veryLateMinutes = 2880
++smsi.late.totalLateSessionsThreshold = 100
+ 
++###CAAS CORE Database Configuration###
+ caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ caas.db.username=SC2_CAAS
+ caas.db.password=SC2_CAAS
+@@ -37,6 +36,8 @@ caas.db.max.idle=10
+ caas.db.pool.size=10
+ caas.db.pool.initialSize=5
+ 
++###SMSI RELAY Database Configurations###
++relay.cache.reload.schedule = 0 0 0/1 * * ?
+ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+@@ -55,5 +56,3 @@ broadway.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ broadway.db.username=SC2_RELAY2
+ broadway.db.password=SC2_RELAY2
+ broadway.owner=Broadway Systems
+-
+-relay.cache.reload.schedule = 0 0 0/1 * * ?
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+index 60d77e0..f433511 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum3.properties
+@@ -1,4 +1,4 @@
+-# Further, you can also just pass the individual parameters as system properties -Djdbc.url=blah for instance. config.dir=../ads-config
++###ETL-FEEDER Database Connection###
+ config.dir=.
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC3_REPORTING_ODS
+@@ -6,30 +6,29 @@ db.password=SC3_REPORTING_ODS
+ db.max.idle=10
+ db.pool.size=10
+ db.pool.initialSize=5
+-
+-validation.logging.enabled=true
+-performance.logging.enabled=true
+-smsi.millisecond.threshold=250
+-smsi.save.threads=150
+-smsi.save.queue=100000
+-schema.validation.enabled=true
+-smsi.late.enabled = true
+-smsi.late.lateMinutes = 1440
+-smsi.late.veryLateMinutes = 2880
+-smsi.late.tooManyLate = 100
+-
+-
+-#Determines the size and wait times for creation of batch inserts
+ database.batch.maxBatch=10000
+ database.batch.minBatchWait=250
+ database.batch.maxBatchWait=1500
+ 
++###Offline Mode Configurations###
+ smsi.offline.retry.count=3
+ smsi.offline.retry.millis=500
+-db.checkout.timeout=3000
++relay.offline.check.schedule = 0/20 * * * * ?
+ 
++###Logging Configurations###
++validation.logging.enabled=true
++schema.validation.enabled=true
++performance.logging.enabled=true
+ smsi.logDuplicates = true
++smsi.millisecond.threshold=250
++
++###Late/On_Time/Very_Late Logic###
++smsi.late.enabled = true
++smsi.late.lateMinutes = 1440
++smsi.late.veryLateMinutes = 2880
++smsi.late.totalLateSessionsThreshold = 100
+ 
++###CAAS CORE Database Configuration###
+ caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ caas.db.username=SC3_CAAS
+ caas.db.password=SC3_CAAS
+@@ -37,6 +36,8 @@ caas.db.max.idle=10
+ caas.db.pool.size=10
+ caas.db.pool.initialSize=5
+ 
++###SMSI RELAY Database Configurations###
++relay.cache.reload.schedule = 0 0 0/1 * * ?
+ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+@@ -56,4 +57,3 @@ broadway.db.username=SC3_RELAY2
+ broadway.db.password=SC3_RELAY2
+ broadway.owner=Broadway Systems
+ 
+-relay.cache.reload.schedule = 0 0 0/1 * * ?
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+index 7128c2b..917afcb 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-env-application.scrum4.properties
+@@ -1,4 +1,4 @@
+-# Further, you can also just pass the individual parameters as system properties -Djdbc.url=blah for instance. config.dir=../ads-config
++###ETL-FEEDER Database Connection###
+ config.dir=.
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC4_REPORTING_ODS
+@@ -6,30 +6,29 @@ db.password=SC4_REPORTING_ODS
+ db.max.idle=10
+ db.pool.size=10
+ db.pool.initialSize=5
+-
+-validation.logging.enabled=true
+-performance.logging.enabled=true
+-smsi.millisecond.threshold=250
+-smsi.save.threads=150
+-smsi.save.queue=100000
+-schema.validation.enabled=true
+-smsi.late.enabled = true
+-smsi.late.lateMinutes = 1440
+-smsi.late.veryLateMinutes = 2880
+-smsi.late.tooManyLate = 100
+-
+-
+-#Determines the size and wait times for creation of batch inserts
+ database.batch.maxBatch=10000
+ database.batch.minBatchWait=250
+ database.batch.maxBatchWait=1500
+ 
++###Offline Mode Configurations###
+ smsi.offline.retry.count=3
+ smsi.offline.retry.millis=500
+-db.checkout.timeout=3000
++relay.offline.check.schedule = 0/20 * * * * ?
+ 
++###Logging Configurations###
++validation.logging.enabled=true
++schema.validation.enabled=true
++performance.logging.enabled=true
+ smsi.logDuplicates = true
++smsi.millisecond.threshold=250
++
++###Late/On_Time/Very_Late Logic###
++smsi.late.enabled = true
++smsi.late.lateMinutes = 1440
++smsi.late.veryLateMinutes = 2880
++smsi.late.totalLateSessionsThreshold = 100
+ 
++###CAAS CORE Database Configuration###
+ caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ caas.db.username=SC4_CAAS
+ caas.db.password=SC4_CAAS
+@@ -37,6 +36,8 @@ caas.db.max.idle=10
+ caas.db.pool.size=10
+ caas.db.pool.initialSize=5
+ 
++###SMSI RELAY Database Configurations###
++relay.cache.reload.schedule = 0 0 0/1 * * ?
+ relay.db.max.idle=10
+ relay.db.pool.size=10
+ relay.db.pool.initialSize=5
+@@ -56,4 +57,3 @@ broadway.db.username=SC4_RELAY2
+ broadway.db.password=SC4_RELAY2
+ broadway.owner=Broadway Systems
+ 
+-relay.cache.reload.schedule = 0 0 0/1 * * ?

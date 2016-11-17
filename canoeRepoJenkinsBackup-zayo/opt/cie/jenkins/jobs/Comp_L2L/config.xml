@@ -1,0 +1,399 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.13.3">
+      <projectUrl>https://github.com/CanoeVentures/l2lconfigs/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Component</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Dynamic-Ad-Insertion-engine</string>
+              <string>CIS</string>
+              <string>dai-cip-feedback</string>
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>smsi-publisher</string>
+              <string>dai-smsi</string>
+              <string>Pgmr-Cpgn-Int</string>
+              <string>request-mgr</string>
+              <string>ad-load-manager</string>
+              <string>SDC-session-collector</string>
+              <string>dai-national-cis</string>
+              <string>POIS</string>
+              <string>impression_collector</string>
+              <string>dai-smsi-relay</string>
+              <string>metadata-publisher</string>
+              <string>dai-cip</string>
+              <string>acp</string>
+              <string>dai-metadata-ingestion</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SourceEnv</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Base</string>
+              <string>FW</string>
+              <string>Google</string>
+              <string>Broadway</string>
+              <string>Cox</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>LikeVersions</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>no</string>
+              <string>yes</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+###NEW###
+
+#Doc: Case statement setting up arrays for components. Needs Rentrak added.
+
+export Component
+case $Component in
+  Dynamic-Ad-Insertion-engine)
+  inar[0]=Base:cv-l2lcmc-clstr1:CMC_DE01:setenv.sh:ads-env-application.properties:log4j.xml:ads
+  inar[1]=Base:cv-l2lcmc-clstr2:CMC_DE02:setenv.sh:ads-env-application.properties:log4j.xml:ads
+  inar[2]=Base:cv-l2ltwc-clstr1:TWC_DE01:setenv.sh:ads-env-application.properties:log4j.xml:ads-1.2.0
+  inar[3]=Base:cv-l2ltwc-clstr2:TWC_DE02:setenv.sh:ads-env-application.properties:log4j.xml:ads-1.2.0
+  inar[4]=FW:cv-l2lfw-clstr2:FW_DE01:setenv.sh:ads-env-application.properties:log4j.xml:ads
+  inar[5]=Google:cv-l2lggl-clstr2:GGL_DE01:setenv.sh:ads-env-application.properties:log4j.xml:ads
+  inar[6]=Cox:cv-l2lcox-clstr1:COX_DE01:setenv.sh:ads-env-application.properties:log4j.xml:ads-cox
+  inar[7]=Cox:cv-l2lcox-clstr2:COX_DE02:setenv.sh:ads-env-application.properties:log4j.xml:ads-cox
+  inar[8]=Broadway:cv-l2lbrd-clstr2:BRD_DE01:setenv.sh:ads-env-application.properties:log4j.xml:ads
+ ;;
+  CIS)
+  inar[0]=Base:cv-l2ltwc-clstr4:TWC_CIS:setenv.sh:cis-env-application.properties:log4j_cis.xml:cis
+  inar[1]=Cox:cv-l2lcox-clstr4:COX_CIS:setenv.sh:cis-env-application.properties:log4j_cis.xml:cis
+ ;;
+ Dynamic-Ad-Insertion-cm)
+  inar[0]=Base:cv-l2lcmc-clstr2:CMC_CM:setenv.sh:Dynamic-Ad-Insertion-cm-config.properties:cm_log4j.groovy:Dynamic-Ad-Insertion-cm
+  inar[1]=Base:cv-l2ltwc-clstr2:TWC_CM:setenv.sh:Dynamic-Ad-Insertion-cm-config.properties:cm_log4j.groovy:Dynamic-Ad-Insertion-cm
+  inar[0]=FW:cv-l2lfw-clstr2:FW_CM:setenv.sh:Dynamic-Ad-Insertion-cm-config.properties:cm_log4j.groovy:Dynamic-Ad-Insertion-cm
+  inar[0]=Google:cv-l2lggl-clstr2:GGL_CM:setenv.sh:Dynamic-Ad-Insertion-cm-config.properties:cm_log4j.groovy:Dynamic-Ad-Insertion-cm
+  inar[0]=Cox:cv-l2lcox-clstr2:COX_CM:setenv.sh:Dynamic-Ad-Insertion-cm-config.properties:cm_log4j.groovy:Dynamic-Ad-Insertion-cm
+  inar[0]=Broadway:cv-l2lbrd-clstr2:BRD_CM:setenv.sh:Dynamic-Ad-Insertion-cm-config.properties:cm_log4j.groovy:Dynamic-Ad-Insertion-cm
+ ;;
+ request-mgr)
+  inar[0]=Base:cv-l2ltwc-clstr5:TWC_REQMAN:setenv.sh:rema-configuration.properties:rema.log4j2.xml:Dynamic-Ad-Insertion-cm
+ ;;
+ ad-load-manager)
+  inar[0]=Cox:cv-l2lcox-clstr5:COX_ALM:setenv.sh:dai-alm.properties:alm-log4j-dev.xml:ad-load-manager
+ ;;
+ dai-cip-feedback)
+  inar[0]=Base:cv-l2lcmc-clstr2:CMC_FN:setenv.sh:cip-env-application.properties:cip-log4j.xml:cip-feedback
+  inar[1]=Base:cv-l2ltwc-clstr2:TWC_FN:setenv.sh:cip-env-application.properties:cip-log4j.xml:cip-feedback
+  inar[2]=FW:cv-l2lfw-clstr3:FW_FN:setenv.sh:cip-env-application.properties:cip-log4j.xml:cip-feedback
+  inar[3]=Cox:cv-l2lcox-clstr2:COX_FN:setenv.sh:cip-env-application.properties:cip-log4j.xml:cip-feedback
+  inar[4]=Google:cv-l2lggl-clstr3:GGL_FN:setenv.sh:cip-env-application.properties:cip-log4j.xml:cip-feedback
+  inar[5]=Broadway:cv-l2lbrd-clstr3:BRD_FN:setenv.sh:cip-env-application.properties:cip-log4j.xml:cip-feedback
+ ;;
+ Pgmr-Cpgn-Int)
+  inar[0]=FW:cv-l2lfw-clstr1:FW_PCI:setenv.sh:pci-env-application.properties:pci-log4j.properties:fw_cip-ingest
+  inar[1]=Google:cv-l2lggl-clstr1:GGL_PCI:setenv.sh:pci-env-application.properties:pci-log4j.properties:gl_cip-ingest
+  inar[2]=Broadway:cv-l2lbrd-clstr1:BRD_PCI:setenv.sh:pci-env-application.properties:pci-log4j.properties:brd_cip-ingest
+ ;;
+ metadata-publisher)
+  inar[0]=FW:cv-l2lfw-clstr4:FW_META_PUB:setenv.sh:mdp-env-application.properties::metadata-publisher
+ ;;
+ smsi-publisher)
+  inar[0]=Base:cv-l2lcmc-clstr1:CMC_SMSI_PUB:setenv.sh:smsi-publisher.properties:smsi-publisher-log4j.properties:smsi-pub
+  inar[1]=Base:cv-l2ltwc-clstr1:TWC_SMSI_PUB:setenv.sh:smsi-publisher.properties:smsi-publisher-log4j.properties:smsi-pub
+  inar[2]=FW:cv-l2lfw-clstr2:FW_SMSI_PUB:setenv.sh:smsi-publisher.properties:smsi-publisher-log4j.properties:smsi-pub
+  inar[3]=Google:cv-l2lggl-clstr2:GGL_SMSI_PUB:setenv.sh:smsi-publisher.properties:smsi-publisher-log4j.properties:smsi-pub
+  inar[4]=Broadway:cv-l2lbrd-clstr2:BRD_SMSI_PUB:setenv.sh:smsi-publisher.properties:smsi-publisher-log4j.properties:smsi-pub
+ ;;
+ dai-smsi)
+  inar[0]=Base:cv-l2lcmc-clstr3:CMC_SMSI:setenv.sh:smsi-env-application.properties:smsi-log4j.xml:smsi
+  inar[1]=Base:cv-l2ltwc-clstr3:TWC_SMSI:setenv.sh:smsi-env-application.properties:smsi-log4j.xml:smsi
+  inar[2]=FW:cv-l2lfw-clstr1:FW_SMSI:setenv.sh:smsi-env-application.properties:smsi-log4j.xml:smsi
+  inar[3]=Google:cv-l2lggl-clstr1:GGL_SMSI:setenv.sh:smsi-env-application.properties:smsi-log4j.xml:smsi
+  inar[4]=Cox:cv-l2lcox-clstr3:COX_SMSI:setenv.sh:smsi-env-application.properties:smsi-log4j.xml:smsi
+  inar[5]=Broadway:cv-l2lbrd-clstr1:BRD_SMSI:setenv.sh:smsi-env-application.properties:smsi-log4j.xml:smsi
+ ;;
+ SDC-session-collector)
+  inar[0]=Base:cv-l2ltwc-clstr4:TWC_SESCOL:setenv.sh:session-collector-configuration.properties:session-collector-log4j.xml:sdc-session-collector-server
+ ;;
+ dai-smsi-relay)
+  inar[0]=FW:cv-l2lfw-clstr3:FW_SMSI_RELAY:setenv.sh:smsi-relay-env-application.properties:log4j.xml:smsi-relay
+  inar[1]=Google:cv-l2lggl-clstr3:GGL_SMSI_RELAY:setenv.sh:smsi-relay-env-application.properties:log4j.xml:smsi-relay
+  inar[2]=Broadway:cv-l2lbrd-clstr3:BRD_SMSI_RELAY:setenv.sh:smsi-relay-env-application.properties:log4j.xml:smsi-relay
+ ;;
+ dai-national-cis)
+  inar[0]=FW:cv-l2lfw-clstr4:FW_NCIS:setenv.sh:national-cis-env-application.properties:national-cis-log4j.xml:smsi-relay
+ ;;
+ POIS)
+  inar[0]=Cox:cv-l2lcox-clstr5:COX_POIS:setenv.sh:pois-configuration.properties:pois-log4j.xml:POIS
+ ;;
+ impression_collector)
+  inar[0]=Base:cv-l2lcmc-clstr3:CMC_IMPCOL:setenv.sh:impression_collector-env-application.properties:No_Log:impression_collector_server
+  inar[1]=Base:cv-l2ltwc-clstr3:TWC_IMPCOL:setenv.sh:impression_collector-env-application.properties:No_Log:impression_collector_server
+  inar[2]=FW:cv-l2lfw-clstr3:FW_IMPCOL:setenv.sh:impression_collector-env-application.properties:No_Log:impression_collector_server
+  inar[3]=Google:cv-l2lggl-clstr3:GGL_IMPCOL:setenv.sh:impression_collector-env-application.properties:No_Log:impression_collector_server
+  inar[4]=Cox:cv-l2lcox-clstr3:COX_IMPCOL:setenv.sh:impression_collector-env-application.properties:No_Log:impression_collector_server
+  inar[5]=Broadway:cv-l2lbrd-clstr3:BRD_IMPCOL:setenv.sh:impression_collector-env-application.properties:No_Log:impression_collector_server
+ ;;
+ dai-cip)
+  inar[0]=Base:cv-l2lcmc-clstr1:dai_cip:setenv.sh:dai-cip.properties:log4j.xml:dai-cip
+  inar[1]=Base:cv-l2ltwc-clstr1:dai_cip:setenv.sh:dai-cip.properties:log4j.xml:dai-cip
+  inar[2]=FW:cv-l2lfw-clstr1:dai_cip:setenv.sh:dai-cip.properties:log4j.xml:dai-cip
+  inar[3]=Google:cv-l2lggl-clstr1:dai_cip:setenv.sh:dai-cip.properties:log4j.xml:dai-cip
+  inar[4]=Cox:cv-l2lcox-clstr1:dai_cip:setenv.sh:dai-cip.properties:log4j.xml:dai-cip
+  inar[5]=Broadway:cv-l2lbrd-clstr1:dai_cip:setenv.sh:dai-cip.properties:log4j.xml:dai-cip
+ ;;
+ acp)
+  inar[0]=Base:cv-l2lcmc-clstr4:acp:setenv.sh:acp-env-application.properties:log4j.xml:acp
+ ;;
+ dai-metadata-ingestion)
+  inar[0]=Base:cv-l2ltwc-clstr4:dai-metadata-ingestion:setenv.sh:metadata-ingestion-env-application.properties:ingestion-log4j-dev.xml:ingester
+  inar[1]=Base:cv-l2lcmc-clstr4:dai-metadata-ingestion:setenv.sh:metadata-ingestion-env-application.properties:ingestion-log4j-dev.xml:ingester
+  inar[2]=FW:cv-l2lfw-clstr4:dai-metadata-ingestion:setenv.sh:metadata-ingestion-env-application.properties:ingestion-log4j-dev.xml:ingester
+  inar[3]=Google:cv-l2lggl-clstr4:dai-metadata-ingestion:setenv.sh:metadata-ingestion-env-application.properties:ingestion-log4j-dev.xml:ingester
+  inar[4]=Cox:cv-l2lcox-clstr4:dai-metadata-ingestion:setenv.sh:metadata-ingestion-env-application.properties:ingestion-log4j-dev.xml:ingester
+  inar[5]=Broadway:cv-l2lbrd-clstr4:dai-metadata-ingestion:setenv.sh:metadata-ingestion-env-application.properties:ingestion-log4j-dev.xml:ingester
+ ;;
+esac
+
+
+echo &quot;Getting files from remote systems&quot;
+echo &quot;&quot;
+
+export k=0
+
+#Doc: Gathers system info from Array line.
+
+for i in ${inar[@]}; do
+
+    export Instance=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+    export System=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+    export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+    export setenv=&quot;$(echo ${inar[$k]} | cut -f4 -d:)&quot;
+    export conf1=&quot;$(echo ${inar[$k]} | cut -f5 -d:)&quot;
+    export conf2=&quot;$(echo ${inar[$k]} | cut -f6 -d:)&quot;
+    export Webapps=&quot;$(echo ${inar[$k]} | cut -f7 -d:)&quot;
+#Uses webapps in jars as the jar name.
+    if [[ $Component = dai-cip || $Component = acp ]]; then
+     export Version=`ssh tcserver@${System} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${Instance}/bin/${Webapps}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+     Verar[$k]=&quot;$Version&quot;
+    elif [[ $Component = dai-metadata-ingestion ]]; then
+     export Version=`ssh tcserver@${System} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${Instance}/${Webapps}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+     Verar[$k]=&quot;$Version&quot;
+    else
+     export Version=`ssh tcserver@${System} &quot;grep Implementation-Version /opt/tcserver/instances/${Instance}/webapps/${Webapps}/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+     Verar[$k]=&quot;$Version&quot;
+    fi
+
+#Doc: Preserves location within array of each line. (I think this logic is flawed due to the presence of multiples and repeats) 
+
+if [[ $Suite = &quot;Base&quot; ]]; then
+   export BArLoc=$k
+elif [[ $Suite = &quot;FW&quot; ]]; then
+   export FArLoc=$k
+elif [[ $Suite = &quot;Google&quot; ]]; then
+   export GArLoc=$k
+elif [[ $Suite = &quot;Broadway&quot; ]]; then
+   export BrArLoc=$k
+elif [[ $Suite = &quot;Cox&quot; ]]; then
+   export CArLoc=$k
+fi
+
+
+echo &quot;$Suite $Instance Version = $Version&quot;
+
+if [[ $Component = dai-cip || $Component = acp ]]; then
+
+####  Copy remote files to local area for jar
+    cd ${WORKSPACE}
+    scp tcserver@$System:$Instance/conf*/$setenv ./${Suite}.${System}.${Instance}.${setenv}
+    scp tcserver@$System:$Instance/conf*/$conf1 ./${Suite}.${System}.${Instance}.${conf1}
+    scp tcserver@$System:$Instance/conf*/$conf2 ./${Suite}.${System}.${Instance}.${conf2}
+    k=$((k+1))
+
+elif [[ $Component = dai-metadata-ingestion ]]; then
+
+####  Copy remote files to local area for jar (dai-metadata)
+    cd ${WORKSPACE}
+    scp tcserver@$System:$Instance/$setenv ./${Suite}.${System}.${Instance}.${setenv}
+    scp tcserver@$System:$Instance/$conf1 ./${Suite}.${System}.${Instance}.${conf1}
+    scp tcserver@$System:$Instance/$conf2 ./${Suite}.${System}.${Instance}.${conf2}
+    k=$((k+1))
+
+elif [[ $Component = Dynamic-Ad-Insertion-engine || $Component = CIS ]]; then
+
+####  Copy remote files to local area
+    cd ${WORKSPACE}
+    scp tcserver@$System:instances/$Instance/bin/$setenv ./${Suite}.${System}.${Instance}.${setenv}
+    scp tcserver@$System:instances/$Instance/*conf/$conf1 ./${Suite}.${System}.${Instance}.${conf1}
+#    scp tcserver@$System:instances/$Instance/*config/$conf1 ./${Suite}.${System}.${Instance}.${conf1}
+    scp tcserver@$System:instances/$Instance/conf/$conf2 ./${Suite}.${System}.${Instance}.${conf2}
+    k=$((k+1))
+
+else
+
+####  Copy remote files to local area
+    cd ${WORKSPACE}
+    scp tcserver@$System:instances/$Instance/bin/$setenv ./${Suite}.${System}.${Instance}.${setenv}
+    scp tcserver@$System:instances/$Instance/conf/$conf1 ./${Suite}.${System}.${Instance}.${conf1}
+    scp tcserver@$System:instances/$Instance/conf/$conf2 ./${Suite}.${System}.${Instance}.${conf2}
+    k=$((k+1))
+
+fi
+done
+
+#Doc: Gathers Source Version
+
+   if [[ ${SourceEnv} = &quot;Base&quot; ]] ; then
+    export TargSys=&quot;$(echo ${inar[${BArLoc}]} | cut -f2 -d:)&quot;
+    export TargIn=&quot;$(echo ${inar[$BArLoc]} | cut -f3 -d:)&quot;
+    export TargWeb=&quot;$(echo ${inar[$BArLoc]} | cut -f7 -d:)&quot;
+    export Source=&quot;${SourceEnv}.$(echo ${inar[${BArLoc}]} | cut -f2 -d:)&quot;
+    export Base=&quot;${Source}.$(echo ${inar[${BArLoc}]} | cut -f3 -d:)&quot;
+    export srcWeb=&quot;${Source}.$(echo ${inar[${BArLoc}]} | cut -f7 -d:)&quot;
+    if [[ $Component = dai-cip || $Component = acp ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/bin/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    elif [[ $Component = dai-metadata-ingestion ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    else
+     export SrcVer=`ssh tcserver@${TargSys} &quot;grep Implementation-Version /opt/tcserver/instances/${TargIn}/webapps/${TargWeb}/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+    fi
+   elif [[ ${SourceEnv} = &quot;FW&quot; ]] ; then
+    export TargSys=&quot;$(echo ${inar[${FArLoc}]} | cut -f2 -d:)&quot;
+    export TargIn=&quot;$(echo ${inar[$FArLoc]} | cut -f3 -d:)&quot;
+    export TargWeb=&quot;$(echo ${inar[$FArLoc]} | cut -f7 -d:)&quot;
+    export Source=&quot;${SourceEnv}.$(echo ${inar[${FArLoc}]} | cut -f2 -d:)&quot;
+    export Base=&quot;${Source}.$(echo ${inar[${FArLoc}]} | cut -f3 -d:)&quot;
+    export srcWeb=&quot;${Source}.$(echo ${inar[${FArLoc}]} | cut -f7 -d:)&quot;
+    if [[ $Component = dai-cip || $Component = acp ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/bin/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    elif [[ $Component = dai-metadata-ingestion ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    else
+     export SrcVer=`ssh tcserver@${TargSys} &quot;grep Implementation-Version /opt/tcserver/instances/${TargIn}/webapps/${TargWeb}/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+    fi
+   elif [[ ${SourceEnv} = &quot;Google&quot; ]]; then
+    export TargSys=&quot;$(echo ${inar[${GArLoc}]} | cut -f2 -d:)&quot;
+    export TargIn=&quot;$(echo ${inar[$GArLoc]} | cut -f3 -d:)&quot;
+    export TargWeb=&quot;$(echo ${inar[$GArLoc]} | cut -f7 -d:)&quot;
+    export Source=&quot;${SourceEnv}.$(echo ${inar[${GArLoc}]} | cut -f2 -d:)&quot;
+    export Base=&quot;${Source}.$(echo ${inar[${GArLoc}]} | cut -f3 -d:)&quot;
+    export srcWeb=&quot;${Source}.$(echo ${inar[${GArLoc}]} | cut -f7 -d:)&quot;
+    if [[ $Component = dai-cip || $Component = acp ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/bin/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    elif [[ $Component = dai-metadata-ingestion ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    else
+     export SrcVer=`ssh tcserver@${TargSys} &quot;grep Implementation-Version /opt/tcserver/instances/${TargIn}/webapps/${TargWeb}/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+    fi
+   elif [[ ${SourceEnv} = &quot;Broadway&quot; ]]; then
+    export TargSys=&quot;$(echo ${inar[${BrArLoc}]} | cut -f2 -d:)&quot;
+    export TargIn=&quot;$(echo ${inar[$BrArLoc]} | cut -f3 -d:)&quot;
+    export TargWeb=&quot;$(echo ${inar[$BrArLoc]} | cut -f7 -d:)&quot;
+    export Source=&quot;${SourceEnv}.$(echo ${inar[${BrArLoc}]} | cut -f2 -d:)&quot;
+    export Base=&quot;${Source}.$(echo ${inar[${BrArLoc}]} | cut -f3 -d:)&quot;
+    export srcWeb=&quot;${Source}.$(echo ${inar[${BrArLoc}]} | cut -f7 -d:)&quot;
+    if [[ $Component = dai-cip || $Component = acp ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/bin/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    elif [[ $Component = dai-metadata-ingestion ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    else
+     export SrcVer=`ssh tcserver@${TargSys} &quot;grep Implementation-Version /opt/tcserver/instances/${TargIn}/webapps/${TargWeb}/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+    fi
+   elif [[ ${SourceEnv} = &quot;Cox&quot; ]]; then
+    export TargSys=&quot;$(echo ${inar[${CArLoc}]} | cut -f2 -d:)&quot;
+    export TargIn=&quot;$(echo ${inar[$CArLoc]} | cut -f3 -d:)&quot;
+    export TargWeb=&quot;$(echo ${inar[$CArLoc]} | cut -f7 -d:)&quot;
+    export Source=&quot;${SourceEnv}.$(echo ${inar[${CArLoc}]} | cut -f2 -d:)&quot;
+    export Base=&quot;${Source}.$(echo ${inar[${CArLoc}]} | cut -f3 -d:)&quot;
+    export srcWeb=&quot;${Source}.$(echo ${inar[${CArLoc}]} | cut -f7 -d:)&quot;
+      if [[ $Component = dai-cip || $Component = acp || dai-metadata-ingestion ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/bin/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    elif [[ $Component = dai-metadata-ingestion ]]; then
+     export SrcVer=`ssh tcserver@${TargSys} &quot;cd /opt/tcserver/App_Files; jar xf /opt/tcserver/${TargIn}/${TargWeb}.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+    else
+     export SrcVer=`ssh tcserver@${TargSys} &quot;grep Implementation-Version /opt/tcserver/instances/${TargIn}/webapps/${TargWeb}/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+    fi
+   fi
+  
+
+export k=0
+for i in ${inar[@]}; do
+    export Instance=&quot;$(echo ${inar[$k]} | cut -f3 -d:)&quot;
+    export Suite=&quot;$(echo ${inar[$k]} | cut -f1 -d:)&quot;
+    export System=&quot;$(echo ${inar[$k]} | cut -f2 -d:)&quot;
+    export setenv=&quot;$(echo ${inar[$k]} | cut -f4 -d:)&quot;
+    export conf1=&quot;$(echo ${inar[$k]} | cut -f5 -d:)&quot;
+    export conf2=&quot;$(echo ${inar[$k]} | cut -f6 -d:)&quot;
+    
+    #Doc: Check for like versions
+ if [[ ${Verar[$k]} != ${SrcVer} &amp;&amp; ${LikeVersions} = &quot;yes&quot; ]] ; then
+	echo &quot;$Suite at version ${Verar[$k]}, no comparison&quot;
+	k=$((k+1))
+ else
+ 
+ #Doc: Actual comparison
+ 
+   echo &quot;*** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** **&quot;
+   echo &quot;${Base} Version ${SrcVer} versus ${Suite}.${System} Version ${Verar[$k]}&quot;
+   echo &quot;***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** &quot;
+   echo &quot;&quot;
+   echo &quot;* Differencing ${Base}.${setenv} -to- ${Suite}.${System}.${Instance}.${setenv}&quot;
+   echo &quot;  - Edit by ssh tcserver@${System} \&quot;vi instances/${Instance}/bin/${setenv}\&quot;&quot;
+   awk -F, &apos;NR==FNR{_1[$1]++;next}!_1[$1]&apos; ${Base}.${setenv} ${Suite}.${System}.${Instance}.${setenv}
+   echo &quot;SDiff outputs below-----------------------------------------------------------&quot;
+   echo &quot;sdiff -s --ignore-all-space ${Base}.${setenv} ${Suite}.${System}.${Instance}.${setenv}&quot;
+   sdiff -s --ignore-all-space ${Base}.${setenv} ${Suite}.${System}.${Instance}.${setenv}
+   echo &quot;&quot;
+   echo &quot;------------------------------------------------------------------------------&quot;
+   echo &quot;&quot;
+   echo &quot;* Differencing ${Base}.${conf1} -to- ${Suite}.${System}.${Instance}.${conf1}&quot;
+   echo &quot;  - Edit by ssh tcserver@${System} \&quot;vi instances/${Instance}/conf/${conf1}\&quot;&quot;
+   awk -F, &apos;NR==FNR{_1[$1]++;next}!_1[$1]&apos; ${Base}.${conf1} ${Suite}.${System}.${Instance}.${conf1}
+   echo &quot;SDiff outputs below-----------------------------------------------------------&quot;
+   echo &quot;sdiff -s --ignore-all-space ${Base}.${conf1} ${Suite}.${System}.${Instance}.${conf1}&quot;
+   sdiff -s --ignore-all-space ${Base}.${conf1} ${Suite}.${System}.${Instance}.${conf1}
+   echo &quot;&quot;
+   echo &quot;------------------------------------------------------------------------------&quot;
+   echo &quot;&quot;
+   echo &quot;* Differencing ${Base}.${conf2} -to- ${Suite}.${System}.${Instance}.${conf2}&quot;
+   echo &quot;  - Edit by ssh tcserver@${System} \&quot;vi instances/${Instance}/conf/${conf2}\&quot;&quot;
+   awk -F, &apos;NR==FNR{_1[$1]++;next}!_1[$1]&apos; ${Base}.${conf2} ${Suite}.${System}.${Instance}.${conf2}
+   echo &quot;SDiff outputs below-----------------------------------------------------------&quot;
+   sdiff -s --ignore-all-space ${Base}.${conf2} ${Suite}.${System}.${Instance}.${conf2}
+   echo &quot;&quot;
+   echo &quot;&quot;
+   k=$((k+1))
+ fi
+done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

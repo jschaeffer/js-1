@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    <changeSet author="dad" id="20150610a-Metadata">
+        <sql>drop table TITLE;</sql>
+        <sql>drop sequence SEQ_TITLE_ID;</sql>
+    </changeSet>
+
+    <changeSet author="dad" id="20150610b-Metadata">
+        <createTable tableName="TITLE" >
+            <column name="PROVIDER_ID" type="java.sql.Types.VARCHAR(256)"><constraints nullable="false"/></column>
+            <column name="ASSET_ID" type="java.sql.Types.VARCHAR(256)"><constraints nullable="false"/> </column>
+            <column name="MOVIE_PROVIDER_ID" type="java.sql.Types.VARCHAR(256)"><constraints nullable="false"/></column>
+            <column name="MOVIE_ASSET_ID" type="java.sql.Types.VARCHAR(256)"><constraints nullable="false"/></column>
+            <column name="PROVIDER" type="java.sql.Types.VARCHAR(256)"><constraints nullable="false"/></column>
+            <column name="ADVISORY0" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="ADVISORY1" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="ADVISORY2" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="ADVISORY3" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="ADVISORY4" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="ADVISORY5" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="EPISODE_ID" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="EPISODE_NAME" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="GENRE0" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="GENRE1" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="GENRE2" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="GENRE3" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="GENRE4" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="RATING0" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING1" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING2" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING3" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="RATING4" type="java.sql.Types.VARCHAR(50)"/>
+            <column name="SERIES_ID" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="SERIES_NAME" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="SHORT_SUMMARY" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="SHOW_TYPE" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="TITLE_BRIEF" type="java.sql.Types.VARCHAR(19)"/>
+            <column name="TITLE_LONG" type="java.sql.Types.VARCHAR(128)"/>
+            <column name="LICENSE_WINDOW_START" type="java.sql.Types.VARCHAR(256)"/>
+            <column name="LICENSE_WINDOW_END" type="java.sql.Types.VARCHAR(256)"/>
+        </createTable>
+        <addPrimaryKey tableName="TITLE" columnNames="PROVIDER_ID, ASSET_ID" />
+
+    </changeSet>
+
+</databaseChangeLog>

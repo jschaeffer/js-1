@@ -1,0 +1,422 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9.1">
+      <projectUrl>https://github.com/CanoeVentures/smsi-admin/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/smsi-admin.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_4.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/smsi-admin/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H 22 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export APP_VERSION=`cat ${WORKSPACE}/application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+sed -e &quot;s|$APP_VERSION|4.0.0_${BUILD_NUMBER}|&quot; -i &apos;&apos; ${WORKSPACE}/application.properties
+echo &quot;Replacing app.version in application.properties from $APP_VERSION to 4.0.0_${BUILD_NUMBER}&quot;</command>
+    </hudson.tasks.Shell>
+    <com.g2one.hudson.grails.GrailsBuilder plugin="grails@1.7">
+      <targets>clean war &quot;test-app :unit&quot;</targets>
+      <name>Grails 2.0.4</name>
+      <grailsWorkDir>/opt/cvbuild/.smsi-admin_work_dir</grailsWorkDir>
+      <projectWorkDir>/opt/cvbuild/.smsi-admin_project_dir</projectWorkDir>
+      <projectBaseDir></projectBaseDir>
+      <serverPort>9190</serverPort>
+      <properties>grails.env=dev
+geb.env=firefox
+grails.project.plugins.dir=/opt/cvbuild/.grails/2.0.4/projects/smsi-admin-compile
+SMSI_ADMIN_CONFIG=/opt/cvbuild/config/smsi-admin/smsi-admin-config.properties
+SMSI_ADMIN_LOG4J_CONFIG=/opt/cvbuild/config/smsi-admin/smsi-admin-log4j.groovy
+CROWD_PROPERTIES=/opt/cvbuild/config/smsi-admin/smsi-admin-crowd.properties 
+CROWD_EHCACHE=/opt/cvbuild/config/smsi-admin/smsi-admin-crowd-ehcache.xml</properties>
+      <forceUpgrade>false</forceUpgrade>
+      <nonInteractive>true</nonInteractive>
+      <useWrapper>false</useWrapper>
+      <plainOutput>true</plainOutput>
+      <stackTrace>false</stackTrace>
+      <verbose>false</verbose>
+      <refreshDependencies>false</refreshDependencies>
+    </com.g2one.hudson.grails.GrailsBuilder>
+    <hudson.plugins.groovy.Groovy plugin="groovy@1.23">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>def VERSION = &quot;4.0.0&quot;
+def PROJECT = &quot;smsi-admin&quot;
+def PROJFILE = &quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+String changelogtemp = &quot;&quot;&quot;
+
+projectRoot=&quot;/opt/cie/jenkins/jobs/smsi-admin-PackageDeploy-4.0.0/workspace&quot;
+commonTargetRoot=&quot;target&quot;
+webappDir=&quot;webapps&quot;
+
+build {
+    build_args=&quot;grails clean -non-interactive,grails war -non-interactive&quot;
+}
+
+jira {
+    update_jira=&quot;false&quot;
+}
+
+database {
+
+    driver=&quot;&quot;
+
+    liquibase {
+        update_liquibase=&quot;false&quot;
+        base_dir=&quot;&quot;
+        change_log_file=&quot;src/main/resources/liquibase/master-changelog.xml&quot;
+        command=&quot;gradle -q -PPROJECT=Dynamic-Ad-Insertion-core updateSQL &gt; updat
+e.sql&quot;
+    }
+
+    env {
+        dev {
+            host=&quot;&quot;
+            url=&quot;&quot;
+            username=&quot;&quot;
+            password=&quot;&quot;
+        }
+        qa {
+            host=&quot;&quot;
+            url=&quot;&quot;
+            username=&quot;&quot;
+            password=&quot;&quot;
+        }
+        staging {
+            host=&quot;&quot;
+            url=&quot;&quot;
+            username=&quot;&quot;
+            password=&quot;&quot;
+        }
+        prod {
+            host=&quot;&quot;
+            url=&quot;&quot;
+            username=&quot;&quot;
+            password=&quot;&quot;
+        }
+    }
+}
+
+build_package {
+    artifacts {
+        name {
+            cm=&quot;smsi-admin*.war&quot;
+            config=&quot;config&quot;
+            README=&quot;README.md&quot;
+        }
+        location {
+            cm=&quot;$projectRoot/$commonTargetRoot&quot;
+            config=&quot;\$projectRoot&quot;
+            README=&quot;\$projectRoot&quot;
+        }
+    }
+}
+
+deploy {
+    artifacts {
+        name {
+            cm=&quot;Dynamic-Ad-Insertion-cm*.war&quot;
+        }
+        location {
+            cm=&quot;target&quot;
+        }
+        deploy_type {
+            cm=&quot;archive&quot;
+        }
+        webapp_project {
+            cm=&quot;Dynamic-Ad-Insertion-cm&quot;
+        }
+    }
+    pre_deploy_cmds {
+    }
+
+    post_deploy_cmds {
+    }
+
+    local {
+        deployUser=&quot;pzimmerman&quot;
+
+        environment {
+            name=&quot;pzimmerman.laptop&quot;
+            ip=&quot;192.168.211.37&quot;
+        }
+
+        tcserver {
+            base=&quot;/opt/tools/tcserver&quot;
+            instance_home=&quot;\$tcserver.base&quot;
+            instance_name=&quot;dai_engine&quot;
+            admin_script=&quot;tcruntime-ctl.sh&quot;
+            status_cmd=&quot;\$tcserver.base/$tcserver.admin_script \$tcserver.instance_name status&quot;
+            start_cmd=&quot;\$tcserver.base/$tcserver.admin_script \$tcserver.instance_name start&quot;
+            stop_cmd=&quot;\$tcserver.base/$tcserver.admin_script \$tcserver.instance_name stop&quot;
+        }
+    }
+
+    dev {
+        deployUser=&quot;tcserver&quot;
+        webappProject=&quot;cm&quot;
+         artifacts {
+          name {
+              cm=&quot;Dynamic-Ad-Insertion-cm*.war&quot;
+             }
+          location {
+              cm=&quot;target&quot;
+             }
+          deploy_type {
+              cm=&quot;archive&quot;
+             }
+          webapp_project {
+              cm=&quot;Dynamic-Ad-Insertion-cm&quot;
+             }
+         }
+
+        environment {
+            name=&quot;dvappdai01&quot;
+            ip=&quot;10.13.18.113&quot;
+        }
+
+        tcserver {
+            base=&quot;/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE&quot;
+            instance_home=&quot;/opt/tcserver/instances&quot;
+            instance_name=&quot;cm&quot;
+            admin_script=&quot;tcruntime-ctl.sh&quot;
+            status_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name status&quot;
+            start_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name start&quot;
+            stop_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name stop&quot;
+        }
+    }
+    scrum1 {
+        webappProject=&quot;cm&quot;
+        deployUser=&quot;tcserver&quot;
+         artifacts {
+          name {
+              cm=&quot;Dynamic-Ad-Insertion-cm*.war&quot;
+             }
+          location {
+              cm=&quot;target&quot;
+             }
+          deploy_type {
+              cm=&quot;archive&quot;
+             }
+          webapp_project {
+              cm=&quot;Dynamic-Ad-Insertion-cm&quot;
+             }
+         }
+        environment {
+            name=&quot;dvappdai02&quot;
+            ip=&quot;10.13.18.115&quot;
+        }
+
+        tcserver {
+            base=&quot;/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE&quot;
+            instance_home=&quot;/opt/tcserver/instances&quot;
+            instance_name=&quot;cm&quot;
+            admin_script=&quot;tcruntime-ctl.sh&quot;
+            status_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name status&quot;
+            start_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name start&quot;
+            stop_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name stop&quot;
+        }
+    }
+    scrum2 {
+        webappProject=&quot;cm&quot;
+        deployUser=&quot;tcserver&quot;
+         artifacts {
+          name {
+              cm=&quot;Dynamic-Ad-Insertion-cm*.war&quot;
+             }
+          location {
+              cm=&quot;target&quot;
+             }
+          deploy_type {
+              cm=&quot;archive&quot;
+             }
+          webapp_project {
+              cm=&quot;Dynamic-Ad-Insertion-cm&quot;
+             }
+         }
+        environment {
+            name=&quot;dvappdai03&quot;
+            ip=&quot;10.13.18.116&quot;
+        }
+
+        tcserver {
+            base=&quot;/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE&quot;
+            instance_home=&quot;/opt/tcserver/instances&quot;
+            instance_name=&quot;cm&quot;
+            admin_script=&quot;tcruntime-ctl.sh&quot;
+            status_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name status&quot;
+            start_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name start&quot;
+            stop_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name stop&quot;
+        }
+    }
+    scrum3 {
+        webappProject=&quot;cm&quot;
+        deployUser=&quot;tcserver&quot;
+         artifacts {
+          name {
+              cm=&quot;Dynamic-Ad-Insertion-cm*.war&quot;
+             }
+          location {
+              cm=&quot;target&quot;
+             }
+          deploy_type {
+              cm=&quot;archive&quot;
+             }
+          webapp_project {
+              cm=&quot;Dynamic-Ad-Insertion-cm&quot;
+             }
+         }
+        environment {
+            name=&quot;dvappdai04&quot;
+            ip=&quot;10.13.18.117&quot;
+        }
+
+        tcserver {
+            base=&quot;/opt/tcserver/vfabric-tc-server-standard-2.6.4.RELEASE&quot;
+            instance_home=&quot;/opt/tcserver/instances&quot;
+            instance_name=&quot;cm&quot;
+            admin_script=&quot;tcruntime-ctl.sh&quot;
+            status_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name status&quot;
+            start_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name start&quot;
+            stop_cmd=&quot;\$tcserver.base/\$tcserver.admin_script \$tcserver.instance_name stop&quot;
+        }
+    }
+}
+
+&quot;&quot;&quot;
+File scriptName = new File(&quot;$PROJFILE&quot;)
+        scriptName.write(&quot;${changelogtemp}&quot;)
+        println scriptName</command>
+      </scriptSource>
+      <groovyName>(Default)</groovyName>
+      <parameters></parameters>
+      <scriptParameters></scriptParameters>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <classPath></classPath>
+    </hudson.plugins.groovy.Groovy>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+export VERSION=&quot;4.0.0&quot;
+export PROJECT=&quot;smsi-admin&quot;
+
+export ProjFile=&quot;/opt/build/scm/scripts/buildServer/properties/projects/$PROJECT/project.properties&quot;
+
+cat $ProjFile
+
+/opt/build/scripts/CreateJenkinsPackage.sh $PROJECT $PROJECT br_$VERSION ${BUILD_NUMBER}
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+VERSION=&quot;4.0.0_${BUILD_NUMBER}&quot;
+
+print Deploying version ${VERSION}
+print
+print
+
+cd /opt/build/scripts
+
+./deployapp.sh -a smsi-admin -t smsi-admin -e devint -r ${VERSION} -i smsi-admin -v</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo &quot;4.0.0_${BUILD_NUMBER}&quot; &gt; /var/www/html/devint/smsi-admin.txt</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.37"/>
+    <hudson.plugins.git.GitPublisher plugin="git@2.2.7">
+      <configVersion>2</configVersion>
+      <pushMerge>false</pushMerge>
+      <pushOnlyIfSuccess>false</pushOnlyIfSuccess>
+      <forcePush>false</forcePush>
+      <tagsToPush>
+        <hudson.plugins.git.GitPublisher_-TagToPush>
+          <targetRepoName>origin</targetRepoName>
+          <tagName>v_4.0.0_${BUILD_NUMBER}</tagName>
+          <tagMessage></tagMessage>
+          <createTag>true</createTag>
+          <updateTag>false</updateTag>
+        </hudson.plugins.git.GitPublisher_-TagToPush>
+      </tagsToPush>
+    </hudson.plugins.git.GitPublisher>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.38.2">
+      <recipientList>jeff.schaeffer@canoeventures.com,michael.munhall@canoeventures.com,ryan.grow@canoeventures.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList></recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo></replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript></presendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo></replyTo>
+      <saveOutput>false</saveOutput>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.11">
+      <timeoutMinutes>30</timeoutMinutes>
+      <failBuild>true</failBuild>
+      <writingDescription>false</writingDescription>
+      <timeoutPercentage>0</timeoutPercentage>
+      <timeoutType>absolute</timeoutType>
+      <timeoutMinutesElasticDefault>3</timeoutMinutesElasticDefault>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+  </buildWrappers>
+</project>

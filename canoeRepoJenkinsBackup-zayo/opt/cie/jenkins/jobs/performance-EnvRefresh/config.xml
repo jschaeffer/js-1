@@ -1,0 +1,462 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <authToken>TOKEN_NAME</authToken>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+
+#base
+
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;/var/www/html/performance/dtupd.txt
+
+fnChktcservState() {
+  echo &quot;$targ/$instance&quot; &gt; ${target}/${Component}_app.txt
+ echo &quot;Checking Component=$Component on targ=$targ in instance=$instance&quot;
+ k_Stat=`ssh tcserver@$targ &quot;cd instances/$instance/bin; ./tcruntime-ctl.sh status&quot;`
+  if [[ $k_Stat = *PID* ]]
+   then echo &quot;&lt;img src=../images/green.png&gt;&quot;| tee &gt; ${target}/${Component}_envstate.txt
+  else echo &quot;&lt;img src=../images/red.png&gt;&quot; | tee &gt; ${target}/${Component}_envstate.txt
+  fi
+}
+
+fnChkInsDate() {
+ inst=`ssh tcserver@$targ &quot;cd instances/$instance/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/$app.instdate.txt
+}
+
+fnVerCheck() {
+Version=`ssh tcserver@$targ &quot;grep Implementation-Version /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot;  &gt; $target/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/$app.txt
+ fi
+
+ if `ssh tcserver@$targ &quot;grep -q 1.6.0_24  /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/bigyellow16.png&gt;&quot; &gt; $target/$app.JDK.txt
+ elif `ssh tcserver@$targ &quot;grep -q 1.8.0_2  /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/biggreen18.png&gt;&quot; &gt; $target/$app.JDK.txt
+ else
+  echo &quot;&lt;img src=../images/disabled.png&gt;&quot; &gt; $target/$app.JDK.txt
+ fi
+
+}
+
+fnVerJar() {
+  echo &quot;$targ/$direct&quot; &gt; ${target}/${Component}_app.txt
+Version=`ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/$jarLoc; jar xf $jarName META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+ echo &quot;Not Present&quot;  &gt; $target/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/$app.txt
+ inst=`ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/$jarLoc; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/$app.instdate.txt
+ fi
+
+ if `ssh tcserver@$targ &quot;grep -q 1.6.0_24  /opt/tcserver/$direct/$jarLoc/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/bigyellow16.png&gt;&quot; &gt; $target/$app.JDK.txt
+ elif `ssh tcserver@$targ &quot;grep -q 1.8.0_2  /opt/tcserver/$direct/$jarLoc/META-INF/MANIFEST.MF&quot;` ; then
+    echo &quot;&lt;img src=../images/biggreen18.png&gt;&quot; &gt; $target/$app.JDK.txt
+ else
+  echo &quot;&lt;img src=../images/disabled.png&gt;&quot; &gt; $target/$app.JDK.txt
+ fi
+ ssh tcserver@$targ &quot;cd /opt/tcserver/$direct/$jarLoc; rm -fR META_INF&quot;
+}
+
+fnDBVerCheck() {
+cd /opt/build/scripts/perf
+echo &quot;Checking $Component on SID $RACSIDTarg&quot;
+Version=`./check_dbversions_perf.sh -a ${Component} -e performance | tr -d &quot;\n&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+  if grep -q &quot;expired&quot; /opt/cie/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log ; then
+   echo &quot;DB Version check failed due to expired password on component $Component&quot;
+   echo &quot;Pwd Expired&quot; &gt;/var/www/html/$envname/$Component.txt
+  elif  [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* || ${Version} == *ERROR* ]]; then
+   echo &quot;Not Present&quot; | tee /var/www/html/$envname/$Component.txt
+  else
+    echo &quot;${Version}&quot; | tee /var/www/html/$envname/$Component.txt
+  fi
+ fi
+}
+
+fnLogCheck() {
+  d1=`ssh tcserver@${targ} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${targ} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$target/diskspace.txt
+  l1=`ssh tcserver@${targ} &quot;du instances/$instance/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${targ} &quot;du -h instances/$instance/logs | awk &apos;{print $1}&apos;&quot;`;export lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;img src=../images/red.png&gt;&quot; | tee $target/$Componentapp.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;img src=../images/yellow.png&gt;&quot; | tee $target/$Component.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;img src=../images/green.png&gt;&quot;| tee $target/$Component.logs
+  fi
+
+}
+
+echo &quot;######################################################################&quot;
+echo &quot;Checking the tcserver state and installation date for Performance Envs&quot;
+echo &quot;######################################################################&quot;
+
+export Components=&quot;Dynamic-Ad-Insertion-cm dai-cip-feedback caas-admin dai-smsi dai-smsi-relay Dynamic-Ad-Insertion-engine smsi-publisher Pgmr-Cpgn-Int impression_collector int-test-support metadata-publisher dai-national-cis ad-load-manager POIS dai-dce&quot;
+export target=&quot;/var/www/html/performance&quot;
+
+for j in ${Components}; do
+
+ case $j in
+  Dynamic-Ad-Insertion-cm)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=pfcm01
+   export instance=cm01
+   export webapps=Dynamic-Ad-Insertion-cm
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  dai-dce)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=pfdceap01
+   export instance=DAI-DCE
+   export webapps=dai-dce-server
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  dai-cip-feedback)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=pfcipdai01
+   export instance=cip-feedback
+   export webapps=cip-feedback
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  impression_collector)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=10.13.19.151
+   export instance=impression_collcetor
+   export webapps=impression_collector_server
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  caas-admin)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=pfcm01
+   export instance=caas-admin
+   export webapps=caas-admin
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  metadata-publisher)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=pfmdp01
+   export instance=metadata-publisher
+   export webapps=publisher
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  dai-national-cis)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=pfncis01
+   export instance=dai-national-cis
+    export webapps=nCisClient
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  dai-smsi)
+   export Comps=&quot;dai-smsi0 dai-smsi1&quot;
+    for i in $Comps; do
+     case $i in
+      dai-smsi0)
+       export targ=&quot;pfsmsidai01&quot;
+       export instance=&quot;smsi_40&quot;
+       export Component=$i 
+       export app=$j
+       export webapps=smsi
+       fnChkInsDate
+       fnVerCheck
+      ;;
+      dai-smsi1)
+       export targ=&quot;pfsmsidai02&quot;
+       export instance=&quot;smsi_40&quot;
+       export Component=$i
+       export webapps=smsi
+      ;;
+     esac
+    fnChktcservState
+    fnLogCheck   
+    done
+ ;;
+  dai-smsi-relay)
+   export Comps=&quot;dai-smsi-relay0 dai-smsi-relay1&quot;
+    for i in $Comps; do
+     case $i in
+      dai-smsi-relay0)
+       export targ=&quot;pffwsmsr01&quot;
+       export instance=&quot;FW_SMSI_RELAY_01&quot;
+       export Component=$i 
+       export app=$j
+       export webapps=fw_smsi-relay
+       fnChkInsDate
+       fnVerCheck
+      ;;
+      dai-smsi-relay1)
+       export targ=&quot;pffwsmsr02&quot;
+       export instance=&quot;FW_SMSI_RELAY_02&quot;
+       export Component=$i
+       export webapps=fw_smsi-relay
+      ;;
+     esac
+    fnChktcservState
+    fnLogCheck
+    done
+ ;;
+  Dynamic-Ad-Insertion-engine)
+   export Comps=&quot;Dynamic-Ad-Insertion-engine0 Dynamic-Ad-Insertion-engine1 Dynamic-Ad-Insertion-engine2 Dynamic-Ad-Insertion-engine3 Dynamic-Ad-Insertion-engine4&quot;
+    for i in $Comps; do
+     case $i in
+      Dynamic-Ad-Insertion-engine0)
+       export targ=&quot;pfadsdai01&quot;
+       export instance=&quot;ads0101_40&quot;
+       export Component=$i 
+       export app=$j
+       export webapps=ads-3.0.0-SNAPSHOT
+       fnChkInsDate
+       fnVerCheck
+      ;;
+      Dynamic-Ad-Insertion-engine1)
+       export targ=&quot;pfadsdai02&quot;
+       export instance=&quot;ads0201_40&quot;
+       export Component=$i
+      ;;
+      Dynamic-Ad-Insertion-engine2)
+       export targ=&quot;pfpsndai01&quot;
+       export instance=&quot;psn0102_40&quot;
+       export Component=$i
+      ;;
+      Dynamic-Ad-Insertion-engine3)
+       export targ=&quot;pfpsndai02&quot;
+       export instance=&quot;psn0102_40&quot;
+       export Component=$i
+      ;;
+      Dynamic-Ad-Insertion-engine4)
+       export targ=&quot;pfcis01&quot;
+       export instance=&quot;cis02&quot;
+       export Component=$i
+      ;;
+     esac
+    fnChktcservState
+    fnLogCheck
+    done
+ ;;
+  smsi-publisher)
+   export Comps=&quot;smsi-publisher0 smsi-publisher1&quot;
+    for i in $Comps; do
+     case $i in
+      smsi-publisher0)
+       export targ=&quot;pfsmspub01&quot;
+       export instance=&quot;smsi-pub&quot;
+       export Component=$i 
+       export app=$j
+       export webapps=smsi-pub
+       fnChkInsDate
+       fnVerCheck
+      ;;
+      smsi-publisher1)
+       export targ=&quot;pfsmspub02&quot;
+       export instance=&quot;smsi-pub&quot;
+       export Component=$i
+       export webapps=smsi-pub
+      ;;
+     esac
+    fnChktcservState
+    fnLogCheck
+    done
+ ;;
+  Pgmr-Cpgn-Int)
+   export Comps=&quot;Pgmr-Cpgn-Int0 Pgmr-Cpgn-Int1&quot;
+    for i in $Comps; do
+     case $i in
+      Pgmr-Cpgn-Int0)
+       export targ=&quot;pffwciping01&quot;
+       export instance=&quot;FW_CIP_ING_01&quot;
+       export Component=$i 
+       export app=$j
+       export webapps=fw_cip-ingest
+       fnChkInsDate
+       fnVerCheck
+      ;;
+      Pgmr-Cpgn-Int1)
+       export targ=&quot;pffwciping02&quot;
+       export instance=&quot;GOOGLE_CIP_ING_01&quot;
+       export Component=$i
+       export app=$j
+      ;;
+     esac
+    fnChktcservState
+    fnLogCheck
+    done
+ ;;
+  int-test-support)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=pffwmock01
+   export instance=mocksvr01
+   export webapps=int-test-support
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  ad-load-manager)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=pfalm01
+   export instance=ad-load-manager
+   export webapps=ad-load-manager
+   fnChktcservState
+   fnChkInsDate
+   fnVerCheck
+   fnLogCheck
+  ;;
+  POIS)
+   export Comps=&quot;POIS0 POIS1&quot;
+    for i in $Comps; do
+     case $i in
+      POIS0)
+       export targ=&quot;pfpois01&quot;
+       export instance=&quot;POIS&quot;
+       export Component=$i 
+       export app=$j
+       export webapps=pois
+       fnChkInsDate
+       fnVerCheck
+      ;;
+      POIS1)
+       export targ=&quot;pfpois02&quot;
+       export instance=&quot;POIS&quot;
+       export Component=$i
+       export app=$j
+       export webapps=pois
+      ;;
+     esac
+    fnChktcservState
+    fnLogCheck
+    done
+ esac
+done
+
+### Checking jar components
+
+export JarComp=&quot;dai-cip acp&quot;
+export target=&quot;/var/www/html/performance&quot;
+
+for j in ${JarComp}; do
+ case $j in
+  dai-cip)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=&quot;pfcipdai01&quot;
+   export direct=&quot;dai-cip_40&quot;
+   export jarLoc=&quot;bin&quot;
+   export jarName=&quot;dai-cip.jar&quot;
+   fnVerJar
+  ;;
+  acp)
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=&quot;pfcm01&quot;
+   export direct=&quot;acp&quot;
+   export jarLoc=&quot;bin&quot;
+   export jarName=&quot;acp.jar&quot;
+   fnVerJar
+  ;;
+ esac
+done
+
+### DB Component section
+
+export DBComp=&quot;caas-core ads-core dai-etl-feeder smsi_reporting&quot;
+
+for j in ${DBComp}; do
+ case $j in
+  caas-core)
+   export RACSIDTarg=&quot;CIP_PUBLISHER&quot;
+   export Component=&quot;${j}&quot;
+   export app=$j
+   fnDBVerCheck
+  ;;
+  ads-core)
+   export RACSIDTarg=&quot;ADS&quot;
+   export Component=&quot;${j}&quot;
+   export app=$j
+   fnDBVerCheck
+  ;;
+  dai-etl-feeder)
+   export RACSIDTarg=&quot;SMSI&quot;
+   export Component=&quot;${j}&quot;
+   export app=$j
+   fnDBVerCheck
+  ;;
+  smsi_reporting)
+   export RACSIDTarg=&quot;SMSI&quot;
+   export Component=&quot;${j}&quot;
+   export app=$j
+   fnDBVerCheck
+  ;;
+ esac
+done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

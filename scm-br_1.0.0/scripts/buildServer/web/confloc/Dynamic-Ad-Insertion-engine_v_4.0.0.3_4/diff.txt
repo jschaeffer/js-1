@@ -1,0 +1,825 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index f0c9d69..728c0c4 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -6,6 +6,36 @@ db.pool.size=90
+ db.test.idle=60
+ db.max.idle=600
+ 
++#### SMSI Publisher Forwarding
++
++# Location on disk to store the activeMQ journal, and it's size in MB
++smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
++smsipub.amq.journal.store.limit=100
++
++# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
++smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
++smsipub.amq.temp.store.limit=50
++
++# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
++# is the maximum amount of time between retry attempts in milliseconds
++smsipub.ingest.jms.max_retry_delay=3600000
++
++
++# Number of threads used to remove messages from the journal and place them in DB
++smsipub.ingest.executor.pool.size=5
++
++smsipub.ingest.session.batch.size=100
++smsipub.ingest.session.purge.interval=500
++
++smsipub.ingest.notification.batch.size=100
++smsipub.ingest.notification.purge.interval=500
++
++smsipub.ingest.presentation-update.batch.size=100
++smsipub.ingest.presentation-update.purge.interval=500
++
++# In hours
++smsipub.ingest.message.timeToLive=240
++
+ # Database #
+ smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ smsipub.db.username=SC1_SMSIPUB
+@@ -57,4 +87,38 @@ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
+-ads.preq.hasBreakOpportunitiesExpected = true
+\ No newline at end of file
++ads.placement.response.includeNonPlacedOpportunities=true
++
++smsipub.enabled=true
++
++ads.metadata.cache.deliveryVariance=10
++
++#If this is true, we will not persist Insertions or Views (use as a prod testing tool). Also should disable smsipub.enabled and cip.feedback.publisher.job.enabled
++ads.deadHead=false
++
++#This switch controls if we forward counts to DCE
++ads.dce.enabled=false
++
++#DCE URL
++ads.dce.url=http://localhost
++
++#Frequency that ads sends info to DCE (should be every minute)
++ads.dce.schedule=0 0/1 * * * ?
++
++#The name of the ADS to send down to DCE
++identity.ads=SCRUM1
++
++#Purge job
++ads.purge.endpointStatus.DaysBackToPurge=30
++ads.purge.endpointStatus.enabled=true
++ads.purge.endpointStatus.schedule=0 0 0 * * ?
++
++#Batch size of vodendpoint status updates
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.115:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index 67c18b3..9321895 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -5,6 +5,47 @@ db.pool.initialSize=10
+ db.pool.size=90
+ db.test.idle=60
+ db.max.idle=600
++
++#### SMSI Publisher Forwarding
++
++# Location on disk to store the activeMQ journal, and it's size in MB
++smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
++smsipub.amq.journal.store.limit=100
++
++# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
++smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
++smsipub.amq.temp.store.limit=50
++
++# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
++# is the maximum amount of time between retry attempts in milliseconds
++smsipub.ingest.jms.max_retry_delay=3600000
++
++
++# Number of threads used to remove messages from the journal and place them in DB
++smsipub.ingest.executor.pool.size=5
++
++smsipub.ingest.session.batch.size=100
++smsipub.ingest.session.purge.interval=500
++
++smsipub.ingest.notification.batch.size=100
++smsipub.ingest.notification.purge.interval=500
++
++smsipub.ingest.presentation-update.batch.size=100
++smsipub.ingest.presentation-update.purge.interval=500
++
++# In hours
++smsipub.ingest.message.timeToLive=240
++
++# Database #
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC2_SMSIPUB
++smsipub.db.password=SC2_SMSIPUB
++smsipub.db.pool.initialSize=50
++smsipub.db.pool.size=200
++smsipub.db.test.idle=60
++smsipub.db.max.idle=50
++smsipub.db.checkout.timeout=2000
++
+ ads.refresh.interval=0 */2 * * * ?
+ ads.operator=TIME WARNER
+ qualifier.logging.enabled=true
+@@ -19,14 +60,13 @@ validation.logging.enabled=true
+ #psn.job.isJobActive=true
+ ## Added via email from B. Griese 12/31/12  Above entries commented out
+ psn.job.daysToRetainDetailRecords=1
+-psn.job.rollup.interval=0 */5 * * * ?
+-psn.job.purgeDetail.interval=0/15 * * * * ?
++psn.job.rollup.interval=0 0/5 * * * ?
++psn.job.purgeDetail.interval=0 0/15 * * * ?
+ psn.job.isJobActive=true
+ psn.psnType=1
+ 
+ #offline.cache.dir=/opt/tcserver/instances/ads/offline/cache
+ offline.cache.dir=${OFFLINE_CACHE}
+-smsiPub.offline.cache.dir=${OFFLINE_CACHE}
+ ads.online=true
+ ads.operatorId=2
+ ads.offline.retry.count=3
+@@ -37,7 +77,7 @@ cip.feedback.publisher.url=http://10.13.18.116:9535/int-test-support/FbN-Ing-Moc
+ cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+-ads.evenGoal.refresh.minutes=6
++ads.evenGoal.refresh.minutes=1
+ 
+ #Cache job schedule details
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+@@ -47,4 +87,38 @@ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
+-ads.preq.hasBreakOpportunitiesExpected = false
+\ No newline at end of file
++ads.placement.response.includeNonPlacedOpportunities=true
++
++smsipub.enabled=true
++
++ads.metadata.cache.deliveryVariance=10
++
++#If this is true, we will not persist Insertions or Views (use as a prod testing tool). Also should disable smsipub.enabled and cip.feedback.publisher.job.enabled
++ads.deadHead=false
++
++#This switch controls if we forward counts to DCE
++ads.dce.enabled=false
++
++#DCE URL
++ads.dce.url=http://localhost
++
++#Frequency that ads sends info to DCE (should be every minute)
++ads.dce.schedule=0 0/1 * * * ?
++
++#The name of the ADS to send down to DCE
++identity.ads=SCRUM2
++
++#Purge job
++ads.purge.endpointStatus.DaysBackToPurge=30
++ads.purge.endpointStatus.enabled=true
++ads.purge.endpointStatus.schedule=0 0 0 * * ?
++
++#Batch size of vodendpoint status updates
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.115:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index faad8ee..ac49f9f 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -1,10 +1,51 @@
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-db.username=SC3_CORE
+-db.password=SC3_CORE
++db.username=SC3_ADS
++db.password=SC3_ADS
+ db.pool.initialSize=10
+ db.pool.size=90
+ db.test.idle=60
+ db.max.idle=600
++
++#### SMSI Publisher Forwarding
++
++# Location on disk to store the activeMQ journal, and it's size in MB
++smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
++smsipub.amq.journal.store.limit=100
++
++# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
++smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
++smsipub.amq.temp.store.limit=50
++
++# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
++# is the maximum amount of time between retry attempts in milliseconds
++smsipub.ingest.jms.max_retry_delay=3600000
++
++
++# Number of threads used to remove messages from the journal and place them in DB
++smsipub.ingest.executor.pool.size=5
++
++smsipub.ingest.session.batch.size=100
++smsipub.ingest.session.purge.interval=500
++
++smsipub.ingest.notification.batch.size=100
++smsipub.ingest.notification.purge.interval=500
++
++smsipub.ingest.presentation-update.batch.size=100
++smsipub.ingest.presentation-update.purge.interval=500
++
++# In hours
++smsipub.ingest.message.timeToLive=240
++
++# Database #
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC3_SMSIPUB
++smsipub.db.password=SC3_SMSIPUB
++smsipub.db.pool.initialSize=50
++smsipub.db.pool.size=200
++smsipub.db.test.idle=60
++smsipub.db.max.idle=50
++smsipub.db.checkout.timeout=2000
++
+ ads.refresh.interval=0 */2 * * * ?
+ ads.operator=TIME WARNER
+ qualifier.logging.enabled=true
+@@ -13,29 +54,30 @@ selection.logging.enabled=true
+ service.logging.enabled=true
+ performance.logging.enabled=true
+ validation.logging.enabled=true
+-psn.job.daysToRetainDetailRecords=7
+-psn.job.rollup.interval=0 */5 * * * ?
+-psn.job.purgeDetail.interval=0 0 0/12 * * ?
++#psn.job.daysToRetainDetailRecords=1
++#psn.job.rollup.interval=0 */55 * * * ?
++#psn.job.purgeDetail.interval=0 */1 * * * ?
++#psn.job.isJobActive=true
++## Added via email from B. Griese 12/31/12  Above entries commented out
++psn.job.daysToRetainDetailRecords=1
++psn.job.rollup.interval=0 0/5 * * * ?
++psn.job.purgeDetail.interval=0 0/15 * * * ?
+ psn.job.isJobActive=true
+ psn.psnType=1
+ 
+ #offline.cache.dir=/opt/tcserver/instances/ads/offline/cache
+ offline.cache.dir=${OFFLINE_CACHE}
+-smsiPub.offline.cache.dir=${OFFLINE_CACHE}
+ ads.online=true
+ ads.operatorId=2
+ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+ db.checkout.timeout=3000
+-schema.validation.enabled=true
+-
+ 
+-
+-cip.feedback.publisher.url=http://localhost:8088/
+-cip.feedback.publisher.job.enabled=false
++cip.feedback.publisher.url=http://localhost:9535/int-test-support/FbN-Ing-Mock
++cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+-ads.evenGoal.refresh.minutes=6
++ads.evenGoal.refresh.minutes=1
+ 
+ #Cache job schedule details
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+@@ -45,4 +87,38 @@ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
+-ads.preq.hasBreakOpportunitiesExpected = false
++ads.placement.response.includeNonPlacedOpportunities=true
++
++smsipub.enabled=true
++
++ads.metadata.cache.deliveryVariance=10
++
++#If this is true, we will not persist Insertions or Views (use as a prod testing tool). Also should disable smsipub.enabled and cip.feedback.publisher.job.enabled
++ads.deadHead=false
++
++#This switch controls if we forward counts to DCE
++ads.dce.enabled=false
++
++#DCE URL
++ads.dce.url=http://localhost
++
++#Frequency that ads sends info to DCE (should be every minute)
++ads.dce.schedule=0 0/1 * * * ?
++
++#The name of the ADS to send down to DCE
++identity.ads=SCRUM3
++
++#Purge job
++ads.purge.endpointStatus.DaysBackToPurge=30
++ads.purge.endpointStatus.enabled=true
++ads.purge.endpointStatus.schedule=0 0 0 * * ?
++
++#Batch size of vodendpoint status updates
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.117:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index 74adb23..cc8e03a 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -1,10 +1,52 @@
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-db.username=SC4_CORE
+-db.password=SC4_CORE
++db.username=SC4_ADS
++db.password=SC4_ADS
+ db.pool.initialSize=10
+ db.pool.size=90
+ db.test.idle=60
+ db.max.idle=600
++
++#### SMSI Publisher Forwarding
++
++# Location on disk to store the activeMQ journal, and it's size in MB
++smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
++smsipub.amq.journal.store.limit=100
++
++# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
++smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
++smsipub.amq.temp.store.limit=50
++
++# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
++# is the maximum amount of time between retry attempts in milliseconds
++smsipub.ingest.jms.max_retry_delay=3600000
++
++
++# Number of threads used to remove messages from the journal and place them in DB
++smsipub.ingest.executor.pool.size=5
++
++
++smsipub.ingest.session.batch.size=100
++smsipub.ingest.session.purge.interval=500
++
++smsipub.ingest.notification.batch.size=100
++smsipub.ingest.notification.purge.interval=500
++
++smsipub.ingest.presentation-update.batch.size=100
++smsipub.ingest.presentation-update.purge.interval=500
++
++# In hours
++smsipub.ingest.message.timeToLive=240
++
++# Database #
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC4_SMSIPUB
++smsipub.db.password=SC4_SMSIPUB
++smsipub.db.pool.initialSize=50
++smsipub.db.pool.size=200
++smsipub.db.test.idle=60
++smsipub.db.max.idle=50
++smsipub.db.checkout.timeout=2000
++
+ ads.refresh.interval=0 */2 * * * ?
+ ads.operator=TIME WARNER
+ qualifier.logging.enabled=true
+@@ -13,28 +55,30 @@ selection.logging.enabled=true
+ service.logging.enabled=true
+ performance.logging.enabled=true
+ validation.logging.enabled=true
+-psn.job.daysToRetainDetailRecords=7
+-psn.job.rollup.interval=0 */5 * * * ?
+-psn.job.purgeDetail.interval=0 0 0/12 * * ?
++#psn.job.daysToRetainDetailRecords=1
++#psn.job.rollup.interval=0 */55 * * * ?
++#psn.job.purgeDetail.interval=0 */1 * * * ?
++#psn.job.isJobActive=true
++## Added via email from B. Griese 12/31/12  Above entries commented out
++psn.job.daysToRetainDetailRecords=1
++psn.job.rollup.interval=0 0/5 * * * ?
++psn.job.purgeDetail.interval=0 0/15 * * * ?
+ psn.job.isJobActive=true
+ psn.psnType=1
+ 
+ #offline.cache.dir=/opt/tcserver/instances/ads/offline/cache
+ offline.cache.dir=${OFFLINE_CACHE}
+-smsiPub.offline.cache.dir=${OFFLINE_CACHE}
+ ads.online=true
+ ads.operatorId=2
+ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+ db.checkout.timeout=3000
+-schema.validation.enabled=true
+ 
+-
+-cip.feedback.publisher.url=http://localhost:8088/
+-cip.feedback.publisher.job.enabled=false
++cip.feedback.publisher.url=http://localhost:9535/int-test-support/FbN-Ing-Mock
++cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+-ads.evenGoal.refresh.minutes=6
++ads.evenGoal.refresh.minutes=1
+ 
+ #Cache job schedule details
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+@@ -44,4 +88,38 @@ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
+-ads.preq.hasBreakOpportunitiesExpected = false
++ads.placement.response.includeNonPlacedOpportunities=true
++
++smsipub.enabled=true
++
++ads.metadata.cache.deliveryVariance=10
++
++#If this is true, we will not persist Insertions or Views (use as a prod testing tool). Also should disable smsipub.enabled and cip.feedback.publisher.job.enabled
++ads.deadHead=false
++
++#This switch controls if we forward counts to DCE
++ads.dce.enabled=false
++
++#DCE URL
++ads.dce.url=http://localhost
++
++#Frequency that ads sends info to DCE (should be every minute)
++ads.dce.schedule=0 0/1 * * * ?
++
++#The name of the ADS to send down to DCE
++identity.ads=SCRUM4
++
++#Purge job
++ads.purge.endpointStatus.DaysBackToPurge=30
++ads.purge.endpointStatus.enabled=true
++ads.purge.endpointStatus.schedule=0 0 0 * * ?
++
++#Batch size of vodendpoint status updates
++cis.batchsave.size=1000
++
++#Frequency Capping
++
++frequency.cap.wait=10
++frequency.cap=true
++frequency.cap.url=10.13.18.122:13654
++frequency.cap.max.persists=2500
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
+index c56ca9d..4d71ccc 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum1.xml
+@@ -65,7 +65,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -105,6 +105,18 @@
+         <appender-ref ref="hibernate_log"/>
+     </category>
+ 
++    <appender name="OPERATIONS_LOG" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/ads/logs/operations.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="OPERATIONS_LOG"/>
++    </category>
+ 
+     <root>
+         <level value="INFO"/>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
+index c56ca9d..4d71ccc 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum2.xml
+@@ -65,7 +65,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -105,6 +105,18 @@
+         <appender-ref ref="hibernate_log"/>
+     </category>
+ 
++    <appender name="OPERATIONS_LOG" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/ads/logs/operations.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="OPERATIONS_LOG"/>
++    </category>
+ 
+     <root>
+         <level value="INFO"/>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
+index 0e11cbc..9f21035 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum3.xml
+@@ -78,7 +78,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -118,6 +118,18 @@
+         <appender-ref ref="hibernate_log"/>
+     </category>
+ 
++    <appender name="OPERATIONS_LOG" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/ads/logs/operations.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="OPERATIONS_LOG"/>
++    </category>
+ 
+     <root>
+         <level value="TRACE"/>
+diff --git a/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml b/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
+index 0e11cbc..9f21035 100644
+--- a/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
++++ b/dai-interfaces/ads/src/main/resources/config/log4j.scrum4.xml
+@@ -78,7 +78,7 @@
+         <appender-ref ref="PERFORMANCE_MONITORING_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+@@ -118,6 +118,18 @@
+         <appender-ref ref="hibernate_log"/>
+     </category>
+ 
++    <appender name="OPERATIONS_LOG" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/ads/logs/operations.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="com.canoeventures.common.util.OperationsLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="OPERATIONS_LOG"/>
++    </category>
+ 
+     <root>
+         <level value="TRACE"/>
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
+index 7553de0..acc0b5b 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum1.sh
+@@ -5,11 +5,11 @@ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum2.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum2.sh
+index fbc5e3f..677041d 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum2.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum2.sh
+@@ -5,11 +5,11 @@ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum3.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum3.sh
+index fbc5e3f..677041d 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum3.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum3.sh
+@@ -5,11 +5,11 @@ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum4.sh b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum4.sh
+index fbc5e3f..677041d 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum4.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.ads.scrum4.sh
+@@ -5,11 +5,11 @@ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+ export APPHOME_DIR=/opt/tcserver/instances/ads
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema.validation.enabled=true  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum1.sh b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum1.sh
+index 23cb62e..04b2028 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum1.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum1.sh
+@@ -5,11 +5,11 @@ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+-export APPHOME_DIR=/opt/tcserver/instances/ads
++export APPHOME_DIR=/opt/tcserver/instances/psn
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum2.sh b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum2.sh
+index 23cb62e..04b2028 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum2.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum2.sh
+@@ -5,11 +5,11 @@ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+-export APPHOME_DIR=/opt/tcserver/instances/ads
++export APPHOME_DIR=/opt/tcserver/instances/psn
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum3.sh b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum3.sh
+index 23cb62e..04b2028 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum3.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum3.sh
+@@ -5,11 +5,11 @@ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+-export APPHOME_DIR=/opt/tcserver/instances/ads
++export APPHOME_DIR=/opt/tcserver/instances/psn
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum4.sh b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum4.sh
+index 23cb62e..04b2028 100755
+--- a/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum4.sh
++++ b/dai-interfaces/ads/src/main/resources/config/setenv.psn.scrum4.sh
+@@ -5,11 +5,11 @@ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
+ CLASSPATH="$CATALINA_BASE/bin/insight-bootstrap-tcserver-1.5.1.SR3.jar:$CATALINA_BASE/lib/aspectjweaver-1.6.11.SR1.jar"
+ #JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m"
+ 
+-JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs"
++JVM_OPTS="-Xss192K -Djava.awt.headless=true -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dgemfire.disableShutdownHook=true -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs  "
+ 
+-export APPHOME_DIR=/opt/tcserver/instances/ads
++export APPHOME_DIR=/opt/tcserver/instances/psn
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ export OFFLINE_CACHE=$APPHOME_DIR/offline/cache
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dconfig.dir=$CONFIG_DIR -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger -Dschema-validation-enabled=true  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+index 94c6dc2..8ed4128 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+@@ -30,3 +30,7 @@ ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
++
++ads.deadHead=false
++
++cis.batchsave.size=1000
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+index 891069a..a5a881d 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+@@ -20,3 +20,7 @@ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
++ads.deadHead=false
++
++cis.batchsave.size=1000
++
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+index 43cc25a..08bd907 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+@@ -20,3 +20,7 @@ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ 
++ads.deadHead=false
++
++cis.batchsave.size=1000
++
+diff --git a/dai-interfaces/cis/src/main/resources/config/setenv.scrum1.sh b/dai-interfaces/cis/src/main/resources/config/setenv.scrum1.sh
+index d692877..999f8ee 100755
+--- a/dai-interfaces/cis/src/main/resources/config/setenv.scrum1.sh
++++ b/dai-interfaces/cis/src/main/resources/config/setenv.scrum1.sh
+@@ -12,4 +12,4 @@ export APPHOME_DIR=/opt/tcserver/instances/cis
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j_cis.xml
+ JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/cis/src/main/resources/config/setenv.scrum2.sh b/dai-interfaces/cis/src/main/resources/config/setenv.scrum2.sh
+index d692877..999f8ee 100755
+--- a/dai-interfaces/cis/src/main/resources/config/setenv.scrum2.sh
++++ b/dai-interfaces/cis/src/main/resources/config/setenv.scrum2.sh
+@@ -12,4 +12,4 @@ export APPHOME_DIR=/opt/tcserver/instances/cis
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j_cis.xml
+ JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH  -Dinsight-max-frames=10000"
+diff --git a/dai-interfaces/cis/src/main/resources/config/setenv.scrum3.sh b/dai-interfaces/cis/src/main/resources/config/setenv.scrum3.sh
+index d692877..999f8ee 100755
+--- a/dai-interfaces/cis/src/main/resources/config/setenv.scrum3.sh
++++ b/dai-interfaces/cis/src/main/resources/config/setenv.scrum3.sh
+@@ -12,4 +12,4 @@ export APPHOME_DIR=/opt/tcserver/instances/cis
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j_cis.xml
+ JVM_OPTS="-Xmx512M -Xss192K -Dinsight.base=$CATALINA_BASE/insight -Dinsight.logs=$CATALINA_BASE/logs -XX:MaxPermSize=256m -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dlog4j.location=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH  -Dinsight-max-frames=10000"

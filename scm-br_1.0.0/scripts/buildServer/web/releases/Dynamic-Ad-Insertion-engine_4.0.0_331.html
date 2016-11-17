@@ -1,0 +1,142 @@
+<b><u>Component Release Info for Sprint Harrison:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_331</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana>ADS Core - 4.0.0_84
+SMSi Pub DB - 4.0.0_236
+
+New configuration for ADS ‘deadhead’ for operations troubleshooting, Validation and persistence of FC rules, Adjusted the “Not Registered” entertainment asset validation error to throw to a new operations.log, CIS scheduled check only queries assets in LW plus 30 days prior to start, PSN/Insertion Rollup performance bug fix for Matterhorn</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_306</b></u><br>
+<pre>
+* <font color=blue>8284090</font>-<font color=green>(2014-04-29)</font><font color=black><b>added deadHead property to CIS.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_331, r_4.0.0_331)</font>
+* <font color=blue>578f5f5</font>-<font color=green>(2014-04-29)</font><font color=black><b>removed tag, refactored missing ent tests in smsipub to have new error to the operations.log</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>6cf5d2e</font>-<font color=green>(2014-04-28)</font><font color=black><b>renamed pub tests, uncommented CIMA recState, moved placement_resp.feature to pub tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_330, v_4.0.0_329)</font>
+* <font color=blue>8ce0cd9</font>-<font color=green>(2014-04-18)</font><font color=black><b>frequency capping rules CIP ingest persistance complete</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_328)</font>
+* <font color=blue>8ba9951</font>-<font color=green>(2014-04-17)</font><font color=black><b>VODDAI-3807</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_327)</font>
+* <font color=blue>99c0f03</font>-<font color=green>(2014-04-17)</font><font color=black><b>quick naming annoyance cucumber change</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>542e85f</font>-<font color=green>(2014-04-17)</font><font color=black><b>updated scrum1 properties with new deadhead config</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_326)</font>
+* <font color=blue>d35702c</font>-<font color=green>(2014-04-17)</font><font color=black><b>final FC validation checkin -- now passing</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_325)</font>
+* <font color=blue>d5a45eb</font>-<font color=green>(2014-04-17)</font><font color=black><b>Changes to operations log.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>86d5c7c</font>-<font color=green>(2014-04-17)</font><font color=black><b>Frequency Capping validation test changes</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>3105db0</font>-<font color=green>(2014-04-17)</font><font color=black><b>Updating cucumber logs.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>e75234b</font>-<font color=green>(2014-04-17)</font><font color=black><b>Frequency Capping Qualifier Validation testing added</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>e9c3026</font>-<font color=green>(2014-04-17)</font><font color=black><b>VODDAI-3798</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>21e37ed</font>-<font color=green>(2014-04-17)</font><font color=black><b>VODDAI-5533</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>7c5b70b</font>-<font color=green>(2014-04-16)</font><font color=black><b>VODDAI-5550 Changed the scheduled job</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_324)</font>
+* <font color=blue>d4be60d</font>-<font color=green>(2014-04-16)</font><font color=black><b>deleted config features from their original folders</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>5644f1a</font>-<font color=green>(2014-04-16)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>cd71fbd</font>-<font color=green>(2014-04-16)</font><font color=black><b>operations log check for unknown assetID -- Includes PAID</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| *   <font color=blue>f020f36</font>-<font color=green>(2014-04-16)</font><font color=black><b>Ugly Merge</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |\  
+| * | <font color=blue>0e4e98b</font>-<font color=green>(2014-04-16)</font><font color=black><b>VODDAI-5534</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | | <font color=blue>5d0ed75</font>-<font color=green>(2014-04-16)</font><font color=black><b>added operations test and removed tag</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>4b8a2e5</font>-<font color=green>(2014-04-16)</font><font color=black><b>added a new manual_config folder for ADS tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* | <font color=blue>56f8f2b</font>-<font color=green>(2014-04-16)</font><font color=black><b>new test for CIS scheduled check, fix by Ken for the qualifier.log table checks in cucumber</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* | <font color=blue>8ec9c91</font>-<font color=green>(2014-04-16)</font><font color=black><b>VODDAI-5532</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>4bd04b8</font>-<font color=green>(2014-04-14)</font><font color=black><b>changed the presentation table check to 0 second</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_323)</font>
+* | <font color=blue>e2214c7</font>-<font color=green>(2014-04-14)</font><font color=black><b>Updated read me</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>7f88847</font>-<font color=green>(2014-04-14)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>008ce1a</font>-<font color=green>(2014-04-14)</font><font color=black><b>Added new properties</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>f06e984</font>-<font color=green>(2014-04-14)</font><font color=black><b>removed flag and added offline tests for mip</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/ /  
+* |   <font color=blue>92955ab</font>-<font color=green>(2014-04-11)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_322)</font>
+|\ \  
+| * | <font color=blue>9309e79</font>-<font color=green>(2014-04-11)</font><font color=black><b>Fixed issue w/ IP</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_321)</font>
+* | | <font color=blue>aa2e443</font>-<font color=green>(2014-04-11)</font><font color=black><b>changed a feature to match actual campaign items in the db</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/ /  
+* | <font color=blue>a5f3866</font>-<font color=green>(2014-04-11)</font><font color=black><b>Fixes for IP/QAM check</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* |   <font color=blue>fbc8ea0</font>-<font color=green>(2014-04-11)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>1fc8616</font>-<font color=green>(2014-04-11)</font><font color=black><b>Letting through status psn's that are managedIp</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_320)</font>
+* | <font color=blue>a2d3bd6</font>-<font color=green>(2014-04-11)</font><font color=black><b>test changes during scrum regression</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>b43fcd4</font>-<font color=green>(2014-04-10)</font><font color=black><b>removed tag</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_319)</font>
+* <font color=blue>3c40e32</font>-<font color=green>(2014-04-10)</font><font color=black><b>refactored the priority test now that Priority.List is no longer in the qualifier log</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>34372bb</font>-<font color=green>(2014-04-10)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>8fa5eeb</font>-<font color=green>(2014-04-10)</font><font color=black><b>changed length of tracking ID in old tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>98bbe97</font>-<font color=green>(2014-04-10)</font><font color=black><b>refactor of ci_rotation tests complete</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+*   <font color=blue>58faa75</font>-<font color=green>(2014-04-10)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>1b72dfb</font>-<font color=green>(2014-04-10)</font><font color=black><b>Added unit test for comcast style viewer events.</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>89da5de</font>-<font color=green>(2014-04-10)</font><font color=black><b>Switched to testing the media asset cache range config to cip persistance</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>bfdde04</font>-<font color=green>(2014-04-10)</font><font color=black><b>Then I removed all my tags. :|</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>143636e</font>-<font color=green>(2014-04-10)</font><font color=black><b>Pulled Priority.List check from Asset Selection Tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>29b1bc5</font>-<font color=green>(2014-04-10)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>5e453df</font>-<font color=green>(2014-04-10)</font><font color=black><b>added smsipub process column check to ManagedIP tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>5e476a5</font>-<font color=green>(2014-04-10)</font><font color=black><b>refactor of psn trackingIds to include new IP flag</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+*   <font color=blue>1a0f069</font>-<font color=green>(2014-04-10)</font><font color=black><b>Merge branch 'manged_ip' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>cd4978b</font>-<font color=green>(2014-04-09)</font><font color=black><b>Made it so that viewer events managed ip requests</b></font><font color=grey>- (dehmlowm)</font><font color=red> (origin/manged_ip)</font>
+| * <font color=blue>9101ede</font>-<font color=green>(2014-04-09)</font><font color=black><b>VODDAI-5208</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>9949f2f</font>-<font color=green>(2014-04-09)</font><font color=black><b>changes to add managed IP column to sql statement</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>4de6d4e</font>-<font color=green>(2014-04-09)</font><font color=black><b>Added comments about the intent of the classes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>a1ee4fb</font>-<font color=green>(2014-04-09)</font><font color=black><b>VODDAI-5204</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>7ad7cb1</font>-<font color=green>(2014-04-08)</font><font color=black><b>VODDAI-5204</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| *   <font color=blue>f76806d</font>-<font color=green>(2014-04-08)</font><font color=black><b>Merge branch 'manged_ip' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into manged_ip</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| | * <font color=blue>9bf0c9e</font>-<font color=green>(2014-04-08)</font><font color=black><b>Adding unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| | * <font color=blue>528d670</font>-<font color=green>(2014-04-08)</font><font color=black><b>Fixed unit tests and wired through PlacementStatusNotification.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>cea8a56</font>-<font color=green>(2014-04-08)</font><font color=black><b>Added smsiPub properties</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>ff5b530</font>-<font color=green>(2014-04-08)</font><font color=black><b>Interim checkin for Managed IP</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |/  
+| * <font color=blue>9031e51</font>-<font color=green>(2014-04-08)</font><font color=black><b>Initial changes for managed_ip</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* |   <font color=blue>0ab2554</font>-<font color=green>(2014-04-09)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_318)</font>
+|\ \  
+| * | <font color=blue>48a2c4c</font>-<font color=green>(2014-04-09)</font><font color=black><b>added property to default cis file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>e06d520</font>-<font color=green>(2014-04-09)</font><font color=black><b>Tests for Media Asset Cache LW Range and New Mananged IP AAA</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/ /  
+* |   <font color=blue>5866d6d</font>-<font color=green>(2014-04-09)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\ \  
+| * | <font color=blue>001a428</font>-<font color=green>(2014-04-08)</font><font color=black><b>changed 50 second wait statement back to 5 seconds</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_317)</font>
+| * | <font color=blue>543bd6f</font>-<font color=green>(2014-04-08)</font><font color=black><b>Added new smsiPub properties</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>491fedb</font>-<font color=green>(2014-04-08)</font><font color=black><b>changed title for feature</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>d954b3e</font>-<font color=green>(2014-04-08)</font><font color=black><b>Testing around 5483 -- No media assets on Campaign Item</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>b3916b3</font>-<font color=green>(2014-04-08)</font><font color=black><b>VODDAI-5483</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>afe3c90</font>-<font color=green>(2014-04-08)</font><font color=black><b>Adding tests around CIP Feedback Flight Window Publication</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| |/  
+| * <font color=blue>9be12d6</font>-<font color=green>(2014-04-08)</font><font color=black><b>VODDAI-5497</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>c8cf3e4</font>-<font color=green>(2014-04-07)</font><font color=black><b>fixed dB check for managed IP PSN test</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_316)</font>
+| * <font color=blue>1feba91</font>-<font color=green>(2014-04-07)</font><font color=black><b>Managed IP PSN timing tests added</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>4e2ca42</font>-<font color=green>(2014-04-09)</font><font color=black><b>new database for media asset cache license windwow range config</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>79982a2</font>-<font color=green>(2014-04-07)</font><font color=black><b>Refactor of tests for new CI Rotation</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+*   <font color=blue>b66574a</font>-<font color=green>(2014-04-07)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>552aec8</font>-<font color=green>(2014-04-04)</font><font color=black><b>changed variant in checks to "private:managedIP"</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_315)</font>
+| * <font color=blue>3a514c0</font>-<font color=green>(2014-04-04)</font><font color=black><b>baseline managed IP test completed -- still needs to be tested</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>6437dbe</font>-<font color=green>(2014-04-04)</font><font color=black><b>deleted managed ip folder</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>6c6602e</font>-<font color=green>(2014-04-04)</font><font color=black><b>adding multiple psn templates to duplicate managedIP psn behavior</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>57b329e</font>-<font color=green>(2014-04-07)</font><font color=black><b>updated current feature db's to have counting CIP Priority</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>e797129</font>-<font color=green>(2014-04-04)</font><font color=black><b>Refactor of PSN templates for new Tracking, Added Ad Asset Availability test for ManagedIP endpoint, Added Tracking tests to Ad Asset Availability and SMSi Publisher persistance tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>d7b2b4b</font>-<font color=green>(2014-04-04)</font><font color=black><b>Managed IP happy path test</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>11562b0</font>-<font color=green>(2014-04-03)</font><font color=black><b>Managed IP baseline test, PR, sql and xml</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_314)</font>
+* <font color=blue>4a3fc9b</font>-<font color=green>(2014-04-02)</font><font color=black><b>reverting checking in shitty feature code.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_313)</font>
+* <font color=blue>81753b8</font>-<font color=green>(2014-04-02)</font><font color=black><b>VODDAI-5482</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>fefd708</font>-<font color=green>(2014-04-02)</font><font color=black><b>VODDAI-5481</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>2f08192</font>-<font color=green>(2014-04-01)</font><font color=black><b>last round of feature refactors for the new smsipub db structure</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_312)</font>
+* <font color=blue>0870764</font>-<font color=green>(2014-04-01)</font><font color=black><b>ads to smsi pub refactor of more features</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>f94ba51</font>-<font color=green>(2014-04-01)</font><font color=black><b>continued refactor for smsi publisher database rework</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>6c6ab0f</font>-<font color=green>(2014-03-31)</font><font color=black><b>fix ads to smsi pub baseline tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_311)</font>
+* <font color=blue>d266339</font>-<font color=green>(2014-03-31)</font><font color=black><b>new smsipublished application properties</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* <font color=blue>b2e1a9e</font>-<font color=green>(2014-03-31)</font><font color=black><b>ads to smsipub feature edits for new publisher database</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>7ae7c08</font>-<font color=green>(2014-03-28)</font><font color=black><b>new GUID refactor of Ken's changes and Craig's new glue step</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_310)</font>
+* <font color=blue>036f21f</font>-<font color=green>(2014-03-28)</font><font color=black><b>Updated feature file to use new step</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>8d83770</font>-<font color=green>(2014-03-27)</font><font color=black><b>added new lines to the TWC/Comcast SMSiPub Baseline tests to cover new trackingId format</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_309)</font>
+* <font color=blue>63b33e0</font>-<font color=green>(2014-03-26)</font><font color=black><b>more trackingID changes to tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_308)</font>
+*   <font color=blue>acf4ca8</font>-<font color=green>(2014-03-26)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>5bbe1a1</font>-<font color=green>(2014-03-25)</font><font color=black><b>VODDAI-5466 Changed the generation of tracking id's to all use the same guid</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_307)</font>
+* | <font color=blue>3b90bbd</font>-<font color=green>(2014-03-26)</font><font color=black><b>refactored and cleaned up PSN templates with new trackingID format</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>eb4ac22</font>-<font color=green>(2014-03-25)</font><font color=black><b>added refresh caches to features and some wait statements</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font></pre>
+<hr>
+<p>

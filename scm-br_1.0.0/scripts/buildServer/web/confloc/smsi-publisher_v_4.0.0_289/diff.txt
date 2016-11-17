@@ -1,0 +1,26 @@
+diff --git a/config/smsi-publisher.scrum3.properties b/config/smsi-publisher.scrum3.properties
+index cb5eb33..4fa616e 100644
+--- a/config/smsi-publisher.scrum3.properties
++++ b/config/smsi-publisher.scrum3.properties
+@@ -13,7 +13,7 @@ smsipub.db.max.idle=3
+ smsipub.db.checkout.timeout=2000
+ 
+ 
+-# (Reloadable) The maximum number of results returned by database queries.  Prevents running out of memory.
++# (Reloadable) The maximum number of results returned by database queries. Prevents running out of memory.
+ smsipub.max.query.size=1000
+ 
+ # (Reloadable) The number of full days of data to keep in the database.
+@@ -24,9 +24,9 @@ smsipub.cleanup.time.limit=5
+ ##
+ ## JOBS
+ ##
+-# "reservation.duration" (seconds) controls how often a jobs will run.  Before it can be run, a job must be reserved to ensure
+-# that multiple instance of the publisher do not perform the same job.  The reservation last for the specified amount of
+-# time, and once it expires, any publisher can work the job.  The reservation duration should always be longer than
++# "reservation.duration" (seconds) controls how often a jobs will run. Before it can be run, a job must be reserved to ensure
++# that multiple instance of the publisher do not perform the same job. The reservation last for the specified amount of
++# time, and once it expires, any publisher can work the job. The reservation duration should always be longer than
+ # it should take the publisher to complete the job.
+ 
+ # (Not Reloadable) Number of simultaneous publishing jobs

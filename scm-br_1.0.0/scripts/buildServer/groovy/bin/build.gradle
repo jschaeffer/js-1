@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        maven {
+            credentials {
+                username "${artifactoryUsername}"
+                password "${artifactoryPassword}"
+            }
+            url "${artifactoryContextUrl}/repo"
+        }
+    }
+
+    dependencies {
+        classpath 'com.augusttechgroup:gradle-liquibase-plugin:0.5.1'
+        classpath 'com.oracle:ojdbc6:11.2.0.2.0'
+    }
+}
+
+def projectName = PROJECT
+def projectBaseDir = "/opt/build/scm/scripts/buildServer"
+
+apply plugin: 'liquibase'
+apply plugin: 'java'
+
+configurations.compile.transitive = true
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+repositories {
+    maven { url "${artifactoryContextUrl}/repo" }
+}
+
+dbConfig = new ConfigSlurper().parse(new File("${projectBaseDir}/properties/projects/$projectName/project.properties").toURL())
+databaseUrl = dbConfig.database.env.dev.url
+databaseAdminuser = dbConfig.database.env.dev.adminuser
+databaseAdminpass = dbConfig.database.env.dev.adminpass
+databaseUsername = dbConfig.database.env.dev.username
+databasePassword = dbConfig.database.env.dev.password
+databaseSchema = dbConfig.database.env.dev.schema
+databaseDrop = dbConfig.database.env.dev.drop
+databaseChangeLogFile = dbConfig.database.liquibase.changeLogFile
+def sqlCommit = "commit;"
+
+changelogs {
+    main {
+        file = file(databaseChangeLogFile)
+    }
+}
+
+databases {
+    myDb {
+        url = databaseUrl
+        username = databaseUsername
+        password = databasePassword
+    }
+}
+
+workingDatabase = databases.myDb
+
+dependsOnChildren()
+
+task wrapper(type: Wrapper) {
+    gradleVersion: '1.0-milestone-6'
+}

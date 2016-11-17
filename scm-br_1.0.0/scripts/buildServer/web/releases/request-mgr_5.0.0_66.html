@@ -1,0 +1,92 @@
+<b><u>Component Release Info for Sprint KillingMeSoftly:</b></u><p>
+<u>Release of Component</u><b>&nbsprequest-mgr</b><br><u>Version</u><b>&nbspr_5.0.0_66</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Goes with Session Collector 5.0.0_10
+Metadata – Phase 1 complete; SMS functionality incomplete, can disable.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/dai-sdc-5.0.0/003-khl-metadata.xml
+data-store/src/main/liquibase/dai-sdc-5.0.0/004-khl-variant.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_42</b></u><br>
+<pre>
+* <font color=blue>cd55a73</font>-<font color=green>(2015-06-09)</font><font color=black><b>Fixed breakPlacementSequence and isFirst</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_66)</font>
+*   <font color=blue>58cdeef</font>-<font color=green>(2015-06-08)</font><font color=black><b>added 2 midroll response and fixed merge</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_65)</font>
+|\  
+| * <font color=blue>018190b</font>-<font color=green>(2015-06-08)</font><font color=black><b>VODDAI-7401 Fix for Content Group uriId Added Scala Logging</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>30d4c5a</font>-<font color=green>(2015-06-08)</font><font color=black><b>VODDAI-7401 Fix for Content Group uriId Added Scala Logging</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>2baa2ac</font>-<font color=green>(2015-06-08)</font><font color=black><b>VODDAI-7145: Now setting peid</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>48b0a8e</font>-<font color=green>(2015-06-08)</font><font color=black><b>Renamed collect package</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>b748ecd</font>-<font color=green>(2015-06-08)</font><font color=black><b>If an ADM platform key is null, then we will not kvetch if we can't find a platform TargetCode</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>aac0c2b</font>-<font color=green>(2015-06-05)</font><font color=black><b>Unit tests for all the collect stuff.  Word</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_64)</font>
+| * <font color=blue>e243276</font>-<font color=green>(2015-06-05)</font><font color=black><b>VODDAI-7401 Validate ContentGroup Urid</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_63)</font>
+* | <font color=blue>8a81d1c</font>-<font color=green>(2015-06-08)</font><font color=black><b>Schema error tests updated, some features fixed for data truth</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* |   <font color=blue>4232e52</font>-<font color=green>(2015-06-05)</font><font color=black><b>Commit after merging</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>607af85</font>-<font color=green>(2015-06-04)</font><font color=black><b>Pass along the session in the conversation to enable MDC</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_62)</font>
+| * <font color=blue>409422f</font>-<font color=green>(2015-06-04)</font><font color=black><b>Some fixes to the tests.  Matt we should talk about these.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>456609d</font>-<font color=green>(2015-06-04)</font><font color=black><b>Updated some leg messages</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>3bbcd54</font>-<font color=green>(2015-06-04)</font><font color=black><b>Switched unit tests to use scalatest Matchers</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>be40969</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7446 ContentNotificationAcknowledgement</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>8265d19</font>-<font color=green>(2015-06-04)</font><font color=black><b>ContentNotification validation</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>c587267</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-4667 Validate TitleRef</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* |   <font color=blue>cec55b0</font>-<font color=green>(2015-06-04)</font><font color=black><b>7149 test altered, 7148 separated</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>368eab3</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7413 Validate Content Elements</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>059c581</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7412 Validate BasicQueryResultList</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>4b7a909</font>-<font color=green>(2015-06-04)</font><font color=black><b>7149 test altered, 7148 separated</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>5cb9b25</font>-<font color=green>(2015-06-04)</font><font color=black><b>Ken improve oppIDs and trackingIDs</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>374d624</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7415 Validate Title Assets</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>783aa61</font>-<font color=green>(2015-06-04)</font><font color=black><b>VODDAI-7362 Parse ContentNotification message</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f6f14d7</font>-<font color=green>(2015-06-04)</font><font color=black><b>All the code Opportunity and Placement collection code should now conform to stories.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_61)</font>
+| * <font color=blue>58cbd70</font>-<font color=green>(2015-06-04)</font><font color=black><b>Fixed local integration tests</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>dee2659</font>-<font color=green>(2015-06-03)</font><font color=black><b>Make the trackingIDs fit in the database</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_60)</font>
+| * <font color=blue>3d4c15b</font>-<font color=green>(2015-06-03)</font><font color=black><b>First pass at the placement stuff, clean up off the opportunity collection.  Need to unit test, but giving this to Matt</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>757a146</font>-<font color=green>(2015-06-03)</font><font color=black><b>Update some of the markers</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>fa6a8f9</font>-<font color=green>(2015-06-03)</font><font color=black><b>Update setenv.functional.sh</b></font><font color=grey>- (MajorMatt)</font><font color=red></font>
+* | <font color=blue>5085226</font>-<font color=green>(2015-06-04)</font><font color=black><b>Many feature updates and improvements</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>1cdd13b</font>-<font color=green>(2015-06-02)</font><font color=black><b>Ready to start adding the decision data, but got everything with opps back in working order.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_59)</font>
+* <font color=blue>0ee3b94</font>-<font color=green>(2015-06-02)</font><font color=black><b>Opportunity and placement features updated, some tests added</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4e341f1</font>-<font color=green>(2015-05-29)</font><font color=black><b>Opportunity and placement info features added</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_58)</font>
+* <font color=blue>8d18c30</font>-<font color=green>(2015-05-27)</font><font color=black><b>VODDAI-7403 Process ContentNotification</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.0.0_57, tag: v_5.0.0_56, tag: v_5.0.0_55, tag: v_5.0.0_54)</font>
+* <font color=blue>b429298</font>-<font color=green>(2015-05-27)</font><font color=black><b>Some gatling stuff.  Not complete</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>43f570c</font>-<font color=green>(2015-05-26)</font><font color=black><b>Separated @key guid variations for hhID without errors</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_53)</font>
+|\  
+| * <font color=blue>3eafe63</font>-<font color=green>(2015-05-26)</font><font color=black><b>Renaming to rema</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>b79a558</font>-<font color=green>(2015-05-26)</font><font color=black><b>Separated @key guid variations for hhID without errors</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>9a2dfa2</font>-<font color=green>(2015-05-26)</font><font color=black><b>Added @testy tag for Ken focus soon</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>7b667c7</font>-<font color=green>(2015-05-22)</font><font color=black><b>Fixing up various test failures.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_52)</font>
+* <font color=blue>bcece60</font>-<font color=green>(2015-05-22)</font><font color=black><b>New ContentNotif templates and validation feature</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>2d489ae</font>-<font color=green>(2015-05-22)</font><font color=black><b>added test for feature 7111</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>46f9bfd</font>-<font color=green>(2015-05-21)</font><font color=black><b>Added case insensitive GUID case, renamed the 7111 test</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_51)</font>
+* <font color=blue>b9d8ebc</font>-<font color=green>(2015-05-21)</font><font color=black><b>New features for JIRA 7112 VBOID fxn</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>893b2b5</font>-<font color=green>(2015-05-20)</font><font color=black><b>Added dB template for the 7111 fxn</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_50)</font>
+* <font color=blue>7d70f6c</font>-<font color=green>(2015-05-20)</font><font color=black><b>Modified smsiPub persist feature, added variant into DB templates as necessary</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d143043</font>-<font color=green>(2015-05-19)</font><font color=black><b>VODDAI-7111, VODDAI-6522: Populating provider from title table</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_49)</font>
+*   <font color=blue>aa2e046</font>-<font color=green>(2015-05-18)</font><font color=black><b>Added many tests into the smsiPubPersist feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_48)</font>
+|\  
+| * <font color=blue>1a4ac9a</font>-<font color=green>(2015-05-18)</font><font color=black><b>VODDAI-7116: Populating provider from title table</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>3dd2c8f</font>-<font color=green>(2015-05-18)</font><font color=black><b>Added many tests into the smsiPubPersist feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>fec90cf</font>-<font color=green>(2015-05-15)</font><font color=black><b>VODDAI-7544: Created Title table and data access classes.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_47)</font>
+*   <font color=blue>d2a8615</font>-<font color=green>(2015-05-15)</font><font color=black><b>Modified smsi publishing feature, also removed ADS_IDs from the adsRegistration feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_46)</font>
+|\  
+| * <font color=blue>90df87a</font>-<font color=green>(2015-05-15)</font><font color=black><b>VODDAI-7544: Created Title table</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>a9f8527</font>-<font color=green>(2015-05-15)</font><font color=black><b>Modified smsi publishing feature, also removed ADS_IDs from the adsRegistration feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>84185d9</font>-<font color=green>(2015-05-14)</font><font color=black><b>Added more realistic IP test</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_45)</font>
+* <font color=blue>7df02ba</font>-<font color=green>(2015-05-13)</font><font color=black><b>Seperate Canoe and FW response templates and features</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5c49fde</font>-<font color=green>(2015-05-12)</font><font color=black><b>Added unmatched session for response, error check for PSN business logic</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_44)</font>
+* <font color=blue>e0d09ca</font>-<font color=green>(2015-05-12)</font><font color=black><b>Add PSN and request schema error templates</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>227e3f8</font>-<font color=green>(2015-05-12)</font><font color=black><b>Added schema error routing test for PSN and request</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ec35686</font>-<font color=green>(2015-05-11)</font><font color=black><b>Final-ish touches for phase1</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_5.0.0_43)</font>
+* <font color=blue>e30bc0d</font>-<font color=green>(2015-05-11)</font><font color=black><b>Final-ish touches for phase1</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

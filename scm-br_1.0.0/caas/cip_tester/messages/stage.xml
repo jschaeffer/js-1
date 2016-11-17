@@ -1,0 +1,6 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://www.cablelabs.com/namespaces/safi/xsd/cip/1.1">
+   <soap:Header/>
+   <soap:Body>
+      <ns:ReadRequest CipGUID="l7J1yKkDQUiJIOX07SWuEQ" CipVer="-1"/>
+   </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,28 @@
+diff --git a/config/acp-env-application.scrum3.properties b/config/acp-env-application.scrum3.properties
+index 29686a6..f37864f 100644
+--- a/config/acp-env-application.scrum3.properties
++++ b/config/acp-env-application.scrum3.properties
+@@ -14,7 +14,8 @@ db.testPeriod.idle=60
+ db.max.idle=600
+ 
+ #Determines how often the database is checked for asset registrations to publish
+-publishing.schedule = * 0/5 * * * ?
++publishing.schedule = 0/4 * * * * ?
++#publishing.schedule = * 0/5 * * * ?
+ 
+ #Determines is published cips are validated against the XML schema
+ outgoing.xml.validation=false
+diff --git a/config/acp-env-application.scrum3.properties b/config/acp-env-application.scrum3.properties
+index 29686a6..f37864f 100644
+--- a/config/acp-env-application.scrum3.properties
++++ b/config/acp-env-application.scrum3.properties
+@@ -14,7 +14,8 @@ db.testPeriod.idle=60
+ db.max.idle=600
+ 
+ #Determines how often the database is checked for asset registrations to publish
+-publishing.schedule = * 0/5 * * * ?
++publishing.schedule = 0/4 * * * * ?
++#publishing.schedule = * 0/5 * * * ?
+ 
+ #Determines is published cips are validated against the XML schema
+ outgoing.xml.validation=false

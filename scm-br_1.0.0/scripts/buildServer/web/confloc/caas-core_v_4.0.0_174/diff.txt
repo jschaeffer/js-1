@@ -1,0 +1,51 @@
+diff --git a/core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql b/core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+index aaf2b00..02d2886 100644
+--- a/core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql
++++ b/core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+@@ -73,3 +73,7 @@ GRANT CREATE SEQUENCE TO SC1_CAAS;
+ GRANT CONNECT TO SC1_CAAS;
+ GRANT RESOURCE TO SC1_CAAS; 
+ ALTER USER SC1_CAAS DEFAULT ROLE CONNECT,RESOURCE;
++CREATE FLASHBACK ARCHIVE audit_campaign TABLESPACE canoe_audit QUOTA 2G RETENTION 24 MONTH;
++CREATE FLASHBACK ARCHIVE audit_media_asset TABLESPACE canoe_audit QUOTA 2G RETENTION 24 MONTH;
++GRANT FLASHBACK ARCHIVE ON audit_campaign TO SC1_CAAS;
++GRANT FLASHBACK ARCHIVE ON audit_media_asset TO SC1_CAAS;
+diff --git a/core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql b/core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+index 94af761..ff06cd0 100644
+--- a/core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql
++++ b/core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+@@ -73,3 +73,7 @@ GRANT CREATE SEQUENCE TO SC2_CAAS;
+ GRANT CONNECT TO SC2_CAAS;
+ GRANT RESOURCE TO SC2_CAAS; 
+ ALTER USER SC2_CAAS DEFAULT ROLE CONNECT,RESOURCE;
++CREATE FLASHBACK ARCHIVE audit_campaign TABLESPACE canoe_audit QUOTA 2G RETENTION 24 MONTH;
++CREATE FLASHBACK ARCHIVE audit_media_asset TABLESPACE canoe_audit QUOTA 2G RETENTION 24 MONTH;
++GRANT FLASHBACK ARCHIVE ON audit_campaign TO SC2_CAAS;
++GRANT FLASHBACK ARCHIVE ON audit_media_asset TO SC2_CAAS;
+\ No newline at end of file
+diff --git a/core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql b/core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+index 49f4d39..da2394b 100644
+--- a/core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql
++++ b/core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+@@ -73,3 +73,7 @@ GRANT CREATE SEQUENCE TO SC3_CAAS;
+ GRANT CONNECT TO SC3_CAAS;
+ GRANT RESOURCE TO SC3_CAAS; 
+ ALTER USER SC3_CAAS DEFAULT ROLE CONNECT,RESOURCE;
++CREATE FLASHBACK ARCHIVE audit_campaign TABLESPACE canoe_audit QUOTA 2G RETENTION 24 MONTH;
++CREATE FLASHBACK ARCHIVE audit_media_asset TABLESPACE canoe_audit QUOTA 2G RETENTION 24 MONTH;
++GRANT FLASHBACK ARCHIVE ON audit_campaign TO SC3_CAAS;
++GRANT FLASHBACK ARCHIVE ON audit_media_asset TO SC3_CAAS;
+\ No newline at end of file
+diff --git a/core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql b/core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+index 6cd47fe..2a6369e 100644
+--- a/core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql
++++ b/core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+@@ -73,3 +73,7 @@ GRANT CREATE SEQUENCE TO SC4_CAAS;
+ GRANT CONNECT TO SC4_CAAS;
+ GRANT RESOURCE TO SC4_CAAS; 
+ ALTER USER SC4_CAAS DEFAULT ROLE CONNECT,RESOURCE;
++CREATE FLASHBACK ARCHIVE audit_campaign TABLESPACE canoe_audit QUOTA 2G RETENTION 24 MONTH;
++CREATE FLASHBACK ARCHIVE audit_media_asset TABLESPACE canoe_audit QUOTA 2G RETENTION 24 MONTH;
++GRANT FLASHBACK ARCHIVE ON audit_campaign TO SC4_CAAS;
++GRANT FLASHBACK ARCHIVE ON audit_media_asset TO SC4_CAAS;
+\ No newline at end of file

@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h1&gt;Title:  &lt;b&gt;Restart tcServer instance&lt;/b&gt;&lt;/h1&gt; &#xd;
+&#xd;
+&lt;h2&gt;&lt;u&gt;Description:&lt;/u&gt; &lt;b&gt;This job will restart tcserver instance selected.  &#xd;
+  If started via Update Manager, this will start by itself without futher user intervention&lt;/h2&gt; &lt;br&gt;&lt;/b&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description>&lt;h2&gt;Enter the User id and summary of purpose for deployment&lt;/h2&gt;</description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Instance</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Dynamic-Ad-Insertion-cm</string>
+              <string>dai-cip-feedback</string>
+              <string>caas-admin</string>
+              <string>dai_amm</string>
+              <string>dai_amm_publisher</string>
+              <string>ops-dt</string>
+              <string>ops-dce-scte-cfa-reporting-agent</string>
+              <string>ops-dce-safi-reporting-agent</string>
+              <string>metadata-publisher</string>
+              <string>Pgmr-Cpgn-Int</string>
+              <string>dai-dce</string>
+              <string>dai-smsi</string>
+              <string>dai-smsi-relay</string>
+              <string>smsi-publisher</string>
+              <string>dai-billing</string>
+              <string>smsi-admin</string>
+              <string>Dynamic-Ad-Insertion-engine</string>
+              <string>dai-national-cis</string>
+              <string>ops-dce-metadata-agent</string>
+              <string>int-test-support</string>
+              <string>oss_bar</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <authToken>TOKEN_NAME</authToken>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export Instance
+export RestartTarg=&quot;dvappdai05&quot;
+export DeployTarg=&quot;scrum4&quot;
+echo &quot;Instance -&gt; $Instance   RestartTarg -&gt; $RestartTarg   DeployTarg -&gt; $DeployTarg&quot;
+
+echo &quot;&lt;b&gt;--- Restart ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;tcServer Restart on ${DeployTarg} by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+#export SelInst=`echo &quot;$Instances&quot; | sed &apos;s?,? ?g&apos;`
+
+##############
+# Execute a command. Do not fail on exit.
+##############
+executeCommandNoFail() {
+
+    if [ ${VERBOSE} = 1 ] ; then
+        echo &quot;Executing : $1&quot;
+    fi
+
+    RESULT=`eval &quot;$1&quot;`
+
+    if [ ${VERBOSE} = 1 ] ; then
+        echo &quot;Result : $RESULT&quot;
+    fi
+}
+
+export DeployUser
+export restComp=&quot;n&quot;
+export VERBOSE=&quot;1&quot;
+
+case $Instance in
+   oss_bar)
+     ;;
+   dai-billing)
+     export Instance=&quot;billing&quot;
+     ;;
+   smsi-publisher)
+     export Instance=&quot;smsipub&quot;
+     ;;
+   Dynamic-Ad-Insertion-cm)
+     export Instance=&quot;cm&quot;
+     ;;
+   Dynamic-Ad-Insertion-engine)
+    export restComp=&quot;y&quot;
+    for i in ads psn cis; do
+     export Instance=&quot;$i&quot;
+     cd /opt/build/scripts
+     ./tcServerAdmin.sh $RestartTarg $Instance stop 
+     ./tcServerAdmin.sh $RestartTarg $Instance start
+     done
+     ;;
+   dai-cip-feedback)
+     export Instance=&quot;cip&quot;
+     ;;
+   dai-smsi)
+     export Instance=&quot;smsi&quot;
+     ;;
+   ops-dce-scte-cfa-reporting-agent)
+     export Instance=&quot;dce-agent-001&quot;
+     ;;
+   ops-dce-safi-reporting-agent)
+     export Instance=&quot;dce-agent-002&quot;
+     ;;
+   int-test-support)
+     export Instance=&quot;mock_svr&quot;
+     ;;
+   ops-dce-metadata-agent)
+     export Instance=&quot;dce-mdata&quot;
+     ;;
+esac
+
+if [[ ${restComp} = &quot;y&quot; ]]; then
+   echo &quot;A&quot;
+  else 
+   cd /opt/build/scripts
+   executeCommandNoFail &quot;./tcServerAdmin.sh $RestartTarg $Instance stop&quot;
+   executeCommandNoFail &quot;./tcServerAdmin.sh $RestartTarg $Instance start&quot;
+fi
+   executeCommandNoFail &quot;./tcServerAdmin.sh $RestartTarg $Instance status&quot; 
+
+echo &quot;&lt;b&gt;URL For Restart output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp &gt; /opt/build/scm/scripts/buildServer/log/${DeployTarg}.html
+rm /opt/build/scm/scripts/buildServer/log/${DeployTarg}.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

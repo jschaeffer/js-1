@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <hudson.triggers.TimerTrigger>
+      <spec>H 5-20/4 * * 1-5</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh
+
+export targs=&quot;performance&quot;
+
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;configuring Performance&quot;
+echo &quot;&quot;
+echo &quot;&quot;
+
+for i in $targs; do
+
+case $i in
+  performance)   
+     export ads1targname=&quot;pfadsdai01&quot;
+     export psn1targname=&quot;pfpsndai01&quot;    
+     export smsi1targname=&quot;pfsmsidai01&quot;
+     export smsipubtargname=&quot;pfsmspub01&quot;
+     export ciptargname=&quot;pfcipdai01&quot;
+     export ads2targname=&quot;pfadsdai02&quot;
+     export psn2targname=&quot;pfpsndai02&quot;
+     export smsi2targname=&quot;pfsmsidai02&quot;
+
+
+#ADS
+VersionA=`ssh tcserver@$ads1targname &quot;grep Implementation-Version /opt/tcserver/instances/ads0101_40/webapps/ads*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+VersionB=`ssh tcserver@$ads2targname &quot;grep Implementation-Version /opt/tcserver/instances/ads0201_40/webapps/ads*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;` 
+
+
+cd /opt/build/scripts
+
+verCheck=`./compareVersions.sh -n${VersionA} -o${VersionB}`
+
+if [[ ${verCheck} = &quot;0&quot; ]] ; then
+ if [[ -z &quot;$VersionA&quot; || ${Version} == *select* ]]; then
+ echo &quot;Not Present&quot; | tee /var/www/html/$i/Dynamic-Ad-Insertion-engine.txt
+   else
+ echo &quot;${VersionA}&quot; | tee /var/www/html/$i/Dynamic-Ad-Insertion-engine.txt
+   fi
+elif [[ ${verCheck} -ne &quot;0&quot; ]]; then
+ echo &quot;ADS VERSIONS OUT OF SYNC!&quot; | tee /var/www/html/performance/Dynamic-Ad-Insertion-engine.txt
+fi
+
+#DAI-SMSI
+VersionA=`ssh tcserver@$smsi1targname &quot;grep Implementation-Version /opt/tcserver/instances/smsi_40/webapps/smsi*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+VersionB=`ssh tcserver@$smsi2targname &quot;grep Implementation-Version /opt/tcserver/instances/smsi_40/webapps/smsi*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;` 
+cd /opt/build/scripts
+verCheck=`./compareVersions.sh -n${VersionA} -o${VersionB}`
+if [[ ${verCheck} = &quot;0&quot; ]] ; then
+ if [[ -z &quot;$VersionA&quot; || ${Version} == *select* ]]; then
+ echo &quot;Not Present&quot; | tee /var/www/html/$i/dai-smsi.txt
+   else
+ echo &quot;${VersionA}&quot; | tee /var/www/html/$i/dai-smsi.txt
+   fi
+elif [[ ${verCheck} -ne &quot;0&quot; ]]; then
+ echo &quot;SMSI VERSIONS OUT OF SYNC!&quot; | tee /var/www/html/$i/dai-smsi.txt
+fi
+
+#SMSI PUB
+Version=`ssh tcserver@$smsipubtargname &quot;grep Implementation-Version /opt/tcserver/instances/smsi-pub/webapps/smsi-pub*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$i/smsi-publisher.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$i/smsi-publisher.txt
+  fi
+
+#DAI CIP
+Version=`ssh tcserver@$ciptargname &quot;cd /opt/tcserver/dai-cip_40/cip-batch; jar xf dai-cip-batch.jar META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$i/dai-cip.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$i/dai-cip.txt
+  fi
+
+#CAAS Admin
+Version=`ssh tcserver@pfcm01 &quot;grep Implementation-Version /opt/tcserver/instances/caas-admin/webapps/caas-admin/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$i/caas-admin.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$i/caas-admin.txt
+fi
+
+#Campaign Manager
+Version=`ssh tcserver@pfcm01 &quot;grep Implementation-Version /opt/tcserver/instances/cm01/webapps/Dynamic-Ad-Insertion-cm*/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$i/Dynamic-Ad-Insertion-cm.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$i/Dynamic-Ad-Insertion-cm.txt
+fi
+
+#int-test-support
+Version=`ssh tcserver@pffwmock01 &quot;grep Implementation-Version /opt/tcserver/instances/mocksvr01/webapps/int-test-support/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$i/int-test-support.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$i/int-test-support.txt
+fi
+
+#Pgmr-Cpgn-Int
+Version=`ssh tcserver@pffwciping01 &quot;grep Implementation-Version /opt/tcserver/instances/FW_CIP_ING_01/webapps/fw_cip-ingest/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$i/Pgmr-Cpgn-Int.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$i/Pgmr-Cpgn-Int.txt
+fi
+
+#dai-smsi-relay
+Version=`ssh tcserver@pffwsmsr01 &quot;grep Implementation-Version /opt/tcserver/instances/FW_SMSI_RELAY_01/webapps/fw_smsi-relay/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$i/dai-smsi-relay.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$i/dai-smsi-relay.txt
+fi
+
+#DAI Cip Feedback
+Version=`ssh tcserver@pfcipdai01 &quot;grep Implementation-Version /opt/tcserver/instances/cip-feedback/webapps/cip-feedback*/META-INF/MANIFEST.MF |cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+echo &quot;Not Present&quot; | tee /var/www/html/$i/dai-cip-feedback.txt
+  else
+echo &quot;${Version}&quot; | tee /var/www/html/$i/dai-cip-feedback.txt
+  fi
+
+cd /opt/build/scripts/perf
+#caas-core
+Version=`./check_dbversions_perf.sh -a caas-core -e $i`
+echo &quot;${Version}&quot; | tee /var/www/html/$i/caas-core.txt
+
+#ads-core
+Version=`./check_dbversions_perf.sh -a ads-core -e $i`
+echo &quot;${Version}&quot; | tee /var/www/html/$i/ads-core.txt
+
+#dai-etl-feeder
+Version=`./check_dbversions_perf.sh -a dai-etl-feeder -e $i`
+echo &quot;${Version}&quot; | tee /var/www/html/$i/dai-etl-feeder.txt
+
+   ;;
+esac
+
+
+done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

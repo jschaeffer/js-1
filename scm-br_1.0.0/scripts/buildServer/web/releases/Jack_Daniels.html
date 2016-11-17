@@ -1,0 +1,496 @@
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.0.0_135</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+CAAS CORE 4.0.0_135:  (MCLPS, Freq. Cap., Pl. Limit merged; FW "cls" sent once; ACP trigger updated; Series Name/ID added to metadata tables)
+PCI 4.0.0_183:  Ingests Series Name/ID; fix for when no Freq. Cap. is defined.  
+CIP-Sender 4.0.0_201:  Only send "cls" from FW once
+ACP 4.0.0_30:  Trigger CIP when start date is moved</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_125</b></u><br>
+<pre>
+* <font color=blue>207616c</font>-<font color=green>(2014-05-23)</font><font color=black><b>VODDAI-5572: Update triggers for acp to mark a media asset as ready to be published if the license start window changed.</b></font><font color=grey>- (kennethleider)</font><font color=red> (HEAD, v_4.0.0_135, r_4.0.0_135, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>4653da9</font>-<font color=green>(2014-05-22)</font><font color=black><b>Fix for null cls</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_134, v_4.0.0_133)</font>
+* <font color=blue>3f0d0bd</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5694 non-canoe CIPs publish cls only once.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_132, v_4.0.0_131, v_4.0.0_130, v_4.0.0_129)</font>
+* <font color=blue>8f1bfd1</font>-<font color=green>(2014-05-19)</font><font color=black><b>Added default values on campaign item breakNum and placementNum fields.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>b7cabe1</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed ID of changeset to reflect merge conflict resolution.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>bccc1e0</font>-<font color=green>(2014-05-19)</font><font color=black><b>Fixed merge conflicts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>e095b24</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-4028 Changes to Frequency Cap durations</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f0ee119</font>-<font color=green>(2014-05-16)</font><font color=black><b>VODDAI-5675 Series Name, Series ID Added to MetadataFieldEnum</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_128)</font>
+| * <font color=blue>f8c06bd</font>-<font color=green>(2014-05-16)</font><font color=black><b>VODDAI-5675 Series Name, Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>2ff75d1</font>-<font color=green>(2014-05-19)</font><font color=black><b>Added defaults to break_min and placement_min, changed not not nullable.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>acd42de</font>-<font color=green>(2014-05-14)</font><font color=black><b>Fix merge for CampaignItemFrequencyCap</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_127)</font>
+* <font color=blue>6359872</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c7539b0</font>-<font color=green>(2014-05-13)</font><font color=black><b>VODDAI-5517 set immediate when break_min or placement_min</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>aa930e4</font>-<font color=green>(2014-05-01)</font><font color=black><b>VODDAI-5648 Add support for separation mins</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c75bac5</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Fixes for adding CI Frequency Capping</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>58a0581</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3fb27c1</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>8f4e3e3</font>-<font color=green>(2014-05-05)</font><font color=black><b>Add seq for item frequency cap</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>545d480</font>-<font color=green>(2014-04-30)</font><font color=black><b>Frequency Capping at the campaign item media asset level</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+*   <font color=blue>9554b61</font>-<font color=green>(2014-04-30)</font><font color=black><b>Merge branch 'itemFreqCap' of github.com:CanoeVentures/caas-core into itemFreqCap</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| * <font color=blue>e521aa5</font>-<font color=green>(2014-04-10)</font><font color=black><b>Added cleanup of Frequencay cap table</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (origin/itemFreqCap)</font>
+| * <font color=blue>a5c2ed8</font>-<font color=green>(2014-04-10)</font><font color=black><b>VODDAI-3778 Changed three day display</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>0ffe0d9</font>-<font color=green>(2014-04-09)</font><font color=black><b>VODDAI-3778 Added not null to foreign key</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>a848fc2</font>-<font color=green>(2014-04-08)</font><font color=black><b>VODDAI-3778 Changed FrequencyCapEnum to have values from story</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>fd33926</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Fixes for adding CI Frequency Capping</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>e5ecf0d</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>65424f0</font>-<font color=green>(2014-04-10)</font><font color=black><b>Added cleanup of Frequencay cap table</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>bdbd2d7</font>-<font color=green>(2014-04-10)</font><font color=black><b>VODDAI-3778 Changed three day display</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>1597bd8</font>-<font color=green>(2014-04-09)</font><font color=black><b>VODDAI-3778 Added not null to foreign key</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4cad057</font>-<font color=green>(2014-04-08)</font><font color=black><b>VODDAI-3778 Changed FrequencyCapEnum to have values from story</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>e4ce025</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Fixes for adding CI Frequency Capping</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>211e00d</font>-<font color=green>(2014-04-03)</font><font color=black><b>VODDAI-5488 Add Frequency Cap for Campaign Item</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_4.0.0_294</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_282</b></u><br>
+<pre>
+* <font color=blue>b47c0af</font>-<font color=green>(2014-05-27)</font><font color=black><b>feature updates</b></font><font color=grey>- (jmhassell)</font><font color=red> (HEAD, v_4.0.0_294, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>2a40a82</font>-<font color=green>(2014-05-27)</font><font color=black><b>Removed errant characters.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>b067c36</font>-<font color=green>(2014-05-27)</font><font color=black><b>Fixed creation of new line item in old cm related to frequency caps and break limits.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_293)</font>
+* <font color=blue>defdb02</font>-<font color=green>(2014-05-27)</font><font color=black><b>Fixed breaking of old CM with frequency caps. Also fixed persistence of break and session mins.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>7d567be</font>-<font color=green>(2014-05-23)</font><font color=black><b>feature updates for placement constraints and for series name/id</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_292)</font>
+* <font color=blue>fe1d9a4</font>-<font color=green>(2014-05-23)</font><font color=black><b>Filtered operators for series name.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>5278c01</font>-<font color=green>(2014-05-23)</font><font color=black><b>Resolved conflicts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>f730002</font>-<font color=green>(2014-05-22)</font><font color=black><b>added campaign ID value into the campaign view page</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_291)</font>
+| * <font color=blue>a230de1</font>-<font color=green>(2014-05-22)</font><font color=black><b>feature updates again</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| *   <font color=blue>8365fb4</font>-<font color=green>(2014-05-22)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |\  
+| * | <font color=blue>1d2a3c7</font>-<font color=green>(2014-05-22)</font><font color=black><b>Initial create C-item Placement Constraint</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>d9d66f2</font>-<font color=green>(2014-05-23)</font><font color=black><b>Added frequency cap table to full_reinit.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>3668c70</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added freq cap to line item list on campaign show.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>2af9e9e</font>-<font color=green>(2014-05-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| |/  
+| *   <font color=blue>4803ad3</font>-<font color=green>(2014-05-22)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |\  
+| * | <font color=blue>12dd5a4</font>-<font color=green>(2014-05-22)</font><font color=black><b>New Placement Constraints feature</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>6a1690f</font>-<font color=green>(2014-05-22)</font><font color=black><b> Removed errant space in sring.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* |   <font color=blue>13f4f6c</font>-<font color=green>(2014-05-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| |/  
+| *   <font color=blue>eb75846</font>-<font color=green>(2014-05-22)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |\  
+| * | <font color=blue>3ea78f0</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added validation to Product Category</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | | <font color=blue>961edf1</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added appropriate metadata condition operators for Series Name.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>01c164d</font>-<font color=green>(2014-05-22)</font><font color=black><b>Sorted metadata fields.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>9bfa54a</font>-<font color=green>(2014-05-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>e098d7c</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added PlacementConstraints tab condition</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>8a38c6d</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added Series ID and Series Name to metadata conditions.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+*   <font color=blue>2f79766</font>-<font color=green>(2014-05-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| *   <font color=blue>046d21f</font>-<font color=green>(2014-05-22)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |\  
+| * | <font color=blue>fdd6c8e</font>-<font color=green>(2014-05-22)</font><font color=black><b>feature updates and fixes for tab changes</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | | <font color=blue>81d1539</font>-<font color=green>(2014-05-22)</font><font color=black><b>Fixed unit tests.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>aec2ea9</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added validation on frequency cap fields.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>1d52da5</font>-<font color=green>(2014-05-22)</font><font color=black><b>Persist frequency caps.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | <font color=blue>e422f53</font>-<font color=green>(2014-05-21)</font><font color=black><b>Migrated validation for Ads/Line-Item</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_290)</font>
+|/  
+* <font color=blue>9d2f67f</font>-<font color=green>(2014-05-20)</font><font color=black><b>updated a bunch of tests for new format</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_289)</font>
+* <font color=blue>30120d3</font>-<font color=green>(2014-05-20)</font><font color=black><b>Moved break and placement minimum fields to Placement Constraints tab, added Frequency capping fields, added [currently toggled off] break and session limit fields.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/feature/re-tab)</font>
+* <font color=blue>9e3bd65</font>-<font color=green>(2014-05-20)</font><font color=black><b>Created new Placement Constraints tab, renamed Line Item Settings tab to Settings.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>fea595e</font>-<font color=green>(2014-05-20)</font><font color=black><b>Moved placement preference field to admin tab, roformatted layout of admim tab.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>2076854</font>-<font color=green>(2014-05-19)</font><font color=black><b>Removed Trick Mode field. The default is true.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>a8d3537</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed Qty to Quantity.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>637a06e</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed placeholder text of priority and value fields, changed size of all numeric fields, swapped positioning of Goal Quantity and Goal Strategy fields.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>288f373</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed labels on priority and value so they fit in the smaller window.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_288)</font>
+* <font color=blue>6351080</font>-<font color=green>(2014-05-19)</font><font color=black><b>Removed extra FF Enable/Disable field.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>cdb1069</font>-<font color=green>(2014-05-19)</font><font color=black><b>full reinit update</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_287)</font>
+* <font color=blue>ca5ca6a</font>-<font color=green>(2014-05-19)</font><font color=black><b>full_reinit update</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+*   <font color=blue>8a57a46</font>-<font color=green>(2014-05-19)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>68aec59</font>-<font color=green>(2014-05-19)</font><font color=black><b>Re-ordered Clearing CM data to match CIP test-empty</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>7d0902c</font>-<font color=green>(2014-05-19)</font><font color=black><b>Added test</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_286)</font>
+| * <font color=blue>ebd7e0d</font>-<font color=green>(2014-05-19)</font><font color=black><b>Added more tests to list; Todo</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>db11659</font>-<font color=green>(2014-05-19)</font><font color=black><b>small feature changes, added new feature for edit frequency capping</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>928507f</font>-<font color=green>(2014-05-19)</font><font color=black><b>Implemented CRUD for line item placement and break minimums.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+*   <font color=blue>7651fce</font>-<font color=green>(2014-05-19)</font><font color=black><b>merge?</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>b7675fb</font>-<font color=green>(2014-05-19)</font><font color=black><b>Removed @john</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>069eed3</font>-<font color=green>(2014-05-19)</font><font color=black><b>Added Rotation validation; time validation steps</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* |   <font color=blue>a0614e8</font>-<font color=green>(2014-05-19)</font><font color=black><b>merge ?</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \  
+| |/  
+| *   <font color=blue>66ae5ef</font>-<font color=green>(2014-05-19)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+| |\  
+| * | <font color=blue>587378b</font>-<font color=green>(2014-05-19)</font><font color=black><b>added screen cap of ad asset search</b></font><font color=grey>- (Scott Davis)</font><font color=red></font>
+|  /  
+* | <font color=blue>3f9fd2a</font>-<font color=green>(2014-05-19)</font><font color=black><b>Fixed bug where saving a campaign would result in multiple search results.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>3049ca4</font>-<font color=green>(2014-05-16)</font><font color=black><b>Added "child" tables to be cleared to reinit; updated paths in smoke tests</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_285)</font>
+* <font color=blue>f7b69cc</font>-<font color=green>(2014-05-16)</font><font color=black><b>Made "Cancel" buttons return to previous page.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>5f6e064</font>-<font color=green>(2014-05-16)</font><font color=black><b>Implemented return to search results from ad asset show page.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>067042a</font>-<font color=green>(2014-05-16)</font><font color=black><b>Properly remove views on cancel.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>d9d78af</font>-<font color=green>(2014-05-16)</font><font color=black><b>Made ALL routes refreshable in the browser.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>38d379a</font>-<font color=green>(2014-05-16)</font><font color=black><b>Refactored router cache miss for campaign show.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>76009c2</font>-<font color=green>(2014-05-16)</font><font color=black><b>Removed debugging comment.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>884b0dd</font>-<font color=green>(2014-05-16)</font><font color=black><b>Fixed memory leak (zombie views) in campaign show and subviews.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>403eef3</font>-<font color=green>(2014-05-16)</font><font color=black><b>Removed the need to re-fetch all line items when returing to the campaign manager show view.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>a6894e8</font>-<font color=green>(2014-05-16)</font><font color=black><b>Moved line item fetch to model.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>3ee5259</font>-<font color=green>(2014-05-14)</font><font color=black><b>Merge conflicts?</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_284)</font>
+|\  
+| * <font color=blue>11f137b</font>-<font color=green>(2014-05-13)</font><font color=black><b>added new scenarios for immediate cip update candidate</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_283)</font>
+| * <font color=blue>82497ed</font>-<font color=green>(2014-05-13)</font><font color=black><b>feature updates</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* <font color=blue>36a35eb</font>-<font color=green>(2014-05-14)</font><font color=black><b>Fixed issue with collection unavailable to line item.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-cip</b><br><u>Version</u><b>&nbspr_4.0.0_201</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+CAAS CORE 4.0.0_135:  (MCLPS, Freq. Cap., Pl. Limit merged; FW "cls" sent once; ACP trigger updated; Series Name/ID added to metadata tables)
+PCI 4.0.0_183:  Ingests Series Name/ID; fix for when no Freq. Cap. is defined.  
+CIP-Sender 4.0.0_201:  Only send "cls" from FW once
+ACP 4.0.0_30:  Trigger CIP when start date is moved</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_189</b></u><br>
+<pre>
+* <font color=blue>64bb884</font>-<font color=green>(2014-05-27)</font><font color=black><b>Fix xpath on Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_201)</font>
+* <font color=blue>2f45825</font>-<font color=green>(2014-05-27)</font><font color=black><b>remove test endpoint from cip test data</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_200)</font>
+* <font color=blue>dd4bf37</font>-<font color=green>(2014-05-27)</font><font color=black><b>VODDAI-5685 VODDAI-5684 Changed Namespace for Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>6811c19</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated the MD seriesName and ID tests in mdQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_199)</font>
+* <font color=blue>f339118</font>-<font color=green>(2014-05-22)</font><font color=black><b>add @validation tag</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red> (v_4.0.0_198)</font>
+* <font color=blue>54f5231</font>-<font color=green>(2014-05-22)</font><font color=black><b>Changed scala tools repository</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_197)</font>
+* <font color=blue>a13951a</font>-<font color=green>(2014-05-21)</font><font color=black><b>Removed two unnecessary files for MCLPS</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_196)</font>
+* <font color=blue>0d3f72f</font>-<font color=green>(2014-05-21)</font><font color=black><b>Added EXCLUDE FW campaign from ranking test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>6f162a0</font>-<font color=green>(2014-05-20)</font><font color=black><b>Added two tests in MDqualifier feature for seriesName and ID</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_195)</font>
+* <font color=blue>437d0b3</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5664 non-canoe CIPs only send cls once</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_194)</font>
+* <font color=blue>37c5c43</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5684, VODDAI-5685 Series Name, Series ID Changed namespace</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_193)</font>
+* <font color=blue>8d67f8f</font>-<font color=green>(2014-05-16)</font><font color=black><b>VODDAI-5684, VODDAI-5685 Series Name, Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_192)</font>
+* <font color=blue>e84bed6</font>-<font color=green>(2014-05-16)</font><font color=black><b>Modified priorityData2 for active flight windows, added tag for mclps branch feature.. to delete soon</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>196e666</font>-<font color=green>(2014-05-02)</font><font color=black><b>Modified feature for 5618 story</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_191, v_4.0.0_190)</font>
+* <font color=blue>adfa691</font>-<font color=green>(2014-05-02)</font><font color=black><b>Added features and have leftover tags for cucumber check</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspacp</b><br><u>Version</u><b>&nbspr_4.0.0_30</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+CAAS CORE 4.0.0_135:  (MCLPS, Freq. Cap., Pl. Limit merged; FW "cls" sent once; ACP trigger updated; Series Name/ID added to metadata tables)
+PCI 4.0.0_183:  Ingests Series Name/ID; fix for when no Freq. Cap. is defined.  
+CIP-Sender 4.0.0_201:  Only send "cls" from FW once
+ACP 4.0.0_30:  Trigger CIP when start date is moved</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_28</b></u><br>
+<pre>
+* <font color=blue>ef76763</font>-<font color=green>(2014-05-27)</font><font color=black><b>Added test at end of feature for ACP CIP sent because we have crept into an asset License Window</b></font><font color=grey>- (Matt Major)</font><font color=red> (HEAD, v_4.0.0_30, origin/br_4.0.0, br_4.0.0)</font>
+* <font color=blue>d9169f9</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added template and cleanRegistration</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_29)</font>
+*   <font color=blue>552500b</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added test for 5572 and MDingester/PCI ACP cips 5693</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>8735caf</font>-<font color=green>(2014-05-22)</font><font color=black><b>Updated pom for new scala tools repository</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>887beb7</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added test for 5572 and MDingester/PCI ACP cips 5693</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>a4cba21</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added test for 5572 and MDingester/PCI ACP cips 5693</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_183</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+CAAS CORE 4.0.0_135:  (MCLPS, Freq. Cap., Pl. Limit merged; FW "cls" sent once; ACP trigger updated; Series Name/ID added to metadata tables)
+PCI 4.0.0_183:  Ingests Series Name/ID; fix for when no Freq. Cap. is defined.  
+CIP-Sender 4.0.0_201:  Only send "cls" from FW once
+ACP 4.0.0_30:  Trigger CIP when start date is moved</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_170</b></u><br>
+<pre>
+* <font color=blue>603aefb</font>-<font color=green>(2014-05-27)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Removed operator validation for Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (HEAD, v_4.0.0_183, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>43ed861</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated namespace for SeriesName and ID to urn:cablelabs:md:xsd:title:3.0</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_182)</font>
+* <font color=blue>7373528</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated operator validaitons based on current MD target validations</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>483ff3c</font>-<font color=green>(2014-05-23)</font><font color=black><b>Added Db check for the operatore lt gt le ge for MD targeting</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d8c1dcf</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added MD CQG.Term@operator validations</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_181)</font>
+* <font color=blue>4da100c</font>-<font color=green>(2014-05-19)</font><font color=black><b>Reformatted template to have all MD targets in one CQG. Removed unnecessary validation tests. Added peristence tests in persistMetaInfo feature with a new multi series target test</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_180)</font>
+*   <font color=blue>a810f5b</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed namespace, corrected validation stories, added persistence test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>22e52d5</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID Fix for error message</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_179)</font>
+| * <font color=blue>5186dba</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID Fix for operators</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>4cc618f</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed namespace, corrected validation stories, added persistence test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>98716d1</font>-<font color=green>(2014-05-19)</font><font color=black><b>Removed mcls feature. Now exists only in feature branch</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_178)</font>
+*   <font color=blue>ca9d8dd</font>-<font color=green>(2014-05-19)</font><font color=black><b>Deleted frequencyCap feature. Exists only in feature branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>7ae2179</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>78b79c9</font>-<font color=green>(2014-05-19)</font><font color=black><b>Corrected namespace value for Series targets</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>5332914</font>-<font color=green>(2014-05-16)</font><font color=black><b>Fix for Frequency Capping not present</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_177)</font>
+* <font color=blue>fc0e812</font>-<font color=green>(2014-05-16)</font><font color=black><b>Added template for new series function</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>378ef3e</font>-<font color=green>(2014-05-15)</font><font color=black><b>Added seriesID name features in commonQualifier</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_176)</font>
+* <font color=blue>5e16ba4</font>-<font color=green>(2014-05-15)</font><font color=black><b>Added placeholder for new Series stories</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b166f1e</font>-<font color=green>(2014-05-02)</font><font color=black><b>Added some missing cases, some organizing</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_175)</font>
+* <font color=blue>496c391</font>-<font color=green>(2014-04-29)</font><font color=black><b>Added more robust checks for multiple target groups in the Db</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_174)</font>
+* <font color=blue>3d1db05</font>-<font color=green>(2014-04-29)</font><font color=black><b>Added test for multiple flight windows for a multiAsset CIP</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>e16bbce</font>-<font color=green>(2014-04-29)</font><font color=black><b>Removed underConstruction tag</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>0125350</font>-<font color=green>(2014-04-29)</font><font color=black><b>Removed underConstruction tag</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>2a554ff</font>-<font color=green>(2014-04-28)</font><font color=black><b>Added test for different programmers, different campaigns, same CIP in multiParent feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_173)</font>
+* <font color=blue>730697a</font>-<font color=green>(2014-04-28)</font><font color=black><b>Added template and feature for PCI MCLPS ingestion validation and persistence</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f261578</font>-<font color=green>(2014-04-23)</font><font color=black><b>Updated tests to run more smoothly. Added tag @immediate to tests requiring CIPimmediate to be running</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_172)</font>
+* <font color=blue>48d44cb</font>-<font color=green>(2014-04-22)</font><font color=black><b>Removed tags, made small modifications in attempt to make regression succeed all-at-once</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_171)</font>
+* <font color=blue>28e1157</font>-<font color=green>(2014-04-08)</font><font color=black><b>Added test for different sequential programmer</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>aa00266</font>-<font color=green>(2014-04-08)</font><font color=black><b>Added test for different sequential programmer</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-dce</b><br><u>Version</u><b>&nbspr_4.0.0_26</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+DCE – 4.0.0_26 (NOT DEPLOYABLE WITHOUT HBASE AND PERFORMANCE TESTING)
+Metadata - Initial implementation, 8 total alert messages
+</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_11</b></u><br>
+<pre>
+* <font color=blue>526eca1</font>-<font color=green>(2014-05-16)</font><font color=black><b>Removed debug statements</b></font><font color=grey>- (dehmlowm)</font><font color=red> (v_4.0.0_26)</font>
+* <font color=blue>bb123db</font>-<font color=green>(2014-05-16)</font><font color=black><b>Changed test to use Date substitution</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>cb38618</font>-<font color=green>(2014-05-16)</font><font color=black><b>Multiple tweaks to align code with test features</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>86257e4</font>-<font color=green>(2014-05-14)</font><font color=black><b>Various fixes to for integration testing</b></font><font color=grey>- (dehmlowm)</font><font color=red> (v_4.0.0_25)</font>
+* <font color=blue>cce6c92</font>-<font color=green>(2014-05-13)</font><font color=black><b>Fixed path of service address</b></font><font color=grey>- (dehmlowm)</font><font color=red> (v_4.0.0_24)</font>
+* <font color=blue>37fa490</font>-<font color=green>(2014-05-13)</font><font color=black><b>Added genUser Scripts</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>477cee8</font>-<font color=green>(2014-05-13)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-dce into br_4.0.0</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (v_4.0.0_23)</font>
+|\  
+| * <font color=blue>13c72d3</font>-<font color=green>(2014-05-13)</font><font color=black><b>Completed unit test for threshold and any montors</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* | <font color=blue>7393c38</font>-<font color=green>(2014-05-13)</font><font color=black><b>fixed sql</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+|/  
+* <font color=blue>ec44ac0</font>-<font color=green>(2014-05-13)</font><font color=black><b>Added set env scripts</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_22, v_4.0.0_21)</font>
+* <font color=blue>48d51e5</font>-<font color=green>(2014-05-13)</font><font color=black><b>Added environmental log4j files</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_20)</font>
+* <font color=blue>ea692c4</font>-<font color=green>(2014-05-13)</font><font color=black><b>Fixed property file name</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_19)</font>
+* <font color=blue>1e29cab</font>-<font color=green>(2014-05-13)</font><font color=black><b>Reverting last change</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>931ba14</font>-<font color=green>(2014-05-13)</font><font color=black><b>Updated config path</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>185609d</font>-<font color=green>(2014-05-13)</font><font color=black><b>Renamed the env property file to coincide w/ deployment</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>dfdbd04</font>-<font color=green>(2014-05-13)</font><font color=black><b>Changed the test properties to point to app file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>df1b50c</font>-<font color=green>(2014-05-13)</font><font color=black><b>Fixing DB URL</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (v_4.0.0_18)</font>
+* <font color=blue>c673b39</font>-<font color=green>(2014-05-13)</font><font color=black><b>Fixed user/pw for unit tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_17, v_4.0.0_16)</font>
+* <font color=blue>9286b5f</font>-<font color=green>(2014-05-13)</font><font color=black><b>Updated read me, and changed User/Password</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>376333c</font>-<font color=green>(2014-05-13)</font><font color=black><b>Fixing ALTER command</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+*   <font color=blue>5afbd64</font>-<font color=green>(2014-05-13)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-dce into br_4.0.0</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (v_4.0.0_15)</font>
+|\  
+| * <font color=blue>80be55f</font>-<font color=green>(2014-05-13)</font><font color=black><b>First attempt at adding scrum poperties</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>293f9ca</font>-<font color=green>(2014-05-13)</font><font color=black><b>Fixing .sql genUser file for devint</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+|/  
+* <font color=blue>87ebeb5</font>-<font color=green>(2014-05-12)</font><font color=black><b>Initial changes to get Integration tests running</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_14)</font>
+* <font color=blue>ead88c3</font>-<font color=green>(2014-05-12)</font><font color=black><b>Syncrhonized hbase init</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>953a8a9</font>-<font color=green>(2014-05-12)</font><font color=black><b>Exposed web service</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>ea1b7c8</font>-<font color=green>(2014-05-12)</font><font color=black><b>Added default values</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>783a0f1</font>-<font color=green>(2014-05-12)</font><font color=black><b>Update properties to appropriate values</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>21e8cad</font>-<font color=green>(2014-05-12)</font><font color=black><b>Set writes to transactional</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>9f818d4</font>-<font color=green>(2014-05-12)</font><font color=black><b>Added Hbase Example that will start Hbase server</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>15eda49</font>-<font color=green>(2014-05-12)</font><font color=black><b>DCE unit test</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>e999e50</font>-<font color=green>(2014-05-12)</font><font color=black><b>Changes to the DAO and job</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>db3fbf0</font>-<font color=green>(2014-05-12)</font><font color=black><b>Wired scheduler into DCEConfigurator</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4733332</font>-<font color=green>(2014-05-12)</font><font color=black><b>Updated gitignore</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>93b489a</font>-<font color=green>(2014-05-12)</font><font color=black><b>Changes to Monitor/Job</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>bb31b26</font>-<font color=green>(2014-05-12)</font><font color=black><b>Changed Threshold to Decimal</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>8f1caa8</font>-<font color=green>(2014-05-12)</font><font color=black><b>Created monitor unit test</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>e7aa755</font>-<font color=green>(2014-05-12)</font><font color=black><b>Added ingest unit test and monitor unit tests</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>98b505e</font>-<font color=green>(2014-05-12)</font><font color=black><b>Re wired hibernate settings</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>575ac0e</font>-<font color=green>(2014-05-09)</font><font color=black><b>changed wait statement to 60 sec, removed craig tag</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>90b25d6</font>-<font color=green>(2014-05-09)</font><font color=black><b>Fixed craigs stomp</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>64fb0e3</font>-<font color=green>(2014-05-09)</font><font color=black><b>Fixed compilation error</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>2db127f</font>-<font color=green>(2014-05-09)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/dai-dce into br_4.0.0</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|\  
+| *   <font color=blue>5080f45</font>-<font color=green>(2014-05-09)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/dai-dce into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| |\  
+| * | <font color=blue>100f985</font>-<font color=green>(2014-05-09)</font><font color=black><b>Updates to spring wiring</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | | <font color=blue>202cad3</font>-<font color=green>(2014-05-09)</font><font color=black><b>fixed Hbase parameters</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>78e1f32</font>-<font color=green>(2014-05-09)</font><font color=black><b>Migrated to DAOObject</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+|/  
+* <font color=blue>943cdc2</font>-<font color=green>(2014-05-09)</font><font color=black><b>Added threshold logic and web service for to beans</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>1b2918f</font>-<font color=green>(2014-05-09)</font><font color=black><b>Initial Spring wiring changes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>b95723f</font>-<font color=green>(2014-05-08)</font><font color=black><b>Switch arguments</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>8dcc35b</font>-<font color=green>(2014-05-08)</font><font color=black><b>Added configuration servlet</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+*   <font color=blue>c8a04f8</font>-<font color=green>(2014-05-08)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-dce into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|\  
+| * <font color=blue>08de63a</font>-<font color=green>(2014-05-08)</font><font color=black><b>Added scheduling logic</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>4127d90</font>-<font color=green>(2014-05-08)</font><font color=black><b>Initial changes for Alert updates</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>9bb4423</font>-<font color=green>(2014-05-08)</font><font color=black><b>Added dao</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>b720ed5</font>-<font color=green>(2014-05-08)</font><font color=black><b>Added added alert interface</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>738fbe5</font>-<font color=green>(2014-05-08)</font><font color=black><b>Added alert interface</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>d88ae27</font>-<font color=green>(2014-05-08)</font><font color=black><b>Moved dcd web interface to common lib</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>0a95f79</font>-<font color=green>(2014-05-08)</font><font color=black><b>Initial commit of Monitor and web service</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>ae740ec</font>-<font color=green>(2014-05-08)</font><font color=black><b>added scheduled check feature</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspmetadata-publisher</b><br><u>Version</u><b>&nbspr_4.0.0_40</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+Metadata Publisher - 4.0.0_40
+CAAS Core - 4.0.0_135
+Metadata - Handles Series metadata</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_39</b></u><br>
+<pre>
+* <font color=blue>a6ccfd6</font>-<font color=green>(2014-05-21)</font><font color=black><b>Comments</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_40, r_4.0.0_40)</font>
+* <font color=blue>7238161</font>-<font color=green>(2014-05-21)</font><font color=black><b>VODDAI-5677</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>5f8d18b</font>-<font color=green>(2014-05-21)</font><font color=black><b>Incorporated Jira 5677 to MDP project</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>42ce357</font>-<font color=green>(2014-03-17)</font><font color=black><b>Revert "Added scheduled_unforced_publish feature guidance"</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+* <font color=blue>1802015</font>-<font color=green>(2014-03-17)</font><font color=black><b>Revert "adding metadata publisher"</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+* <font color=blue>2880fd8</font>-<font color=green>(2014-03-17)</font><font color=black><b>adding metadata publisher</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspMicroDev</b><br><u>Version</u><b>&nbspr_4.0.0_135</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_130</b></u><br>
+<pre>
+* <font color=blue>e0c1454</font>-<font color=green>(2014-05-23)</font><font color=black><b>fixed the ent report - empty impressions show up now.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_135)</font>
+* <font color=blue>a1c8863</font>-<font color=green>(2014-05-22)</font><font color=black><b>fixed empty counts for entertainment report.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_134)</font>
+* <font color=blue>a0392ce</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5595. fixed little report items specified in the MMF. plus EbAS has empty impressions now.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_133)</font>
+* <font color=blue>db2c05f</font>-<font color=green>(2014-05-06)</font><font color=black><b>fixed 0 impression issues in EbAS.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_132)</font>
+* <font color=blue>5e42669</font>-<font color=green>(2014-05-05)</font><font color=black><b>fixed 0 impressions for EbAS report.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_87</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_85</b></u><br>
+<pre>
+* <font color=blue>1fb3f84</font>-<font color=green>(2014-05-16)</font><font color=black><b>Modifications for rollup performance work.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (HEAD, v_4.0.0_87, v_4.0.0_86, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>438b9cd</font>-<font color=green>(2014-05-15)</font><font color=black><b>Fixed syntax from Stephen</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>3320a3e</font>-<font color=green>(2014-05-15)</font><font color=black><b>Removing deprecated import</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>484f12e</font>-<font color=green>(2014-05-14)</font><font color=black><b>Added tablespace changes per Stephen J</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_355</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+Decision Engine - 4.0.0_355
+ADS Core - 4.0.0_87
+SMSiPublisher - 4.0.0_256
+Metadata - ADS to DCE functionality (8 alerts), configuration turned off for deployment 
+New Properties - ads.dce.enabled=false, ads.dce.url=ads.dce.url=http://localhost, ads.dce.schedule= 0 0/1 * * * ?, identity.ads=CANOE_ADS1</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_338</b></u><br>
+<pre>
+*   <font color=blue>c1ed50f</font>-<font color=green>(2014-05-27)</font><font color=black><b>resovled conflicts</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (HEAD, v_4.0.0_355, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+|\  
+| * <font color=blue>652e208</font>-<font color=green>(2014-05-27)</font><font color=black><b>No more null pointers in DCE call.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>d1f3aaf</font>-<font color=green>(2014-05-27)</font><font color=black><b>Defaults props and valid cucumber properties.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* | <font color=blue>f8289db</font>-<font color=green>(2014-05-27)</font><font color=black><b>test edits</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+|/  
+* <font color=blue>2e13595</font>-<font color=green>(2014-05-22)</font><font color=black><b>Removed unused imports.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_354, v_4.0.0_353)</font>
+* <font color=blue>a765d08</font>-<font color=green>(2014-05-21)</font><font color=black><b>Adding additional info to messages and fixing Provider.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_352)</font>
+* <font color=blue>41b9d61</font>-<font color=green>(2014-05-21)</font><font color=black><b>new dce tests finished, local properties changed to support those tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>102c2d5</font>-<font color=green>(2014-05-21)</font><font color=black><b>Changes to support testing DCE publishing.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>672f5fa</font>-<font color=green>(2014-05-20)</font><font color=black><b>Added error handling around service calls</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_351)</font>
+*   <font color=blue>3681ad8</font>-<font color=green>(2014-05-20)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|\  
+| *   <font color=blue>bbb7803</font>-<font color=green>(2014-05-20)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\  
+| * | <font color=blue>6cec932</font>-<font color=green>(2014-05-20)</font><font color=black><b>New FbN tests plus regression edits</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* | | <font color=blue>6e695d3</font>-<font color=green>(2014-05-20)</font><font color=black><b>Refactoring of DCEService.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>93a420a</font>-<font color=green>(2014-05-19)</font><font color=black><b>Removing dependency on performance tests until repo situation is figured out</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_350, v_4.0.0_349, v_4.0.0_348, v_4.0.0_347)</font>
+|/  
+* <font color=blue>dbc9b4a</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5774 - Handle cases where there is no goal.</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_346, v_4.0.0_345)</font>
+* <font color=blue>0407223</font>-<font color=green>(2014-05-15)</font><font color=black><b>Added check for trackingString under matt-test tag</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_344)</font>
+* <font color=blue>eb57527</font>-<font color=green>(2014-05-14)</font><font color=black><b>Fixed formatting issue</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>fc4dbd7</font>-<font color=green>(2014-05-09)</font><font color=black><b>Added stop statement to hbase test</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_342, v_4.0.0_341, v_4.0.0_340, v_4.0.0_339)</font>
+* <font color=blue>999cbdc</font>-<font color=green>(2014-05-09)</font><font color=black><b>more refactor for smsipub</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>e78d747</font>-<font color=green>(2014-05-09)</font><font color=black><b>small comment changes made during ads regression</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>78922d7</font>-<font color=green>(2014-05-09)</font><font color=black><b>test refactor for smsi performance changes</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_4.0.0_256</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_245</b></u><br>
+<pre>
+* <font color=blue>d0bf05d</font>-<font color=green>(2014-05-22)</font><font color=black><b>Fixed Transformer log messages...again</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_256)</font>
+* <font color=blue>dc8f0a7</font>-<font color=green>(2014-05-22)</font><font color=black><b>Tweaked scrum logging.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>6ebcd6f</font>-<font color=green>(2014-05-22)</font><font color=black><b>Fixed background line, modified createDate on some presentations</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>78bb0d2</font>-<font color=green>(2014-05-21)</font><font color=black><b>Modified tests for explicit Job processing -local update</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>84c1cf4</font>-<font color=green>(2014-05-21)</font><font color=black><b>Fixed error message when can't scte-ingest stuff.</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_255)</font>
+| * <font color=blue>936a827</font>-<font color=green>(2014-05-21)</font><font color=black><b>Adding back liquibase that should not have been removed.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>6c00023</font>-<font color=green>(2014-05-21)</font><font color=black><b>Modified tests for explicit Job processing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>98f85b0</font>-<font color=green>(2014-05-21)</font><font color=black><b>Modified SQL joins to explicitly use the lot on all tables.</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_254)</font>
+* <font color=blue>75913a5</font>-<font color=green>(2014-05-21)</font><font color=black><b>Fixed one of the integration tests so it work when run in series with the previous test.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>6e7a8e3</font>-<font color=green>(2014-05-21)</font><font color=black><b>Revert "Added random pad to job reservation durations."</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>f70c0df</font>-<font color=green>(2014-05-21)</font><font color=black><b>Revert "Reworked the foreman so that only one job per lot can run at a time."</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>e18f96d</font>-<font color=green>(2014-05-21)</font><font color=black><b>Revert "The job with the earliest run_next now has priority."</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>a3218b5</font>-<font color=green>(2014-05-21)</font><font color=black><b>Revert "All jobs from a lot will run in the same thread.  The publisher is more aggresive in keeping it's threads busy."</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>9f1a404</font>-<font color=green>(2014-05-21)</font><font color=black><b>Revert "Created a ready-session jobs."</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>177e054</font>-<font color=green>(2014-05-21)</font><font color=black><b>Revert "Added ready-sessions job.  Removed update from scte-ingester"</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>357c17f</font>-<font color=green>(2014-05-21)</font><font color=black><b>Added ready-sessions job.  Removed update from scte-ingester</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>a9e29f6</font>-<font color=green>(2014-05-20)</font><font color=black><b>Created a ready-session jobs.</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_253)</font>
+* <font color=blue>2ffa9f7</font>-<font color=green>(2014-05-20)</font><font color=black><b>All jobs from a lot will run in the same thread.  The publisher is more aggresive in keeping it's threads busy.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>bfb56ba</font>-<font color=green>(2014-05-18)</font><font color=black><b>Fixed scala unit tests</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_252)</font>
+* <font color=blue>1de41da</font>-<font color=green>(2014-05-18)</font><font color=black><b>The job with the earliest run_next now has priority.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>f55da88</font>-<font color=green>(2014-05-14)</font><font color=black><b>Reworked the foreman so that only one job per lot can run at a time.</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_251)</font>
+* <font color=blue>543b62d</font>-<font color=green>(2014-05-13)</font><font color=black><b>Added random pad to job reservation durations.</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_250)</font>
+* <font color=blue>914f26b</font>-<font color=green>(2014-05-13)</font><font color=black><b>Fixed issue where tracking_string was not being committed;</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+*   <font color=blue>14e29a7</font>-<font color=green>(2014-05-13)</font><font color=black><b>Modified more templates and functions based around purge</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>85f8069</font>-<font color=green>(2014-05-13)</font><font color=black><b>Fixed purging of sessions</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_249)</font>
+* | <font color=blue>703b7d5</font>-<font color=green>(2014-05-13)</font><font color=black><b>Modified more templates and functions based around purge</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>73c3606</font>-<font color=green>(2014-05-13)</font><font color=black><b>Added check for new purge function in the first cleanUp feature test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>01c90c2</font>-<font color=green>(2014-05-13)</font><font color=black><b>Modified templates and the tests for new GUID, tracking, status, and other DB changes</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>2a29035</font>-<font color=green>(2014-05-13)</font><font color=black><b>Changes to data loader.</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_248)</font>
+| * <font color=blue>daa9f24</font>-<font color=green>(2014-05-13)</font><font color=black><b>Increased smsi-journal concurrency to remove hangs when the journal gets full.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+| * <font color=blue>dd23fdf</font>-<font color=green>(2014-05-13)</font><font color=black><b>Removed deadlocks when marking sessions and presentations as published.</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+| * <font color=blue>b5640c4</font>-<font color=green>(2014-05-13)</font><font color=black><b>Added purge back in</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+| * <font color=blue>d71f632</font>-<font color=green>(2014-05-13)</font><font color=black><b>Run_time is again calaculated for managed-ip</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+| * <font color=blue>7e71ca1</font>-<font color=green>(2014-05-12)</font><font color=black><b>Fix for Jenkins</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_247)</font>
+| * <font color=blue>e6b3281</font>-<font color=green>(2014-05-12)</font><font color=black><b>Fixed deadlock issue in scte-ingester</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+| * <font color=blue>b7feb40</font>-<font color=green>(2014-05-12)</font><font color=black><b>Fixed unit tests (for real)</b></font><font color=grey>- (Ken Leider)</font><font color=red> (v_4.0.0_246)</font>
+| * <font color=blue>7b767c6</font>-<font color=green>(2014-05-12)</font><font color=black><b>Updated scrum properties</b></font><font color=grey>- (Ken Leider)</font><font color=red></font>
+* |   <font color=blue>1e51c4c</font>-<font color=green>(2014-05-13)</font><font color=black><b>Modified templates and the tests for new GUID, tracking, status, and other DB changes</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>ff35119</font>-<font color=green>(2014-05-12)</font><font color=black><b>Sure wish I could run these unit tests locally.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>2228f71</font>-<font color=green>(2014-05-12)</font><font color=black><b>More unit test fixes</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>a0b99bf</font>-<font color=green>(2014-05-12)</font><font color=black><b>Unit test fixes</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>ebd158b</font>-<font color=green>(2014-05-12)</font><font color=black><b>Moved lot, guid, and tracking computation outside of the commit transaction.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>58bde08</font>-<font color=green>(2014-05-09)</font><font color=black><b>lots of changes to templates for new fromatting in Db</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Jack_Daniels:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-national-cis</b><br><u>Version</u><b>&nbspr_4.0.0_76</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie: 
+NCIS - 4.0.0_76
+CAAS Core - 4.0.0_135
+Metadata - MaxMsgSize and Series metadata; migrated cucumber dependencies</b></font></pre>
+<u>Commit summaries since last version :</u> <b>4.0.0_72</b></u><br>
+<pre>
+* <font color=blue>bc9246a</font>-<font color=green>(2014-05-22)</font><font color=black><b>set to test scope</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_76)</font>
+* <font color=blue>7e3df3f</font>-<font color=green>(2014-05-22)</font><font color=black><b>Moved the common-cucumber dependency to int test</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_75)</font>
+* <font color=blue>2a8d099</font>-<font color=green>(2014-05-22)</font><font color=black><b>removed redundant dependencies</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_74)</font>
+* <font color=blue>f005b6f</font>-<font color=green>(2014-05-21)</font><font color=black><b>Removed @john; renamed test</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_73)</font>
+*   <font color=blue>b6d139f</font>-<font color=green>(2014-05-21)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/dai-national-cis into br_4.0.0</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|\  
+| * <font color=blue>b25a00f</font>-<font color=green>(2014-05-21)</font><font color=black><b>Changes to support publishing series_id and series_name</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>80cfe4b</font>-<font color=green>(2014-05-21)</font><font color=black><b>Merged Series metadata into baseline test</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|/  
+* <font color=blue>5e7b800</font>-<font color=green>(2014-05-21)</font><font color=black><b>Added edge cases to MaxMsgSize</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>19d83e7</font>-<font color=green>(2014-05-20)</font><font color=black><b>Added more message checks for 5671</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>dc0c4ac</font>-<font color=green>(2014-05-20)</font><font color=black><b>Incorporated Series steps in NCIS Baseline; updated datasets</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>d74be3d</font>-<font color=green>(2014-05-20)</font><font color=black><b>Integration test changes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>a3a9798</font>-<font color=green>(2014-05-20)</font><font color=black><b>Removed tag</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>748b5a5</font>-<font color=green>(2014-05-20)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/dai-national-cis into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>9c5477f</font>-<font color=green>(2014-05-20)</font><font color=black><b>Scenario and dataset for 5680</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>22f8809</font>-<font color=green>(2014-05-20)</font><font color=black><b>Changed the check to look for 22 elements</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* | <font color=blue>82cc4a9</font>-<font color=green>(2014-05-20)</font><font color=black><b>Added new series metadata to golden data</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>e6ab3cb</font>-<font color=green>(2014-05-20)</font><font color=black><b>VODDAI-5679</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>5667a0a</font>-<font color=green>(2014-05-20)</font><font color=black><b>Added NS3 Namespace</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>6376bf8</font>-<font color=green>(2014-05-20)</font><font color=black><b>Scenario and dataset for 5679</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>f97fa32</font>-<font color=green>(2014-05-16)</font><font color=black><b>Readme/gitignore changes</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>c0aa767</font>-<font color=green>(2014-05-02)</font><font color=black><b>Max Message Size Scenario</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>38d1592</font>-<font color=green>(2014-05-01)</font><font color=black><b>Added DB assertion and clarifying comments</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>7a8e3e9</font>-<font color=green>(2014-05-01)</font><font color=black><b>Expanded the ReadMe</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>3dcda82</font>-<font color=green>(2014-03-14)</font><font color=black><b>Updated Test Note with latest testdate</b></font><font color=grey>- (jwwood87)</font><font color=red></font></pre>
+<hr>
+<p>

@@ -1,0 +1,190 @@
+<html>
+<head>
+<TITLE>Expandable and collapsible table - demo</TITLE>
+<script type="text/javascript">
+function toggle_visibility(tbid,lnkid)
+{
+  var obj = document.getElementsByTagName("table");
+  for(i=0;i<obj.length;i++)
+  {
+   if(obj[i].id && obj[i].id != tbid)
+   {
+    document.getElementById(obj[i].id).style.display = "none";
+    x = obj[i].id.substring(3);
+    document.getElementById("lnk"+x).value = "[+] Expand";
+    }
+   }
+  if(document.all){document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block";}
+  else{document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table";}
+  document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-] Collapse" ? "[+] Expand" : "[-] Collapse";
+ }
+</script>
+<style type="text/css">
+.tbl {display:none;}
+.lnk {border:none;background:none;width:85px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: verdana,helvetica,arial,sans-serif}
+a {TEXT-DECORATION: none;}
+</style>
+</head>
+<body>
+<table border="1" align="center" cellpadding="4" cellspacing="0">
+ <tr><th>Canoe Nightly and Scrum Environment Configurations</th></tr>
+ <table width="1200px" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr height="1">
+   <td bgcolor="#727272" colspan="3"></td>
+  </tr>
+  <tr bgcolor="#EEEEEE" height="15">
+   <td><strong>Dev/Int</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLast Status update performed:<?php include 'devint/dtupd.txt'; ?></td>
+   <td></td>
+   <td bgcolor="#EEEEEE" align="right"><input class="lnk" id="lnk1" type="button" value="[+] Expand" onclick="toggle_visibility('tbl1','lnk1');"></td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <table width="100%" border="0" cellpadding="3" cellspacing="0" id="tbl1" class="tbl">
+     <tr>
+      <td colspan="3">Dev/Int Environment - Package Deployments</td>
+     </tr>
+     <tr bgcolor="#EEEEEE">
+      <td width="35%"><b><u>Component</b></u></td>
+      <td width="25%"><b><u>Version/Download</b></u></td>
+      <td width="15%"><b><u>AppSvr Status</b></u></td>
+      <td width="15%"><b><u>Disk Space</b></u></td>
+      <td width="10%"><b><u>Login URL</b></u></td>
+     </tr>
+     <tr>
+      <td>Campaign Manager</td>
+      <td><?php shell_exec("ls"); ?>
+      <td><a href="http://10.13.18.113:9600/Dynamic-Ad-Insertion-cm-3.0.0">Login Dev/Int</a></td>
+     </tr>
+     <tr height="1">
+      <td colspan="3" bgcolor="#CCCCCC"></td>
+     </tr>
+     <tr>
+      <td>Bar</td>
+      <td><a href="http://10.13.18.168/releaseTars/oss_bar/oss_bar_1.2.0_51.tar">1.2.0_51.tar</a></td>
+      <td><a href="http://10.13.18.113:9700/oss_bar/login/auth">Login Dev/Int</a></td>
+     </tr>
+     <tr height="1">
+      <td colspan="3" bgcolor="#CCCCCC"></td>
+     </tr>
+     <tr>
+      <td>DAI SMSI</td>
+      <td><a href="http://10.13.18.168/releaseTars/dai-smsi/dai-smsi_3.0.0_2.tar">3.0.0_2.tar</a></td>
+      <td><a href="http://10.13.18.113:9640/safi-smsi-server-3.0.0-SNAPSHOT">Dev/Int</a></td>
+     </tr>
+     <tr height="1">
+      <td colspan="3" bgcolor="#CCCCCC"></td>
+     </tr>
+     <tr height="1">
+      <td bgcolor="#CCCCCC" colspan="3"></td>
+     </tr>
+     <tr height="1">
+      <td bgcolor="#727272" colspan="3"></td>
+     </tr>
+     <tr height="8">
+      <td colspan="3"></td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <table width="1200px" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr height="1">
+   <td bgcolor="#727272" colspan="3"></td>
+  </tr>
+  <tr bgcolor="#EEEEEE" height="15">
+   <td colspan="2"><strong>Scrum 1</strong></td>
+   <td bgcolor="#EEEEEE" align="right"><input class="lnk" id="lnk2" type="button" value="[+] Expand" onclick="toggle_visibility('tbl2','lnk2');"></td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl2" name="tbl2" class="tbl">
+     <tr>
+      <td colspan="3">Short summary which describes Project 2.</td>
+     </tr>
+     <tr bgcolor="#EEEEEE">
+      <td width="70%">File Name</td>
+      <td width="15%">Size</td>
+      <td  width="15%"></td>
+     </tr>
+     <tr>
+      <td>Document 1 of the project 2.doc</td>
+      <td>209.5 KB</td>
+      <td><a href="#">Download</a></td>
+     </tr>
+     <tr height="1">
+      <td colspan="3" bgcolor="#CCCCCC"></td>
+     </tr>
+     <tr>
+      <td>Document 2 of the project 2.doc</td>
+      <td>86 KB</td>
+      <td><a href="#">Download</a></td>
+     </tr>
+     <tr height="1">
+      <td colspan="3" bgcolor="#CCCCCC" ></td>
+     </tr>
+     <tr height="1">
+      <td bgcolor="#CCCCCC" colspan="3"></td>
+     </tr>
+     <tr height="1">
+      <td bgcolor="#727272" colspan="3"></td>
+     </tr>
+     <tr height="8">
+      <td colspan="3"></td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <table width="1200px" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr height="1">
+   <td bgcolor="#727272" colspan="3"></td>
+  </tr>
+  <tr bgcolor="#EEEEEE" height="15">
+   <td colspan="2"><strong>Scrum 2</strong></td>
+   <td bgcolor="#EEEEEE" align="right"><input class="lnk" id="lnk3" type="button" value="[+] Expand" onclick="toggle_visibility('tbl3','lnk3');"></td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl3" name="tbl3" class="tbl">
+     <tr>
+      <td colspan="3">Short summary which describes Project 3.</td>
+     </tr>
+     <tr bgcolor="#EEEEEE">
+      <td width="70%">File Name</td>
+      <td width="15%">Size</td>
+      <td  width="15%"></td>
+     </tr>
+     <tr>
+      <td>Document 1 of the project 3.doc</td>
+      <td>209.5 KB</td>
+      <td><a href="#">Download</a></td>
+     </tr>
+     <tr height="1">
+      <td colspan="3" bgcolor="#CCCCCC"></td>
+     </tr>
+     <tr>
+      <td>Document 2 of the project 3.doc</td>
+      <td>86 KB</td>
+      <td><a href="#">Download</a></td>
+     </tr>
+     <tr height="1">
+      <td colspan="3" bgcolor="#CCCCCC" ></td>
+     </tr>
+     <tr height="1">
+      <td bgcolor="#CCCCCC" colspan="3"></td>
+     </tr>
+     <tr height="1">
+      <td bgcolor="#727272" colspan="3"></td>
+     </tr>
+     <tr height="8">
+      <td colspan="3"></td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+</table>
+</body>
+</html> 

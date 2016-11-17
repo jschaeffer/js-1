@@ -1,0 +1,594 @@
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.0.0_146</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Perf: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. </b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0/026-dad-fc_trigger.xml
+core/model/src/main/resources/liquibase/core-4.0.0/027-mpm-placement-limits-redo.xml
+core/model/src/main/resources/liquibase/core-4.0.0/028-dad-placementLimit.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_141</b></u><br>
+<pre>
+* <font color=blue>4221bb7</font>-<font color=green>(2014-07-01)</font><font color=black><b>Added Placement Limit trigger changes back in for campaign item media asset</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_146)</font>
+* <font color=blue>41bd681</font>-<font color=green>(2014-07-01)</font><font color=black><b>Added Placement Limit trigger changes back in.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_145)</font>
+* <font color=blue>9b00218</font>-<font color=green>(2014-07-01)</font><font color=black><b>Reimplement placement limits migration script.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_144)</font>
+* <font color=blue>d0fd934</font>-<font color=green>(2014-07-01)</font><font color=black><b>Revert "New column changes to support relay"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>0e9f809</font>-<font color=green>(2014-07-01)</font><font color=black><b>Revert "Fixed data for unit tests"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>b6fc5aa</font>-<font color=green>(2014-07-01)</font><font color=black><b>VODDAI-4031 Trigger cip immediate for frequency cap changes</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>f750eb2</font>-<font color=green>(2014-06-30)</font><font color=black><b>Fixed data for unit tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_143)</font>
+* <font color=blue>48e7bcd</font>-<font color=green>(2014-06-27)</font><font color=black><b>New column changes to support relay</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_142)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_4.0.0_322</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_322/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_322/config/Dynamic-Ad-Insertion-cm-config.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_322/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_322/config/Dynamic-Ad-Insertion-cm-config.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_322/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_322/config/Dynamic-Ad-Insertion-cm-config.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-cm_v_4.0.0_322/diff.txt>Dynamic-Ad-Insertion-cm_v_4.0.0_322/config/Dynamic-Ad-Insertion-cm-config.scrum4.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_312</b></u><br>
+<pre>
+* <font color=blue>71e602e</font>-<font color=green>(2014-07-02)</font><font color=black><b>search gridview feature updated</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_322)</font>
+*   <font color=blue>9ef4ad4</font>-<font color=green>(2014-07-02)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>75d1fa2</font>-<font color=green>(2014-07-02)</font><font color=black><b>updated validation feature for ads tab validation</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>2167cc0</font>-<font color=green>(2014-07-02)</font><font color=black><b>removed @joel tag</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>21f886c</font>-<font color=green>(2014-07-02)</font><font color=black><b>update campaign Item media asset features for placement limitation</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| *   <font color=blue>8f4796b</font>-<font color=green>(2014-07-02)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\  
+| * | <font color=blue>58c841c</font>-<font color=green>(2014-07-02)</font><font color=black><b>Minimum Ad Copy Seperation features have been modified. Same time invalid lines have been commented out.</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+* | | <font color=blue>0c06fb3</font>-<font color=green>(2014-07-02)</font><font color=black><b>Line item grid improvements.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>d4a56eb</font>-<font color=green>(2014-07-02)</font><font color=black><b>Finished validation on break and session limits.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+* <font color=blue>b498236</font>-<font color=green>(2014-07-02)</font><font color=black><b>Made Back to Back the default sepearation for ad assets.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>f52711f</font>-<font color=green>(2014-07-02)</font><font color=black><b>Validate placement and session limit on line item.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+*   <font color=blue>5c9b2e6</font>-<font color=green>(2014-07-02)</font><font color=black><b>Resolved conflicts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| * <font color=blue>897d0ea</font>-<font color=green>(2014-07-02)</font><font color=black><b>modified all xmls to have BTB for Separation</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| * <font color=blue>cd016a8</font>-<font color=green>(2014-07-01)</font><font color=black><b>update on local properties</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>fb4f170</font>-<font color=green>(2014-07-02)</font><font color=black><b>Placement limit reimplementation (requires a few more tweaks before it's ready for production.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|/  
+*   <font color=blue>582fe34</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red> (v_4.0.0_321)</font>
+|\  
+| * <font color=blue>1308469</font>-<font color=green>(2014-07-01)</font><font color=black><b>modifying SC4 placement limitation to TRUE</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_320)</font>
+| * <font color=blue>77f5daf</font>-<font color=green>(2014-06-30)</font><font color=black><b>removed clicking the add ad asset button from all features</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_319)</font>
+* | <font color=blue>f9241dd</font>-<font color=green>(2014-07-01)</font><font color=black><b>Made changes to metadata features to accomodate for "group" changes</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+|/  
+*   <font color=blue>50bdcd7</font>-<font color=green>(2014-06-30)</font><font color=black><b>Campaign Item Media Asset selection functionality changed Merge branch 'select-ad' into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|\  
+| * <font color=blue>744b1b3</font>-<font color=green>(2014-06-30)</font><font color=black><b>Removed commented out code.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/select-ad)</font>
+| * <font color=blue>d2b156c</font>-<font color=green>(2014-06-30)</font><font color=black><b>Removed add button from lima selector, updated all code to support add lima when selecting from search results.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* |   <font color=blue>54da26b</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_318)</font>
+|\ \  
+| * | <font color=blue>fa17d3a</font>-<font color=green>(2014-06-30)</font><font color=black><b>Fixed store/restore issue with Line Items and cancelling.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |/  
+* | <font color=blue>2e0bc29</font>-<font color=green>(2014-06-30)</font><font color=black><b>small prod data update</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+*   <font color=blue>d1f1d99</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\  
+| *   <font color=blue>4189ec4</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\  
+| * \   <font color=blue>5f20495</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\ \  
+| * | | <font color=blue>5c71afc</font>-<font color=green>(2014-06-30)</font><font color=black><b>Made changes to features regarding Placement Preferences and the Status column for Line Items</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| * | |   <font color=blue>c794542</font>-<font color=green>(2014-06-30)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\ \ \  
+| * \ \ \   <font color=blue>cb47d9e</font>-<font color=green>(2014-06-27)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\ \ \ \  
+| * \ \ \ \   <font color=blue>fb1f0cd</font>-<font color=green>(2014-06-26)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+| |\ \ \ \ \  
+| * | | | | | <font color=blue>510a46c</font>-<font color=green>(2014-06-26)</font><font color=black><b>Made changes to features regarding asset name move</b></font><font color=grey>- (David Choi)</font><font color=red></font>
+* | | | | | | <font color=blue>3da25d6</font>-<font color=green>(2014-06-30)</font><font color=black><b>Re-render list item views when model changes.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |_|_|_|_|/  
+|/| | | | |   
+* | | | | | <font color=blue>2e82fbc</font>-<font color=green>(2014-06-30)</font><font color=black><b>Added some comments.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+| |_|_|_|/  
+|/| | | |   
+* | | | | <font color=blue>d477cba</font>-<font color=green>(2014-06-30)</font><font color=black><b>Preserve metadata target values after adding a target.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* | | | | <font color=blue>9534a58</font>-<font color=green>(2014-06-30)</font><font color=black><b>Modified scenario for 256-char Ad Asset; updated manual tests</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| |_|_|/  
+|/| | |   
+* | | | <font color=blue>b5221e2</font>-<font color=green>(2014-06-19)</font><font color=black><b>Fixed bug where forms would not submit after correcting client-side validation errors.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_317)</font>
+* | | |   <font color=blue>200e5d5</font>-<font color=green>(2014-06-27)</font><font color=black><b>Merge branch 'rollback-on-cancel' into br_4.0.0</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+|\ \ \ \  
+| |_|_|/  
+|/| | |   
+| * | | <font color=blue>15df19c</font>-<font color=green>(2014-06-22)</font><font color=black><b>Undo changes on cancel of line item edit.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (origin/rollback-on-cancel)</font>
+|  / /  
+* | | <font color=blue>1808e80</font>-<font color=green>(2014-06-27)</font><font color=black><b>ad asset show page formatted a little cleaner with less white space</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+| |/  
+|/|   
+* | <font color=blue>9f7315e</font>-<font color=green>(2014-06-26)</font><font color=black><b>Hardcoded a width attribute to the placement pref warning divs.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (v_4.0.0_316)</font>
+|/  
+*   <font color=blue>a181eba</font>-<font color=green>(2014-06-25)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.0.0</b></font><font color=grey>- (jmhassell)</font><font color=red> (v_4.0.0_315)</font>
+|\  
+| * <font color=blue>283f712</font>-<font color=green>(2014-06-25)</font><font color=black><b>Added background for scenario</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>b1f82e8</font>-<font color=green>(2014-06-25)</font><font color=black><b>Added comments about Jira5948 validation failure</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>e08239a</font>-<font color=green>(2014-06-25)</font><font color=black><b>Updated ID</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+| * <font color=blue>1ddd5fa</font>-<font color=green>(2014-06-24)</font><font color=black><b>Tweaking specific tests for correct IDs</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_314)</font>
+* | <font color=blue>7cb769f</font>-<font color=green>(2014-06-25)</font><font color=black><b>moved placement pref to settings tab, needs a little more work</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* | <font color=blue>4aee0c2</font>-<font color=green>(2014-06-25)</font><font color=black><b>moved Status in Line Item Grid view, and changed Ad Asset Name max length to 256 and moved AssetName to top of view page</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+* <font color=blue>50135cf</font>-<font color=green>(2014-06-23)</font><font color=black><b>Updated manual test description for hover/wrap; V1</b></font><font color=grey>- (jwwood87)</font><font color=red> (v_4.0.0_313)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-cip</b><br><u>Version</u><b>&nbspr_4.0.0_209</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_201</b></u><br>
+<pre>
+* <font color=blue>2715743</font>-<font color=green>(2014-07-02)</font><font color=black><b>Fix xml xsd com version</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_209)</font>
+* <font color=blue>14c4751</font>-<font color=green>(2014-07-01)</font><font color=black><b>Fixed more tests for PlacementLimit Drop</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_208)</font>
+* <font color=blue>b6de783</font>-<font color=green>(2014-07-01)</font><font color=black><b>Fixed tests for PlacementLimit Drop</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>fc45356</font>-<font color=green>(2014-07-01)</font><font color=black><b>Fixes for PlacementLimit Drop</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_207)</font>
+*   <font color=blue>09f5986</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/dai-cip into br_4.0.0</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| * <font color=blue>c19f411</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed placementLimit xml from main</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_206, v_4.0.0_205)</font>
+| * <font color=blue>68ae25a</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed the mclps feature from main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>40a88d3</font>-<font color=green>(2014-05-29)</font><font color=black><b>Modified metadataQualifier feature for 5800, 5804, 5808</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_204)</font>
+| * <font color=blue>a8c9da1</font>-<font color=green>(2014-05-28)</font><font color=black><b>Reset for each scenario in timeZone feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_203)</font>
+| * <font color=blue>69256e3</font>-<font color=green>(2014-05-27)</font><font color=black><b>Modified tests for seriesName/ID in metadataQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_202)</font>
+| * <font color=blue>3aa68a7</font>-<font color=green>(2014-05-27)</font><font color=black><b>Modified tests for seriesName/ID in metadataQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5e625bd</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed placementLimit xml from main</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>17fe60c</font>-<font color=green>(2014-05-29)</font><font color=black><b>Modified metadataQualifier feature for 5800, 5804, 5808</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ebd91c0</font>-<font color=green>(2014-05-28)</font><font color=black><b>Reset for each scenario in timeZone feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>38f500f</font>-<font color=green>(2014-05-27)</font><font color=black><b>Modified tests for seriesName/ID in metadataQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>8c8ab09</font>-<font color=green>(2014-05-27)</font><font color=black><b>Fix xpath on Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>6ed406e</font>-<font color=green>(2014-05-27)</font><font color=black><b>remove test endpoint from cip test data</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ab0f0f4</font>-<font color=green>(2014-05-27)</font><font color=black><b>VODDAI-5685 VODDAI-5684 Changed Namespace for Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>54bc619</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated the MD seriesName and ID tests in mdQualifier feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>471c716</font>-<font color=green>(2014-05-22)</font><font color=black><b>add @validation tag</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>846d76b</font>-<font color=green>(2014-05-22)</font><font color=black><b>Changed scala tools repository</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>8e0abfa</font>-<font color=green>(2014-05-21)</font><font color=black><b>Added EXCLUDE FW campaign from ranking test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>c50eb4b</font>-<font color=green>(2014-05-20)</font><font color=black><b>Added two tests in MDqualifier feature for seriesName and ID</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>00024de</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5664 non-canoe CIPs only send cls once</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>082e7b9</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5684, VODDAI-5685 Series Name, Series ID Changed namespace</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>d2c7779</font>-<font color=green>(2014-05-16)</font><font color=black><b>VODDAI-5684, VODDAI-5685 Series Name, Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3b32cb8</font>-<font color=green>(2014-05-16)</font><font color=black><b>Modified priorityData2 for active flight windows, added tag for mclps branch feature.. to delete soon</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>f23c405</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed mclps template from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red> (origin/PlacementLimit)</font>
+* <font color=blue>910a969</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed MCLPS feature from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>d12aef5</font>-<font color=green>(2014-05-15)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/dai-cip into PlacementLimit</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| *   <font color=blue>9daa43b</font>-<font color=green>(2014-04-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/dai-cip into PlacementLimit</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| |\  
+| | * <font color=blue>f9c1ffd</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>fbae16e</font>-<font color=green>(2014-03-10)</font><font color=black><b>Updated my tests and templates with CORRECT data!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>0ca0151</font>-<font color=green>(2014-03-10)</font><font color=black><b>Modified placementLimit feature for new functionality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>6a7c76e</font>-<font color=green>(2014-03-10)</font><font color=black><b>ALL placementLimit stories in the side branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>fa9547b</font>-<font color=green>(2014-03-10)</font><font color=black><b>Removed old separationConstraint fxn, removed placementLimit fxn that resides on main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>0d6eb95</font>-<font color=green>(2014-03-10)</font><font color=black><b>Added necessary separationConstraint xml, modified test slightly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>30da49f</font>-<font color=green>(2014-03-07)</font><font color=black><b>Copied file from master to here</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>f495d1e</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>9be006f</font>-<font color=green>(2014-03-10)</font><font color=black><b>Updated my tests and templates with CORRECT data!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>1325397</font>-<font color=green>(2014-03-10)</font><font color=black><b>Modified placementLimit feature for new functionality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>b86b3eb</font>-<font color=green>(2014-03-10)</font><font color=black><b>ALL placementLimit stories in the side branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>d084209</font>-<font color=green>(2014-03-10)</font><font color=black><b>Removed old separationConstraint fxn, removed placementLimit fxn that resides on main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>bd2adaa</font>-<font color=green>(2014-03-10)</font><font color=black><b>Added necessary separationConstraint xml, modified test slightly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>d1a6a94</font>-<font color=green>(2014-03-07)</font><font color=black><b>Copied file from master to here</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9408bce</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4780920</font>-<font color=green>(2014-03-10)</font><font color=black><b>Updated my tests and templates with CORRECT data!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3ef59bc</font>-<font color=green>(2014-03-10)</font><font color=black><b>Modified placementLimit feature for new functionality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5442295</font>-<font color=green>(2014-03-10)</font><font color=black><b>ALL placementLimit stories in the side branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d4afd39</font>-<font color=green>(2014-03-10)</font><font color=black><b>Removed old separationConstraint fxn, removed placementLimit fxn that resides on main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>1a38059</font>-<font color=green>(2014-03-10)</font><font color=black><b>Added necessary separationConstraint xml, modified test slightly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9e1e60d</font>-<font color=green>(2014-03-07)</font><font color=black><b>Copied file from master to here</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>42a76c2</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3abd48e</font>-<font color=green>(2014-03-10)</font><font color=black><b>Updated my tests and templates with CORRECT data!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>96f39a2</font>-<font color=green>(2014-03-10)</font><font color=black><b>Modified placementLimit feature for new functionality</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5cc98b8</font>-<font color=green>(2014-03-10)</font><font color=black><b>ALL placementLimit stories in the side branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>82b929c</font>-<font color=green>(2014-03-10)</font><font color=black><b>Removed old separationConstraint fxn, removed placementLimit fxn that resides on main branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>c8c9960</font>-<font color=green>(2014-03-10)</font><font color=black><b>Added necessary separationConstraint xml, modified test slightly</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>73fa7a3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Copied file from master to here</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_199</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/resources/liquibase/master-changelog.xml
+data-store/src/main/resources/liquibase/pci-4.0.0/001-kleider-create-schema.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_194</b></u><br>
+<pre>
+* <font color=blue>54fb6b8</font>-<font color=green>(2014-07-02)</font><font color=black><b>Fixing Category Exclusion Enum value calculation.</b></font><font color=grey>- (kennethleider)</font><font color=red> (v_4.0.0_199)</font>
+* <font color=blue>b6b3af4</font>-<font color=green>(2014-07-02)</font><font color=black><b>Added data access layer for cip history.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>5956c5f</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Pgmr-Cpgn-Int into br_4.0.0</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (v_4.0.0_198, v_4.0.0_197)</font>
+|\  
+| * <font color=blue>e2ef2cc</font>-<font color=green>(2014-06-24)</font><font color=black><b>Added checks for programmer values in the multiParentBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_196)</font>
+| * <font color=blue>8a66ef4</font>-<font color=green>(2014-06-20)</font><font color=black><b>Changed ruleSelector test and gname update for new function</b></font><font color=grey>- (Matt Major)</font><font color=red> (v_4.0.0_195)</font>
+* <font color=blue>9d4fdd5</font>-<font color=green>(2014-06-24)</font><font color=black><b>Added checks for programmer values in the multiParentBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ab03ac0</font>-<font color=green>(2014-06-20)</font><font color=black><b>Changed ruleSelector test and gname update for new function</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9bf06b6</font>-<font color=green>(2014-06-19)</font><font color=black><b>VODDAI-5844: update campaign@description</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>ccff8ae</font>-<font color=green>(2014-06-19)</font><font color=black><b>Clear log file, updated error messages for multiProgrammer instances</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>7801cc9</font>-<font color=green>(2014-06-18)</font><font color=black><b>Added test for 5880 in phaseSetGoal feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b9dacc7</font>-<font color=green>(2014-06-17)</font><font color=black><b>Modified error message in multiParBundle feature for 3903</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>20fc34f</font>-<font color=green>(2014-06-17)</font><font color=black><b>Added check for dB record persistence in parentBundle @name test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>2bef2b6</font>-<font color=green>(2014-06-17)</font><font color=black><b>Switched lines in parentBundle gname test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3579428</font>-<font color=green>(2014-06-16)</font><font color=black><b>VODDAI-5880: no longer fail messages with an unknown ProcessRuleSelector@ruleId</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>727e980</font>-<font color=green>(2014-06-16)</font><font color=black><b>VODDAI-5844: update campaign@name and campaign_item@label</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>f68f435</font>-<font color=green>(2014-06-13)</font><font color=black><b>Modified parentBundle feature for 5844 and 5845</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>44a9d53</font>-<font color=green>(2014-06-12)</font><font color=black><b>Added test for PAID validation, IgnoreCase stories in but fail due to campMan dependencies</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>bbabf51</font>-<font color=green>(2014-06-11)</font><font color=black><b>VODDAI-3903: Changed error message if provider does not match campaign programmer.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>4b6dc07</font>-<font color=green>(2014-06-02)</font><font color=black><b>Added namespace restriction to operator test</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>752528c</font>-<font color=green>(2014-05-30)</font><font color=black><b>VODDAI-5804 Flipped asset id components</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4b63d46</font>-<font color=green>(2014-05-29)</font><font color=black><b>Modified stories for 5800, 5804, 5808</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3b5d9c3</font>-<font color=green>(2014-05-29)</font><font color=black><b>Modified commonQualifier for 5800</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4edaedb</font>-<font color=green>(2014-05-28)</font><font color=black><b>VODDAI-5800 Validate Group Qualifier operator</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>2ecf442</font>-<font color=green>(2014-05-28)</font><font color=black><b>VODDAI-5804 Validate PAID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>d40af5b</font>-<font color=green>(2014-05-28)</font><font color=black><b>Fixed missWritten childBundle test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ebaa822</font>-<font color=green>(2014-05-27)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Removed operator validation for Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>a28583b</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated namespace for SeriesName and ID to urn:cablelabs:md:xsd:title:3.0</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>6de2e95</font>-<font color=green>(2014-05-23)</font><font color=black><b>Updated operator validaitons based on current MD target validations</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3bfd2a7</font>-<font color=green>(2014-05-23)</font><font color=black><b>Added Db check for the operatore lt gt le ge for MD targeting</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4bf5819</font>-<font color=green>(2014-05-22)</font><font color=black><b>Added MD CQG.Term@operator validations</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>29ac108</font>-<font color=green>(2014-05-19)</font><font color=black><b>Reformatted template to have all MD targets in one CQG. Removed unnecessary validation tests. Added peristence tests in persistMetaInfo feature with a new multi series target test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>9541c21</font>-<font color=green>(2014-05-19)</font><font color=black><b>Changed namespace, corrected validation stories, added persistence test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>5401b19</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID Fix for error message</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>42d3344</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID Fix for operators</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>c177606</font>-<font color=green>(2014-05-19)</font><font color=black><b>VODDAI-5688 VODDAI-5690 Ingest Series Name and Series ID</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3dfd316</font>-<font color=green>(2014-05-16)</font><font color=black><b>Fix for Frequency Capping not present</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>8268e02</font>-<font color=green>(2014-05-16)</font><font color=black><b>Added template for new series function</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b7a981d</font>-<font color=green>(2014-05-15)</font><font color=black><b>Added seriesID name features in commonQualifier</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ed1452a</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed MCLPS feature from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red> (origin/PlacementLimit)</font>
+* <font color=blue>4f5e25f</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed freCap feature from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>c9142c6</font>-<font color=green>(2014-06-12)</font><font color=black><b>Removed freqCap and mclps templates from placementLimit branch</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>1c1cea9</font>-<font color=green>(2014-05-15)</font><font color=black><b>merge conflict fix</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+|\  
+| *   <font color=blue>0a418e5</font>-<font color=green>(2014-04-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Pgmr-Cpgn-Int into PlacementLimit</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| |\  
+| | * <font color=blue>1fe232f</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>13eddb2</font>-<font color=green>(2014-03-21)</font><font color=black><b>Changed the separationConstraint value to none to prevent dual code use errors.. my bad!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>917b0ba</font>-<font color=green>(2014-03-20)</font><font color=black><b>Not allowing null value for campItemMediaAsset break limit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>f28deb7</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed main fxn tests from persistChildBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>cb726c2</font>-<font color=green>(2014-03-11)</font><font color=black><b>Modified spacing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>3b4657d</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed tests that have been moved to the PlacementLimit branch in CIPsender</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>2cd1b6f</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tags for newBranch stories. added new feature for 5109 and 5110</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>94cb0e0</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack - again</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>5d2b2d3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>ec09db3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent BackToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>5de522e</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added checks for term@operation is le for parent and child bundles, modified tests for child bundle limits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>3118663</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent decimal error</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>23b0c6a</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix for le test failure</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>75d0e42</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added test for operation does not equal OR and modified error messages</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| | * <font color=blue>c07b6d0</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| | * <font color=blue>3f40e69</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-4999, VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>fcd619c</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>9aa6494</font>-<font color=green>(2014-03-21)</font><font color=black><b>Changed the separationConstraint value to none to prevent dual code use errors.. my bad!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>a996115</font>-<font color=green>(2014-03-20)</font><font color=black><b>Not allowing null value for campItemMediaAsset break limit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>2d894e7</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed main fxn tests from persistChildBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>828efe9</font>-<font color=green>(2014-03-11)</font><font color=black><b>Modified spacing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>878a45c</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed tests that have been moved to the PlacementLimit branch in CIPsender</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>c02f59b</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tags for newBranch stories. added new feature for 5109 and 5110</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>6946849</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack - again</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f2a7bc9</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>dea6df5</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent BackToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>63ff330</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added checks for term@operation is le for parent and child bundles, modified tests for child bundle limits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>f7b7ce7</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent decimal error</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>3b6ed77</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix for le test failure</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>5a731b8</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added test for operation does not equal OR and modified error messages</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+| * <font color=blue>5021d49</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>d63eef5</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-4999, VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ab1a8b8</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>7db78a4</font>-<font color=green>(2014-03-20)</font><font color=black><b>Not allowing null value for campItemMediaAsset break limit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>19e926d</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed tests that have been moved to the PlacementLimit branch in CIPsender</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>8e640dc</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tags for newBranch stories. added new feature for 5109 and 5110</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>a1ac0d8</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added checks for term@operation is le for parent and child bundles, modified tests for child bundle limits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3d19136</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix for le test failure</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>4650fd3</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added test for operation does not equal OR and modified error messages</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b0db2fd</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>9d31eea</font>-<font color=green>(2014-03-21)</font><font color=black><b>Added @error tag to LimitPlacement</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4dfedb4</font>-<font color=green>(2014-03-21)</font><font color=black><b>Changed the separationConstraint value to none to prevent dual code use errors.. my bad!</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>04849ac</font>-<font color=green>(2014-03-20)</font><font color=black><b>Not allowing null value for campItemMediaAsset break limit</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>a08cb68</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed main fxn tests from persistChildBundle feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>56fa2ee</font>-<font color=green>(2014-03-11)</font><font color=black><b>Modified spacing</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b777769</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed tests that have been moved to the PlacementLimit branch in CIPsender</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>32c6f65</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added tags for newBranch stories. added new feature for 5109 and 5110</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4ba18ce</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack - again</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>f502e4b</font>-<font color=green>(2014-03-07)</font><font color=black><b>Constraint group becomes backToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>3401c34</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent BackToBack</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>10ef8b0</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added checks for term@operation is le for parent and child bundles, modified tests for child bundle limits</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d013e1c</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix consistent decimal error</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>2553e31</font>-<font color=green>(2014-03-07)</font><font color=black><b>Fix for le test failure</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>ce1d26f</font>-<font color=green>(2014-03-07)</font><font color=black><b>Added test for operation does not equal OR and modified error messages</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>4c25a90</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>01ee7cf</font>-<font color=green>(2014-03-06)</font><font color=black><b>VODDAI-4999, VODDAI-5000, VODDAI-5001</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-etl-feeder</b><br><u>Version</u><b>&nbspr_4.0.0_213</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2></b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_213</b></u><br>
+<pre>
+</pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspMicroDev</b><br><u>Version</u><b>&nbspr_4.0.0_150</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_146</b></u><br>
+<pre>
+* <font color=blue>48aca93</font>-<font color=green>(2014-07-08)</font><font color=black><b>advertiser shows up now.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (HEAD, v_4.0.0_150, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>77e364a</font>-<font color=green>(2014-07-08)</font><font color=black><b>fixed daily ebas for matterhorn.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_149)</font>
+* <font color=blue>ca37d7a</font>-<font color=green>(2014-07-08)</font><font color=black><b>VODDAI-5910. fixed ad asset mapping to daily ebas.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>b29a7a2</font>-<font color=green>(2014-07-01)</font><font color=black><b>VODDAI-5910. fixed relationships to show empty impressions for multiprovider.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_148)</font>
+* <font color=blue>9fa7e00</font>-<font color=green>(2014-06-30)</font><font color=black><b>VODDAI-5910. multiprovider conversion.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (v_4.0.0_147)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_100</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/core-4.0.0-changelog.xml
+core/model/src/main/resources/liquibase/core-4.0.0-data/008-cdonovan-provider_video_def.sql
+core/model/src/main/resources/liquibase/core-4.0.0/008-bgriese-alter-campaign-item.xml
+core/model/src/main/resources/liquibase/core-4.0.0/009-cdonovan-alter-campaign-item-media-asset.xml
+core/model/src/main/resources/liquibase/core-4.0.0/017-bgriese-add-MCLPS.xml
+core/model/src/main/resources/liquibase/core-4.0.0/018-cdonovan-add-MCLPS-CIMA.xml
+core/model/src/main/resources/liquibase/core-4.0.0/020-bgriese-placement-limit-migration.xml
+core/model/src/main/resources/liquibase/core-dev-4.0.0-changelog.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_93</b></u><br>
+<pre>
+* <font color=blue>b6dc217</font>-<font color=green>(2014-07-01)</font><font color=black><b>Added update statement to handle pre existing records</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_100)</font>
+* <font color=blue>5b989ea</font>-<font color=green>(2014-07-01)</font><font color=black><b>Taking into account nulled values.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_99)</font>
+* <font color=blue>72849db</font>-<font color=green>(2014-07-01)</font><font color=black><b>Migration for placement limit data.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_98)</font>
+*   <font color=blue>fad7d22</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merged 'Placement Limit' branch into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>921b533</font>-<font color=green>(2014-06-25)</font><font color=black><b>Merged main line in</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (origin/PlacementLimit)</font>
+| * <font color=blue>ec0dbbd</font>-<font color=green>(2014-06-11)</font><font color=black><b>Merge branch 'br_4.0.0' into PlacementLimit</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>f7c31e7</font>-<font color=green>(2014-06-09)</font><font color=black><b>Updating JPA object to reflect schema changes.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>6b330da</font>-<font color=green>(2014-06-06)</font><font color=black><b>Added check for the 0 case</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>57db5ea</font>-<font color=green>(2014-06-06)</font><font color=black><b>added break and session limit defaults to cima</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>931c04e</font>-<font color=green>(2014-06-06)</font><font color=black><b>Adding defaults for limits.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>eaf9038</font>-<font color=green>(2014-06-03)</font><font color=black><b>Default placement sep to 1, instead of 0.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>b8d23d6</font>-<font color=green>(2014-06-03)</font><font color=black><b>Changing default to 1.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>72c0c7d</font>-<font color=green>(2014-05-30)</font><font color=black><b>VODDAI-5525</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>2535b1f</font>-<font color=green>(2014-05-28)</font><font color=black><b>Merge branch 'br_4.0.0' into PlacementLimit</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>2ee92d3</font>-<font color=green>(2014-04-03)</font><font color=black><b>Added To string functionality to refreh chain</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>c49173c</font>-<font color=green>(2014-03-26)</font><font color=black><b>Updated scripts to include migration of existing data</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>7c078b4</font>-<font color=green>(2014-03-12)</font><font color=black><b>Added null case check</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>bb0af5b</font>-<font color=green>(2014-03-12)</font><font color=black><b>Adding Break and Session limit fields to CIMA</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>a32955f</font>-<font color=green>(2014-03-12)</font><font color=black><b>Added accessors for session Limit and Break Limit</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>b90e29b</font>-<font color=green>(2014-03-10)</font><font color=black><b>Refactored the separationEnum to include alias' for cipValue</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>c623c7e</font>-<font color=green>(2014-01-15)</font><font color=black><b>Overriding tostring method.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>3380d69</font>-<font color=green>(2014-01-09)</font><font color=black><b>Adding placement and session limits to campaign item.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>5aa523d</font>-<font color=green>(2014-06-27)</font><font color=black><b>Added new golden data to dev only</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>4ca02f6</font>-<font color=green>(2014-06-27)</font><font color=black><b>adding a helper script to rebuild the db.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>df5c8e6</font>-<font color=green>(2014-06-24)</font><font color=black><b>Changed delete query and naming in vodendponitcheck</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_97, origin/frequencyCap)</font>
+* <font color=blue>a7621c6</font>-<font color=green>(2014-06-24)</font><font color=black><b>Changed the header for Deregistration</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_96)</font>
+* <font color=blue>3034e0e</font>-<font color=green>(2014-06-23)</font><font color=black><b>Added CIS Notification headers</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_95, v_4.0.0_94)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_104</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie: 
+
+Decision Engine – 4.0.0_393
+ADS Core – 4.0.0_104
+SMSi Pub DB – 4.0.0_256
+Metadata - Fixed VODDAI-5978 Querying for entertainment, Implemented ADS side of VODDAI-5922 Asset Status Purge Job
+
+New Properties -
+#Purge job
+ads.purge.endpointStatus.DaysBackToPurge=30
+ads.purge.endpointStatus.enabled=true
+ads.purge.endpointStatus.schedule=0 0 0 * * ?
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_100</b></u><br>
+<pre>
+* <font color=blue>9304319</font>-<font color=green>(2014-07-08)</font><font color=black><b>Changed the lookup query to only pull ad assets</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_104, v_4.0.0_103, v_4.0.0_102)</font>
+* <font color=blue>ddeb514</font>-<font color=green>(2014-07-07)</font><font color=black><b>VODDAI-5932</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_101)</font>
+* <font color=blue>7d6f163</font>-<font color=green>(2014-07-07)</font><font color=black><b>Creating a purgeDao to contain purge logic for certain tables.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_387</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_382</b></u><br>
+<pre>
+* <font color=blue>dcd7a99</font>-<font color=green>(2014-07-01)</font><font color=black><b>Added test case for VODDAI-5960</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_387)</font>
+* <font color=blue>ec903cd</font>-<font color=green>(2014-07-01)</font><font color=black><b>VODDAI-5960</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>6f1c39c</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merge branch 'PlacementLimit' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>17a9a0e</font>-<font color=green>(2014-06-26)</font><font color=black><b>changed separation constraint from session to backToBack</b></font><font color=grey>- (prithvi)</font><font color=red> (origin/PlacementLimit)</font>
+| * <font color=blue>deb62e5</font>-<font color=green>(2014-06-26)</font><font color=black><b>changed campaign item id separation from b to d</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+| *   <font color=blue>f9de89f</font>-<font color=green>(2014-06-26)</font><font color=black><b>fixed conflict in cip_persist_update.feature</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\  
+| | * <font color=blue>a2705fb</font>-<font color=green>(2014-06-25)</font><font color=black><b>Merge main line in</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>7d5896e</font>-<font color=green>(2014-06-26)</font><font color=black><b>fixed cip_persist_update.feature</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |/  
+| * <font color=blue>9bdd91d</font>-<font color=green>(2014-06-11)</font><font color=black><b>Merge branch 'br_4.0.0' into PlacementLimit</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>32531d3</font>-<font color=green>(2014-06-09)</font><font color=black><b>MCLPS passing, all tests changed and up to date for trackingID and data defaults</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>9812b3c</font>-<font color=green>(2014-06-09)</font><font color=black><b>Changing log message.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>baeaeb2</font>-<font color=green>(2014-06-09)</font><font color=black><b>Logic changes dealing with post-roll.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>0c3c379</font>-<font color=green>(2014-06-09)</font><font color=black><b>adding more testing around MCLPS ad map edge cases</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>a2d7033</font>-<font color=green>(2014-06-09)</font><font color=black><b>Added additional characters in the padding to handle the longer MLCPS name</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>43492cf</font>-<font color=green>(2014-06-06)</font><font color=black><b>Fix for break separation.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>6005faf</font>-<font color=green>(2014-06-06)</font><font color=black><b>adding small test change</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>af82f6b</font>-<font color=green>(2014-06-06)</font><font color=black><b>I can maths. Promise.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>b863139</font>-<font color=green>(2014-06-06)</font><font color=black><b>Updating unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>8936baa</font>-<font color=green>(2014-06-06)</font><font color=black><b>Interim checkin fixing incorrect math and looking at wrong values.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>d373405</font>-<font color=green>(2014-06-06)</font><font color=black><b>Fixing logic.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>97d08a3</font>-<font color=green>(2014-06-06)</font><font color=black><b>MCLPS test changes</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>fe2819d</font>-<font color=green>(2014-06-06)</font><font color=black><b>Revert "Added tests for MCLPS Decision Engine Logic, changed CIP Ingest for MCLPS to have correct default values"</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>ab749b7</font>-<font color=green>(2014-06-06)</font><font color=black><b>Added unit tests for null case</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>eedbceb</font>-<font color=green>(2014-06-06)</font><font color=black><b>Added check for 0 as null case</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>20e1b35</font>-<font color=green>(2014-06-05)</font><font color=black><b>Added tests for MCLPS Decision Engine Logic, changed CIP Ingest for MCLPS to have correct default values</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>f4399b7</font>-<font color=green>(2014-06-03)</font><font color=black><b>Unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>043a661</font>-<font color=green>(2014-06-03)</font><font color=black><b>Fixing unit test.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>922880e</font>-<font color=green>(2014-06-03)</font><font color=black><b>VODDAI-5527 VODDAI-5528</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>bfce357</font>-<font color=green>(2014-05-30)</font><font color=black><b>MCLPS persistance tests complete and passing</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>8aaee17</font>-<font color=green>(2014-05-30)</font><font color=black><b>moved PL tests to the correct directory</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| *   <font color=blue>58e0183</font>-<font color=green>(2014-05-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\  
+| | * <font color=blue>66a46d3</font>-<font color=green>(2014-05-30)</font><font color=black><b>Removing tag.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>3b201db</font>-<font color=green>(2014-05-30)</font><font color=black><b>first draft MCLPS CIP persistance</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * |   <font color=blue>091e297</font>-<font color=green>(2014-05-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\ \  
+| | |/  
+| | * <font color=blue>935bcc0</font>-<font color=green>(2014-05-30)</font><font color=black><b>VODDAI-5525</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * |   <font color=blue>1a6b19a</font>-<font color=green>(2014-05-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\ \  
+| | |/  
+| | * <font color=blue>51e2bf4</font>-<font color=green>(2014-05-30)</font><font color=black><b>VODDAI-5523</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>3f471c0</font>-<font color=green>(2014-05-30)</font><font color=black><b>MCLPS Validation Tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |/  
+| * <font color=blue>eb713f2</font>-<font color=green>(2014-05-29)</font><font color=black><b>PL merge test changes during regression</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>5afcf1b</font>-<font color=green>(2014-05-29)</font><font color=black><b>Merging br_4.0.0 into branch.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>7efabbf</font>-<font color=green>(2014-03-14)</font><font color=black><b>Final checkins for LIA Placement Limitation Logic -- All Passing</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>a87e1fc</font>-<font color=green>(2014-03-14)</font><font color=black><b>ad separation refactor</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>449474a</font>-<font color=green>(2014-03-13)</font><font color=black><b>edits to validation tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| *   <font color=blue>31c8c0c</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge branch 'PlacementLimit' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\  
+| | *   <font color=blue>3883ad5</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge branch 'PlacementLimit' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | |\  
+| | | * <font color=blue>11f9aa3</font>-<font color=green>(2014-03-13)</font><font color=black><b>VODDAI-4811 Fixed order we are validating</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| | | * <font color=blue>2b1e07a</font>-<font color=green>(2014-03-13)</font><font color=black><b>Fixed log messages</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| | * | <font color=blue>b6efa92</font>-<font color=green>(2014-03-13)</font><font color=black><b>removed tag</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | |/  
+| | * <font color=blue>a292759</font>-<font color=green>(2014-03-13)</font><font color=black><b>validation check changes</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * <font color=blue>eb84096</font>-<font color=green>(2014-03-13)</font><font color=black><b>Small fixes for LIA test cases and xmld</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * <font color=blue>0e5a014</font>-<font color=green>(2014-03-13)</font><font color=black><b>VODDAI-4811 - Added validation/persistence for ChildBundle CommonQualifierGroup</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| | * <font color=blue>c86c31b</font>-<font color=green>(2014-03-13)</font><font color=black><b>Refactor of CIP Persistance tests for new Ad Separation rules</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| | *   <font color=blue>df7fc93</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| | |\  
+| | | *   <font color=blue>a295384</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge branch 'PlacementLimit' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | | |\  
+| | | * | <font color=blue>bc87c2c</font>-<font color=green>(2014-03-13)</font><font color=black><b>Fixed LIA location in CIPs and changed separationConstraint to backToBack</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * | | <font color=blue>c4bf55b</font>-<font color=green>(2014-03-13)</font><font color=black><b>Updated database xml's with default AD_SEPARATION = BTB</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| | | |/  
+| | |/|   
+| | * | <font color=blue>83b0079</font>-<font color=green>(2014-03-13)</font><font color=black><b>Refactored update notice templates with ad separation default, updated CIP Validation on placement element</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| | |/  
+| | * <font color=blue>62c9404</font>-<font color=green>(2014-03-12)</font><font color=black><b>changes to combined LI and LIA Decision Engine Logic Tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>d4acfdd</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge of session and break limits</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |/  
+| * <font color=blue>6481b57</font>-<font color=green>(2014-03-11)</font><font color=black><b>Placement Limitation additional testing data</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>24a0019</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed references and cases for placement separations that are not NONE or BACK_TO_BACK</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>23b7529</font>-<font color=green>(2014-03-10)</font><font color=black><b>placement limitation for LIA test changes</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>e475800</font>-<font color=green>(2014-03-10)</font><font color=black><b>VODDAI-5102 Changed the ad separation for cip ingestion</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>63c74bf</font>-<font color=green>(2014-03-07)</font><font color=black><b>added Child Bundle Line Item Asset Validation and Persistence tests for Placement Limitation logic</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>fff4787</font>-<font color=green>(2014-01-14)</font><font color=black><b>Placement limitation tests now passing</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>f19a945</font>-<font color=green>(2014-01-13)</font><font color=black><b>Updated unit tests to work w/ new logic</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>730666c</font>-<font color=green>(2014-01-13)</font><font color=black><b>Handling zero and negative case.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>44f6c93</font>-<font color=green>(2014-01-13)</font><font color=black><b>First whack at session and break placement limits.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>ca21535</font>-<font color=green>(2014-01-13)</font><font color=black><b>Added Scenarios 4-14 for Placement Limitation Feature</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>6853e2f</font>-<font color=green>(2014-01-10)</font><font color=black><b>Placement Limitation ADS Logic Tests for VODDAI 4802-4804</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>ba5cf12</font>-<font color=green>(2014-01-09)</font><font color=black><b>Validation and Persistence Tests Passed for Placement Limitation</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>89a64ca</font>-<font color=green>(2014-01-09)</font><font color=black><b>Placement Limitation Validation and First Draft Persistance tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>97615e4</font>-<font color=green>(2014-01-09)</font><font color=black><b>Changed properties back to user home.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>9d1f866</font>-<font color=green>(2014-01-09)</font><font color=black><b>Additional Unit tests</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>88c3f59</font>-<font color=green>(2014-01-09)</font><font color=black><b>Making sure that we match on namepsace</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>6a4226d</font>-<font color=green>(2014-01-09)</font><font color=black><b>Adding session/break placement limit persistance.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>bdf3b0a</font>-<font color=green>(2014-01-09)</font><font color=black><b>Fixing test data.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>56cae25</font>-<font color=green>(2014-01-09)</font><font color=black><b>VODDAI-4799 Validation for CI Placement</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>3ae1f20</font>-<font color=green>(2014-07-01)</font><font color=black><b>Revert "CIS tests running locally - half complete"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>9d4f8da</font>-<font color=green>(2014-07-01)</font><font color=black><b>CIS tests running locally - half complete</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>005a99a</font>-<font color=green>(2014-06-27)</font><font color=black><b>additional changes to support CIS testing locally.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_386)</font>
+* <font color=blue>ad91216</font>-<font color=green>(2014-06-27)</font><font color=black><b>Allowing for CIS local testing.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>58802f4</font>-<font color=green>(2014-06-26)</font><font color=black><b>wrapping up persistance of cis notification</b></font><font color=grey>- (prithvi)</font><font color=red> (v_4.0.0_385)</font>
+* <font color=blue>f0c33ae</font>-<font color=green>(2014-06-26)</font><font color=black><b>wrapping up validation and persistance of csi notification</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+*   <font color=blue>4d11a44</font>-<font color=green>(2014-06-25)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_384)</font>
+|\  
+| * <font color=blue>dab0200</font>-<font color=green>(2014-06-25)</font><font color=black><b>Cucumber test for cis notification</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+| * <font color=blue>16dd623</font>-<font color=green>(2014-06-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_383)</font>
+| * <font color=blue>ebaf663</font>-<font color=green>(2014-06-24)</font><font color=black><b>test changes ... AGAIN</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>a65d292</font>-<font color=green>(2014-06-25)</font><font color=black><b>Refactor to support unit tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_393</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie: 
+
+Decision Engine – 4.0.0_393
+ADS Core – 4.0.0_104
+SMSi Pub DB – 4.0.0_256
+Metadata - Fixed VODDAI-5978 Querying for entertainment, Implemented ADS side of VODDAI-5922 Asset Status Purge Job
+
+New Properties -
+#Purge job
+ads.purge.endpointStatus.DaysBackToPurge=30
+ads.purge.endpointStatus.enabled=true
+ads.purge.endpointStatus.schedule=0 0 0 * * ?
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_393/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_393/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_393/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_393/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_393/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_393/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/Dynamic-Ad-Insertion-engine_v_4.0.0_393/diff.txt>Dynamic-Ad-Insertion-engine_v_4.0.0_393/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_387</b></u><br>
+<pre>
+* <font color=blue>d6e354f</font>-<font color=green>(2014-07-08)</font><font color=black><b>Updated unit test</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_393)</font>
+* <font color=blue>7479e6a</font>-<font color=green>(2014-07-07)</font><font color=black><b>purge job test changes</b></font><font color=grey>- (prithvi)</font><font color=red> (v_4.0.0_389)</font>
+* <font color=blue>4f5878c</font>-<font color=green>(2014-07-07)</font><font color=black><b>Chabged TDB to forcepurge</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+*   <font color=blue>14779e8</font>-<font color=green>(2014-07-07)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+|\  
+| * <font color=blue>d34b864</font>-<font color=green>(2014-07-02)</font><font color=black><b>added cis and changed tracking ID</b></font><font color=grey>- (prithvi)</font><font color=red> (v_4.0.0_388)</font>
+* <font color=blue>8424df3</font>-<font color=green>(2014-07-07)</font><font color=black><b>VODDAI-5932</b></font><font color=grey>- (Bob Griese)</font><font color=red></font></pre>
+<hr>
+<p>

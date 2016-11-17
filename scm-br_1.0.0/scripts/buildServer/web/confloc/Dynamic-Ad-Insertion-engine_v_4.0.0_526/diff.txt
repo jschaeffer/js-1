@@ -1,0 +1,968 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index ba12dac..4a0c116 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -1,3 +1,4 @@
++###ADS Database Connections###
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC1_ADS
+ db.password=SC1_ADS
+@@ -5,123 +6,106 @@ db.pool.initialSize=10
+ db.pool.size=90
+ db.test.idle=60
+ db.max.idle=600
++db.checkout.timeout=2000
+ 
+-#### SMSI Publisher Forwarding
+-
+-# Location on disk to store the activeMQ journal, and it's size in MB
+-smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
+-smsipub.amq.journal.store.limit=100
+-
+-# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
+-smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
+-smsipub.amq.temp.store.limit=50
+-
+-# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
+-# is the maximum amount of time between retry attempts in milliseconds
+-smsipub.ingest.jms.max_retry_delay=3600000
+-
+-
+-# Number of threads used to remove messages from the journal and place them in DB
+-smsipub.ingest.executor.pool.size=5
+-
+-smsipub.ingest.session.batch.size=100
+-smsipub.ingest.session.purge.interval=500
+-
+-smsipub.ingest.notification.batch.size=100
+-smsipub.ingest.notification.purge.interval=500
+-
+-smsipub.ingest.presentation-update.batch.size=100
+-smsipub.ingest.presentation-update.purge.interval=500
+-
+-# In hours
+-smsipub.ingest.message.timeToLive=240
+-
+-# Database #
+-smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-smsipub.db.username=SC1_SMSIPUB
+-smsipub.db.password=SC1_SMSIPUB
+-smsipub.db.pool.initialSize=50
+-smsipub.db.pool.size=200
+-smsipub.db.test.idle=60
+-smsipub.db.max.idle=50
+-smsipub.db.checkout.timeout=2000
+-
+-ads.refresh.interval=0 */2 * * * ?
++###Operator Specific Configurations###
+ ads.operator=TIME WARNER
++ads.operatorId=2
++vboid.vodsystemref=true
++psn.psnType=1
++ads.placement.response.includeNonPlacedOpportunities=true
++ads.deadHead=false
++
++###Logging###
+ qualifier.logging.enabled=true
+ scorer.logging.enabled=true
+ selection.logging.enabled=true
+ service.logging.enabled=true
+ performance.logging.enabled=true
+ validation.logging.enabled=true
+-#psn.job.daysToRetainDetailRecords=1
+-#psn.job.rollup.interval=0 */55 * * * ?
+-#psn.job.purgeDetail.interval=0 */1 * * * ?
+-#psn.job.isJobActive=true
+-## Added via email from B. Griese 12/31/12  Above entries commented out
++schema.validation.enabled=true
++ads.millisecond.threshold=250
++
++###Goal Maintenance###
+ psn.job.daysToRetainDetailRecords=1
+ psn.job.rollup.interval=0 0/5 * * * ?
+ psn.job.purgeDetail.interval=0 0/15 * * * ?
+ psn.job.isJobActive=true
+-psn.psnType=1
+ 
+-#offline.cache.dir=/opt/tcserver/instances/ads/offline/cache
++###Offline Mode###
+ offline.cache.dir=${OFFLINE_CACHE}
+ ads.online=true
+-ads.operatorId=2
+ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+-db.checkout.timeout=3000
+ 
++###FeedbackNotice Publication###
+ cip.feedback.publisher.url=http://10.13.18.115:9535/int-test-support/FbN-Ing-Mock
+ cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+-ads.evenGoal.refresh.minutes=1
+-
+-#Cache job schedule details
++###Cache Jobs###
++ads.refresh.interval=0 */2 * * * ?
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+-ads.cache.cisEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+-
+-ads.placement.response.includeNonPlacedOpportunities=true
+-
+-smsipub.enabled=true
+-
+ ads.metadata.cache.deliveryVariance=10
++ads.evenGoal.refresh.minutes=1
+ 
+-#If this is true, we will not persist Insertions or Views (use as a prod testing tool). Also should disable smsipub.enabled and cip.feedback.publisher.job.enabled
+-ads.deadHead=false
+-
+-#This switch controls if we forward counts to DCE
++###Data Correlation Engine###
+ ads.dce.enabled=false
+-
+-#DCE URL
+ ads.dce.url=http://localhost
+-
+-#Frequency that ads sends info to DCE (should be every minute)
+ ads.dce.schedule=0 0/1 * * * ?
+-
+-#The name of the ADS to send down to DCE
+ identity.ads=SCRUM1
+ 
+-#Purge job
++###Ad Asset Status Purge Job###
+ ads.purge.endpointStatus.DaysBackToPurge=30
+ ads.purge.endpointStatus.enabled=true
+ ads.purge.endpointStatus.schedule=0 0 0 * * ?
+-
+-#Batch size of vodendpoint status updates
+ cis.batchsave.size=1000
+ 
+-#Frequency Capping
+-
++###Frequency Capping###
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.115:13654
+ frequency.cap.max.persists=2500
+ 
+-#Configuration to determine where we are sourcing vodsystemref
+-vboid.vodsystemref=true
+\ No newline at end of file
++###SCTE-130 Ingestor###
++
++smsipub.enabled=true
++
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC1_SMSIPUB
++smsipub.db.password=SC1_SMSIPUB
++smsipub.db.pool.initialSize=50
++smsipub.db.pool.size=200
++smsipub.db.test.idle=60
++smsipub.db.max.idle=50
++smsipub.db.checkout.timeout=2000
++
++# Location on disk to store the activeMQ journal, and it's size in MB
++smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
++smsipub.amq.journal.store.limit=100
++
++# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
++smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
++smsipub.amq.temp.store.limit=50
++
++# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
++# is the maximum amount of time between retry attempts in milliseconds
++smsipub.ingest.jms.max_retry_delay=3600000
++
++# Number of threads used to remove messages from the journal and place them in DB
++smsipub.ingest.executor.pool.size=5
++smsipub.persist.executor.pool.size=10
++smsipub.ingest.session.batch.size=100
++smsipub.ingest.session.purge.interval=500
++smsipub.ingest.notification.batch.size=100
++smsipub.ingest.notification.purge.interval=500
++smsipub.ingest.presentation-update.batch.size=100
++smsipub.ingest.presentation-update.purge.interval=500
++
++# In hours
++smsipub.ingest.message.timeToLive=240
++smsipub.ingest.lot.count=20
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index 6ecd786..d2bafbd 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -1,3 +1,4 @@
++###ADS Database Connections###
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC2_ADS
+ db.password=SC2_ADS
+@@ -5,123 +6,106 @@ db.pool.initialSize=10
+ db.pool.size=90
+ db.test.idle=60
+ db.max.idle=600
++db.checkout.timeout=2000
+ 
+-#### SMSI Publisher Forwarding
+-
+-# Location on disk to store the activeMQ journal, and it's size in MB
+-smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
+-smsipub.amq.journal.store.limit=100
+-
+-# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
+-smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
+-smsipub.amq.temp.store.limit=50
+-
+-# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
+-# is the maximum amount of time between retry attempts in milliseconds
+-smsipub.ingest.jms.max_retry_delay=3600000
+-
+-
+-# Number of threads used to remove messages from the journal and place them in DB
+-smsipub.ingest.executor.pool.size=5
+-
+-smsipub.ingest.session.batch.size=100
+-smsipub.ingest.session.purge.interval=500
+-
+-smsipub.ingest.notification.batch.size=100
+-smsipub.ingest.notification.purge.interval=500
+-
+-smsipub.ingest.presentation-update.batch.size=100
+-smsipub.ingest.presentation-update.purge.interval=500
+-
+-# In hours
+-smsipub.ingest.message.timeToLive=240
+-
+-# Database #
+-smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-smsipub.db.username=SC2_SMSIPUB
+-smsipub.db.password=SC2_SMSIPUB
+-smsipub.db.pool.initialSize=50
+-smsipub.db.pool.size=200
+-smsipub.db.test.idle=60
+-smsipub.db.max.idle=50
+-smsipub.db.checkout.timeout=2000
+-
+-ads.refresh.interval=0 */2 * * * ?
++###Operator Specific Configurations###
+ ads.operator=TIME WARNER
++ads.operatorId=2
++vboid.vodsystemref=true
++psn.psnType=1
++ads.placement.response.includeNonPlacedOpportunities=true
++ads.deadHead=false
++
++###Logging###
+ qualifier.logging.enabled=true
+ scorer.logging.enabled=true
+ selection.logging.enabled=true
+ service.logging.enabled=true
+ performance.logging.enabled=true
+ validation.logging.enabled=true
+-#psn.job.daysToRetainDetailRecords=1
+-#psn.job.rollup.interval=0 */55 * * * ?
+-#psn.job.purgeDetail.interval=0 */1 * * * ?
+-#psn.job.isJobActive=true
+-## Added via email from B. Griese 12/31/12  Above entries commented out
++schema.validation.enabled=true
++ads.millisecond.threshold=250
++
++###Goal Maintenance###
+ psn.job.daysToRetainDetailRecords=1
+ psn.job.rollup.interval=0 0/5 * * * ?
+ psn.job.purgeDetail.interval=0 0/15 * * * ?
+ psn.job.isJobActive=true
+-psn.psnType=1
+ 
+-#offline.cache.dir=/opt/tcserver/instances/ads/offline/cache
++###Offline Mode###
+ offline.cache.dir=${OFFLINE_CACHE}
+ ads.online=true
+-ads.operatorId=2
+ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+-db.checkout.timeout=3000
+ 
+-cip.feedback.publisher.url=http://10.13.18.116:9535/int-test-support/FbN-Ing-Mock
++###FeedbackNotice Publication###
++cip.feedback.publisher.url=http://10.13.18.115:9535/int-test-support/FbN-Ing-Mock
+ cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+-ads.evenGoal.refresh.minutes=1
+-
+-#Cache job schedule details
++###Cache Jobs###
++ads.refresh.interval=0 */2 * * * ?
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+-ads.cache.cisEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+-
+-ads.placement.response.includeNonPlacedOpportunities=true
+-
+-smsipub.enabled=true
+-
+ ads.metadata.cache.deliveryVariance=10
++ads.evenGoal.refresh.minutes=1
+ 
+-#If this is true, we will not persist Insertions or Views (use as a prod testing tool). Also should disable smsipub.enabled and cip.feedback.publisher.job.enabled
+-ads.deadHead=false
+-
+-#This switch controls if we forward counts to DCE
++###Data Correlation Engine###
+ ads.dce.enabled=false
+-
+-#DCE URL
+ ads.dce.url=http://localhost
+-
+-#Frequency that ads sends info to DCE (should be every minute)
+ ads.dce.schedule=0 0/1 * * * ?
++identity.ads=SCRUM1
+ 
+-#The name of the ADS to send down to DCE
+-identity.ads=SCRUM2
+-
+-#Purge job
++###Ad Asset Status Purge Job###
+ ads.purge.endpointStatus.DaysBackToPurge=30
+ ads.purge.endpointStatus.enabled=true
+ ads.purge.endpointStatus.schedule=0 0 0 * * ?
+-
+-#Batch size of vodendpoint status updates
+ cis.batchsave.size=1000
+ 
+-#Frequency Capping
+-
++###Frequency Capping###
+ frequency.cap.wait=10
+ frequency.cap=true
+ frequency.cap.url=10.13.18.115:13654
+ frequency.cap.max.persists=2500
+ 
+-#Configuration to determine where we are sourcing vodsystemref
+-vboid.vodsystemref=true
+\ No newline at end of file
++###SCTE-130 Ingestor###
++
++smsipub.enabled=true
++
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC1_SMSIPUB
++smsipub.db.password=SC1_SMSIPUB
++smsipub.db.pool.initialSize=50
++smsipub.db.pool.size=200
++smsipub.db.test.idle=60
++smsipub.db.max.idle=50
++smsipub.db.checkout.timeout=2000
++
++# Location on disk to store the activeMQ journal, and it's size in MB
++smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
++smsipub.amq.journal.store.limit=100
++
++# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
++smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
++smsipub.amq.temp.store.limit=50
++
++# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
++# is the maximum amount of time between retry attempts in milliseconds
++smsipub.ingest.jms.max_retry_delay=3600000
++
++# Number of threads used to remove messages from the journal and place them in DB
++smsipub.ingest.executor.pool.size=5
++smsipub.persist.executor.pool.size=10
++smsipub.ingest.session.batch.size=100
++smsipub.ingest.session.purge.interval=500
++smsipub.ingest.notification.batch.size=100
++smsipub.ingest.notification.purge.interval=500
++smsipub.ingest.presentation-update.batch.size=100
++smsipub.ingest.presentation-update.purge.interval=500
++
++# In hours
++smsipub.ingest.message.timeToLive=240
++smsipub.ingest.lot.count=20
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index a67e2a5..9b22860 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -1,3 +1,4 @@
++###ADS Database Connections###
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC3_ADS
+ db.password=SC3_ADS
+@@ -5,121 +6,107 @@ db.pool.initialSize=10
+ db.pool.size=90
+ db.test.idle=60
+ db.max.idle=600
++db.checkout.timeout=2000
+ 
+-#### SMSI Publisher Forwarding
+-
+-# Location on disk to store the activeMQ journal, and it's size in MB
+-smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
+-smsipub.amq.journal.store.limit=100
+-
+-# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
+-smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
+-smsipub.amq.temp.store.limit=50
+-
+-# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
+-# is the maximum amount of time between retry attempts in milliseconds
+-smsipub.ingest.jms.max_retry_delay=3600000
+-
+-
+-# Number of threads used to remove messages from the journal and place them in DB
+-smsipub.ingest.executor.pool.size=5
+-
+-smsipub.ingest.session.batch.size=100
+-smsipub.ingest.session.purge.interval=500
+-
+-smsipub.ingest.notification.batch.size=100
+-smsipub.ingest.notification.purge.interval=500
+-
+-smsipub.ingest.presentation-update.batch.size=100
+-smsipub.ingest.presentation-update.purge.interval=500
+-
+-# In hours
+-smsipub.ingest.message.timeToLive=240
+-
+-# Database #
+-smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-smsipub.db.username=SC3_SMSIPUB
+-smsipub.db.password=SC3_SMSIPUB
+-smsipub.db.pool.initialSize=50
+-smsipub.db.pool.size=200
+-smsipub.db.test.idle=60
+-smsipub.db.max.idle=50
+-smsipub.db.checkout.timeout=2000
+-
+-ads.refresh.interval=0 */2 * * * ?
++###Operator Specific Configurations###
+ ads.operator=TIME WARNER
++ads.operatorId=2
++vboid.vodsystemref=true
++psn.psnType=1
++ads.placement.response.includeNonPlacedOpportunities=true
++ads.deadHead=false
++
++###Logging###
+ qualifier.logging.enabled=true
+ scorer.logging.enabled=true
+ selection.logging.enabled=true
+ service.logging.enabled=true
+ performance.logging.enabled=true
+ validation.logging.enabled=true
+-#psn.job.daysToRetainDetailRecords=1
+-#psn.job.rollup.interval=0 */55 * * * ?
+-#psn.job.purgeDetail.interval=0 */1 * * * ?
+-#psn.job.isJobActive=true
+-## Added via email from B. Griese 12/31/12  Above entries commented out
++schema.validation.enabled=true
++ads.millisecond.threshold=250
++
++###Goal Maintenance###
+ psn.job.daysToRetainDetailRecords=1
+ psn.job.rollup.interval=0 0/5 * * * ?
+ psn.job.purgeDetail.interval=0 0/15 * * * ?
+ psn.job.isJobActive=true
+-psn.psnType=1
+ 
+-#offline.cache.dir=/opt/tcserver/instances/ads/offline/cache
++###Offline Mode###
+ offline.cache.dir=${OFFLINE_CACHE}
+ ads.online=true
+-ads.operatorId=2
+ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+-db.checkout.timeout=3000
+ 
+-cip.feedback.publisher.url=http://localhost:9535/int-test-support/FbN-Ing-Mock
++###FeedbackNotice Publication###
++cip.feedback.publisher.url=http://10.13.18.115:9535/int-test-support/FbN-Ing-Mock
+ cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+-ads.evenGoal.refresh.minutes=1
+-
+-#Cache job schedule details
++###Cache Jobs###
++ads.refresh.interval=0 */2 * * * ?
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+-ads.cache.cisEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+-
+-ads.placement.response.includeNonPlacedOpportunities=true
+-
+-smsipub.enabled=true
+-
+ ads.metadata.cache.deliveryVariance=10
++ads.evenGoal.refresh.minutes=1
+ 
+-#If this is true, we will not persist Insertions or Views (use as a prod testing tool). Also should disable smsipub.enabled and cip.feedback.publisher.job.enabled
+-ads.deadHead=false
+-
+-#This switch controls if we forward counts to DCE
++###Data Correlation Engine###
+ ads.dce.enabled=false
+-
+-#DCE URL
+ ads.dce.url=http://localhost
+-
+-#Frequency that ads sends info to DCE (should be every minute)
+ ads.dce.schedule=0 0/1 * * * ?
++identity.ads=SCRUM1
+ 
+-#The name of the ADS to send down to DCE
+-identity.ads=SCRUM3
+-
+-#Purge job
++###Ad Asset Status Purge Job###
+ ads.purge.endpointStatus.DaysBackToPurge=30
+ ads.purge.endpointStatus.enabled=true
+ ads.purge.endpointStatus.schedule=0 0 0 * * ?
+-
+-#Batch size of vodendpoint status updates
+ cis.batchsave.size=1000
+ 
+-#Frequency Capping
+-
++###Frequency Capping###
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.117:13654
++frequency.cap.url=10.13.18.115:13654
+ frequency.cap.max.persists=2500
+ 
++###SCTE-130 Ingestor###
++
++smsipub.enabled=true
++
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC1_SMSIPUB
++smsipub.db.password=SC1_SMSIPUB
++smsipub.db.pool.initialSize=50
++smsipub.db.pool.size=200
++smsipub.db.test.idle=60
++smsipub.db.max.idle=50
++smsipub.db.checkout.timeout=2000
++
++# Location on disk to store the activeMQ journal, and it's size in MB
++smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
++smsipub.amq.journal.store.limit=100
++
++# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
++smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
++smsipub.amq.temp.store.limit=50
++
++# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
++# is the maximum amount of time between retry attempts in milliseconds
++smsipub.ingest.jms.max_retry_delay=3600000
++
++# Number of threads used to remove messages from the journal and place them in DB
++smsipub.ingest.executor.pool.size=5
++smsipub.persist.executor.pool.size=10
++smsipub.ingest.session.batch.size=100
++smsipub.ingest.session.purge.interval=500
++smsipub.ingest.notification.batch.size=100
++smsipub.ingest.notification.purge.interval=500
++smsipub.ingest.presentation-update.batch.size=100
++smsipub.ingest.presentation-update.purge.interval=500
++
++# In hours
++smsipub.ingest.message.timeToLive=240
++smsipub.ingest.lot.count=20
++
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index 76cb79a..ec201e5 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -1,3 +1,4 @@
++###ADS Database Connections###
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC4_ADS
+ db.password=SC4_ADS
+@@ -5,124 +6,106 @@ db.pool.initialSize=10
+ db.pool.size=90
+ db.test.idle=60
+ db.max.idle=600
++db.checkout.timeout=2000
+ 
+-#### SMSI Publisher Forwarding
+-
+-# Location on disk to store the activeMQ journal, and it's size in MB
+-smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
+-smsipub.amq.journal.store.limit=100
+-
+-# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
+-smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
+-smsipub.amq.temp.store.limit=50
+-
+-# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
+-# is the maximum amount of time between retry attempts in milliseconds
+-smsipub.ingest.jms.max_retry_delay=3600000
+-
+-
+-# Number of threads used to remove messages from the journal and place them in DB
+-smsipub.ingest.executor.pool.size=5
+-
+-
+-smsipub.ingest.session.batch.size=100
+-smsipub.ingest.session.purge.interval=500
+-
+-smsipub.ingest.notification.batch.size=100
+-smsipub.ingest.notification.purge.interval=500
+-
+-smsipub.ingest.presentation-update.batch.size=100
+-smsipub.ingest.presentation-update.purge.interval=500
+-
+-# In hours
+-smsipub.ingest.message.timeToLive=240
+-
+-# Database #
+-smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-smsipub.db.username=SC4_SMSIPUB
+-smsipub.db.password=SC4_SMSIPUB
+-smsipub.db.pool.initialSize=50
+-smsipub.db.pool.size=200
+-smsipub.db.test.idle=60
+-smsipub.db.max.idle=50
+-smsipub.db.checkout.timeout=2000
+-
+-ads.refresh.interval=0 */2 * * * ?
++###Operator Specific Configurations###
+ ads.operator=TIME WARNER
++ads.operatorId=2
++vboid.vodsystemref=true
++psn.psnType=1
++ads.placement.response.includeNonPlacedOpportunities=true
++ads.deadHead=false
++
++###Logging###
+ qualifier.logging.enabled=true
+ scorer.logging.enabled=true
+ selection.logging.enabled=true
+ service.logging.enabled=true
+ performance.logging.enabled=true
+ validation.logging.enabled=true
+-#psn.job.daysToRetainDetailRecords=1
+-#psn.job.rollup.interval=0 */55 * * * ?
+-#psn.job.purgeDetail.interval=0 */1 * * * ?
+-#psn.job.isJobActive=true
+-## Added via email from B. Griese 12/31/12  Above entries commented out
++schema.validation.enabled=true
++ads.millisecond.threshold=250
++
++###Goal Maintenance###
+ psn.job.daysToRetainDetailRecords=1
+ psn.job.rollup.interval=0 0/5 * * * ?
+ psn.job.purgeDetail.interval=0 0/15 * * * ?
+ psn.job.isJobActive=true
+-psn.psnType=1
+ 
+-#offline.cache.dir=/opt/tcserver/instances/ads/offline/cache
++###Offline Mode###
+ offline.cache.dir=${OFFLINE_CACHE}
+ ads.online=true
+-ads.operatorId=2
+ ads.offline.retry.count=3
+ ads.offline.retry.millis=500
+-db.checkout.timeout=3000
+ 
+-cip.feedback.publisher.url=http://localhost:9535/int-test-support/FbN-Ing-Mock
++###FeedbackNotice Publication###
++cip.feedback.publisher.url=http://10.13.18.115:9535/int-test-support/FbN-Ing-Mock
+ cip.feedback.publisher.job.enabled=true
+ cip.feedback.publisher.job.interval=0 0/15 * * * ?
+ 
+-ads.evenGoal.refresh.minutes=1
+-
+-#Cache job schedule details
++###Cache Jobs###
++ads.refresh.interval=0 */2 * * * ?
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+-ads.cache.cisEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+-
+-ads.placement.response.includeNonPlacedOpportunities=true
+-
+-smsipub.enabled=true
+-
+ ads.metadata.cache.deliveryVariance=10
++ads.evenGoal.refresh.minutes=1
+ 
+-#If this is true, we will not persist Insertions or Views (use as a prod testing tool). Also should disable smsipub.enabled and cip.feedback.publisher.job.enabled
+-ads.deadHead=false
+-
+-#This switch controls if we forward counts to DCE
++###Data Correlation Engine###
+ ads.dce.enabled=false
+-
+-#DCE URL
+ ads.dce.url=http://localhost
+-
+-#Frequency that ads sends info to DCE (should be every minute)
+ ads.dce.schedule=0 0/1 * * * ?
++identity.ads=SCRUM1
+ 
+-#The name of the ADS to send down to DCE
+-identity.ads=SCRUM4
+-
+-#Purge job
++###Ad Asset Status Purge Job###
+ ads.purge.endpointStatus.DaysBackToPurge=30
+ ads.purge.endpointStatus.enabled=true
+ ads.purge.endpointStatus.schedule=0 0 0 * * ?
+-
+-#Batch size of vodendpoint status updates
+ cis.batchsave.size=1000
+ 
+-#Frequency Capping
+-
++###Frequency Capping###
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.122:13654
++frequency.cap.url=10.13.18.115:13654
+ frequency.cap.max.persists=2500
+ 
+-#Configuration to determine where we are sourcing vodsystemref
+-vboid.vodsystemref=true
+\ No newline at end of file
++###SCTE-130 Ingestor###
++
++smsipub.enabled=true
++
++smsipub.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++smsipub.db.username=SC1_SMSIPUB
++smsipub.db.password=SC1_SMSIPUB
++smsipub.db.pool.initialSize=50
++smsipub.db.pool.size=200
++smsipub.db.test.idle=60
++smsipub.db.max.idle=50
++smsipub.db.checkout.timeout=2000
++
++# Location on disk to store the activeMQ journal, and it's size in MB
++smsipub.amq.journal.directory=${APPHOME_DIR}/smsi_journal
++smsipub.amq.journal.store.limit=100
++
++# Location on disk to store activeMQ temporary files, and the corresponding max size in MB.
++smsipub.amq.temp.store.directory=${APPHOME_DIR}/smsi_journal/tmp
++smsipub.amq.temp.store.limit=50
++
++# If a message cannot be commited to the database, it will be retried using an exponential backoff algorithm.  This
++# is the maximum amount of time between retry attempts in milliseconds
++smsipub.ingest.jms.max_retry_delay=3600000
++
++# Number of threads used to remove messages from the journal and place them in DB
++smsipub.ingest.executor.pool.size=5
++smsipub.persist.executor.pool.size=10
++smsipub.ingest.session.batch.size=100
++smsipub.ingest.session.purge.interval=500
++smsipub.ingest.notification.batch.size=100
++smsipub.ingest.notification.purge.interval=500
++smsipub.ingest.presentation-update.batch.size=100
++smsipub.ingest.presentation-update.purge.interval=500
++
++# In hours
++smsipub.ingest.message.timeToLive=240
++smsipub.ingest.lot.count=20
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+index 439708d..7944963 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+@@ -1,5 +1,4 @@
+-#Set the following for 11g
+-identity.cis=CANOE_CIS
++###ADS Database Connections###
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC1_ADS
+ db.password=SC1_ADS
+@@ -7,32 +6,41 @@ db.pool.size=30
+ db.test.idle=60
+ db.pool.initialSize=50
+ db.max.idle=600
++db.checkout.timeout=3000
++
++###Operator Specific Configurations###
++ads.operatorId=2
++identity.cis=CANOE_CIS
++ads.deadHead=false
++
++###Logging###
+ validation.logging.enabled=true
++cis.logger.enabled=true
++
++###Scheduled Jobs###
+ cis.adhoc.job=0/3 * * * * ?
+ cis.scheduled.job=0 0 0/8 * * ?
+ cis.registrationCheck.job=0/3 * * * * ?
+-crypt.key.path=/opt/tcserver/crypt/qa.key
+-ads.millisecond.threshold=250
+-ads.save.threads=150
+-ads.save.queue=100000
+-ads.operator=TIME WARNER
+-ads.operatorId=2
++cis.managedIp.job=0 0 0 1/1 * ?
++
++###Offline Mode###
+ ads.online=true
+ ads.offline.retry.count=3
+ ads.offline.retry.millis=3000
+-db.checkout.timeout=3000
+ offline.cache.dir=/opt/tcserver/instances/cis/offline/cache
+ 
+-#Cache job schedule details
++###Cache Jobs###
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+ ads.cache.cisEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
++ads.metadata.cache.deliveryVariance=10
+ 
+-ads.deadHead=false
++###Security###
++crypt.key.path=/opt/tcserver/crypt/qa.key
+ 
++###Batching###
+ cis.batchsave.size=1000
+-
+-cis.managedIp.job=0 0 0 1/1 * ?
+\ No newline at end of file
++cis.sender.batch.size=1000
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+index d5f1712..c01a578 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+@@ -1,27 +1,46 @@
+-#Set the following for 11g
+-identity.cis=CANOE_CIS
++###ADS Database Connections###
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC2_CAAS
+ db.password=SC2_CAAS
+ db.pool.size=30
+ db.test.idle=60
++db.pool.initialSize=50
+ db.max.idle=600
++db.checkout.timeout=3000
++
++###Operator Specific Configurations###
++ads.operatorId=2
++identity.cis=CANOE_CIS
++ads.deadHead=false
++
++###Logging###
+ validation.logging.enabled=true
++cis.logger.enabled=true
++
++###Scheduled Jobs###
+ cis.adhoc.job=0/3 * * * * ?
+-cis.scheduled.job=0/3 * * * * ?
++cis.scheduled.job=0 0 0/8 * * ?
+ cis.registrationCheck.job=0/3 * * * * ?
+-crypt.key.path=/opt/tcserver/crypt/qa.key
++cis.managedIp.job=0 0 0 1/1 * ?
++
++###Offline Mode###
++ads.online=true
++ads.offline.retry.count=3
++ads.offline.retry.millis=3000
++offline.cache.dir=/opt/tcserver/instances/cis/offline/cache
+ 
+-#Cache job schedule details
++###Cache Jobs###
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+ ads.cache.cisEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
++ads.metadata.cache.deliveryVariance=10
+ 
+-ads.deadHead=false
++###Security###
++crypt.key.path=/opt/tcserver/crypt/qa.key
+ 
++###Batching###
+ cis.batchsave.size=1000
+-
+-cis.managedIp.job=0 0 0 0/1 * ?
++cis.sender.batch.size=1000
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+index e2d1fcb..570fad5 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+@@ -1,27 +1,46 @@
+-#Set the following for 11g
+-identity.cis=CANOE_CIS
++###ADS Database Connections###
+ db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+ db.username=SC3_CORE
+ db.password=SC3_CORE
+ db.pool.size=30
+ db.test.idle=60
++db.pool.initialSize=50
+ db.max.idle=600
++db.checkout.timeout=3000
++
++###Operator Specific Configurations###
++ads.operatorId=2
++identity.cis=CANOE_CIS
++ads.deadHead=false
++
++###Logging###
+ validation.logging.enabled=true
++cis.logger.enabled=true
++
++###Scheduled Jobs###
+ cis.adhoc.job=0/3 * * * * ?
+-cis.scheduled.job=0/3 * * * * ?
++cis.scheduled.job=0 0 0/8 * * ?
+ cis.registrationCheck.job=0/3 * * * * ?
+-crypt.key.path=/opt/tcserver/crypt/qa.key
++cis.managedIp.job=0 0 0 1/1 * ?
++
++###Offline Mode###
++ads.online=true
++ads.offline.retry.count=3
++ads.offline.retry.millis=3000
++offline.cache.dir=/opt/tcserver/instances/cis/offline/cache
+ 
+-#Cache job schedule details
++###Cache Jobs###
+ ads.cache.mediaAsset.job = 0 0/5 * * * ?
+ ads.cache.cisEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.admEndpointIdentityMap.job = 0 0 0/8 * * ?
+ ads.cache.operatorExcludedProductCategoryMap.job = 0 0 0/2 * * ?
+ ads.cache.networkUrlNetworkIdMap.job = 0 0 0/8 * * ?
+ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
++ads.metadata.cache.deliveryVariance=10
+ 
+-ads.deadHead=false
++###Security###
++crypt.key.path=/opt/tcserver/crypt/qa.key
+ 
++###Batching###
+ cis.batchsave.size=1000
+-
+-cis.managedIp.job=0 0 0 0/1 * ?
+\ No newline at end of file
++cis.sender.batch.size=1000
+\ No newline at end of file

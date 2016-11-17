@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<log>
+  <name>GitHub_Listener</name>
+  <targets>
+    <target>
+      <name>com.cloudbees.jenkins.GitHubWebHook</name>
+      <level>800</level>
+    </target>
+    <target>
+      <name>com.cloudbees.jenkins.GitHubPushTrigger</name>
+      <level>800</level>
+    </target>
+  </targets>
+</log>

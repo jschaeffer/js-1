@@ -1,0 +1,95 @@
+diff --git a/config/dmp-config-config.scrum1.properties b/config/dmp-config-config.scrum1.properties
+new file mode 100644
+index 0000000..dec2579
+--- /dev/null
++++ b/config/dmp-config-config.scrum1.properties
+@@ -0,0 +1 @@
++grails.mongo.connectionString=mongodb://dmp.config:aardvark@dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum1
+diff --git a/config/dmp-config-config.scrum2.properties b/config/dmp-config-config.scrum2.properties
+new file mode 100644
+index 0000000..7999d84
+--- /dev/null
++++ b/config/dmp-config-config.scrum2.properties
+@@ -0,0 +1 @@
++grails.mongo.connectionString=mongodb://dmp.config:aardvark@dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum2
+diff --git a/config/dmp-config-config.scrum3.properties b/config/dmp-config-config.scrum3.properties
+new file mode 100644
+index 0000000..c2107c8
+--- /dev/null
++++ b/config/dmp-config-config.scrum3.properties
+@@ -0,0 +1 @@
++grails.mongo.connectionString=mongodb://dmp.config:aardvark@dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum3
+diff --git a/config/dmp-config-config.scrum4.properties b/config/dmp-config-config.scrum4.properties
+new file mode 100644
+index 0000000..3564566
+--- /dev/null
++++ b/config/dmp-config-config.scrum4.properties
+@@ -0,0 +1 @@
++grails.mongo.connectionString=mongodb://dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum4
+diff --git a/config/dmp-config-config.scrum8.properties b/config/dmp-config-config.scrum8.properties
+new file mode 100644
+index 0000000..92e1ded
+--- /dev/null
++++ b/config/dmp-config-config.scrum8.properties
+@@ -0,0 +1 @@
++grails.mongo.connectionString=mongodb://dmp.config:aardvark@dvmdb01.co.canoe-ventures.com:27017/dmp-config-scrum8
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+new file mode 100755
+index 0000000..ff742d5
+--- /dev/null
++++ b/config/setenv.scrum1.sh
+@@ -0,0 +1,9 @@
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++AGENT_PATHS=""
++JAVA_AGENTS=""
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true"
++export APPHOME_DIR=/opt/tcserver/instances/dmp-config
++export DMP_CONFIG_CONFIG=$APPHOME_DIR/conf/dmp-config-config.properties
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+new file mode 100755
+index 0000000..ff742d5
+--- /dev/null
++++ b/config/setenv.scrum2.sh
+@@ -0,0 +1,9 @@
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++AGENT_PATHS=""
++JAVA_AGENTS=""
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true"
++export APPHOME_DIR=/opt/tcserver/instances/dmp-config
++export DMP_CONFIG_CONFIG=$APPHOME_DIR/conf/dmp-config-config.properties
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+new file mode 100755
+index 0000000..ff742d5
+--- /dev/null
++++ b/config/setenv.scrum3.sh
+@@ -0,0 +1,9 @@
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++AGENT_PATHS=""
++JAVA_AGENTS=""
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true"
++export APPHOME_DIR=/opt/tcserver/instances/dmp-config
++export DMP_CONFIG_CONFIG=$APPHOME_DIR/conf/dmp-config-config.properties
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -DDAI_CM_CONFIG=$DAI_CM_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+new file mode 100755
+index 0000000..ff81e51
+--- /dev/null
++++ b/config/setenv.scrum4.sh
+@@ -0,0 +1,9 @@
++JAVA_HOME="/usr/java/jdk1.8.0_25"
++AGENT_PATHS=""
++JAVA_AGENTS=""
++JAVA_LIBRARY_PATH=""
++CLASSPATH=""
++JVM_OPTS="-Djava.awt.headless=true -Xms512m -Xmx512m -Dgemfire.disableShutdownHook=true"
++export APPHOME_DIR=/opt/tcserver/instances/dmp-config
++export DMP_CONFIG_CONFIG=$APPHOME_DIR/conf/dmp-config-config.properties
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -DDMP_CONFIG_CONFIG=$DMP_CONFIG_CONFIG -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Log4jLogger"

@@ -1,0 +1,116 @@
+<b><u>Component Release Info for Sprint EWTRTW:</b></u><p>
+<u>Release of Component</u><b>&nbspPOIS</b><br><u>Version</u><b>&nbspr_5.0.0_9</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+No dependencies
+Metadata: Update request validation from SOAP1.2 to SOAP1.1; remove "version" validation; Updated to common-lib 5.0.0 dependencies.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_110</b></u><br>
+<pre>
+* <font color=blue>5d167b1</font>-<font color=green>(2015-02-26)</font><font color=black><b>Some pom cleanup</b></font><font color=grey>- (kennethleider)</font><font color=red> (HEAD, tag: v_5.0.0_9, tag: v_5.0.0_8, tag: v_5.0.0_7, tag: v_5.0.0_6, tag: v_5.0.0_5, tag: v_5.0.0_3, tag: v_5.0.0_2, tag: v_5.0.0_10, tag: v_5.0.0_1, tag: v_4.0.0_149, tag: v_4.0.0_148, origin/br_5.0.0, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>968268b</font>-<font color=green>(2015-02-23)</font><font color=black><b>Removed the data, query, and signalGroup ingest feature. Fixed some minor things</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>876a277</font>-<font color=green>(2015-02-23)</font><font color=black><b>Lots of improvements to the tracking feature. Some small additional cases for adMapGroup timeFromBroadcast, and fix on the offer xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>3a9cf90</font>-<font color=green>(2015-02-23)</font><font color=black><b>Lots of improvements to the tracking feature. Some small additional cases for adMapGroup timeFromBroadcast, and fix on the offer xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>b323f39</font>-<font color=green>(2015-02-20)</font><font color=black><b>New Ad Map Group Selection tests and templates based on integration discussions</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>154f1f7</font>-<font color=green>(2015-02-20)</font><font color=black><b>Added PoGroupAltId and executedOwnership indicators to tracking.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>5cd797d</font>-<font color=green>(2015-02-20)</font><font color=black><b>Some tracking message fixes.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>4fc70bd</font>-<font color=green>(2015-02-19)</font><font color=black><b>Improved glue code for checking tracking files.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>eb4bb13</font>-<font color=green>(2015-02-19)</font><font color=black><b>New glue code for checking tracking files.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>b217f9d</font>-<font color=green>(2015-02-19)</font><font color=black><b>Modified lots of tracking for merge and reconcile tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>d038c5c</font>-<font color=green>(2015-02-17)</font><font color=black><b>README outline</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>a9c726b</font>-<font color=green>(2015-02-13)</font><font color=black><b>VODDAI-5715: Another stab at query tracking</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>3ca0280</font>-<font color=green>(2015-02-13)</font><font color=black><b>cucumber config changes to support new automatic delays during reconfigure</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>367630c</font>-<font color=green>(2015-02-12)</font><font color=black><b>VODDAI-5715: Moved logic to ensure that I always added to query tracking file</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>1355b50</font>-<font color=green>(2015-02-11)</font><font color=black><b>Added lots to tracking. Added many optional fields to validation features</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>be7c64b</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added trailing zeroes for NPTPoint values, added table style for configuration reset, some more work in the tracking feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>ca7345a</font>-<font color=green>(2015-02-10)</font><font color=black><b>Updated to include the Java 1.8 version</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+| * <font color=blue>6c35d6d</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-6291: Published Opportunity Tracking</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>3f65ef2</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-6290: Opportunity tracking</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>cdb37a2</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-7008: Can now reference an external akka configuration</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>93fd459</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added trailing zeroes for NPTPoint values, added table style for configuration reset, some more work in the tracking feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>9c763f6</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-6287: Got a sample cucumber test</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>ee96ead</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added tracking feature, very simple for Ken use and my first try</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>4dc14f5</font>-<font color=green>(2015-02-06)</font><font color=black><b>Changed on hold request response - some cleanup on AssetIds</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>4ebe562</font>-<font color=green>(2015-02-10)</font><font color=black><b>VODDAI-7006: Created a maintence task, and added DB compacting</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>1845e74</font>-<font color=green>(2015-02-10)</font><font color=black><b>Added tracking feature, very simple for Ken use and my first try</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>7422cb1</font>-<font color=green>(2015-02-09)</font><font color=black><b>Improved checks for the export and import failures</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>e19de2a</font>-<font color=green>(2015-02-06)</font><font color=black><b>Fixed some export stuff with errors and such. Outstanding import failure</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>0ba6fb3</font>-<font color=green>(2015-02-06)</font><font color=black><b>Fixed movie asset signalGroup uriId and related tests. Fixed hold feature for new config name</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>2cae520</font>-<font color=green>(2015-02-06)</font><font color=black><b>VODDAI-7007: Fixed messed up setenv.sh</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>ee8f382</font>-<font color=green>(2015-02-06)</font><font color=black><b>VODDAI-7007: Renamed operator.conf to pois.conf</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>9ec248f</font>-<font color=green>(2015-02-06)</font><font color=black><b>VODDAI-7000: Made sure all configuration properties are prefixed with pois</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>2c9f34b</font>-<font color=green>(2015-02-06)</font><font color=black><b>TODO cleanup</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>b936d5a</font>-<font color=green>(2015-02-06)</font><font color=black><b>Enabled spring logging</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>ae659ed</font>-<font color=green>(2015-02-06)</font><font color=black><b>VODDAI-6991: Example log4j configuration to create request-response log.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>898334a</font>-<font color=green>(2015-02-05)</font><font color=black><b>VODDAI-7003 Create AdMaps for Gatling Test</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>6613e67</font>-<font color=green>(2015-02-05)</font><font color=black><b>VODDAI-7001 Refactor Asset Ids for Gatling</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+*   <font color=blue>633a647</font>-<font color=green>(2015-02-05)</font><font color=black><b>Modified hold feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>09d0e9c</font>-<font color=green>(2015-02-05)</font><font color=black><b>VODDAI-6980 Put check back in for null linear Broadcast</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>74d903e</font>-<font color=green>(2015-02-05)</font><font color=black><b>Modified hold feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>028ef87</font>-<font color=green>(2015-02-04)</font><font color=black><b>VODDAI-6979: No LinearBroadcastDate?  No Problem</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>2342273</font>-<font color=green>(2015-02-04)</font><font color=black><b>Moved dependency versions into nirvana</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_146, tag: v_4.0.0_145, tag: v_4.0.0_144, tag: v_4.0.0_143, tag: v_4.0.0_142, tag: v_4.0.0_141, tag: v_4.0.0_140, tag: v_4.0.0_139, tag: v_4.0.0_138, tag: v_4.0.0_137, tag: v_4.0.0_136, tag: v_4.0.0_135, tag: v_4.0.0_134, tag: v_4.0.0_133, tag: v_4.0.0_132, tag: v_4.0.0_131, tag: v_4.0.0_130, tag: v_4.0.0_128, tag: v_4.0.0_127, tag: v_4.0.0_126, tag: v_4.0.0_125, tag: v_4.0.0_123, tag: v_4.0.0_122, tag: v_4.0.0_121, tag: v_4.0.0_120)</font>
+* <font color=blue>008e95c</font>-<font color=green>(2015-02-04)</font><font color=black><b>Deleted original xml samples.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>891b31c</font>-<font color=green>(2015-02-03)</font><font color=black><b>Fixed bizarre '-' dash problem</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+*   <font color=blue>5de1c49</font>-<font color=green>(2015-02-03)</font><font color=black><b>Lots of changes in the onHold feature. Also added default.configFile to cucumber.properties file</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>173004b</font>-<font color=green>(2015-02-03)</font><font color=black><b>VODDAI-6911 : Stabilized import/export for large data sets.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>207c805</font>-<font color=green>(2015-02-03)</font><font color=black><b>Lots of changes in the onHold feature. Also added default.configFile to cucumber.properties file</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>9b9eecd</font>-<font color=green>(2015-02-02)</font><font color=black><b>Build out a bunch of POIS hold feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>606f689</font>-<font color=green>(2015-02-02)</font><font color=black><b>VODDAI-6911 : Greatly improved ingest performance by properly using commit logic</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>131cf58</font>-<font color=green>(2015-02-02)</font><font color=black><b>Updated controllers to return "text/plain"</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>932e5d7</font>-<font color=green>(2015-02-02)</font><font color=black><b>Build out a bunch of POIS hold feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>3665e1c</font>-<font color=green>(2015-02-02)</font><font color=black><b>Starting on ON HOLD function, issue witht he response checking.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>ca78d5f</font>-<font color=green>(2015-02-02)</font><font color=black><b>Moved linearBroadcastDate to optional field</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>3da2e87</font>-<font color=green>(2015-02-02)</font><font color=black><b>Added outlines of On Hold tests</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| * <font color=blue>c3fff2b</font>-<font color=green>(2015-02-02)</font><font color=black><b>VODDAI-6911  fix for ContentPOGroupLinkage</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>dd5349e</font>-<font color=green>(2015-02-02)</font><font color=black><b>Moved linearBroadcastDate to optional field</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>c094356</font>-<font color=green>(2015-01-30)</font><font color=black><b>VODDAI-6911 Movie, Title, Offer, ContentGroup, ContentPOGroupLinkage, SignalGroup</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>41bc797</font>-<font color=green>(2015-01-29)</font><font color=black><b>VODDAI-6911 Send unique messages with unique movies</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>777d02a</font>-<font color=green>(2015-01-29)</font><font color=black><b>Example showing hold functionality</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>c2fa81f</font>-<font color=green>(2015-01-29)</font><font color=black><b>Renaming data-store to pois-core</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>c433691</font>-<font color=green>(2015-01-29)</font><font color=black><b>gatling builder returns an Expression[String]</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>05e251c</font>-<font color=green>(2015-01-28)</font><font color=black><b>VODDAI-6871: I think this mmf is done.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>6ea98bf</font>-<font color=green>(2015-01-28)</font><font color=black><b>update configuration glue code so that multiple steps with in the same scenario can modify the config file</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>6770ca3</font>-<font color=green>(2015-01-27)</font><font color=black><b>New test: owner override with execute set to true</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>8e94d93</font>-<font color=green>(2015-01-27)</font><font color=black><b>Switched errors from POST to PUT to match stories. Anybody will realize what is being communicated</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>b90929f</font>-<font color=green>(2015-01-27)</font><font color=black><b>Removed error checks for successful ingestion. Switched all PUT errors to POST. Also added brief test description to every test.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>e270bcb</font>-<font color=green>(2015-01-26)</font><font color=black><b>VODDAI-6911 First step send Movies</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>0be0006</font>-<font color=green>(2015-01-26)</font><font color=black><b>Hopefully fixed owner override configs</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>2feff19</font>-<font color=green>(2015-01-26)</font><font color=black><b>Updated Execute Ownership feature - new config not working</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+| * <font color=blue>07f643b</font>-<font color=green>(2015-01-22)</font><font color=black><b>Finished Ad Map Selection tests - new data file; update PUT to POST, updated URL for publishing</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* | <font color=blue>3fa396b</font>-<font color=green>(2015-01-27)</font><font color=black><b>Removed error checks for successful ingestion. Switched all PUT errors to POST. Also added brief test description to every test.</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>0999c16</font>-<font color=green>(2015-01-22)</font><font color=black><b>Added many asset ingestion for each assetType in basicIngestion feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>b17bcd1</font>-<font color=green>(2015-01-22)</font><font color=black><b>VODDAI-5717 Changed error message removed possibility of Linear Broadcast Date being null</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>5627439</font>-<font color=green>(2015-01-20)</font><font color=black><b>Reverse sort order on filteredAdMapGroup</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>1de6c8f</font>-<font color=green>(2015-01-22)</font><font color=black><b>Added many asset ingestion for each assetType in basicIngestion feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>0a1509c</font>-<font color=green>(2015-01-16)</font><font color=black><b>Added many tests for bulk processing functionality, fixed signalGroup template, added ALLasset template</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+*   <font color=blue>8bab2c7</font>-<font color=green>(2015-01-16)</font><font color=black><b>Added templates and modified basic_ingestion feature for 5735 story and 6776 MMF</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>9ec8e56</font>-<font color=green>(2015-01-16)</font><font color=black><b>Removed unneeded println</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+| * <font color=blue>5a64b5e</font>-<font color=green>(2015-01-16)</font><font color=black><b>Some more glue code</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* | <font color=blue>f176cb7</font>-<font color=green>(2015-01-16)</font><font color=black><b>Added templates and modified basic_ingestion feature for 5735 story and 6776 MMF</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>eeba4d5</font>-<font color=green>(2015-01-15)</font><font color=black><b>added new "provider" config gherkin to Merge features; updated endpoint in Execute feature</b></font><font color=grey>- (Kassi Wilkerson)</font><font color=red></font>
+* <font color=blue>34af2f5</font>-<font color=green>(2015-01-15)</font><font color=black><b>Switched PUT to POST and added feature, basic ingestion, for the new bulk asset behavior</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>2b0abdc</font>-<font color=green>(2015-01-15)</font><font color=black><b>VODDAI-6776 - Bulk ingest is enabled.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>c2aab0a</font>-<font color=green>(2015-01-15)</font><font color=black><b>Added comments and cleaned up the validation/ingestion tests</b></font><font color=grey>- (Matt Major)</font><font color=red></font></pre>
+<hr>
+<p>

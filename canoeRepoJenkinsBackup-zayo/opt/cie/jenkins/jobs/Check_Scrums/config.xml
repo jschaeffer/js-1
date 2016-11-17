@@ -1,0 +1,560 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo &quot;###############################################################&quot;
+echo &quot;Checking the installation date for Lab to Lab&quot;
+echo &quot;###############################################################&quot;
+
+#export instances=&quot;ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub acp&quot;
+
+export environments=&quot;l2ladstw01 l2ladscom01 l2lcip01&quot;
+#export environments=&quot;l2ladstw01 l2ladscom01 l2lcip01 l2lcis01 l2lcm01 l2lfwciping01 l2lpsntw01 l2lpsncom01 l2lsmspub01 l2lsmsi01 l2lciptwl01 l2ladstwl01 l2lcistwl01 l2lcmtwl01 l2lpsntwl01 l2lsmsitwl01&quot;
+
+for j in ${environments}; do
+  case $j in
+   l2ladstw01)
+     app=ads0101
+     ;; 
+   l2ladscom01)
+     app=ads0201
+     ;;
+   l2lcip01)
+     export applist=&quot;dai-cip cip-feedback CIP_FN_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         cip-feedback)
+           app=cip-feedback
+           ;;
+          CIP_FN_FW)
+            app=CIP_FN_FW
+            ;;
+        esac
+      done
+      ;;
+   l2lcis01)
+     export applist=&quot;cis01 cis02&quot;
+     for x in ${applist}; do
+       case $x in
+         cis01)
+           app=cis01
+           ;;
+         cis02)
+           app=cis02
+           ;;
+        esac
+      done
+     ;;
+   l2lfwciping01)
+     export applist=&quot;FW_CIP_ING_01 FW_SMSI FW_SMSI_RELAY&quot;
+     for x in ${applist}; do
+       case $x in
+         FW_CIP_ING_01)
+           app=FW_CIP_ING_01
+           ;;
+         FW_SMSI)
+           app=FW_SMSI
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+         FW_SMSI_RELAY)
+           app=FW_SMSI_RELAY
+           ;;
+        esac
+      done
+     ;;
+   l2lcm01)
+     export applist=&quot;billing caas_admin cm_40 FW_CM&quot;
+     for x in ${applist}; do
+       case $x in
+         billing)
+           app=billing
+           ;;
+         caas_admin)
+           app=caas_admin
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+         FW_CM)
+           app=FW_CM
+           ;;
+        esac
+      done
+     ;;
+   l2lpsntw01)
+     app=psn0101
+     ;;
+   l2lpsncom01)
+     app=psn0201
+     ;;
+   l2lsmspub01)
+     app=smsi-pub
+     ;;
+   l2lsmsi01)
+     export applist=&quot;smsi, smsi-admin&quot;
+     for x in ${applist}; do
+       case x in
+        smsi)
+          app=smsi
+          ;;
+        smsi-admin)
+          app=smsi-admin
+          ;;
+        esac
+      done
+     ;;
+   l2ladstwl01)
+     app=ads0101
+     ;;
+   l2lciptwl01)
+     app=cip-feedback
+     ;;
+   l2lcistwl01)
+     export applist=&quot;cis01 CIS_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         cis01)
+           app=cis01
+           ;;
+         CIS_FW)
+           app=CIS_FW
+           ;;
+        esac
+      done
+     ;;
+   l2lcmtwl01)
+     export applist=&quot;Billing caas_admin cm_40&quot;
+     for x in ${applist}; do
+       case $x in
+         billing)
+           app=Billing
+           ;;
+         caas_admin)
+           app=caas_admin
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+        esac
+      done
+     ;;
+   l2lpsntwl01)
+     export applist=&quot;ADS_FW psn0101&quot;
+     for x in ${applist}; do
+       case $x in
+         ADS_FW)
+           app=ADS_FW
+           ;;
+         psn0101)
+           app=psn0101
+           ;;
+       esac
+     done
+     ;;  
+   l2lsmsitwl01)
+     app=smsi
+     ;;  
+   l2lsmspubtwl01)
+     export applist=&quot;smsi-pub SMSI_PUB_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         smsi-pub)
+           app=smsi-pub
+           ;;
+         SMSI_PUB_FW)
+           app=SMSI_PUB_FW
+           ;;
+        esac
+      done
+     ;;
+  esac
+
+
+export target=&quot;/var/www/html/lab2lab&quot;
+
+echo &quot;****************&quot;
+
+ for i in ${app}; do
+#  inst=`ssh tcserver@$j &quot;ls -al instances/$i/webapps/*.war | awk &apos;{print $6,$7,$8}&apos;&quot;`  
+    inst=`ssh tcserver@$j &quot;cd instances/$i/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;&lt;td&gt;$inst1&quot; &gt; $target/${i}.instdate.txt
+ echo $inst
+ done
+echo &quot;****************&quot;
+done
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>echo &quot;###############################################################&quot;
+echo &quot;Checking the apps server instance state for Lab to Lab&quot;
+echo &quot;###############################################################&quot;
+
+# Check the app server instance state
+
+#export instances=&quot;ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub acp&quot;
+
+export environments=&quot;l2ladstw01 l2ladscom01 l2lcip01&quot;
+#export environments=&quot;l2ladstw01 l2ladscom01 l2lcip01 l2lcis01 l2lcm01 l2lfwciping01 l2lpsntw01 l2lpsncom01 l2lsmspub01 l2lsmsi01 l2lciptwl01 l2ladstwl01 l2lcistwl01 l2lcmtwl01 l2lpsntwl01 l2lsmsitwl01&quot;
+
+for j in ${environments}; do
+  case $j in
+   l2ladstw01)
+     app=ads0101
+     ;; 
+   l2ladscom01)
+     app=ads0201
+     ;;
+   l2lcip01)
+     export applist=&quot;dai-cip cip-feedback CIP_FN_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         cip-feedback)
+           app=cip-feedback
+           ;;
+          CIP_FN_FW)
+            app=CIP_FN_FW
+            ;;
+        esac
+      done
+      ;;
+   l2lcis01)
+     export applist=&quot;cis01 cis02&quot;
+     for x in ${applist}; do
+       case $x in
+         cis01)
+           app=cis01
+           ;;
+         cis02)
+           app=cis02
+           ;;
+        esac
+      done
+     ;;
+   l2lfwciping01)
+     export applist=&quot;FW_CIP_ING_01 FW_SMSI FW_SMSI_RELAY&quot;
+     for x in ${applist}; do
+       case $x in
+         FW_CIP_ING_01)
+           app=FW_CIP_ING_01
+           ;;
+         FW_SMSI)
+           app=FW_SMSI
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+         FW_SMSI_RELAY)
+           app=FW_SMSI_RELAY
+           ;;
+        esac
+      done
+     ;;
+   l2lcm01)
+     export applist=&quot;billing caas_admin cm_40 FW_CM&quot;
+     for x in ${applist}; do
+       case $x in
+         billing)
+           app=billing
+           ;;
+         caas_admin)
+           app=caas_admin
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+         FW_CM)
+           app=FW_CM
+           ;;
+        esac
+      done
+     ;;
+   l2lpsntw01)
+     app=psn0101
+     ;;
+   l2lpsncom01)
+     app=psn0201
+     ;;
+   l2lsmspub01)
+     app=smsi-pub
+     ;;
+   l2lsmsi01)
+     export applist=&quot;smsi, smsi-admin&quot;
+     for x in ${applist}; do
+       case x in
+        smsi)
+          app=smsi
+          ;;
+        smsi-admin)
+          app=smsi-admin
+          ;;
+        esac
+      done
+     ;;
+   l2ladstwl01)
+     app=ads0101
+     ;;
+   l2lciptwl01)
+     app=cip-feedback
+     ;;
+   l2lcistwl01)
+     export applist=&quot;cis01 CIS_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         cis01)
+           app=cis01
+           ;;
+         CIS_FW)
+           app=CIS_FW
+           ;;
+        esac
+      done
+     ;;
+   l2lcmtwl01)
+     export applist=&quot;Billing caas_admin cm_40&quot;
+     for x in ${applist}; do
+       case $x in
+         billing)
+           app=Billing
+           ;;
+         caas_admin)
+           app=caas_admin
+           ;;
+         cm_40)
+           app=cm_40
+           ;;
+        esac
+      done
+     ;;
+   l2lpsntwl01)
+     export applist=&quot;ADS_FW psn0101&quot;
+     for x in ${applist}; do
+       case $x in
+         ADS_FW)
+           app=ADS_FW
+           ;;
+         psn0101)
+           app=psn0101
+           ;;
+       esac
+     done
+     ;;  
+   l2lsmsitwl01)
+     app=smsi
+     ;;  
+   l2lsmspubtwl01)
+     export applist=&quot;smsi-pub SMSI_PUB_FW&quot;
+     for x in ${applist}; do
+       case $x in
+         smsi-pub)
+           app=smsi-pub
+           ;;
+         SMSI_PUB_FW)
+           app=SMSI_PUB_FW
+           ;;
+        esac
+      done
+     ;;
+  esac
+
+
+export target=&quot;/var/www/html/lab2lab&quot;
+
+ for i in ${app}; do
+  #  echo &quot;&lt;td&gt;&quot;&gt;$target/$j-$i.envstate.txt
+  k_Stat=`ssh tcserver@$j &quot;cd instances/$i/bin; ./tcruntime-ctl.sh status&quot;`
+  #echo $k_Stat | awk &apos;/STATUS/ {print $1,$2,$3,$4,$5}&apos;
+  # i_Stat=`/opt/build/scripts/tcServerAdmin.sh $j $i status | awk &apos;/STATUS/ {print $1,$2,$3,$4,$5}&apos;`
+    if [[ $k_Stat = *PID* ]]
+      then echo &quot;&lt;td bgcolor=lightgreen&gt; &lt;font color=black&gt; Up&quot;| tee $target/$j-$i.envstate.txt
+    else echo &quot;&lt;td bgcolor=red&gt; &lt;font color=yellow&gt; Down&quot; | tee $target/$j-$i.envstate.txt
+    fi
+ done
+
+echo &quot;****************&quot;
+
+ for i in ${app}; do
+#  inst=`ssh tcserver@$j &quot;ls -al instances/$i/webapps/*.war | awk &apos;{print $6,$7,$8}&apos;&quot;`  
+    inst=`ssh tcserver@$j &quot;cd instances/$i/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;&lt;td&gt;$inst1&quot; &gt; $target/${i}.instdate.txt
+ echo $inst
+ done
+echo &quot;****************&quot;
+done
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>echo &quot;###############################################################&quot;
+echo &quot;Checking the disk and log space usage for Scrums&quot;
+echo &quot;###############################################################&quot;
+
+# Check each instances log directory usage
+## Jeff&apos;s changes - Made this a remote callable script 
+# End results:
+# var d = Disk Space (same as original)
+# var dh = Disk Space remaining in Human readable form
+# var l = Log space (same as original)
+# var lh = Log Space in Human readable form
+# Appended the target environment to the /var/www/html directory prefix
+
+enviroments=&quot;dvappdai01 dvappdai02 dvappdai03 dvappdai04 dvappdai05 itappdai01&quot;
+
+for j in ${enviroments}; do
+  case $j in
+   dvappdai01)
+     target=devint
+     ;;
+   dvappdai02)
+     target=scrum1
+     ;;
+   dvappdai03)
+     target=scrum2
+     ;;
+   dvappdai04)
+     target=scrum3
+     ;;
+   dvappdai05)
+     target=scrum4
+     ;;
+   itappdai01)
+     target=Marley
+     ;;
+  esac
+
+export target=&quot;/var/www/html/${target}&quot;
+
+ instances=&quot;ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub&quot; 
+ for i in ${instances}; do
+  d1=`ssh tcserver@${j} &quot;df -k | awk &apos;/\/opt/ {print}&apos;&quot;`;d2=`echo ${d1} | awk &apos;{print $3}&apos;`
+  let d=$d2
+  dh1=`ssh tcserver@${j} &quot;df -h | awk &apos;/\/opt/ {print}&apos;&quot;`;dh=`echo ${dh1} | awk &apos;{print $3}&apos;`
+  echo &quot;$dh&quot;&gt;$target/diskspace.txt
+  l1=`ssh tcserver@${j} &quot;du instances/$i/logs | awk &apos;{print}&apos;&quot;`;l2=`echo $l1 |awk &apos;{print $1}&apos;`
+  let l=$l2
+  lh1=`ssh tcserver@${j} &quot;du -h instances/$i/logs | awk &apos;{print $1}&apos;&quot;`;lh=`echo $lh1 | awk &apos;{print $1}&apos;`
+
+
+  #RED
+  if ((l &gt; d)); then
+   echo &quot;&lt;td bgcolor=red&gt; &lt;font color=yellow&gt; $lh of $dh&quot; | tee $target/$i.logs
+
+  #YELLOW
+  elif ((l &gt; d/2)); then
+   echo &quot;&lt;td bgcolor=lightyellow&gt; &lt;font color=blue&gt; $lh of $dh&quot; | tee $target/$i.logs
+
+  #GREEN
+  elif ((l &lt; d/2)); then
+   echo &quot;&lt;td bgcolor=lightgreen&gt; &lt;font color=black&gt; $lh of $dh&quot;| tee $target/$i.logs
+  fi
+ done
+done
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>echo &quot;###############################################################&quot;
+echo &quot;Checking the installation date for Scrums&quot;
+echo &quot;###############################################################&quot;
+
+instances=&quot;ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub acp metadata-publisher dai-national-cis&quot; 
+
+export enviroments=&quot;dvappdai01 dvappdai02 dvappdai03 dvappdai04 dvappdai05 itappdai01&quot;
+
+for j in ${enviroments}; do
+  case $j in
+   dvappdai01)
+     target=devint
+     ;;
+   dvappdai02)
+     target=scrum1
+     ;;
+   dvappdai03)
+     target=scrum2
+     ;;
+   dvappdai04)
+     target=scrum3
+     ;;
+   dvappdai05)
+     target=scrum4
+     ;;
+   itappdai01)
+     target=Marley
+     ;;
+  esac
+
+export target=&quot;/var/www/html/work/${target}&quot;
+
+ for i in ${instances}; do
+#  inst=`ssh tcserver@$j &quot;ls -al instances/$i/webapps/*.war | awk &apos;{print $6,$7,$8}&apos;&quot;`  
+    inst=`ssh tcserver@$j &quot;cd instances/$i/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;&lt;td&gt;$inst1&quot; &gt; $target/${i}.instdate.txt
+ done
+done
+
+ls -al |awk &apos;{print $6,$7,$8}&apos;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>echo &quot;###############################################################&quot;
+echo &quot;Checking the app server instance state for Scrums&quot;
+echo &quot;###############################################################&quot;
+
+export instances=&quot;ads billing cis dai_amm dce-agent-002 mock_svr oss_bar psn smsi-admin caas-admin cip cm dce-agent-001 dce-mdata ops-dt Pgmr-Cpgn-Int smsi smsipub acp metadata-publisher dai-national-cis&quot;
+
+export enviroments=&quot;dvappdai01 dvappdai02 dvappdai03 dvappdai04 dvappdai05 itappdai01&quot;
+
+for j in ${enviroments}; do
+  case $j in
+   dvappdai01)
+     target=devint
+     ;;
+   dvappdai02)
+     target=scrum1
+     ;;
+   dvappdai03)
+     target=scrum2
+     ;;
+   dvappdai04)
+     target=scrum3
+     ;;
+   dvappdai05)
+     target=scrum4
+     ;;
+   itappdai01)
+     target=Marley
+     ;;
+  esac
+
+export target=&quot;/var/www/html/${target}&quot;
+
+ for i in ${instances}; do
+  echo &quot;&lt;td&gt;&quot;&gt;$target/$i.envstate.txt
+  i_Stat=`/opt/build/scripts/tcServerAdmin.sh $j $i status | awk &apos;/STATUS/ {print $1,$2,$3,$4,$5}&apos;`
+    if [[ $i_Stat = &quot;STATUS Instance is RUNNING as&quot; ]]
+      then echo &quot;&lt;td bgcolor=lightgreen&gt; &lt;font color=black&gt; Up&quot;| tee $target/$i.envstate.txt
+    elif [[ $i_Stat = &quot;STATUS Instance is NOT RUNNING&quot; ]]
+      then echo &quot;&lt;td bgcolor=red&gt; &lt;font color=yellow&gt; Down&quot; | tee $target/$i.envstate.txt
+    fi
+ done
+done
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

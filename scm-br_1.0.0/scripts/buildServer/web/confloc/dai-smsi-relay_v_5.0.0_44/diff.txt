@@ -1,0 +1,405 @@
+diff --git a/config/setenv.scrum1.sh b/config/setenv.scrum1.sh
+index 150be00..89ca9e5 100755
+--- a/config/setenv.scrum1.sh
++++ b/config/setenv.scrum1.sh
+@@ -13,4 +13,4 @@ export APPHOME_DIR=/opt/tcserver/instances/dai-smsi-relay
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$CONFIG_DIR -Dlog4j.configurationFile=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dconfig.dir=$CONFIG_DIR -Dlog4j.configurationFile=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum2.sh b/config/setenv.scrum2.sh
+index c25d15a..55fd7cd 100755
+--- a/config/setenv.scrum2.sh
++++ b/config/setenv.scrum2.sh
+@@ -13,4 +13,4 @@ export APPHOME_DIR=/opt/tcserver/instances/dai-smsi-relay
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$CONFIG_DIR -Dlog4j.configurationFile=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dlog4j.configurationFile=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index c25d15a..55fd7cd 100755
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -13,4 +13,4 @@ export APPHOME_DIR=/opt/tcserver/instances/dai-smsi-relay
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$CONFIG_DIR -Dlog4j.configurationFile=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$CONFIG_DIR -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dlog4j.configurationFile=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/setenv.scrum4.sh b/config/setenv.scrum4.sh
+index c25d15a..31c2c2d 100755
+--- a/config/setenv.scrum4.sh
++++ b/config/setenv.scrum4.sh
+@@ -13,4 +13,4 @@ export APPHOME_DIR=/opt/tcserver/instances/dai-smsi-relay
+ export CONFIG_DIR=$APPHOME_DIR/conf
+ export LOG4J_XML=$APPHOME_DIR/conf/log4j.xml
+ 
+-JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dconfig.dir=$CONFIG_DIR -Dlog4j.configurationFile=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dinsight-max-frames=6000"
++JAVA_OPTS="$JVM_OPTS $AGENT_PATHS $JAVA_AGENTS $JAVA_LIBRARY_PATH -Dschema.validation.enabled=true -Dcrypt.key.path=/opt/tcserver/crypt/qa.key -Dconfig.dir=$CONFIG_DIR -Dlog4j.configurationFile=$LOG4J_XML -Dorg.apache.cxf.Logger=org.apache.cxf.common.logging.Slf4jLogger -Dinsight-max-frames=6000"
+diff --git a/config/smsi-relay-env-application.scrum1.properties b/config/smsi-relay-env-application.scrum1.properties
+index 71b5eb0..2d1314c 100644
+--- a/config/smsi-relay-env-application.scrum1.properties
++++ b/config/smsi-relay-env-application.scrum1.properties
+@@ -1,13 +1,8 @@
+-# Further, you can also just pass the individual parameters as system properties -Djdbc.url=blah for instance. config.dir=../ads-config
++###SMSI RELAY Database Configurations###
+ config.dir=.
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC1_RELAY
+ db.password=SC1_RELAY
+-
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-caas.db.username=SC1_CAAS
+-caas.db.password=SC1_CAAS
+-# Defaults pool sizes are based on max oracle XE can handle, production should be much more
+ db.pool.initialSize=1
+ db.pool.size=5
+ db.test.idle=60
+@@ -15,19 +10,28 @@ db.max.idle=5
+ validation.logging.enabled=true
+ smsi.millisecond.threshold=250
+ 
+-smsi.relay.force.url=http://10.13.18.115:9535/int-test-support/FreeWheel_Mock
++###CAAS CORE Database Configurations###
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC1_CAAS
++caas.db.password=SC1_CAAS
++
++###Relay Message Properties###
++smsi.relay.force.url=http://10.66.12.11:9535/int-test-support/FreeWheel_Mock
+ smsi.relay.schedule=0 0/5 * * * ?
+ relay.cache.refresh=0 0/3 * * * ?
+ smsi.record.count=7000
+-
+ smsi.db.threads=0,1,2,3,4,5,6,7,8,9
+ smsi.days.check=5
+ smsi.max.sessions=1000
++publish.deviceId=false
++publish.hhId=false
++connection.timeout=60000
+ 
++###3rd Party Security Properties###
+ use.ssl.handshake=false
+ keystore.path=
+ keystore.type=
+ server.protocol=TLS
+ secure.protocol=false
+ keystore.password=
+-use.certificate=false
++use.certificate=false
+\ No newline at end of file
+diff --git a/config/smsi-relay-env-application.scrum2.properties b/config/smsi-relay-env-application.scrum2.properties
+index f57db91..9037a81 100644
+--- a/config/smsi-relay-env-application.scrum2.properties
++++ b/config/smsi-relay-env-application.scrum2.properties
+@@ -1,13 +1,8 @@
+-# Further, you can also just pass the individual parameters as system properties -Djdbc.url=blah for instance. config.dir=../ads-config
++###SMSI RELAY Database Configurations###
+ config.dir=.
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC2_RELAY
+ db.password=SC2_RELAY
+-
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-caas.db.username=SC1_CAAS
+-caas.db.password=SC1_CAAS
+-# Defaults pool sizes are based on max oracle XE can handle, production should be much more
+ db.pool.initialSize=1
+ db.pool.size=5
+ db.test.idle=60
+@@ -15,19 +10,28 @@ db.max.idle=5
+ validation.logging.enabled=true
+ smsi.millisecond.threshold=250
+ 
+-smsi.relay.force.url=http://localhost:9190/int-test-support/FreeWheel_Mock
++###CAAS CORE Database Configurations###
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC2_CAAS
++caas.db.password=SC2_CAAS
++
++###Relay Message Properties###
++smsi.relay.force.url=http://10.66.12.12:9535/int-test-support/FreeWheel_Mock
+ smsi.relay.schedule=0 0/5 * * * ?
+ relay.cache.refresh=0 0/3 * * * ?
+ smsi.record.count=7000
+-
+ smsi.db.threads=0,1,2,3,4,5,6,7,8,9
+ smsi.days.check=5
+ smsi.max.sessions=1000
++publish.deviceId=false
++publish.hhId=false
++connection.timeout=60000
+ 
++###3rd Party Security Properties###
+ use.ssl.handshake=false
+ keystore.path=
+ keystore.type=
+ server.protocol=TLS
+ secure.protocol=false
+ keystore.password=
+-use.certificate=false
++use.certificate=false
+\ No newline at end of file
+diff --git a/config/smsi-relay-env-application.scrum3.properties b/config/smsi-relay-env-application.scrum3.properties
+index 993f7c2..c3fc932 100644
+--- a/config/smsi-relay-env-application.scrum3.properties
++++ b/config/smsi-relay-env-application.scrum3.properties
+@@ -1,13 +1,8 @@
+-# Further, you can also just pass the individual parameters as system properties -Djdbc.url=blah for instance. config.dir=../ads-config
++###SMSI RELAY Database Configurations###
+ config.dir=.
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC3_RELAY
+ db.password=SC3_RELAY
+-
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-caas.db.username=SC3_CAAS
+-caas.db.password=SC3_CAAS
+-# Defaults pool sizes are based on max oracle XE can handle, production should be much more
+ db.pool.initialSize=1
+ db.pool.size=5
+ db.test.idle=60
+@@ -15,19 +10,28 @@ db.max.idle=5
+ validation.logging.enabled=true
+ smsi.millisecond.threshold=250
+ 
+-smsi.relay.force.url=http://localhost:9190/int-test-support/FreeWheel_Mock
++###CAAS CORE Database Configurations###
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC3_CAAS
++caas.db.password=SC3_CAAS
++
++###Relay Message Properties###
++smsi.relay.force.url=http://10.66.12.13:9535/int-test-support/FreeWheel_Mock
+ smsi.relay.schedule=0 0/5 * * * ?
+ relay.cache.refresh=0 0/3 * * * ?
+ smsi.record.count=7000
+-
+ smsi.db.threads=0,1,2,3,4,5,6,7,8,9
+ smsi.days.check=5
+ smsi.max.sessions=1000
++publish.deviceId=false
++publish.hhId=false
++connection.timeout=60000
+ 
++###3rd Party Security Properties###
+ use.ssl.handshake=false
+ keystore.path=
+ keystore.type=
+ server.protocol=TLS
+ secure.protocol=false
+ keystore.password=
+-use.certificate=false
++use.certificate=false
+\ No newline at end of file
+diff --git a/config/smsi-relay-env-application.scrum4.properties b/config/smsi-relay-env-application.scrum4.properties
+index 094d177..5e20fae 100644
+--- a/config/smsi-relay-env-application.scrum4.properties
++++ b/config/smsi-relay-env-application.scrum4.properties
+@@ -1,13 +1,8 @@
+-# Further, you can also just pass the individual parameters as system properties -Djdbc.url=blah for instance. config.dir=../ads-config
++###SMSI RELAY Database Configurations###
+ config.dir=.
+-db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
+ db.username=SC4_RELAY
+ db.password=SC4_RELAY
+-
+-caas.db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
+-caas.db.username=SC4_CAAS
+-caas.db.password=SC4_CAAS
+-# Defaults pool sizes are based on max oracle XE can handle, production should be much more
+ db.pool.initialSize=1
+ db.pool.size=5
+ db.test.idle=60
+@@ -15,19 +10,28 @@ db.max.idle=5
+ validation.logging.enabled=true
+ smsi.millisecond.threshold=250
+ 
+-smsi.relay.force.url=http://localhost:9190/int-test-support/FreeWheel_Mock
++###CAAS CORE Database Configurations###
++caas.db.master.url=jdbc:oracle:thin:@dbrac03.cv.dr:1521:scrum004
++caas.db.username=SC4_CAAS
++caas.db.password=SC4_CAAS
++
++###Relay Message Properties###
++smsi.relay.force.url=http://10.66.12.14:9535/int-test-support/FreeWheel_Mock
+ smsi.relay.schedule=0 0/5 * * * ?
+ relay.cache.refresh=0 0/3 * * * ?
+ smsi.record.count=7000
+-
+ smsi.db.threads=0,1,2,3,4,5,6,7,8,9
+ smsi.days.check=5
+ smsi.max.sessions=1000
++publish.deviceId=false
++publish.hhId=false
++connection.timeout=60000
+ 
++###3rd Party Security Properties###
+ use.ssl.handshake=false
+ keystore.path=
+ keystore.type=
+ server.protocol=TLS
+ secure.protocol=false
+ keystore.password=
+-use.certificate=false
++use.certificate=false
+\ No newline at end of file
+diff --git a/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum1.sql b/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+index f8cc64e..b721496 100644
+--- a/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum1.sql
++++ b/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+@@ -87,3 +87,32 @@ Grant create session, alter session to SC1_RELAY2;
+ GRANT SELECT, REFERENCES ON SC1_CAAS.PROGRAMMER TO SC1_RELAY2;
+ GRANT SELECT, REFERENCES ON SC1_CAAS.PROVIDER_NETWORK TO SC1_RELAY2;
+ GRANT SELECT, REFERENCES ON SC1_CAAS.NETWORK TO SC1_RELAY2;
++
++CREATE USER SC1_RELAY3 IDENTIFIED BY SC1_RELAY3 DEFAULT TABLESPACE canoe_data_compress
++TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
++
++GRANT SELECT ANY DICTIONARY TO SC1_RELAY3;
++GRANT ON COMMIT REFRESH TO SC1_RELAY3;
++GRANT GLOBAL QUERY REWRITE TO SC1_RELAY3;
++GRANT UNLIMITED TABLESPACE TO SC1_RELAY3;
++GRANT CREATE TRIGGER TO SC1_RELAY3;
++GRANT CREATE SESSION TO SC1_RELAY3;
++GRANT CREATE ANY JOB TO SC1_RELAY3;
++GRANT CREATE ANY MATERIALIZED VIEW TO SC1_RELAY3;
++GRANT CREATE SYNONYM TO SC1_RELAY3;
++GRANT CREATE MATERIALIZED VIEW TO SC1_RELAY3;
++GRANT CREATE TABLE TO SC1_RELAY3;
++GRANT CREATE VIEW TO SC1_RELAY3;
++GRANT CREATE SEQUENCE TO SC1_RELAY3;
++GRANT QUERY REWRITE TO SC1_RELAY3;
++GRANT CREATE JOB TO SC1_RELAY3;
++GRANT CREATE TYPE TO SC1_RELAY3;
++GRANT CREATE PROCEDURE TO SC1_RELAY3;
++GRANT SCHEDULER_ADMIN TO SC1_RELAY3;
++
++GRANT RESOURCE TO SC1_RELAY3;
++Grant create session, alter session to SC1_RELAY3;
++
++GRANT SELECT, REFERENCES ON SC1_CAAS.PROGRAMMER TO SC1_RELAY3;
++GRANT SELECT, REFERENCES ON SC1_CAAS.PROVIDER_NETWORK TO SC1_RELAY3;
++GRANT SELECT, REFERENCES ON SC1_CAAS.NETWORK TO SC1_RELAY3;
+diff --git a/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum2.sql b/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+index e3ba9f7..4d684a1 100644
+--- a/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum2.sql
++++ b/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+@@ -88,3 +88,33 @@ Grant create session, alter session to SC2_RELAY2;
+ GRANT SELECT, REFERENCES ON SC2_CAAS.PROGRAMMER TO SC2_RELAY2;
+ GRANT SELECT, REFERENCES ON SC2_CAAS.PROVIDER_NETWORK TO SC2_RELAY2;
+ GRANT SELECT, REFERENCES ON SC2_CAAS.NETWORK TO SC2_RELAY2;
++
++CREATE USER SC2_RELAY3 IDENTIFIED BY SC2_RELAY3 DEFAULT TABLESPACE canoe_data_compress
++TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
++
++GRANT SELECT ANY DICTIONARY TO SC2_RELAY3;
++GRANT ON COMMIT REFRESH TO SC2_RELAY3;
++GRANT GLOBAL QUERY REWRITE TO SC2_RELAY3;
++GRANT UNLIMITED TABLESPACE TO SC2_RELAY3;
++GRANT CREATE TRIGGER TO SC2_RELAY3;
++GRANT CREATE SESSION TO SC2_RELAY3;
++GRANT CREATE ANY JOB TO SC2_RELAY3;
++GRANT CREATE ANY MATERIALIZED VIEW TO SC2_RELAY3;
++GRANT CREATE SYNONYM TO SC2_RELAY3;
++GRANT CREATE MATERIALIZED VIEW TO SC2_RELAY3;
++GRANT CREATE TABLE TO SC2_RELAY3;
++GRANT CREATE VIEW TO SC2_RELAY3;
++GRANT CREATE SEQUENCE TO SC2_RELAY3;
++GRANT QUERY REWRITE TO SC2_RELAY3;
++GRANT CREATE JOB TO SC2_RELAY3;
++GRANT CREATE TYPE TO SC2_RELAY3;
++GRANT CREATE PROCEDURE TO SC2_RELAY3;
++GRANT SCHEDULER_ADMIN TO SC2_RELAY3;
++
++GRANT RESOURCE TO SC2_RELAY3;
++Grant create session, alter session to SC2_RELAY3;
++
++
++GRANT SELECT, REFERENCES ON SC2_CAAS.PROGRAMMER TO SC2_RELAY3;
++GRANT SELECT, REFERENCES ON SC2_CAAS.PROVIDER_NETWORK TO SC2_RELAY3;
++GRANT SELECT, REFERENCES ON SC2_CAAS.NETWORK TO SC2_RELAY3;
+diff --git a/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum3.sql b/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+index 21eeac3..0fd53c6 100644
+--- a/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum3.sql
++++ b/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+@@ -87,3 +87,33 @@ Grant create session, alter session to SC3_RELAY2;
+ GRANT SELECT, REFERENCES ON SC3_CAAS.PROGRAMMER TO SC3_RELAY2;
+ GRANT SELECT, REFERENCES ON SC3_CAAS.PROVIDER_NETWORK TO SC3_RELAY2;
+ GRANT SELECT, REFERENCES ON SC3_CAAS.NETWORK TO SC3_RELAY2;
++
++CREATE USER SC3_RELAY3 IDENTIFIED BY SC3_RELAY3 DEFAULT TABLESPACE canoe_data_compress
++TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
++
++GRANT SELECT ANY DICTIONARY TO SC3_RELAY3;
++GRANT ON COMMIT REFRESH TO SC3_RELAY3;
++GRANT GLOBAL QUERY REWRITE TO SC3_RELAY3;
++GRANT UNLIMITED TABLESPACE TO SC3_RELAY3;
++GRANT CREATE TRIGGER TO SC3_RELAY3;
++GRANT CREATE SESSION TO SC3_RELAY3;
++GRANT CREATE ANY JOB TO SC3_RELAY3;
++GRANT CREATE ANY MATERIALIZED VIEW TO SC3_RELAY3;
++GRANT CREATE SYNONYM TO SC3_RELAY3;
++GRANT CREATE MATERIALIZED VIEW TO SC3_RELAY3;
++GRANT CREATE TABLE TO SC3_RELAY3;
++GRANT CREATE VIEW TO SC3_RELAY3;
++GRANT CREATE SEQUENCE TO SC3_RELAY3;
++GRANT QUERY REWRITE TO SC3_RELAY3;
++GRANT CREATE JOB TO SC3_RELAY3;
++GRANT CREATE TYPE TO SC3_RELAY3;
++GRANT CREATE PROCEDURE TO SC3_RELAY3;
++GRANT SCHEDULER_ADMIN TO SC3_RELAY3;
++
++GRANT RESOURCE TO SC3_RELAY3;
++Grant create session, alter session to SC3_RELAY3;
++
++
++GRANT SELECT, REFERENCES ON SC3_CAAS.PROGRAMMER TO SC3_RELAY3;
++GRANT SELECT, REFERENCES ON SC3_CAAS.PROVIDER_NETWORK TO SC3_RELAY3;
++GRANT SELECT, REFERENCES ON SC3_CAAS.NETWORK TO SC3_RELAY3;
+diff --git a/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum4.sql b/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+index b12e937..1ec2c90 100644
+--- a/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum4.sql
++++ b/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+@@ -82,5 +82,34 @@ Grant create session, alter session to SC4_RELAY2;
+  
+  
+ GRANT SELECT, REFERENCES ON SC4_CAAS.PROGRAMMER TO SC4_RELAY2;
+-GRANT SELECT, REFERENCES ON SC4_CAAS.PROVIDER_NETWORK TO SC4_RELAY2;
++GRANT SELECT, REFERENCES ON SC4_CAAS.PROVIDER_NETWORK TO SC4_RELAY2;CREATE USER SC4_RELAY3 IDENTIFIED BY SC4_RELAY3 DEFAULT TABLESPACE canoe_data_compress
++TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;
++
++GRANT SELECT ANY DICTIONARY TO SC4_RELAY3;
++GRANT ON COMMIT REFRESH TO SC4_RELAY3;
++GRANT GLOBAL QUERY REWRITE TO SC4_RELAY3;
++GRANT UNLIMITED TABLESPACE TO SC4_RELAY3;
++GRANT CREATE TRIGGER TO SC4_RELAY3;
++GRANT CREATE SESSION TO SC4_RELAY3;
++GRANT CREATE ANY JOB TO SC4_RELAY3;
++GRANT CREATE ANY MATERIALIZED VIEW TO SC4_RELAY3;
++GRANT CREATE SYNONYM TO SC4_RELAY3;
++GRANT CREATE MATERIALIZED VIEW TO SC4_RELAY3;
++GRANT CREATE TABLE TO SC4_RELAY3;
++GRANT CREATE VIEW TO SC4_RELAY3;
++GRANT CREATE SEQUENCE TO SC4_RELAY3;
++GRANT QUERY REWRITE TO SC4_RELAY3;
++GRANT CREATE JOB TO SC4_RELAY3;
++GRANT CREATE TYPE TO SC4_RELAY3;
++GRANT CREATE PROCEDURE TO SC4_RELAY3;
++GRANT SCHEDULER_ADMIN TO SC4_RELAY3;
++
++GRANT RESOURCE TO SC4_RELAY3;
++Grant create session, alter session to SC4_RELAY3;
++
++
++GRANT SELECT, REFERENCES ON SC4_CAAS.PROGRAMMER TO SC4_RELAY3;
++GRANT SELECT, REFERENCES ON SC4_CAAS.PROVIDER_NETWORK TO SC4_RELAY3;
++GRANT SELECT, REFERENCES ON SC4_CAAS.NETWORK TO SC4_RELAY3;
+ GRANT SELECT, REFERENCES ON SC4_CAAS.NETWORK TO SC4_RELAY2;
++

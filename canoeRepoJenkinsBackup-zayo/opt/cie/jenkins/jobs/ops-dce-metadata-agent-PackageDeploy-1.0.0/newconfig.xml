@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9.1">
+      <projectUrl>https://github.com/CanoeVentures/ops-dce-metadata-agent/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+        <url>git@github.com:CanoeVentures/ops-dce-metadata-agent.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/br_1.0.0</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.GitWeb">
+      <url>https://github.com/CanoeVentures/ops-dce-metadata-agent</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H 21 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -x
+##############
+# Execute a command. Do not fail on exit.
+##############
+executeCommandNoFail() {
+
+    if [ ${VERBOSE} -eq 1 ] ; then
+        print Executing : $1
+    fi
+
+    RESULT=`eval &quot;$1&quot;`
+
+    if [ ${VERBOSE} -eq 1 ] ; then
+        print Result : $RESULT
+    fi
+}
+
+echo &quot;Setting Grails Home to grails 2.4.3&quot;
+cd /opt/build/scm/scripts/buildServer/groovy/bin
+./setgrail243.sh
+
+export VERSION=&quot;1.0.0_${BUILD_NUMBER}&quot;
+cd /opt/checkouts/ops-dce-metadata-agent
+git pull
+export EXISTING_VERSION=`cat application.properties | awk -F&quot;=&quot; &apos;/app.version/ {print $2}&apos;`
+echo &quot;VERSION=$VERSION  :  EXISTING_VERSION=$EXISTING_VERSION&quot;
+rm package.bash
+echo &quot;#! /bin/bash&quot; &gt;&gt; package.bash
+echo &quot;distDir=dist&quot; &gt;&gt; package.bash
+echo &quot;rm -rf \${distDir}&quot; &gt;&gt; package.bash
+echo &quot;mkdir \${distDir}&quot; &gt;&gt; package.bash
+
+echo &quot;cp ops-dce-metadata-agent.war \${distDir}/ops-dce-metadata-agent.war&quot; &gt;&gt; package.bash
+
+echo &quot;cd \${distDir}&quot; &gt;&gt; package.bash
+echo &quot;jar xf ops-dce-metadata-agent.war META-INF/MANIFEST.MF&quot; &gt;&gt; package.bash
+echo &quot;jar xf ops-dce-metadata-agent.war WEB-INF/classes/application.properties&quot; &gt;&gt; package.bash
+echo &quot;sed -e \&quot;s|\&quot;${EXISTING_VERSION}\&quot;|\&quot;${VERSION}\&quot;|\&quot; -i &apos;&apos; META-INF/MANIFEST.MF&quot; &gt;&gt; package.bash
+echo &quot;sed -e \&quot;s|\&quot;${EXISTING_VERSION}\&quot;|\&quot;${VERSION}\&quot;|\&quot; -i &apos;&apos; WEB-INF/classes/application.properties&quot; &gt;&gt; package.bash
+echo &quot;jar uf ops-dce-metadata-agent.war META-INF/MANIFEST.MF&quot; &gt;&gt; package.bash
+echo &quot;jar uf ops-dce-metadata-agent.war WEB-INF/classes/application.properties&quot; &gt;&gt; package.bash
+echo &quot;jar umf META-INF/MANIFEST.MF ops-dce-metadata-agent.war&quot; &gt;&gt; package.bash
+echo &quot;jar umf WEB-INF/classes/application.properties ops-dce-metadata-agent.war&quot; &gt;&gt; package.bash
+echo &quot;cat META-INF/MANIFEST.MF&quot; &gt;&gt; package.bash
+echo &quot;cat WEB-INF/classes/application.properties&quot; &gt;&gt; package.bash
+echo &quot;rm -rf META-INF&quot; &gt;&gt; package.bash
+echo &quot;rm -rf WEB-INF&quot; &gt;&gt; package.bash
+echo &quot;cp ops-dce-metadata-agent.war ..&quot; &gt;&gt; package.bash
+chmod +x package.bash
+cp package.bash target</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+/opt/build/scripts/createRelease.sh ops-dce-metadata-agent ops-dce-metadata-agent br_1.0.0 ${BUILD_NUMBER}
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+export VERSION=&quot;1.0.0_${BUILD_NUMBER}&quot;
+export Component=&quot;ops-dce-metadata-agent&quot;; echo &quot;Component - $Component&quot;
+export DB_Rebuild=&quot;Yes&quot;; echo &quot;DB_Rebuild - $DB_Rebuild&quot;
+export Version=${VERSION}; echo &quot;Version - $Version&quot;
+export Clear_Logs=&quot;Yes&quot;; echo &quot;Clear_Logs - $Clear_Logs&quot;
+export DeployTarg=&quot;devint&quot;; echo &quot;DeployTarg - $DeployTarg&quot;
+export DeployUser=&quot;Jenkins&quot;; echo &quot;DeployUser = $DeployUser&quot;
+export BUILD_TAG
+
+echo &quot;&lt;b&gt;--- Deployment ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID} &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Deployment to $DeployTarg by $DeployUser &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;Component: &lt;/b&gt;$Component &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+cd /opt/build/scripts
+./Single_Component_Deploy.sh $Component $DB_Rebuild $Version $Clear_Logs $DeployTarg $BUILD_TAG $DeployUser
+
+
+echo &quot;&lt;b&gt;DB Rebuild: &lt;/b&gt;yes &lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;URL For Deploy output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;hr&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;p&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+mv /opt/build/scm/scripts/buildServer/log/devint.html /opt/build/scm/scripts/buildServer/log/devint.tmp
+cat /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log /opt/build/scm/scripts/buildServer/log/devint.tmp &gt; /opt/build/scm/scripts/buildServer/log/devint.html
+rm /opt/build/scm/scripts/buildServer/log/devint.tmp
+rm /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+VERSION=&quot;1.0.0_${BUILD_NUMBER}&quot;
+
+echo &quot;${VERSION}&quot; &gt; /var/www/html/devint/ops-dce-metadata-agent.txt
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+echo &quot;Resetting Grails Home to grails 2.0.4&quot;
+cd /opt/build/scm/scripts/buildServer/groovy/bin
+./setgrail204.sh</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.jira.JiraIssueUpdater plugin="jira@1.37"/>
+  </publishers>
+  <buildWrappers/>
+</project>

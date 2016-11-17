@@ -1,0 +1,40 @@
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi-relay</b><br><u>Version</u><b>&nbspr_4.0.0_195</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+CAAS Core - 4.0.0_182
+Metadata - Fixed common-lib logging problems; Fixed bug VODDAI-6373; new CAAS Core
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum4.xml.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>smsi-relay-client/src/main/resources/liquibase/dai-relay-4.0.0-changelog.xml
+smsi-relay-client/src/main/resources/liquibase/dai-relay-4.0.0/014-csd-change-purge.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_183</b></u><br>
+<pre>
+* <font color=blue>1ea6c2e</font>-<font color=green>(2014-10-14)</font><font color=black><b>Updated validation logger path</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_195)</font>
+* <font color=blue>3386e09</font>-<font color=green>(2014-10-14)</font><font color=black><b>updated test empty and watermarks</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_194)</font>
+* <font color=blue>699e33b</font>-<font color=green>(2014-10-14)</font><font color=black><b>From Craig - Updated validationLogger location</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>89485f5</font>-<font color=green>(2014-10-09)</font><font color=black><b>Updated log paths</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_193)</font>
+* <font color=blue>f205c31</font>-<font color=green>(2014-10-08)</font><font color=black><b>Repointed smsi-relay to look at 1.0.1 version of cucumber-app-mock-parent</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_192)</font>
+* <font color=blue>b847ecb</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log4j files for scrum environments</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_191)</font>
+* <font color=blue>a87ddc8</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>78d7238</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>ee9aafb</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated Relay to point at common lib for validation</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_190)</font>
+* <font color=blue>5fb99cc</font>-<font color=green>(2014-09-25)</font><font color=black><b>updated purge job tests to remove records with statuses > 0</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_189, tag: v_4.0.0_188)</font>
+* <font color=blue>d1f532c</font>-<font color=green>(2014-09-25)</font><font color=black><b>Updated purge to purge anything greater than 0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>73cb26a</font>-<font color=green>(2014-09-22)</font><font color=black><b>Test Changes For VODDAI - 6373</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_187)</font>
+* <font color=blue>0eff272</font>-<font color=green>(2014-09-22)</font><font color=black><b>Added ordering on select</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>82e097c</font>-<font color=green>(2014-09-22)</font><font color=black><b>Merge branch 'br_4.0.0.1' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>642e46a</font>-<font color=green>(2014-09-21)</font><font color=black><b>VODDAI-6373</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0.1_2, origin/br_4.0.0.1, br_4.0.0.1)</font>
+* <font color=blue>9119c0e</font>-<font color=green>(2014-09-19)</font><font color=black><b>new test for VODDAI-6373</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_186)</font>
+* <font color=blue>64f11c0</font>-<font color=green>(2014-09-19)</font><font color=black><b>updating watermarks changing a record marked as '0' to a '2'</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>0581dc1</font>-<font color=green>(2014-09-16)</font><font color=black><b>Added caas properties to relay</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_185)</font>
+* <font color=blue>de64f2c</font>-<font color=green>(2014-08-19)</font><font color=black><b>changes to support new CAAS core</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_184)</font></pre>
+<hr>
+<p>

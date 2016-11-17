@@ -1,0 +1,35 @@
+cd to /opt/build/scm/scripts/buildServer/properties/projects
+mkdir <repository name>
+
+Depending on the type of project, copy over a project.properties file from a similar project
+ - Grails app standalone - Campaign Mgr
+ - Grails app with DB - OSS Bar
+ - Maven app  - dai-cip-feedback
+ - Maven app with DB - dai-smsi-relay
+
+
+cd into the new direcotry, copy over the project.properties file and edit the following lines and leave the rest alone:
+
+
+  projectRoot="/opt/checkouts/ops-dt"
+
+   for Grails projects - build_args="grails clean -non-interactive,grails war -non-interactive"
+   for Maven projects  build_args=mvn clean install U  DskipTests
+
+build_package {
+    artifacts {
+        name {
+            bin="<the war file name"
+            config="where the config files for the project reside"
+	    db="<liquibase DB directory>"
+	    README="README.md"
+        }
+        location {
+            bin="$projectRoot/$commonTargetRoot/"
+            config="$projectRoot"
+            db="$projectRoot/$commonTargetRoot"
+	    README="$projectRoot"
+        }
+    }
+}
+This should get a package built and then we can customize later based on type of project

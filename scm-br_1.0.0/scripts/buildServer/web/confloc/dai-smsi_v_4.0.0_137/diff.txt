@@ -1,0 +1,104 @@
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
+index 98fb5b0..6329350 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
+index 98fb5b0..6329350 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
+index 98fb5b0..6329350 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
+index 98fb5b0..6329350 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
+index 98fb5b0..6329350 100755
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
+index 98fb5b0..6329350 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
+index 98fb5b0..6329350 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>
+diff --git a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
+index 98fb5b0..6329350 100644
+--- a/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
++++ b/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml
+@@ -47,7 +47,7 @@
+         <appender-ref ref="LATE_LOG"/>
+     </category>
+ 
+-    <category name="dai.core.util.ValidationLogger" additivity="false">
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
+         <priority value="WARN" />
+         <appender-ref ref="VALIDATION_LOG"/>
+     </category>

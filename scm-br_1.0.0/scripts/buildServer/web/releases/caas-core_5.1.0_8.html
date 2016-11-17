@@ -1,0 +1,26 @@
+<b><u>Component Release Info for Sprint JohnJacob:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_5.1.0_8</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Matt:
+
+CAAS Core 5.1.0_8
+Save routine fix for PCI 5.0.0_23
+Product category rogue spaces fix for MDIngester
+Metadata 5.0.0_12: No version change – tested against new CAAS Core.
+CIP 5.0.0_21: No version change – tested against new CAAS Core.
+ACP 5.0.0_22: No version change – tested against new CAAS Core.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>model/src/main/liquibase/cisys/dropUser.sql
+model/src/main/liquibase/cisys/genUser.sql
+model/src/main/liquibase/core-4.0.0/051-dad-trim_product_category.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>5.0.0_11</b></u><br>
+<pre>
+* <font color=blue>d2d8070</font>-<font color=green>(2015-05-20)</font><font color=black><b>VODDAI-7527 Trim spaces from existing product category data.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.1.0_8)</font>
+* <font color=blue>58285cc</font>-<font color=green>(2015-05-13)</font><font color=black><b>VODDAI-7522 Changed update of Item and Campaign into single transaction</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_5.1.0_7, tag: v_5.1.0_6, tag: v_5.1.0_5, tag: v_5.1.0_4, tag: v_5.1.0_3, tag: v_5.1.0_2)</font>
+* <font color=blue>3a39a70</font>-<font color=green>(2015-05-06)</font><font color=black><b>Fixed to work with hibernate 4.3.9</b></font><font color=grey>- (kennethleider)</font><font color=red> (HEAD, tag: v_5.1.0_1, origin/br_5.0.0, br_5.0.0)</font>
+* <font color=blue>632ae7f</font>-<font color=green>(2015-04-16)</font><font color=black><b>Changing the Scrum-only flashback maintenance from dropping the flashback to only ensuring the archive exists so the shared nature of the archive won't prevent access by other Scrum CAAS users</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+* <font color=blue>9b4cd62</font>-<font color=green>(2015-04-16)</font><font color=black><b>Update genUser.sql</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red></font>
+* <font color=blue>4a578e7</font>-<font color=green>(2015-04-14)</font><font color=black><b>Updated link</b></font><font color=grey>- (jwwood87)</font><font color=red></font></pre>
+<hr>
+<p>

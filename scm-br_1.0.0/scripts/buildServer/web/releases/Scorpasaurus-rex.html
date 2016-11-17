@@ -1,0 +1,395 @@
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.0.0_182</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Changes since prod (4.0.0_180): Migration script will remove the campaign name from FW CampOrder values.
+
+MUST be released with PCI 4.0.0_259</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_181</b></u><br>
+<pre>
+* <font color=blue>b48697c</font>-<font color=green>(2014-09-30)</font><font color=black><b>Clarification on errors encountered rebuilding the CAAS schema.</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_182)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-cm</b><br><u>Version</u><b>&nbspr_4.6.0_8</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+CAAS Core - 4.0.0_182
+Metadata – Bug fix for Campaign Search when filtering with the “&” character
+New Properties – None
+Note: there is a new branch of Campaign Manager that is CAAS-decoupled: br_5.0.0—coordinating with Performance Team to have that evaluated next sprint
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.5.0_8</b></u><br>
+<pre>
+* <font color=blue>595aa58</font>-<font color=green>(2014-10-09)</font><font color=black><b>small feature changes</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_4.6.0_8, origin/br_4.6.0, br_4.6.0)</font>
+* <font color=blue>d650277</font>-<font color=green>(2014-10-09)</font><font color=black><b>Reduce brittleness</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>abf452b</font>-<font color=green>(2014-10-08)</font><font color=black><b>Fixed issue with not being able to remove a product category exclusion.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_4.6.0_7)</font>
+* <font color=blue>6c75c5f</font>-<font color=green>(2014-10-07)</font><font color=black><b>update readme with 4.x.x crowd reqs</b></font><font color=grey>- (Brian Emil Hartz)</font><font color=red> (tag: v_4.6.0_6)</font>
+* <font color=blue>8a1ac83</font>-<font color=green>(2014-10-03)</font><font color=black><b>Removed unnecessary scenario from SmokeTest</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_4.6.0_5)</font>
+*   <font color=blue>ef594b1</font>-<font color=green>(2014-10-02)</font><font color=black><b>Merge branch 'br_4.6.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.6.0</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_4.6.0_4)</font>
+|\  
+| * <font color=blue>8104b82</font>-<font color=green>(2014-10-02)</font><font color=black><b>update campaign and adasset searches to search for &'s</b></font><font color=grey>- (Brian Hartz)</font><font color=red></font>
+* | <font color=blue>6dd7c76</font>-<font color=green>(2014-10-02)</font><font color=black><b>permissions features</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+* |   <font color=blue>3319ac7</font>-<font color=green>(2014-10-02)</font><font color=black><b>Merge branch 'br_4.6.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-cm into br_4.6.0</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|\ \  
+| |/  
+| * <font color=blue>efa60fb</font>-<font color=green>(2014-09-30)</font><font color=black><b>Regression updates</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_4.6.0_3)</font>
+* | <font color=blue>eccd95a</font>-<font color=green>(2014-10-01)</font><font color=black><b>working on wireframes for test cases for network permission crap</b></font><font color=grey>- (jmhassell)</font><font color=red></font>
+|/  
+*   <font color=blue>d0e647a</font>-<font color=green>(2014-09-29)</font><font color=black><b>Merge branch 'br_4.5.0' into br_4.6.0</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_4.6.0_2)</font>
+|\  
+| * <font color=blue>e2b440a</font>-<font color=green>(2014-09-29)</font><font color=black><b>minor feature changes</b></font><font color=grey>- (jmhassell)</font><font color=red> (tag: v_4.5.0_10, origin/br_4.5.0, br_4.5.0)</font>
+* | <font color=blue>77f5eb9</font>-<font color=green>(2014-09-26)</font><font color=black><b>Added Blank Test to have successful SmokeTest</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>463daa8</font>-<font color=green>(2014-09-26)</font><font color=black><b>Added Programmer user to Smoke; modified Smoke for Description Col</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>1b6b80f</font>-<font color=green>(2014-09-26)</font><font color=black><b>Added tests for network display of (HD, SD) and (HD)</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* | <font color=blue>dfde92c</font>-<font color=green>(2014-09-26)</font><font color=black><b>Added steps for Sprint S feature; added id</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+|/  
+* <font color=blue>3dae639</font>-<font color=green>(2014-09-25)</font><font color=black><b>Added FlightWindowValidation to regression; reworded checks</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_4.6.0_1, tag: v_4.5.0_9)</font>
+* <font color=blue>2d0df43</font>-<font color=green>(2014-09-25)</font><font color=black><b>Removed brittleness 'waitFor' code</b></font><font color=grey>- (jwwood87)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-cip</b><br><u>Version</u><b>&nbspr_4.0.0_267</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>None provided</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_258</b></u><br>
+<pre>
+* <font color=blue>10582ca</font>-<font color=green>(2014-10-08)</font><font color=black><b>Fixed JAVA_HOME in setenv.sh and launcher.sh</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_267)</font>
+* <font color=blue>80fcffc</font>-<font color=green>(2014-10-07)</font><font color=black><b>Fix for null CipRevision again</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_266)</font>
+* <font color=blue>9244073</font>-<font color=green>(2014-10-07)</font><font color=black><b>Fix for null CipRevision</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_265)</font>
+* <font color=blue>28a2b0d</font>-<font color=green>(2014-10-06)</font><font color=black><b>testCampaignItemRanker disable</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_264)</font>
+* <font color=blue>070d1c0</font>-<font color=green>(2014-10-03)</font><font color=black><b>integration-test are no longer blocking delivery.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_263)</font>
+* <font color=blue>f12e5f1</font>-<font color=green>(2014-10-03)</font><font color=black><b>Fix test data</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>0a8cc3c</font>-<font color=green>(2014-10-03)</font><font color=black><b>Fix call to calculatePriority</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>adda4b7</font>-<font color=green>(2014-10-03)</font><font color=black><b>Add debug for cache size</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_262)</font>
+* <font color=blue>246ef6f</font>-<font color=green>(2014-10-03)</font><font color=black><b>Added test for 6456 fixed the goalAllocation feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>1117fcb</font>-<font color=green>(2014-10-02)</font><font color=black><b>VODDAI-6456 Don't change priority on non-canoe CIPs for inactive CIPs</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_261)</font>
+* <font color=blue>7e56f74</font>-<font color=green>(2014-10-02)</font><font color=black><b>Batch and Immediate can now run at the same time again!</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>54ce73b</font>-<font color=green>(2014-10-02)</font><font color=black><b>comment clean up</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>a555408</font>-<font color=green>(2014-10-02)</font><font color=black><b>VODDAI-4382 Don't send cip if revision out of order</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>cac7dbb</font>-<font color=green>(2014-10-02)</font><font color=black><b>VODDAI-4381 Don't overwrite updated fields in safe save</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* <font color=blue>a02aff2</font>-<font color=green>(2014-09-30)</font><font color=black><b>Changed priorityData2 to have all campaigns and campItems to end in the future. Changed goalOverride at 100hrs to end in future. FWintegration test changed childBundle recState to pse because of an ingested recState of pse</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_260)</font>
+* <font color=blue>c857fcc</font>-<font color=green>(2014-09-23)</font><font color=black><b>Added more performance messages</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_259)</font>
+* <font color=blue>2659731</font>-<font color=green>(2014-09-23)</font><font color=black><b>Added performance messages</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspPgmr-Cpgn-Int</b><br><u>Version</u><b>&nbspr_4.0.0_259</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+Changes since prod (4.0.0_256): Will interpret/persist numeric portion of FW CampOrder ONLY (not the name portion).
+
+MUST be deployed with CAAS-Core 4.0.0_182</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_249</b></u><br>
+<pre>
+* <font color=blue>6ddd279</font>-<font color=green>(2014-09-29)</font><font color=black><b>VODDAI-6356 fix for handling of "|"</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_259)</font>
+*   <font color=blue>fe75a63</font>-<font color=green>(2014-09-29)</font><font color=black><b>Made test in persistCampInfo more explicit. fixed test for 6356 in createGuid feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|\  
+| * <font color=blue>5a868a4</font>-<font color=green>(2014-09-29)</font><font color=black><b>VODDAI-6356 fix on campaignOrderOwner</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_258)</font>
+| * <font color=blue>d64ac29</font>-<font color=green>(2014-09-29)</font><font color=black><b>VODDAI-6356 fix on campaignOrderOwner</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>b0d52a6</font>-<font color=green>(2014-09-29)</font><font color=black><b>VODDAI-6356 use only up to pipe for campaignOrder</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_257)</font>
+* | <font color=blue>c4296f3</font>-<font color=green>(2014-09-29)</font><font color=black><b>Made test in persistCampInfo more explicit. fixed test for 6356 in createGuid feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>706d752</font>-<font color=green>(2014-09-29)</font><font color=black><b>Updated createGuid 6356 feature with prod formatted campOrder</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>1df9067</font>-<font color=green>(2014-09-29)</font><font color=black><b>Changed test name in persistCampInfo feature. Updated 6356 test</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>ae02077</font>-<font color=green>(2014-09-29)</font><font color=black><b>Added test for 6356 in createGuid feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* <font color=blue>78782c1</font>-<font color=green>(2014-09-26)</font><font color=black><b>VODDAI-6426 Set Campaign Item Media Asset enable flag based on incoming recState from Child Bundle</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_256)</font>
+*   <font color=blue>5eaeb9c</font>-<font color=green>(2014-09-26)</font><font color=black><b>Changed multiCIPvendor scenario name and removed header from google xml</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_255)</font>
+|\  
+| * <font color=blue>f005f44</font>-<font color=green>(2014-09-25)</font><font color=black><b>Revert "VODDAI-6329 Use @Action annotation for Update Notice messages"</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_254)</font>
+| * <font color=blue>3400eef</font>-<font color=green>(2014-09-25)</font><font color=black><b>Revert "VODDAI-6329 Use @Action annotation for Update Notice messages"</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>5243c93</font>-<font color=green>(2014-09-26)</font><font color=black><b>Changed multiCIPvendor scenario name and removed header from google xml</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>ae34d9d</font>-<font color=green>(2014-09-26)</font><font color=black><b>Updated PCC category numbers, added campItemFeed enabled column</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+*   <font color=blue>901a65e</font>-<font color=green>(2014-09-18)</font><font color=black><b>Improved 6313 6315 test in multiProvider feature</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_253, tag: v_4.0.0_252)</font>
+|\  
+| * <font color=blue>5462d42</font>-<font color=green>(2014-09-17)</font><font color=black><b>VODDAI-6313, VODDAI-6315 PCI enabled flag for campaignItemFeed</b></font><font color=grey>- (Daniel Davies)</font><font color=red> (tag: v_4.0.0_251)</font>
+| * <font color=blue>2aca8dd</font>-<font color=green>(2014-09-17)</font><font color=black><b>VODDAI-6329 Use @Action annotation for Update Notice messages remove must understand interceptor</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+| * <font color=blue>f608de4</font>-<font color=green>(2014-09-17)</font><font color=black><b>VODDAI-6329 Use @Action annotation for Update Notice messages</b></font><font color=grey>- (Daniel Davies)</font><font color=red></font>
+* | <font color=blue>b8c96de</font>-<font color=green>(2014-09-18)</font><font color=black><b>Improved 6313 6315 test in multiProvider feature</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+* | <font color=blue>fad475d</font>-<font color=green>(2014-09-15)</font><font color=black><b>Modified test for 6313</b></font><font color=grey>- (Matt Major)</font><font color=red></font>
+|/  
+* <font color=blue>89a49f7</font>-<font color=green>(2014-09-15)</font><font color=black><b>One test issue for PCC, grabbed different PCC code than expected, fully pass functionality. Added test for 6313 sprint S. Added bad namespace test for freqCapping</b></font><font color=grey>- (Matt Major)</font><font color=red> (tag: v_4.0.0_250)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspmetadata-publisher</b><br><u>Version</u><b>&nbspr_4.0.0_60</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+CAAS Core - 4.0.0_182
+Metadata – None--Successful full regression test
+New Properties – None
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_58</b></u><br>
+<pre>
+* <font color=blue>56c58bb</font>-<font color=green>(2014-10-10)</font><font color=black><b>Wired mdl to new mock-server</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (HEAD, tag: v_4.0.0_60, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>3a30879</font>-<font color=green>(2014-10-10)</font><font color=black><b>Fixed dataset; test-empty table added; scenario renumber</b></font><font color=grey>- (jwwood87)</font><font color=red></font>
+* <font color=blue>da41319</font>-<font color=green>(2014-09-16)</font><font color=black><b>Testcase refactor</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_4.0.0_59)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-etl-feeder</b><br><u>Version</u><b>&nbspr_4.0.0.1_4</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Noel:
+
+branch build of feeder that includes more attributes for ad hoc reporting and also manual Inventory Insight Reporting.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- DB chgs<pre>src/main/resources/liquibase/dai-ods-4.0.5-changelog.xml
+src/main/resources/liquibase/dai-ods-4.0.5/019-yliu-add-attributes.xml
+src/main/resources/liquibase/dai-ods-4.0.5/020-yliu-manual-iir.xml
+src/main/resources/liquibase/dai-ods-4.0.5/021-yliu-disable-parallel-dml.xml
+src/main/resources/liquibase/dai-ods-4.0.5/022-yliu-change-ent-desc.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_251</b></u><br>
+<pre>
+* <font color=blue>70a39f8</font>-<font color=green>(2014-10-14)</font><font color=black><b>fixed the ON_TIME logic, again.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0.1_4, br_4.0.0.1)</font>
+* <font color=blue>6d0c4ea</font>-<font color=green>(2014-10-14)</font><font color=black><b>on time for placement added.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0.1_3)</font>
+* <font color=blue>7aaec5d</font>-<font color=green>(2014-10-14)</font><font color=black><b>restored ent_asset_desc to include provider.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0.1_2)</font>
+* <font color=blue>abe90d4</font>-<font color=green>(2014-10-10)</font><font color=black><b>manual IIR.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0.1_1)</font>
+* <font color=blue>e3001e3</font>-<font color=green>(2014-10-07)</font><font color=black><b>VODDAI-5667. refactor reference tables.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>4fdbab7</font>-<font color=green>(2014-10-06)</font><font color=black><b>VODDAI-6429. added attributes for ent assets.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>62e6c98</font>-<font color=green>(2014-10-06)</font><font color=black><b>VODDAI-6429. added attributes for ent assets.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>82f21a0</font>-<font color=green>(2014-10-06)</font><font color=black><b>Revert "VODDAI-6429. add attributes for ent asset."</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>27c87de</font>-<font color=green>(2014-10-06)</font><font color=black><b>VODDAI-6429. add attributes for ent asset.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>6ec142a</font>-<font color=green>(2014-10-01)</font><font color=black><b>Adding test modifications for Inventory Insight Reporting. VODDAI-5667, VODDAI-6428</b></font><font color=grey>- (Noel Garza)</font><font color=red> (tag: v_4.0.0_253, tag: v_4.0.0_252)</font>
+* <font color=blue>ed988d1</font>-<font color=green>(2014-09-29)</font><font color=black><b>added release notes for build 248.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspMicroDev</b><br><u>Version</u><b>&nbspr_4.0.0_186</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Noel:
+
+branch build that includes more attributes for ad hoc reporting and a defect fix for the date filter in reports.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_182</b></u><br>
+<pre>
+* <font color=blue>8f140f1</font>-<font color=green>(2014-10-13)</font><font color=black><b>added view filter to ent reports so they don't show -</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_186)</font>
+* <font color=blue>ac8737c</font>-<font color=green>(2014-10-13)</font><font color=black><b>added threshold to make 0 appear to be -</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_185)</font>
+* <font color=blue>731927c</font>-<font color=green>(2014-10-10)</font><font color=black><b>production support add ent attributes. plus fix for the campaign_item_start and end dates.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_184)</font>
+* <font color=blue>b9699e0</font>-<font color=green>(2014-10-09)</font><font color=black><b>bug fix for reports. The date filters should carry timestamp.</b></font><font color=grey>- (Yong Liu)</font><font color=red> (tag: v_4.0.0_183)</font>
+* <font color=blue>bc4e565</font>-<font color=green>(2014-09-29)</font><font color=black><b>deployment notes for 177.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi</b><br><u>Version</u><b>&nbspr_4.0.0_137</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+CAAS Core - 4.0.0_182
+ETL/Report DB - 4.0.0_248
+Relay DB - 4.0.0_195
+Metadata - Fixed common-lib logging problems; fixed VODDAI-6511 (null deviceID persistence); new CAAS Core
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_4.0.0_137/diff.txt>dai-smsi_v_4.0.0_137/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_4.0.0_137/diff.txt>dai-smsi_v_4.0.0_137/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_4.0.0_137/diff.txt>dai-smsi_v_4.0.0_137/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi_v_4.0.0_137/diff.txt>dai-smsi_v_4.0.0_137/safi-smsi-server/src/main/resources/env_configs/smsi-log4j-dev.scrum4.xml.txt</a><br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_126</b></u><br>
+<pre>
+* <font color=blue>45baf4e</font>-<font color=green>(2014-10-10)</font><font color=black><b>VODDAI-6511 Added better null handling</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (HEAD, tag: v_4.0.0_138, tag: v_4.0.0_137, tag: v_4.0.0_136, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font>
+* <font color=blue>d3c3479</font>-<font color=green>(2014-10-09)</font><font color=black><b>updating watermark removing craig's tag</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_135)</font>
+* <font color=blue>6f7bb46</font>-<font color=green>(2014-10-09)</font><font color=black><b>Fixed port to point to where cucumber is deploying</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>705f3be</font>-<font color=green>(2014-10-09)</font><font color=black><b>Updated log paths</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>9b6d208</font>-<font color=green>(2014-10-08)</font><font color=black><b>Repointed pom to 1.0.1 version of cucumber-app-mock-parent</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_134)</font>
+* <font color=blue>8211e4a</font>-<font color=green>(2014-10-07)</font><font color=black><b>Fixed log path</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_133)</font>
+* <font color=blue>a7dd197</font>-<font color=green>(2014-10-06)</font><font color=black><b>Fixed log4j path</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_132)</font>
+* <font color=blue>6076cb4</font>-<font color=green>(2014-10-06)</font><font color=black><b>Rewired to common-lib</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>fe7f5cc</font>-<font color=green>(2014-10-06)</font><font color=black><b>Removed unused cons folder</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>9dde9ff</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log4j files</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_131)</font>
+* <font color=blue>fffeb52</font>-<font color=green>(2014-10-06)</font><font color=black><b>Moved Validation Exception to the common lib reference</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>2ed49cb</font>-<font color=green>(2014-10-03)</font><font color=black><b>Pointed errorCode to common-lib</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_130)</font>
+* <font color=blue>2df6882</font>-<font color=green>(2014-09-30)</font><font color=black><b>Modernized cucumber</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>55252d5</font>-<font color=green>(2014-09-22)</font><font color=black><b>added new TWC hhID to persistence test</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_128)</font>
+* <font color=blue>13a4c51</font>-<font color=green>(2014-09-11)</font><font color=black><b>added refresh cache line...changed properties for scrum4 profile</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_127)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi-relay</b><br><u>Version</u><b>&nbspr_4.0.0_195</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+CAAS Core - 4.0.0_182
+Metadata - Fixed common-lib logging problems; Fixed bug VODDAI-6373; new CAAS Core
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum4.xml.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>smsi-relay-client/src/main/resources/liquibase/dai-relay-4.0.0-changelog.xml
+smsi-relay-client/src/main/resources/liquibase/dai-relay-4.0.0/014-csd-change-purge.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_183</b></u><br>
+<pre>
+* <font color=blue>1ea6c2e</font>-<font color=green>(2014-10-14)</font><font color=black><b>Updated validation logger path</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_195)</font>
+* <font color=blue>3386e09</font>-<font color=green>(2014-10-14)</font><font color=black><b>updated test empty and watermarks</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_194)</font>
+* <font color=blue>699e33b</font>-<font color=green>(2014-10-14)</font><font color=black><b>From Craig - Updated validationLogger location</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>89485f5</font>-<font color=green>(2014-10-09)</font><font color=black><b>Updated log paths</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_193)</font>
+* <font color=blue>f205c31</font>-<font color=green>(2014-10-08)</font><font color=black><b>Repointed smsi-relay to look at 1.0.1 version of cucumber-app-mock-parent</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_192)</font>
+* <font color=blue>b847ecb</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log4j files for scrum environments</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_191)</font>
+* <font color=blue>a87ddc8</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>78d7238</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>ee9aafb</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated Relay to point at common lib for validation</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_190)</font>
+* <font color=blue>5fb99cc</font>-<font color=green>(2014-09-25)</font><font color=black><b>updated purge job tests to remove records with statuses > 0</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_189, tag: v_4.0.0_188)</font>
+* <font color=blue>d1f532c</font>-<font color=green>(2014-09-25)</font><font color=black><b>Updated purge to purge anything greater than 0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>73cb26a</font>-<font color=green>(2014-09-22)</font><font color=black><b>Test Changes For VODDAI - 6373</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_187)</font>
+* <font color=blue>0eff272</font>-<font color=green>(2014-09-22)</font><font color=black><b>Added ordering on select</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>82e097c</font>-<font color=green>(2014-09-22)</font><font color=black><b>Merge branch 'br_4.0.0.1' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>642e46a</font>-<font color=green>(2014-09-21)</font><font color=black><b>VODDAI-6373</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0.1_2, origin/br_4.0.0.1, br_4.0.0.1)</font>
+* <font color=blue>9119c0e</font>-<font color=green>(2014-09-19)</font><font color=black><b>new test for VODDAI-6373</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_186)</font>
+* <font color=blue>64f11c0</font>-<font color=green>(2014-09-19)</font><font color=black><b>updating watermarks changing a record marked as '0' to a '2'</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>0581dc1</font>-<font color=green>(2014-09-16)</font><font color=black><b>Added caas properties to relay</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_185)</font>
+* <font color=blue>de64f2c</font>-<font color=green>(2014-08-19)</font><font color=black><b>changes to support new CAAS core</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_184)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi-relay</b><br><u>Version</u><b>&nbspr_4.0.0_195</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+CAAS Core - 4.0.0_182
+Metadata - Fixed common-lib logging problems; Fixed bug VODDAI-6373; new CAAS Core
+</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum1.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum2.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum3.xml.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_195/diff.txt>dai-smsi-relay_v_4.0.0_195/config/log4j.scrum4.xml.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>smsi-relay-client/src/main/resources/liquibase/dai-relay-4.0.0-changelog.xml
+smsi-relay-client/src/main/resources/liquibase/dai-relay-4.0.0/014-csd-change-purge.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_183</b></u><br>
+<pre>
+* <font color=blue>1ea6c2e</font>-<font color=green>(2014-10-14)</font><font color=black><b>Updated validation logger path</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_195)</font>
+* <font color=blue>3386e09</font>-<font color=green>(2014-10-14)</font><font color=black><b>updated test empty and watermarks</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_194)</font>
+* <font color=blue>699e33b</font>-<font color=green>(2014-10-14)</font><font color=black><b>From Craig - Updated validationLogger location</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>89485f5</font>-<font color=green>(2014-10-09)</font><font color=black><b>Updated log paths</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_193)</font>
+* <font color=blue>f205c31</font>-<font color=green>(2014-10-08)</font><font color=black><b>Repointed smsi-relay to look at 1.0.1 version of cucumber-app-mock-parent</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_192)</font>
+* <font color=blue>b847ecb</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log4j files for scrum environments</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_191)</font>
+* <font color=blue>a87ddc8</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log4j</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>78d7238</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated log file</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>ee9aafb</font>-<font color=green>(2014-10-06)</font><font color=black><b>Updated Relay to point at common lib for validation</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_190)</font>
+* <font color=blue>5fb99cc</font>-<font color=green>(2014-09-25)</font><font color=black><b>updated purge job tests to remove records with statuses > 0</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_189, tag: v_4.0.0_188)</font>
+* <font color=blue>d1f532c</font>-<font color=green>(2014-09-25)</font><font color=black><b>Updated purge to purge anything greater than 0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>73cb26a</font>-<font color=green>(2014-09-22)</font><font color=black><b>Test Changes For VODDAI - 6373</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_187)</font>
+* <font color=blue>0eff272</font>-<font color=green>(2014-09-22)</font><font color=black><b>Added ordering on select</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>82e097c</font>-<font color=green>(2014-09-22)</font><font color=black><b>Merge branch 'br_4.0.0.1' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>642e46a</font>-<font color=green>(2014-09-21)</font><font color=black><b>VODDAI-6373</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0.1_2, origin/br_4.0.0.1, br_4.0.0.1)</font>
+* <font color=blue>9119c0e</font>-<font color=green>(2014-09-19)</font><font color=black><b>new test for VODDAI-6373</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_186)</font>
+* <font color=blue>64f11c0</font>-<font color=green>(2014-09-19)</font><font color=black><b>updating watermarks changing a record marked as '0' to a '2'</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>0581dc1</font>-<font color=green>(2014-09-16)</font><font color=black><b>Added caas properties to relay</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_185)</font>
+* <font color=blue>de64f2c</font>-<font color=green>(2014-08-19)</font><font color=black><b>changes to support new CAAS core</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_184)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspads-core</b><br><u>Version</u><b>&nbspr_4.0.0_119</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>julie:
+
+ADS Core - 4.0.0_119
+SMSi Pub DB - 4.0.0_283
+Metadata - Implemented OTRS feature enhancement VODDAI-6435 to support large asset status messages from Comcast, pom.xml changes for common lib, Fixed VODDAI-6532 Authorization Header added to CISNotificationRegistrationRequest and CISNotificationDeregisterRequest
+New Properties – None
+**Sprint Lean – This version is pending functional regression testing. Should be complete by today (10/15/14)
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_118</b></u><br>
+<pre>
+* <font color=blue>ab7b1a6</font>-<font color=green>(2014-10-03)</font><font color=black><b>Updated read to break down asset list size into batches of 1000 elements</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (HEAD, tag: v_4.0.0_119, origin/br_4.0.0, origin/HEAD, br_4.0.0)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_463</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>julie:
+
+ADS Core - 4.0.0_119
+SMSi Pub DB - 4.0.0_283
+Metadata - Implemented OTRS feature enhancement VODDAI-6435 to support large asset status messages from Comcast, pom.xml changes for common lib, Fixed VODDAI-6532 Authorization Header added to CISNotificationRegistrationRequest and CISNotificationDeregisterRequest
+New Properties – None
+**Sprint Lean – This version is pending functional regression testing. Should be complete by today (10/15/14)
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_454</b></u><br>
+<pre>
+* <font color=blue>42a289f</font>-<font color=green>(2014-10-15)</font><font color=black><b>changes to BCL for Authorization Header added to CISNotificationDeregisterRequest</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (tag: v_4.0.0_463)</font>
+* <font color=blue>027af24</font>-<font color=green>(2014-10-15)</font><font color=black><b>Added Auth call to Deregistration request</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+* <font color=blue>1fe9ad4</font>-<font color=green>(2014-10-15)</font><font color=black><b>updated BCL to include bug fix VODDAI-6532</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (tag: v_4.0.0_462)</font>
+*   <font color=blue>a96859f</font>-<font color=green>(2014-10-14)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_461)</font>
+|\  
+| * <font color=blue>72a5118</font>-<font color=green>(2014-10-14)</font><font color=black><b>regression test changes</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>d0999dd</font>-<font color=green>(2014-10-13)</font><font color=black><b>BCL for 10/14 Sprint Scorpasaurus-Rex</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (tag: v_4.0.0_460)</font>
+* | <font color=blue>d51317c</font>-<font color=green>(2014-10-14)</font><font color=black><b>Interim checkin to add authorization to CISNotification</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|/  
+* <font color=blue>577361a</font>-<font color=green>(2014-10-09)</font><font color=black><b>Updated pom to point to new mock-parent</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_459)</font>
+* <font color=blue>bae5af0</font>-<font color=green>(2014-10-02)</font><font color=black><b>Frequency cap purge test created</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_458)</font>
+* <font color=blue>10b9198</font>-<font color=green>(2014-10-01)</font><font color=black><b>frequency capping purge check</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_457)</font>
+* <font color=blue>8ce948f</font>-<font color=green>(2014-09-30)</font><font color=black><b>Added PSA operation to wsdl</b></font><font color=grey>- (dehmlowm)</font><font color=red> (tag: v_4.0.0_456)</font>
+* <font color=blue>c5343ab</font>-<font color=green>(2014-09-29)</font><font color=black><b>removing random developer tags</b></font><font color=grey>- (T-Sam23)</font><font color=red> (tag: v_4.0.0_455)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_4.0.0_283</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi:
+
+
+Fix for VODDAI-6509: no longer assigns negative lot numbers.</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_281</b></u><br>
+<pre>
+* <font color=blue>5b3920d</font>-<font color=green>(2014-10-13)</font><font color=black><b>lot numbers can no longer be negative.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_283)</font>
+* <font color=blue>b8699cd</font>-<font color=green>(2014-09-30)</font><font color=black><b>Added unit test for updatePresentations</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_282)</font></pre>
+<hr>
+<p>
+<b><u>Component Release Info for Sprint Scorpasaurus-rex:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-national-cis</b><br><u>Version</u><b>&nbspr_4.0.0_101</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>John:
+
+NCIS - 4.0.0_101
+CAAS Core - 4.0.0_182
+Metadata – None--Successful full regression test
+New Properties – None</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_99</b></u><br>
+<pre>
+* <font color=blue>11ed2ac</font>-<font color=green>(2014-10-10)</font><font color=black><b>Repointed to newest cucumber-app-mock-parent</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (tag: v_4.0.0_101)</font>
+* <font color=blue>7279ad8</font>-<font color=green>(2014-09-17)</font><font color=black><b>Updated post-regression note</b></font><font color=grey>- (jwwood87)</font><font color=red> (tag: v_4.0.0_100)</font></pre>
+<hr>
+<p>

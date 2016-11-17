@@ -1,0 +1,44 @@
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+index 03e93a9..84ac536 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum1.properties
+@@ -120,4 +120,4 @@ cis.batchsave.size=1000
+ 
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.115:9571
+\ No newline at end of file
++frequency.cap.url=10.13.18.115:13654
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+index c44e812..00324aa 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum2.properties
+@@ -120,4 +120,4 @@ cis.batchsave.size=1000
+ 
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.115:9571
+\ No newline at end of file
++frequency.cap.url=10.13.18.115:13654
+\ No newline at end of file
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+index 7d50b2a..aa7ed45 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum3.properties
+@@ -120,4 +120,4 @@ cis.batchsave.size=1000
+ 
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.117:9571
++frequency.cap.url=10.13.18.117:13654
+diff --git a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+index 70e4616..438ab21 100644
+--- a/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
++++ b/dai-interfaces/ads/src/main/resources/config/ads-env-application.scrum4.properties
+@@ -121,4 +121,4 @@ cis.batchsave.size=1000
+ 
+ frequency.cap.wait=10
+ frequency.cap=true
+-frequency.cap.url=10.13.18.122:9571
++frequency.cap.url=10.13.18.122:13654

@@ -1,0 +1,130 @@
+diff --git a/publisher/src/main/resources/config/mdp-env-application.scrum1.properties b/publisher/src/main/resources/config/mdp-env-application.scrum1.properties
+index f0256c5..4a45a10 100644
+--- a/publisher/src/main/resources/config/mdp-env-application.scrum1.properties
++++ b/publisher/src/main/resources/config/mdp-env-application.scrum1.properties
+@@ -16,6 +16,10 @@ mdp.contentQueryRef=CAASMetadataUpdate
+ metadata.publisher.url=http://10.13.18.115:9535/int-test-support/NCIS-Mock
+ metadata.publish.interval=0 0/15 * * * ?
+ 
++maxTransmission.size=500
++maxRetransmit.time=0
++retryInterval=0
++
+ 
+ 
+ 
+diff --git a/publisher/src/main/resources/config/mdp-env-application.scrum4.properties b/publisher/src/main/resources/config/mdp-env-application.scrum4.properties
+new file mode 100644
+index 0000000..0e5494a
+--- /dev/null
++++ b/publisher/src/main/resources/config/mdp-env-application.scrum4.properties
+@@ -0,0 +1,28 @@
++db.master.url=jdbc:oracle:thin:@10.13.18.61:1522:scrum004
++db.username=SC4_CAAS
++db.password=SC4_CAAS
++
++# Defaults pool sizes are based on max oracle XE can handle, production should be much more
++db.pool.initialSize=50
++db.pool.size=300
++db.test.idle=60
++db.max.idle=1800
++db.checkout.timeout=2000
++
++mdp.identity=CAASMetadata
++mdp.contentQueryRef=CAASMetadataUpdate
++
++
++metadata.publisher.url=http://10.13.18.122:9535/int-test-support/NCIS-Mock
++metadata.publish.interval=0 0/15 * * * ?
++
++maxTransmission.size=4
++maxRetransmit.time=2
++retryInterval=2
++
++
++
++
++
++
++
+diff --git a/publisher/src/main/resources/config/mdp-log4j.scrum4.xml b/publisher/src/main/resources/config/mdp-log4j.scrum4.xml
+new file mode 100644
+index 0000000..82e2568
+--- /dev/null
++++ b/publisher/src/main/resources/config/mdp-log4j.scrum4.xml
+@@ -0,0 +1,75 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
++
++<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
++
++    <appender name="console" class="org.apache.log4j.ConsoleAppender">
++        <param name="Target" value="System.out"/>
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%x %d{yyyy-MM-dd HH:mm:ss} [%t] %c:%L - %m%n"/>
++        </layout>
++    </appender>
++
++    <appender name="logfile" class="org.apache.log4j.FileAppender">
++        <param name="File" value="/opt/tcserver/instances/metadata-publisher/logs/mdp-error.log"/>
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %5p (%c:%L) - %m%n" />
++        </layout>
++    </appender>
++
++    <appender name="VALIDATION_LOG" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/metadata-publisher/logs/validation.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <appender name="REQUEST_RESPONSE" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="/opt/tcserver/instances/metadata-publisher/logs/request-response.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++
++    <category name="com.canoeventures.common.util.ValidationLogger" additivity="false">
++        <priority value="WARN" />
++        <appender-ref ref="VALIDATION_LOG"/>
++    </category>
++
++    <category name="org.apache.cxf.interceptor.LoggingInInterceptor" additivity="false">
++        <priority value="TRACE" />
++        <appender-ref ref="REQUEST_RESPONSE"/>
++    </category>
++
++    <category name="org.apache.cxf.interceptor.LoggingOutInterceptor" additivity="false">
++        <priority value="TRACE" />
++        <appender-ref ref="REQUEST_RESPONSE"/>
++    </category>
++
++    <root>
++        <level value="INFO" />
++        <appender-ref ref="console" />
++        <appender-ref ref="logfile" />
++    </root>
++
++    <appender name="COMMON_SERVICE" class="org.apache.log4j.DailyRollingFileAppender">
++        <param name="file"   value="target/mdp-logs/service.log" />
++        <param name="append" value="true" />
++        <layout class="org.apache.log4j.PatternLayout">
++            <param name="ConversionPattern" value="%m%n"/>
++        </layout>
++    </appender>
++
++    <category name="dai.de.service.ServiceLogger" additivity="false">
++        <priority value="INFO" />
++        <appender-ref ref="COMMON_SERVICE"/>
++    </category>
++
++
++
++</log4j:configuration>
++

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "log4j.dtd" "log4j.dtd" >
+<log4j:configuration  xmlns:log4j="http://jakarta.apache.org/log4j/" >
+
+    <appender name="FileAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="/opt/build/scm/scripts/buildServer/log/centralServer.log"/>
+        <param name="MaxFileSize" value="5MB"/>
+        <param name="MaxBackupIndex" value="10"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} | %c | %p | %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} | %c | %p | %m%n"/>
+        </layout>
+    </appender>
+
+
+    <!-- Default to file appender. -->
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="ConsoleAppender"/>
+        <appender-ref ref="FileAppender"/>
+    </root>
+
+</log4j:configuration>

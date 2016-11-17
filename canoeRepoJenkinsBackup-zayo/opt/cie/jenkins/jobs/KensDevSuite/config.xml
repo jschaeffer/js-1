@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h3&gt;What does this job do?&lt;br&gt;&#xd;
+  &lt;ul&gt;&lt;h4&gt;&lt;li&gt;This job Starts/Stops Ken&apos;s Dev Suite&lt;/h4&gt;&lt;/ul&gt;&lt;/h3&gt;&#xd;
+</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>DeployUser</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>action</name>
+          <description>Action to be performed.</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Start</string>
+              <string>Stop</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.8.0_u25</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+export action
+export SelEnv=&quot;KensDev&quot;
+export Suite=$SelEnv
+export DeployTarg=$SelEnv
+echo $SelEnv
+echo $Suite
+echo $DeployTarg
+
+export Component=&quot;&quot;
+
+if [[ $action = &quot;Start&quot; ]]; then
+  cd /opt/build/scripts
+  ./startup-vapp.sh rema
+elif [[ $action = &quot;Stop&quot; ]]; then 
+  cd /opt/build/scripts
+  ./shutdown-vapp.sh rema
+  cd /opt/build/scripts
+  echo &quot;&lt;b&gt;&lt;font color=red&gt;down&lt;/font&gt;&lt;/b&gt;&quot; &gt;/var/www/html/$SelEnv/sysstate.txt
+  edate=`date | awk &apos;{print \$2,\$3,\$4}&apos;`
+  echo &quot;Environment $SelEnv shutdown by $DeployUser $BUILD_NUMBER - $edate&quot; &gt;&gt;/var/www/html/sysactivity/$SelEnv.txt
+fi
+
+echo &quot;Done&quot;
+
+sysstate=`cat /var/www/html/$DeployTarg/sysstate.txt`
+if [[ $sysstate = *down* ]]
+  then
+  echo &quot;$DeployTarg is currently down and running the Preserver State job may give inaccurate results&quot;
+#  exit
+fi 
+
+#  Reporting section
+
+echo &quot;&lt;b&gt;--- Suite Preservation and stop ID:&lt;/b&gt; ${BUILD_TAG} - ${BUILD_ID}&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;b&gt;${Suite} preserved and shutdown by ${DeployUser} &lt;/b&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+export BUILD_TAG
+export DeployUser
+export Suite=$SelEnv
+export DeployTarg=$SelEnv
+
+echo &quot;&lt;b&gt;URL For shutdown output: &lt;/b&gt;&lt;a href=&quot;${BUILD_URL}console&quot;&gt;console&lt;/a&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+echo &quot;&lt;u&gt;Components active at shutdown :&lt;/u&gt;&lt;br&gt;&quot; &gt;&gt; /opt/build/scm/scripts/buildServer/log/${BUILD_TAG}.log
+
+# Adding Slack notificaton 
+#export webhook_url=&quot;https://hooks.slack.com/services/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&quot;
+#export channel=&quot;#deployments&quot;
+#export username=&quot;SCMUpdMgr&quot;
+#export text=&quot;System Preserve and Shutdown: ${DeployTarg} by ${DeployUser}\n-URL for console output: &lt;http://cvbuild.cv.infra:7001/job/${JOB_NAME}/${BUILD_NUMBER}/console|here&gt;&quot;
+#escapedText=$(echo $text | sed &apos;s/&quot;/\&quot;/g&apos; | sed &quot;s/&apos;/\&apos;/g&quot; )
+#json=&quot;{\&quot;channel\&quot;: \&quot;$channel\&quot;, \&quot;username\&quot;:\&quot;$username\&quot;, \&quot;icon_emoji\&quot;:\&quot;mega\&quot;, \&quot;attachments\&quot;:[{\&quot;color\&quot;:\&quot;good\&quot; , \&quot;text\&quot;: \&quot;$escapedText\&quot;}]}&quot;
+#curl -s -d &quot;payload=$json&quot; &quot;$webhook_url&quot;
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.tasks.Mailer plugin="mailer@1.15">
+      <recipients>ken.leider@canoeventures.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
+  <buildWrappers/>
+</project>

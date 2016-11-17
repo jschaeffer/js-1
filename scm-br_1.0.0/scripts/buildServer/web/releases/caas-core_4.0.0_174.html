@@ -1,0 +1,47 @@
+<b><u>Component Release Info for Sprint QuickDraw:</b></u><p>
+<u>Release of Component</u><b>&nbspcaas-core</b><br><u>Version</u><b>&nbspr_4.0.0_174</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Kassi: 
+CAAS Core 4.0.0_174
+CIP-Sender 4.0.0_247  (Frequency capping; expired CIPs not processed; remove prioritization from CIP-Immediate; publish "unlimited" goal type.)
+PCI: 4.0.0_245  (Frequency capping)
+SMSi-Publisher:  4.0.0_275  (Performance improvements)
+Metadata Ingest 4.0.0_49 – (SeriesName, SeriesID, originalAirDate, season number, rating, advisory, Title assetID and providerID, ad description, advertiser name, brand, and adID)
+
+ACP 4.0.0_34 – Regression tested</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_4.0.0_174/diff.txt>caas-core_v_4.0.0_174/core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_4.0.0_174/diff.txt>caas-core_v_4.0.0_174/core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_4.0.0_174/diff.txt>caas-core_v_4.0.0_174/core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/caas-core_v_4.0.0_174/diff.txt>caas-core_v_4.0.0_174/core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>core/model/src/main/resources/liquibase/cisys/genUser.Marley.sql
+core/model/src/main/resources/liquibase/cisys/genUser.MicroDev.sql
+core/model/src/main/resources/liquibase/cisys/genUser.devint.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+core/model/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+core/model/src/main/resources/liquibase/core-4.0.0/037-mpm-undo-insertions-views-count.xml
+core/model/src/main/resources/liquibase/core-4.0.0/038-mpm-create-data-dictionary-table.xml
+core/model/src/main/resources/liquibase/core-4.0.0/039-mpm-create-flashback-archives.xml
+core/model/src/main/resources/liquibase/ojdbc6.jar</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_165</b></u><br>
+<pre>
+* <font color=blue>a225c9f</font>-<font color=green>(2014-09-05)</font><font color=black><b>Added code and tests to find product category by name.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_4.0.0_175, tag: v_4.0.0_174)</font>
+* <font color=blue>dcf3427</font>-<font color=green>(2014-09-05)</font><font color=black><b>added comments about materialized viiews about dai-etl-feeder.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* <font color=blue>8e938df</font>-<font color=green>(2014-09-04)</font><font color=black><b>fixed README</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_4.0.0_173)</font>
+* <font color=blue>e8fa7b2</font>-<font color=green>(2014-09-04)</font><font color=black><b>Updated README, Added data_dictionary records.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>4a3e5fe</font>-<font color=green>(2014-09-04)</font><font color=black><b>Added statements to genuser scripts.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>76e77b2</font>-<font color=green>(2014-09-03)</font><font color=black><b>Added updatedBy properties to domain classes, fixed pom.xml so Liquibase can re-run</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>7a1847e</font>-<font color=green>(2014-09-03)</font><font color=black><b>Added flashback archives for campaign and media asset related tables.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>d32c417</font>-<font color=green>(2014-08-27)</font><font color=black><b>Added method and tests to accept a filter for findCampaignItemsByCampaign()</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_4.0.0_172, tag: v_4.0.0_171)</font>
+* <font color=blue>c80313d</font>-<font color=green>(2014-08-26)</font><font color=black><b>Added primary key on data dictionary table, fixed missing Liquibase script issue.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_4.0.0_170)</font>
+* <font color=blue>7b5f4bd</font>-<font color=green>(2014-08-26)</font><font color=black><b>Added data dictionary table.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>fcd7ef0</font>-<font color=green>(2014-08-26)</font><font color=black><b>Added enum to CampaignItemBillingEnum class.</b></font><font color=grey>- (Mike Munhall)</font><font color=red></font>
+* <font color=blue>8407578</font>-<font color=green>(2014-08-25)</font><font color=black><b>CampaignOrderOwnerFeed is now Serializable.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_4.0.0_169)</font>
+* <font color=blue>7f29bb2</font>-<font color=green>(2014-08-22)</font><font color=black><b>New method and test to return cip enabled operator feeds by programmer</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_4.0.0_168)</font>
+* <font color=blue>b6252d7</font>-<font color=green>(2014-08-20)</font><font color=black><b>Support for filtering campaing searches by programmer</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_4.0.0_167)</font>
+* <font color=blue>08dc370</font>-<font color=green>(2014-08-18)</font><font color=black><b>Created campaign feedback goal view, added feedback goal as property on campaignitem and campaign.</b></font><font color=grey>- (Mike Munhall)</font><font color=red> (tag: v_4.0.0_166)</font></pre>
+<hr>
+<p>

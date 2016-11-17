@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.8.1">
+      <teamDomain></teamDomain>
+      <token></token>
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyRepeatedFailure>false</notifyRepeatedFailure>
+      <includeTestSummary>false</includeTestSummary>
+      <showCommitList>false</showCommitList>
+      <includeCustomMessage>false</includeCustomMessage>
+      <customMessage></customMessage>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK1.6.0</jdk>
+  <authToken>TOKEN_NAME</authToken>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/ksh -x
+#comcast
+export purpose=&quot;production&quot;
+echo `date | awk &apos;{print $1,$2,$3,$4}&apos;`&gt;/var/www/html/prod/dtupd.txt
+
+fnChkInsDate() {
+ inst=`ssh tcserver@$targ &quot;cd instances/$instance/webapps; ls -al . | awk &apos;NR==2 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/${purpose}/$app.instdate.txt
+}
+fnVerCheck() {
+echo &quot;Checking Version status for Component=$Component on targ=$targ in instance=$instance&quot;
+fnDirEx
+if [[ $Direcex == &quot;Present&quot; ]]; then
+Version=`ssh tcserver@$targ &quot;grep Implementation-Version /opt/tcserver/instances/$instance/webapps/$webapps/META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* || ${Version} == *from* ]]; then
+ echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+  else
+ echo &quot;$Version&quot; &gt; $target/${purpose}/$app.txt
+ fi
+else 
+ echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+fi
+}
+
+fnDBVerCheck() {
+cd /opt/build/scripts/production
+Version=`./check_dbversions_prod.sh -a ${Component} | tr -d &quot;\n&quot;`
+echo &quot;Version : $Version&quot;
+echo &quot;${Version}&quot; | tee $target/${purpose}/$app.txt
+}
+
+fnVerJar() {
+echo &quot;Checking Version status for Component=$Component on targ=$targ&quot;
+Version=`ssh tcserver@$targ &quot;cd /var/tmp; jar xf /opt/tcserver/$direct/$jarLoc/$jarName META-INF/MANIFEST.MF; grep Implementation-Version META-INF/MANIFEST.MF | cut -d : -f 2 | tr -d &apos; &apos;  | tr -d &apos;\r&apos;; rm -fR META-INF&quot;`
+ if [[ -z &quot;$Version&quot; || ${Version} == *select* ]]; then
+  echo &quot;Not installed&quot;  &gt; $target/${purpose}/$app.txt
+  else
+  echo &quot;$Version&quot; &gt; $target/${purpose}/$app.txt
+ fi
+}
+
+fnChkInsDateJar() {
+ inst=`ssh tcserver@$targ &quot;cd $direct/$jarLoc; ls -al $jarName | awk &apos;NR==1 {print}&apos;&quot;`
+    inst1=`echo $inst | awk &apos;{print $6,$7,$8}&apos;`
+ echo &quot;$inst1&quot; &gt; $target/${purpose}/$app.instdate.txt
+}
+
+fnDirEx() {
+Direcex=`ssh tcserver@${targ} &quot;test -d instances/${instance}/webapps/${webapps} &amp;&amp; echo &quot;Present&quot; || echo &quot;Not present&quot;&quot;`
+echo &quot;${Direcex}&quot;
+}
+
+
+echo &quot;####################################################################################################&quot;
+echo &quot;##  Checking the Installation versions, tcserver states and installation date for Production   Envs ##&quot;
+echo &quot;####################################################################################################&quot;
+
+export target=&quot;/var/www/html/prod&quot;
+
+export Components=&quot;Dynamic-Ad-Insertion-cm acp dai-cip dai-cip-feedback Dynamic-Ad-Insertion-engine dai-national-cis smsi-publisher dai-smsi smsi-msp-relay Pgmr-Cpgn-Int metadata-publisher POIS dmp-config request-mgr impression-collector ADI-MDI&quot;
+#export Components=&quot;Dynamic-Ad-Insertion-cm&quot;
+
+for j in ${Components}; do
+
+ case $j in
+  Dynamic-Ad-Insertion-cm)  
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=cv-cm01.cv.prod
+   export instance=CampMan_001
+   export webapps=cm
+   fnVerCheck
+   fnChkInsDate
+  ;;
+  dai-cip-feedback)
+   export Comps=&quot;dai-cip-feedback0&quot;
+    for i in $Comps; do
+     case $i in
+      dai-cip-feedback0)
+       export Component=&quot;$i&quot;
+       export app=$j
+       export targ=cv-cip_feedbk01.cv.prod
+       export instance=CV_CIP_FN1
+       export webapps=cip-feedback
+       fnVerCheck
+       fnChkInsDate
+      ;;
+    esac
+   done
+  ;;
+  dai-cip) 
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=cv-cip-sndr01.cv.prod
+   export direct=dai-cip_40/dai-cip
+   export jarLoc=bin
+   export jarName=dai-cip.jar
+   fnVerJar
+   fnChkInsDateJar
+  ;;
+  acp) 
+   export Component=&quot;${j}0&quot;
+   export app=$j
+   export targ=cv-acp01.cv.prod
+   export direct=acp
+   export jarLoc=bin
+   export jarName=acp.jar
+   fnVerJar
+   fnChkInsDateJar
+  ;;
+  Dynamic-Ad-Insertion-engine)
+   export Comps=&quot;Dynamic-Ad-Insertion-engine0&quot;
+    for i in $Comps; do
+     case $i in
+      Dynamic-Ad-Insertion-engine0)
+       export Component=$i
+       export app=$j
+       export targ=cv-dec-eng01.cv.prod
+       export instance=CMC_CIP_DE01
+       export webapps=ads
+       fnVerCheck
+       fnChkInsDate
+       ;;
+      esac
+  done
+  ;;
+  dai-national-cis)
+    export targ=cv-ncis02.cv.prod
+    export instance=NCIS_A01
+    export Component=$i 
+    export app=$j
+    export webapps=dai-national-cis
+    fnVerCheck
+    fnChkInsDate
+  ;;
+  impression-collector)
+    export targ=cv-imp_coll01.cv.prod
+    export instance=CMC_IMPCOL01
+    export Component=$i 
+    export app=$j
+    export webapps=imp_coll
+    fnVerCheck
+    fnChkInsDate
+  ;;
+  smsi-publisher)
+   export targ=cv-smsi_pub01.cv.prod
+   export instance=SMURF_PUB01
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=smsi-pub
+   fnVerCheck
+   fnChkInsDate
+ ;;
+  Pgmr-Cpgn-Int)
+   export targ=cv-pci01.cv.prod
+   export instance=FW_CIP_ING_01
+   export Component=&quot;${j}0&quot; 
+   export app=$j
+   export webapps=fw_cip-ingest
+   fnVerCheck
+   fnChkInsDate
+ ;;
+  metadata-publisher)
+   export targ=cv-meta_pub01.cv.prod
+   export instance=MD_PUB01
+   export app=$j
+   export webapps=md_publisher
+   export Component=&quot;${j}0&quot; 
+   fnVerCheck
+   fnChkInsDate
+ ;;
+  dai-smsi)
+   export Comps=&quot;dai-smsi0&quot;
+    for i in $Comps; do
+     case $i in
+      dai-smsi0)
+       export Component=$i
+       export app=$j
+       export targ=cv-smsi_ing01.cv.prod
+       export instance=CV_SMSI1
+       export webapps=smsi
+       fnVerCheck
+       fnChkInsDate
+       ;;
+      esac
+  done
+  ;;
+  POIS)
+   export Comps=&quot;POIS0&quot;
+    for i in $Comps; do
+     case $i in
+      POIS0)
+       export Component=$i
+       export app=$j
+       export targ=cv-pois01.cv.prod
+       export instance=COX_POIS01
+       export webapps=pois
+       fnVerCheck
+       fnChkInsDate
+       ;;
+      esac
+  done
+  ;;
+  dmp-config)
+   export Comps=&quot;dmp0&quot;
+    for i in $Comps; do
+     case $i in
+      dmp0)
+       export Component=$i
+       export app=$j
+       export targ=cv-dmpmongo01
+       export instance=DMP
+       export webapps=dmp-config-prod
+       fnVerCheck
+       fnChkInsDate
+       ;;
+      esac
+  done
+  ;;
+   request-mgr)
+   export Comps=&quot;req0&quot;
+    for i in $Comps; do
+     case $i in
+      req0)
+       export Component=$i
+       export app=$j
+       export targ=cv-reqman01.cv.prod
+       export instance=TWC_SMURF01
+       export webapps=ROOT
+       #export webapps=request-maanger
+       fnVerCheck
+       fnChkInsDate
+       ;;
+      esac
+  done
+  ;;
+  ADI-MDI)
+   export Comps=&quot;adi-mdi0&quot;
+    for i in $Comps; do
+     case $i in
+      adi-mdi0)
+        export targ=cv-bas01.cv.prod
+        export instance=CV_ADI-MDI_01
+        export Component=&quot;$i&quot; 
+        export app=$j
+        export webapps=ADI-MDI
+        fnVerCheck
+        fnChkInsDate
+   ;;
+   esac
+ done
+ ;;  
+  dai-smsi-relay)
+   export Comps=&quot;dai-smsi-relay0&quot;
+    for i in $Comps; do
+     case $i in
+      dai-smsi-relay0)
+        export targ=cv-smsi_relay01.cv.prod
+        export instance=FW_SMSI_RELAY01
+        export Component=&quot;$i&quot; 
+        export app=$j
+        export webapps=fw_smsi-relay
+        fnVerCheck
+        fnChkInsDate
+   ;;
+   esac
+ done
+ ;;
+   smsi-msp-relay)
+   export Comps=&quot;smsi-msp-relay0&quot;
+    for i in $Comps; do
+     case $i in
+      smsi-msp-relay0)
+        export targ=cv-smsi-relay05.cv.prod
+        export instance=BRD_SMSI_RELAY01
+        export Component=&quot;$i&quot; 
+        export app=$j
+        export webapps=smsi-relay-msp
+        fnVerCheck
+        fnChkInsDate
+   ;;
+   esac
+ done
+ ;;
+ esac
+done
+
+
+export DBComponents=&quot;caas-core ads-core&quot;
+
+for j in ${DBComponents}; do
+     export Component=&quot;${j}&quot;
+     export app=$j
+     fnDBVerCheck
+done</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

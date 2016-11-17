@@ -1,0 +1,70 @@
+<b><u>Component Release Info for Sprint GoodbyeYellowBrickRoad:</b></u><p>
+<u>Release of Component</u><b>&nbspsmsi-publisher</b><br><u>Version</u><b>&nbspr_5.0.0_12</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>KassI:
+
+Upgrade to JAVA 1.8</b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_5.0.0_12/diff.txt>smsi-publisher_v_5.0.0_12/config/setenv.scrum1.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_5.0.0_12/diff.txt>smsi-publisher_v_5.0.0_12/config/setenv.scrum2.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_5.0.0_12/diff.txt>smsi-publisher_v_5.0.0_12/config/setenv.scrum3.sh.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/smsi-publisher_v_5.0.0_12/diff.txt>smsi-publisher_v_5.0.0_12/config/setenv.scrum4.sh.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>data-store/src/main/liquibase/cisys/dropUser.sql
+data-store/src/main/liquibase/cisys/genUser.sql
+data-store/src/main/liquibase/master-changelog.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0-changelog.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/001-yliu-create-smsi-publisher-structure.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/002-yliu-clean-smsi-publisher-data-stored-proc.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/003-fix-yliu-enable-prg.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/004-yliu-add-column-to-placement.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/005-yliu-new-gc-logic.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/006-kleider-poGroupIndex-support.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/007-yliu-force-nocompress.xml
+data-store/src/main/liquibase/smsi-publisher-1.0.0/008-kleider-direct_commit.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0-changelog.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/001-kleider-create-smsi-publisher-structure.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/002-kleider-publish-session-once.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/003-kleider-denormalize.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/004-kleider-managed-ip.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/005-kleider-performance.xml
+data-store/src/main/liquibase/smsi-publisher-2.0.0/006-DAD-index_columns.xml
+data-store/src/main/liquibase/smsi-publisher-3.0.0-changelog.xml
+data-store/src/main/liquibase/smsi-publisher-3.0.0/001-kleider-create-smsi-publisher-structure.xml
+data-store/src/main/liquibase/smsi-publisher-3.0.0/002-kleider-device_id.xml
+data-store/src/main/resources/liquibase/master-changelog.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0-changelog.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/001-yliu-create-smsi-publisher-structure.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/002-yliu-clean-smsi-publisher-data-stored-proc.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/003-fix-yliu-enable-prg.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/004-yliu-add-column-to-placement.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/005-yliu-new-gc-logic.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/006-kleider-poGroupIndex-support.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/007-yliu-force-nocompress.xml
+data-store/src/main/resources/liquibase/smsi-publisher-1.0.0/008-kleider-direct_commit.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0-changelog.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/001-kleider-create-smsi-publisher-structure.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/002-kleider-publish-session-once.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/003-kleider-denormalize.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/004-kleider-managed-ip.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/005-kleider-performance.xml
+data-store/src/main/resources/liquibase/smsi-publisher-2.0.0/006-DAD-index_columns.xml
+data-store/src/main/resources/liquibase/smsi-publisher-3.0.0-changelog.xml
+data-store/src/main/resources/liquibase/smsi-publisher-3.0.0/001-kleider-create-smsi-publisher-structure.xml
+data-store/src/main/resources/liquibase/smsi-publisher-3.0.0/002-kleider-device_id.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_298</b></u><br>
+<pre>
+* <font color=blue>7c8f654</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7203:  Generation of xml message  more eagerly releases objects to the garbage collector.  Replaced the sender logic with a basic HTTP connection to save memory.  I think WebServiceTemplate was transforming my SOAP body string into XML, and wasting a ton of memory in the process.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_12)</font>
+* <font color=blue>fe4feba</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7203:  Generation of xml message  more eagerly releases objects to the garbage collector.  Replaced the sender logic with a basic HTTP connection to save memory.  I think WebServiceTemplate was transforming my SOAP body string into XML, and wasting a ton of memory in the process.</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>9c32bc1</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7384: Log messages when a job exceeds it reservation duration</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>306b7a8</font>-<font color=green>(2015-04-10)</font><font color=black><b>VODDAI-7383: Log messages for full session queries</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>fa27980</font>-<font color=green>(2015-04-07)</font><font color=black><b>Updating stacksize for jdk1.8</b></font><font color=grey>- (lyamhassell)</font><font color=red> (tag: v_5.0.0_11)</font>
+* <font color=blue>7cc6879</font>-<font color=green>(2015-04-07)</font><font color=black><b>Updating setenv for JDK1.8</b></font><font color=grey>- (lyamhassell)</font><font color=red> (tag: v_5.0.0_10)</font>
+* <font color=blue>c88b076</font>-<font color=green>(2015-04-07)</font><font color=black><b>Fix DB password case</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_9)</font>
+* <font color=blue>85b963d</font>-<font color=green>(2015-04-07)</font><font color=black><b>Put the local and scrum db names in line.</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_8)</font>
+* <font color=blue>63af7e7</font>-<font color=green>(2015-04-06)</font><font color=black><b>Put log4j 1 back</b></font><font color=grey>- (kennethleider)</font><font color=red></font>
+* <font color=blue>1b0fc28</font>-<font color=green>(2015-04-06)</font><font color=black><b>Fixed liquibase location to work with common-lib</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_7, tag: v_5.0.0_6)</font>
+* <font color=blue>cfca653</font>-<font color=green>(2015-03-24)</font><font color=black><b>Merge branch 'br_4.0.0' into br_5.0.0</b></font><font color=grey>- (kennethleider)</font><font color=red> (tag: v_5.0.0_5)</font>
+* <font color=blue>74b8e04</font>-<font color=green>(2015-03-24)</font><font color=black><b>VODDAI-7208: Will never publish a negative runtime</b></font><font color=grey>- (kennethleider)</font><font color=red></font></pre>
+<hr>
+<p>

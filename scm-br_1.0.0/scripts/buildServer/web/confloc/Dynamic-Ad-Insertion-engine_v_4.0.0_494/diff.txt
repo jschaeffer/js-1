@@ -1,0 +1,60 @@
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+index 8ed4128..439708d 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+@@ -34,3 +34,5 @@ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
++
++cis.managedIp.job=0 0 0 1/1 * ?
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+index a5a881d..d5f1712 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+@@ -24,3 +24,4 @@ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
+ 
++cis.managedIp.job=0 0 0 0/1 * ?
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+index 08bd907..e2d1fcb 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+@@ -24,3 +24,4 @@ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
+ 
++cis.managedIp.job=0 0 0 0/1 * ?
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+index 8ed4128..439708d 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum1.properties
+@@ -34,3 +34,5 @@ ads.cache.assetMetadata.job = 0 0 0/1 * * ?
+ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
++
++cis.managedIp.job=0 0 0 1/1 * ?
+\ No newline at end of file
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+index a5a881d..d5f1712 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum2.properties
+@@ -24,3 +24,4 @@ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
+ 
++cis.managedIp.job=0 0 0 0/1 * ?
+diff --git a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+index 08bd907..e2d1fcb 100644
+--- a/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
++++ b/dai-interfaces/cis/src/main/resources/config/cis-env-application.scrum3.properties
+@@ -24,3 +24,4 @@ ads.deadHead=false
+ 
+ cis.batchsave.size=1000
+ 
++cis.managedIp.job=0 0 0 0/1 * ?
+\ No newline at end of file

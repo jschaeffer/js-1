@@ -1,0 +1,124 @@
+<b><u>Component Release Info for Sprint Mammoth:</b></u><p>
+<u>Release of Component</u><b>&nbspDynamic-Ad-Insertion-engine</b><br><u>Version</u><b>&nbspr_4.0.0_387</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>From Performance: Placement Limitation features seemed to have not introduced any performance impact to any of our application areas. Due to the rush in turning the Placement Limitation features over to Prod, completion of the Metadata Publisher and NCIS test plans are not as complete as desired. This will be continued over the next week. 
+ 
+Testing explicit placement limitation rules in Freewheel CIPs is also outstanding in testing. We need to revise our CIP generator to include these rules in the CIP.  We tested the rule defaults only. Kassi is integration testing this with Freewheel starting this week, so we will be working this angle as well in parallel. 
+ 
+Reasonable disk space or log rotation schedules will need to allocated to the NCIS and MetaData Publisher server instances. Not sure what the prescribed frequency the CRON jobs here will be but messages sent are large and can eat up a lot of logging disk space. 
+</b></font></pre>
+&nbsp- No Config Changes<br>
+<p>
+&nbsp- No DB Changes <br>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_382</b></u><br>
+<pre>
+* <font color=blue>dcd7a99</font>-<font color=green>(2014-07-01)</font><font color=black><b>Added test case for VODDAI-5960</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_387)</font>
+* <font color=blue>ec903cd</font>-<font color=green>(2014-07-01)</font><font color=black><b>VODDAI-5960</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+*   <font color=blue>6f1c39c</font>-<font color=green>(2014-07-01)</font><font color=black><b>Merge branch 'PlacementLimit' into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+|\  
+| * <font color=blue>17a9a0e</font>-<font color=green>(2014-06-26)</font><font color=black><b>changed separation constraint from session to backToBack</b></font><font color=grey>- (prithvi)</font><font color=red> (origin/PlacementLimit)</font>
+| * <font color=blue>deb62e5</font>-<font color=green>(2014-06-26)</font><font color=black><b>changed campaign item id separation from b to d</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+| *   <font color=blue>f9de89f</font>-<font color=green>(2014-06-26)</font><font color=black><b>fixed conflict in cip_persist_update.feature</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\  
+| | * <font color=blue>a2705fb</font>-<font color=green>(2014-06-25)</font><font color=black><b>Merge main line in</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * | <font color=blue>7d5896e</font>-<font color=green>(2014-06-26)</font><font color=black><b>fixed cip_persist_update.feature</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |/  
+| * <font color=blue>9bdd91d</font>-<font color=green>(2014-06-11)</font><font color=black><b>Merge branch 'br_4.0.0' into PlacementLimit</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>32531d3</font>-<font color=green>(2014-06-09)</font><font color=black><b>MCLPS passing, all tests changed and up to date for trackingID and data defaults</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>9812b3c</font>-<font color=green>(2014-06-09)</font><font color=black><b>Changing log message.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>baeaeb2</font>-<font color=green>(2014-06-09)</font><font color=black><b>Logic changes dealing with post-roll.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>0c3c379</font>-<font color=green>(2014-06-09)</font><font color=black><b>adding more testing around MCLPS ad map edge cases</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>a2d7033</font>-<font color=green>(2014-06-09)</font><font color=black><b>Added additional characters in the padding to handle the longer MLCPS name</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>43492cf</font>-<font color=green>(2014-06-06)</font><font color=black><b>Fix for break separation.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>6005faf</font>-<font color=green>(2014-06-06)</font><font color=black><b>adding small test change</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>af82f6b</font>-<font color=green>(2014-06-06)</font><font color=black><b>I can maths. Promise.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>b863139</font>-<font color=green>(2014-06-06)</font><font color=black><b>Updating unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>8936baa</font>-<font color=green>(2014-06-06)</font><font color=black><b>Interim checkin fixing incorrect math and looking at wrong values.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>d373405</font>-<font color=green>(2014-06-06)</font><font color=black><b>Fixing logic.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>97d08a3</font>-<font color=green>(2014-06-06)</font><font color=black><b>MCLPS test changes</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>fe2819d</font>-<font color=green>(2014-06-06)</font><font color=black><b>Revert "Added tests for MCLPS Decision Engine Logic, changed CIP Ingest for MCLPS to have correct default values"</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>ab749b7</font>-<font color=green>(2014-06-06)</font><font color=black><b>Added unit tests for null case</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>eedbceb</font>-<font color=green>(2014-06-06)</font><font color=black><b>Added check for 0 as null case</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>20e1b35</font>-<font color=green>(2014-06-05)</font><font color=black><b>Added tests for MCLPS Decision Engine Logic, changed CIP Ingest for MCLPS to have correct default values</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>f4399b7</font>-<font color=green>(2014-06-03)</font><font color=black><b>Unit tests.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>043a661</font>-<font color=green>(2014-06-03)</font><font color=black><b>Fixing unit test.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>922880e</font>-<font color=green>(2014-06-03)</font><font color=black><b>VODDAI-5527 VODDAI-5528</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>bfce357</font>-<font color=green>(2014-05-30)</font><font color=black><b>MCLPS persistance tests complete and passing</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>8aaee17</font>-<font color=green>(2014-05-30)</font><font color=black><b>moved PL tests to the correct directory</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| *   <font color=blue>58e0183</font>-<font color=green>(2014-05-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\  
+| | * <font color=blue>66a46d3</font>-<font color=green>(2014-05-30)</font><font color=black><b>Removing tag.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>3b201db</font>-<font color=green>(2014-05-30)</font><font color=black><b>first draft MCLPS CIP persistance</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * |   <font color=blue>091e297</font>-<font color=green>(2014-05-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\ \  
+| | |/  
+| | * <font color=blue>935bcc0</font>-<font color=green>(2014-05-30)</font><font color=black><b>VODDAI-5525</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * |   <font color=blue>1a6b19a</font>-<font color=green>(2014-05-30)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |\ \  
+| | |/  
+| | * <font color=blue>51e2bf4</font>-<font color=green>(2014-05-30)</font><font color=black><b>VODDAI-5523</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * | <font color=blue>3f471c0</font>-<font color=green>(2014-05-30)</font><font color=black><b>MCLPS Validation Tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| |/  
+| * <font color=blue>eb713f2</font>-<font color=green>(2014-05-29)</font><font color=black><b>PL merge test changes during regression</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>5afcf1b</font>-<font color=green>(2014-05-29)</font><font color=black><b>Merging br_4.0.0 into branch.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>7efabbf</font>-<font color=green>(2014-03-14)</font><font color=black><b>Final checkins for LIA Placement Limitation Logic -- All Passing</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>a87e1fc</font>-<font color=green>(2014-03-14)</font><font color=black><b>ad separation refactor</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>449474a</font>-<font color=green>(2014-03-13)</font><font color=black><b>edits to validation tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| *   <font color=blue>31c8c0c</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge branch 'PlacementLimit' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |\  
+| | *   <font color=blue>3883ad5</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge branch 'PlacementLimit' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | |\  
+| | | * <font color=blue>11f9aa3</font>-<font color=green>(2014-03-13)</font><font color=black><b>VODDAI-4811 Fixed order we are validating</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| | | * <font color=blue>2b1e07a</font>-<font color=green>(2014-03-13)</font><font color=black><b>Fixed log messages</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| | * | <font color=blue>b6efa92</font>-<font color=green>(2014-03-13)</font><font color=black><b>removed tag</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | |/  
+| | * <font color=blue>a292759</font>-<font color=green>(2014-03-13)</font><font color=black><b>validation check changes</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * <font color=blue>eb84096</font>-<font color=green>(2014-03-13)</font><font color=black><b>Small fixes for LIA test cases and xmld</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * <font color=blue>0e5a014</font>-<font color=green>(2014-03-13)</font><font color=black><b>VODDAI-4811 - Added validation/persistence for ChildBundle CommonQualifierGroup</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| | * <font color=blue>c86c31b</font>-<font color=green>(2014-03-13)</font><font color=black><b>Refactor of CIP Persistance tests for new Ad Separation rules</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| | *   <font color=blue>df7fc93</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge branch 'PlacementLimit' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| | |\  
+| | | *   <font color=blue>a295384</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge branch 'PlacementLimit' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into PlacementLimit</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | | |\  
+| | | * | <font color=blue>bc87c2c</font>-<font color=green>(2014-03-13)</font><font color=black><b>Fixed LIA location in CIPs and changed separationConstraint to backToBack</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| | * | | <font color=blue>c4bf55b</font>-<font color=green>(2014-03-13)</font><font color=black><b>Updated database xml's with default AD_SEPARATION = BTB</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| | | |/  
+| | |/|   
+| | * | <font color=blue>83b0079</font>-<font color=green>(2014-03-13)</font><font color=black><b>Refactored update notice templates with ad separation default, updated CIP Validation on placement element</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| | |/  
+| | * <font color=blue>62c9404</font>-<font color=green>(2014-03-12)</font><font color=black><b>changes to combined LI and LIA Decision Engine Logic Tests</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * | <font color=blue>d4acfdd</font>-<font color=green>(2014-03-13)</font><font color=black><b>Merge of session and break limits</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| |/  
+| * <font color=blue>6481b57</font>-<font color=green>(2014-03-11)</font><font color=black><b>Placement Limitation additional testing data</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>24a0019</font>-<font color=green>(2014-03-11)</font><font color=black><b>Removed references and cases for placement separations that are not NONE or BACK_TO_BACK</b></font><font color=grey>- (dehmlowm)</font><font color=red></font>
+| * <font color=blue>23b7529</font>-<font color=green>(2014-03-10)</font><font color=black><b>placement limitation for LIA test changes</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>e475800</font>-<font color=green>(2014-03-10)</font><font color=black><b>VODDAI-5102 Changed the ad separation for cip ingestion</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>63c74bf</font>-<font color=green>(2014-03-07)</font><font color=black><b>added Child Bundle Line Item Asset Validation and Persistence tests for Placement Limitation logic</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>fff4787</font>-<font color=green>(2014-01-14)</font><font color=black><b>Placement limitation tests now passing</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>f19a945</font>-<font color=green>(2014-01-13)</font><font color=black><b>Updated unit tests to work w/ new logic</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+| * <font color=blue>730666c</font>-<font color=green>(2014-01-13)</font><font color=black><b>Handling zero and negative case.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>44f6c93</font>-<font color=green>(2014-01-13)</font><font color=black><b>First whack at session and break placement limits.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>ca21535</font>-<font color=green>(2014-01-13)</font><font color=black><b>Added Scenarios 4-14 for Placement Limitation Feature</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>6853e2f</font>-<font color=green>(2014-01-10)</font><font color=black><b>Placement Limitation ADS Logic Tests for VODDAI 4802-4804</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+| * <font color=blue>ba5cf12</font>-<font color=green>(2014-01-09)</font><font color=black><b>Validation and Persistence Tests Passed for Placement Limitation</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>89a64ca</font>-<font color=green>(2014-01-09)</font><font color=black><b>Placement Limitation Validation and First Draft Persistance tests</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+| * <font color=blue>97615e4</font>-<font color=green>(2014-01-09)</font><font color=black><b>Changed properties back to user home.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>9d1f866</font>-<font color=green>(2014-01-09)</font><font color=black><b>Additional Unit tests</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>88c3f59</font>-<font color=green>(2014-01-09)</font><font color=black><b>Making sure that we match on namepsace</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>6a4226d</font>-<font color=green>(2014-01-09)</font><font color=black><b>Adding session/break placement limit persistance.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>bdf3b0a</font>-<font color=green>(2014-01-09)</font><font color=black><b>Fixing test data.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+| * <font color=blue>56cae25</font>-<font color=green>(2014-01-09)</font><font color=black><b>VODDAI-4799 Validation for CI Placement</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>3ae1f20</font>-<font color=green>(2014-07-01)</font><font color=black><b>Revert "CIS tests running locally - half complete"</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>9d4f8da</font>-<font color=green>(2014-07-01)</font><font color=black><b>CIS tests running locally - half complete</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>005a99a</font>-<font color=green>(2014-06-27)</font><font color=black><b>additional changes to support CIS testing locally.</b></font><font color=grey>- (Bob Griese)</font><font color=red> (v_4.0.0_386)</font>
+* <font color=blue>ad91216</font>-<font color=green>(2014-06-27)</font><font color=black><b>Allowing for CIS local testing.</b></font><font color=grey>- (Bob Griese)</font><font color=red></font>
+* <font color=blue>58802f4</font>-<font color=green>(2014-06-26)</font><font color=black><b>wrapping up persistance of cis notification</b></font><font color=grey>- (prithvi)</font><font color=red> (v_4.0.0_385)</font>
+* <font color=blue>f0c33ae</font>-<font color=green>(2014-06-26)</font><font color=black><b>wrapping up validation and persistance of csi notification</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+*   <font color=blue>4d11a44</font>-<font color=green>(2014-06-25)</font><font color=black><b>Merge branch 'br_4.0.0' of https://github.com/CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_384)</font>
+|\  
+| * <font color=blue>dab0200</font>-<font color=green>(2014-06-25)</font><font color=black><b>Cucumber test for cis notification</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+| * <font color=blue>16dd623</font>-<font color=green>(2014-06-24)</font><font color=black><b>Merge branch 'br_4.0.0' of github.com:CanoeVentures/Dynamic-Ad-Insertion-engine into br_4.0.0</b></font><font color=grey>- (Julie Samuelson)</font><font color=red> (v_4.0.0_383)</font>
+| * <font color=blue>ebaf663</font>-<font color=green>(2014-06-24)</font><font color=black><b>test changes ... AGAIN</b></font><font color=grey>- (Julie Samuelson)</font><font color=red></font>
+* <font color=blue>a65d292</font>-<font color=green>(2014-06-25)</font><font color=black><b>Refactor to support unit tests</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font></pre>
+<hr>
+<p>

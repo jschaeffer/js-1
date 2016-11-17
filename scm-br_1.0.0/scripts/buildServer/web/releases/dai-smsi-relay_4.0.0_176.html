@@ -1,0 +1,53 @@
+<b><u>Component Release Info for Sprint Orlando:</b></u><p>
+<u>Release of Component</u><b>&nbspdai-smsi-relay</b><br><u>Version</u><b>&nbspr_4.0.0_176</b><br>
+<u>Scrum Metadata :</u>&nbsp<b>&nbsp<pre><font face=verdana size=2>Julie:
+
+CAAS Core - 4.0.0_156
+Metadata - Implemented SMSi Relay Data Options config on CAAS Feed table; added CAAS connection to properties file; bug fix to 5986 </b></font></pre>
+&nbsp- Conf chgs<br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_176/diff.txt>dai-smsi-relay_v_4.0.0_176/config/smsi-relay-env-application.scrum1.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_176/diff.txt>dai-smsi-relay_v_4.0.0_176/config/smsi-relay-env-application.scrum2.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_176/diff.txt>dai-smsi-relay_v_4.0.0_176/config/smsi-relay-env-application.scrum3.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_176/diff.txt>dai-smsi-relay_v_4.0.0_176/config/smsi-relay-env-application.scrum4.properties.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_176/diff.txt>dai-smsi-relay_v_4.0.0_176/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum1.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_176/diff.txt>dai-smsi-relay_v_4.0.0_176/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum2.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_176/diff.txt>dai-smsi-relay_v_4.0.0_176/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum3.sql.txt</a><br>
+&nbsp&nbsp&nbsp<a href=confloc/dai-smsi-relay_v_4.0.0_176/diff.txt>dai-smsi-relay_v_4.0.0_176/smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum4.sql.txt</a><br>
+<p>
+&nbsp- DB chgs<pre>smsi-relay-client/src/main/resources/liquibase/cisys/genUser.Marley.sql
+smsi-relay-client/src/main/resources/liquibase/cisys/genUser.devint.sql
+smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum1.sql
+smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum2.sql
+smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum3.sql
+smsi-relay-client/src/main/resources/liquibase/cisys/genUser.scrum4.sql
+smsi-relay-client/src/main/resources/liquibase/dai-relay-4.0.0-changelog.xml
+smsi-relay-client/src/main/resources/liquibase/dai-relay-4.0.0/012-yliu-relay-options.xml</pre>
+<p>
+<u>Commit summaries since last version :</u> <b>4.0.0_163</b></u><br>
+<pre>
+* <font color=blue>5dcf227</font>-<font color=green>(2014-08-05)</font><font color=black><b>Fixed the property names for the caas dbs</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_176)</font>
+* <font color=blue>1c0f301</font>-<font color=green>(2014-07-31)</font><font color=black><b>republish detail test fixes</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_175)</font>
+* <font color=blue>cdf1b00</font>-<font color=green>(2014-07-31)</font><font color=black><b>changed watermark days to today</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>a79a614</font>-<font color=green>(2014-07-31)</font><font color=black><b>Only creating sessions if there is a valid opportunity to send</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>468cc08</font>-<font color=green>(2014-07-30)</font><font color=black><b>Added null date checks on query</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_174)</font>
+* <font color=blue>4a23a7e</font>-<font color=green>(2014-07-30)</font><font color=black><b>Fixed query</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>06172bd</font>-<font color=green>(2014-07-30)</font><font color=black><b>test changes for data options</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* <font color=blue>6a75252</font>-<font color=green>(2014-07-29)</font><font color=black><b>Updated property files</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_173)</font>
+* <font color=blue>e62901e</font>-<font color=green>(2014-07-29)</font><font color=black><b>caas golden data changes</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+* <font color=blue>9f50cba</font>-<font color=green>(2014-07-29)</font><font color=black><b>CAAS golden data changes</b></font><font color=grey>- (prithvi)</font><font color=red></font>
+* <font color=blue>a7a3ea0</font>-<font color=green>(2014-07-29)</font><font color=black><b>Added instructions to build second schema</b></font><font color=grey>- (Craig Donovan)</font><font color=red></font>
+* <font color=blue>3bd4e75</font>-<font color=green>(2014-07-24)</font><font color=black><b>Adding new smsi-relay schema to each existing creation script</b></font><font color=grey>- (Jeff Schaeffer)</font><font color=red> (v_4.0.0_172, v_4.0.0_171, v_4.0.0_170)</font>
+* <font color=blue>207bad9</font>-<font color=green>(2014-07-11)</font><font color=black><b>updating watermark dates</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_169)</font>
+*   <font color=blue>08fc1c7</font>-<font color=green>(2014-07-11)</font><font color=black><b>Merge branch 'Relay_Data_Options' into br_4.0.0</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+|\  
+| * <font color=blue>69cc308</font>-<font color=green>(2014-07-09)</font><font color=black><b>data options test fixes</b></font><font color=grey>- (T-Sam23)</font><font color=red> (origin/Relay_Data_Options)</font>
+| * <font color=blue>93bbbef</font>-<font color=green>(2014-07-07)</font><font color=black><b>initial check-in for testing for SMSi Data Options</b></font><font color=grey>- (T-Sam23)</font><font color=red></font>
+* | <font color=blue>07b6a1a</font>-<font color=green>(2014-07-11)</font><font color=black><b>VODDAI-5605. outer join for opportunity without placements.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* | <font color=blue>9115117</font>-<font color=green>(2014-07-11)</font><font color=black><b>VODDAI-5605. outer join for opportunity without placements.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* | <font color=blue>d91f9ae</font>-<font color=green>(2014-07-11)</font><font color=black><b>VODDAI-5605. outer join for opportunity without placements.</b></font><font color=grey>- (Yong Liu)</font><font color=red></font>
+* | <font color=blue>c82ceaa</font>-<font color=green>(2014-07-10)</font><font color=black><b>VODDAI-5611 - Changed app to publish placement/opps based on feed table flag</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_168)</font>
+|/  
+* <font color=blue>e6f82ab</font>-<font color=green>(2014-06-27)</font><font color=black><b>VODDAI-5609 Added Connection to CAAS and Feed.</b></font><font color=grey>- (Craig Donovan)</font><font color=red> (v_4.0.0_167)</font>
+* <font color=blue>e06cd13</font>-<font color=green>(2014-06-23)</font><font color=black><b>changing watermark set date on consolidation tests</b></font><font color=grey>- (T-Sam23)</font><font color=red> (v_4.0.0_166, v_4.0.0_165)</font></pre>
+<hr>
+<p>

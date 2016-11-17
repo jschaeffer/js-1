@@ -1,0 +1,10 @@
+diff --git a/config/setenv.scrum3.sh b/config/setenv.scrum3.sh
+index 7237ffa..e101918 100644
+--- a/config/setenv.scrum3.sh
++++ b/config/setenv.scrum3.sh
+@@ -1,4 +1,4 @@
+-
++JAVA_HOME="/usr/java/jdk1.8.0_25"
+ AGENT_PATHS=""
+ JAVA_AGENTS=""
+ JAVA_LIBRARY_PATH="-Djava.library.path=$CATALINA_BASE/insight/sigar-lib"
