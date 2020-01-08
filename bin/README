@@ -1,2 +1,15 @@
-<html><body><h1>This is the BIN dirs README</H1>
-</body></html>
+Self Extraction/Packager
+
+Setup the directory structure
+
+In the payload (build output) directory create 
+- the initial 'files'.tar file for later packaging 
+- the 'installer' script is for any 'post-unpacking' steps
+The build script is to generate the payload.tar.gz delivery file
+The decompress script is run to extract the payload.tar.gz and run the installer script
+
+Process:
+1. Execute application build sending output to payload (includes tarring up build output and adding installer script)
+2. Run 'build' script to create the self-extracting package
+3. Archive new build package in artifactory
+4. For Deployment, download and run the new build package on targets
