@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Running Installer"
+mkdir $HOME/files
+tar -xvf ./files.tar -C $HOME/files

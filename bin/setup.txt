@@ -1,0 +1,11 @@
+.
+├── build
+├── decompress
+├── payload
+│   ├── files.tar
+│   └── installer
+├── payload.tar.gz
+├── selfextract.bsx
+└── setup.txt
+
+1 directory, 7 files
